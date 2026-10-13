@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Spaghetti</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="225" rx="82" ry="8" fill="#000" opacity="0.14"/>
+  <path transform="translate(132 94) rotate(18)" d="M-14 -24 L14 -24 L14 16 L8 16 L8 -12 L3 -12 L3 16 L-3 16 L-3 -12 L-8 -12 L-8 16 L-14 16 Z M-14 -24 C-14 -34 -5 -38 -5 -46 L-5 -68 C-5 -74 5 -74 5 -68 L5 -46 C5 -38 14 -34 14 -24" fill="#C9CED6" stroke="#1B1B1F" stroke-width="5" stroke-linejoin="round"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M184 176 C206 182 216 196 210 208 C204 218 188 214 192 204 M78 194 C64 202 58 212 66 216" stroke="#1B1B1F" stroke-width="11"/>
+    <path d="M184 176 C206 182 216 196 210 208 C204 218 188 214 192 204 M78 194 C64 202 58 212 66 216" stroke="#F7D774" stroke-width="4"/>
+  </g>
+  <ellipse cx="128" cy="148" rx="74" ry="58" fill="#F7D774" stroke="#1B1B1F" stroke-width="6"/>
+  <path d="M88 106 Q130 120 170 104 M64 128 Q130 104 192 134 M58 156 Q128 128 198 156 M62 170 Q130 192 194 170 M84 196 Q128 178 172 196" stroke="#D9AE3A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="128" cy="154" rx="44" ry="29" fill="#F7D774"/>
+  <path d="M70 128 C76 112 90 102 104 98 C92 110 84 124 82 140 C78 146 66 140 70 128 Z" fill="#FCE9A8"/>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

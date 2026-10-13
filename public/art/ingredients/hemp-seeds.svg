@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Hemp seeds</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="225" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-linejoin="round" stroke-linecap="round">
+    <g fill="#4E9A4A" stroke-width="4"><ellipse cx="166" cy="74" rx="7" ry="16" transform="rotate(-60 166 74)"/><ellipse cx="172" cy="61" rx="7" ry="22" transform="rotate(-20 172 61)"/><ellipse cx="189" cy="59" rx="7" ry="25" transform="rotate(20 189 59)"/><ellipse cx="199" cy="71" rx="7" ry="22" transform="rotate(60 199 71)"/><ellipse cx="196" cy="85" rx="7" ry="16" transform="rotate(100 196 85)"/></g>
+    <g stroke-width="6">
+      <ellipse cx="124" cy="138" rx="72" ry="72" fill="#B5BD95"/>
+    </g>
+  </g>
+  <path d="M55 124 C66 92 92 70 124 70 C156 70 182 92 193 124 C164 104 140 110 124 102 C108 110 84 104 55 124 Z" fill="#7E8A63"/>
+  <path d="M68 150 C68 136 72 126 78 122 C78 140 82 160 90 176 C76 172 68 162 68 150 Z" fill="#CFD5B5"/>
+  <g fill="none" stroke="#1B1B1F" stroke-width="6"><ellipse cx="124" cy="138" rx="72" ry="72"/></g>
+  <g stroke="#1B1B1F"><g transform="rotate(60 194 208)"><ellipse cx="194" cy="208" rx="10" ry="13" fill="#B5BD95"/><path d="M184 207 A10 13 0 0 1 204 207 Q194 202 184 207 Z" fill="#7E8A63"/><ellipse cx="194" cy="208" rx="10" ry="13" fill="none" stroke-width="5"/></g><g transform="rotate(-20 216 184)"><ellipse cx="216" cy="184" rx="10" ry="13" fill="#B5BD95"/><path d="M206 183 A10 13 0 0 1 226 183 Q216 178 206 183 Z" fill="#7E8A63"/><ellipse cx="216" cy="184" rx="10" ry="13" fill="none" stroke-width="5"/></g></g>
+  <ellipse cx="99" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="149" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="109" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="139" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="111" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="143" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M116 159 Q124 167 132 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

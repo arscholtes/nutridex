@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tofu</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="132" cy="225" rx="84" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M176 88 L210 54 Q214 118 210 182 L176 216 Q180 152 176 88 Z" fill="#E2D9BF"/>
+    <path d="M48 88 L82 54 Q146 50 210 54 L176 88 Q112 84 48 88 Z" fill="#FFFFFF"/>
+    <path d="M48 88 Q112 84 176 88 Q180 152 176 216 Q112 220 48 216 Q44 152 48 88 Z" fill="#F8F3E3"/>
+  </g>
+  <path d="M60 104 Q66 100 72 102 L70 196 Q62 198 58 192 Q56 148 60 104 Z" fill="#FFFFFF"/>
+  <g fill="#D6CBAB"><circle cx="120" cy="66" r="2.5"/><circle cx="150" cy="74" r="2.5"/><circle cx="176" cy="64" r="2"/><circle cx="104" cy="78" r="2"/><circle cx="194" cy="110" r="2.5"/><circle cx="190" cy="150" r="2"/><circle cx="196" cy="170" r="2.5"/><circle cx="150" cy="198" r="2"/><circle cx="86" cy="200" r="2.5"/></g>
+  <ellipse cx="87" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 165 Q112 173 120 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

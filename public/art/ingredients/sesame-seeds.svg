@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sesame seeds</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="225" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 50 C159 66 190 124 190 165 C190 202 159 214 128 214 C97 214 66 202 66 165 C66 124 97 66 128 50 Z" fill="#F3E2B5" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M80 130 C80 104 92 78 110 64 C102 88 96 110 96 136 C88 140 80 138 80 130 Z" fill="#FBF3DE"/>
+  <path d="M136 58 C150 70 160 88 164 104" stroke="#D2BB85" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <g fill="#F3E2B5" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"><path d="M48 53 C52 55 55 63 55 68 C55 73 52 75 48 75 C44 75 41 73 41 68 C41 63 44 55 48 53 Z" transform="rotate(-30 48 64)"/><path d="M200 41 C204 43 207 51 207 56 C207 61 204 63 200 63 C196 63 193 61 193 56 C193 51 196 43 200 41 Z" transform="rotate(25 200 52)"/><path d="M214 93 C218 95 221 103 221 108 C221 113 218 115 214 115 C210 115 207 113 207 108 C207 103 210 95 214 93 Z" transform="rotate(50 214 104)"/><path d="M40 111 C44 113 47 121 47 126 C47 131 44 133 40 133 C36 133 33 131 33 126 C33 121 36 113 40 111 Z" transform="rotate(-15 40 122)"/><path d="M212 149 C216 151 219 159 219 164 C219 169 216 171 212 171 C208 171 205 169 205 164 C205 159 208 151 212 149 Z" transform="rotate(20 212 160)"/><path d="M50 171 C54 173 57 181 57 186 C57 191 54 193 50 193 C46 193 43 191 43 186 C43 181 46 173 50 171 Z" transform="rotate(-45 50 182)"/><path d="M204 195 C208 197 211 205 211 210 C211 215 208 217 204 217 C200 217 197 215 197 210 C197 205 200 197 204 195 Z" transform="rotate(70 204 206)"/><path d="M82 27 C86 29 89 37 89 42 C89 47 86 49 82 49 C78 49 75 47 75 42 C75 37 78 29 82 27 Z" transform="rotate(10 82 38)"/></g>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

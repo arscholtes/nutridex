@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Millet</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="66" ry="9" fill="#000" opacity="0.14"/>
+  <g fill="#F4C842" stroke="#1B1B1F" stroke-width="6">
+    <path d="M128 62 A13 13 0 0 1 151 66 A13 13 0 0 1 171 76 A13 13 0 0 1 188 92 A13 13 0 0 1 198 112 A13 13 0 0 1 202 134 A13 13 0 0 1 198 156 A13 13 0 0 1 188 176 A13 13 0 0 1 171 192 A13 13 0 0 1 151 202 A13 13 0 0 1 128 206 A13 13 0 0 1 105 202 A13 13 0 0 1 85 192 A13 13 0 0 1 68 176 A13 13 0 0 1 58 156 A13 13 0 0 1 54 134 A13 13 0 0 1 58 112 A13 13 0 0 1 68 92 A13 13 0 0 1 85 76 A13 13 0 0 1 105 66 A13 13 0 0 1 128 62Z" stroke-linejoin="round"/>
+    <circle cx="190" cy="212" r="11"/>
+    <circle cx="214" cy="210" r="11"/>
+    <circle cx="203" cy="191" r="11"/>
+  </g>
+  <g stroke="#D19A1A" stroke-width="3" fill="none">
+    <circle cx="138" cy="81" r="7"/>
+    <circle cx="156" cy="87" r="7"/>
+    <circle cx="171" cy="99" r="7"/>
+    <circle cx="181" cy="116" r="7"/>
+    <circle cx="184" cy="134" r="7"/>
+    <circle cx="181" cy="152" r="7"/>
+    <circle cx="171" cy="169" r="7"/>
+    <circle cx="156" cy="181" r="7"/>
+    <circle cx="138" cy="187" r="7"/>
+    <circle cx="118" cy="187" r="7"/>
+    <circle cx="100" cy="181" r="7"/>
+    <circle cx="85" cy="169" r="7"/>
+    <circle cx="75" cy="152" r="7"/>
+    <circle cx="72" cy="134" r="7"/>
+    <circle cx="75" cy="116" r="7"/>
+    <circle cx="85" cy="99" r="7"/>
+    <circle cx="100" cy="87" r="7"/>
+    <circle cx="118" cy="81" r="7"/>
+    <circle cx="114" cy="92" r="7"/>
+    <circle cx="142" cy="92" r="7"/>
+    <circle cx="128" cy="76" r="7"/>
+  </g>
+  <ellipse cx="96" cy="94" rx="9" ry="16" fill="#FBE08A" transform="rotate(40 96 94)"/>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

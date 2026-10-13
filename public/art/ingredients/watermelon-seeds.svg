@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Watermelon seeds</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="225" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#2A2624">
+    <path d="M118 48 C147 68 182 122 182 163 C182 200 150 212 118 212 C86 212 54 200 54 163 C54 122 89 68 118 48 Z"/>
+    <path d="M46 181 C50 184 55 193 55 199 C55 205 50 207 46 207 C42 207 37 205 37 199 C37 193 42 184 46 181 Z" transform="rotate(-35 46 194)"/>
+    <path d="M204 192 C208 195 213 203 213 209 C213 214 208 216 204 216 C200 216 195 214 195 209 C195 203 200 195 204 192 Z" transform="rotate(65 204 204)"/>
+  </g>
+  <path d="M68 128 C68 100 82 74 102 60 C92 84 86 108 86 134 C78 140 68 138 68 128 Z" fill="#5A504C"/>
+  <path d="M196 30 L226 80 Q196 100 166 80 Z" fill="#2E8B3E"/>
+  <path d="M196 30 L221.5 73 Q196 91 170.5 73 Z" fill="#F2545B"/>
+  <path d="M170.5 73 Q196 91 221.5 73" stroke="#DDF2B8" stroke-width="4" fill="none"/>
+  <path d="M196 30 L226 80 Q196 100 166 80 Z" fill="none" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <g fill="#1B1B1F"><ellipse cx="190" cy="62" rx="2.5" ry="4"/><ellipse cx="203" cy="64" rx="2.5" ry="4"/><ellipse cx="196" cy="50" rx="2.5" ry="4"/></g>
+  <ellipse cx="93" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="143" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="103" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="133" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="105" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="135" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="107" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="137" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M110 155 Q118 163 126 155" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

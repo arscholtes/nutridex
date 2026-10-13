@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cashew</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="124" cy="225" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M112 36 C158 30 200 54 200 88 C200 110 178 118 164 128 C154 136 160 150 176 164 C192 178 190 204 164 212 C132 222 84 210 66 176 C50 144 54 98 70 70 C80 50 94 38 112 36 Z" fill="#F2D9A4" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M68 106 C68 86 78 66 96 52 C88 70 82 88 81 106 C78 114 68 114 68 106 Z" fill="#FBEED0"/>
+  <path d="M78 172 C94 196 128 206 160 198" stroke="#D2AF70" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="89" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="139" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="99" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="129" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="101" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="131" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="103" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="133" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M106 131 Q114 139 122 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

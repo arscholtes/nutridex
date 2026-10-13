@@ -43,3 +43,14 @@ plus granny-smith-apple.svg, watermelon.svg, butternut-squash.svg, olive-oil.svg
 - Render your files at 72 px and 256 px (headless Chrome or `qlmanage -t -s 256 -o OUTDIR FILE`) and look at them.
   Fix anything unrecognisable, off-style, or clipped before reporting.
 - Do NOT edit any other file, do NOT overwrite an existing file, do NOT run git.
+
+## Tile tints by group (added hour 2)
+vegetable #E6F4E8 · fresh herb #E6F4E8 · fruit #FDECEF · spice #FBF1DE · oil #FBF7DC · egg #EDF1F7 ·
+legume #EEF0DC · nut and seed #F4E9DF · grain #F7F0D8
+
+## Pantry foods (added hour 2)
+Draw the recognisable form, not a plain heap: cinnamon as rolled sticks, nutmeg whole, cloves as little nails,
+cardamom as pods, seeds as a small cluster with one big "hero" seed carrying the face. Powders get their
+source beside them (chili powder: a heap plus a dried chili; garlic powder: a heap plus a clove). Sauces and
+spreads go in a simple jar, tub or bottle with the source icon ABOVE the face (soy sauce: bottle + soybean).
+Flours and grains: a small sack or scoop with the grain icon, or the grain itself as the creature.

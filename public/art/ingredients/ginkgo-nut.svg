@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ginkgo nut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="136" cy="225" rx="76" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M100 96 L29 84 A70 70 0 0 1 50 46 L66 54 L64 34 A70 70 0 0 1 110 27 Z" fill="#9CC23E" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M100 96 L42 72 M100 96 L84 40" stroke="#6E9A2A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 46 C134 46 138 50 142 56 C170 68 186 102 186 136 C186 180 160 210 128 210 C96 210 70 180 70 136 C70 102 86 68 114 56 C118 50 122 46 128 46 Z" fill="#EBDDB6"/>
+    <ellipse cx="202" cy="194" rx="16" ry="22" fill="#DCD45A" transform="rotate(30 202 194)"/>
+  </g>
+  <path d="M84 120 C84 100 94 82 108 72 C102 90 98 106 98 124 C94 130 84 130 84 120 Z" fill="#F8F0DA"/>
+  <path d="M164 74 C182 100 184 150 166 188" stroke="#C4B080" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 155 Q128 163 136 155" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

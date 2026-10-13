@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Beechnut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <g fill="#B49A62">
+      <path d="M128 186 L137 170 L128 162 L139 145 L125 139 L136 122 L119 117 L130 101 L110 96 L120 81 L100 77 L106 62 L87 58 L87 45 L70 40 L61 56 L70 64 L59 81 L73 87 L62 104 L79 109 L68 125 L88 130 L78 145 L98 149 L92 164 L111 168 L111 181 Z"/>
+      <path d="M128 186 L145 181 L145 168 L164 164 L158 149 L178 145 L168 130 L188 125 L177 109 L194 104 L183 87 L197 81 L186 64 L195 56 L186 40 L169 45 L169 58 L150 62 L156 77 L136 81 L146 96 L126 101 L137 117 L120 122 L131 139 L117 145 L128 162 L119 170 Z"/>
+      <path d="M128 186 L130 170 L120 170 L123 152 L110 156 L114 138 L99 145 L102 127 L86 136 L88 120 L72 129 L72 115 L56 124 L53 115 L38 122 L36 138 L46 138 L43 156 L56 152 L52 170 L67 163 L64 181 L80 172 L78 188 L94 179 L94 193 L110 184 L113 193 Z"/>
+      <path d="M128 186 L143 193 L146 184 L162 193 L162 179 L178 188 L176 172 L192 181 L189 163 L204 170 L200 152 L213 156 L210 138 L220 138 L218 122 L203 115 L200 124 L184 115 L184 129 L168 120 L170 136 L154 127 L157 145 L142 138 L146 156 L133 152 L136 170 L126 170 Z"/>
+    </g>
+    <path d="M178 104 Q184 92 190 104 L214 170 Q220 186 204 188 L160 192 Q146 192 152 178 Z" fill="#7A4022"/>
+    <path d="M120 66 Q128 52 136 66 L188 176 Q196 194 176 194 L80 194 Q60 194 68 176 Z" fill="#8E4E2A"/>
+  </g>
+  <path d="M106 120 C110 106 116 92 122 80 C122 96 120 108 116 122 C112 128 106 126 106 120 Z" fill="#B87448"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

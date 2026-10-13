@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Onion powder</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="223" rx="98" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M30 210 C34 170 74 130 128 128 C182 130 222 170 226 210 C226 214 222 216 218 216 L38 216 C34 216 30 214 30 210 Z" fill="#EBD8B0"/>
+    <path d="M124 70 C124 60 126 52 132 46 C135 44 139 47 136 50 C131 56 132 62 133 70 Z" fill="#E0B26C"/>
+    <path d="M128 62 C134 74 162 82 162 106 C162 122 148 132 128 132 C108 132 94 122 94 106 C94 82 122 74 128 62 Z" fill="#D08A3A"/>
+  </g>
+  <path d="M50 196 C56 176 70 160 90 148 C80 164 72 180 68 198 C64 204 50 204 50 196 Z" fill="#F7ECD4"/>
+  <g stroke="#9E5F22" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M120 72 C104 84 102 108 112 128"/>
+    <path d="M136 72 C152 84 154 108 144 128"/>
+  </g>
+  <g fill="#C4A774">
+    <circle cx="74" cy="204" r="2.6"/><circle cx="102" cy="204" r="2.6"/><circle cx="160" cy="205" r="2.6"/>
+    <circle cx="192" cy="198" r="2.6"/><circle cx="184" cy="162" r="2.6"/><circle cx="166" cy="144" r="2.6"/>
+  </g>
+  <ellipse cx="103" cy="185" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="185" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="165" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="165" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 185 Q128 193 136 185" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

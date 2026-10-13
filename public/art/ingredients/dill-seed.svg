@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Dill seed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="96" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#3E8E3A" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M140 84 Q166 52 210 28"/>
+    <path d="M154 68 l-14 -8 M154 68 l2 -16 M168 54 l-14 -10 M168 54 l6 -14 M184 43 l-12 -12 M184 43 l12 -8 M198 35 l-6 -12 M198 35 l14 0"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" fill="#EEDCAE">
+    <ellipse cx="44" cy="204" rx="17" ry="11" transform="rotate(-15 44 204)"/>
+    <ellipse cx="212" cy="206" rx="17" ry="11" transform="rotate(12 212 206)"/>
+    <ellipse cx="128" cy="140" rx="90" ry="62"/>
+  </g>
+  <g fill="#A47B48">
+    <ellipse cx="44" cy="204" rx="9" ry="4.5" transform="rotate(-15 44 204)"/>
+    <ellipse cx="212" cy="206" rx="9" ry="4.5" transform="rotate(12 212 206)"/>
+    <ellipse cx="128" cy="140" rx="66" ry="44"/>
+  </g>
+  <path d="M68 136 C70 120 80 108 96 102 C88 112 84 124 84 136 C80 142 68 142 68 136 Z" fill="#BE9662"/>
+  <g stroke="#7A5630" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M78 118 Q128 92 178 118"/>
+    <path d="M78 162 Q128 188 178 162"/>
+  </g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

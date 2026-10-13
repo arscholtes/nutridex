@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Wheat germ</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M78 72 L178 72 C186 72 192 78 192 86 L192 196 C192 206 184 212 174 212 L82 212 C72 212 64 206 64 196 L64 86 C64 78 70 72 78 72 Z" fill="#E9B44C"/>
+  <path d="M66 74 L190 74 L190 92 Q176 84 162 92 Q148 100 134 92 Q120 84 106 92 Q92 100 78 92 Q72 88 66 92 Z" fill="#E3EEF0"/>
+  <path d="M76 118 C76 110 84 108 84 116 L84 184 C84 192 76 192 76 184 Z" fill="#F6D27E"/>
+  <g fill="#C48A22">
+    <ellipse cx="94" cy="112" rx="5" ry="3" transform="rotate(-20 94 112)"/><ellipse cx="164" cy="110" rx="5" ry="3" transform="rotate(25 164 110)"/>
+    <ellipse cx="178" cy="132" rx="5" ry="3" transform="rotate(-30 178 132)"/><ellipse cx="174" cy="166" rx="5" ry="3" transform="rotate(15 174 166)"/>
+    <ellipse cx="96" cy="200" rx="5" ry="3" transform="rotate(20 96 200)"/><ellipse cx="128" cy="198" rx="5" ry="3" transform="rotate(-15 128 198)"/>
+    <ellipse cx="160" cy="200" rx="5" ry="3" transform="rotate(30 160 200)"/><ellipse cx="180" cy="190" rx="5" ry="3" transform="rotate(-20 180 190)"/>
+    <ellipse cx="146" cy="128" rx="5" ry="3" transform="rotate(10 146 128)"/><ellipse cx="104" cy="134" rx="5" ry="3" transform="rotate(-35 104 134)"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M78 72 L178 72 C186 72 192 78 192 86 L192 196 C192 206 184 212 174 212 L82 212 C72 212 64 206 64 196 L64 86 C64 78 70 72 78 72 Z" fill="none"/>
+    <rect x="74" y="40" width="108" height="32" rx="8" fill="#B5442E"/>
+  </g>
+  <path d="M92 48 L92 64 M110 48 L110 64 M146 48 L146 64 M164 48 L164 64" stroke="#8A2F1F" stroke-width="3" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M128 104 C126 94 132 88 142 88 C140 96 136 102 128 104 Z" fill="#6DB24A"/>
+    <ellipse cx="128" cy="118" rx="10" ry="14" fill="#B5742C"/>
+  </g>
+  <path d="M128 108 Q124 118 128 128" stroke="#7A4A1A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="159" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="159" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 179 Q128 187 136 179" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

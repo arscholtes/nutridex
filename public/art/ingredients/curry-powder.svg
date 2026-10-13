@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Curry powder</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="74" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M52 170 C60 136 84 118 98 96 C108 80 116 70 128 70 C140 70 148 80 158 96 C172 118 196 136 204 170 Z" fill="#F2B21B"/>
+    <path d="M166 126 C174 102 192 86 214 80 C210 104 192 122 166 126 Z" fill="#3F8F3A"/>
+    <path d="M170 140 C186 126 204 122 224 126 C212 144 192 150 170 140 Z" fill="#3F8F3A"/>
+    <path d="M46 164 A82 14 0 0 0 210 164 C206 196 172 214 128 214 C84 214 50 196 46 164 Z" fill="#2E7D8C"/>
+  </g>
+  <path d="M70 162 C74 150 82 140 92 130 C90 142 88 152 86 162 C82 166 70 168 70 162 Z" fill="#F8D063"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M168 124 Q188 104 210 84 M172 140 Q196 130 220 127" stroke="#24611F" stroke-width="3"/>
+    <path d="M62 188 Q128 210 194 188" stroke="#7CC2CD" stroke-width="4"/>
+  </g>
+  <g fill="#C98A0E">
+    <circle cx="148" cy="110" r="2.6"/><circle cx="168" cy="136" r="2.6"/><circle cx="116" cy="92" r="2.6"/>
+    <circle cx="84" cy="160" r="2.6"/><circle cx="176" cy="158" r="2.6"/><circle cx="128" cy="162" r="2.6"/>
+  </g>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

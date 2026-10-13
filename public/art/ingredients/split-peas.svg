@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Split peas</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="132" cy="224" rx="96" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M214 132C214 144 210 157.6 203.5 168C197 178.4 186.3 188.4 175 194.4C163.7 200.4 149 204 136 204C123 204 108.3 200.4 97 194.4C85.7 188.4 75 178.4 68.5 168C62 157.6 58 144 58 132C58 120 62 106.4 68.5 96C75 85.6 85.7 75.6 97 69.6C108.3 63.6 123 60 136 60C149 60 163.7 63.6 175 69.6C186.3 75.6 197 85.6 203.5 96C210 106.4 214 120 214 132Z" fill="#A9B83C"/>
+    <path d="M198 118C198 129.7 194.2 142.9 187.8 153C181.5 163.1 171 172.8 160 178.6C149 184.5 134.7 188 122 188C109.3 188 95 184.5 84 178.6C73 172.8 62.5 163.1 56.2 153C49.8 142.9 46 129.7 46 118C46 106.3 49.8 93.1 56.2 83C62.5 72.9 73 63.2 84 57.4C95 51.5 109.3 48 122 48C134.7 48 149 51.5 160 57.4C171 63.2 181.5 72.9 187.8 83C194.2 93.1 198 106.3 198 118Z" fill="#C9D75E"/>
+    <path d="M148 220A28 28 0 0 1 204 220Z" fill="#B5C448"/>
+    <path d="M188 212A22 22 0 0 1 232 212Z" fill="#B5C448"/>
+  </g>
+<ellipse cx="78" cy="100" rx="6" ry="15" fill="#DFE98F" transform="rotate(45 78 100)"/>
+  <ellipse cx="97" cy="133" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="147" cy="133" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="107" cy="114" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="137" cy="114" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="109" cy="116" r="5.2" fill="#1B1B1F"/>
+  <circle cx="139" cy="116" r="5.2" fill="#1B1B1F"/>
+  <circle cx="111" cy="113" r="1.9" fill="#FFFFFF"/>
+  <circle cx="141" cy="113" r="1.9" fill="#FFFFFF"/>
+  <path d="M114 133 Q122 141 130 133" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

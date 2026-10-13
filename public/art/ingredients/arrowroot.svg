@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Arrowroot</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="90" ry="9" fill="#000" opacity="0.14"/>
+  <g transform="translate(130 84) rotate(18)">
+    <path d="M-88 0 C-60 -24 50 -28 88 0 C50 28 -60 24 -88 0 Z" fill="#EFE1C2" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M-58 -17 Q-50 0 -58 17 M-26 -21 Q-18 0 -26 21 M8 -22 Q16 0 8 22 M42 -18 Q50 0 42 18" stroke="#A07850" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <path d="M36 212 C46 206 56 196 64 180 C80 148 102 108 128 104 C154 108 176 148 192 180 C200 196 210 206 220 212 C222 216 220 218 216 218 L40 218 C36 218 34 216 36 212 Z" fill="#F4F3EE" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M66 196 C72 168 88 140 106 122 C94 146 86 170 82 198 C78 204 64 204 66 196 Z" fill="#FFFFFF"/>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

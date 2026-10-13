@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cornstarch</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="130" cy="224" rx="74" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M100 56 C90 56 88 42 98 40 C98 28 114 26 118 36 C122 24 140 26 140 38 C152 36 154 54 142 56 Z" fill="#FFFFFF" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M170 74 L194 60 L194 198 L170 212 Z" fill="#D6D6CF"/>
+    <path d="M62 74 L86 60 L194 60 L170 74 Z" fill="#E9E9E3"/>
+    <rect x="62" y="74" width="108" height="138" rx="4" fill="#F4F4EF"/>
+  </g>
+  <path d="M74 90 L82 90 L82 200 L74 200 Z" fill="#FFFFFF"/>
+  <circle cx="116" cy="112" r="22" fill="#FBE7A1" stroke="#1B1B1F" stroke-width="3"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M116 94 C123 94 126 102 126 110 L126 126 L106 126 L106 110 C106 102 109 94 116 94 Z" fill="#F6C93A"/>
+    <path d="M112 128 C102 124 98 116 98 106 C106 112 112 118 116 128 Z M120 128 C130 124 134 116 134 106 C126 112 120 118 116 128 Z" fill="#5DAA3E"/>
+  </g>
+  <path d="M111 100 L111 118 M121 100 L121 118 M107 108 L125 108" stroke="#D49A12" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="91" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="141" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="101" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="131" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="103" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="133" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="159" r="1.9" fill="#FFFFFF"/>
+  <circle cx="135" cy="159" r="1.9" fill="#FFFFFF"/>
+  <path d="M108 179 Q116 187 124 179" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
