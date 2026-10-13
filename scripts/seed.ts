@@ -41,7 +41,12 @@ await db.transaction(async (tx) => {
 
   const ingredientIds = new Map<string, string>();
   for (const seed of INGREDIENTS) {
-    const values = { name: seed.name, category: seed.category, usdaFdcId: seed.usdaFdcId };
+    const values = {
+      name: seed.name,
+      category: seed.category,
+      usdaFdcId: seed.usdaFdcId,
+      imageUrl: `/art/ingredients/${seed.slug}.svg`,
+    };
     const [row] = await tx
       .insert(ingredient)
       .values({ slug: seed.slug, ...values })
