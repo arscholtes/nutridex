@@ -1,0 +1,340 @@
+# Schema
+
+Foodi Dex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted.
+The migration in `drizzle/` is generated from `lib/db/schema.ts`; this file describes what each table is for.
+
+## Facts this store owns, and who else reads them
+
+Foodi Dex owns food composition (amounts per 100 g), compound, microbe and supplement facts and the sources behind them, and recipes and stacks.
+No other app reads this store. `fps stores` does not exist yet, so this section is the registration.
+
+## Rules the schema enforces
+
+- `evidence_grade` is A, B, C or D (the plan's grading table) on `compound_effect`, `absorption_modifier`, `caution`, `microbe_substrate` and `microbe_metabolite`.
+- A `stack_item` names exactly one of `recipe_id` or `supplement_id`.
+- Every `id` is a `uuid` defaulting to `gen_random_uuid()`; every `slug` is unique.
+
+## Provenance
+
+### `source`
+
+Where every claim comes from. Every amount, effect, modifier and caution row points here. `npm run seed` writes one row per USDA FoodData Central record it imports.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `title` | text | yes |  |
+| `url` | text | yes |  |
+| `doi` | text | yes |  |
+| `pmid` | text | yes |  |
+| `study_type` | text | yes |  |
+| `population` | text | yes |  |
+| `year` | integer | yes |  |
+| `limitations` | text | yes |  |
+| `added_at` | timestamp with time zone | yes | `now()` |
+
+## Food and what is in it
+
+### `ingredient`
+
+Things you eat. Seeded with the plan's 15; `usda_fdc_id` pins each to one USDA record.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `slug` | text | no |  |
+| `name` | text | no |  |
+| `category` | text | yes |  |
+| `description` | text | yes |  |
+| `usda_fdc_id` | integer | yes |  |
+| `default_unit` | text | yes | `'g'::text` |
+| `typical_serving_g` | numeric | yes |  |
+| `cost_tier` | text | yes |  |
+| `image_url` | text | yes |  |
+| `created_at` | timestamp with time zone | yes | `now()` |
+
+### `compound`
+
+Chemical compounds, first-class. Seeded with the plan's 12, identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `slug` | text | no |  |
+| `name` | text | no |  |
+| `class` | text | yes |  |
+| `pubchem_cid` | integer | yes |  |
+| `solubility` | text | yes |  |
+| `heat_stability` | text | yes |  |
+| `light_stability` | text | yes |  |
+| `mechanism_summary` | text | yes |  |
+| `mechanism_detail` | text | yes |  |
+| `upper_limit_note` | text | yes |  |
+| `upper_limit_amount` | numeric | yes |  |
+| `upper_limit_unit` | text | yes |  |
+| `art_url` | text | yes |  |
+| `created_at` | timestamp with time zone | yes | `now()` |
+
+### `ingredient_compound`
+
+How much of a compound an ingredient has, per 100 g. Amounts are USDA's as reported, measured zeros included; `null` means not measured and the app shows it as missing, never as zero.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `ingredient_id` | uuid | no |  |
+| `compound_id` | uuid | no |  |
+| `amount_per_100g` | numeric | yes |  |
+| `unit` | text | yes |  |
+| `amount_low` | numeric | yes |  |
+| `amount_high` | numeric | yes |  |
+| `form_note` | text | yes |  |
+| `source_id` | uuid | yes |  |
+
+## What compounds do
+
+### `effect`
+
+Something a compound does, good or bad: skin colour, blood pressure.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `slug` | text | no |  |
+| `name` | text | no |  |
+| `body_system` | text | yes |  |
+| `direction` | text | yes |  |
+
+### `compound_effect`
+
+One compound's effect, with dose context, onset, evidence grade and source.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `compound_id` | uuid | yes |  |
+| `effect_id` | uuid | yes |  |
+| `summary` | text | yes |  |
+| `dose_context` | text | yes |  |
+| `onset` | text | yes |  |
+| `evidence_grade` | character | yes |  |
+| `source_id` | uuid | yes |  |
+
+### `absorption_modifier`
+
+Compound X helped or hurt by a compound or a condition (piperine, dietary fat). `magnitude` stays qualitative unless a source gives a number.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `target_compound_id` | uuid | yes |  |
+| `modifier_compound_id` | uuid | yes |  |
+| `modifier_condition` | text | yes |  |
+| `direction` | text | yes |  |
+| `magnitude` | text | yes |  |
+| `mechanism` | text | yes |  |
+| `evidence_grade` | character | yes |  |
+| `source_id` | uuid | yes |  |
+
+### `prep_effect`
+
+How a preparation method changes a compound. `retention_factor` is `null` when no source gives one.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `compound_id` | uuid | yes |  |
+| `prep_method` | text | yes |  |
+| `retention_factor` | numeric | yes |  |
+| `bioavailability_note` | text | yes |  |
+| `source_id` | uuid | yes |  |
+
+### `caution`
+
+Drug interactions, antinutrients, excess and allergens.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `compound_id` | uuid | yes |  |
+| `ingredient_id` | uuid | yes |  |
+| `kind` | text | yes |  |
+| `summary` | text | yes |  |
+| `threshold_note` | text | yes |  |
+| `evidence_grade` | character | yes |  |
+| `source_id` | uuid | yes |  |
+
+## Recipes
+
+### `recipe`
+
+A recipe.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `slug` | text | no |  |
+| `name` | text | no |  |
+| `servings` | integer | yes | `1` |
+| `notes` | text | yes |  |
+
+### `recipe_ingredient`
+
+An ingredient in a recipe, in grams, with its preparation.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `recipe_id` | uuid | yes |  |
+| `ingredient_id` | uuid | yes |  |
+| `grams` | numeric | no |  |
+| `prep_method` | text | yes | `'raw'::text` |
+| `position` | integer | yes |  |
+
+### `recipe_step`
+
+A step; its `prep_method` applies to the ingredients it touches.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `recipe_id` | uuid | yes |  |
+| `position` | integer | yes |  |
+| `title` | text | yes |  |
+| `instruction` | text | yes |  |
+| `timer_seconds` | integer | yes |  |
+| `prep_method` | text | yes |  |
+
+### `recipe_step_ingredient`
+
+Which ingredients a step touches. Powers the spanning-cell recipe grid.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `step_id` | uuid | no |  |
+| `recipe_ingredient_id` | uuid | no |  |
+
+## Ingest
+
+### `ingest_draft`
+
+The review queue for AI-extracted facts. Nothing in `proposed` reaches another table until approved.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `raw_input` | text | yes |  |
+| `source_url` | text | yes |  |
+| `proposed` | jsonb | yes |  |
+| `status` | text | yes | `'pending'::text` |
+| `created_at` | timestamp with time zone | yes | `now()` |
+
+## Microbiome
+
+### `microbe`
+
+Gut microbes, first-class like compounds.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `slug` | text | no |  |
+| `name` | text | no |  |
+| `common_name` | text | yes |  |
+| `rank` | text | yes |  |
+| `ncbi_taxon_id` | integer | yes |  |
+| `habitat` | text | yes |  |
+| `description` | text | yes |  |
+| `art_url` | text | yes |  |
+| `created_at` | timestamp with time zone | yes | `now()` |
+
+### `microbe_substrate`
+
+What a microbe ferments, and what promotes or inhibits it.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `microbe_id` | uuid | no |  |
+| `compound_id` | uuid | no |  |
+| `relationship` | text | no |  |
+| `evidence_grade` | character | yes |  |
+| `source_id` | uuid | yes |  |
+
+### `microbe_metabolite`
+
+What a microbe makes; products are compounds.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `microbe_id` | uuid | yes |  |
+| `substrate_compound_id` | uuid | yes |  |
+| `product_compound_id` | uuid | yes |  |
+| `evidence_grade` | character | yes |  |
+| `source_id` | uuid | yes |  |
+
+## Supplements
+
+### `supplement`
+
+Things you take, not cook. `dsld_id` links the NIH Dietary Supplement Label Database.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `slug` | text | no |  |
+| `name` | text | no |  |
+| `kind` | text | yes |  |
+| `brand` | text | yes |  |
+| `dsld_id` | integer | yes |  |
+| `serving_unit` | text | yes |  |
+| `third_party_tested` | text | yes |  |
+| `art_url` | text | yes |  |
+| `created_at` | timestamp with time zone | yes | `now()` |
+
+### `supplement_compound`
+
+What one serving delivers, from the label or a lab test.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `supplement_id` | uuid | no |  |
+| `compound_id` | uuid | no |  |
+| `amount_per_serving` | numeric | yes |  |
+| `unit` | text | yes |  |
+| `form` | text | yes |  |
+| `standardized_to` | text | yes |  |
+| `source_id` | uuid | yes |  |
+
+### `supplement_microbe`
+
+The microbes a probiotic contains.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `supplement_id` | uuid | no |  |
+| `microbe_id` | uuid | no |  |
+| `strain` | text | yes |  |
+| `cfu_per_serving` | numeric | yes |  |
+| `source_id` | uuid | yes |  |
+
+### `stack`
+
+A day: recipes and supplements together.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `name` | text | no |  |
+| `notes` | text | yes |  |
+
+### `stack_item`
+
+One recipe or one supplement in a stack, never both (enforced by a check).
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `stack_id` | uuid | yes |  |
+| `recipe_id` | uuid | yes |  |
+| `supplement_id` | uuid | yes |  |
+| `servings` | numeric | no | `1` |
