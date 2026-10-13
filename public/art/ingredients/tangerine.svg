@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tangerine</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="225" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 86 C146 72 222 76 224 146 C224 198 178 216 128 216 C78 216 32 198 32 146 C34 76 110 72 128 86 Z" fill="#EE5A0C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="78" cy="108" rx="8" ry="20" fill="#FF8C4A" transform="rotate(55 78 108)"/>
+  <g fill="#B8430A"><circle cx="98" cy="90" r="2.6"/><circle cx="160" cy="90" r="2.6"/><circle cx="186" cy="110" r="2.6"/><circle cx="204" cy="140" r="2.6"/><circle cx="198" cy="176" r="2.6"/><circle cx="174" cy="198" r="2.6"/><circle cx="140" cy="206" r="2.6"/><circle cx="108" cy="204" r="2.6"/><circle cx="78" cy="194" r="2.6"/><circle cx="58" cy="170" r="2.6"/><circle cx="52" cy="140" r="2.6"/><circle cx="186" cy="150" r="2.6"/><circle cx="70" cy="124" r="2.6"/></g>
+  <path d="M117 86 L128 78 L139 86 L128 94 Z" fill="#4E7A22" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

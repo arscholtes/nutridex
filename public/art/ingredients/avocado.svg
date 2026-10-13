@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Avocado</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="226" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 40 C154 40 166 62 170 84 C174 106 198 124 202 156 C208 194 174 216 128 216 C82 216 48 194 54 156 C58 124 82 106 86 84 C90 62 102 40 128 40 Z" fill="#2F5A23" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M128 40 C154 40 166 62 170 84 C174 106 198 124 202 156 C208 194 174 216 128 216 C82 216 48 194 54 156 C58 124 82 106 86 84 C90 62 102 40 128 40 Z" fill="#A9CF4C" transform="translate(128 136) scale(0.9) translate(-128 -136)"/>
+  <path d="M128 40 C154 40 166 62 170 84 C174 106 198 124 202 156 C208 194 174 216 128 216 C82 216 48 194 54 156 C58 124 82 106 86 84 C90 62 102 40 128 40 Z" fill="#EDF1A8" transform="translate(128 136) scale(0.8) translate(-128 -136)"/>
+  <circle cx="128" cy="172" r="30" fill="#8B5A2B" stroke="#1B1B1F" stroke-width="6"/>
+  <ellipse cx="117" cy="162" rx="6" ry="10" fill="#B47F48" transform="rotate(30 117 162)"/>
+  <ellipse cx="103" cy="123" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="123" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="104" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="104" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="106" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="106" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="103" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="103" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 123 Q128 131 136 123" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

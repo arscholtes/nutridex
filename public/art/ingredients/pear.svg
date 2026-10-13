@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pear</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="60" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 62 C121 50 124 38 130 28 C133 23 140 25 139 31 C135 40 134 50 134 62 Z" fill="#8D5A2B"/>
+    <path d="M136 48 C148 30 170 26 186 32 C180 50 158 58 136 48 Z" fill="#43B05C"/>
+    <path d="M128 56 C146 56 154 70 156 90 C158 110 166 120 180 136 C198 158 198 196 170 208 C152 216 104 216 86 208 C58 196 58 158 76 136 C90 120 98 110 100 90 C102 70 110 56 128 56 Z" fill="#C6D84A"/>
+  </g>
+  <path d="M141 46 L177 35" stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M110 80 C110 70 114 64 120 63 C116 80 112 100 104 118 C99 110 106 92 110 80 Z" fill="#E3EE8E"/>
+  <g fill="#9AAE2E">
+    <circle cx="140" cy="82" r="2.6"/>
+    <circle cx="146" cy="100" r="2.6"/>
+    <circle cx="134" cy="96" r="2.6"/>
+    <circle cx="170" cy="186" r="2.6"/>
+    <circle cx="160" cy="198" r="2.6"/>
+  </g>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

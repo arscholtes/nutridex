@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ground cherry</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#EBD9A0">
+    <path d="M94 154 C70 154 46 140 32 116 C62 110 88 120 106 134 Z"/>
+    <path d="M162 154 C186 154 210 140 224 116 C194 110 168 120 150 134 Z"/>
+    <path d="M118 120 C92 112 64 90 52 58 C86 62 112 84 128 108 Z"/>
+    <path d="M138 120 C164 112 192 90 204 58 C170 62 144 84 128 108 Z"/>
+    <path d="M116 116 C110 88 114 62 128 40 C142 62 146 88 140 116 Z"/>
+  </g>
+  <g stroke="#BFA05A" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M104 140 L44 120"/>
+    <path d="M152 140 L212 120"/>
+    <path d="M116 106 L64 66"/>
+    <path d="M140 106 L192 66"/>
+    <path d="M128 104 L128 52"/>
+  </g>
+  <circle cx="128" cy="156" r="50" fill="#F5A11E" stroke="#1B1B1F" stroke-width="6"/>
+  <ellipse cx="98" cy="130" rx="8" ry="16" fill="#FFD27A" transform="rotate(35 98 130)"/>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

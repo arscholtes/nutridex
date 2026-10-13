@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Acerola</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="72" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+  <path d="M128 86 C128 64 138 44 156 28" stroke="#1B1B1F" stroke-width="10"/>
+  <path d="M128 86 C128 64 138 44 156 28" stroke="#6E8F2E" stroke-width="3.5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M128 86 C150 70 194 72 208 108 C220 140 210 184 180 202 C172 208 164 209 158 205 C144 216 112 216 98 205 C92 209 84 208 76 202 C46 184 36 140 48 108 C62 72 106 70 128 86 Z" fill="#F2233A"/>
+  </g>
+  <ellipse cx="74" cy="122" rx="9" ry="20" fill="#FF6F7B" transform="rotate(28 74 122)"/>
+  <path d="M116 88 C86 112 80 168 98 205 M140 88 C170 112 176 168 158 205" stroke="#A80F22" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 157 Q128 165 136 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

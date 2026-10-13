@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mustard greens</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="64" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 190 L128 218" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 190 L128 218" stroke="#E3EFA6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M176 76 C186 60 196 46 206 36 M190 54 C200 52 210 54 218 60" stroke="#1B1B1F" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M176 76 C186 60 196 46 206 36 M190 54 C200 52 210 54 218 60" stroke="#7DA62E" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="3" fill="#FFD43B">
+    <circle cx="201" cy="33" r="5"/><circle cx="211" cy="33" r="5"/><circle cx="206" cy="28" r="5"/><circle cx="206" cy="38" r="5"/>
+    <circle cx="215" cy="60" r="5"/><circle cx="225" cy="60" r="5"/><circle cx="220" cy="55" r="5"/><circle cx="220" cy="65" r="5"/>
+  </g>
+  <path d="M62.2 141 Q51.1 135.8 54.6 124.1 Q45.4 116.2 52 106 Q45.4 95.8 54.6 87.9 Q51.1 76.2 62.2 71 Q62.1 58.6 74.3 56.5 Q77.5 44.4 90 45.4 Q96.3 34.4 108.3 38.4 Q117.2 29.3 128 36 Q138.8 29.3 147.7 38.4 Q159.7 34.4 166 45.4 Q178.5 44.4 181.7 56.5 Q193.9 58.6 193.8 71 Q204.9 76.2 201.4 87.9 Q210.6 95.8 204 106 Q210.6 116.2 201.4 124.1 Q204.9 135.8 193.8 141 Q193.4 155.2 180 160 Q177.7 173.7 164 176 Q159.4 188.7 146 188 Q139.5 198.6 128 194 Q116.5 198.6 110 188 Q96.6 188.7 92 176 Q78.3 173.7 76 160 Q62.6 155.2 62.2 141 Z" fill="#A8C83C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="80" cy="88" rx="6" ry="14" fill="#CBE275" transform="rotate(35 80 88)"/>
+  <path d="M122 192 C124 176 126 160 128 148 C130 160 132 176 134 192 Z" fill="#F0F7C8"/>
+  <g stroke="#7E9E22" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M124 174 C112 168 98 164 84 162"/>
+    <path d="M132 174 C144 168 158 164 172 162"/>
+  </g>
+  <ellipse cx="103" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="105" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="105" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 125 Q128 133 136 125" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

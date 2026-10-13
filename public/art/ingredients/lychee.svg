@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lychee</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M126 72 C126 60 128 50 134 42" stroke="#1B1B1F" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M126 72 C126 60 128 50 134 42" stroke="#8A5A2B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M128 71A13 13 0 0 1 149.4 74.2A13 13 0 0 1 168.9 83.7A13 13 0 0 1 184.8 98.7A13 13 0 0 1 195.6 118A13 13 0 0 1 200 140A13 13 0 0 1 197.4 162.5A13 13 0 0 1 187.7 183.4A13 13 0 0 1 171.7 200.2A13 13 0 0 1 151.1 211.2A13 13 0 0 1 128 215A13 13 0 0 1 104.9 211.2A13 13 0 0 1 84.3 200.2A13 13 0 0 1 68.3 183.4A13 13 0 0 1 58.6 162.5A13 13 0 0 1 56 140A13 13 0 0 1 60.4 118A13 13 0 0 1 71.2 98.7A13 13 0 0 1 87.1 83.7A13 13 0 0 1 106.6 74.2A13 13 0 0 1 128 71Z" fill="#E8344E" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="86" cy="114" rx="7" ry="17" fill="#FF7488" transform="rotate(30 86 114)"/>
+  <path d="M95 100.7 L99.5 94.7 L104 100.7M158 100.7 L162.5 94.7 L167 100.7M84.5 118.9 L89 112.9 L93.5 118.9M168.5 118.9 L173 112.9 L177.5 118.9M74 137.1 L78.5 131.1 L83 137.1M179 137.1 L183.5 131.1 L188 137.1M168.5 155.2 L173 149.2 L177.5 155.2M105.5 191.6 L110 185.6 L114.5 191.6M126.5 191.6 L131 185.6 L135.5 191.6M147.5 191.6 L152 185.6 L156.5 191.6" stroke="#A8172F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

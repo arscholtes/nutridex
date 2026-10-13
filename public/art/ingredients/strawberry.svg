@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Strawberry</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="48" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M128 74 C162 60 202 70 200 108 C198 148 162 190 135 209 C130 212 126 212 121 209 C94 190 58 148 56 108 C54 70 94 60 128 74 Z" fill="#E8303F"/>
+  <path d="M126 60 C125 50 124 42 120 34" fill="none"/>
+  <path d="M128 84 L112 92 L110 80 L90 82 L100 70 L84 60 L106 58 L108 46 L124 56 L128 46 L136 56 L150 46 L152 58 L172 60 L158 70 L168 82 L146 80 L144 92 Z" fill="#43B05C"/>
+  </g>
+  <ellipse cx="80" cy="112" rx="9" ry="20" fill="#FF6B74" transform="rotate(24 80 112)"/>
+  <g fill="#FFD45C">
+  <ellipse cx="180" cy="104" rx="2.6" ry="4.2" transform="rotate(20 180 104)"/>
+  <ellipse cx="176" cy="134" rx="2.6" ry="4.2" transform="rotate(20 176 134)"/>
+  <ellipse cx="160" cy="160" rx="2.6" ry="4.2" transform="rotate(20 160 160)"/>
+  <ellipse cx="78" cy="142" rx="2.6" ry="4.2" transform="rotate(-20 78 142)"/>
+  <ellipse cx="96" cy="160" rx="2.6" ry="4.2" transform="rotate(-20 96 160)"/>
+  <ellipse cx="128" cy="162" rx="2.6" ry="4.2"/>
+  <ellipse cx="112" cy="182" rx="2.6" ry="4.2" transform="rotate(-15 112 182)"/>
+  <ellipse cx="144" cy="182" rx="2.6" ry="4.2" transform="rotate(15 144 182)"/>
+  <ellipse cx="166" cy="96" rx="2.6" ry="4.2" transform="rotate(20 166 96)"/>
+  </g>
+  <ellipse cx="103" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 137 Q128 145 136 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

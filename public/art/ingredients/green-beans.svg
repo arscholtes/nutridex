@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Green beans</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="136" cy="224" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M196 50 C198 42 204 36 212 34 M160 34 C164 28 170 24 178 24 M84 206 C72 212 64 206 66 196" fill="none"/>
+    <path d="M196 50 C220 86 216 160 150 210 C178 168 188 116 196 50 Z" fill="#4E9A3C"/>
+    <path d="M160 34 C176 48 174 96 168 126 C162 156 140 186 84 206 C98 192 90 166 90 130 C90 98 112 54 160 34 Z" fill="#6DBE45"/>
+  </g>
+  <path d="M202 74 Q208 136 166 194" stroke="#356F28" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M152 158 Q132 186 102 200" stroke="#43922F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="138" cy="66" rx="5" ry="15" fill="#9AD86E" transform="rotate(38 138 66)"/>
+  <ellipse cx="103" cy="133" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="133" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="114" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="114" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="116" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="116" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="113" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="113" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 133 Q128 141 136 133" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

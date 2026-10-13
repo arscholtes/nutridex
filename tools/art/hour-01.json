@@ -1,0 +1,882 @@
+[
+ {
+  "group": "leafy greens",
+  "items": [
+   {
+    "key": "romaine-lettuce",
+    "name": "Romaine lettuce",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "iceberg-lettuce",
+    "name": "Iceberg lettuce",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "butterhead-lettuce",
+    "name": "Butterhead lettuce",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "green-leaf-lettuce",
+    "name": "Green leaf lettuce",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "red-leaf-lettuce",
+    "name": "Red leaf lettuce",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "endive",
+    "name": "Endive",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "escarole",
+    "name": "Escarole",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "radicchio",
+    "name": "Radicchio",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "arugula",
+    "name": "Arugula",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "watercress",
+    "name": "Watercress",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "spinach",
+    "name": "Spinach",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "swiss-chard",
+    "name": "Swiss chard",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "collard-greens",
+    "name": "Collard greens",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "mustard-greens",
+    "name": "Mustard greens",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "turnip-greens",
+    "name": "Turnip greens",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "beet-greens",
+    "name": "Beet greens",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "dandelion-greens",
+    "name": "Dandelion greens",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "amaranth-leaves",
+    "name": "Amaranth leaves",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "purslane",
+    "name": "Purslane",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "grape-leaves",
+    "name": "Grape leaves",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "cilantro",
+    "name": "Cilantro",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "parsley",
+    "name": "Parsley",
+    "tint": "#E6F4E8"
+   }
+  ]
+ },
+ {
+  "group": "brassicas, alliums and stalks",
+  "items": [
+   {
+    "key": "cabbage",
+    "name": "Cabbage",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "red-cabbage",
+    "name": "Red cabbage",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "savoy-cabbage",
+    "name": "Savoy cabbage",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "napa-cabbage",
+    "name": "Napa cabbage",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "sauerkraut",
+    "name": "Sauerkraut",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "brussels-sprouts",
+    "name": "Brussels sprouts",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "broccoli",
+    "name": "Broccoli",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "cauliflower",
+    "name": "Cauliflower",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "kohlrabi",
+    "name": "Kohlrabi",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "celery",
+    "name": "Celery",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "asparagus",
+    "name": "Asparagus",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "fennel",
+    "name": "Fennel",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "lemongrass",
+    "name": "Lemongrass",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "chives",
+    "name": "Chives",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "leek",
+    "name": "Leek",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "scallion",
+    "name": "Scallion",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "onion",
+    "name": "Onion",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "sweet-onion",
+    "name": "Sweet onion",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "shallot",
+    "name": "Shallot",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "garlic",
+    "name": "Garlic",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "bamboo-shoot",
+    "name": "Bamboo shoot",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "fiddlehead-fern",
+    "name": "Fiddlehead fern",
+    "tint": "#E6F4E8"
+   }
+  ]
+ },
+ {
+  "group": "roots and tubers",
+  "items": [
+   {
+    "key": "potato",
+    "name": "Potato",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "russet-potato",
+    "name": "Russet potato",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "red-potato",
+    "name": "Red potato",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "yam",
+    "name": "Yam",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "taro",
+    "name": "Taro",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "cassava",
+    "name": "Cassava",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "turnip",
+    "name": "Turnip",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "rutabaga",
+    "name": "Rutabaga",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "radish",
+    "name": "Radish",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "parsnip",
+    "name": "Parsnip",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "celeriac",
+    "name": "Celeriac",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "burdock-root",
+    "name": "Burdock root",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "salsify",
+    "name": "Salsify",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "jicama",
+    "name": "Jicama",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "jerusalem-artichoke",
+    "name": "Jerusalem artichoke",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "lotus-root",
+    "name": "Lotus root",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "ginger-root",
+    "name": "Ginger root",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "chicory-root",
+    "name": "Chicory root",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "wasabi",
+    "name": "Wasabi",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "water-chestnut",
+    "name": "Water chestnut",
+    "tint": "#E6F4E8"
+   }
+  ]
+ },
+ {
+  "group": "fruiting vegetables",
+  "items": [
+   {
+    "key": "tomato",
+    "name": "Tomato",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "green-tomato",
+    "name": "Green tomato",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "yellow-tomato",
+    "name": "Yellow tomato",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "tomatillo",
+    "name": "Tomatillo",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "bell-pepper",
+    "name": "Bell pepper",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "jalapeno",
+    "name": "Jalapeño",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "serrano-pepper",
+    "name": "Serrano pepper",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "chili-pepper",
+    "name": "Chili pepper",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "pimento",
+    "name": "Pimento",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "eggplant",
+    "name": "Eggplant",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "cucumber",
+    "name": "Cucumber",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "zucchini",
+    "name": "Zucchini",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "yellow-squash",
+    "name": "Yellow squash",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "pumpkin",
+    "name": "Pumpkin",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "chayote",
+    "name": "Chayote",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "bitter-melon",
+    "name": "Bitter melon",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "okra",
+    "name": "Okra",
+    "tint": "#E6F4E8"
+   }
+  ]
+ },
+ {
+  "group": "mushrooms, pods and sea",
+  "items": [
+   {
+    "key": "white-mushroom",
+    "name": "White mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "shiitake-mushroom",
+    "name": "Shiitake mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "portabella-mushroom",
+    "name": "Portabella mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "oyster-mushroom",
+    "name": "Oyster mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "enoki-mushroom",
+    "name": "Enoki mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "morel-mushroom",
+    "name": "Morel mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "chanterelle-mushroom",
+    "name": "Chanterelle mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "maitake-mushroom",
+    "name": "Maitake mushroom",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "seaweed",
+    "name": "Seaweed",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "corn",
+    "name": "Corn",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "green-beans",
+    "name": "Green beans",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "green-peas",
+    "name": "Green peas",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "edamame",
+    "name": "Edamame",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "yardlong-bean",
+    "name": "Yardlong bean",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "artichoke",
+    "name": "Artichoke",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "nopales",
+    "name": "Nopales",
+    "tint": "#E6F4E8"
+   }
+  ]
+ },
+ {
+  "group": "citrus and dried fruit",
+  "items": [
+   {
+    "key": "orange",
+    "name": "Orange",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "tangerine",
+    "name": "Tangerine",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "clementine",
+    "name": "Clementine",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "grapefruit",
+    "name": "Grapefruit",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "pomelo",
+    "name": "Pomelo",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "lemon",
+    "name": "Lemon",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "lime",
+    "name": "Lime",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "kumquat",
+    "name": "Kumquat",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "banana",
+    "name": "Banana",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "plantain",
+    "name": "Plantain",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "avocado",
+    "name": "Avocado",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "olive",
+    "name": "Olive",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "date",
+    "name": "Date",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "fig",
+    "name": "Fig",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "prune",
+    "name": "Prune",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "raisin",
+    "name": "Raisin",
+    "tint": "#FDECEF"
+   }
+  ]
+ },
+ {
+  "group": "tropical fruit",
+  "items": [
+   {
+    "key": "mango",
+    "name": "Mango",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "papaya",
+    "name": "Papaya",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "pineapple",
+    "name": "Pineapple",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "guava",
+    "name": "Guava",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "passion-fruit",
+    "name": "Passion fruit",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "starfruit",
+    "name": "Starfruit",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "lychee",
+    "name": "Lychee",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "longan",
+    "name": "Longan",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "rambutan",
+    "name": "Rambutan",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "mangosteen",
+    "name": "Mangosteen",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "durian",
+    "name": "Durian",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "jackfruit",
+    "name": "Jackfruit",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "breadfruit",
+    "name": "Breadfruit",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "soursop",
+    "name": "Soursop",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "cherimoya",
+    "name": "Cherimoya",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "sugar-apple",
+    "name": "Sugar apple",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "tamarind",
+    "name": "Tamarind",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "sapodilla",
+    "name": "Sapodilla",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "feijoa",
+    "name": "Feijoa",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "horned-melon",
+    "name": "Horned melon",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "prickly-pear",
+    "name": "Prickly pear",
+    "tint": "#FDECEF"
+   }
+  ]
+ },
+ {
+  "group": "orchard fruit",
+  "items": [
+   {
+    "key": "apple",
+    "name": "Apple",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "crabapple",
+    "name": "Crabapple",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "pear",
+    "name": "Pear",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "asian-pear",
+    "name": "Asian pear",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "quince",
+    "name": "Quince",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "peach",
+    "name": "Peach",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "apricot",
+    "name": "Apricot",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "plum",
+    "name": "Plum",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "cherry",
+    "name": "Cherry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "ground-cherry",
+    "name": "Ground cherry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "grape",
+    "name": "Grape",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "muscadine-grape",
+    "name": "Muscadine grape",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "persimmon",
+    "name": "Persimmon",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "pomegranate",
+    "name": "Pomegranate",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "loquat",
+    "name": "Loquat",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "jujube",
+    "name": "Jujube",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "rhubarb",
+    "name": "Rhubarb",
+    "tint": "#FDECEF"
+   }
+  ]
+ },
+ {
+  "group": "berries and melons",
+  "items": [
+   {
+    "key": "strawberry",
+    "name": "Strawberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "blueberry",
+    "name": "Blueberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "raspberry",
+    "name": "Raspberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "blackberry",
+    "name": "Blackberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "boysenberry",
+    "name": "Boysenberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "loganberry",
+    "name": "Loganberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "cranberry",
+    "name": "Cranberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "currant",
+    "name": "Currant",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "gooseberry",
+    "name": "Gooseberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "elderberry",
+    "name": "Elderberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "mulberry",
+    "name": "Mulberry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "goji-berry",
+    "name": "Goji berry",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "acerola",
+    "name": "Acerola",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "honeydew",
+    "name": "Honeydew",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "casaba-melon",
+    "name": "Casaba melon",
+    "tint": "#FDECEF"
+   },
+   {
+    "key": "kiwifruit",
+    "name": "Kiwifruit",
+    "tint": "#FDECEF"
+   }
+  ]
+ }
+]

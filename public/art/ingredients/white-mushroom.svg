@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">White mushroom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="48" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M100 132 C100 166 94 192 98 206 C102 216 154 216 158 206 C162 192 156 166 156 132 Z" fill="#E8DECB"/>
+    <path d="M52 126 C52 72 86 42 128 42 C170 42 204 72 204 126 C204 140 194 146 180 144 C150 140 106 140 76 144 C62 146 52 140 52 126 Z" fill="#F1EBE0"/>
+  </g>
+  <ellipse cx="82" cy="84" rx="10" ry="22" fill="#FFFFFF" transform="rotate(40 82 84)"/>
+  <path d="M108 160 Q128 166 148 160" stroke="#B9A88E" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="117" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="117" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="98" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="98" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="100" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="100" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="97" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="97" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 117 Q128 125 136 117" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

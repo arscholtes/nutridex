@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Turnip greens</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="64" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 176 L128 150 M122 178 C110 166 96 156 84 150 M134 178 C146 166 160 156 172 150" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M128 176 L128 150 M122 178 C110 166 96 156 84 150 M134 178 C146 166 160 156 172 150" stroke="#CDEBB5" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#3E8E3C">
+    <path d="M94.2 102 Q102.5 113.8 103.1 128.1 Q105.2 139.5 99.4 149.6 Q93.9 157.4 84.4 158.2 Q72.8 158.2 63.9 150.7 Q51.8 143 45.8 130 Q37.5 118.2 36.9 103.9 Q34.8 92.5 40.6 82.4 Q46.1 74.6 55.6 73.8 Q67.2 73.8 76.1 81.3 Q88.2 89 94.2 102 Z"/>
+    <path d="M210.2 130 Q204.2 143 192.1 150.7 Q183.2 158.2 171.6 158.2 Q162.1 157.4 156.6 149.6 Q150.8 139.5 152.9 128.1 Q153.5 113.8 161.8 102 Q167.8 89 179.9 81.3 Q188.8 73.8 200.4 73.8 Q209.9 74.6 215.4 82.4 Q221.2 92.5 219.1 103.9 Q218.5 118.2 210.2 130 Z"/>
+    <path d="M186 96 Q188 110.1 180.3 122 Q176.2 135.5 164.2 142.9 Q154.8 153.2 140.9 154.5 Q128 159.5 115.1 154.5 Q101.2 153.2 91.8 142.9 Q79.8 135.5 75.7 122 Q68 110.1 70 96 Q68 81.9 75.7 70 Q79.8 56.5 91.8 49.1 Q101.2 38.8 115.1 37.5 Q128 32.5 140.9 37.5 Q154.8 38.8 164.2 49.1 Q176.2 56.5 180.3 70 Q188 81.9 186 96 Z" fill="#55AC4C"/>
+    <path d="M100 194 C100 180 112 172 128 172 C144 172 156 180 156 194 C156 206 144 214 128 214 C112 214 100 206 100 194 Z" fill="#F6F0F7"/>
+  </g>
+  <path d="M103 188 C106 178 116 175 128 175 C140 175 150 178 153 188 C144 184 138 190 128 188 C118 190 112 184 103 188 Z" fill="#9B4FA8"/>
+  <path d="M128 214 C128 219 130 222 134 224" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="88" cy="70" rx="6" ry="13" fill="#7CC46F" transform="rotate(45 88 70)"/>
+  <g stroke="#A9DB98" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M128 154 L128 134"/>
+    <path d="M128 146 C120 140 112 138 104 138 M128 146 C136 140 144 138 152 138"/>
+    <path d="M90 152 C78 136 66 116 56 90 M166 152 C178 136 190 116 200 90"/>
+  </g>
+  <ellipse cx="103" cy="115" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="115" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="96" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="96" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="98" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="98" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="95" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="95" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 115 Q128 123 136 115" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

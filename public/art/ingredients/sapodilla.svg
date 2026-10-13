@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sapodilla</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="60" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 50 C172 50 194 100 194 142 C194 188 164 214 128 214 C92 214 62 188 62 142 C62 100 84 50 128 50 Z" fill="#9A6842"/>
+    <path d="M106 58 L120 52 L127 38 L136 52 L150 58 L132 62 Z" fill="#6B4423"/>
+  </g>
+  <ellipse cx="88" cy="114" rx="8" ry="20" fill="#BC8C62" transform="rotate(26 88 114)"/>
+  <path d="M115 76.1h0M129 76.1h0M143 76.1h0M94 88.2h0M108 88.2h0M122 88.2h0M136 88.2h0M150 88.2h0M164 88.2h0M115 100.4h0M129 100.4h0M143 100.4h0M157 100.4h0M171 100.4h0M108 112.5h0M122 112.5h0M136 112.5h0M150 112.5h0M164 112.5h0M178 112.5h0M171 124.6h0M80 136.7h0M178 136.7h0M73 148.9h0M80 161h0M178 161h0M87 173.1h0M171 173.1h0M94 185.2h0M108 185.2h0M122 185.2h0M136 185.2h0M150 185.2h0M164 185.2h0M101 197.4h0M115 197.4h0M129 197.4h0M143 197.4h0M157 197.4h0" stroke="#C49A70" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

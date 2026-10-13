@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cauliflower</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="72" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4E9A3E">
+    <path d="M100 192 C62 188 30 158 28 98 C52 106 76 124 92 146 Z"/>
+    <path d="M156 192 C194 188 226 158 228 98 C204 106 180 124 164 146 Z"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="12" fill="#F6F0DA">
+    <circle cx="128" cy="66" r="30"/>
+    <circle cx="94" cy="78" r="28"/>
+    <circle cx="162" cy="78" r="28"/>
+    <circle cx="72" cy="108" r="26"/>
+    <circle cx="184" cy="108" r="26"/>
+    <ellipse cx="128" cy="122" rx="60" ry="52"/>
+  </g>
+  <g fill="#F6F0DA">
+    <circle cx="128" cy="66" r="30"/>
+    <circle cx="94" cy="78" r="28"/>
+    <circle cx="162" cy="78" r="28"/>
+    <circle cx="72" cy="108" r="26"/>
+    <circle cx="184" cy="108" r="26"/>
+    <ellipse cx="128" cy="122" rx="60" ry="52"/>
+  </g>
+  <ellipse cx="92" cy="70" rx="8" ry="14" fill="#FFFDF2" transform="rotate(50 92 70)"/>
+  <g stroke="#D6C99C" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M116 54 q6 -6 12 0 t12 0"/>
+    <path d="M156 70 q6 -6 12 0"/>
+    <path d="M60 104 q6 -6 12 0"/>
+    <path d="M182 102 q6 -6 12 0"/>
+    <path d="M72 134 q6 -6 12 0"/>
+    <path d="M172 134 q6 -6 12 0"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#5DAE47">
+    <path d="M128 212 C96 212 62 198 50 158 C84 154 112 174 128 212 Z"/>
+    <path d="M128 212 C160 212 194 198 206 158 C172 154 144 174 128 212 Z"/>
+  </g>
+  <g stroke="#B7E09C" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M88 178 Q60 148 36 108"/>
+    <path d="M168 178 Q196 148 220 108"/>
+    <path d="M122 204 Q92 186 62 166"/>
+    <path d="M134 204 Q164 186 194 166"/>
+  </g>
+  <ellipse cx="103" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 131 Q128 139 136 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

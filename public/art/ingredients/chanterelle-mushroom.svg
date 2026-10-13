@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chanterelle mushroom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="44" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M38 78 C34 62 56 54 74 60 C90 50 112 50 128 56 C144 50 166 50 182 60 C200 54 222 62 218 78 C216 104 178 124 158 150 C148 166 146 192 150 206 C154 216 102 216 106 206 C110 192 108 166 98 150 C78 124 40 104 38 78 Z" fill="#F2B03A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M44 76 C44 66 60 62 74 66 C90 58 112 58 128 62 C144 58 166 58 182 66 C196 62 212 66 212 76 C180 96 76 96 44 76 Z" fill="#D18A1E"/>
+  <path d="M42 78 C76 100 180 100 214 78" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="116" cy="180" rx="3.5" ry="13" fill="#FAD27C"/>
+  <g stroke="#C47E16" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M60 100 Q84 124 102 152"/>
+    <path d="M196 100 Q172 124 154 152"/>
+    <path d="M128 150 L128 200"/>
+    <path d="M140 152 L138 198"/>
+  </g>
+  <ellipse cx="103" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 131 Q128 139 136 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

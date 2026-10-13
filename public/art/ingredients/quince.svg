@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Quince</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="68" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 66 C121 54 123 44 128 36 C131 31 138 33 137 39 C134 46 134 56 134 66 Z" fill="#7A5230"/>
+    <path d="M136 50 C150 30 176 26 194 34 C186 54 160 62 136 50 Z" fill="#7FA35A"/>
+    <path d="M128 62 C138 52 156 54 162 66 C176 64 190 78 186 94 C202 104 208 128 198 146 C208 166 198 196 174 204 C162 216 140 214 128 208 C116 214 94 216 82 204 C58 196 48 166 58 146 C48 128 54 104 70 94 C66 78 80 64 94 66 C100 54 118 52 128 62 Z" fill="#F2C12E"/>
+  </g>
+  <path d="M142 48 L183 37" stroke="#4E6E34" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M78 104 C84 92 94 86 102 86 C94 98 88 114 86 130 C78 124 74 114 78 104 Z" fill="#FADF7C"/>
+  <g stroke="#D39A12" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M160 72 C166 78 170 86 170 94"/>
+    <path d="M182 100 C188 108 190 118 188 126"/>
+    <path d="M186 160 C186 172 182 182 174 190"/>
+    <path d="M72 162 C72 174 76 184 84 192"/>
+  </g>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

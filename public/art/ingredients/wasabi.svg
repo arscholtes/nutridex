@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Wasabi</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="54" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M114 94 C106 80 96 72 84 64 M128 92 L128 58 M142 94 C150 80 160 72 172 64" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M114 94 C106 80 96 72 84 64 M128 92 L128 58 M142 94 C150 80 160 72 172 64" stroke="#7CBF5A" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#3F8F3A">
+    <path d="M84 66 C62 72 48 58 54 44 C60 30 82 30 88 42 C94 52 92 62 84 66 Z"/>
+    <path d="M172 66 C194 72 208 58 202 44 C196 30 174 30 168 42 C162 52 164 62 172 66 Z"/>
+    <path d="M128 60 C112 58 104 46 108 34 C112 24 124 22 128 30 C132 22 144 24 148 34 C152 46 144 58 128 60 Z"/>
+    <path d="M92 96 C108 86 148 86 164 96 Q179 109 172 118 Q181 127 174 136 Q181 145 174 154 Q181 163 172 172 Q179 181 168 190 Q175 198 160 206 C152 220 104 220 96 206 Q81 198 88 190 Q77 181 84 172 Q75 163 82 154 Q75 145 82 136 Q75 127 84 118 Q77 109 88 100 Z" fill="#93C46C"/>
+  </g>
+  <g stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M80 60 L64 48 M176 60 L192 48 M128 52 L128 36"/>
+  </g>
+  <ellipse cx="100" cy="118" rx="6" ry="12" fill="#B9DE96" transform="rotate(30 100 118)"/>
+  <g stroke="#5E9440" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M118 108 Q126 112 134 108 M144 116 Q152 120 160 116 M98 190 Q106 194 114 190 M142 190 Q150 194 158 190 M120 204 Q128 207 136 204"/>
+  </g>
+  <ellipse cx="103" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="143" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="143" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 163 Q128 171 136 163" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

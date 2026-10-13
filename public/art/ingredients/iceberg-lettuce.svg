@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Iceberg lettuce</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <path d="M228 170 Q233 178 224 181 Q223 192 212 192 Q206 202 194 200 Q183 210 170 206 Q157 215 142 210 Q128 217 114 210 Q99 215 86 206 Q73 210 62 200 Q50 202 44 192 Q33 192 32 181 Q23 178 28 170 Q23 162 32 159 Q33 148 44 148 Q50 138 62 140 Q73 130 86 134 Q99 125 114 130 Q128 123 142 130 Q157 125 170 134 Q183 130 194 140 Q206 138 212 148 Q223 148 224 159 Q233 162 228 170 Z" fill="#A8D483"/>
+    <circle cx="128" cy="108" r="68" fill="#E4F2D0"/>
+    <path d="M34 146 Q45 142 54 150 Q66 147 74 156 Q86 154 94 164 Q105 162 112 172 Q122 172 126 182 Q132 195 126 208 Q113 214 100 208 Q84 209 72 198 Q56 194 48 180 Q36 165 34 146 Z" fill="#CBE7AD"/>
+    <path d="M208 180 Q200 194 184 198 Q172 209 156 208 Q143 214 130 208 Q124 195 130 182 Q134 172 144 172 Q151 162 162 164 Q170 154 182 156 Q190 147 202 150 Q211 142 222 146 Q220 165 208 180 Z" fill="#CBE7AD"/>
+  </g>
+  <ellipse cx="92" cy="72" rx="7" ry="15" fill="#F8FDF0" transform="rotate(45 92 72)"/>
+  <g stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M80 80 Q88 66 102 70 Q112 58 128 64 Q144 58 154 70 Q168 66 176 80 M66 122 Q64 106 70 94 M190 122 Q192 106 186 94" stroke="#C4DFA8"/>
+    <path d="M56 162 C76 172 96 184 114 198 M200 162 C180 172 160 184 142 198" stroke="#93C46C"/>
+    <path d="M40 186 Q34 176 36 164 M216 186 Q222 176 220 164" stroke="#7DB55A"/>
+  </g>
+  <ellipse cx="103" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 129 Q128 137 136 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

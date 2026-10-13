@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Horned melon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="70" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="12" stroke-linejoin="round"><path d="M142.1 91 L159.5 66 L159.3 95.1ZM182.1 107.2 L210.5 95.8 L192.7 117.8ZM201.4 137.4 L230 144 L201.4 150.6ZM192.7 170.2 L210.5 192.2 L182.1 180.8ZM73.9 180.8 L45.5 192.2 L63.3 170.2ZM54.6 150.6 L26 144 L54.6 137.4ZM63.3 117.8 L45.5 95.8 L73.9 107.2ZM96.7 95.1 L96.5 66 L113.9 91Z"/><ellipse cx="128" cy="144" rx="78" ry="58"/></g>
+  <g fill="#F7962A"><path d="M142.1 91 L159.5 66 L159.3 95.1ZM182.1 107.2 L210.5 95.8 L192.7 117.8ZM201.4 137.4 L230 144 L201.4 150.6ZM192.7 170.2 L210.5 192.2 L182.1 180.8ZM73.9 180.8 L45.5 192.2 L63.3 170.2ZM54.6 150.6 L26 144 L54.6 137.4ZM63.3 117.8 L45.5 95.8 L73.9 107.2ZM96.7 95.1 L96.5 66 L113.9 91Z"/><ellipse cx="128" cy="144" rx="78" ry="58"/></g>
+  <ellipse cx="84" cy="122" rx="7" ry="17" fill="#FFBE6A" transform="rotate(55 84 122)"/>
+  <path d="M124 106.5 L129 95.5 L134 106.5ZM163 129 L168 118 L173 129ZM72 151.5 L77 140.5 L82 151.5ZM176 151.5 L181 140.5 L186 151.5ZM85 174.1 L90 163.1 L95 174.1ZM163 174.1 L168 163.1 L173 174.1Z" fill="#FFD27A" stroke="#C8621A" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="103" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 157 Q128 165 136 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

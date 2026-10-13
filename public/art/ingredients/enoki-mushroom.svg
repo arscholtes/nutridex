@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Enoki mushroom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="46" ry="9" fill="#000" opacity="0.14"/>
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#1B1B1F" stroke-width="12">
+      <path d="M104 146 Q88 110 64 76"/>
+      <path d="M110 146 Q100 96 86 58"/>
+      <path d="M118 146 Q114 90 107 46"/>
+      <path d="M128 146 L128 40"/>
+      <path d="M138 146 Q142 90 149 46"/>
+      <path d="M146 146 Q156 96 170 58"/>
+      <path d="M152 146 Q168 110 192 76"/>
+    </g>
+    <g stroke="#FBF8F0" stroke-width="6">
+      <path d="M104 146 Q88 110 64 76"/>
+      <path d="M110 146 Q100 96 86 58"/>
+      <path d="M118 146 Q114 90 107 46"/>
+      <path d="M128 146 L128 40"/>
+      <path d="M138 146 Q142 90 149 46"/>
+      <path d="M146 146 Q156 96 170 58"/>
+      <path d="M152 146 Q168 110 192 76"/>
+    </g>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#F3EBD2">
+    <path d="M53 76 C53 63 75 63 75 76 Z"/>
+    <path d="M75 58 C75 45 97 45 97 58 Z"/>
+    <path d="M96 46 C96 33 118 33 118 46 Z"/>
+    <path d="M117 40 C117 27 139 27 139 40 Z"/>
+    <path d="M138 46 C138 33 160 33 160 46 Z"/>
+    <path d="M159 58 C159 45 181 45 181 58 Z"/>
+    <path d="M181 76 C181 63 203 63 203 76 Z"/>
+    <path d="M84 152 C84 134 172 134 172 152 C172 182 166 204 156 210 C140 216 116 216 100 210 C90 204 84 182 84 152 Z" fill="#F1E8CF"/>
+  </g>
+  <ellipse cx="95" cy="160" rx="5" ry="14" fill="#FCF8EC" transform="rotate(12 95 160)"/>
+  <ellipse cx="103" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="163" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="163" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 183 Q128 191 136 183" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

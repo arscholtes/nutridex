@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Turnip</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="54" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 88 C120 72 108 60 98 52" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M128 88 C120 72 108 60 98 52" stroke="#6CC06C" stroke-width="5"/>
+    <path d="M128 88 C136 72 148 60 158 52" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M128 88 C136 72 148 60 158 52" stroke="#6CC06C" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M98 52 C66 54 50 40 60 27 C72 18 102 32 98 52 Z" fill="#4FAF55"/>
+    <path d="M158 52 C190 54 206 40 196 27 C184 18 154 32 158 52 Z" fill="#4FAF55"/>
+    <path d="M128 212 C129 220 132 226 138 230" fill="none" stroke-width="5"/>
+    <path d="M128 84 C174 84 198 112 196 146 C194 176 166 198 140 204 C134 206 130 210 128 216 C126 210 122 206 116 204 C90 198 62 176 60 146 C58 112 82 84 128 84 Z" fill="#F7F4EC"/>
+  </g>
+  <g stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M96 48 L70 30 M160 48 L186 30"/>
+  </g>
+  <path d="M63 132 C64 104 88 87 128 87 C168 87 192 104 193 132 C178 124 164 136 150 128 C138 122 124 134 110 128 C96 122 82 136 63 132 Z" fill="#9A4FA0"/>
+  <ellipse cx="94" cy="106" rx="8" ry="16" fill="#BC7CC0" transform="rotate(48 94 106)"/>
+  <path d="M128 84 C174 84 198 112 196 146 C194 176 166 198 140 204 C134 206 130 210 128 216 C126 210 122 206 116 204 C90 198 62 176 60 146 C58 112 82 84 128 84 Z" fill="none" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

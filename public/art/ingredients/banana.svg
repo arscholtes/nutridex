@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Banana</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="130" cy="225" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M194 92 L204 56 L218 60 L212 98 Z" fill="#8C9A3A"/>
+    <path d="M44 88 C40 156 84 210 140 210 C188 210 216 170 214 104 C214 94 194 92 192 104 C186 132 168 140 136 140 C100 140 72 122 58 90 C56 82 46 80 44 88 Z" fill="#FFD93B"/>
+  </g>
+  <path d="M42 90 C46 84 54 84 58 90 L54 100 C50 102 46 100 42 96 Z" fill="#5A3A1E" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M60 116 C70 158 100 190 140 196 C112 198 82 182 66 152 C60 140 58 128 60 116 Z" fill="#FFEC8C"/>
+  <g stroke="#D9A800" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M184 172 C196 154 202 134 202 112"/>
+  </g>
+  <ellipse cx="105" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="155" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="115" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="145" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="117" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="147" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="119" cy="159" r="1.9" fill="#FFFFFF"/>
+  <circle cx="149" cy="159" r="1.9" fill="#FFFFFF"/>
+  <path d="M122 179 Q130 187 138 179" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

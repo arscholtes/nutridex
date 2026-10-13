@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Oyster mushroom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="124" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M84 182 C80 196 76 206 78 212 C82 218 100 218 104 212 C106 202 104 192 100 182 Z" fill="#F1E4CC"/>
+    <path d="M120 80 C128 50 164 36 190 42 C214 46 228 70 216 92 C200 98 160 96 120 80 Z" fill="#CDAE84"/>
+    <path d="M78 168 C46 148 32 108 46 80 C54 62 76 52 94 60 C100 80 98 130 90 176 Z" fill="#CDAE84"/>
+    <path d="M196 146 C170 158 120 160 92 154 C80 152 70 148 64 138 C70 162 82 178 92 188 C132 186 176 168 196 146 Z" fill="#F6EBD6"/>
+  </g>
+  <g stroke="#C8A87C" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M94 184 L80 154"/>
+    <path d="M94 184 L104 158"/>
+    <path d="M94 184 L130 160"/>
+    <path d="M94 184 L156 158"/>
+    <path d="M94 184 L178 154"/>
+  </g>
+  <path d="M64 138 C52 112 60 82 84 70 C96 58 116 56 128 62 C142 52 164 54 174 66 C192 66 210 84 206 104 C218 118 212 140 196 146 C170 158 120 160 92 154 C80 152 70 148 64 138 Z" fill="#E3C79E" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="78" cy="104" rx="6" ry="17" fill="#F0DDBE" transform="rotate(18 78 104)"/>
+  <ellipse cx="103" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 119 Q128 127 136 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

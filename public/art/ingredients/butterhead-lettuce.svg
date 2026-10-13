@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Butterhead lettuce</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 212 C100 214 74 206 60 190 C40 190 30 170 38 154 C24 142 28 118 44 112 C40 92 56 78 74 82 C80 64 100 58 114 68 C122 56 134 56 142 68 C156 58 176 64 182 82 C200 78 216 92 212 112 C228 118 232 142 218 154 C226 170 216 190 196 190 C182 206 156 214 128 212 Z" fill="#8CC764" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="52" cy="140" rx="6" ry="14" fill="#B4DE8A" transform="rotate(-20 52 140)"/>
+  <g stroke="#5E9E3C" stroke-width="4" stroke-linejoin="round">
+    <path d="M128 198 C106 200 88 194 80 182 C64 180 58 164 66 154 C56 144 60 126 74 124 C72 108 86 98 100 104 C106 90 122 88 128 98 C134 88 150 90 156 104 C170 98 184 108 182 124 C196 126 200 144 190 154 C198 164 192 180 176 182 C168 194 150 200 128 198 Z" fill="#B9DE7C"/>
+    <path d="M128 180 C100 180 82 166 82 144 C82 122 98 106 116 110 C120 100 136 100 140 110 C158 106 174 122 174 144 C174 166 156 180 128 180 Z" fill="#E6F3AE"/>
+  </g>
+  <ellipse cx="103" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 151 Q128 159 136 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

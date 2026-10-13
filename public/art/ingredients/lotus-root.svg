@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lotus root</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <circle cx="128" cy="124" r="86" fill="#F4E9D2" stroke="#1B1B1F" stroke-width="6"/>
+  <circle cx="128" cy="124" r="77" fill="none" stroke="#D9BC92" stroke-width="4"/>
+  <ellipse cx="86" cy="82" rx="4.5" ry="10" fill="#FFFBF2" transform="rotate(225 86 82)"/>
+  <g fill="#C9AA7A" stroke="#9E7A4C" stroke-width="3">
+    <ellipse cx="150" cy="70" rx="12" ry="15" transform="rotate(22.5 150 70)"/>
+    <ellipse cx="182" cy="102" rx="12" ry="15" transform="rotate(67.5 182 102)"/>
+    <ellipse cx="182" cy="146" rx="12" ry="15" transform="rotate(112.5 182 146)"/>
+    <ellipse cx="150" cy="178" rx="12" ry="15" transform="rotate(157.5 150 178)"/>
+    <ellipse cx="106" cy="178" rx="12" ry="15" transform="rotate(202.5 106 178)"/>
+    <ellipse cx="74" cy="146" rx="12" ry="15" transform="rotate(247.5 74 146)"/>
+    <ellipse cx="74" cy="102" rx="12" ry="15" transform="rotate(292.5 74 102)"/>
+    <ellipse cx="106" cy="70" rx="12" ry="15" transform="rotate(337.5 106 70)"/>
+  </g>
+  <ellipse cx="103" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="115" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="115" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 135 Q128 143 136 135" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
