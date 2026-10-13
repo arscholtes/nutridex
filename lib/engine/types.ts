@@ -104,6 +104,8 @@ export type Facts = {
   cautions: CautionFact[];
   compoundEffects: CompoundEffectFact[];
   upperLimits: UpperLimitFact[];
+  microbeSubstrates: MicrobeSubstrateFact[];
+  microbeMetabolites: MicrobeMetaboliteFact[];
 };
 
 /** One ingredient's share of one compound, after expand and prep. */
@@ -206,4 +208,6 @@ export type RecipeProfile = {
   effects: EffectRollup[];
   cautions: CautionFlag[];
   goalScores: Record<string, GoalScore>;
+  /** Microbes the recipe would feed, if the person has them. */
+  feeds: FeedFlag[];
 };

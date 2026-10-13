@@ -30,6 +30,8 @@ const facts: Facts = {
   cautions: [{ compoundSlug: "vitamin-k1", ingredientSlug: null, kind: "drug-interaction", summary: "Vitamin K counters warfarin", grade: "A" }],
   compoundEffects: [{ compoundSlug: "beta-carotene", effectSlug: "skin-color", direction: "benefit", onset: "~6 weeks", grade: "B" }],
   upperLimits: [],
+  microbeSubstrates: [{ microbeSlug: "bifidobacterium", compoundSlug: "total-fat", relationship: "inhibited-by", grade: "C" }],
+  microbeMetabolites: [],
 };
 
 describe("recipeProfile", () => {
@@ -53,5 +55,6 @@ describe("recipeProfile", () => {
     expect(profile.cautions).toMatchObject([{ kind: "drug-interaction", compoundSlug: "vitamin-k1" }]);
     expect(profile.effects).toMatchObject([{ effectSlug: "skin-color", bestGrade: "B" }]);
     expect(profile.goalScores["skin-color"].score).toBeCloseTo(8 * 0.6, 9);
+    expect(profile.feeds).toEqual([{ microbeSlug: "bifidobacterium", score: 0, feeds: [], metabolites: [], heldBackBy: ["total-fat"] }]);
   });
 });
