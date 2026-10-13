@@ -1,0 +1,11 @@
+# Local secrets and machine settings. Never committed.
+.env*.local
+
+# Dependencies and build output
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# Project-local Postgres cluster (scripts/db-local.sh)
+.pgdata/
