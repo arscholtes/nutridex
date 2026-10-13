@@ -29,6 +29,13 @@ run `db:migrate` and `seed` against it.
 | 4. Recipes | a built recipe's grid and profile render from the same data | not started |
 | 5. Ingest | a pasted finding becomes an approvable effect row with source and limitations | not started |
 
+## Disclaimer
+
+Every visitor sees a disclaimer (`lib/disclaimer/text.ts`) before anything else. Accepting it sets a
+cookie holding the app version from `package.json`; it stays dismissed until that version changes, so
+bump the version with each release. The text is a plain-language draft and needs legal review before
+anyone other than its maker uses the app.
+
 ## Data
 
 Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row

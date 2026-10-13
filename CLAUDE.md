@@ -21,3 +21,6 @@ Read it with the Claude Docs tools, never a web fetch.
 - Schema changes go in `lib/db/schema.ts`, then `npm run db:generate`; update `SCHEMA.md` in the same
   change.
 - `npm test` needs no database; `npm run test:db` needs `npm run db:local`, `db:migrate` and `seed` first.
+- The disclaimer gate (`lib/disclaimer/`, `app/disclaimer-gate.tsx`) shows until this device has
+  accepted the running version from `package.json`. Bump the version for every user-visible release;
+  that is what brings the disclaimer back. Any change to its text ships with a bump.
