@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Oyster</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M56 104 L50 80 L64 62 L70 42 L94 38 L110 26 L132 32 L152 24 L172 34 L194 34 L202 52 L216 62 L210 86 L202 104 Z" fill="#8F969C"/>
+    <path d="M72 100 L70 78 L82 64 L104 56 L128 50 L152 52 L176 58 L190 72 L192 100 Z" fill="#E4E0EE"/>
+    <path d="M32 128 L44 108 L62 112 L76 100 L96 106 L112 96 L132 102 L150 94 L168 102 L186 96 L202 108 L218 104 L226 124 L216 140 L224 158 L208 176 L212 192 L188 198 L172 210 L150 204 L128 212 L106 204 L88 210 L70 198 L50 196 L46 178 L30 164 L38 146 Z" fill="#8F969C"/>
+    <path d="M56 136 C56 114 94 110 128 110 C164 110 202 114 202 136 C202 160 166 174 128 174 C90 174 56 160 56 136 Z" fill="#F1ECE3"/>
+  </g>
+  <ellipse cx="80" cy="128" rx="6" ry="12" fill="#FFFFFF" transform="rotate(-60 80 128)"/>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-width="3.5">
+    <path d="M70 148 Q78 156 86 156 Q96 166 108 164 Q118 170 128 166 Q140 170 150 164 Q162 166 170 158 Q182 158 188 148" stroke="#B9AE9F"/>
+    <path d="M68 190 L86 184 L100 192 M140 194 L158 188 L176 192 M196 168 L208 160 M86 50 L100 46 M150 38 L170 42 M190 46 L202 56" stroke="#5F666C"/>
+  </g>
+  <circle cx="174" cy="134" r="14" fill="#FBF8FF" stroke="#1B1B1F" stroke-width="3.5"/>
+  <ellipse cx="93" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="143" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="103" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="133" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="105" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="135" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="107" cy="129" r="1.9" fill="#FFFFFF"/>
+  <circle cx="137" cy="129" r="1.9" fill="#FFFFFF"/>
+  <path d="M110 149 Q118 157 126 149" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

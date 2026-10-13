@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cream cheese</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M184 104 L214 76 Q218 128 214 178 L184 206 Q188 156 184 104 Z" fill="#BCC6D1"/>
+    <path d="M40 104 L70 76 Q142 72 214 76 L184 104 Q112 100 40 104 Z" fill="#FFFFFF"/>
+    <path d="M40 104 Q112 100 184 104 Q188 156 184 206 Q112 210 40 206 Q36 156 40 104 Z" fill="#FAF8F0"/>
+    <path d="M38 166 L50 160 L62 167 L74 160 L86 167 L98 160 L110 167 L122 160 L134 167 L146 160 L158 167 L170 160 L185 166 L185 206 Q112 210 40 206 Z" fill="#BCC6D1"/>
+  </g>
+  <g stroke="#E4EAF0" stroke-width="3" stroke-linecap="round" fill="none"><path d="M60 178 L58 198"/><path d="M118 178 L116 200"/><path d="M196 110 L198 170"/></g>
+  <path d="M52 116 Q57 113 62 114 L62 156 Q56 158 52 155 Z" fill="#FFFFFF"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M136 92 C140 80 160 78 170 86 C172 94 160 98 136 92 Z" fill="#FFFFFF" stroke-width="4"/>
+    <path d="M150 88 L172 50 Q180 42 184 48 L162 92 Z" fill="#D7DEE6" stroke-width="4"/>
+    <path d="M178 50 L192 28" stroke-width="13"/>
+  </g>
+  <path d="M178 50 L192 28" stroke="#3B3B42" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="87" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="125" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="125" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 145 Q112 153 120 145" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

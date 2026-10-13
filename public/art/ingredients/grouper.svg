@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Grouper</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#6E5236">
+    <path d="M190 120 C204 108 218 102 228 106 C233 120 233 146 228 160 C218 164 204 158 190 144 Z"/>
+    <path d="M66 90 C80 60 130 44 164 54 C184 62 194 84 194 106 Z"/>
+    <path d="M136 192 C146 210 170 212 182 196 C184 186 182 176 178 168 Z"/>
+    <path d="M84 188 C82 202 90 210 100 210 C106 202 108 194 108 190 Z"/>
+    <path d="M40 118 C48 86 80 66 122 64 C164 62 188 94 196 118 L196 146 C186 172 160 198 120 198 C80 198 46 182 40 150 Z" fill="#9C7A55"/>
+    <path d="M46 119 C36 112 26 116 26 125 C28 132 38 132 46 130 Z" fill="#D9A57E"/>
+    <path d="M46 134 C36 132 26 138 28 148 C32 156 42 154 48 150 Z" fill="#D9A57E"/>
+  </g>
+  <path d="M58 98 C66 84 82 74 100 70 C86 80 74 92 66 104 Z" fill="#BC9A72"/>
+  <g fill="#5E4229"><ellipse cx="150" cy="86" rx="10" ry="7"/><ellipse cx="174" cy="108" rx="8" ry="6"/><ellipse cx="130" cy="174" rx="10" ry="7"/><ellipse cx="160" cy="176" rx="8" ry="5"/><ellipse cx="118" cy="84" rx="8" ry="5"/><ellipse cx="184" cy="134" rx="5" ry="8"/><ellipse cx="96" cy="180" rx="9" ry="6"/><ellipse cx="68" cy="166" rx="6" ry="5"/></g>
+  <path d="M136 84 C150 110 150 160 134 184" stroke="#6B4F33" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M146 146 C158 134 178 138 184 154 C170 162 156 160 146 146 Z" fill="#6E5236" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="71" cy="135" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="121" cy="135" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="81" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="111" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="83" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="85" cy="115" r="1.9" fill="#FFFFFF"/>
+  <circle cx="115" cy="115" r="1.9" fill="#FFFFFF"/>
+  <path d="M88 135 Q96 143 104 135" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

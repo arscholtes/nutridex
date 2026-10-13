@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Gruyère</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="98" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M30 100 L226 122 L226 206 Q128 206 30 200 Z" fill="#F2DFA2"/>
+    <path d="M30 100 L66 58 Q156 82 226 122 Z" fill="#F8ECC6"/>
+  </g>
+  <path d="M33 102 L54 104 L54 198 L33 197 Z" fill="#8B5A2E"/>
+  <path d="M33 99 L66 61 L80 66 L50 103 Z" fill="#8B5A2E"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <path d="M30 100 L226 122 L226 206 Q128 206 30 200 Z"/><path d="M30 100 L66 58 Q156 82 226 122"/>
+  </g>
+  <g stroke="#5A3618" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M36 118 L51 120"/><path d="M36 134 L51 136"/><path d="M36 150 L51 152"/><path d="M36 166 L51 168"/><path d="M36 182 L51 184"/>
+    <path d="M44 86 L56 92"/><path d="M54 74 L66 80"/>
+  </g>
+  <path d="M62 116 L72 117 L70 190 L62 190 Z" fill="#F8ECC6"/>
+  <g fill="#D8BE74"><circle cx="196" cy="146" r="4.5"/><circle cx="208" cy="182" r="3.5"/><circle cx="92" cy="186" r="3.5"/><circle cx="178" cy="190" r="3"/><circle cx="84" cy="128" r="3"/><ellipse cx="140" cy="96" rx="6" ry="3"/><ellipse cx="110" cy="84" rx="5" ry="2.5"/><ellipse cx="176" cy="108" rx="4.5" ry="2.2"/></g>
+  <ellipse cx="111" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="161" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="121" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="151" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="123" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="153" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="125" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="155" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M128 171 Q136 179 144 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

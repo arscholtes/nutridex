@@ -1,0 +1,747 @@
+[
+ {
+  "group": "milk, cultured dairy and eggs",
+  "items": [
+   {
+    "key": "milk",
+    "name": "Milk",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "buttermilk",
+    "name": "Buttermilk",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "goat-milk",
+    "name": "Goat milk",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "heavy-cream",
+    "name": "Heavy cream",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "half-and-half",
+    "name": "Half-and-half",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "sour-cream",
+    "name": "Sour cream",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "butter",
+    "name": "Butter",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "ghee",
+    "name": "Ghee",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "yogurt",
+    "name": "Yogurt",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "greek-yogurt",
+    "name": "Greek yogurt",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "kefir",
+    "name": "Kefir",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "evaporated-milk",
+    "name": "Evaporated milk",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "condensed-milk",
+    "name": "Condensed milk",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "whey",
+    "name": "Whey",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "egg-white",
+    "name": "Egg white",
+    "tint": "#EDF1F7"
+   },
+   {
+    "key": "egg-yolk",
+    "name": "Egg yolk",
+    "tint": "#EDF1F7"
+   },
+   {
+    "key": "quail-egg",
+    "name": "Quail egg",
+    "tint": "#EDF1F7"
+   },
+   {
+    "key": "duck-egg",
+    "name": "Duck egg",
+    "tint": "#EDF1F7"
+   }
+  ]
+ },
+ {
+  "group": "cheeses",
+  "items": [
+   {
+    "key": "cheddar",
+    "name": "Cheddar",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "mozzarella",
+    "name": "Mozzarella",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "parmesan",
+    "name": "Parmesan",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "swiss-cheese",
+    "name": "Swiss cheese",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "feta",
+    "name": "Feta",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "brie",
+    "name": "Brie",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "camembert",
+    "name": "Camembert",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "blue-cheese",
+    "name": "Blue cheese",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "gouda",
+    "name": "Gouda",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "provolone",
+    "name": "Provolone",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "gruyere",
+    "name": "Gruyère",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "goat-cheese",
+    "name": "Goat cheese",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "ricotta",
+    "name": "Ricotta",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "cottage-cheese",
+    "name": "Cottage cheese",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "cream-cheese",
+    "name": "Cream cheese",
+    "tint": "#EEF3F8"
+   },
+   {
+    "key": "monterey-jack",
+    "name": "Monterey Jack",
+    "tint": "#EEF3F8"
+   }
+  ]
+ },
+ {
+  "group": "oils and fats",
+  "items": [
+   {
+    "key": "canola-oil",
+    "name": "Canola oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "vegetable-oil",
+    "name": "Vegetable oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "sunflower-oil",
+    "name": "Sunflower oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "coconut-oil",
+    "name": "Coconut oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "sesame-oil",
+    "name": "Sesame oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "peanut-oil",
+    "name": "Peanut oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "avocado-oil",
+    "name": "Avocado oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "corn-oil",
+    "name": "Corn oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "flaxseed-oil",
+    "name": "Flaxseed oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "walnut-oil",
+    "name": "Walnut oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "palm-oil",
+    "name": "Palm oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "grapeseed-oil",
+    "name": "Grapeseed oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "safflower-oil",
+    "name": "Safflower oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "lard",
+    "name": "Lard",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "shortening",
+    "name": "Shortening",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "margarine",
+    "name": "Margarine",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "beef-tallow",
+    "name": "Beef tallow",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "cod-liver-oil",
+    "name": "Cod liver oil",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "mayonnaise",
+    "name": "Mayonnaise",
+    "tint": "#FBF7DC"
+   },
+   {
+    "key": "cocoa-butter",
+    "name": "Cocoa butter",
+    "tint": "#FBF7DC"
+   }
+  ]
+ },
+ {
+  "group": "oily fish",
+  "items": [
+   {
+    "key": "salmon",
+    "name": "Salmon",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "trout",
+    "name": "Trout",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "mackerel",
+    "name": "Mackerel",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "herring",
+    "name": "Herring",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "sardine",
+    "name": "Sardine",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "anchovy",
+    "name": "Anchovy",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "tuna",
+    "name": "Tuna",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "swordfish",
+    "name": "Swordfish",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "mahi-mahi",
+    "name": "Mahi-mahi",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "bluefish",
+    "name": "Bluefish",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "eel",
+    "name": "Eel",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "sturgeon",
+    "name": "Sturgeon",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "caviar",
+    "name": "Caviar",
+    "tint": "#E6F1F5"
+   }
+  ]
+ },
+ {
+  "group": "white fish",
+  "items": [
+   {
+    "key": "cod",
+    "name": "Cod",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "haddock",
+    "name": "Haddock",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "pollock",
+    "name": "Pollock",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "halibut",
+    "name": "Halibut",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "flounder",
+    "name": "Flounder",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "tilapia",
+    "name": "Tilapia",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "catfish",
+    "name": "Catfish",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "sea-bass",
+    "name": "Sea bass",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "snapper",
+    "name": "Snapper",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "grouper",
+    "name": "Grouper",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "perch",
+    "name": "Perch",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "pike",
+    "name": "Pike",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "carp",
+    "name": "Carp",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "whitefish",
+    "name": "Whitefish",
+    "tint": "#E6F1F5"
+   }
+  ]
+ },
+ {
+  "group": "shellfish",
+  "items": [
+   {
+    "key": "shrimp",
+    "name": "Shrimp",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "crab",
+    "name": "Crab",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "lobster",
+    "name": "Lobster",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "crayfish",
+    "name": "Crayfish",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "scallop",
+    "name": "Scallop",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "oyster",
+    "name": "Oyster",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "clam",
+    "name": "Clam",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "mussel",
+    "name": "Mussel",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "squid",
+    "name": "Squid",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "octopus",
+    "name": "Octopus",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "cuttlefish",
+    "name": "Cuttlefish",
+    "tint": "#E6F1F5"
+   },
+   {
+    "key": "abalone",
+    "name": "Abalone",
+    "tint": "#E6F1F5"
+   }
+  ]
+ },
+ {
+  "group": "red meat and game",
+  "items": [
+   {
+    "key": "beef",
+    "name": "Beef",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "ground-beef",
+    "name": "Ground beef",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "beef-liver",
+    "name": "Beef liver",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "pork-chop",
+    "name": "Pork chop",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "pork-belly",
+    "name": "Pork belly",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "bacon",
+    "name": "Bacon",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "ham",
+    "name": "Ham",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "lamb-chop",
+    "name": "Lamb chop",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "veal",
+    "name": "Veal",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "goat-meat",
+    "name": "Goat meat",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "bison",
+    "name": "Bison",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "venison",
+    "name": "Venison",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "elk",
+    "name": "Elk",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "rabbit",
+    "name": "Rabbit",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "wild-boar",
+    "name": "Wild boar",
+    "tint": "#F8E6E3"
+   }
+  ]
+ },
+ {
+  "group": "poultry and cured meats",
+  "items": [
+   {
+    "key": "chicken",
+    "name": "Chicken",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "chicken-breast",
+    "name": "Chicken breast",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "chicken-wing",
+    "name": "Chicken wing",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "chicken-drumstick",
+    "name": "Chicken drumstick",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "turkey",
+    "name": "Turkey",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "duck",
+    "name": "Duck",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "goose",
+    "name": "Goose",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "quail",
+    "name": "Quail",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "pheasant",
+    "name": "Pheasant",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "ostrich",
+    "name": "Ostrich",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "cornish-hen",
+    "name": "Cornish hen",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "sausage",
+    "name": "Sausage",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "salami",
+    "name": "Salami",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "prosciutto",
+    "name": "Prosciutto",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "chorizo",
+    "name": "Chorizo",
+    "tint": "#F8E6E3"
+   },
+   {
+    "key": "pepperoni",
+    "name": "Pepperoni",
+    "tint": "#F8E6E3"
+   }
+  ]
+ },
+ {
+  "group": "sweeteners, baking and drinks",
+  "items": [
+   {
+    "key": "sugar",
+    "name": "Sugar",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "brown-sugar",
+    "name": "Brown sugar",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "powdered-sugar",
+    "name": "Powdered sugar",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "honey",
+    "name": "Honey",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "maple-syrup",
+    "name": "Maple syrup",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "molasses",
+    "name": "Molasses",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "agave-syrup",
+    "name": "Agave syrup",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "cocoa-powder",
+    "name": "Cocoa powder",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "dark-chocolate",
+    "name": "Dark chocolate",
+    "tint": "#F8ECF3"
+   },
+   {
+    "key": "baking-soda",
+    "name": "Baking soda",
+    "tint": "#EFE9E2"
+   },
+   {
+    "key": "baking-powder",
+    "name": "Baking powder",
+    "tint": "#EFE9E2"
+   },
+   {
+    "key": "yeast",
+    "name": "Yeast",
+    "tint": "#EFE9E2"
+   },
+   {
+    "key": "gelatin",
+    "name": "Gelatin",
+    "tint": "#EFE9E2"
+   },
+   {
+    "key": "coffee",
+    "name": "Coffee",
+    "tint": "#EFE9E2"
+   },
+   {
+    "key": "black-tea",
+    "name": "Black tea",
+    "tint": "#EFE9E2"
+   },
+   {
+    "key": "green-tea",
+    "name": "Green tea",
+    "tint": "#EFE9E2"
+   }
+  ]
+ }
+]

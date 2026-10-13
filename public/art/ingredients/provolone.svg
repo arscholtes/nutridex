@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Provolone</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="70" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 60 L128 36" stroke="#8A6236" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <circle cx="128" cy="30" r="7" stroke="#8A6236" stroke-width="4" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 58 C148 58 152 84 160 106 C192 134 208 166 194 192 C180 214 76 214 62 192 C48 166 64 134 96 106 C104 84 108 58 128 58 Z" fill="#EDC968"/>
+    <ellipse cx="128" cy="58" rx="13" ry="7" fill="#D9B04E"/>
+  </g>
+  <path d="M84 138 Q90 128 100 124 Q86 150 88 184 Q78 172 78 156 Q78 146 84 138 Z" fill="#F7E3A0"/>
+  <g stroke="#8A6236" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M110 74 Q128 79 146 74"/><path d="M107 86 Q128 92 149 86"/>
+    <path d="M116 92 C100 110 82 132 74 170 C72 184 76 196 84 202"/><path d="M140 92 C156 110 174 132 182 170 C184 184 180 196 172 202"/>
+  </g>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

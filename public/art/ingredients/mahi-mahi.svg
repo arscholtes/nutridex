@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mahi-mahi</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#2E7FC2">
+    <path d="M192 124 C204 102 216 84 232 70 C226 96 220 116 218 128 C220 140 226 160 232 186 C216 172 204 154 192 132 Z" fill="#9CCB3B"/>
+    <path d="M52 64 C56 40 84 28 116 36 C150 46 180 76 198 112 L160 92 Z"/>
+    <path d="M110 186 C130 200 160 192 180 160 L150 166 Z"/>
+    <path d="M38 96 C38 70 52 58 72 58 C116 58 164 92 198 120 L198 136 C168 162 130 190 88 192 C58 194 38 178 36 150 Z" fill="#F4C430"/>
+  </g>
+  <path d="M38 96 C38 70 52 58 72 58 C116 58 164 92 198 120 L198 126 C170 120 144 106 116 98 C88 90 60 88 38 98 Z" fill="#3BA55C"/>
+  <path d="M38 96 C38 70 52 58 72 58 C116 58 164 92 198 120 L198 136 C168 162 130 190 88 192 C58 194 38 178 36 150 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <ellipse cx="66" cy="74" rx="13" ry="5" fill="#7FD08F" transform="rotate(-8 66 74)"/>
+  <path d="M90 40 L96 60 M118 42 L120 64 M146 56 L144 76 M170 76 L166 92" stroke="#1D5C96" stroke-width="3" stroke-linecap="round"/>
+  <path d="M130 102 C140 122 138 156 126 178" stroke="#D49A12" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <g fill="#2B7BD6">
+    <circle cx="146" cy="120" r="4"/><circle cx="160" cy="136" r="3.5"/><circle cx="148" cy="150" r="4"/>
+    <circle cx="174" cy="122" r="3.5"/><circle cx="176" cy="146" r="3"/><circle cx="140" cy="168" r="3.5"/>
+    <circle cx="96" cy="78" r="3.5"/><circle cx="126" cy="84" r="3.5"/><circle cx="160" cy="102" r="3"/>
+  </g>
+  <ellipse cx="59" cy="133" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="109" cy="133" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="69" cy="114" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="99" cy="114" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="71" cy="116" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="116" r="5.2" fill="#1B1B1F"/>
+  <circle cx="73" cy="113" r="1.9" fill="#FFFFFF"/>
+  <circle cx="103" cy="113" r="1.9" fill="#FFFFFF"/>
+  <path d="M76 133 Q84 141 92 133" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

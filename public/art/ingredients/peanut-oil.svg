@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Peanut oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="56" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M140 64 L160 64 C170 64 174 70 174 80 L174 104" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M140 64 L160 64 C170 64 174 70 174 80 L174 104" stroke="#EDC765" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M112 54 L112 72 C112 86 78 92 78 114 L78 198 C78 207 85 214 94 214 L162 214 C171 214 178 207 178 198 L178 114 C178 92 144 86 144 72 L144 54 Z" fill="#EDC765"/>
+    <rect x="104" y="34" width="48" height="24" rx="8" fill="#C8372D"/>
+  </g>
+  <path d="M88 120 C88 108 93 102 98 100 C95 130 95 164 98 196 C92 188 88 172 88 120 Z" fill="#F7E2A6"/>
+  <g transform="translate(128 116) rotate(-40) scale(2)" stroke="#1B1B1F" stroke-linejoin="round">
+    <path d="M-6 -11 C-1 -14 4 -10 3 -5 C2 -1 7 1 8 5 C9 11 3 14 -2 11 C-6 9 -7 5 -4 1 C-2 -2 -10 -7 -6 -11 Z" fill="#B97A3E" stroke-width="1.5"/>
+    <path d="M-4 -8 L0 -7 M-1 -2 L-5 -3 M2 5 L6 6 M-1 7 L3 8" stroke="#7E4E22" stroke-width="1.2" stroke-linecap="round"/>
+  </g>
+  <ellipse cx="103" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="155" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="155" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 175 Q128 183 136 175" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

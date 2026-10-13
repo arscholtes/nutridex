@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Maple syrup</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8ECF3"/>
+  <ellipse cx="128" cy="224" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M142 58 C178 50 188 80 170 96" stroke="#1B1B1F" stroke-width="16"/>
+    <path d="M142 58 C178 50 188 80 170 96" stroke="#C46F1E" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M112 46 L112 66 C112 80 74 86 74 118 L74 196 C74 206 82 212 92 212 L164 212 C174 212 182 206 182 196 L182 118 C182 86 144 80 144 66 L144 46 Z" fill="#C46F1E"/>
+    <rect x="106" y="28" width="44" height="22" rx="7" fill="#F3E6CC"/>
+  </g>
+  <path d="M86 124 C86 110 92 102 98 100 C94 126 94 160 98 192 C90 182 86 162 86 124 Z" fill="#E09445"/>
+  <circle cx="128" cy="108" r="20" fill="#FFF3DD" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M0 -15 L3.5 -7.5 L8 -10 L7 -2.5 L14.5 -5 L12 0 L15 2.5 L7.5 6 L8.5 9.5 L1 8 L0 9 L-1 8 L-8.5 9.5 L-7.5 6 L-15 2.5 L-12 0 L-14.5 -5 L-7 -2.5 L-8 -10 L-3.5 -7.5 Z M0 8 L0 14" transform="translate(128 106)" fill="#D9302C" stroke="#1B1B1F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Safflower oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M118 54 L118 72 C104 110 84 150 74 190 C71 204 78 214 92 214 L164 214 C178 214 185 204 182 190 C172 150 152 110 138 72 L138 54 Z" fill="#F5DE8E"/>
+    <rect x="110" y="34" width="36" height="24" rx="8" fill="#E8701E"/>
+  </g>
+  <path d="M92 182 C96 160 102 140 108 128 C106 150 104 176 104 202 C96 200 90 194 92 182 Z" fill="#FBEEC2"/>
+  <g stroke="#1B1B1F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M115 124 L111 106 L118 114 L119 98 L124 111 L128 94 L132 111 L137 98 L138 114 L145 106 L141 124 Z" fill="#F2801E"/>
+    <path d="M121 116 L124 104 M128 114 L128 102 M135 116 L132 104" stroke="#D6421A" fill="none"/>
+    <path d="M116 126 L108 122 L114 130 M140 126 L148 122 L142 130" fill="none"/>
+    <ellipse cx="128" cy="131" rx="13" ry="10" fill="#5E9E3A"/>
+  </g>
+  <ellipse cx="103" cy="187" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="187" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="167" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="167" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 187 Q128 195 136 187" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

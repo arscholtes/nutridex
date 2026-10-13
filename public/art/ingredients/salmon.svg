@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Salmon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="129" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M30 100 C30 74 52 64 82 64 L150 68 C196 70 228 90 228 118 L228 138 C228 166 198 182 158 186 L84 196 C52 200 30 186 30 160 Z" fill="#B7C2CD"/>
+    <path d="M30 100 C30 74 52 64 82 64 L150 68 C196 70 228 90 228 118 C228 144 198 160 158 164 L84 172 C52 176 30 162 30 136 Z" fill="#F98B66"/>
+  </g>
+  <ellipse cx="60" cy="84" rx="17" ry="6" fill="#FFB496" transform="rotate(-12 60 84)"/>
+  <g stroke="#FFEDE4" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M140 76 Q127 117 140 160"/>
+    <path d="M163 76 Q150 116 161 156"/>
+    <path d="M186 80 Q174 116 182 150"/>
+    <path d="M207 90 Q197 117 202 142"/>
+  </g>
+  <path d="M60 186 L70 185 M110 185 L124 183 M176 176 L188 172" stroke="#7D8A97" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="63" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="113" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="73" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="103" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="75" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="77" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="107" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M80 129 Q88 137 96 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

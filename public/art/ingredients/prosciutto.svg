@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Prosciutto</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="94" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M50 124 C40 86 66 58 102 62 C128 64 140 48 168 44 C200 40 222 62 212 96 L124 134 Z" fill="#E98A93" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M57 118 C52 90 72 70 102 71 C128 72 142 58 168 53 C192 50 208 64 204 88" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M28 150 C38 118 68 102 98 114 C122 124 138 110 158 98 C186 82 224 94 226 130 C228 166 210 184 190 194 C174 210 158 194 142 204 C126 216 108 198 90 208 C70 218 44 204 34 186 C26 172 24 162 28 150 Z" fill="#F2A1A8" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M37 150 C46 126 70 112 98 123 C122 133 140 119 160 107 C182 94 212 102 217 126" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M46 168 C48 156 54 150 62 148 C60 162 62 176 68 188 C56 184 46 178 46 168 Z" fill="#F9C6CA"/>
+  <g stroke="#E27F89" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M196 136 C206 152 204 170 192 184"/>
+    <path d="M178 150 C184 162 182 176 172 188"/>
+    <path d="M84 92 C96 100 110 104 124 102"/>
+  </g>
+  <ellipse cx="97" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="147" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="107" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="137" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="109" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="139" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="111" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="141" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M114 173 Q122 181 130 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

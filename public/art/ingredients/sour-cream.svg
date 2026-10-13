@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sour cream</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M70 116 C68 98 86 90 100 88 C98 74 110 66 122 62 C128 58 132 52 132 42 C142 50 147 60 145 68 C158 72 166 82 160 90 C178 92 190 100 188 116 Z" fill="#FFFFFF"/>
+    <path d="M64 122 L192 122 L182 204 C181 209 177 212 172 212 L84 212 C79 212 75 209 74 204 Z" fill="#A8D5B0"/>
+    <rect x="56" y="110" width="144" height="18" rx="8" fill="#8CC497"/>
+  </g>
+  <path d="M78 140 L86 140 L92 198 L86 198 Z" fill="#C8E8CD"/>
+  <path d="M94 102 L101 99 M118 80 L125 82 M150 98 L157 95 M135 70 L139 65 M168 106 L175 108 M112 104 L118 106" stroke="#3E8E3A" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="103" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="159" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="159" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 179 Q128 187 136 179" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

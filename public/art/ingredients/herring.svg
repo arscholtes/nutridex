@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Herring</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="124" cy="224" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <g transform="translate(-9 -4) rotate(20 128 128)">
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4A73AE">
+    <path d="M196 126 C206 108 218 94 232 84 C226 104 222 118 220 129 C222 140 226 154 232 174 C218 164 206 150 196 132 Z"/>
+    <path d="M118 90 L132 62 C142 68 150 80 152 92 Z"/>
+    <path d="M118 166 L128 184 L142 166 Z"/>
+    <path d="M28 128 C38 96 82 84 126 86 C164 88 188 108 202 122 L202 136 C188 150 164 168 126 170 C82 172 38 160 28 128 Z" fill="#DCE5EF"/>
+  </g>
+  <path d="M28 128 C38 96 82 84 126 86 C164 88 188 108 202 122 L202 128 C176 124 150 118 130 118 C112 118 104 100 86 96 C64 92 40 104 30 120 Z" fill="#4A73AE"/>
+  <ellipse cx="150" cy="100" rx="12" ry="4" fill="#82A6D6" transform="rotate(8 150 100)"/>
+  <g stroke="#A3B6CC" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M150 124 q8 9 0 18 M168 124 q8 9 0 18 M186 126 q6 7 0 14 M159 144 q8 8 0 16 M177 142 q7 7 0 14"/>
+  </g>
+  <path d="M28 128 C38 96 82 84 126 86 C164 88 188 108 202 122 L202 136 C188 150 164 168 126 170 C82 172 38 160 28 128 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <path d="M124 100 C134 120 134 146 124 162" stroke="#8EA4BE" stroke-width="4" stroke-linecap="round" fill="none"/>
+  </g>
+  <ellipse cx="43" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="93" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="53" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="83" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="55" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="85" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="57" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="87" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M60 119 Q68 127 76 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

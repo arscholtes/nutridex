@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Egg white</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EDF1F7"/>
+  <ellipse cx="128" cy="224" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M60 152 C46 138 50 118 66 112 C70 80 96 58 128 58 C160 58 186 80 190 112 C206 118 210 138 196 152 Z" fill="#F4F7FC"/>
+    <path d="M66 146 L80 134 L94 148 L108 134 L122 148 L136 134 L150 148 L164 134 L178 148 L190 140 C192 186 164 212 128 212 C92 212 64 186 66 146 Z" fill="#FCEBCB"/>
+    <path d="M150 140 C152 154 150 170 158 172 C166 174 168 160 166 140 Z" fill="#F4F7FC"/>
+  </g>
+  <path d="M145 134 L152 129 L168 129 L170 140 L168 146 L153 146 Z" fill="#F4F7FC"/>
+  <ellipse cx="96" cy="80" rx="13" ry="6" fill="#FFFFFF" transform="rotate(-32 96 80)"/>
+  <ellipse cx="103" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 119 Q128 127 136 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pollock</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4E6E44">
+    <path d="M190 122 C204 106 216 92 230 80 C226 102 218 118 214 129 C218 140 226 156 230 178 C216 166 204 152 190 138 Z"/>
+    <path d="M88 98 C92 76 100 66 110 64 C118 68 122 78 122 92 Z"/>
+    <path d="M128 92 C132 74 142 66 150 66 C158 70 162 80 160 98 Z"/>
+    <path d="M166 100 C170 88 178 82 184 82 C190 88 190 98 188 112 Z"/>
+    <path d="M122 164 C128 180 136 186 146 186 C150 180 152 172 150 162 Z"/>
+    <path d="M158 158 C162 172 170 178 178 176 C184 170 186 158 184 146 Z"/>
+    <path d="M76 162 C74 174 78 182 86 182 C92 176 96 170 96 166 Z"/>
+    <path d="M40 118 C50 100 80 88 116 88 C154 86 180 104 196 120 L196 138 C180 152 154 168 116 168 C80 168 50 160 38 148 L25 137 L46 127 Z" fill="#7FA06A"/>
+  </g>
+  <path d="M54 110 C60 98 72 92 88 90 C76 98 66 104 60 114 Z" fill="#A9C495"/>
+  <path d="M136 98 C146 112 146 142 134 158" stroke="#4E6E44" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M150 132 C160 124 174 128 180 140 C168 146 156 144 150 132 Z" fill="#4E6E44" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="77" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="127" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="87" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="117" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="89" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="119" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="91" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="121" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M94 137 Q102 145 110 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

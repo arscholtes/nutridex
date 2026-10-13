@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Evaporated milk</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M104 80 C96 70 112 62 104 50 M128 78 C120 66 136 58 128 44 M152 80 C144 70 160 62 152 50" stroke="#9FB3C8" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62 100 L194 100 L194 200 C194 207 188 212 180 212 L76 212 C68 212 62 207 62 200 Z" fill="#C3CAD3"/>
+    <ellipse cx="128" cy="100" rx="66" ry="14" fill="#C3CAD3"/>
+  </g>
+  <ellipse cx="128" cy="101" rx="54" ry="8" fill="#F3E2B8" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M65 124 L191 124 L191 194 L65 194 Z" fill="#F3E3BE"/>
+  <path d="M66 124 L190 124 M66 194 L190 194 M68 202 Q128 210 188 202" stroke="#9AA3AE" stroke-width="3" stroke-linecap="round"/>
+  <rect x="71" y="128" width="6" height="62" rx="3" fill="#FBF3DE"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

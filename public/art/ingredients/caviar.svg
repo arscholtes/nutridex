@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Caviar</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="124" cy="224" rx="90" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M38 104 L38 168 A86 32 0 0 0 210 168 L210 104 Z" fill="#24406E"/>
+    <ellipse cx="124" cy="104" rx="86" ry="30" fill="#E2B53E"/>
+  </g>
+  <path d="M50 124 C50 140 50 160 54 182 C48 176 46 164 46 150 C46 138 47 130 50 124 Z" fill="#3E62A0"/>
+  <path d="M38 164 A86 32 0 0 0 210 164" stroke="#E2B53E" stroke-width="5" fill="none"/>
+  <ellipse cx="124" cy="104" rx="75" ry="22" fill="#18191E" stroke="#1B1B1F" stroke-width="4"/>
+  <g fill="#30313B" stroke="#55586A" stroke-width="1.5"><circle cx="71.5" cy="90" r="7"/><circle cx="86.5" cy="90" r="7"/><circle cx="101.5" cy="90" r="7"/><circle cx="116.5" cy="90" r="7"/><circle cx="131.5" cy="90" r="7"/><circle cx="146.5" cy="90" r="7"/><circle cx="161.5" cy="90" r="7"/><circle cx="176.5" cy="90" r="7"/><circle cx="64" cy="102" r="7"/><circle cx="79" cy="102" r="7"/><circle cx="94" cy="102" r="7"/><circle cx="109" cy="102" r="7"/><circle cx="124" cy="102" r="7"/><circle cx="139" cy="102" r="7"/><circle cx="154" cy="102" r="7"/><circle cx="169" cy="102" r="7"/><circle cx="184" cy="102" r="7"/><circle cx="71.5" cy="114" r="7"/><circle cx="86.5" cy="114" r="7"/><circle cx="101.5" cy="114" r="7"/><circle cx="116.5" cy="114" r="7"/><circle cx="131.5" cy="114" r="7"/><circle cx="146.5" cy="114" r="7"/><circle cx="161.5" cy="114" r="7"/><circle cx="176.5" cy="114" r="7"/><circle cx="94" cy="124" r="7"/><circle cx="109" cy="124" r="7"/><circle cx="124" cy="124" r="7"/><circle cx="139" cy="124" r="7"/><circle cx="154" cy="124" r="7"/></g>
+  <path d="M69 87.5h0M84 87.5h0M99 87.5h0M114 87.5h0M129 87.5h0M144 87.5h0M159 87.5h0M174 87.5h0M61.5 99.5h0M76.5 99.5h0M91.5 99.5h0M106.5 99.5h0M121.5 99.5h0M136.5 99.5h0M151.5 99.5h0M166.5 99.5h0M181.5 99.5h0M69 111.5h0M84 111.5h0M99 111.5h0M114 111.5h0M129 111.5h0M144 111.5h0M159 111.5h0M174 111.5h0M91.5 121.5h0M106.5 121.5h0M121.5 121.5h0M136.5 121.5h0M151.5 121.5h0" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M186 90 L222 54" stroke="#1B1B1F" stroke-width="12" stroke-linecap="round"/>
+  <path d="M186 90 L222 54" stroke="#F3EBDD" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="178" cy="98" rx="17" ry="10" fill="#F3EBDD" stroke="#1B1B1F" stroke-width="4" transform="rotate(-35 178 98)"/>
+  <g fill="#30313B"><circle cx="172" cy="100" r="4.5"/><circle cx="181" cy="95" r="4.5"/><circle cx="178" cy="103" r="4"/></g>
+  <ellipse cx="99" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="149" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="109" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="139" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="111" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="143" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M116 169 Q124 177 132 169" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

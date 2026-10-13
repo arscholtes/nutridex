@@ -54,3 +54,11 @@ cardamom as pods, seeds as a small cluster with one big "hero" seed carrying the
 source beside them (chili powder: a heap plus a dried chili; garlic powder: a heap plus a clove). Sauces and
 spreads go in a simple jar, tub or bottle with the source icon ABOVE the face (soy sauce: bottle + soybean).
 Flours and grains: a small sack or scoop with the grain icon, or the grain itself as the creature.
+
+## Tints and rules added for the final batch
+dairy #EEF3F8 · egg #EDF1F7 · oil and fat #FBF7DC · fish and shellfish #E6F1F5 · meat and poultry #F8E6E3 ·
+sweetener #F8ECF3 · drink #EFE9E2
+- Whole animals stay food, not pets: fish and shellfish drawn whole as food creatures; meats drawn as the cut
+  (steak, chop, drumstick), never the living animal. Cute faces are fine; no blood, bones only as a clean cut.
+- Oils differ by bottle shape and the oil's colour, and the source icon ABOVE the face carries the identity.
+- Keep your own working files in scratchpad/<your-group-name>/ — never in the shared scratchpad root.

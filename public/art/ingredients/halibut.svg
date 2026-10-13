@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Halibut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="86" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#625B47">
+    <path d="M190 120 C204 108 216 96 230 88 C224 110 224 146 230 168 C216 160 204 148 190 136 Z"/>
+    <path d="M56 96 C80 62 104 42 120 38 C150 44 176 84 196 116 L196 140 C176 172 150 212 120 218 C104 214 80 194 56 160 Z"/>
+  </g>
+  <path d="M84 78 L82 68M100 68 L98 56M120 62 L120 47M142 72 L146 58M160 86 L166 77M178 101 L183 94M84 178 L82 188M100 188 L98 200M120 194 L120 209M142 184 L146 198M160 170 L166 179M178 155 L183 162" stroke="#46402F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M30 128 C36 104 70 74 118 64 C150 76 176 100 196 118 L196 138 C176 156 150 180 118 192 C70 182 36 152 30 128 Z" fill="#7C7560" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M48 114 C56 98 74 84 96 78 C80 90 66 102 58 118 Z" fill="#9A937B"/>
+  <g fill="#625B47"><ellipse cx="158" cy="148" rx="9" ry="6"/><ellipse cx="128" cy="174" rx="8" ry="5"/><ellipse cx="120" cy="84" rx="8" ry="5"/><ellipse cx="174" cy="132" rx="6" ry="4"/></g>
+  <path d="M124 124 C132 102 152 100 162 120 C168 128 180 128 192 128" stroke="#46402F" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="71" cy="137" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="121" cy="137" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="81" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="111" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="83" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="85" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="115" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M88 137 Q96 145 104 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

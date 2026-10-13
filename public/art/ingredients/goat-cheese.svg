@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Goat cheese</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M200 80 L64 80 C26 80 26 206 64 206 L200 206 Z" fill="#EEF2DE"/>
+    <ellipse cx="200" cy="143" rx="26" ry="63" fill="#FFFFFF"/>
+  </g>
+  <ellipse cx="200" cy="143" rx="19" ry="55" stroke="#5C9A44" stroke-width="4" fill="none"/>
+  <path d="M60 92 Q64 88 72 88 Q60 140 72 196 Q62 194 58 188 Q46 140 60 92 Z" fill="#F4F7E6"/>
+  <g stroke="#2F6E2E" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M90 92 l6 -3"/><path d="M120 96 l7 2"/><path d="M150 90 l5 4"/><path d="M168 104 l7 -2"/><path d="M160 128 l4 5"/><path d="M168 160 l7 1"/><path d="M158 186 l6 -4"/><path d="M128 194 l7 2"/><path d="M96 192 l5 -4"/><path d="M68 170 l6 3"/><path d="M80 112 l-3 6"/><path d="M176 84 l5 4"/><path d="M74 140 l4 5"/><path d="M144 196 l-4 -3"/>
+  </g>
+  <g fill="#4E8A3A"><circle cx="58" cy="150" r="2.5"/><circle cx="186" cy="118" r="2.5"/><circle cx="96" cy="104" r="2.5"/><circle cx="108" cy="88" r="2.5"/><circle cx="138" cy="108" r="2.5"/><circle cx="176" cy="132" r="2.5"/><circle cx="176" cy="178" r="2.5"/><circle cx="112" cy="198" r="2.5"/><circle cx="84" cy="182" r="2.5"/><circle cx="72" cy="120" r="2.5"/><circle cx="160" cy="100" r="2"/></g>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M86 70 Q120 52 154 58" fill="none" stroke-width="5"/>
+    <path d="M100 64 L94 50 M114 59 L110 44 M128 56 L126 42 M142 56 L144 42 M108 62 L118 74 M124 58 L134 70 M140 57 L150 68"/>
+  </g>
+  <g stroke="#4E8A3A" stroke-width="3" stroke-linecap="round"><path d="M100 64 L94 50 M114 59 L110 44 M128 56 L126 42 M142 56 L144 42 M108 62 L118 74 M124 58 L134 70 M140 57 L150 68"/></g>
+  <ellipse cx="87" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 159 Q112 167 120 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

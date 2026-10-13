@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lamb chop</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="116" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M149.7 124.5 L160.6 119.7 L170.5 113.6 L179.4 106.3 L187.1 97.9 L193.7 88.4 L199.2 77.9 L203.7 66.5 L207.2 54.1 A11 11 0 1 0 192.8 49.9 L188.5 60.4 L183.5 69.6 L178.0 77.5 L171.9 84.1 L165.3 89.6 L158.2 93.9 L150.6 97.2 L142.3 99.5 Z" fill="#F6ECD6" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M150 96 C164 92 176 100 178 112 C180 128 170 140 164 156 C154 184 124 204 92 200 C60 196 42 170 46 144 C50 116 74 100 104 98 C120 97 136 100 150 96 Z" fill="#FFF3EA" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M152 106 C164 104 170 114 168 126 C166 142 158 160 148 174 C134 190 110 194 96 188 C78 180 70 162 74 144 C78 124 98 110 120 108 C132 107 142 108 152 106 Z" fill="#CF4A64" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="156" cy="124" rx="5" ry="6.5" fill="#FFF3EA" transform="rotate(20 156 124)"/>
+  <ellipse cx="102" cy="118" rx="12" ry="4.5" fill="#E8798D" transform="rotate(-18 102 118)"/>
+  <ellipse cx="93" cy="157" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="143" cy="157" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="103" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="133" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="105" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="135" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="107" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="137" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M110 157 Q118 165 126 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

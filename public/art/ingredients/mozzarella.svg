@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mozzarella</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="206" rx="96" ry="16" fill="#DCEAF3" stroke="#1B1B1F" stroke-width="5"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 70 C144 64 170 66 188 80 C206 96 214 122 212 148 C210 184 178 206 128 206 C78 206 46 184 44 148 C42 122 50 96 68 80 C86 66 112 64 128 70 Z" fill="#F7F5EC"/>
+    <path d="M36 200 C42 180 66 170 86 180 C78 198 58 206 36 200 Z" fill="#3E9E52"/>
+    <path d="M70 214 C80 196 104 192 120 202 C108 216 88 220 70 214 Z" fill="#4CAF50"/>
+  </g>
+  <g stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"><path d="M42 196 L80 182"/><path d="M76 210 L114 202"/></g>
+  <ellipse cx="78" cy="118" rx="11" ry="24" fill="#FFFFFF" transform="rotate(28 78 118)"/>
+  <g stroke="#D8D4C2" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M114 76 Q128 82 142 76"/><path d="M176 186 Q188 176 194 162"/>
+  </g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

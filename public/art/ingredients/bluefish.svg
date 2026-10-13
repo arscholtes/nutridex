@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Bluefish</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#3A97A6">
+    <path d="M194 124 C206 104 218 88 232 76 C226 100 220 118 218 128 C220 138 226 156 232 180 C218 168 206 152 194 132 Z"/>
+    <path d="M100 74 L112 48 L126 52 L136 72 Z"/>
+    <path d="M152 80 C160 64 176 68 184 98 Z"/>
+    <path d="M140 176 L154 196 L168 168 Z"/>
+    <path d="M46 108 C54 80 88 66 128 68 C164 70 186 98 200 120 L200 136 C186 158 164 180 128 182 C100 184 78 180 62 174 C42 166 26 158 24 144 C24 134 30 128 38 126 L48 124 Z" fill="#D5E4EA"/>
+  </g>
+  <path d="M46 108 C54 80 88 66 128 68 C164 70 186 98 200 120 L200 128 C178 132 154 142 134 152 C114 162 92 160 80 150 L76 138 L48 124 Z" fill="#3A97A6"/>
+  <path d="M46 108 C54 80 88 66 128 68 C164 70 186 98 200 120 L200 136 C186 158 164 180 128 182 C100 184 78 180 62 174 C42 166 26 158 24 144 C24 134 30 128 38 126 L48 124 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <path d="M48 124 L76 138" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M33 130 L37 120 L42 128 Z M45 133 L49 124 L53 134 Z" fill="#FFFFFF" stroke="#1B1B1F" stroke-width="2.5" stroke-linejoin="round"/>
+  <ellipse cx="112" cy="80" rx="16" ry="5" fill="#6CC0CE" transform="rotate(-6 112 80)"/>
+  <path d="M144 84 C156 108 156 140 144 164" stroke="#8CC6D2" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="79" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="129" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="89" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="119" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="91" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="121" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="93" cy="105" r="1.9" fill="#FFFFFF"/>
+  <circle cx="123" cy="105" r="1.9" fill="#FFFFFF"/>
+  <path d="M96 125 Q104 133 112 125" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

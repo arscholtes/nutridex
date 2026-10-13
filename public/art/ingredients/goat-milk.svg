@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Goat milk</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M170 104 C206 94 212 152 178 172" stroke="#1B1B1F" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <path d="M170 104 C206 94 212 152 178 172" stroke="#D98A5B" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M96 56 L72 48 L94 70 Z" fill="#D98A5B"/>
+    <path d="M92 60 C96 78 96 88 86 100 C68 122 68 178 84 200 C90 208 98 212 108 212 L148 212 C158 212 166 208 172 200 C188 178 188 122 170 100 C160 88 160 78 164 60 Z" fill="#D98A5B"/>
+    <ellipse cx="128" cy="60" rx="38" ry="10" fill="#FFFFFF"/>
+  </g>
+  <path d="M88 142 C88 126 94 114 102 110 C96 132 96 162 100 186 C92 176 88 160 88 142 Z" fill="#EAAE84"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round" fill="#F3E8CB">
+    <path d="M122 130 C122 110 112 98 97 93 C101 104 105 116 107 130 Z"/>
+    <path d="M134 130 C134 110 144 98 159 93 C155 104 151 116 149 130 Z"/>
+  </g>
+  <path d="M106 118 L121 115 M103 107 L117 103 M150 118 L135 115 M153 107 L139 103" stroke="#B49A6A" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="103" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 173 Q128 181 136 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
