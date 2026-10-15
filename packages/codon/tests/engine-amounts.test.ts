@@ -1,9 +1,9 @@
 // Expand, apply prep and aggregate: from grams of each ingredient to compound totals per serving.
 import { describe, expect, test } from "vitest";
-import { aggregate } from "../lib/engine/aggregate.ts";
-import { expand } from "../lib/engine/expand.ts";
-import { applyPrep, effectivePrep } from "../lib/engine/prep.ts";
-import type { AmountFact, PrepEffectFact, RecipeInput } from "../lib/engine/types.ts";
+import { aggregate } from "../src/aggregate.ts";
+import { expand } from "../src/expand.ts";
+import { applyPrep, effectivePrep } from "../src/prep.ts";
+import type { AmountFact, PrepEffectFact, RecipeInput } from "../src/types.ts";
 
 const amount = (ingredientSlug: string, compoundSlug: string, amountPer100g: number | null, extra: Partial<AmountFact> = {}): AmountFact => ({
   ingredientSlug,

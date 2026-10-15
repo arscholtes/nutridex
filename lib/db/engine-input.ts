@@ -14,7 +14,7 @@ import type {
   PrepEffectFact,
   RecipeInput,
   UpperLimitFact,
-} from "../engine/types.ts";
+} from "codon";
 
 /**
  * Load a recipe with its ingredients (in position order) and steps.

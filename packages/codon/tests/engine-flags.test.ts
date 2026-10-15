@@ -1,11 +1,11 @@
 // Modifiers, cautions, effects and goal scores: what the totals mean.
 import { describe, expect, test } from "vitest";
-import { collectCautions } from "../lib/engine/cautions.ts";
-import { rollUpEffects } from "../lib/engine/effects.ts";
-import { scoreGoals } from "../lib/engine/goals.ts";
-import { checkModifiers } from "../lib/engine/modifiers.ts";
-import type { EngineSettings } from "../lib/engine/settings.ts";
-import type { CautionFact, CompoundEffectFact, CompoundTotal, MassUnit, ModifierFact } from "../lib/engine/types.ts";
+import { collectCautions } from "../src/cautions.ts";
+import { rollUpEffects } from "../src/effects.ts";
+import { scoreGoals } from "../src/goals.ts";
+import { checkModifiers } from "../src/modifiers.ts";
+import type { EngineSettings } from "../src/settings.ts";
+import type { CautionFact, CompoundEffectFact, CompoundTotal, MassUnit, ModifierFact } from "../src/types.ts";
 
 const settings: EngineSettings = {
   gradeWeights: { A: 1, B: 0.6, C: 0.25, D: 0.1 },

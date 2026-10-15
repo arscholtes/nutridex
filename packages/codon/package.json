@@ -1,0 +1,10 @@
+{
+  "name": "codon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Applies sourced rules to what a combination contains and returns every flag, with nothing invented. Pure functions, no database.",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}
