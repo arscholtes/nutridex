@@ -118,12 +118,14 @@ describe("checkModifiers", () => {
     expect(flags[0]).toMatchObject({ status: "missed", grade: "B", basis: "measured", ruleIds: ["rule-c", "rule-b"] });
   });
 
-  test("a merged flag takes its grade from the measured rules, never from a class guess, in either order", () => {
+  test("a measured rule and a class guess make one flag, graded by the measurement and naming both, in either order", () => {
     const guess = modifier({ id: "class-a", grade: "A", basis: "by-class" });
     const measured = modifier({ id: "measured-c", grade: "C", basis: "measured" });
     for (const rules of [[guess, measured], [measured, guess]]) {
-      const [flag] = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, rules, settings);
-      expect(flag).toMatchObject({ grade: "C", basis: "measured" });
+      const flags = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, rules, settings);
+      expect(flags).toHaveLength(1);
+      expect(flags[0]).toMatchObject({ grade: "C", basis: "measured" });
+      expect([...flags[0].ruleIds].sort()).toEqual(["class-a", "measured-c"]);
     }
   });
 
