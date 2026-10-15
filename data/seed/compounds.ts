@@ -1,4 +1,6 @@
-// The build plan's seed compounds and the ingredients it names as their main sources.
+// The build plan's seed compounds and the ingredients it names as their main sources, plus total
+// fat, which the engine's "dietary fat present" condition reads, and total dietary fiber, which
+// gives juicing's fiber loss an amount.
 // Identity only: amounts come from USDA, and properties, modifiers and cautions need sources
 // before they can be stored, so none are typed in here.
 
@@ -41,4 +43,6 @@ export const COMPOUNDS: SeedCompound[] = [
   { slug: "vitamin-c", name: "Vitamin C", class: "vitamin", mainIngredients: ["kale", "granny-smith-apple"] },
   { slug: "pectin", name: "Pectin", class: "fiber", mainIngredients: ["granny-smith-apple"] },
   { slug: "oxalate", name: "Oxalate", class: "antinutrient", mainIngredients: ["beet", "frozen-spinach", "kale"] },
+  { slug: "total-fat", name: "Total fat", class: "macronutrient", mainIngredients: [] },
+  { slug: "dietary-fiber", name: "Dietary fiber", class: "fiber", mainIngredients: [] },
 ];
