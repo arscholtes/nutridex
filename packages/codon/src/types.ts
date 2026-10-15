@@ -154,7 +154,7 @@ export type AbsorptionFlag = {
   status: "enhanced" | "reduced" | "missed" | "unknown";
   reason: string;
   suggestion?: string;
-  /** The best grade among the rules behind the flag. */
+  /** The best grade among the rules behind the flag that share its basis. */
   grade: Grade;
   /** Measured when any rule behind the flag measured this compound. */
   basis: Basis;

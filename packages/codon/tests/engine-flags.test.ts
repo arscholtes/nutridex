@@ -118,6 +118,15 @@ describe("checkModifiers", () => {
     expect(flags[0]).toMatchObject({ status: "missed", grade: "B", basis: "measured", ruleIds: ["rule-c", "rule-b"] });
   });
 
+  test("a merged flag takes its grade from the measured rules, never from a class guess, in either order", () => {
+    const guess = modifier({ id: "class-a", grade: "A", basis: "by-class" });
+    const measured = modifier({ id: "measured-c", grade: "C", basis: "measured" });
+    for (const rules of [[guess, measured], [measured, guess]]) {
+      const [flag] = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, rules, settings);
+      expect(flag).toMatchObject({ grade: "C", basis: "measured" });
+    }
+  });
+
   test("rules that disagree in direction stay separate flags", () => {
     const helps = modifier({ id: "helps", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null });
     const hurts = modifier({ id: "hurts", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });

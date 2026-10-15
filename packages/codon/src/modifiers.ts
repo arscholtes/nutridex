@@ -17,13 +17,14 @@ const CONDITIONS: Record<string, { compoundSlug: string; noun: string; threshold
 /**
  * Flag each modifier whose target the recipe contains: enhanced, reduced, a missed opportunity,
  * or unknown when missing amounts leave a condition untestable. Rules that say the same thing
- * about one compound (same modifier or condition, same direction) make one flag carrying the
- * best grade and every rule's id.
+ * about one compound (same modifier or condition, same direction) make one flag carrying every
+ * rule's id. Its basis is measured if any rule measured the compound, and its grade is the best
+ * among the rules of that basis: a class guess never lends its grade to a measurement.
  * @param totals [CompoundTotal[]] the recipe's totals per serving
  * @param ingredientSlugs [string[]] the recipe's ingredients, to tell unmeasured from absent
  * @param modifiers [ModifierFact[]] absorption_modifier facts
  * @param settings [EngineSettings] thresholds
- * @return [AbsorptionFlag[]] one per modifier that applies
+ * @return [AbsorptionFlag[]] one per distinct claim that applies
  * @throws when a modifier names a condition the engine cannot test
  */
 export function checkModifiers(
@@ -41,9 +42,13 @@ export function checkModifiers(
       const key = JSON.stringify([m.targetCompoundSlug, m.modifierCompoundSlug ?? m.condition, m.direction]);
       const same = byClaim.get(key);
       if (!same) return void byClaim.set(key, flag);
-      if (flag.grade < same.grade) same.grade = flag.grade;
-      if (flag.basis === "measured") same.basis = "measured";
       same.ruleIds.push(m.id);
+      if (flag.basis === same.basis) {
+        if (flag.grade < same.grade) same.grade = flag.grade;
+      } else if (flag.basis === "measured") {
+        same.basis = "measured";
+        same.grade = flag.grade;
+      }
     };
     if (m.modifierCompoundSlug !== null) {
       const name = m.modifierCompoundSlug;
