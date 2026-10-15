@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chayote</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M124 58 L123 46 C123 40 133 40 133 46 L132 58 Z" fill="#8A7A4A"/>
+    <path d="M128 56 C148 56 156 70 160 86 C166 110 200 126 200 162 C200 192 182 212 160 212 C148 213 140 208 134 200 Q128 190 122 200 C116 208 108 213 96 212 C74 212 56 192 56 162 C56 126 90 110 96 86 C100 70 108 56 128 56 Z" fill="#C4E39C"/>
+  </g>
+  <g stroke="#86B65E" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M102 92 C90 120 78 150 84 176 C88 192 100 202 116 204"/>
+    <path d="M154 92 C166 120 178 150 172 176 C168 192 156 202 140 204"/>
+  </g>
+  <ellipse cx="110" cy="96" rx="5" ry="13" fill="#E4F3CF" transform="rotate(20 110 96)"/>
+  <ellipse cx="103" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 167 Q128 175 136 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

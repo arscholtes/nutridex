@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Napa cabbage</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="50" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 60 C164 60 176 80 176 112 C176 160 172 194 162 205 C154 211 140 213 128 213 C116 213 102 211 94 205 C84 194 80 160 80 112 C80 80 92 60 128 60 Z" fill="#F2F6E2"/>
+    <path d="M80 114 C80 84 82 64 90 54 Q94 38 110 40 Q118 28 128 34 Q138 28 146 40 Q162 38 166 54 C174 64 176 84 176 114 Q170 104 162 114 Q154 102 145 112 Q136 100 128 110 Q120 100 111 112 Q102 102 94 114 Q86 104 80 114 Z" fill="#BEDF7C"/>
+  </g>
+  <ellipse cx="114" cy="74" rx="6" ry="13" fill="#DDF0AE" transform="rotate(20 114 74)"/>
+  <g stroke="#8CBF4E" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M94 108 C95 88 98 70 104 56"/>
+    <path d="M162 108 C161 88 158 70 152 56"/>
+    <path d="M128 102 L128 50"/>
+  </g>
+  <g stroke="#B5D18C" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M92 118 C88 150 89 180 98 204"/>
+    <path d="M164 118 C168 150 167 180 158 204"/>
+  </g>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

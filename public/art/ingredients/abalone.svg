@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Abalone</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="130" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M30 132 C26 80 72 36 138 36 C200 36 232 76 228 122 C224 162 200 184 174 196 C146 208 104 212 76 198 C46 184 32 162 30 132 Z" fill="#7F7457" stroke-width="6"/>
+    <path d="M62 130 C60 92 92 58 140 56 C188 56 214 86 212 122 C210 154 192 172 170 182 C146 192 112 196 90 186 C70 176 62 158 62 130 Z" fill="#CFEFEA" stroke-width="4"/>
+  </g>
+  <g fill="none" stroke-linecap="round">
+    <path d="M62 130 C60 92 92 58 140 56 C188 56 214 86 212 122 C210 154 192 172 170 182 C146 192 112 196 90 186 C70 176 62 158 62 130 Z" transform="matrix(0.86 0 0 0.86 19.0 17.4)" stroke="#BCA8EE" stroke-width="13" pathLength="100" stroke-dasharray="58 42" stroke-dashoffset="-30"/>
+    <path d="M62 130 C60 92 92 58 140 56 C188 56 214 86 212 122 C210 154 192 172 170 182 C146 192 112 196 90 186 C70 176 62 158 62 130 Z" transform="matrix(0.72 0 0 0.72 38.1 34.7)" stroke="#F6BCD3" stroke-width="12" pathLength="100" stroke-dasharray="44 56" stroke-dashoffset="-46"/>
+    <path d="M62 130 C60 92 92 58 140 56 C188 56 214 86 212 122 C210 154 192 172 170 182 C146 192 112 196 90 186 C70 176 62 158 62 130 Z" transform="matrix(0.86 0 0 0.86 19.0 17.4)" stroke="#9EC6F2" stroke-width="13" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-2"/>
+  </g>
+  <path d="M84 104 C88 88 100 76 116 72 C108 82 102 94 100 108 C92 110 86 108 84 104 Z" fill="#FFFFFF"/>
+  <g fill="#2B271E"><circle cx="44" cy="118" r="5.5"/><circle cx="50" cy="96" r="5"/><circle cx="63" cy="77" r="4.6"/><circle cx="80" cy="62" r="4.2"/><circle cx="101" cy="52" r="3.8"/><circle cx="126" cy="47" r="3.4"/></g>
+  <ellipse cx="111" cy="141" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="161" cy="141" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="121" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="151" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="123" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="153" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="125" cy="121" r="1.9" fill="#FFFFFF"/>
+  <circle cx="155" cy="121" r="1.9" fill="#FFFFFF"/>
+  <path d="M128 141 Q136 149 144 141" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

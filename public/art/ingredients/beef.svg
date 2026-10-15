@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Beef</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M58 96 C66 62 120 50 162 58 C204 66 222 100 214 138 C206 176 172 200 132 200 C104 200 92 190 72 186 C46 180 36 156 42 132 C46 116 54 110 58 96 Z" fill="#FFF3EA" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M76 104 C84 78 124 70 160 76 C194 82 206 108 200 138 C194 168 166 186 132 186 C108 186 98 178 80 174 C60 170 54 152 58 134 C60 122 72 116 76 104 Z" fill="#D9434A" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="108" cy="90" rx="20" ry="7" fill="#EE6E74" transform="rotate(-14 108 90)"/>
+  <g stroke="#FFE3DD" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M150 90 Q162 84 170 94 Q178 102 188 100"/>
+    <path d="M180 124 Q190 138 184 156"/>
+    <path d="M106 172 Q120 166 134 174 Q144 178 156 172"/>
+    <path d="M66 140 Q76 146 74 160"/>
+  </g>
+  <ellipse cx="103" cy="145" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="145" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="125" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="125" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 145 Q128 153 136 145" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

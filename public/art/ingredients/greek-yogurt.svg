@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Greek yogurt</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62 116 C60 98 80 90 96 90 C100 76 116 68 130 68 C148 68 160 78 162 90 C180 92 196 100 194 116 Z" fill="#FFFFFF"/>
+    <path d="M56 126 L200 126 L192 204 C191 209 187 212 182 212 L74 212 C69 212 65 209 64 204 Z" fill="#EEF1F6"/>
+    <rect x="48" y="110" width="160" height="22" rx="9" fill="#2F5597"/>
+  </g>
+  <rect x="68" y="142" width="7" height="56" rx="3.5" fill="#FFFFFF"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M82 102 C98 94 116 100 130 94 C146 88 162 94 178 102 L178 124 C178 131 170 131 170 124 L170 110 C156 104 146 102 132 106 L132 118 C132 125 124 125 124 118 L124 108 C110 110 96 108 82 110 Z" fill="#F5B82E"/>
+    <path d="M115 68 C113 54 121 47 130 47 C139 47 147 54 145 68 C143 79 137 84 130 84 C123 84 117 79 115 68 Z" fill="#D9304A"/>
+    <path d="M122 50 L130 40 L138 50" fill="#4E9A3E"/>
+  </g>
+  <g fill="#F48A98"><circle cx="124" cy="62" r="2.6"/><circle cx="136" cy="60" r="2.6"/><circle cx="130" cy="72" r="2.6"/><circle cx="121" cy="74" r="2.6"/><circle cx="139" cy="72" r="2.6"/></g>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Buttermilk</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="30" width="64" height="18" rx="4" fill="#E3CF7E"/>
+    <path d="M70 84 L96 46 L160 46 L186 84 Z" fill="#EBDA92"/>
+    <path d="M70 84 L186 84 L186 200 C186 207 181 212 174 212 L82 212 C75 212 70 207 70 200 Z" fill="#F8EEC0"/>
+  </g>
+  <rect x="80" y="96" width="9" height="102" rx="4.5" fill="#FFF9E0"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 102 L128 90"/>
+    <circle cx="128" cy="89" r="4" fill="#A8723E"/>
+    <path d="M112 134 L144 134 L139 106 L117 106 Z" fill="#C8935A"/>
+    <rect x="114" y="101" width="28" height="7" rx="3" fill="#A8723E"/>
+  </g>
+  <path d="M117 116 L139 116 M115 126 L141 126" stroke="#8A5A2E" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

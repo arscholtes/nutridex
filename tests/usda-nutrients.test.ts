@@ -21,9 +21,17 @@ describe("compoundAmounts, against USDA's own record for raw carrots (fdcId 1703
     expect(bySlug(carrots).get("vitamin-c")).toMatchObject({ amountPer100g: 5.9, unit: "mg" });
   });
 
+  test("total fat comes back in grams, for the engine's dietary-fat condition", () => {
+    expect(bySlug(carrots).get("total-fat")).toMatchObject({ amountPer100g: 0.24, unit: "g" });
+  });
+
+  test("total dietary fiber comes back in grams, so juicing's fiber loss has an amount", () => {
+    expect(bySlug(carrots).get("dietary-fiber")).toMatchObject({ amountPer100g: 2.8, unit: "g" });
+  });
+
   test("every mapped compound USDA reports for carrots is returned, and nothing else", () => {
     expect([...bySlug(carrots).keys()].sort()).toEqual(
-      ["alpha-carotene", "beta-carotene", "lutein-zeaxanthin", "lycopene", "vitamin-c", "vitamin-k1"],
+      ["alpha-carotene", "beta-carotene", "dietary-fiber", "lutein-zeaxanthin", "lycopene", "total-fat", "vitamin-c", "vitamin-k1"],
     );
   });
 });

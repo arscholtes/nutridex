@@ -19,6 +19,8 @@ export const USDA_NUTRIENTS = {
   "lutein-zeaxanthin": { id: 1123, name: "Lutein + zeaxanthin", unit: "µg" },
   "vitamin-k1": { id: 1185, name: "Vitamin K (phylloquinone)", unit: "µg" },
   "vitamin-c": { id: 1162, name: "Vitamin C, total ascorbic acid", unit: "mg" },
+  "total-fat": { id: 1004, name: "Total lipid (fat)", unit: "g" },
+  "dietary-fiber": { id: 1079, name: "Fiber, total dietary", unit: "g" },
 } as const;
 
 /**

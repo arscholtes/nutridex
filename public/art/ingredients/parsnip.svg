@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Parsnip</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="50" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M110 72 L102 40 L116 36 L122 72 Z" fill="#7DB85A"/>
+    <path d="M122 72 L122 30 L136 30 L134 72 Z" fill="#7DB85A"/>
+    <path d="M134 72 L140 36 L154 40 L146 72 Z" fill="#7DB85A"/>
+    <path d="M74 88 C74 62 182 62 182 88 C182 130 152 180 134 214 C131 220 125 220 122 214 C104 180 74 130 74 88 Z" fill="#F0E2BC"/>
+  </g>
+  <path d="M88 90 C88 80 100 76 108 78 C102 104 104 134 110 162 C98 140 88 116 88 90 Z" fill="#FAF3DE"/>
+  <g stroke="#BFA470" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M92 148 L104 146 M156 140 L166 137 M118 186 L128 185 M140 172 L148 170"/>
+  </g>
+  <ellipse cx="103" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="105" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="105" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 125 Q128 133 136 125" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

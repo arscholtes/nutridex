@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Swordfish</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="130" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4E5285">
+    <path d="M78 106 L26 116 C23 117 23 120 26 121 L80 126 Z" fill="#9396B4"/>
+    <path d="M194 124 C206 100 218 80 232 64 C228 92 220 116 216 128 C220 140 228 164 232 192 C218 176 206 156 194 132 Z"/>
+    <path d="M120 80 C122 60 128 42 140 28 C144 48 152 68 164 82 Z"/>
+    <path d="M150 176 L162 196 L172 172 Z"/>
+    <path d="M70 116 C78 86 110 72 142 74 C172 76 188 102 200 120 L200 134 C188 154 168 178 136 180 C100 182 76 160 70 130 Z" fill="#DCDFEA"/>
+  </g>
+  <path d="M70 116 C78 86 110 72 142 74 C172 76 188 102 200 120 L200 126 C182 124 166 120 156 112 C140 100 118 96 98 98 C86 100 76 106 71 112 Z" fill="#4E5285"/>
+  <path d="M70 116 C78 86 110 72 142 74 C172 76 188 102 200 120 L200 134 C188 154 168 178 136 180 C100 182 76 160 70 130 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <ellipse cx="158" cy="92" rx="13" ry="4" fill="#7A80BC" transform="rotate(18 158 92)"/>
+  <path d="M156 112 C166 128 166 152 156 168" stroke="#A3A7C6" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="91" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="141" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="101" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="131" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="103" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="133" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="119" r="1.9" fill="#FFFFFF"/>
+  <circle cx="135" cy="119" r="1.9" fill="#FFFFFF"/>
+  <path d="M108 139 Q116 147 124 139" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

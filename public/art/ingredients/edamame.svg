@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Edamame</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="124" cy="225" rx="64" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M60 194 L46 208" stroke="#1B1B1F" stroke-width="14" stroke-linecap="round"/>
+  <path d="M60 194 L46 208" stroke="#6E9A3C" stroke-width="5" stroke-linecap="round"/>
+  <path d="M126 194 L131 197M108 212 L111 217M80 218 L79 224M36 166 L30 165M45 142 L40 139M175 143 L181 145M163 161 L168 166M145 173 L147 179M81 109 L75 107M93 91 L88 86M111 79 L109 73M220 86 L226 87M211 110 L216 113M130 58 L125 55M148 40 L145 35M180 35 L181 29" stroke="#5E8E34" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <g fill="#1B1B1F" stroke="#1B1B1F" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="84" cy="170" r="40"/>
+    <circle cx="128" cy="126" r="42"/>
+    <circle cx="172" cy="82" r="40"/>
+    <path d="M84 170 L172 82" stroke-width="76"/>
+    <path d="M193 103 L216 38 L151 61 Z"/>
+  </g>
+  <g fill="#7FB547" stroke="#7FB547" stroke-width="0" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="84" cy="170" r="40"/>
+    <circle cx="128" cy="126" r="42"/>
+    <circle cx="172" cy="82" r="40"/>
+    <path d="M84 170 L172 82" stroke-width="64"/>
+    <path d="M193 103 L216 38 L151 61 Z"/>
+  </g>
+  <ellipse cx="166" cy="70" rx="6" ry="16" fill="#A6D16E" transform="rotate(45 166 70)"/>
+  <ellipse cx="103" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 137 Q128 145 136 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

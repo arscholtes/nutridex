@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Heavy cream</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="126" cy="224" rx="58" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M174 144 C206 136 208 184 174 190" stroke="#1B1B1F" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <path d="M174 144 C206 136 208 184 174 190" stroke="#BFD6EE" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M82 124 L58 114 L80 146 Z" fill="#BFD6EE"/>
+    <g fill="#FFF2D2">
+      <path d="M118 66 C120 56 130 52 133 40 C144 50 146 60 140 68 Z"/>
+      <rect x="106" y="60" width="48" height="24" rx="12"/>
+      <rect x="92" y="78" width="74" height="26" rx="13"/>
+      <rect x="80" y="98" width="98" height="28" rx="14"/>
+    </g>
+    <path d="M80 130 L176 130 C180 150 186 172 178 196 C174 206 166 212 156 212 L100 212 C90 212 82 206 78 196 C70 172 76 150 80 130 Z" fill="#BFD6EE"/>
+    <rect x="72" y="120" width="112" height="16" rx="8" fill="#A9C7E6"/>
+  </g>
+  <path d="M88 160 C88 150 92 144 96 142 C94 158 94 176 98 196 C90 186 88 172 88 160 Z" fill="#DCEAF8"/>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

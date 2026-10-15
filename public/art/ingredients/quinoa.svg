@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Quinoa</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="118" rx="80" ry="66" fill="#F1E2BF" stroke="#1B1B1F" stroke-width="6"/>
+  <ellipse cx="128" cy="118" rx="64" ry="51" stroke="#C9A867" stroke-width="4" fill="none"/>
+  <ellipse cx="88" cy="84" rx="9" ry="18" fill="#FBF4E2" transform="rotate(50 88 84)"/>
+  <g stroke="#1B1B1F" stroke-width="4">
+    <circle cx="48" cy="210" r="9" fill="#F6EFDD"/>
+    <circle cx="68" cy="210" r="9" fill="#B83A2E"/>
+    <circle cx="88" cy="210" r="9" fill="#2B2627"/>
+    <circle cx="108" cy="210" r="9" fill="#F6EFDD"/>
+    <circle cx="128" cy="210" r="9" fill="#B83A2E"/>
+    <circle cx="148" cy="210" r="9" fill="#2B2627"/>
+    <circle cx="168" cy="210" r="9" fill="#F6EFDD"/>
+    <circle cx="188" cy="210" r="9" fill="#B83A2E"/>
+    <circle cx="208" cy="210" r="9" fill="#2B2627"/>
+    <circle cx="54" cy="192" r="9" fill="#F6EFDD"/>
+    <circle cx="74" cy="192" r="9" fill="#B83A2E"/>
+    <circle cx="182" cy="192" r="9" fill="#2B2627"/>
+    <circle cx="202" cy="192" r="9" fill="#F6EFDD"/>
+    <circle cx="98" cy="194" r="9" fill="#B83A2E"/>
+    <circle cx="158" cy="194" r="9" fill="#2B2627"/>
+    <circle cx="64" cy="176" r="9" fill="#F6EFDD"/>
+    <circle cx="192" cy="176" r="9" fill="#B83A2E"/>
+  </g>
+  <ellipse cx="103" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 137 Q128 145 136 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

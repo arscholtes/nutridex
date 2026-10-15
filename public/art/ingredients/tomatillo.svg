@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tomatillo</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="56" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M114 96 C82 98 52 128 46 188 C64 176 80 180 92 196 C82 156 92 118 114 96 Z" fill="#E2D59C"/>
+    <path d="M142 96 C174 98 204 128 210 188 C192 176 176 180 164 196 C174 156 164 118 142 96 Z" fill="#E2D59C"/>
+    <circle cx="128" cy="152" r="58" fill="#9BCB4C"/>
+    <path d="M124 38 L123 30 C123 25 133 25 133 30 L132 38 Z" fill="#8A6A3A"/>
+    <path d="M128 34 C146 50 178 72 184 108 C172 100 160 104 152 112 C142 102 114 102 104 112 C96 104 84 100 72 108 C78 72 110 50 128 34 Z" fill="#E2D59C"/>
+  </g>
+  <g stroke="#A8925A" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M124 46 C112 62 98 82 90 100"/>
+    <path d="M128 46 L128 102"/>
+    <path d="M132 46 C144 62 158 82 166 100"/>
+    <path d="M100 110 C76 124 60 148 54 174"/>
+    <path d="M156 110 C180 124 196 148 202 174"/>
+  </g>
+  <ellipse cx="84" cy="140" rx="5" ry="12" fill="#C3E485" transform="rotate(20 84 140)"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

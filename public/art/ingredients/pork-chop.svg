@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pork chop</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="132" cy="224" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M 64.6 151.2 L 38.2 156.2" stroke="#1B1B1F" stroke-width="26" stroke-linecap="round"/>
+  <path d="M 64.6 151.2 L 38.2 156.2" stroke="#F6ECD6" stroke-width="14" stroke-linecap="round"/>
+  <ellipse cx="34.9" cy="156.7" rx="7.2" ry="11" fill="#E8D3AE" stroke="#1B1B1F" stroke-width="3.5" transform="rotate(-10 34.9 156.7)"/>
+  <path d="M 47 151.2 C 64.6 131.4 73.4 102.8 102 83 C 135 58.8 192.2 61 214.2 96.2 C 234 129.2 218.6 179.8 181.2 199.6 C 148.2 217.2 93.2 206.2 69 182 C 60.2 173.2 55.8 160 47 151.2 Z" fill="#FFF3EA" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M 66.8 151.2 C 82.2 133.6 88.8 109.4 113 94 C 141.6 78.6 185.6 80.8 201 107.2 C 214.2 133.6 203.2 171 172.4 186.4 C 143.8 199.6 104.2 193 84.4 175.4 C 77.8 168.8 73.4 157.8 66.8 151.2 Z" fill="#F4A3A6" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="143.8" cy="98.4" rx="19.8" ry="7.2" fill="#FAC8C8" transform="rotate(-6 143.8 98.4)"/>
+  <ellipse cx="118" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="168" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="128" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="158" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="130" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="160" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="132" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="162" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M135 151 Q143 159 151 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

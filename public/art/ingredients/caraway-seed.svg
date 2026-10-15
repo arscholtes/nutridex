@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Caraway seed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="222" rx="98" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#4E8A3A" stroke-width="3" stroke-linecap="round" fill="none" transform="translate(0 5)">
+    <path d="M62 126 L56 58 M56 58 L32 42 M56 58 L42 30 M56 58 L58 24 M56 58 L74 28 M56 58 L86 42"/>
+    <path d="M60 104 l-20 -8 M60 104 l-14 -18 M59 92 l-16 -16 M61 112 l-22 -2"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="3" fill="#F6E4EC" transform="translate(0 5)">
+    <circle cx="32" cy="42" r="5"/><circle cx="42" cy="30" r="5"/><circle cx="58" cy="24" r="5"/><circle cx="74" cy="28" r="5"/><circle cx="86" cy="42" r="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#4E3622">
+    <path d="M-22 5 C-14 -15 14 -15 22 5 C10 0 -10 0 -22 5 Z" transform="translate(174 206) rotate(-6)"/>
+    <path d="M-22 5 C-14 -15 14 -15 22 5 C10 0 -10 0 -22 5 Z" transform="translate(210 206) rotate(8)"/>
+    <path d="M-22 5 C-14 -15 14 -15 22 5 C10 0 -10 0 -22 5 Z" transform="translate(192 188) rotate(-4)"/>
+    <path d="M-22 5 C-14 -15 14 -15 22 5 C10 0 -10 0 -22 5 Z" transform="translate(156 194) rotate(-30)"/>
+    <path d="M34 112 C50 178 92 206 128 206 C164 206 206 178 222 112 C204 134 168 142 128 142 C88 142 52 134 34 112 Z" fill="#5E4128" transform="translate(5 0) rotate(-28 128 170)"/>
+  </g>
+  <path d="M46 130 C56 158 70 172 86 180 C68 180 56 168 50 152 C48 144 46 136 46 130 Z" fill="#7A5838" transform="translate(5 0) rotate(-28 128 170)"/>
+  <g stroke="#A8865E" stroke-width="3" stroke-linecap="round" fill="none">
+    <g transform="translate(5 0) rotate(-28 128 170)">
+    <path d="M44 122 C62 176 96 198 128 198 C160 198 194 176 212 122"/>
+    <path d="M44 117 C70 140 98 148 128 148 C158 148 186 140 212 117"/>
+    </g>
+    <path d="M-14 -2 Q0 -10 14 -2" transform="translate(174 206) rotate(-6)"/>
+    <path d="M-14 -2 Q0 -10 14 -2" transform="translate(210 206) rotate(8)"/>
+    <path d="M-14 -2 Q0 -10 14 -2" transform="translate(192 188) rotate(-4)"/>
+    <path d="M-14 -2 Q0 -10 14 -2" transform="translate(156 194) rotate(-30)"/>
+  </g>
+  <ellipse cx="110" cy="191" rx="13" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="160" cy="191" rx="13" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="120" cy="172" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="150" cy="172" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="122" cy="174" r="5.2" fill="#1B1B1F"/>
+  <circle cx="152" cy="174" r="5.2" fill="#1B1B1F"/>
+  <circle cx="124" cy="171" r="1.9" fill="#FFFFFF"/>
+  <circle cx="154" cy="171" r="1.9" fill="#FFFFFF"/>
+  <path d="M127 191 Q135 199 143 191" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

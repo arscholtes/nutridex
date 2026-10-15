@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Barley</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="120" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M104 168 L104 220" stroke="#1B1B1F" stroke-width="14" stroke-linecap="round"/>
+  <path d="M104 168 L104 220" stroke="#C9A94A" stroke-width="5" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="5" stroke-linejoin="round" fill="#6FA544">
+    <path d="M102 216 C83.2 204 59.2 186 40 146 C65.6 170 86.4 186 104 198 Z"/>
+    <path d="M106 216 C121.6 208 140.8 196 158.4 172 C140.8 188 123.2 198 106 202 Z"/>
+  </g>
+  <path d="M98 102 Q82 36 146 28 M110 84 Q102 40 162 36 M124 68 Q122 40 178 44 M140 58 Q144 40 194 54 M158 54 Q170 44 208 66 M176 60 Q196 56 222 82" stroke="#1B1B1F" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M98 102 Q82 36 146 28 M110 84 Q102 40 162 36 M124 68 Q122 40 178 44 M140 58 Q144 40 194 54 M158 54 Q170 44 208 66 M176 60 Q196 56 222 82" stroke="#E9C25A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <g fill="#E9C25A" stroke="#1B1B1F" stroke-width="6">
+    <ellipse cx="125" cy="68" rx="14" ry="21" transform="rotate(23 125 68)"/>
+    <ellipse cx="111" cy="88" rx="14" ry="21" transform="rotate(23 111 88)"/>
+    <ellipse cx="98" cy="107" rx="14" ry="21" transform="rotate(23 98 107)"/>
+    <ellipse cx="84" cy="127" rx="14" ry="21" transform="rotate(23 84 127)"/>
+    <ellipse cx="187" cy="112" rx="14" ry="21" transform="rotate(47 187 112)"/>
+    <ellipse cx="174" cy="131" rx="14" ry="21" transform="rotate(47 174 131)"/>
+    <ellipse cx="160" cy="151" rx="14" ry="21" transform="rotate(47 160 151)"/>
+    <ellipse cx="146" cy="171" rx="14" ry="21" transform="rotate(47 146 171)"/>
+    <ellipse cx="170" cy="70" rx="14" ry="21" transform="rotate(35 170 70)"/>
+  </g>
+  <ellipse cx="138" cy="116" rx="42" ry="62" fill="#E9C25A" stroke="#1B1B1F" stroke-width="6" transform="rotate(35 138 116)"/>
+  <ellipse cx="138" cy="74" rx="6" ry="15" fill="#F6DE96" transform="rotate(60 138 74)"/>
+  <ellipse cx="113" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="163" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="123" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="153" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="125" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="155" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="127" cy="115" r="1.9" fill="#FFFFFF"/>
+  <circle cx="157" cy="115" r="1.9" fill="#FFFFFF"/>
+  <path d="M130 135 Q138 143 146 135" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

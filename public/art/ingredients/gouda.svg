@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Gouda</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="124" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M205.9 84.2 A86 28 0 0 0 42 96 C33 126 33 154 42 184 A86 28 0 0 0 198.4 200.1 L198.4 173.3 L205.9 172.2 Z" fill="#D2392B"/>
+    <path d="M128 96 L198.4 112.1 A86 28 0 0 1 42 96 A86 28 0 0 1 205.9 84.2 Z" fill="#E04C3C"/>
+    <path d="M128 96 L205.9 84.2 L205.9 172.2 L198.4 173.3 L198.4 112.1 Z" fill="#F7D057"/>
+  </g>
+  <path d="M52 122 Q56 118 62 120 Q58 152 62 188 Q54 184 50 170 Q48 146 52 122 Z" fill="#EE7A6C"/>
+  <g fill="#E3B43C"><circle cx="172" cy="96" r="3"/><circle cx="190" cy="94" r="2.5"/></g>
+  <ellipse cx="93" cy="181" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="143" cy="181" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="103" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="133" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="105" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="135" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="107" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="137" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M110 181 Q118 189 126 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

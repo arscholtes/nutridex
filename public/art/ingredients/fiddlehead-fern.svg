@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Fiddlehead fern</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="134" cy="225" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M164 206 C167 202 177 196 180 188 C183 178 185 164 187 152 C189 140 194 129 194 118 C194 107 190 95 184 86 C179 76 169 68 160 63 C151 58 138 55 128 55 C118 56 106 59 97 65 C88 70 80 79 76 88 C71 97 68 108 69 118 C69 128 72 139 78 147 C83 155 91 163 99 167 C108 172 119 176 128 174 C137 172 146 164 151 158 C156 152 158 140 159 136" stroke="#1B1B1F" stroke-width="34" stroke-linecap="round" fill="none"/>
+  <circle cx="128" cy="118" r="42" fill="#1B1B1F" stroke="#1B1B1F" stroke-width="12"/>
+  <path d="M164 206 C167 202 177 196 180 188 C183 178 185 164 187 152 C189 140 194 129 194 118 C194 107 190 95 184 86 C179 76 169 68 160 63 C151 58 138 55 128 55 C118 56 106 59 97 65 C88 70 80 79 76 88 C71 97 68 108 69 118 C69 128 72 139 78 147 C83 155 91 163 99 167 C108 172 119 176 128 174 C137 172 146 164 151 158 C156 152 158 140 159 136" stroke="#5FA33C" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <circle cx="128" cy="118" r="42" fill="#5FA33C"/>
+  <ellipse cx="86" cy="76" rx="4" ry="9" fill="#8DC966" transform="rotate(45 86 76)"/>
+  <path d="M181 170 L187 172 M169 198 L175 200" stroke="#8A6A3E" stroke-width="3.5" stroke-linecap="round"/>
+  <ellipse cx="103" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 129 Q128 137 136 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Kamut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 212 L128 222" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 212 L128 222" stroke="#E2B44A" stroke-width="6" stroke-linecap="round"/>
+  <path d="M68 88 L39 27 M68 114 L32 39 M68 140 L32 65 M68 166 L32 91 M188 88 L217 27 M188 114 L224 39 M188 140 L224 65 M188 166 L224 91 M128 64 L128 27" stroke="#1B1B1F" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <g fill="#F5D06A" stroke="#1B1B1F" stroke-width="6">
+    <ellipse cx="78" cy="108" rx="20" ry="26" transform="rotate(-26 78 108)"/>
+    <ellipse cx="78" cy="134" rx="20" ry="26" transform="rotate(-26 78 134)"/>
+    <ellipse cx="78" cy="160" rx="20" ry="26" transform="rotate(-26 78 160)"/>
+    <ellipse cx="78" cy="186" rx="20" ry="26" transform="rotate(-26 78 186)"/>
+    <ellipse cx="178" cy="108" rx="20" ry="26" transform="rotate(26 178 108)"/>
+    <ellipse cx="178" cy="134" rx="20" ry="26" transform="rotate(26 178 134)"/>
+    <ellipse cx="178" cy="160" rx="20" ry="26" transform="rotate(26 178 160)"/>
+    <ellipse cx="178" cy="186" rx="20" ry="26" transform="rotate(26 178 186)"/>
+    <ellipse cx="128" cy="86" rx="20" ry="26"/>
+  </g>
+  <ellipse cx="128" cy="152" rx="46" ry="62" fill="#F5D06A" stroke="#1B1B1F" stroke-width="6"/>
+  <ellipse cx="104" cy="122" rx="7" ry="16" fill="#FCE7A6" transform="rotate(18 104 122)"/>
+  <ellipse cx="103" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="143" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="143" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 163 Q128 171 136 163" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

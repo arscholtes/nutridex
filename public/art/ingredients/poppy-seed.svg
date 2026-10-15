@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Poppy seed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="124" cy="224" rx="100" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M188 116 Q196 170 208 212" stroke="#1B1B1F" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M188 116 Q196 170 208 212" stroke="#6E8B4A" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <ellipse cx="188" cy="82" rx="30" ry="34" fill="#B3B987"/>
+    <path d="M164 50 Q168 40 176 44 Q182 36 188 42 Q194 36 200 44 Q208 40 212 50 Q188 60 164 50 Z" fill="#8F9466"/>
+  </g>
+  <g stroke="#8E9468" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M178 58 Q172 84 180 110"/>
+    <path d="M200 58 Q206 84 198 110"/>
+  </g>
+  <ellipse cx="166" cy="86" rx="6" ry="13" fill="#2E3442" stroke="#1B1B1F" stroke-width="4"/>
+  <path d="M112 92 C150 88 180 116 176 156 C172 196 140 214 106 210 C70 206 48 180 50 150 C52 128 62 116 76 112 C88 108 92 94 112 92 Z" fill="#7C8BA3" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M60 156 C60 138 66 126 78 120 C72 134 70 146 72 160 C68 166 60 164 60 156 Z" fill="#9BA8BE"/>
+  <g fill="#7C8BA3" stroke="#1B1B1F" stroke-width="2.5">
+    <circle cx="158" cy="96" r="4.5"/><circle cx="152" cy="104" r="4.5"/><circle cx="146" cy="96" r="4.5"/><circle cx="138" cy="102" r="4.5"/>
+    <circle cx="130" cy="94" r="4.5"/><circle cx="160" cy="108" r="4.5"/>
+    <circle cx="32" cy="206" r="4.5"/><circle cx="44" cy="210" r="4.5"/><circle cx="38" cy="198" r="4.5"/><circle cx="54" cy="212" r="4.5"/>
+    <circle cx="186" cy="208" r="4.5"/><circle cx="222" cy="206" r="4.5"/><circle cx="230" cy="196" r="4.5"/><circle cx="182" cy="198" r="4.5"/>
+  </g>
+  <ellipse cx="89" cy="167" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="139" cy="167" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="99" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="129" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="101" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="131" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="103" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="133" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M106 167 Q114 175 122 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

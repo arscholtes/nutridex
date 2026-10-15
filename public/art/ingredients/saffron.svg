@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Saffron</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="223" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <g stroke="#1B1B1F" stroke-width="9">
+      <path d="M128 112 L128 138"/>
+      <path d="M128 90 L116 42 M128 90 L128 38 M128 90 L140 42"/>
+      <path d="M62 180 L44 166 M96 146 L86 126 M154 140 L166 120 M196 174 L216 162 M50 200 L30 196"/>
+    </g>
+    <path d="M128 112 L128 138" stroke="#4E9A3E" stroke-width="4"/>
+    <g stroke="#E0461C" stroke-width="4">
+      <path d="M128 90 L116 42 M128 90 L128 38 M128 90 L140 42"/>
+      <path d="M62 180 L44 166 M96 146 L86 126 M154 140 L166 120 M196 174 L216 162 M50 200 L30 196"/>
+    </g>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M40 210 C36 196 44 186 54 184 C50 170 60 160 72 162 C72 148 84 140 96 144 C100 132 114 128 124 134 C132 126 148 128 152 138 C164 134 178 142 178 154 C190 152 202 162 198 174 C210 176 218 190 214 202 C216 208 212 214 206 214 L48 214 C42 214 40 212 40 210 Z" fill="#D8411C"/>
+    <path d="M128 108 C108 102 100 78 108 58 C120 64 128 84 128 108 Z" fill="#9B6AD6"/>
+    <path d="M128 108 C148 102 156 78 148 58 C136 64 128 84 128 108 Z" fill="#9B6AD6"/>
+    <path d="M128 108 C116 94 116 68 128 52 C140 68 140 94 128 108 Z" fill="#B48AE6"/>
+  </g>
+  <path d="M60 190 C62 178 70 170 80 168 C76 176 74 184 74 194 C70 198 60 198 60 190 Z" fill="#F27A48"/>
+  <g stroke="#7E1C0C" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M100 152 Q114 144 128 150 M138 148 Q152 142 166 150"/>
+    <path d="M50 206 Q66 198 84 204 M172 192 Q186 182 200 188 M172 206 Q188 198 204 204"/>
+  </g>
+  <g stroke="#6B3FA8" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M128 64 L128 96"/>
+  </g>
+  <ellipse cx="103" cy="187" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="187" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="167" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="167" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 187 Q128 195 136 187" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

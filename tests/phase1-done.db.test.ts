@@ -1,5 +1,6 @@
 // Phase 1's "Done when", against a database `npm run seed` has filled:
 // a test query returns beta-carotene per 100 g of carrot.
+import { existsSync } from "node:fs";
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 
@@ -19,11 +20,11 @@ describe("a seeded database", () => {
     expect(rows[0].title).toContain("fdcId 170393");
   });
 
-  test("holds the plan's 15 ingredients and 12 compounds", async () => {
+  test("holds the plan's 15 ingredients, and its 12 compounds plus total fat and dietary fiber", async () => {
     const [{ ingredients, compounds }] = await sql`
       select (select count(*)::int from ingredient) as ingredients,
              (select count(*)::int from compound) as compounds`;
-    expect({ ingredients, compounds }).toEqual({ ingredients: 15, compounds: 12 });
+    expect({ ingredients, compounds }).toEqual({ ingredients: 15, compounds: 14 });
   });
 
   test("a compound USDA does not measure is linked to its ingredient with no amount, not a zero", async () => {
@@ -41,5 +42,17 @@ describe("a seeded database", () => {
       select count(*)::int as unsourced from ingredient_compound
       where amount_per_100g is not null and source_id is null`;
     expect(unsourced).toBe(0);
+  });
+});
+
+describe("ingredient art in the database", () => {
+  test("every ingredient's image_url points at its art file", async () => {
+    const rows = await sql`select slug, image_url from ingredient order by slug`;
+    const wrong = rows.filter(
+      (r) =>
+        r.image_url !== `/art/ingredients/${r.slug}.svg` ||
+        !existsSync(new URL(`../public${r.image_url}`, import.meta.url)),
+    );
+    expect(wrong.map((r) => `${r.slug}: ${r.image_url}`)).toEqual([]);
   });
 });

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sesame oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="52" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M114 70 L114 84 L90 96 C85 99 82 104 82 110 L82 200 C82 208 88 214 96 214 L160 214 C168 214 174 208 174 200 L174 110 C174 104 171 99 166 96 L142 84 L142 70 Z" fill="#9A4E12"/>
+    <rect x="106" y="52" width="44" height="22" rx="6" fill="#E3B23C"/>
+  </g>
+  <path d="M92 118 C92 110 95 106 99 104 C97 134 97 166 99 198 C94 192 92 176 92 118 Z" fill="#B96A26"/>
+  <g fill="#F5E6BC" stroke="#1B1B1F" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M0 -8 C5.5 -4 5.5 5 0 8 C-5.5 5 -5.5 -4 0 -8 Z" transform="translate(110 120) rotate(-30)"/>
+    <path d="M0 -8 C5.5 -4 5.5 5 0 8 C-5.5 5 -5.5 -4 0 -8 Z" transform="translate(128 111) rotate(15)"/>
+    <path d="M0 -8 C5.5 -4 5.5 5 0 8 C-5.5 5 -5.5 -4 0 -8 Z" transform="translate(147 119) rotate(-15)"/>
+    <path d="M0 -8 C5.5 -4 5.5 5 0 8 C-5.5 5 -5.5 -4 0 -8 Z" transform="translate(121 132) rotate(-60)"/>
+    <path d="M0 -8 C5.5 -4 5.5 5 0 8 C-5.5 5 -5.5 -4 0 -8 Z" transform="translate(139 133) rotate(50)"/>
+  </g>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

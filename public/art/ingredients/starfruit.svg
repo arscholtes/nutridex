@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Starfruit</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="70" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M96.3 90.3 L119.7 51.6 Q128 38 136.3 51.6 L159.7 90.3 L203.8 100.7 Q219.3 104.3 208.9 116.4 L179.4 150.7 L183.1 195.8 Q184.4 211.7 169.8 205.5 L128 188 L86.2 205.5 Q71.6 211.7 72.9 195.8 L76.6 150.7 L47.1 116.4 Q36.7 104.3 52.2 100.7Z" fill="#AEC23A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M101 96.8 L121 63.6 Q128 52 135 63.6 L155 96.8 L192.7 105.6 Q206 108.7 197.1 118.9 L171.7 148.2 L175 186.8 Q176.2 200.3 163.7 195.1 L128 180 L92.3 195.1 Q79.8 200.3 81 186.8 L84.3 148.2 L58.9 118.9 Q50 108.7 63.3 105.6Z" fill="#FCDD5A"/>
+  <ellipse cx="90" cy="113" rx="5" ry="12" fill="#FFEFA6" transform="rotate(-70 90 113)"/>
+  <g fill="#8A5A2B"><ellipse cx="128" cy="64" rx="3.5" ry="7" transform="rotate(0 128 64)"/><ellipse cx="194.6" cy="112.4" rx="3.5" ry="7" transform="rotate(72 194.6 112.4)"/><ellipse cx="169.1" cy="190.6" rx="3.5" ry="7" transform="rotate(144 169.1 190.6)"/><ellipse cx="86.9" cy="190.6" rx="3.5" ry="7" transform="rotate(216 86.9 190.6)"/><ellipse cx="61.4" cy="112.4" rx="3.5" ry="7" transform="rotate(288 61.4 112.4)"/></g>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

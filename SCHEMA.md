@@ -12,6 +12,7 @@ No other app reads this store. `fps stores` does not exist yet, so this section 
 
 - `evidence_grade` is A, B, C or D (the plan's grading table) on `compound_effect`, `absorption_modifier`, `caution`, `microbe_substrate` and `microbe_metabolite`.
 - A `stack_item` names exactly one of `recipe_id` or `supplement_id`.
+- `prep_effect.direction` is `decreases`, `increases` or `unchanged`.
 - Every `id` is a `uuid` defaulting to `gen_random_uuid()`; every `slug` is unique.
 
 ## Provenance
@@ -55,7 +56,7 @@ Things you eat. Seeded with the plan's 15; `usda_fdc_id` pins each to one USDA r
 
 ### `compound`
 
-Chemical compounds, first-class. Seeded with the plan's 12, identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
+Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USDA's total lipid, which the engine's "dietary fat present" condition reads), identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -137,7 +138,7 @@ Compound X helped or hurt by a compound or a condition (piperine, dietary fat). 
 
 ### `prep_effect`
 
-How a preparation method changes a compound. `retention_factor` is `null` when no source gives one.
+How a preparation method changes a compound. `retention_factor` is `null` when no source gives one; `direction` then carries what the source does say (`decreases`, `increases` or `unchanged`), so the engine can flag "fiber lost to juicing" without inventing a number.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -147,6 +148,7 @@ How a preparation method changes a compound. `retention_factor` is `null` when n
 | `retention_factor` | numeric | yes |  |
 | `bioavailability_note` | text | yes |  |
 | `source_id` | uuid | yes |  |
+| `direction` | text | yes |  |
 
 ### `caution`
 

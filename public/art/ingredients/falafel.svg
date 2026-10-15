@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Falafel</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="130" cy="225" rx="98" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M198 167 Q208 164 214 173 Q224 177 223 188 Q228 197 220 204 Q217 215 207 215 Q198 222 189 215 Q179 215 176 204 Q168 197 173 188 Q172 177 182 173 Q188 164 198 167 Z" fill="#B0652B"/>
+    <path d="M128 52 Q141 46 151 56 Q166 55 172 68 Q185 72 187 86 Q198 94 195 108 Q203 120 195 132 Q198 146 187 154 Q185 168 172 172 Q166 185 151 184 Q141 194 128 188 Q115 194 105 184 Q90 185 84 172 Q71 168 69 154 Q58 146 61 132 Q53 120 61 108 Q58 94 69 86 Q71 72 84 68 Q91 55 105 56 Q115 46 128 52 Z" fill="#B0652B"/>
+    <path d="M58 161 Q69 158 75 167 Q86 170 86 181 Q92 190 86 199 Q86 210 75 213 Q69 222 58 219 Q47 222 41 213 Q30 210 30 199 Q24 190 30 181 Q30 170 41 167 Q47 158 58 161 Z" fill="#B0652B"/>
+  </g>
+  <circle cx="58" cy="190" r="19" fill="#86B04A" stroke="#5E8530" stroke-width="3"/>
+  <g fill="#3F6B22"><circle cx="52" cy="186" r="2.5"/><circle cx="64" cy="194" r="2.5"/><circle cx="62" cy="181" r="2"/><circle cx="51" cy="197" r="2"/></g>
+  <path d="M80 108 C80 84 96 66 116 60 C104 76 98 94 98 112 C92 118 80 116 80 108 Z" fill="#CF8A4C"/>
+  <path d="M144 72 L148 67 L152 72M168 94 L172 89 L176 94M180 126 L184 121 L188 126M168 158 L172 153 L176 158M144 178 L148 173 L152 178M114 182 L118 177 L122 182M88 168 L92 163 L96 168M128 64 L132 59 L136 64M106 84 L110 79 L114 84M186 188 L190 183 L194 188M202 200 L206 195 L210 200M192 204 L196 199 L200 204" stroke="#74401A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <ellipse cx="103" cy="137" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="137" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 137 Q128 145 136 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

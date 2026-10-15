@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lard</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="138" cy="225" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M70 88 C74 76 84 66 98 66 L200 66 C210 66 214 72 210 78 C206 84 200 88 190 88 Z" fill="#FFFFFF"/>
+    <path d="M186 90 L206 72 C211 69 214 72 214 78 L214 186 C214 193 211 197 206 201 L186 214 Z" fill="#DFDDD5"/>
+    <rect x="62" y="86" width="130" height="128" rx="16" fill="#F4F3EE"/>
+  </g>
+  <path d="M74 110 C74 102 78 98 84 98 L84 200 C78 198 74 194 74 186 Z" fill="#FFFFFF"/>
+  <g transform="translate(127 120)" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M-20 -4 C-20 -15 -8 -19 4 -17 C16 -15 22 -7 20 2 C18 9 10 10 6 13 C2 16 0 20 -6 19 C-12 18 -12 12 -15 8 C-19 4 -20 1 -20 -4 Z" fill="#FFF6EF"/>
+    <path d="M-14 -4 C-14 -11 -6 -14 3 -12 C12 -10 15 -5 14 0 C13 5 7 6 3 8 C-1 10 -3 13 -6 12 C-9 11 -9 7 -11 4 C-13 1 -14 -1 -14 -4 Z" fill="#F29A98" stroke="none"/>
+  </g>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pepperoni</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="226" rx="76" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <path d="M70 196 L70 204 C70 214 96 220 128 220 C160 220 186 214 186 204 L186 196 Z" fill="#B02E20"/>
+    <ellipse cx="128" cy="196" rx="58" ry="14" fill="#D8402E"/>
+    <path d="M62 182 L62 190 C62 200 88 206 120 206 C152 206 178 200 178 190 L178 182 Z" fill="#B02E20"/>
+    <ellipse cx="120" cy="182" rx="58" ry="14" fill="#D8402E"/>
+    <path d="M78 170 L78 176 C78 186 104 192 136 192 C168 192 194 186 194 176 L194 170 Z" fill="#B02E20"/>
+    <ellipse cx="136" cy="170" rx="58" ry="14" fill="#D8402E"/>
+    <circle cx="128" cy="110" r="64" fill="#D8402E"/>
+  </g>
+  <circle cx="128" cy="110" r="55" fill="none" stroke="#B02E20" stroke-width="4"/>
+  <path d="M78 96 C80 80 92 66 108 60 C98 74 92 88 92 104 C86 104 78 102 78 96 Z" fill="#EC6A54"/>
+  <g fill="#7E1A12">
+    <circle cx="128" cy="68" r="4"/><circle cx="152" cy="76" r="3"/><circle cx="174" cy="106" r="4"/><circle cx="168" cy="140" r="3"/>
+    <circle cx="140" cy="158" r="3.5"/><circle cx="108" cy="156" r="3"/><circle cx="84" cy="138" r="4"/><circle cx="118" cy="148" r="2"/>
+    <circle cx="176" cy="172" r="3"/><circle cx="104" cy="182" r="3"/><circle cx="150" cy="194" r="2.5"/><circle cx="86" cy="194" r="2.5"/>
+  </g>
+  <ellipse cx="103" cy="123" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="123" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="104" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="104" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="106" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="106" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="103" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="103" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 123 Q128 131 136 123" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

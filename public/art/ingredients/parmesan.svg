@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Parmesan</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="130" cy="224" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M184 40 L216 54 L216 200 L184 210 Z" fill="#7A4D1C"/>
+    <path d="M184 40 L172 48 L166 62 L154 70 L148 86 L134 96 L130 112 L116 122 L110 138 L96 146 L92 162 L78 170 L72 186 L60 192 L50 210 L184 210 Z" fill="#F0CD6A"/>
+    <path d="M30 204 L40 198 L46 206 L38 214 Z" fill="#F0CD6A" stroke-width="4"/>
+    <path d="M222 214 L230 210 L234 218 L226 222 Z" fill="#F0CD6A" stroke-width="4"/>
+  </g>
+  <path d="M172 60 L176 56 L176 200 L170 202 Z" fill="#F8E3A0"/>
+  <g fill="#A8783A"><circle cx="200" cy="74" r="3"/><circle cx="200" cy="100" r="3"/><circle cx="200" cy="126" r="3"/><circle cx="200" cy="152" r="3"/><circle cx="200" cy="178" r="3"/></g>
+  <g fill="#FFF3CC"><circle cx="84" cy="196" r="2.5"/><circle cx="104" cy="180" r="2.5"/><circle cx="112" cy="200" r="2.5"/><circle cx="150" cy="114" r="2.5"/><circle cx="160" cy="92" r="2.5"/></g>
+  <ellipse cx="111" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="161" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="121" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="151" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="123" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="153" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="125" cy="155" r="1.9" fill="#FFFFFF"/>
+  <circle cx="155" cy="155" r="1.9" fill="#FFFFFF"/>
+  <path d="M128 175 Q136 183 144 175" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

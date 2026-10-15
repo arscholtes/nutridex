@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Soy milk</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="130" cy="225" rx="68" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M78 42 L178 42 L178 54 L78 54 Z" fill="#7DBB5E"/>
+    <path d="M165 92 L191 78 L191 198 L165 212 Z" fill="#E6D8B2"/>
+    <path d="M165 92 L191 78 L178 52 Z" fill="#5F9C44"/>
+    <path d="M65 92 L165 92 L178 52 L78 52 Z" fill="#7DBB5E"/>
+    <path d="M65 92 L165 92 L165 212 L65 212 Z" fill="#FBF2D8"/>
+  </g>
+  <path d="M75 104 L83 104 L83 198 L75 198 Z" fill="#FFFDF5"/>
+  <path d="M116 70 L148 70" stroke="#5F9C44" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="111" cy="114" rx="13" ry="10" fill="#F0D98F" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M106 114 Q111 118 116 113" stroke="#9C7A3A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M124 112 Q128 98 142 98 Q140 112 124 112 Z" fill="#7DBB5E" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="90" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="140" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="100" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="130" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="102" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="132" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="104" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="134" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M107 171 Q115 179 123 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

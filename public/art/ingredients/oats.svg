@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Oats</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <path d="M42 120 A17 17 0 0 1 50 92 A19 19 0 0 1 74 70 A19 19 0 0 1 104 58 A18 18 0 0 1 136 56 A18 18 0 0 1 166 62 A18 18 0 0 1 192 78 A16 16 0 0 1 208 100 A12 12 0 0 1 214 120 Z" fill="#EAD7A6"/>
+    <path d="M32 116 L224 116 C222 174 184 216 128 216 C72 216 34 174 32 116 Z" fill="#B9773F"/>
+  </g>
+  <g stroke="#C29E5E" stroke-width="3" fill="none">
+    <ellipse cx="80" cy="96" rx="12" ry="7" transform="rotate(-20 80 96)"/>
+    <ellipse cx="112" cy="80" rx="12" ry="7" transform="rotate(15 112 80)"/>
+    <ellipse cx="148" cy="82" rx="12" ry="7" transform="rotate(-10 148 82)"/>
+    <ellipse cx="180" cy="98" rx="12" ry="7" transform="rotate(25 180 98)"/>
+    <ellipse cx="98" cy="108" rx="12" ry="7" transform="rotate(30 98 108)"/>
+    <ellipse cx="160" cy="110" rx="12" ry="7" transform="rotate(-25 160 110)"/>
+    <ellipse cx="132" cy="104" rx="12" ry="7" transform="rotate(5 132 104)"/>
+  </g>
+  <path d="M52 146 C58 172 76 194 100 204 C76 202 56 182 50 154 Z" fill="#D39A62"/>
+  <path d="M130 60 Q132 50 140 42" stroke="#1B1B1F" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M130 60 Q132 50 140 42" stroke="#B9BF72" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M140 46 Q156 38 154 22 Q138 28 140 46 Z" fill="#E3E3A8" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="103" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="163" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="163" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 183 Q128 191 136 183" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

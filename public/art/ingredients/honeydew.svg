@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Honeydew</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M133 52 C144 38 162 36 168 46 C173 55 165 63 157 59 C151 56 153 48 159 49" stroke="#5E8F2E" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M121 66 C121 58 123 52 126 48 L134 50 C133 56 135 62 135 66 Z" fill="#A08A4E"/>
+  <ellipse cx="128" cy="140" rx="94" ry="76" fill="#DCEDB4"/>
+  </g>
+  <ellipse cx="74" cy="112" rx="12" ry="28" fill="#F1F8DF" transform="rotate(40 74 112)"/>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cabbage</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="68" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="128" cy="130" r="76" fill="#C6E4A6"/>
+    <path d="M62 92 C42 124 42 178 90 202 C102 208 116 212 128 212 C102 194 86 166 88 136 C89 116 80 100 62 92 Z" fill="#8BC46A"/>
+    <path d="M194 92 C214 124 214 178 166 202 C154 208 140 212 128 212 C154 194 170 166 168 136 C167 116 176 100 194 92 Z" fill="#8BC46A"/>
+  </g>
+  <ellipse cx="94" cy="96" rx="8" ry="13" fill="#E3F3CF" transform="rotate(35 94 96)"/>
+  <g stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M86 78 Q128 56 170 78" stroke="#9CCB7A"/>
+    <path d="M68 112 C62 146 70 176 98 198" stroke="#5E9C45"/>
+    <path d="M188 112 C194 146 186 176 158 198" stroke="#5E9C45"/>
+  </g>
+  <ellipse cx="103" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="129" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="129" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 149 Q128 157 136 149" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

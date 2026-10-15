@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Carob</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="128" cy="224" rx="80" ry="8" fill="#000" opacity="0.14"/>
+  <g transform="translate(126 130) rotate(-28)">
+    <path d="M110 -8 L124 -16" stroke="#1B1B1F" stroke-width="13" stroke-linecap="round"/>
+    <path d="M110 -8 L124 -16" stroke="#6B4A2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-108 6 C-80 -40 -30 -50 10 -48 C60 -46 96 -30 112 -6 C116 2 112 10 104 12 C70 20 40 34 0 36 C-40 38 -80 34 -104 22 C-112 18 -112 10 -108 6 Z" fill="#43271A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M-80 -16 C-60 -34 -30 -40 0 -40 C-26 -34 -52 -24 -70 -8 Z" fill="#6A4330"/>
+    <path d="M-96 20 C-76 27 -40 29 0 27 C40 25 70 12 100 4M-92 2 C-68 -32 -28 -39 10 -38 C54 -36 86 -22 102 -4" stroke="#8C5E40" stroke-width="4" stroke-linecap="round" fill="none"/>
+  </g>
+  <ellipse cx="123" cy="129" rx="40" ry="25" fill="#43271A"/>
+  <ellipse cx="98" cy="137" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="148" cy="137" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="108" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="138" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="110" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="140" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="112" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="142" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M115 137 Q123 145 131 137" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

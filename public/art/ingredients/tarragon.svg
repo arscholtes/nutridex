@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tarragon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="58" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 200 L128 220" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 200 L128 220" stroke="#8CCB6E" stroke-width="8" stroke-linecap="round"/>
+  <path d="M122 200 L116 173 L108 149 L98 129 L85 112 L72 100 L57 94 L43 94 L31 102 L24 116 L35 107 L45 104 L54 106 L63 112 L74 122 L86 136 L98 154 L110 176 L122 200Z M124 200 L122 168 L117 138 L111 112 L103 89 L93 69 L82 54 L69 43 L57 36 L44 36 L54 42 L63 50 L72 62 L80 77 L89 95 L98 116 L107 141 L116 169 L124 200Z M134 200 L146 176 L158 154 L170 136 L182 122 L193 112 L202 106 L211 104 L221 107 L232 116 L225 102 L213 94 L199 94 L184 100 L171 112 L158 129 L148 149 L140 173 L134 200Z M132 200 L140 169 L149 141 L158 116 L167 95 L176 77 L184 62 L193 50 L202 42 L212 36 L199 36 L187 43 L174 54 L163 69 L153 89 L145 112 L139 138 L134 168 L132 200Z" fill="#3A8F3C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M128 26 C144 56 172 100 172 138 C172 176 150 200 128 210 C106 200 84 176 84 138 C84 100 112 56 128 26 Z" fill="#4DAE48" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M96 120 C98 94 108 66 120 46 C114 72 110 98 110 126 C106 134 96 132 96 120 Z" fill="#8FDC7E"/>
+  <path d="M128 40 L128 104 M128 172 L128 200" stroke="#2F7E33" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 157 Q128 165 136 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

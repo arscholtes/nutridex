@@ -122,14 +122,20 @@ export const absorptionModifier = pgTable(
   () => [gradeIsKnown("absorption_modifier")],
 );
 
-export const prepEffect = pgTable("prep_effect", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  compoundId: uuid("compound_id").references(() => compound.id, { onDelete: "cascade" }),
-  prepMethod: text("prep_method"),
-  retentionFactor: amount("retention_factor"),
-  bioavailabilityNote: text("bioavailability_note"),
-  sourceId: uuid("source_id").references(() => source.id),
-});
+export const prepEffect = pgTable(
+  "prep_effect",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    compoundId: uuid("compound_id").references(() => compound.id, { onDelete: "cascade" }),
+    prepMethod: text("prep_method"),
+    retentionFactor: amount("retention_factor"),
+    bioavailabilityNote: text("bioavailability_note"),
+    sourceId: uuid("source_id").references(() => source.id),
+    // Which way the prep moves the compound, for sources that say so without giving a number.
+    direction: text("direction"),
+  },
+  () => [check("prep_effect_direction_known", sql`direction in ('decreases', 'increases', 'unchanged')`)],
+);
 
 export const caution = pgTable(
   "caution",

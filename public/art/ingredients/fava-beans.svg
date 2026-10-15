@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Fava beans</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="124" cy="224" rx="98" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 190C110.6 190 98.2 188.2 87.6 185C77 181.8 66.5 176.6 58.4 170.7C50.2 164.7 43.2 157 38.9 149.3C34.5 141.5 32 132.4 32 124C32 115.6 34.5 106.5 38.9 98.7C43.2 91 50.2 83.3 58.4 77.3C66.5 71.4 77 66.2 87.6 63C98.2 59.8 110.6 58 122 58C133.4 58 146.1 59.8 156.2 63C166.3 66.2 175.9 71.4 182.6 77.3C189.3 83.3 193.5 91 196.4 98.7C199.3 106.5 200 115.6 200 124C200 132.4 199.3 141.5 196.4 149.3C193.5 157 189.3 164.7 182.6 170.7C175.9 176.6 166.3 181.8 156.2 185C146.1 188.2 133.4 190 122 190Z" fill="#86BD52"/>
+    <path d="M202.1 220.7C197.7 222.4 191.8 223 187.5 222.4C183.2 221.8 178.7 219.7 176.2 217.1C173.6 214.5 172.2 210.4 172.4 206.7C172.6 203.1 174.7 198.6 177.6 195.3C180.6 192.1 185.5 188.9 189.9 187.3C194.3 185.6 200.2 184.9 204.1 185.7C208 186.5 211.2 189.1 213.3 191.8C215.5 194.6 217 198.7 217.1 202.2C217.2 205.7 216.5 209.7 214 212.8C211.5 215.9 206.5 219.1 202.1 220.7Z" fill="#86BD52"/>
+  </g>
+<ellipse cx="70" cy="98" rx="7" ry="20" fill="#B3D886" transform="rotate(52 70 98)"/>
+  <ellipse cx="186" cy="124" rx="6" ry="24" fill="#2C2A1E"/><ellipse cx="212" cy="198.2" rx="3" ry="8" fill="#2C2A1E" transform="rotate(-20 212 198.2)"/>
+  <ellipse cx="91" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="141" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="101" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="131" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="103" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="133" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="135" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M108 143 Q116 151 124 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

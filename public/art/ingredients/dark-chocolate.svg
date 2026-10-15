@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Dark chocolate</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8ECF3"/>
+  <ellipse cx="136" cy="223" rx="86" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4A2A1D">
+    <path d="M76 46 L146 46 L152 58 L162 54 L168 68 L178 70 L188 84 L188 204 C188 209 184 212 180 212 L76 212 C71 212 68 209 68 204 L68 54 C68 49 71 46 76 46 Z"/>
+    <path d="M200 194 L214 186 L226 196 L222 212 L202 212 Z" stroke-width="5"/>
+  </g>
+  <path d="M78 62 L86 62 L86 198 L78 198 Z" fill="#6E4433"/>
+  <g stroke="#7A4C38" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M108 52 L108 206 M148 52 L148 206 M74 88 L182 88 M74 129 L182 129 M74 170 L182 170"/>
+    <path d="M208 196 L216 202"/>
+  </g>
+  <rect x="86" y="120" width="84" height="64" rx="14" fill="#4A2A1D" stroke="#7A4C38" stroke-width="4"/>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

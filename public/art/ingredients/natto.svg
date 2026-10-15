@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Natto</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="128" cy="225" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M104 194 L152 194 L156 212 L100 212 Z" fill="#8E2229"/>
+    <path d="M54 112 C54 172 90 200 128 200 C166 200 202 172 202 112 Z" fill="#B8323A"/>
+    <path d="M56 114 C52 96 66 84 84 86 C90 70 112 66 124 74 C136 64 162 66 168 80 C186 78 204 92 200 114 C190 124 160 130 128 130 C96 130 66 124 56 114 Z" fill="#7A4A1E"/>
+  </g>
+  <path d="M66 136 C70 160 84 178 100 186 C88 170 80 154 78 138 Z" fill="#D9585F"/>
+  <g fill="#B5793A" stroke="#4E2C10" stroke-width="3"><ellipse cx="76" cy="104" rx="10" ry="7"/><ellipse cx="98" cy="96" rx="10" ry="7"/><ellipse cx="122" cy="90" rx="10" ry="7"/><ellipse cx="148" cy="92" rx="10" ry="7"/><ellipse cx="172" cy="98" rx="10" ry="7"/><ellipse cx="186" cy="110" rx="10" ry="7"/><ellipse cx="88" cy="118" rx="10" ry="7"/><ellipse cx="112" cy="112" rx="10" ry="7"/><ellipse cx="136" cy="110" rx="10" ry="7"/><ellipse cx="160" cy="116" rx="10" ry="7"/><ellipse cx="110" cy="80" rx="10" ry="7"/><ellipse cx="150" cy="78" rx="10" ry="7"/></g>
+  <g fill="none" stroke-linecap="round"><path d="M222 29 L162 44M227 41 L166 53" stroke="#1B1B1F" stroke-width="11"/><path d="M222 29 L162 44M227 41 L166 53" stroke="#D9B27A" stroke-width="5"/></g>
+  <path d="M150 50 C140 62 150 72 136 84M156 52 C162 66 150 76 156 90M146 46 C126 54 130 70 114 76M162 48 C178 58 172 74 184 88M80 112 Q92 98 104 108" stroke="#9C9378" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M150 50 C140 62 150 72 136 84M156 52 C162 66 150 76 156 90M146 46 C126 54 130 70 114 76M162 48 C178 58 172 74 184 88M80 112 Q92 98 104 108" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <ellipse cx="156" cy="46" rx="11" ry="8" fill="#B5793A" stroke="#1B1B1F" stroke-width="3" transform="rotate(-20 156 46)"/>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

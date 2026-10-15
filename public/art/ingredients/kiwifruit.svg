@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Kiwifruit</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="138" rx="90" ry="80" fill="#8A6538" stroke="#1B1B1F" stroke-width="6"/>
+  <path d="M204 147L211 148M199 164L206 167M189 180L195 184M175 193L179 198M157 202L160 208M138 206L139 213M118 206L117 213M99 202L96 208M81 193L77 198M67 180L61 184M57 164L50 167M52 147L45 148M52 129L45 128M57 112L50 109M67 96L61 92M81 83L77 78M99 74L96 68M118 70L117 63M138 70L139 63M157 74L160 68M175 83L179 78M189 96L195 92M199 112L206 109M204 129L211 128" stroke="#5C4022" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="128" cy="138" rx="74" ry="65" fill="#76BE3C" stroke="#5C4022" stroke-width="3"/>
+  <path d="M68 128 C70 100 90 82 112 76 C96 92 86 110 84 130 C80 136 68 136 68 128 Z" fill="#A6DB6E"/>
+  <ellipse cx="128" cy="144" rx="48" ry="32" fill="#F2F4CF"/>
+  <g fill="#1B1B1F"><ellipse cx="191" cy="138" rx="2.6" ry="5.5" transform="rotate(90 191 138)"/><ellipse cx="187" cy="155" rx="2.6" ry="5.5" transform="rotate(106 187 155)"/><ellipse cx="176" cy="170" rx="2.6" ry="5.5" transform="rotate(124 176 170)"/><ellipse cx="160" cy="181" rx="2.6" ry="5.5" transform="rotate(144 160 181)"/><ellipse cx="139" cy="187" rx="2.6" ry="5.5" transform="rotate(167 139 187)"/><ellipse cx="117" cy="187" rx="2.6" ry="5.5" transform="rotate(193 117 187)"/><ellipse cx="97" cy="181" rx="2.6" ry="5.5" transform="rotate(216 97 181)"/><ellipse cx="80" cy="170" rx="2.6" ry="5.5" transform="rotate(236 80 170)"/><ellipse cx="69" cy="155" rx="2.6" ry="5.5" transform="rotate(254 69 155)"/><ellipse cx="65" cy="138" rx="2.6" ry="5.5" transform="rotate(270 65 138)"/><ellipse cx="69" cy="121" rx="2.6" ry="5.5" transform="rotate(-74 69 121)"/><ellipse cx="80" cy="106" rx="2.6" ry="5.5" transform="rotate(-56 80 106)"/><ellipse cx="96" cy="95" rx="2.6" ry="5.5" transform="rotate(-36 96 95)"/><ellipse cx="117" cy="89" rx="2.6" ry="5.5" transform="rotate(-13 117 89)"/><ellipse cx="139" cy="89" rx="2.6" ry="5.5" transform="rotate(13 139 89)"/><ellipse cx="159" cy="95" rx="2.6" ry="5.5" transform="rotate(36 159 95)"/><ellipse cx="176" cy="106" rx="2.6" ry="5.5" transform="rotate(56 176 106)"/><ellipse cx="187" cy="121" rx="2.6" ry="5.5" transform="rotate(74 187 121)"/></g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pecan</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="224" rx="50" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 32 C158 42 182 86 182 128 C182 170 160 200 136 212 C131 215 125 215 120 212 C96 200 74 170 74 128 C74 86 98 42 128 32 Z" fill="#A04A2A"/>
+  <path d="M84 124 C84 102 92 82 106 64 C100 86 96 104 96 124 C92 132 84 132 84 124 Z" fill="#CF7A56"/>
+  <g fill="#3A1F14">
+    <path d="M128 34 C136 50 138 74 130 100 C124 80 120 56 128 34 Z"/>
+    <path d="M150 50 C160 66 166 86 162 108 C154 92 148 72 150 50 Z"/>
+    <path d="M116 46 C112 60 112 76 116 90 C108 80 106 62 116 46 Z"/>
+    <path d="M100 178 C106 190 116 202 126 210 C112 208 102 194 100 178 Z"/>
+    <path d="M156 178 C154 192 146 202 134 210 C148 206 156 194 156 178 Z"/>
+  </g>
+  <path d="M128 32 C158 42 182 86 182 128 C182 170 160 200 136 212 C131 215 125 215 120 212 C96 200 74 170 74 128 C74 86 98 42 128 32 Z" fill="none" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="103" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 155 Q128 163 136 155" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

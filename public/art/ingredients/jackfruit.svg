@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Jackfruit</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="58" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M118 52 C118 42 116 34 112 26 L128 24 C130 32 132 42 134 50 Z" fill="#6E5A2E"/>
+    <path d="M128 48A11 11 0 0 1 140.5 49.7A11 11 0 0 1 152.5 54.5A11 11 0 0 1 163.6 62.5A11 11 0 0 1 173.3 73.2A11 11 0 0 1 181.2 86.2A11 11 0 0 1 187.1 101.1A11 11 0 0 1 190.8 117.2A11 11 0 0 1 192 134A11 11 0 0 1 190.8 150.8A11 11 0 0 1 187.1 166.9A11 11 0 0 1 181.2 181.8A11 11 0 0 1 173.3 194.8A11 11 0 0 1 163.6 205.5A11 11 0 0 1 152.5 213.5A11 11 0 0 1 140.5 218.3A11 11 0 0 1 128 220A11 11 0 0 1 115.5 218.3A11 11 0 0 1 103.5 213.5A11 11 0 0 1 92.4 205.5A11 11 0 0 1 82.7 194.8A11 11 0 0 1 74.8 181.8A11 11 0 0 1 68.9 166.9A11 11 0 0 1 65.2 150.8A11 11 0 0 1 64 134A11 11 0 0 1 65.2 117.2A11 11 0 0 1 68.9 101.1A11 11 0 0 1 74.8 86.2A11 11 0 0 1 82.7 73.2A11 11 0 0 1 92.4 62.5A11 11 0 0 1 103.5 54.5A11 11 0 0 1 115.5 49.7A11 11 0 0 1 128 48Z" fill="#B9C540"/>
+  </g>
+  <ellipse cx="90" cy="102" rx="8" ry="24" fill="#D6DE7A" transform="rotate(18 90 102)"/>
+  <path d="M124.5 61h0M139.5 61h0M102 74h0M117 74h0M132 74h0M147 74h0M94.5 87h0M109.5 87h0M124.5 87h0M139.5 87h0M154.5 87h0M169.5 87h0M87 100h0M102 100h0M117 100h0M132 100h0M147 100h0M162 100h0M79.5 112.9h0M94.5 112.9h0M154.5 112.9h0M169.5 112.9h0M87 125.9h0M177 125.9h0M79.5 138.9h0M177 151.9h0M79.5 164.9h0M169.5 164.9h0M87 177.9h0M102 177.9h0M162 177.9h0M94.5 190.9h0M109.5 190.9h0M124.5 190.9h0M139.5 190.9h0M154.5 190.9h0M117 203.9h0M132 203.9h0M147 203.9h0" stroke="#7E8E22" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="103" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 155 Q128 163 136 155" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Baking powder</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EFE9E2"/>
+  <ellipse cx="128" cy="224" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M66 80 L66 196 C66 208 94 214 128 214 C162 214 190 208 190 196 L190 80 Z" fill="#E2574C"/>
+    <path d="M62 66 L62 88 C62 98 92 104 128 104 C164 104 194 98 194 88 L194 66 Z" fill="#C3C9D2"/>
+    <ellipse cx="128" cy="66" rx="66" ry="16" fill="#E3E7EC"/>
+  </g>
+  <ellipse cx="128" cy="66" rx="48" ry="9" fill="none" stroke="#A3ABB6" stroke-width="3"/>
+  <path d="M78 116 C80 112 84 110 88 112 L88 194 C84 194 80 190 78 186 Z" fill="#EE8A80"/>
+  <circle cx="128" cy="128" r="18" fill="#FFF3DD" stroke="#1B1B1F" stroke-width="3"/>
+  <g stroke="#1B1B1F" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" transform="translate(128 130) scale(1.15) translate(-128 -130)">
+    <path d="M118 133 L138 133 L136 142 L120 142 Z" fill="#9A6440"/>
+    <path d="M114 134 C113 122 143 122 142 134 Z" fill="#F2C27B"/>
+    <path d="M128 120 L128 115 M124.5 118 L128 114.5 L131.5 118" fill="none" stroke-width="2.2"/>
+  </g>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

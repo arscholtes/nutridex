@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Potato</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="70" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M120 60 C158 54 200 70 208 108 C216 146 196 196 146 208 C104 218 58 204 50 160 C42 116 72 68 120 60 Z" fill="#DDB273" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="82" cy="104" rx="10" ry="24" fill="#EDCF9C" transform="rotate(32 82 104)"/>
+  <g fill="#8E6234">
+    <circle cx="170" cy="86" r="5"/>
+    <circle cx="190" cy="150" r="5"/>
+    <circle cx="70" cy="160" r="4.5"/>
+    <circle cx="112" cy="190" r="5"/>
+    <circle cx="162" cy="186" r="4.5"/>
+  </g>
+  <ellipse cx="103" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="129" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="129" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 149 Q128 157 136 149" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

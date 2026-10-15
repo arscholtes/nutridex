@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pine nut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="225" rx="86" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#EFDDB0">
+    <path d="M0 -20 C8 -12 12 0 12 8 C12 16 6 20 0 20 C-6 20 -12 16 -12 8 C-12 0 -8 -12 0 -20 Z" transform="translate(60 200) rotate(-70)"/>
+    <path d="M0 -20 C8 -12 12 0 12 8 C12 16 6 20 0 20 C-6 20 -12 16 -12 8 C-12 0 -8 -12 0 -20 Z" transform="translate(196 202) rotate(75)"/>
+    <path d="M0 -20 C8 -12 12 0 12 8 C12 16 6 20 0 20 C-6 20 -12 16 -12 8 C-12 0 -8 -12 0 -20 Z" transform="translate(204 160) rotate(20) scale(0.8)"/>
+  </g>
+  <path d="M128 36 C146 50 174 100 174 148 C174 184 154 206 128 206 C102 206 82 184 82 148 C82 100 110 50 128 36 Z" fill="#F3E5BF"/>
+  <path d="M117 52 C122 44 126 38 128 36 C130 38 134 44 139 52 C132 56 124 56 117 52 Z" fill="#B88A52"/>
+  <path d="M100 110 C100 92 106 76 116 62 C114 80 112 96 110 112 C106 118 100 118 100 110 Z" fill="#FFF8E6"/>
+  <path d="M128 36 C146 50 174 100 174 148 C174 184 154 206 128 206 C102 206 82 184 82 148 C82 100 110 50 128 36 Z" fill="none" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="103" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="143" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="143" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 163 Q128 171 136 163" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

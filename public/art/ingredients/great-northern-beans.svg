@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Great northern beans</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="128" cy="224" rx="96" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M218 120C218 126.9 215.4 134.3 210.8 140.7C206.3 147 198.9 153.3 190.5 158.2C182 163.1 171.1 167.3 160 169.9C148.9 172.5 136 174 124 174C112 174 99.1 172.5 88 169.9C76.9 167.3 66 163.1 57.5 158.2C49.1 153.3 41.7 147 37.2 140.7C32.6 134.3 30 126.9 30 120C30 113.1 32.6 105.5 37.2 99.5C41.7 93.5 49.1 87.7 57.5 83.8C66 79.9 76.9 77.6 88 75.9C99.1 74.3 112 74 124 74C136 74 148.9 74.3 160 75.9C171.1 77.6 182 79.9 190.5 83.8C198.9 87.7 206.3 93.5 210.8 99.5C215.4 105.5 218 113.1 218 120Z" fill="#F1ECDC"/>
+    <path d="M221 193.9C221.9 196.6 221.1 200.7 219 203.9C216.9 207.1 212.6 210.8 208.2 213.2C203.8 215.5 197.7 217.5 192.7 218.2C187.8 218.8 182.1 218.4 178.5 217C174.9 215.7 171.9 212.9 171 210.1C170.1 207.4 170.8 203.3 173.1 200.4C175.3 197.5 179.9 194.7 184.4 192.6C188.8 190.4 195 188.4 199.9 187.6C204.7 186.7 210.1 186.2 213.6 187.2C217.1 188.3 220.1 191.1 221 193.9Z" fill="#F1ECDC"/>
+  </g>
+<ellipse cx="66" cy="108" rx="6" ry="18" fill="#FDFBF4" transform="rotate(60 66 108)"/>
+  <ellipse cx="99" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="149" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="109" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="139" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="111" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="143" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M116 131 Q124 139 132 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

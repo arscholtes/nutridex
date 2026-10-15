@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Peppermint</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="54" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 192 L128 220" stroke="#1B1B1F" stroke-width="18" stroke-linecap="round"/>
+  <path d="M128 192 L128 220" stroke="#8E4FA8" stroke-width="9" stroke-linecap="round"/>
+  <g stroke-linejoin="round">
+    <path d="M122 186 L112 176 L102 169 L94 171 L84 168 L77 173 L67 173 L60 179 L51 182 L44 190 L36 200 L47 207 L56 212 L65 212 L74 216 L83 213 L91 215 L100 209 L108 208 L116 199 L122 186 Z" fill="#2B5E48" stroke="#1B1B1F" stroke-width="9"/>
+    <path d="M134 186 L140 199 L148 208 L156 209 L165 215 L173 213 L182 216 L191 212 L200 212 L209 207 L220 200 L212 190 L205 182 L196 179 L189 173 L179 173 L172 168 L162 171 L154 169 L144 176 L134 186 Z" fill="#2B5E48" stroke="#1B1B1F" stroke-width="9"/>
+    <path d="M122 186 L112 176 L102 169 L94 171 L84 168 L77 173 L67 173 L60 179 L51 182 L44 190 L36 200 L47 207 L56 212 L65 212 L74 216 L83 213 L91 215 L100 209 L108 208 L116 199 L122 186 Z M134 186 L140 199 L148 208 L156 209 L165 215 L173 213 L182 216 L191 212 L200 212 L209 207 L220 200 L212 190 L205 182 L196 179 L189 173 L179 173 L172 168 L162 171 L154 169 L144 176 L134 186 Z" fill="none" stroke="#A766C4" stroke-width="3"/>
+    <path d="M128 194 L157 186 L178 175 L181 167 L196 157 L194 148 L205 138 L199 130 L208 119 L200 111 L205 101 L195 92 L198 82 L186 74 L184 63 L171 55 L164 45 L150 36 L128 26 L106 36 L92 45 L85 55 L72 63 L70 74 L58 82 L61 92 L51 101 L56 111 L48 119 L57 130 L51 138 L62 148 L60 157 L75 167 L78 175 L99 186 L128 194 Z" fill="#2F6E4E" stroke="#1B1B1F" stroke-width="9"/>
+    <path d="M128 194 L157 186 L178 175 L181 167 L196 157 L194 148 L205 138 L199 130 L208 119 L200 111 L205 101 L195 92 L198 82 L186 74 L184 63 L171 55 L164 45 L150 36 L128 26 L106 36 L92 45 L85 55 L72 63 L70 74 L58 82 L61 92 L51 101 L56 111 L48 119 L57 130 L51 138 L62 148 L60 157 L75 167 L78 175 L99 186 L128 194 Z" fill="none" stroke="#A766C4" stroke-width="3"/>
+  </g>
+  <path d="M72 126 C74 100 92 72 110 58 C100 80 94 104 92 130 C86 140 72 136 72 126 Z" fill="#4A8C68"/>
+  <g stroke="#B57BD0" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M128 42 L128 90"/>
+    <path d="M128 60 L116 52"/>
+    <path d="M128 76 L142 68"/>
+    <path d="M100 190 L60 196"/>
+    <path d="M156 190 L196 196"/>
+  </g>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

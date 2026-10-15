@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Capers</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="225" rx="66" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M82 82 L174 82 L174 92 C188 96 194 108 194 122 L194 194 C194 205 186 212 175 212 L81 212 C70 212 62 205 62 194 L62 122 C62 108 68 96 82 92 Z" fill="#E4EAC6"/>
+  <rect x="70" y="116" width="8" height="68" rx="4" fill="#F6F8EA"/>
+  <g stroke="#1B1B1F" stroke-width="3" fill="#7A8A36">
+    <circle cx="84" cy="196" r="8.5"/><circle cx="104" cy="198" r="8.5"/><circle cx="125" cy="196" r="8.5"/>
+    <circle cx="146" cy="198" r="8.5"/><circle cx="167" cy="196" r="8.5"/><circle cx="180" cy="178" r="8.5"/>
+    <circle cx="178" cy="154" r="8.5"/><circle cx="178" cy="130" r="8.5"/><circle cx="170" cy="108" r="8.5"/>
+    <circle cx="108" cy="112" r="8.5"/><circle cx="130" cy="106" r="8.5"/><circle cx="150" cy="114" r="8.5"/>
+    <circle cx="88" cy="104" r="8.5"/>
+  </g>
+  <g fill="#A3B25A">
+    <circle cx="82" cy="193" r="2.6"/><circle cx="102" cy="195" r="2.6"/><circle cx="123" cy="193" r="2.6"/>
+    <circle cx="144" cy="195" r="2.6"/><circle cx="165" cy="193" r="2.6"/><circle cx="178" cy="175" r="2.6"/>
+    <circle cx="176" cy="151" r="2.6"/><circle cx="176" cy="127" r="2.6"/><circle cx="168" cy="105" r="2.6"/>
+    <circle cx="106" cy="109" r="2.6"/><circle cx="128" cy="103" r="2.6"/><circle cx="148" cy="111" r="2.6"/>
+    <circle cx="86" cy="101" r="2.6"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M82 82 L174 82 L174 92 C188 96 194 108 194 122 L194 194 C194 205 186 212 175 212 L81 212 C70 212 62 205 62 194 L62 122 C62 108 68 96 82 92 Z" fill="none"/>
+    <rect x="74" y="60" width="108" height="24" rx="6" fill="#5F7F35"/>
+  </g>
+  <path d="M90 67 L90 77 M104 67 L104 77 M152 67 L152 77 M166 67 L166 77" stroke="#3F5A20" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

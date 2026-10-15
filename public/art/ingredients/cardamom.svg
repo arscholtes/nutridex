@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cardamom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="96" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#9DBE6C">
+    <path d="M32 198 C42 178 76 178 86 198 C76 218 42 218 32 198 Z" transform="rotate(-18 59 198)"/>
+    <path d="M170 198 C180 178 214 178 224 198 C214 218 180 218 170 198 Z" transform="rotate(18 197 198)"/>
+    <path d="M122 44 L123 28 L133 28 L134 44 Z" fill="#8C9A58"/>
+    <path d="M128 40 C180 62 190 150 152 200 Q128 222 104 200 C66 150 76 62 128 40 Z" fill="#AECB7E"/>
+  </g>
+  <path d="M94 88 C96 70 106 58 118 50 C110 64 106 80 106 98 C102 104 92 100 94 88 Z" fill="#D3E6A8"/>
+  <g stroke="#7E9F52" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M106 60 C84 100 84 160 110 204"/>
+    <path d="M150 60 C172 100 172 160 146 204"/>
+    <path d="M128 48 L128 98"/>
+    <path d="M128 168 L128 208"/>
+    <path d="M40 198 Q59 192 78 198" transform="rotate(-18 59 198)"/>
+    <path d="M178 198 Q197 192 216 198" transform="rotate(18 197 198)"/>
+  </g>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

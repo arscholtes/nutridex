@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Vinegar</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="56" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M112 50 L112 88 C112 100 82 104 82 124 L82 198 C82 206 88 212 96 212 L160 212 C168 212 174 206 174 198 L174 124 C174 104 144 100 144 88 L144 50 Z" fill="#D98A2B"/>
+  <rect x="112" y="50" width="32" height="20" fill="#F1E9D6"/>
+  <path d="M112 70 L144 70" stroke="#A8601A" stroke-width="3"/>
+  <rect x="90" y="128" width="9" height="66" rx="4.5" fill="#F0B562"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M112 50 L112 88 C112 100 82 104 82 124 L82 198 C82 206 88 212 96 212 L160 212 C168 212 174 206 174 198 L174 124 C174 104 144 100 144 88 L144 50 Z" fill="none"/>
+    <rect x="106" y="30" width="44" height="24" rx="6" fill="#C99A62"/>
+  </g>
+  <g fill="#9C6F3C">
+    <circle cx="118" cy="40" r="2"/><circle cx="130" cy="45" r="2"/><circle cx="140" cy="38" r="2"/>
+  </g>
+  <circle cx="128" cy="136" r="18" fill="#FFF3DD" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M129 129 L131 120" stroke="#6B4A2B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M132 124 Q139 117 144 121 Q138 128 132 124 Z" fill="#4E9A3E" stroke="#1B1B1F" stroke-width="2"/>
+  <path d="M128 130 C122 125 114 127 114 136 C114 145 121 150 128 148 C135 150 142 145 142 136 C142 127 134 125 128 130 Z" fill="#E53935" stroke="#1B1B1F" stroke-width="2.5"/>
+  <ellipse cx="103" cy="189" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="189" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="170" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="170" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="172" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="172" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="169" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="169" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 189 Q128 197 136 189" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

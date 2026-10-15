@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Butter</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="90" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="128" cy="198" rx="94" ry="19" fill="#CFE0F2"/>
+    <path d="M54 96 L84 64 L200 64 L170 96 Z" fill="#FDF0BE"/>
+    <path d="M170 96 L200 64 L200 170 L170 196 Z" fill="#EBCB62"/>
+    <rect x="54" y="96" width="116" height="100" fill="#F8DE84"/>
+  </g>
+  <rect x="62" y="106" width="7" height="80" rx="3.5" fill="#FDEFC0"/>
+  <ellipse cx="87" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 159 Q112 167 120 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

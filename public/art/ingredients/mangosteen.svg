@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mangosteen</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="128" cy="144" r="74" fill="#4A1D40"/>
+    <path d="M121 64 L121 44 C121 38 135 38 135 44 L135 64 Z" fill="#6E8F38"/>
+    <path d="M74 92 C72 70 92 60 108 72 C112 52 144 52 148 72 C164 60 184 70 182 92 C164 102 92 102 74 92 Z" fill="#5FA03E"/>
+  </g>
+  <path d="M110 74 C114 84 118 92 118 96 M146 74 C142 84 138 92 138 96" stroke="#3D7A2A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="80" cy="140" rx="8" ry="22" fill="#6E3462" transform="rotate(12 80 140)"/>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

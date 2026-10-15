@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Horseradish</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="140" cy="224" rx="84" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M100 50 L97 36 M116 48 L116 33 M132 50 L137 36" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M100 50 L97 36 M116 48 L116 33 M132 50 L137 36" stroke="#6BA64E" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M72 56 C84 40 148 40 160 56 C166 72 160 86 166 98 C170 110 160 120 158 134 C156 154 160 166 150 182 C142 196 134 206 122 214 C114 204 104 192 96 178 C88 162 94 150 86 134 C80 122 68 110 74 96 C78 84 64 72 72 56 Z" fill="#EEE3CB"/>
+    <path d="M148 214 C148 196 162 182 182 180 C202 182 216 196 216 214 Z" fill="#FBF8F0"/>
+  </g>
+  <path d="M88 140 C86 152 90 164 98 174 C100 164 98 152 96 142 C94 136 88 136 88 140 Z" fill="#FAF5E8"/>
+  <g stroke="#B09670" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M84 66 Q100 72 114 68 M124 68 Q140 72 154 64"/>
+    <path d="M106 146 Q118 152 130 148 M136 160 Q146 164 154 156 M104 172 Q116 178 130 174 M114 194 Q122 198 132 194"/>
+    <path d="M78 98 Q84 102 90 98 M156 98 Q160 104 166 102"/>
+  </g>
+  <g stroke="#C7BA98" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M164 204 q4 -6 8 0 M180 196 q4 -6 8 0 M194 206 q4 -6 8 0 M172 190 l6 -2 M190 186 l6 2"/>
+  </g>
+  <ellipse cx="101" cy="123" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="151" cy="123" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="111" cy="104" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="141" cy="104" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="113" cy="106" r="5.2" fill="#1B1B1F"/>
+  <circle cx="143" cy="106" r="5.2" fill="#1B1B1F"/>
+  <circle cx="115" cy="103" r="1.9" fill="#FFFFFF"/>
+  <circle cx="145" cy="103" r="1.9" fill="#FFFFFF"/>
+  <path d="M118 123 Q126 131 134 123" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

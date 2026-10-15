@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mussel</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="136" cy="224" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <g transform="rotate(40 128 128)">
+    <path d="M22 128 C40 100 90 74 150 70 C204 66 236 94 236 128 C236 164 204 188 150 188 C90 188 40 156 22 128 Z" fill="#26304A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M44 120 C74 98 116 86 164 84 C196 84 214 94 222 108 C200 98 170 96 140 98 C104 100 72 110 44 120 Z" fill="#5B6F9C"/>
+    <g stroke="#4A5A82" stroke-width="3.5" stroke-linecap="round" fill="none">
+      <path d="M62 112 C54 124 56 142 66 154"/>
+      <path d="M88 102 C76 120 78 152 94 170"/>
+      <path d="M212 104 C226 118 226 146 208 164"/>
+    </g>
+  </g>
+  <ellipse cx="127" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="177" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="137" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="167" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="139" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="169" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="171" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M144 155 Q152 163 160 155" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

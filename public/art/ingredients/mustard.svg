@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mustard</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="58" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M116 56 L124 36 C126 32 130 32 132 36 L140 56 Z" fill="#E09A00"/>
+    <rect x="102" y="54" width="52" height="22" rx="6" fill="#E09A00"/>
+    <path d="M80 96 C80 82 92 74 104 74 L152 74 C164 74 176 82 176 96 L176 196 C176 206 168 212 158 212 L98 212 C88 212 80 206 80 196 Z" fill="#F2BE22"/>
+  </g>
+  <rect x="88" y="98" width="9" height="90" rx="4.5" fill="#F9DA72"/>
+  <path d="M112 62 L112 68 M122 62 L122 68 M134 62 L134 68 M144 62 L144 68" stroke="#A86F00" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="128" cy="108" r="19" fill="#FFF6DC" stroke="#1B1B1F" stroke-width="3"/>
+  <g stroke="#1B1B1F" stroke-width="2.5" fill="#FFD21F">
+    <ellipse cx="128" cy="100" rx="5" ry="7"/>
+    <ellipse cx="128" cy="116" rx="5" ry="7"/>
+    <ellipse cx="120" cy="108" rx="7" ry="5"/>
+    <ellipse cx="136" cy="108" rx="7" ry="5"/>
+    <circle cx="128" cy="108" r="3.5" fill="#E07A00"/>
+  </g>
+  <ellipse cx="103" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 167 Q128 175 136 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

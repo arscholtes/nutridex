@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Currant</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+  <path d="M128 27 C126 44 128 70 128 110 M128 50 C110 54 96 62 86 76 M128 40 C146 44 162 52 172 66 M128 84 C104 96 86 116 76 136 M128 80 C152 92 170 112 180 134" stroke="#1B1B1F" stroke-width="11"/>
+  <path d="M128 27 C126 44 128 70 128 110 M128 50 C110 54 96 62 86 76 M128 40 C146 44 162 52 172 66 M128 84 C104 96 86 116 76 136 M128 80 C152 92 170 112 180 134" stroke="#7BA33A" stroke-width="4"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" fill="#E02A3C">
+  <circle cx="82" cy="94" r="21"/>
+  <circle cx="176" cy="84" r="21"/>
+  <circle cx="70" cy="156" r="24"/>
+  <circle cx="186" cy="154" r="24"/>
+  <circle cx="128" cy="152" r="50"/>
+  </g>
+  <ellipse cx="98" cy="122" rx="7" ry="13" fill="#FF7A86" transform="rotate(45 98 122)"/>
+  <ellipse cx="103" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="143" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="143" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 163 Q128 171 136 163" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

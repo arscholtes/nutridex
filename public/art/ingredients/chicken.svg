@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chicken</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M42 162 C40 124 80 102 124 102 C174 102 216 122 214 162 C212 196 176 212 128 212 C80 212 44 196 42 162 Z" fill="#E9A23B"/>
+    <g transform="translate(98 122) rotate(32)">
+      <path d="M-6 -46 L-6 -72 C-16 -70 -18 -84 -10 -86 C-6 -88 -2 -86 0 -83 C2 -86 6 -88 10 -86 C18 -84 16 -70 6 -72 L6 -46 Z" fill="#FFF3DF"/>
+      <path d="M0 -54 C12 -54 28 -34 28 -10 C28 10 16 20 0 20 C-16 20 -28 10 -28 -10 C-28 -34 -12 -54 0 -54 Z" fill="#DD9030"/>
+    </g>
+    <g transform="translate(150 124) rotate(32)">
+      <path d="M-6 -46 L-6 -72 C-16 -70 -18 -84 -10 -86 C-6 -88 -2 -86 0 -83 C2 -86 6 -88 10 -86 C18 -84 16 -70 6 -72 L6 -46 Z" fill="#FFF3DF"/>
+      <path d="M0 -54 C12 -54 28 -34 28 -10 C28 10 16 20 0 20 C-16 20 -28 10 -28 -10 C-28 -34 -12 -54 0 -54 Z" fill="#DD9030"/>
+    </g>
+  </g>
+  <path d="M58 152 C62 134 72 124 84 120 C76 138 74 160 78 182 C64 176 56 166 58 152 Z" fill="#F6C76C"/>
+  <g stroke="#B36A1E" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M184 178 C192 174 198 168 200 160"/>
+    <path d="M112 203 C122 206 134 206 144 203"/>
+  </g>
+  <ellipse cx="103" cy="186" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="186" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="167" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="167" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="169" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="169" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="166" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="166" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 186 Q128 194 136 186" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

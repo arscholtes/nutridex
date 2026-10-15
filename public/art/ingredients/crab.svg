@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Crab</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g stroke="#1B1B1F" stroke-width="16">
+      <path d="M66 160 L40 166 L32 184"/><path d="M72 176 L50 188 L46 204"/><path d="M190 160 L216 166 L224 184"/><path d="M184 176 L206 188 L210 204"/>
+      <path d="M80 124 L62 94"/><path d="M176 124 L194 94"/>
+    </g>
+    <g stroke="#F26A3D" stroke-width="5">
+      <path d="M66 160 L40 166 L32 184"/><path d="M72 176 L50 188 L46 204"/><path d="M190 160 L216 166 L224 184"/><path d="M184 176 L206 188 L210 204"/>
+      <path d="M80 124 L62 94"/><path d="M176 124 L194 94"/>
+    </g>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#F26A3D">
+    <path d="M46 96 C34 84 32 60 44 38 C50 48 56 58 60 66 C64 58 72 50 82 46 C90 64 84 88 70 98 C62 102 52 102 46 96 Z"/>
+    <path d="M210 96 C222 84 224 60 212 38 C206 48 200 58 196 66 C192 58 184 50 174 46 C166 64 172 88 186 98 C194 102 204 102 210 96 Z"/>
+    <path d="M128 102 C178 102 208 122 208 152 C208 182 174 198 128 198 C82 198 48 182 48 152 C48 122 78 102 128 102 Z"/>
+  </g>
+  <ellipse cx="84" cy="128" rx="9" ry="20" fill="#FF9670" transform="rotate(58 84 128)"/>
+  <g stroke="#C9461F" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M70 176 C82 184 96 188 108 190"/>
+    <path d="M186 176 C174 184 160 188 148 190"/>
+  </g>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

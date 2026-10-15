@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Dandelion greens</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#3D8432">
+    <path d="M116 194 L121 182 L106 167 L110 150 L88 141 L91 124 L66 119 L63 107 L40 99 L36 96 L38 100 L41 124 L52 130 L53 156 L70 156 L74 180 L92 179 L103 196 Z"/>
+    <path d="M140 194 L153 196 L164 179 L182 180 L186 156 L203 156 L204 130 L215 124 L218 100 L220 96 L216 99 L193 107 L190 119 L165 124 L168 141 L146 150 L150 167 L135 182 Z"/>
+  </g>
+  <path d="M110 186 L44 104 M146 186 L212 104" stroke="#B9DE9E" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M128 198 L155 189 L163 161 L185 146 L173 118 L187 103 L160 75 L161 60 L133 32 L128 26 L123 32 L95 60 L96 75 L69 103 L83 118 L71 146 L93 161 L101 189 Z" fill="#529E3E" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="112" cy="62" rx="5" ry="12" fill="#7BC067" transform="rotate(40 112 62)"/>
+  <path d="M122 195 C124 180 126 166 128 152 C130 166 132 180 134 195 Z" fill="#E8F2C8"/>
+  <path d="M128 172 L106 160 M128 172 L150 160" stroke="#E8F2C8" stroke-width="3.5" stroke-linecap="round"/>
+  <ellipse cx="103" cy="131" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="131" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 131 Q128 139 136 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

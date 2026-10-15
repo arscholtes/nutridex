@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Kefir</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="48" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M84 46 L172 46 L164 202 C163 208 159 212 153 212 L103 212 C97 212 93 208 92 202 Z" fill="#F8F4E4" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M87.2 49 L168.8 49 L168.2 62 L87.8 62 Z" fill="#D6E4F0"/>
+  <path d="M88 63 Q128 69 168 63" stroke="#D3C9A8" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M97 80 L103 80 L107 198 L102 198 Z" fill="#FFFFFF"/>
+  <g fill="none" stroke="#A9BBCC" stroke-width="3"><circle cx="156" cy="80" r="3.5"/><circle cx="160" cy="104" r="3"/><circle cx="104" cy="122" r="3"/><circle cx="152" cy="198" r="3.5"/><circle cx="116" cy="200" r="3"/><circle cx="158" cy="124" r="2.5"/></g>
+  <g stroke="#1B1B1F" stroke-width="3" fill="#F1E1B2">
+    <circle cx="115" cy="94" r="9"/><circle cx="141" cy="96" r="9"/><circle cx="128" cy="86" r="10"/><circle cx="121" cy="106" r="8"/><circle cx="135" cy="107" r="8"/>
+  </g>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

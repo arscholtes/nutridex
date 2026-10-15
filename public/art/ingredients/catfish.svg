@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Catfish</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#5E5446">
+    <path d="M190 124 C204 108 216 96 230 86 C226 106 220 120 214 132 C220 144 226 158 230 176 C216 166 204 154 190 140 Z"/>
+    <path d="M106 104 C110 82 118 70 124 66 C130 76 136 90 140 104 Z"/>
+    <path d="M162 112 C166 100 176 98 182 112 Z"/>
+    <path d="M120 166 C140 186 176 178 194 142 L180 140 Z"/>
+    <path d="M84 166 C86 182 98 192 112 190 C110 180 104 172 98 168 Z"/>
+    <path d="M30 140 C30 116 48 104 80 102 C112 100 150 100 190 118 L196 122 L196 140 C170 156 130 172 86 172 C52 172 30 162 30 140 Z" fill="#857868"/>
+  </g>
+  <path d="M46 120 C50 112 60 108 72 106 C64 112 58 118 54 126 Z" fill="#A99C8B"/>
+  <path d="M128 108 C136 124 136 150 126 166" stroke="#5E5446" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M38 126 C28 118 22 106 26 92M34 140 C22 150 20 170 30 186 C36 194 46 198 56 196M46 166 Q46 180 40 190" stroke="#1B1B1F" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="67" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="117" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="77" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="107" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="79" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="109" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="81" cy="125" r="1.9" fill="#FFFFFF"/>
+  <circle cx="111" cy="125" r="1.9" fill="#FFFFFF"/>
+  <path d="M84 145 Q92 153 100 145" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Black tea</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EFE9E2"/>
+  <ellipse cx="124" cy="224" rx="86" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M192 100 C224 94 224 150 184 148" stroke="#1B1B1F" stroke-width="20"/>
+    <path d="M192 100 C224 94 224 150 184 148" stroke="#CFE3F2" stroke-width="8"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="124" cy="202" rx="92" ry="15" fill="#CFE3F2"/>
+    <path d="M98 184 L150 184 L154 198 L94 198 Z" fill="#A9CBE6"/>
+    <path d="M50 76 C50 140 80 190 124 190 C168 190 198 140 198 76 Z" fill="#CFE3F2"/>
+    <ellipse cx="124" cy="76" rx="74" ry="16" fill="#CFE3F2"/>
+  </g>
+  <ellipse cx="124" cy="77" rx="63" ry="10.5" fill="#A3482B"/>
+  <path d="M64 96 C66 124 80 152 98 168 C76 162 62 130 60 98 Z" fill="#EEF5FB"/>
+  <path d="M90 77 C80 56 58 60 54 82 L48 118" stroke="#1B1B1F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <rect x="36" y="116" width="24" height="28" rx="3" fill="#F5C842" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round" transform="rotate(-8 48 130)"/>
+  <ellipse cx="99" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="149" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="109" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="139" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="111" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="119" r="1.9" fill="#FFFFFF"/>
+  <circle cx="143" cy="119" r="1.9" fill="#FFFFFF"/>
+  <path d="M116 139 Q124 147 132 139" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

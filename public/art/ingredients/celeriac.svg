@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Celeriac</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="66" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M118 66 L110 36 M128 64 L128 30 M138 66 L146 36" stroke="#1B1B1F" stroke-width="13"/>
+    <path d="M118 66 L110 36 M128 64 L128 30 M138 66 L146 36" stroke="#8CC46A" stroke-width="6"/>
+    <path d="M108 206 Q102 216 92 220 M128 212 Q131 222 126 230 M148 206 Q154 216 166 218" stroke="#1B1B1F" stroke-width="4"/>
+  </g>
+  <path d="M128 64 Q149 53 162 72 Q187 71 190 93 Q210 104 201 126 Q214 144 196 159 Q200 182 178 187 Q170 211 147 206 Q128 222 109 206 Q85 211 77 189 Q55 183 59 159 Q40 144 53 125 Q45 104 67 94 Q70 71 94 72 Q107 52 128 64 Z" fill="#E2D8B4" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="90" cy="96" rx="8" ry="18" fill="#F3EDD6" transform="rotate(50 90 96)"/>
+  <g stroke="#B39A68" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M168 98 Q174 94 180 98 M66 134 Q72 130 78 134 M74 170 Q80 174 86 170 M166 180 Q172 184 178 180 M120 192 Q128 196 136 192 M178 136 Q184 140 190 136"/>
+  </g>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

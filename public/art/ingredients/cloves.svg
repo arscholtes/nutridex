@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cloves</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="96" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#5C3321">
+    <g transform="translate(36 174) rotate(20)"><path d="M6 -8 L44 -3 Q48 0 44 3 L6 8 Z"/><circle r="11" fill="#8A5634"/></g>
+    <g transform="translate(126 206) rotate(185)"><path d="M6 -8 L44 -3 Q48 0 44 3 L6 8 Z"/><circle r="11" fill="#8A5634"/></g>
+    <g transform="translate(204 62) rotate(70)"><path d="M6 -8 L44 -3 Q48 0 44 3 L6 8 Z"/><circle r="11" fill="#8A5634"/></g>
+    <g transform="translate(100 96) rotate(-40)">
+      <path d="M-20 30 L-7 150 Q0 160 7 150 L20 30 Z"/>
+      <path d="M-26 40 L-56 10 Q-30 26 -12 22 L0 10 L12 22 Q30 26 56 10 L26 40 Q0 52 -26 40 Z"/>
+      <circle r="44" fill="#8A5634"/>
+      <path d="M0 64 L0 136" stroke="#8A5634" stroke-width="3"/>
+    </g>
+  </g>
+  <path d="M60 92 C62 72 76 58 92 54 C82 64 76 78 76 94 C72 100 60 100 60 92 Z" fill="#A8734D"/>
+  <g stroke="#5C3321" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M70 74 Q100 60 130 74"/>
+    <path d="M100 55 L100 66"/>
+  </g>
+  <ellipse cx="75" cy="111" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="125" cy="111" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="85" cy="92" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="115" cy="92" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="87" cy="94" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="94" r="5.2" fill="#1B1B1F"/>
+  <circle cx="89" cy="91" r="1.9" fill="#FFFFFF"/>
+  <circle cx="119" cy="91" r="1.9" fill="#FFFFFF"/>
+  <path d="M92 111 Q100 119 108 111" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Corn</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 34 C160 34 172 62 172 102 L172 168 C172 196 154 210 128 210 C102 210 84 196 84 168 L84 102 C84 62 96 34 128 34 Z" fill="#F6C93A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <g stroke="#D49A12" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M100 54 L156 54"/>
+    <path d="M92 72 L164 72"/>
+    <path d="M89 142 L167 142"/>
+    <path d="M89 158 L167 158"/>
+    <path d="M89 174 L167 174"/>
+    <path d="M92 190 L164 190"/>
+    <path d="M108 42 L108 202"/>
+    <path d="M128 38 L128 205"/>
+    <path d="M148 42 L148 202"/>
+  </g>
+  <ellipse cx="128" cy="108" rx="42" ry="28" fill="#F6C93A"/>
+  <ellipse cx="98" cy="64" rx="5" ry="14" fill="#FCE68A" transform="rotate(12 98 64)"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#5DAA3E">
+    <path d="M128 214 C96 214 64 190 52 150 C48 132 50 112 58 96 C72 126 96 150 110 170 C116 182 124 196 128 214 Z"/>
+    <path d="M128 214 C160 214 192 190 204 150 C208 132 206 112 198 96 C184 126 160 150 146 170 C140 182 132 196 128 214 Z"/>
+  </g>
+  <g stroke="#3E7F2A" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M66 130 Q86 170 118 204"/>
+    <path d="M190 130 Q170 170 138 204"/>
+  </g>
+  <ellipse cx="103" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 119 Q128 127 136 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

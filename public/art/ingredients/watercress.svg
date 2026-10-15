@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Watercress</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 214 L128 150 M124 214 C104 190 80 166 54 152 M132 214 C152 190 176 166 202 152 M122 196 C104 160 82 118 60 96 M134 196 C152 160 174 118 196 96 M126 210 C114 206 102 202 92 198 M130 210 C142 206 154 202 164 198" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M128 214 L128 150 M124 214 C104 190 80 166 54 152 M132 214 C152 190 176 166 202 152 M122 196 C104 160 82 118 60 96 M134 196 C152 160 174 118 196 96 M126 210 C114 206 102 202 92 198 M130 210 C142 206 154 202 164 198" stroke="#B9E0A5" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" fill="#36855A">
+    <circle cx="54" cy="152" r="22"/>
+    <circle cx="202" cy="152" r="22"/>
+    <circle cx="58" cy="94" r="20"/>
+    <circle cx="198" cy="94" r="20"/>
+    <circle cx="92" cy="198" r="14"/>
+    <circle cx="164" cy="198" r="14"/>
+    <circle cx="128" cy="110" r="54" fill="#459B66"/>
+  </g>
+  <ellipse cx="96" cy="82" rx="6" ry="13" fill="#72BC8C" transform="rotate(40 96 82)"/>
+  <ellipse cx="103" cy="129" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="129" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 129 Q128 137 136 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
