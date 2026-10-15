@@ -12,7 +12,8 @@ npm run db:local             # project-local Postgres 16 in .pgdata, port 54329
 npm run db:migrate
 npm run seed                 # the plan's ingredients and compounds, amounts from USDA, the juice recipe
 npm test                     # unit tests, no database
-npm run test:db              # each phase's "Done when", against the seeded database
+npm run test:db              # each phase's "Done when", against the seeded database (read-only)
+npm run test:seed            # re-runs the real seed (writes, fetches USDA) to check it keeps others' rows
 npm run dev
 ```
 

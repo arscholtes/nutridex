@@ -12,15 +12,22 @@ export default defineConfig({
         test: {
           name: "unit",
           include: ["tests/**/*.test.ts", "packages/*/tests/**/*.test.ts"],
-          exclude: ["tests/**/*.db.test.ts"],
+          exclude: ["tests/**/*.db.test.ts", "tests/**/*.seed.test.ts"],
         },
       },
       {
         test: {
           name: "db",
           include: ["tests/**/*.db.test.ts"],
-          // One database is shared by every file, and some tests commit fixtures briefly.
+          // Every file shares one database.
           fileParallelism: false,
+          env: localEnv,
+        },
+      },
+      {
+        test: {
+          name: "seed",
+          include: ["tests/**/*.seed.test.ts"],
           env: localEnv,
         },
       },
