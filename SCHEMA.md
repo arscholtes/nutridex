@@ -56,7 +56,7 @@ Things you eat. Seeded with the plan's 15; `usda_fdc_id` pins each to one USDA r
 
 ### `compound`
 
-Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USDA's total lipid, which the engine's "dietary fat present" condition reads), identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
+Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USDA's total lipid, which the engine's "dietary fat present" condition reads) and `dietary-fiber` (USDA's total dietary fiber, which gives juicing's fiber loss an amount), identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
