@@ -26,7 +26,7 @@ run `db:migrate` and `seed` against it.
 | --- | --- | --- |
 | 1. Foundation | `npm run seed` fills the database and a test query returns beta-carotene per 100 g of carrot | passing locally |
 | 2. Engine | the juice recipe returns "no fat" and "fiber lost", and olive oil flips carotenoids to "enhanced" | passing locally |
-| 3. Dex UI | carrot → beta-carotene → skin colour → pumpkin | not started |
+| 3. Dex UI | carrot → beta-carotene → skin colour → pumpkin, with by-class flags visibly different from measured ones | not started |
 | 4. Recipes | a built recipe's grid and profile render from the same data | not started |
 | 5. Ingest | a pasted finding becomes an approvable effect row with source and limitations | not started |
 
