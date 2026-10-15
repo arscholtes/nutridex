@@ -3,7 +3,7 @@
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { loadFacts, loadRecipe } from "../lib/db/engine-input.ts";
-import { DEFAULT_SETTINGS, recipeProfile, type RecipeInput } from "codon";
+import { DEFAULT_SETTINGS, recipeProfile, type RecipeInput } from "epistasis";
 
 afterAll(() => sql.end());
 
