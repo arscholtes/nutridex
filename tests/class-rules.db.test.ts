@@ -79,6 +79,28 @@ describe("Brown 2004 as one class rule", () => {
   });
 });
 
+describe("measured members", () => {
+  const outsideTheirClass = (tx: typeof sql) => tx`
+    select c.slug from modifier_measured_member mm
+    join absorption_modifier am on am.id = mm.modifier_id
+    join compound c on c.id = mm.compound_id
+    left join compound_class_member m on m.class_id = am.target_class_id and m.compound_id = mm.compound_id
+    where m.compound_id is null`;
+
+  test("none sits outside its rule's class, where the view would drop it without a word", async () => {
+    expect(await outsideTheirClass(sql)).toEqual([]);
+  });
+
+  test("the check above catches one that does", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const [brown] = await tx`select id from absorption_modifier where target_class_id is not null`;
+      const [lutein] = await tx`select id from compound where slug = 'lutein-zeaxanthin'`;
+      await tx`insert into modifier_measured_member (modifier_id, compound_id) values (${brown.id}, ${lutein.id})`;
+      expect(await outsideTheirClass(tx)).toEqual([{ slug: "lutein-zeaxanthin" }]);
+    });
+  });
+});
+
 describe("claims resting on class extension", () => {
   test("are listed by the view, and a measured rule for the same compound suppresses them", async () => {
     await inRolledBackTransaction(async (tx) => {
