@@ -1,6 +1,6 @@
-// `npm run test:seed`: re-running the real seed keeps what another writer added, even rows citing a
-// source the seed cites, and removes only the rules it names as retired. It writes to the database
-// and fetches USDA records over the network, so it runs on its own, never inside `test:db`.
+// Re-running the real seed keeps what another writer added, even rows citing a source the seed
+// cites, and removes only the rules it names as retired. It writes to the database and fetches
+// USDA records over the network, so it refuses any database that is not on this machine.
 // It touches no real compound: its rules carry MARKER and its class and measured members belong to a
 // fixture compound, all swept before and after, so an interrupted run leaves nothing behind.
 import { execFileSync } from "node:child_process";
@@ -11,7 +11,7 @@ const MARKER = "fixture: seed-ownership test";
 const FIXTURE = "seed-ownership-fixture";
 const host = new URL(process.env.DATABASE_URL!).hostname;
 if (!["localhost", "127.0.0.1", "[::1]"].includes(host)) {
-  throw new Error(`test:seed writes to the database; refusing ${host}, which is not this machine`);
+  throw new Error(`the seed-ownership test writes to the database; refusing ${host}, which is not this machine`);
 }
 
 async function sweep(): Promise<void> {

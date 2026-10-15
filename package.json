@@ -19,7 +19,6 @@
     "seed": "node --env-file=.env.local scripts/seed.ts",
     "test": "vitest run --project unit",
     "test:db": "vitest run --project db",
-    "test:seed": "vitest run --project seed",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
