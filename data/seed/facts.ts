@@ -29,6 +29,9 @@ export type SeedModifier = {
 /** A ChEBI class, with the seeded compounds ChEBI places under it. */
 export type SeedClass = { chebiId: number; name: string; members: string[]; source: string };
 
+/** A rule the seed once wrote and has since replaced: the seed deletes it by exactly this key. */
+export type RetiredModifier = { target: string; condition: string; source: string };
+
 export type SeedPrepEffect = {
   compound: string;
   prepMethod: string;
@@ -124,6 +127,13 @@ export const MODIFIERS: SeedModifier[] = [
     source: "unlu-2005",
   },
 ];
+
+// Brown 2004 was three rules, one per carotene, before it became one rule on ChEBI's carotene class.
+export const RETIRED_MODIFIERS: RetiredModifier[] = ["beta-carotene", "alpha-carotene", "lycopene"].map((target) => ({
+  target,
+  condition: "dietary fat present",
+  source: "brown-2004",
+}));
 
 export const PREP_EFFECTS: SeedPrepEffect[] = [
   {

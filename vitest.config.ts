@@ -19,6 +19,8 @@ export default defineConfig({
         test: {
           name: "db",
           include: ["tests/**/*.db.test.ts"],
+          // One database is shared by every file, and some tests commit fixtures briefly.
+          fileParallelism: false,
           env: localEnv,
         },
       },
