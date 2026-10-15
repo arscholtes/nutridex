@@ -6,7 +6,7 @@ Read it with the Claude Docs tools, never a web fetch.
 ## Rules from the plan's kickoff
 
 - One phase at a time. Stop at each phase's "Done when", show it passing, and wait for the go-ahead.
-- The engine (`packages/codon/`, imported as `codon`) is pure functions with no database access,
+- The engine (`packages/epistasis/`, imported as `epistasis`) is pure functions with no database access,
   fully unit-tested. It imports nothing outside itself and names no food database; its boundary test
   enforces both.
 - Never invent nutrient amounts, retention factors or absorption magnitudes. Amounts come from USDA
