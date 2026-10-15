@@ -2,7 +2,7 @@
 import { describe, expect, test } from "vitest";
 import { aggregate } from "../src/aggregate.ts";
 import { expand } from "../src/expand.ts";
-import { PREP_METHODS, applyPrep, effectivePrep } from "../src/prep.ts";
+import { PREP_METHODS, applyPrep, prepSequence } from "../src/prep.ts";
 import type { AmountFact, PrepEffectFact, RecipeInput } from "../src/types.ts";
 
 const amount = (ingredientSlug: string, compoundSlug: string, amountPer100g: number | null, extra: Partial<AmountFact> = {}): AmountFact => ({
@@ -50,19 +50,20 @@ describe("expand", () => {
   });
 });
 
-describe("effectivePrep", () => {
-  test("is the ingredient's own method when no step names one", () => {
-    expect(effectivePrep(recipe().ingredients[0], [])).toBe("raw");
+describe("prepSequence", () => {
+  test("is empty for a raw ingredient no step prepares, since raw is how the source recorded it", () => {
+    expect(prepSequence(recipe().ingredients[0], [])).toEqual([]);
   });
 
-  test("is overridden by the last step that names a method and uses the ingredient", () => {
+  test("is the ingredient's own method, then every step that uses it, in step order", () => {
+    const own = { id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "roasted" };
     const steps = [
-      { position: 2, prepMethod: "juiced", recipeIngredientIds: ["ri-carrot"] },
-      { position: 1, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },
+      { position: 2, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },
+      { position: 1, prepMethod: "boiled", recipeIngredientIds: ["ri-carrot"] },
       { position: 3, prepMethod: null, recipeIngredientIds: ["ri-carrot"] },
-      { position: 4, prepMethod: "boiled", recipeIngredientIds: ["ri-kale"] },
+      { position: 4, prepMethod: "fried", recipeIngredientIds: ["ri-kale"] },
     ];
-    expect(effectivePrep(recipe().ingredients[0], steps)).toBe("juiced");
+    expect(prepSequence(own, steps)).toEqual(["roasted", "boiled", "blended"]);
   });
 });
 
@@ -78,7 +79,7 @@ describe("applyPrep", () => {
 
   test("leaves raw ingredients as their source records them", () => {
     const [c] = applyPrep(recipe(), expand(recipe(), [amount("carrot", "beta-carotene", 8000)]), [juiced]);
-    expect(c).toMatchObject({ amount: 16000, prep: null });
+    expect(c).toMatchObject({ amount: 16000, prep: [] });
   });
 
   test("multiplies amount and range by a sourced retention factor and attaches its note", () => {
@@ -86,20 +87,20 @@ describe("applyPrep", () => {
     const [c] = applyPrep(juicedRecipe, expand(juicedRecipe, facts), [juiced]);
     expect(c.amount).toBe(4000);
     expect(c.range).toEqual([3000, 5000]);
-    expect(c.prep).toMatchObject({ method: "juiced", retentionFactor: 0.5, note: "half stays in the pulp" });
+    expect(c.prep).toMatchObject([{ method: "juiced", retentionFactor: 0.5, note: "half stays in the pulp" }]);
   });
 
   test("says when no source gives a retention factor, instead of assuming 100%", () => {
     const [c] = applyPrep(juicedRecipe, expand(juicedRecipe, [amount("carrot", "vitamin-c", 6)]), [juiced]);
     expect(c.amount).toBe(6);
-    expect(c.prep).toEqual({
+    expect(c.prep).toEqual([{
       ingredientSlug: "carrot",
       compoundSlug: "vitamin-c",
       method: "juiced",
       retentionFactor: null,
       direction: null,
       note: null,
-    });
+    }]);
   });
 
   test("knows the plan's methods and the cooking methods USDA's retention table uses", () => {
@@ -112,7 +113,7 @@ describe("applyPrep", () => {
   test("profiles kale sauteed in olive oil, the pairing the rules exist for", () => {
     const pan = recipe({ ingredients: [{ id: "ri-kale", ingredientSlug: "kale", grams: 100, prepMethod: "sauteed" }] });
     const [c] = applyPrep(pan, expand(pan, [amount("kale", "beta-carotene", 5000)]), []);
-    expect(c.prep).toMatchObject({ method: "sauteed", retentionFactor: null });
+    expect(c.prep).toMatchObject([{ method: "sauteed", retentionFactor: null }]);
   });
 
   test("the app can offer the list, from the package itself", async () => {
@@ -128,10 +129,41 @@ describe("applyPrep", () => {
     expect(() => applyPrep(recipe(), [], [{ ...juiced, prepMethod: "juice" }])).toThrow(/"juice"/);
   });
 
+  test("stacks steps: boiled then blended applies both retention factors, with a note for each", () => {
+    const facts: PrepEffectFact[] = [
+      { compoundSlug: "vitamin-c", prepMethod: "boiled", retentionFactor: 0.5, direction: "decreases", note: "leaches into the water" },
+      { compoundSlug: "vitamin-c", prepMethod: "blended", retentionFactor: 0.5, direction: "decreases", note: "oxidises in the air" },
+    ];
+    const soup = recipe({
+      ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "raw" }],
+      steps: [
+        { position: 1, prepMethod: "boiled", recipeIngredientIds: ["ri-carrot"] },
+        { position: 2, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },
+      ],
+    });
+    const [c] = applyPrep(soup, expand(soup, [amount("carrot", "vitamin-c", 10.8, { unit: "mg" })]), facts);
+    expect(c.amount).toBeCloseTo(2.7, 9);
+    expect(c.prep.map((p) => [p.method, p.retentionFactor])).toEqual([["boiled", 0.5], ["blended", 0.5]]);
+  });
+
+  test("an unsourced step in the sequence is reported as unknown while the sourced ones still apply", () => {
+    const facts: PrepEffectFact[] = [{ compoundSlug: "vitamin-c", prepMethod: "boiled", retentionFactor: 0.5, direction: "decreases", note: null }];
+    const soup = recipe({
+      ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "raw" }],
+      steps: [
+        { position: 1, prepMethod: "boiled", recipeIngredientIds: ["ri-carrot"] },
+        { position: 2, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },
+      ],
+    });
+    const [c] = applyPrep(soup, expand(soup, [amount("carrot", "vitamin-c", 10.8, { unit: "mg" })]), facts);
+    expect(c.amount).toBeCloseTo(5.4, 9);
+    expect(c.prep.map((p) => [p.method, p.retentionFactor])).toEqual([["boiled", 0.5], ["blended", null]]);
+  });
+
   test("keeps a qualitative direction when the source gives no number", () => {
     const lost: PrepEffectFact = { compoundSlug: "pectin", prepMethod: "juiced", retentionFactor: null, direction: "decreases", note: "fiber stays in the pulp" };
     const [c] = applyPrep(juicedRecipe, expand(juicedRecipe, [amount("carrot", "pectin", null)]), [lost]);
-    expect(c.prep).toMatchObject({ retentionFactor: null, direction: "decreases", note: "fiber stays in the pulp" });
+    expect(c.prep).toMatchObject([{ retentionFactor: null, direction: "decreases", note: "fiber stays in the pulp" }]);
   });
 });
 
