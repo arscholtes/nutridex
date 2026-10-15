@@ -1,4 +1,5 @@
-// The package stands alone: it imports nothing outside itself and names no food database.
+// The package stands alone: it loads nothing outside itself, not even node builtins (it does no
+// I/O), and names no food database.
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { describe, expect, test } from "vitest";
@@ -8,8 +9,8 @@ const SRC = new URL("../src/", import.meta.url).pathname;
 /** @return [string[]] how a source file crosses the package boundary; empty when it stays inside */
 function boundaryProblems(path: string, source: string): string[] {
   const problems: string[] = [];
-  for (const [, spec] of source.matchAll(/(?:import|export)\s[^"']*?from\s+["']([^"']+)["']/g)) {
-    if (spec.startsWith("node:")) continue;
+  // `from "x"` (import and export), `import "x"`, `import("x")` and `require("x")`.
+  for (const [, spec] of source.matchAll(/(?:\bfrom\s+|\bimport\s*\(?\s*|\brequire\s*\(\s*)["']([^"']+)["']/g)) {
     if (!spec.startsWith(".")) problems.push(`imports a package: ${spec}`);
     else if (!resolve(dirname(path), spec).startsWith(SRC)) problems.push(`imports outside the package: ${spec}`);
   }
@@ -29,8 +30,18 @@ describe("the boundary check itself", () => {
     ]);
   });
 
-  test("passes imports inside the package and node builtins", () => {
-    expect(boundaryProblems(`${SRC}profile.ts`, 'import { expand } from "./expand.ts";\nimport { x } from "node:util";')).toEqual([]);
+  test("flags every way of loading code: side-effect imports, dynamic import, require, and node builtins", () => {
+    const sneaky = 'import "../../../lib/db/client.ts";\nconst db = await import("postgres");\nconst fs = require("node:fs");\nimport { x } from "node:util";';
+    expect(boundaryProblems(`${SRC}profile.ts`, sneaky)).toEqual([
+      "imports outside the package: ../../../lib/db/client.ts",
+      "imports a package: postgres",
+      "imports a package: node:fs",
+      "imports a package: node:util",
+    ]);
+  });
+
+  test("passes imports inside the package", () => {
+    expect(boundaryProblems(`${SRC}profile.ts`, 'import { expand } from "./expand.ts";\nexport type * from "./types.ts";')).toEqual([]);
   });
 });
 
