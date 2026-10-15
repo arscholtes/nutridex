@@ -81,6 +81,22 @@ describe("Brown 2004 as one class rule", () => {
   });
 });
 
+describe("tracing a flag to its rules", () => {
+  test("each of the juice's fat flags names exactly the rules the view applied to that compound", async () => {
+    const juice = await loadRecipe("juice");
+    const profile = recipeProfile(juice, await loadFacts(juice.ingredients.map((ri) => ri.ingredientSlug)), DEFAULT_SETTINGS, []);
+    const applied = await sql`
+      select c.slug, array_agg(a.modifier_id::text order by a.modifier_id) as ids
+      from absorption_modifier_applied a join compound c on c.id = a.compound_id
+      where a.modifier_condition = 'dietary fat present' group by c.slug order by c.slug`;
+    const flagged = profile.absorption
+      .filter((f) => f.reason.includes("g of fat per serving"))
+      .map((f) => ({ slug: f.compoundSlug, ids: [...f.ruleIds].sort() }))
+      .sort((x, y) => x.slug.localeCompare(y.slug));
+    expect(flagged).toEqual(applied.map((r) => ({ slug: r.slug, ids: r.ids })));
+  });
+});
+
 describe("measured members", () => {
   const outsideTheirClass = (tx: typeof sql) => tx`
     select c.slug from modifier_measured_member mm
