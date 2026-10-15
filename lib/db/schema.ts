@@ -159,8 +159,8 @@ export const modifierMeasuredMember = pgTable(
 );
 
 // Every modifier applied to each compound it reaches. A class rule reaches its measured members
-// as `measured` and the rest of its class as `by-class`; a by-class row gives way to a measured
-// row for the same compound, modifier and direction. SCHEMA.md describes the columns.
+// as `measured` and the rest of its class as `by-class`; a by-class row gives way to any measured
+// row for the same compound and modifier, whichever direction it found. SCHEMA.md describes the columns.
 export const absorptionModifierApplied = pgView("absorption_modifier_applied", {
   modifierId: uuid("modifier_id"),
   compoundId: uuid("compound_id"),
@@ -193,7 +193,6 @@ export const absorptionModifierApplied = pgView("absorption_modifier_applied", {
        select 1 from applied b
        where b.basis = 'measured'
          and b.compound_id = a.compound_id
-         and b.direction is not distinct from a.direction
          and b.modifier_compound_id is not distinct from a.modifier_compound_id
          and b.modifier_condition is not distinct from a.modifier_condition
      )

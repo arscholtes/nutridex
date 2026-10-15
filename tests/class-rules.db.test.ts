@@ -100,4 +100,18 @@ describe("claims resting on class extension", () => {
       expect(after.map((r) => r.basis)).toEqual(["measured"]);
     });
   });
+
+  test("a measured rule wins over the class even when it disagrees in direction", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const [gamma] = await tx`insert into compound (slug, name, class) values ('gamma-carotene-fixture', 'gamma-Carotene (fixture)', 'carotenoid') returning id`;
+      const [k] = await tx`select id, source_id from compound_class where chebi_id = 23042`;
+      await tx`insert into compound_class_member (class_id, compound_id, source_id) values (${k.id}, ${gamma.id}, ${k.source_id})`;
+      const [brown] = await tx`select source_id from absorption_modifier where target_class_id = ${k.id}`;
+      await tx`
+        insert into absorption_modifier (target_compound_id, modifier_condition, direction, evidence_grade, source_id)
+        values (${gamma.id}, 'dietary fat present', 'inhibits', 'B', ${brown.source_id})`;
+      const rows = await tx`select basis, direction from absorption_modifier_applied where compound_id = ${gamma.id}`;
+      expect(rows.map((r) => [r.basis, r.direction])).toEqual([["measured", "inhibits"]]);
+    });
+  });
 });

@@ -185,7 +185,7 @@ Every absorption modifier, applied to each compound it reaches, with `basis`:
 - **`measured`:** a compound-targeted rule, or a class rule's measured member;
 - **`by-class`:** any other member of a class rule's class.
 
-A `by-class` row is left out when a `measured` row exists for the same compound, modifier compound or condition, and direction. The engine's loader reads modifiers from here, and every claim resting on class extension is `select * from absorption_modifier_applied where basis = 'by-class'`.
+A `by-class` row is left out when a `measured` row exists for the same compound and modifier compound or condition, whichever direction it found: a measurement outranks an inference from the class. The engine's loader reads modifiers from here, and every claim resting on class extension is `select * from absorption_modifier_applied where basis = 'by-class'`.
 
 | Column | Type |
 | --- | --- |
