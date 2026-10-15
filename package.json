@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "codon": "0.1.0",
+    "epistasis": "0.1.0",
     "drizzle-orm": "^0.45.4",
     "next": "^16.4.0",
     "postgres": "^3.4.9",

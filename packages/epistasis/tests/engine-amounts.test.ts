@@ -116,7 +116,7 @@ describe("applyPrep", () => {
   });
 
   test("the app can offer the list, from the package itself", async () => {
-    expect((await import("codon")).PREP_METHODS).toBe(PREP_METHODS);
+    expect((await import("epistasis")).PREP_METHODS).toBe(PREP_METHODS);
   });
 
   test("refuses a recipe's prep method outside its vocabulary, naming it", () => {
