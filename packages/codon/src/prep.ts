@@ -1,8 +1,14 @@
 // Step 2: how the way an ingredient is prepared changes what it delivers.
 import type { Contribution, PrepEffectFact, RecipeIngredientInput, RecipeInput, RecipeStepInput } from "./types.ts";
 
-/** The prep methods the engine knows. A method outside this list is a typo, not a new method. */
-export const PREP_METHODS = ["raw", "juiced", "blended", "boiled", "roasted", "fermented"] as const;
+/**
+ * The prep methods the engine knows: the plan's six, then the cooking methods published nutrient
+ * retention tables use. A method outside this list is a typo, not a new one.
+ */
+export const PREP_METHODS = [
+  "raw", "juiced", "blended", "boiled", "roasted", "fermented",
+  "baked", "fried", "broiled", "simmered", "sauteed", "steamed", "stewed", "braised",
+] as const;
 
 /** The prep method a source's per-100 g amount already describes. */
 const AS_RECORDED = "raw";

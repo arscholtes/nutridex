@@ -102,9 +102,21 @@ describe("applyPrep", () => {
     });
   });
 
-  test("accepts the methods in its vocabulary, raw and juiced among them", () => {
-    expect(PREP_METHODS).toEqual(["raw", "juiced", "blended", "boiled", "roasted", "fermented"]);
-    expect(() => applyPrep(recipe(), expand(recipe(), [amount("carrot", "beta-carotene", 8000)]), [juiced])).not.toThrow();
+  test("knows the plan's methods and the cooking methods USDA's retention table uses", () => {
+    expect(PREP_METHODS).toEqual([
+      "raw", "juiced", "blended", "boiled", "roasted", "fermented",
+      "baked", "fried", "broiled", "simmered", "sauteed", "steamed", "stewed", "braised",
+    ]);
+  });
+
+  test("profiles kale sauteed in olive oil, the pairing the rules exist for", () => {
+    const pan = recipe({ ingredients: [{ id: "ri-kale", ingredientSlug: "kale", grams: 100, prepMethod: "sauteed" }] });
+    const [c] = applyPrep(pan, expand(pan, [amount("kale", "beta-carotene", 5000)]), []);
+    expect(c.prep).toMatchObject({ method: "sauteed", retentionFactor: null });
+  });
+
+  test("the app can offer the list, from the package itself", async () => {
+    expect((await import("codon")).PREP_METHODS).toBe(PREP_METHODS);
   });
 
   test("refuses a recipe's prep method outside its vocabulary, naming it", () => {
