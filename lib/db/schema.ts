@@ -9,6 +9,7 @@ import {
   jsonb,
   numeric,
   pgTable,
+  pgView,
   primaryKey,
   text,
   timestamp,
@@ -66,7 +67,28 @@ export const compound = pgTable("compound", {
   upperLimitUnit: text("upper_limit_unit"),
   artUrl: text("art_url"),
   createdAt: createdAt(),
+  // The ChEBI entity, when the compound is one; null for a combined measurement or a total.
+  chebiId: integer("chebi_id"),
 });
+
+// A ChEBI class a rule can target. Classes come from ChEBI, never invented here.
+export const compoundClass = pgTable("compound_class", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  chebiId: integer("chebi_id").unique().notNull(),
+  name: text("name").notNull(),
+  sourceId: uuid("source_id").references(() => source.id).notNull(),
+});
+
+// Which compounds ChEBI places under a class, as of the source's release.
+export const compoundClassMember = pgTable(
+  "compound_class_member",
+  {
+    classId: uuid("class_id").references(() => compoundClass.id, { onDelete: "cascade" }).notNull(),
+    compoundId: uuid("compound_id").references(() => compound.id, { onDelete: "cascade" }).notNull(),
+    sourceId: uuid("source_id").references(() => source.id).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.classId, t.compoundId] })],
+);
 
 export const ingredientCompound = pgTable(
   "ingredient_compound",
@@ -118,9 +140,64 @@ export const absorptionModifier = pgTable(
     mechanism: text("mechanism"),
     evidenceGrade: evidenceGrade(),
     sourceId: uuid("source_id").references(() => source.id),
+    targetClassId: uuid("target_class_id").references(() => compoundClass.id),
   },
-  () => [gradeIsKnown("absorption_modifier")],
+  () => [
+    gradeIsKnown("absorption_modifier"),
+    check("absorption_modifier_one_target", sql`(target_compound_id is null) <> (target_class_id is null)`),
+  ],
 );
+
+// For a class-targeted modifier, the class members its source measured.
+export const modifierMeasuredMember = pgTable(
+  "modifier_measured_member",
+  {
+    modifierId: uuid("modifier_id").references(() => absorptionModifier.id, { onDelete: "cascade" }).notNull(),
+    compoundId: uuid("compound_id").references(() => compound.id, { onDelete: "cascade" }).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.modifierId, t.compoundId] })],
+);
+
+// Every modifier applied to each compound it reaches. A class rule reaches its measured members
+// as `measured` and the rest of its class as `by-class`; a by-class row gives way to a measured
+// row for the same compound, modifier and direction. SCHEMA.md describes the columns.
+export const absorptionModifierApplied = pgView("absorption_modifier_applied", {
+  modifierId: uuid("modifier_id"),
+  compoundId: uuid("compound_id"),
+  basis: text("basis"),
+  modifierCompoundId: uuid("modifier_compound_id"),
+  modifierCondition: text("modifier_condition"),
+  direction: text("direction"),
+  magnitude: text("magnitude"),
+  mechanism: text("mechanism"),
+  evidenceGrade: char("evidence_grade", { length: 1 }),
+  sourceId: uuid("source_id"),
+}).as(sql`
+  with applied as (
+    select am.id as modifier_id, am.target_compound_id as compound_id, 'measured'::text as basis,
+           am.modifier_compound_id, am.modifier_condition, am.direction, am.magnitude, am.mechanism,
+           am.evidence_grade, am.source_id
+    from absorption_modifier am
+    where am.target_compound_id is not null
+    union all
+    select am.id, m.compound_id, case when mm.compound_id is null then 'by-class' else 'measured' end,
+           am.modifier_compound_id, am.modifier_condition, am.direction, am.magnitude, am.mechanism,
+           am.evidence_grade, am.source_id
+    from absorption_modifier am
+    join compound_class_member m on m.class_id = am.target_class_id
+    left join modifier_measured_member mm on mm.modifier_id = am.id and mm.compound_id = m.compound_id
+  )
+  select a.* from applied a
+  where a.basis = 'measured'
+     or not exists (
+       select 1 from applied b
+       where b.basis = 'measured'
+         and b.compound_id = a.compound_id
+         and b.direction is not distinct from a.direction
+         and b.modifier_compound_id is not distinct from a.modifier_compound_id
+         and b.modifier_condition is not distinct from a.modifier_condition
+     )
+`);
 
 export const prepEffect = pgTable(
   "prep_effect",

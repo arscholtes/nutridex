@@ -48,3 +48,9 @@ weights, how much fat counts as enough, reference amounts for goal scores) are s
 Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row
 naming the USDA record it came from. A compound USDA does not measure is linked to its
 ingredient with no amount, and the app shows it as missing. See `SCHEMA.md` for every table.
+
+A rule can target a ChEBI class instead of one compound, so one sourced finding reaches every
+compound ChEBI places in that class. The rule names the members its source measured; any other
+member is reached `by-class`, and every flag says which. `absorption_modifier_applied` lists
+them: `select * from absorption_modifier_applied where basis = 'by-class'` is every claim resting
+on class extension rather than measurement.

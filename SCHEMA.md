@@ -13,6 +13,7 @@ No other app reads this store. `fps stores` does not exist yet, so this section 
 - `evidence_grade` is A, B, C or D (the plan's grading table) on `compound_effect`, `absorption_modifier`, `caution`, `microbe_substrate` and `microbe_metabolite`.
 - A `stack_item` names exactly one of `recipe_id` or `supplement_id`.
 - `prep_effect.direction` is `decreases`, `increases` or `unchanged`.
+- An `absorption_modifier` targets exactly one of `target_compound_id` or `target_class_id`.
 - Every `id` is a `uuid` defaulting to `gen_random_uuid()`; every `slug` is unique.
 
 ## Provenance
@@ -75,6 +76,34 @@ Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USD
 | `upper_limit_unit` | text | yes |  |
 | `art_url` | text | yes |  |
 | `created_at` | timestamp with time zone | yes | `now()` |
+| `chebi_id` | integer | yes |  |
+
+`chebi_id` is the compound's ChEBI entity, when it is one entity. It is null for a combined measurement (`lutein-zeaxanthin` is two ChEBI entities) and for a total (`total-fat`, `dietary-fiber`).
+
+### `compound_class`
+
+A ChEBI class a rule can target, so that one sourced rule reaches every compound in it. Classes come from ChEBI, never invented here. A rule targets the narrowest class that holds what its source measured: in ChEBI, lycopene is a carotene but not a carotenoid.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `chebi_id` | integer | no |  |
+| `name` | text | no |  |
+| `source_id` | uuid | no |  |
+
+`chebi_id` is unique. `source_id` names the ChEBI release the class was read from.
+
+### `compound_class_member`
+
+Which compounds ChEBI places under a class (`is_a`, at any depth), as of the source's release.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `class_id` | uuid | no |  |
+| `compound_id` | uuid | no |  |
+| `source_id` | uuid | no |  |
+
+Primary key (`class_id`, `compound_id`).
 
 ### `ingredient_compound`
 
@@ -135,6 +164,35 @@ Compound X helped or hurt by a compound or a condition (piperine, dietary fat). 
 | `mechanism` | text | yes |  |
 | `evidence_grade` | character | yes |  |
 | `source_id` | uuid | yes |  |
+| `target_class_id` | uuid | yes |  |
+
+A rule targets one compound, or with `target_class_id` a whole `compound_class`. A class rule names the members its source actually measured in `modifier_measured_member`.
+
+### `modifier_measured_member`
+
+For a class-targeted `absorption_modifier`, the class members its source measured. Every other member is reached by class, not by measurement.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `modifier_id` | uuid | no |  |
+| `compound_id` | uuid | no |  |
+
+Primary key (`modifier_id`, `compound_id`).
+
+### `absorption_modifier_applied` (view)
+
+Every absorption modifier, applied to each compound it reaches, with `basis`:
+- **`measured`:** a compound-targeted rule, or a class rule's measured member;
+- **`by-class`:** any other member of a class rule's class.
+
+A `by-class` row is left out when a `measured` row exists for the same compound, modifier compound or condition, and direction. The engine's loader reads modifiers from here, and every claim resting on class extension is `select * from absorption_modifier_applied where basis = 'by-class'`.
+
+| Column | Type |
+| --- | --- |
+| `modifier_id` | uuid |
+| `compound_id` | uuid |
+| `basis` | text |
+| `modifier_compound_id`, `modifier_condition`, `direction`, `magnitude`, `mechanism`, `evidence_grade`, `source_id` | as in `absorption_modifier` |
 
 ### `prep_effect`
 

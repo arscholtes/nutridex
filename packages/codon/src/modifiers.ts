@@ -34,7 +34,7 @@ export function checkModifiers(
   const flags: AbsorptionFlag[] = [];
   for (const m of modifiers) {
     if (!present.has(m.targetCompoundSlug)) continue;
-    const base = { compoundSlug: m.targetCompoundSlug, grade: m.grade };
+    const base = { compoundSlug: m.targetCompoundSlug, grade: m.grade, basis: m.basis };
     if (m.modifierCompoundSlug !== null) {
       const name = m.modifierCompoundSlug;
       if (present.has(name)) {

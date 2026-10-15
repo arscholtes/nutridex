@@ -31,6 +31,7 @@ const modifier = (over: Partial<ModifierFact>): ModifierFact => ({
   mechanism: null,
   grade: "B",
   modifierFoundIn: [],
+  basis: "measured",
   ...over,
 });
 
@@ -51,6 +52,7 @@ describe("checkModifiers", () => {
       reason: "0.6 g of fat per serving, under the 3 g that counts as enough",
       suggestion: "Add a fat, such as olive oil",
       grade: "B",
+      basis: "measured",
     });
   });
 
@@ -91,7 +93,7 @@ describe("checkModifiers", () => {
   test("an inhibitor in the recipe reduces; an absent one says nothing", () => {
     const rule = modifier({ targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });
     expect(checkModifiers([total("calcium", 100, "mg"), total("oxalate", null)], juice, [rule], settings)).toEqual([
-      { compoundSlug: "calcium", status: "reduced", reason: "oxalate is in the recipe", grade: "B" },
+      { compoundSlug: "calcium", status: "reduced", reason: "oxalate is in the recipe", grade: "B", basis: "measured" },
     ]);
     expect(checkModifiers([total("calcium", 100, "mg")], juice, [rule], settings)).toEqual([]);
   });
@@ -99,6 +101,11 @@ describe("checkModifiers", () => {
   test("ignores rules whose target the recipe does not contain, or contains at zero", () => {
     expect(checkModifiers([fat(14)], juice, [fatRule], settings)).toEqual([]);
     expect(checkModifiers([total("beta-carotene", 0), fat(14)], juice, [fatRule], settings)).toEqual([]);
+  });
+
+  test("says whether a flag rests on a measurement or on the compound's class", () => {
+    const [flag] = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, [modifier({ basis: "by-class" })], settings);
+    expect(flag.basis).toBe("by-class");
   });
 
   test("refuses a condition it does not know how to test", () => {

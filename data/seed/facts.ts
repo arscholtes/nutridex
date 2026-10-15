@@ -6,7 +6,7 @@ export type SeedSource = {
   key: string;
   title: string;
   url: string;
-  doi: string;
+  doi: string | null;
   pmid: string | null;
   studyType: string;
   population: string;
@@ -15,7 +15,8 @@ export type SeedSource = {
 };
 
 export type SeedModifier = {
-  target: string;
+  /** One compound, or a ChEBI class with the members the source measured. */
+  target: { compound: string } | { chebiClass: number; measured: string[] };
   modifierCompound: string | null;
   condition: string | null;
   direction: "enhances" | "inhibits";
@@ -24,6 +25,9 @@ export type SeedModifier = {
   grade: "A" | "B" | "C" | "D";
   source: string;
 };
+
+/** A ChEBI class, with the seeded compounds ChEBI places under it. */
+export type SeedClass = { chebiId: number; name: string; members: string[]; source: string };
 
 export type SeedPrepEffect = {
   compound: string;
@@ -79,23 +83,38 @@ export const SOURCES: SeedSource[] = [
     year: 2010,
     limitations: "Industrial juices, not home juicing; juice in g per litre against fruit in g per kg, so no retention factor",
   },
+  {
+    key: "chebi-256",
+    title: "ChEBI release 256, read through EMBL-EBI's Ontology Lookup Service on 2026-10-15",
+    url: "https://www.ebi.ac.uk/ols4/ontologies/chebi",
+    doi: null,
+    pmid: null,
+    studyType: "database",
+    population: "Chemical entities and their is_a classes (238,150 terms)",
+    year: 2026,
+    limitations: "Class membership is ChEBI's curation, as of this release",
+  },
+];
+
+export const CLASSES: SeedClass[] = [
+  { chebiId: 23042, name: "carotene", members: ["alpha-carotene", "beta-carotene", "lycopene"], source: "chebi-256" },
 ];
 
 const FAT_HELPS = "Carotenoids are fat-soluble and are absorbed with dietary fat";
 
 export const MODIFIERS: SeedModifier[] = [
-  ...["beta-carotene", "alpha-carotene", "lycopene"].map((target) => ({
-    target,
+  {
+    target: { chebiClass: 23042, measured: ["alpha-carotene", "beta-carotene", "lycopene"] },
     modifierCompound: null,
     condition: "dietary fat present",
-    direction: "enhances" as const,
+    direction: "enhances",
     magnitude: "Essentially none absorbed from a salad with fat-free dressing; more with 6 g of oil, more again with 28 g",
     mechanism: FAT_HELPS,
-    grade: "B" as const,
+    grade: "B",
     source: "brown-2004",
-  })),
+  },
   {
-    target: "lutein-zeaxanthin",
+    target: { compound: "lutein-zeaxanthin" },
     modifierCompound: null,
     condition: "dietary fat present",
     direction: "enhances",

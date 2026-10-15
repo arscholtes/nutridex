@@ -56,7 +56,11 @@ export type ModifierFact = {
   grade: Grade;
   /** Names of ingredients that carry the modifier compound, for the "add one" suggestion. */
   modifierFoundIn: string[];
+  basis: Basis;
 };
+
+/** Whether a rule's source measured this compound, or the rule reaches it through its class. */
+export type Basis = "measured" | "by-class";
 
 export type CautionFact = {
   compoundSlug: string | null;
@@ -149,6 +153,7 @@ export type AbsorptionFlag = {
   reason: string;
   suggestion?: string;
   grade: Grade;
+  basis: Basis;
 };
 
 export type CautionFlag = {
