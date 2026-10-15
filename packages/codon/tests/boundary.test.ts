@@ -14,6 +14,7 @@ function boundaryProblems(path: string, source: string): string[] {
     if (!spec.startsWith(".")) problems.push(`imports a package: ${spec}`);
     else if (!resolve(dirname(path), spec).startsWith(SRC)) problems.push(`imports outside the package: ${spec}`);
   }
+  for (const [use] of source.matchAll(/\bfetch\s*\(|\bprocess\./g)) problems.push(`does I/O: ${use.replace(/\s+/g, "")}`);
   for (const [word] of source.matchAll(/usda|fdc/gi)) problems.push(`names a food database: ${word}`);
   return problems;
 }
@@ -38,6 +39,11 @@ describe("the boundary check itself", () => {
       "imports a package: node:fs",
       "imports a package: node:util",
     ]);
+  });
+
+  test("flags I/O reached without an import: fetch and process", () => {
+    const io = 'const r = await fetch("https://example.com");\nconst fs = process.getBuiltinModule("node:fs");';
+    expect(boundaryProblems(`${SRC}profile.ts`, io)).toEqual(["does I/O: fetch(", "does I/O: process."]);
   });
 
   test("passes imports inside the package", () => {
