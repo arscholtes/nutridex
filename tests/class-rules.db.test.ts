@@ -1,7 +1,7 @@
 // Class rules: one sourced rule reaches every compound in a ChEBI class, and every claim that
 // rests on the class rather than a measurement can be listed. Needs `npm run seed` first.
 import { afterAll, describe, expect, test } from "vitest";
-import { recipeProfile, DEFAULT_SETTINGS } from "codon";
+import { recipeProfile, DEFAULT_SETTINGS } from "epistasis";
 import { sql } from "../lib/db/client.ts";
 import { CLASSES } from "../data/seed/facts.ts";
 import { loadFacts, loadRecipe } from "../lib/db/engine-input.ts";
