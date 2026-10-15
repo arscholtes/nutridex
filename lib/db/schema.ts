@@ -67,7 +67,7 @@ export const compound = pgTable("compound", {
   upperLimitUnit: text("upper_limit_unit"),
   artUrl: text("art_url"),
   createdAt: createdAt(),
-  // The ChEBI entity, when the compound is one; null for a combined measurement or a total.
+  // The ChEBI entity; null for a combined measurement or a total, or when not looked up yet.
   chebiId: integer("chebi_id"),
 });
 
