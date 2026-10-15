@@ -2,7 +2,7 @@
 import { describe, expect, test } from "vitest";
 import { aggregate } from "../src/aggregate.ts";
 import { expand } from "../src/expand.ts";
-import { applyPrep, effectivePrep } from "../src/prep.ts";
+import { PREP_METHODS, applyPrep, effectivePrep } from "../src/prep.ts";
 import type { AmountFact, PrepEffectFact, RecipeInput } from "../src/types.ts";
 
 const amount = (ingredientSlug: string, compoundSlug: string, amountPer100g: number | null, extra: Partial<AmountFact> = {}): AmountFact => ({
@@ -100,6 +100,20 @@ describe("applyPrep", () => {
       direction: null,
       note: null,
     });
+  });
+
+  test("accepts the methods in its vocabulary, raw and juiced among them", () => {
+    expect(PREP_METHODS).toEqual(["raw", "juiced", "blended", "boiled", "roasted", "fermented"]);
+    expect(() => applyPrep(recipe(), expand(recipe(), [amount("carrot", "beta-carotene", 8000)]), [juiced])).not.toThrow();
+  });
+
+  test("refuses a recipe's prep method outside its vocabulary, naming it", () => {
+    const typo = recipe({ ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "juice" }] });
+    expect(() => applyPrep(typo, expand(typo, [amount("carrot", "beta-carotene", 8000)]), [])).toThrow(/"juice"/);
+  });
+
+  test("refuses a prep fact whose method is outside its vocabulary, rather than never matching it", () => {
+    expect(() => applyPrep(recipe(), [], [{ ...juiced, prepMethod: "juice" }])).toThrow(/"juice"/);
   });
 
   test("keeps a qualitative direction when the source gives no number", () => {
