@@ -42,6 +42,13 @@ condition it cannot test comes back marked as missing or unknown. Its judgement 
 weights, how much fat counts as enough, reference amounts for goal scores) are settings in
 `lib/engine/settings.ts`, not facts.
 
+## Disclaimer
+
+Every visitor sees a disclaimer (`lib/disclaimer/text.ts`) before anything else. Accepting it sets a
+cookie holding the app version from `package.json`; it stays dismissed until that version changes, so
+bump the version with each release. The text is a plain-language draft and needs legal review before
+anyone other than its maker uses the app.
+
 ## Data
 
 Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row

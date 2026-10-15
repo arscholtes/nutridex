@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { DisclaimerGate } from "./disclaimer-gate.tsx";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased">{children}</body>
+      <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+        <DisclaimerGate>{children}</DisclaimerGate>
+      </body>
     </html>
   );
 }
