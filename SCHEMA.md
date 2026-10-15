@@ -78,7 +78,9 @@ Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USD
 | `created_at` | timestamp with time zone | yes | `now()` |
 | `chebi_id` | integer | yes |  |
 
-`chebi_id` is the compound's ChEBI entity, when it is one entity. It is null for a combined measurement (`lutein-zeaxanthin` is two ChEBI entities) and for a total (`total-fat`, `dietary-fiber`).
+`chebi_id` is the compound's ChEBI entity. It is null when the compound is not one entity (a combined measurement: `lutein-zeaxanthin` is two; a total: `total-fat`, `dietary-fiber`), or when no one has looked it up yet, as for most seeded compounds today.
+
+`class` is a hand-written label for display. No rule reads it: rules reach compounds through `compound_class`, which comes from ChEBI.
 
 ### `compound_class`
 

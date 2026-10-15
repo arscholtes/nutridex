@@ -21,7 +21,9 @@ async function inRolledBackTransaction(body: (tx: typeof sql) => Promise<void>):
 
 describe("ChEBI identity and classes", () => {
   test("each carotenoid carries its ChEBI id; the combined lutein + zeaxanthin measurement has none", async () => {
-    const rows = await sql`select slug, chebi_id from compound where class = 'carotenoid' order by slug`;
+    const rows = await sql`
+      select slug, chebi_id from compound
+      where slug in ('alpha-carotene', 'beta-carotene', 'lutein-zeaxanthin', 'lycopene') order by slug`;
     expect(rows.map((r) => [r.slug, r.chebi_id])).toEqual([
       ["alpha-carotene", 28425],
       ["beta-carotene", 17579],
