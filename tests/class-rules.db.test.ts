@@ -3,7 +3,9 @@
 import { afterAll, describe, expect, test } from "vitest";
 import { recipeProfile, DEFAULT_SETTINGS } from "codon";
 import { sql } from "../lib/db/client.ts";
+import { CLASSES } from "../data/seed/facts.ts";
 import { loadFacts, loadRecipe } from "../lib/db/engine-input.ts";
+import { seedDrift } from "../scripts/seed-drift.ts";
 
 afterAll(() => sql.end());
 
@@ -39,7 +41,9 @@ describe("ChEBI identity and classes", () => {
       join compound c on c.id = m.compound_id
       join source s on s.id = m.source_id
       where k.chebi_id = 23042 order by c.slug`;
-    expect(rows.map((r) => r.slug)).toEqual(["alpha-carotene", "beta-carotene", "lycopene"]);
+    expect(rows.map((r) => r.slug)).toEqual([...CLASSES.find((k) => k.chebiId === 23042)!.members].sort());
+    expect(rows.map((r) => r.slug)).toContain("lycopene");
+    expect(rows.map((r) => r.slug)).not.toContain("lutein-zeaxanthin");
     for (const r of rows) expect(r.title).toMatch(/ChEBI release 256/);
   });
 
@@ -78,6 +82,26 @@ describe("Brown 2004 as one class rule", () => {
       ["lutein-zeaxanthin", "measured"],
       ["lycopene", "measured"],
     ]);
+  });
+});
+
+describe("what the seed reports instead of deleting", () => {
+  test("nothing, on a freshly seeded database", async () => {
+    expect(await seedDrift(sql)).toEqual([]);
+  });
+
+  test("a class member or a measured member the seed's lists lack", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const [k] = await tx`select id, source_id from compound_class where chebi_id = 23042`;
+      const [lutein] = await tx`select id from compound where slug = 'lutein-zeaxanthin'`;
+      const [brown] = await tx`select id from absorption_modifier where target_class_id = ${k.id}`;
+      await tx`insert into compound_class_member (class_id, compound_id, source_id) values (${k.id}, ${lutein.id}, ${k.source_id})`;
+      await tx`insert into modifier_measured_member (modifier_id, compound_id) values (${brown.id}, ${lutein.id})`;
+      expect(await seedDrift(tx)).toEqual([
+        "CHEBI:23042 (carotene) has member lutein-zeaxanthin, which the seed does not list",
+        "brown-2004's rule on CHEBI:23042 lists lutein-zeaxanthin as measured, which the seed does not",
+      ]);
+    });
   });
 });
 

@@ -1,8 +1,9 @@
 // npm run seed — fills the database with the plan's seed ingredients and compounds, imports their
 // amounts per 100 g from USDA FoodData Central, and adds the sourced facts and the recipe the
 // engine's first check needs. Safe to re-run: every write is an upsert, and a recipe that already
-// exists is left as it is. It deletes nothing another writer added: the only rows it removes are
-// those it names as retired, matched by exact key, and it logs each one.
+// exists is left as it is. The only rows it deletes are the rules it names as retired, matched by
+// exact key and logged. Class members and measured members are only ever added; any the database
+// holds beyond the seed's lists are reported (seed-drift.ts) for a person to judge, never deleted.
 //
 // All USDA records are fetched before anything is written, so a network failure leaves the
 // database untouched. Amounts are stored exactly as USDA reports them, each with a source row
@@ -12,6 +13,7 @@ import { COMPOUNDS } from "../data/seed/compounds.ts";
 import { CLASSES, MODIFIERS, PREP_EFFECTS, RETIRED_MODIFIERS, SOURCES } from "../data/seed/facts.ts";
 import { INGREDIENTS } from "../data/seed/ingredients.ts";
 import { RECIPES } from "../data/seed/recipes.ts";
+import { seedDrift } from "./seed-drift.ts";
 import { db, sql } from "../lib/db/client.ts";
 import {
   absorptionModifier,
@@ -165,9 +167,11 @@ await db.transaction(async (tx) => {
     const id = existing
       ? (await tx.update(absorptionModifier).set(values).where(eq(absorptionModifier.id, existing.id)).returning({ id: absorptionModifier.id }))[0].id
       : (await tx.insert(absorptionModifier).values(values).returning({ id: absorptionModifier.id }))[0].id;
-    await tx.delete(modifierMeasuredMember).where(eq(modifierMeasuredMember.modifierId, id));
     if ("chebiClass" in m.target) {
-      await tx.insert(modifierMeasuredMember).values(m.target.measured.map((slug) => ({ modifierId: id, compoundId: compoundIds.get(slug)! })));
+      await tx
+        .insert(modifierMeasuredMember)
+        .values(m.target.measured.map((slug) => ({ modifierId: id, compoundId: compoundIds.get(slug)! })))
+        .onConflictDoNothing();
     }
   }
 
@@ -218,6 +222,7 @@ console.log(`seeded ${INGREDIENTS.length} ingredients and ${COMPOUNDS.length} co
 console.log(`imported ${amounts} amounts per 100 g from ${foods.size} USDA records`);
 console.log(`seeded ${MODIFIERS.length} absorption modifiers and ${PREP_EFFECTS.length} prep effects from ${SOURCES.length} sources`);
 for (const r of retired) console.log(`retired 1 absorption modifier: ${r}`);
+for (const line of await seedDrift(sql)) console.log(`not in the seed's lists, left in place: ${line}`);
 console.log(`seeded ${CLASSES.length} ChEBI class(es) with ${CLASSES.reduce((n, k) => n + k.members.length, 0)} member(s)`);
 console.log(`seeded ${RECIPES.length} recipe(s), leaving any that already existed as they were`);
 console.log(`no amount yet (USDA does not measure these; shown as missing): ${missing.length}`);
