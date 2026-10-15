@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Orange</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 68 C122 60 124 54 127 48 L136 50 C134 56 134 62 134 68 Z" fill="#6B7F2A"/>
+    <path d="M134 60 C144 40 166 34 186 40 C178 60 156 68 134 60 Z" fill="#43B05C"/>
+    <circle cx="128" cy="138" r="76" fill="#FF9A1F"/>
+  </g>
+  <path d="M141 57 L176 44" stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="86" cy="110" rx="10" ry="22" fill="#FFC06A" transform="rotate(30 86 110)"/>
+  <g fill="#D9730A"><circle cx="112" cy="80" r="2.6"/><circle cx="146" cy="77" r="2.6"/><circle cx="170" cy="90" r="2.6"/><circle cx="188" cy="114" r="2.6"/><circle cx="198" cy="144" r="2.6"/><circle cx="186" cy="174" r="2.6"/><circle cx="162" cy="196" r="2.6"/><circle cx="128" cy="204" r="2.6"/><circle cx="96" cy="198" r="2.6"/><circle cx="72" cy="178" r="2.6"/><circle cx="62" cy="148" r="2.6"/><circle cx="118" cy="100" r="2.6"/><circle cx="150" cy="102" r="2.6"/><circle cx="176" cy="134" r="2.6"/><circle cx="80" cy="150" r="2.6"/></g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

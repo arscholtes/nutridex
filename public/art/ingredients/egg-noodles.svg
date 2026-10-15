@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Egg noodles</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="86" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M190 200 C212 202 224 214 210 218" stroke="#1B1B1F" stroke-width="16"/>
+    <path d="M190 200 C212 202 224 214 210 218" stroke="#F4BE45" stroke-width="8"/>
+  </g>
+  <path d="M40 156 C36 128 52 106 74 100 C86 88 108 86 122 92 C138 84 162 86 174 98 C198 102 218 124 214 152 C220 178 202 204 176 206 C162 216 140 216 126 210 C110 218 86 216 76 206 C50 202 34 180 40 156 Z" fill="#E9A626" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M54 132 C72 104 112 98 140 102 C168 106 190 118 202 136 M48 160 C46 186 66 202 92 204 M208 158 C210 184 192 200 166 204 M104 207 C118 210 138 210 152 207 M82 124 C104 114 150 112 174 124" stroke="#A86A0A" stroke-width="12"/>
+    <path d="M54 132 C72 104 112 98 140 102 C168 106 190 118 202 136 M48 160 C46 186 66 202 92 204 M208 158 C210 184 192 200 166 204 M104 207 C118 210 138 210 152 207 M82 124 C104 114 150 112 174 124" stroke="#F4BE45" stroke-width="6"/>
+  </g>
+  <path d="M60 176 C56 164 58 150 64 140 C66 152 68 164 72 174 C70 182 62 182 60 176 Z" fill="#F7CE6A"/>
+  <ellipse cx="128" cy="78" rx="16" ry="20" transform="rotate(10 128 78)" fill="#FFF4E2" stroke="#1B1B1F" stroke-width="4"/>
+  <ellipse cx="122" cy="72" rx="4" ry="6" transform="rotate(10 122 72)" fill="#FFFFFF"/>
+  <ellipse cx="103" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="155" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="155" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 175 Q128 183 136 175" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

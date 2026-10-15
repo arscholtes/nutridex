@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sunflower oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="52" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M116 54 L116 66 C116 76 88 80 86 100 C84 118 98 128 98 140 C98 150 80 156 80 178 L80 200 C80 208 86 214 94 214 L162 214 C170 214 176 208 176 200 L176 178 C176 156 158 150 158 140 C158 128 172 118 170 100 C168 80 140 76 140 66 L140 54 Z" fill="#F4C232"/>
+    <rect x="108" y="34" width="40" height="24" rx="8" fill="#6B3F1E"/>
+  </g>
+  <path d="M90 170 C90 160 94 156 98 154 C96 170 96 188 98 204 C93 200 90 190 90 170 Z" fill="#FADB7A"/>
+  <circle cx="128" cy="106" r="21" fill="#FFFFFF" stroke="#1B1B1F" stroke-width="3"/>
+  <g transform="translate(128 106)" fill="#FFC60A" stroke="#1B1B1F" stroke-width="2">
+    <ellipse cy="-10" rx="4.5" ry="7"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(45)"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(90)"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(135)"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(180)"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(225)"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(270)"/><ellipse cy="-10" rx="4.5" ry="7" transform="rotate(315)"/>
+    <circle r="7" fill="#6B3F1E"/>
+  </g>
+  <ellipse cx="103" cy="187" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="187" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="167" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="167" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 187 Q128 195 136 187" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">White rice</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <path d="M48 150 C48 96 88 62 128 62 C168 62 208 96 208 150 Z" fill="#FFFFFF"/>
+    <ellipse cx="144" cy="58" rx="12" ry="24" fill="#FFFFFF" transform="rotate(48 144 58)"/>
+    <path d="M38 146 L218 146 C216 190 178 216 128 216 C78 216 40 190 38 146 Z" fill="#4F8FCB"/>
+  </g>
+  <g stroke="#D3D0C2" stroke-width="3" fill="none">
+    <ellipse cx="70" cy="128" rx="4" ry="9" transform="rotate(-30 70 128)"/>
+    <ellipse cx="84" cy="102" rx="4" ry="9" transform="rotate(-50 84 102)"/>
+    <ellipse cx="186" cy="128" rx="4" ry="9" transform="rotate(30 186 128)"/>
+    <ellipse cx="172" cy="102" rx="4" ry="9" transform="rotate(50 172 102)"/>
+    <ellipse cx="108" cy="80" rx="4" ry="9" transform="rotate(-70 108 80)"/>
+    <ellipse cx="160" cy="92" rx="4" ry="9" transform="rotate(60 160 92)"/>
+  </g>
+  <path d="M58 160 L198 160" stroke="#2F6CA6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M62 172 C70 190 88 202 108 206 C90 206 66 196 58 176 Z" fill="#7FB2E0"/>
+  <ellipse cx="103" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 129 Q128 137 136 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

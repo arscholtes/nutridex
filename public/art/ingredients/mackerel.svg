@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mackerel</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#2B8A92">
+    <path d="M190 126 C204 104 216 86 231 68 C224 94 214 116 212 128 C214 140 224 162 231 188 C218 172 204 152 190 132 Z"/>
+    <path d="M96 80 L108 48 C118 50 128 62 134 78 Z"/>
+    <path d="M150 82 L162 66 L172 90 Z"/>
+    <path d="M140 176 L154 194 L166 168 Z"/>
+    <path d="M25 128 C32 94 70 76 118 76 C156 76 182 98 196 120 L196 136 C182 158 156 180 118 180 C70 180 32 162 25 128 Z" fill="#EEF3F2"/>
+  </g>
+  <path d="M25 128 C32 94 70 76 118 76 C156 76 182 98 196 120 L196 126 C176 130 150 134 128 126 C114 120 108 102 92 96 C72 90 40 100 24 118 Z" fill="#2B8A92"/>
+  <ellipse cx="114" cy="89" rx="10" ry="4" fill="#63BCC0" transform="rotate(10 114 89)"/>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M138 82 q-7 8 0 15 q7 8 0 15 q-6 6 -1 12"/>
+    <path d="M155 82 q-7 8 0 15 q7 8 0 15 q-6 6 -1 14"/>
+    <path d="M172 88 q-7 8 0 14 q7 8 0 14 q-5 5 -1 10"/>
+    <path d="M187 104 q-6 6 0 11 q5 5 1 11"/>
+  </g>
+  <path d="M25 128 C32 94 70 76 118 76 C156 76 182 98 196 120 L196 136 C182 158 156 180 118 180 C70 180 32 162 25 128 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <path d="M118 104 C128 124 128 150 116 170" stroke="#9FB4B6" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="53" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="103" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="63" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="93" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="65" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="95" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="67" cy="119" r="1.9" fill="#FFFFFF"/>
+  <circle cx="97" cy="119" r="1.9" fill="#FFFFFF"/>
+  <path d="M70 139 Q78 147 86 139" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

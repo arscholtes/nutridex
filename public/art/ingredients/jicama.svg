@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Jicama</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="72" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 208 C128 216 132 222 140 226" fill="none" stroke-width="4"/>
+    <path d="M122 70 L121 56 C125 53 131 53 135 56 L134 70 Z" fill="#7A5A34"/>
+    <path d="M74 70 C108 64 148 64 182 70 C210 78 222 114 216 148 C210 184 172 210 128 210 C84 210 46 184 40 148 C34 114 46 78 74 70 Z" fill="#CFA978"/>
+  </g>
+  <ellipse cx="70" cy="118" rx="9" ry="22" fill="#E2C69C" transform="rotate(14 70 118)"/>
+  <g stroke="#A9845A" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M92 80 Q128 86 164 80 M70 168 Q78 178 90 184 M166 184 Q178 178 186 168 M190 106 Q196 114 198 124"/>
+  </g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

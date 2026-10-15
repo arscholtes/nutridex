@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Condensed milk</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="58" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M74 66 L182 66 L182 200 C182 207 176 212 168 212 L88 212 C80 212 74 207 74 200 Z" fill="#C3CAD3"/>
+    <ellipse cx="128" cy="66" rx="54" ry="12" fill="#C3CAD3"/>
+  </g>
+  <path d="M77 94 L179 94 L179 194 L77 194 Z" fill="#7FA6DE"/>
+  <path d="M78 94 L178 94 M78 194 L178 194 M80 202 Q128 210 176 202" stroke="#9AA3AE" stroke-width="3" stroke-linecap="round"/>
+  <rect x="83" y="100" width="6" height="88" rx="3" fill="#A9C4EA"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <ellipse cx="128" cy="67" rx="43" ry="7" fill="#F2DDB0"/>
+    <path d="M88 74 C108 80 148 80 168 74 L166 104 C166 112 157 112 157 104 L157 86 C152 88 147 89 142 89 L142 118 C142 129 129 129 129 118 L129 89 C120 89 113 88 106 86 L106 98 C106 106 97 106 97 98 L95 80 Z" fill="#F2DDB0"/>
+  </g>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

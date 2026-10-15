@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pomelo</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="227" rx="76" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 50 C122 42 124 36 127 30 L136 32 C134 38 134 44 134 50 Z" fill="#6B7F2A"/>
+    <path d="M134 42 C144 26 162 22 178 28 C170 44 152 50 134 42 Z" fill="#5BAE4A"/>
+    <path d="M128 42 C146 42 156 52 166 58 C200 68 220 100 220 140 C220 190 180 220 128 220 C76 220 36 190 36 140 C36 100 56 68 90 58 C100 52 110 42 128 42 Z" fill="#DDE57E"/>
+  </g>
+  <path d="M141 40 L170 31" stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="76" cy="112" rx="10" ry="24" fill="#EBF2B4" transform="rotate(36 76 112)"/>
+  <g fill="#ABBB4E"><circle cx="116" cy="58" r="2.6"/><circle cx="146" cy="62" r="2.6"/><circle cx="170" cy="78" r="2.6"/><circle cx="86" cy="80" r="2.6"/><circle cx="192" cy="104" r="2.6"/><circle cx="62" cy="112" r="2.6"/><circle cx="204" cy="140" r="2.6"/><circle cx="52" cy="148" r="2.6"/><circle cx="196" cy="176" r="2.6"/><circle cx="62" cy="182" r="2.6"/><circle cx="166" cy="202" r="2.6"/><circle cx="96" cy="204" r="2.6"/><circle cx="130" cy="210" r="2.6"/><circle cx="178" cy="128" r="2.6"/></g>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

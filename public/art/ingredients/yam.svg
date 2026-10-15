@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Yam</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="70" ry="9" fill="#000" opacity="0.14"/>
+  <g transform="rotate(-35 128 130)">
+    <g stroke="#1B1B1F" stroke-width="3.5" stroke-linecap="round" fill="none">
+      <path d="M82 176 L78 188 M138 178 L138 190 M186 174 L190 186"/>
+    </g>
+    <path d="M50 98 C30 112 30 152 50 166 C74 182 102 180 128 178 C160 176 192 184 212 166 C230 150 230 108 212 94 C190 78 160 84 128 82 C98 80 70 82 50 98 Z" fill="#4E3426" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M70 98 C86 90 104 88 118 89 C102 94 86 99 66 106 Z" fill="#6E4D39"/>
+    <g stroke="#8E6E55" stroke-width="3.5" stroke-linecap="round" fill="none">
+      <path d="M62 108 Q56 134 62 160 M84 122 Q82 140 86 166 M194 92 Q200 128 194 168 M172 102 Q176 116 174 128"/>
+      <path d="M100 168 L116 170 M148 94 L164 92 M204 140 L210 138"/>
+    </g>
+  </g>
+  <ellipse cx="103" cy="141" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="141" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="121" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="121" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 141 Q128 149 136 141" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

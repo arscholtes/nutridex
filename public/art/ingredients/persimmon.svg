@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Persimmon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 76 C178 70 214 98 212 144 C210 188 174 210 128 210 C82 210 46 188 44 144 C42 98 78 70 128 76 Z" fill="#F57C1F"/>
+    <path d="M124 78 C112 64 116 50 128 42 C140 50 144 64 132 78 Z" fill="#5E8C2A"/>
+    <path d="M128 82 C112 66 86 62 68 74 C84 92 110 94 128 86 Z" fill="#5E8C2A"/>
+    <path d="M128 82 C144 66 170 62 188 74 C172 92 146 94 128 86 Z" fill="#5E8C2A"/>
+    <path d="M121 84 C114 96 118 110 128 114 C138 110 142 96 135 84 Z" fill="#6FA334"/>
+    <circle cx="128" cy="80" r="8" fill="#7A5230"/>
+  </g>
+  <path d="M74 122 C78 106 90 96 102 94 C92 110 86 128 86 146 C78 140 72 132 74 122 Z" fill="#FFAA5C"/>
+  <ellipse cx="103" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 167 Q128 175 136 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Kale</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="228" rx="40" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 200 L128 222" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 200 L128 222" stroke="#A8D8A8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M128 206 C116 206 107 200 105 190 C93 192 86 178 92 166 C80 162 78 144 86 136 C76 126 78 106 89 102 C80 88 86 70 98 70 C95 54 105 42 115 46 C118 32 129 26 138 34 C148 30 158 40 157 54 C168 56 177 72 170 86 C180 96 180 116 170 124 C178 136 174 154 164 158 C168 172 161 188 151 188 C148 200 137 206 128 206 Z" fill="#2F7D32" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M100 80 C104 70 112 64 118 66 C110 76 106 88 106 100 C100 94 98 86 100 80 Z" fill="#4CAF50"/>
+  <g stroke="#A8D8A8" stroke-linecap="round" fill="none">
+    <path d="M128 150 L128 200" stroke-width="6"/>
+    <path d="M128 166 L112 176" stroke-width="3.5"/>
+    <path d="M128 166 L144 176" stroke-width="3.5"/>
+    <path d="M128 184 L116 192" stroke-width="3.5"/>
+    <path d="M128 184 L140 192" stroke-width="3.5"/>
+  </g>
+  <ellipse cx="102" cy="132" rx="8" ry="4.5" fill="#FF8FA3" opacity="0.5"/>
+  <ellipse cx="154" cy="132" rx="8" ry="4.5" fill="#FF8FA3" opacity="0.5"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 131 Q128 139 136 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

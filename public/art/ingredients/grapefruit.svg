@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Grapefruit</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="226" rx="68" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="128" cy="138" r="82" fill="#F2A65A"/>
+    <circle cx="128" cy="126" r="82" fill="#F7C64F"/>
+  </g>
+  <circle cx="128" cy="126" r="72" fill="#FFF3DC"/>
+  <circle cx="128" cy="126" r="65" fill="#F0607A"/>
+  <path d="M149 132 L188 142 M144 142 L172 170 M134 147 L144 186 M122 147 L112 186 M112 142 L84 170 M107 132 L68 142 M107 120 L68 110 M112 110 L84 82 M122 105 L112 66 M134 105 L144 66 M144 110 L172 82 M149 120 L188 110" stroke="#FFD3DB" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="128" cy="130" rx="47" ry="32" fill="#F0607A"/>
+  <path d="M80 92 C88 78 100 70 112 68 C104 78 96 88 92 100 C86 102 78 98 80 92 Z" fill="#FF94A6"/>
+  <circle cx="128" cy="126" r="65" fill="none" stroke="#1B1B1F" stroke-width="3"/>
+  <ellipse cx="103" cy="141" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="141" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="121" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="121" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 141 Q128 149 136 141" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

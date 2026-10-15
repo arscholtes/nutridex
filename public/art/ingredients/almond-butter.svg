@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Almond butter</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="224" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M82 68 L174 68 C186 68 192 76 192 88 L192 196 C192 206 184 212 174 212 L82 212 C72 212 64 206 64 196 L64 88 C64 76 70 68 82 68 Z" fill="#DDB07A"/>
+  <path d="M66 70 L190 70 L190 92 C176 84 164 98 148 92 C134 86 122 100 106 92 C92 86 80 96 66 92 Z" fill="#F6EEE2"/>
+  <path d="M66 92 C80 96 92 86 106 92 C122 100 134 86 148 92 C164 98 176 84 190 92" stroke="#A97A45" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M76 108 C80 104 86 104 88 108 L88 194 C80 192 76 186 76 178 Z" fill="#EDCDA2"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M82 68 L174 68 C186 68 192 76 192 88 L192 196 C192 206 184 212 174 212 L82 212 C72 212 64 206 64 196 L64 88 C64 76 70 68 82 68 Z" fill="none"/>
+    <rect x="80" y="34" width="96" height="30" rx="9" fill="#7FA36B"/>
+  </g>
+  <path d="M128 94 C144 104 146 126 128 133 C110 126 112 104 128 94 Z" fill="#A0602F" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M125 106 C121 113 121 121 124 127" stroke="#C98A55" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="172" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="172" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="153" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="153" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="155" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="155" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="152" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="152" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 172 Q128 180 136 172" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

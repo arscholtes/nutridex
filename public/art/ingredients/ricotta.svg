@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ricotta</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M58 136 C56 30 200 30 198 136 Z" fill="#F8F6EC"/>
+    <path d="M48 138 L208 138 C206 172 198 200 184 208 Q128 214 72 208 C58 200 50 172 48 138 Z" fill="#D9AA5E"/>
+    <rect x="40" y="128" width="176" height="16" rx="8" fill="#C08A3E"/>
+  </g>
+  <g stroke="#9C6E2C" stroke-width="3" stroke-linecap="round" fill="none"><path d="M53 162 Q128 166 203 162"/><path d="M59 178 Q128 182 197 178"/><path d="M66 194 Q128 198 190 194"/><path d="M68 151 L68 158"/><path d="M92 151 L92 158"/><path d="M116 151 L116 158"/><path d="M140 151 L140 158"/><path d="M164 151 L164 158"/><path d="M188 151 L188 158"/><path d="M85 167 L85 174"/><path d="M109 167 L109 174"/><path d="M133 167 L133 174"/><path d="M157 167 L157 174"/><path d="M181 167 L181 174"/><path d="M80 183 L80 190"/><path d="M104 183 L104 190"/><path d="M128 183 L128 190"/><path d="M152 183 L152 190"/><path d="M176 183 L176 190"/><path d="M99 199 L99 200"/><path d="M123 199 L123 200"/><path d="M147 199 L147 200"/><path d="M171 199 L171 200"/></g>
+  <ellipse cx="94" cy="84" rx="8" ry="17" fill="#FFFFFF" transform="rotate(35 94 84)"/>
+  <g stroke="#DAD5C2" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M70 122 Q68 106 74 92"/><path d="M186 122 Q188 106 182 92"/><path d="M118 52 q10 -3 20 0"/>
+  </g>
+  <ellipse cx="103" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 119 Q128 127 136 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

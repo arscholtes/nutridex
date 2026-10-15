@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ground beef</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="92" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M42 182 Q28 163 45 150 Q36 128 56 121 Q52 97 72 97 Q73 74 92 80 Q100 60 116 71 Q128 55 140 71 Q156 60 164 80 Q183 74 184 97 Q204 97 200 121 Q220 128 211 150 Q228 163 214 182 Z" fill="#C8414A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="74" cy="122" rx="6" ry="14" fill="#E2666E" transform="rotate(38 74 122)"/>
+  <g stroke="#F08C92" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M60 158 Q66 150 72 156 Q78 162 84 154"/>
+    <path d="M98 94 Q104 86 110 92 Q116 98 122 90"/>
+    <path d="M140 90 Q146 82 152 88 Q158 94 164 86"/>
+    <path d="M170 118 Q176 110 182 116 Q188 122 194 114"/>
+    <path d="M168 158 Q174 150 180 156 Q186 162 192 154"/>
+    <path d="M104 164 Q110 156 116 162 Q122 168 128 160"/>
+  </g>
+  <g fill="#FFE3DE">
+    <circle cx="86" cy="140" r="3.2"/>
+    <circle cx="198" cy="140" r="3.2"/>
+    <circle cx="128" cy="78" r="3.2"/>
+    <circle cx="170" cy="100" r="3.2"/>
+    <circle cx="82" cy="102" r="3.2"/>
+    <circle cx="146" cy="166" r="3.2"/>
+  </g>
+  <path d="M30 172 L226 172 L210 208 L46 208 Z" fill="#E9EDF0" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="103" cy="141" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="141" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="121" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="121" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 141 Q128 149 136 141" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

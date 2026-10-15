@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Whitefish</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#8F9CA3">
+    <path d="M190 124 C204 104 218 88 232 76 C226 100 220 118 212 132 C220 146 226 164 232 188 C218 176 204 160 190 140 Z"/>
+    <path d="M110 84 C116 62 128 52 136 50 C142 60 148 72 152 82 Z"/>
+    <path d="M170 104 C174 94 182 94 186 106 Z"/>
+    <path d="M150 172 C156 186 166 192 174 190 C178 182 180 172 180 160 Z"/>
+    <path d="M100 176 C98 190 106 198 116 198 C120 190 122 184 122 180 Z"/>
+    <path d="M34 138 C40 124 54 116 70 110 C88 92 112 78 138 78 C166 80 184 104 196 122 L196 142 C182 160 160 178 124 180 C82 180 46 164 34 138 Z" fill="#CBD2DA"/>
+  </g>
+  <path d="M94 98 C108 86 124 82 142 84 C124 88 112 94 102 104 Z" fill="#EEF2F5"/>
+  <path d="M140 98 C152 120 152 156 138 174" stroke="#8F9CA3" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M156 146 C166 138 180 142 186 154 C174 160 162 158 156 146 Z" fill="#8F9CA3" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="79" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="129" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="89" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="119" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="91" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="121" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="93" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="123" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M96 147 Q104 155 112 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

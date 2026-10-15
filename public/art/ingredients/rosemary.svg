@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Rosemary</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="52" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M91 143l10 -14 M91 143l-16 -5 M87 130l10 -14 M87 130l-16 -5 M83 117l10 -14 M83 117l-16 -5 M79 104l10 -14 M79 104l-16 -5 M75 92l10 -14 M75 92l-16 -5 M71 79l10 -14 M71 79l-16 -5 M67 66l10 -14 M67 66l-16 -5 M63 53l10 -14 M63 53l-16 -5 M60 44l-2 -6 M128 138l14 -10 M128 138l-14 -10 M128 124l14 -10 M128 124l-14 -10 M128 110l14 -10 M128 110l-14 -10 M128 97l14 -10 M128 97l-14 -10 M128 83l14 -10 M128 83l-14 -10 M128 69l14 -10 M128 69l-14 -10 M128 56l14 -10 M128 56l-14 -10 M128 42l14 -10 M128 42l-14 -10 M128 32l0 -6 M165 143l16 -5 M165 143l-10 -14 M169 130l16 -5 M169 130l-10 -14 M173 117l16 -5 M173 117l-10 -14 M177 104l16 -5 M177 104l-10 -14 M181 92l16 -5 M181 92l-10 -14 M185 79l16 -5 M185 79l-10 -14 M189 66l16 -5 M189 66l-10 -14 M193 53l16 -5 M193 53l-10 -14 M196 44l2 -6" stroke="#1B1B1F" stroke-width="10"/>
+    <path d="M91 143l10 -14 M91 143l-16 -5 M87 130l10 -14 M87 130l-16 -5 M83 117l10 -14 M83 117l-16 -5 M79 104l10 -14 M79 104l-16 -5 M75 92l10 -14 M75 92l-16 -5 M71 79l10 -14 M71 79l-16 -5 M67 66l10 -14 M67 66l-16 -5 M63 53l10 -14 M63 53l-16 -5 M60 44l-2 -6 M128 138l14 -10 M128 138l-14 -10 M128 124l14 -10 M128 124l-14 -10 M128 110l14 -10 M128 110l-14 -10 M128 97l14 -10 M128 97l-14 -10 M128 83l14 -10 M128 83l-14 -10 M128 69l14 -10 M128 69l-14 -10 M128 56l14 -10 M128 56l-14 -10 M128 42l14 -10 M128 42l-14 -10 M128 32l0 -6 M165 143l16 -5 M165 143l-10 -14 M169 130l16 -5 M169 130l-10 -14 M173 117l16 -5 M173 117l-10 -14 M177 104l16 -5 M177 104l-10 -14 M181 92l16 -5 M181 92l-10 -14 M185 79l16 -5 M185 79l-10 -14 M189 66l16 -5 M189 66l-10 -14 M193 53l16 -5 M193 53l-10 -14 M196 44l2 -6" stroke="#4E8A63" stroke-width="4.5"/>
+    <path d="M114 214 L60 44 M128 214 L128 32 M142 214 L196 44" stroke="#1B1B1F" stroke-width="10"/>
+    <path d="M114 214 L60 44 M128 214 L128 32 M142 214 L196 44" stroke="#9C6B42" stroke-width="4.5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="3.5" fill="#A9CBF2">
+    <circle cx="86" cy="96" r="7"/>
+    <circle cx="148" cy="68" r="7"/>
+    <circle cx="170" cy="110" r="7"/>
+    <circle cx="108" cy="58" r="7"/>
+  </g>
+  <rect x="80" y="126" width="96" height="72" rx="18" fill="#DDB37A" stroke="#1B1B1F" stroke-width="6"/>
+  <path d="M92 150 C92 140 98 134 106 134 C102 146 102 164 104 180 C96 174 92 162 92 150 Z" fill="#EDCFA2"/>
+  <path d="M86 188 L170 188" stroke="#B0844E" stroke-width="3.5" stroke-linecap="round"/>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

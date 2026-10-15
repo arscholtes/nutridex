@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Purslane</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 214 L128 160 M128 198 L66 170 M128 198 L190 170 M128 180 L58 108 M128 180 L198 108" stroke="#1B1B1F" stroke-width="11"/>
+    <path d="M128 214 L128 160 M128 198 L66 170 M128 198 L190 170 M128 180 L58 108 M128 180 L198 108" stroke="#C0504A" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" fill="#5E9F48">
+    <ellipse cx="58" cy="108" rx="17" ry="27" transform="rotate(-65 58 108)"/>
+    <ellipse cx="80" cy="58" rx="17" ry="27" transform="rotate(-30 80 58)"/>
+    <ellipse cx="176" cy="58" rx="17" ry="27" transform="rotate(30 176 58)"/>
+    <ellipse cx="198" cy="108" rx="17" ry="27" transform="rotate(65 198 108)"/>
+    <ellipse cx="66" cy="170" rx="17" ry="27" transform="rotate(244 66 170)"/>
+    <ellipse cx="190" cy="170" rx="17" ry="27" transform="rotate(116 190 170)"/>
+    <path d="M128 46 C164 46 186 74 186 108 C186 146 156 172 128 176 C100 172 70 146 70 108 C70 74 92 46 128 46 Z" fill="#82BE62"/>
+  </g>
+  <ellipse cx="94" cy="82" rx="7" ry="15" fill="#B6DE98" transform="rotate(40 94 82)"/>
+  <ellipse cx="103" cy="127" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="127" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="108" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="108" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="110" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="110" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="107" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="107" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 127 Q128 135 136 127" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

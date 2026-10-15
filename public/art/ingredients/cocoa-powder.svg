@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cocoa powder</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8ECF3"/>
+  <ellipse cx="128" cy="222" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <g transform="translate(152 80) rotate(-24)" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M54 0 L66 -3" stroke="#1B1B1F" stroke-width="9"/>
+    <path d="M-56 0 C-42 -32 42 -32 56 0 C42 32 -42 32 -56 0 Z" fill="#C8642A" stroke="#1B1B1F" stroke-width="6"/>
+    <path d="M-46 -10 C-20 -22 20 -22 46 -10 M-50 0 C-20 -4 20 -4 50 0 M-46 10 C-20 22 20 22 46 10" stroke="#8E3F14" stroke-width="3.5" fill="none"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M34 210 C40 190 62 178 78 162 C94 146 98 112 128 108 C158 112 162 146 178 162 C194 178 216 190 222 210 C222 214 218 216 214 216 L42 216 C38 216 34 214 34 210 Z" fill="#6B3E26"/>
+  </g>
+  <path d="M110 118 C100 128 94 146 82 166 C78 172 72 170 76 162 C88 142 94 126 110 118 Z" fill="#8C5A3C"/>
+  <g fill="#9A6A4C">
+    <circle cx="132" cy="120" r="2.6"/><circle cx="148" cy="132" r="2.6"/><circle cx="100" cy="198" r="2.6"/>
+    <circle cx="134" cy="200" r="2.6"/><circle cx="166" cy="194" r="2.6"/><circle cx="190" cy="204" r="2.6"/>
+    <circle cx="72" cy="204" r="2.6"/><circle cx="176" cy="172" r="2.6"/>
+  </g>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

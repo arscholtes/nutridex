@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Shallot</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="134" cy="225" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#8A6A3E" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M104 208 L99 219 M112 210 L112 221 M120 208 L125 219 M152 204 L150 216 M160 204 L163 215"/>
+  </g>
+  <g transform="rotate(14 170 140)">
+    <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M166 70 C166 58 168 50 174 42 C176 40 179 43 177 46 C174 52 174 60 175 70 Z" fill="#D9A07E"/>
+      <path d="M170 62 C178 84 202 114 202 154 C202 186 188 204 170 204 C152 204 138 186 138 154 C138 114 162 84 170 62 Z" fill="#B4614A"/>
+    </g>
+    <path d="M174 76 C188 98 196 130 194 170" stroke="#8E4533" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M108 60 C108 48 110 40 116 32 C118 30 121 33 119 36 C116 42 116 50 117 60 Z" fill="#E2AE8E"/>
+    <path d="M112 52 C120 76 154 104 154 150 C154 188 136 210 112 210 C88 210 70 188 70 150 C70 104 104 76 112 52 Z" fill="#CC7B60"/>
+  </g>
+  <ellipse cx="88" cy="118" rx="6" ry="14" fill="#E6A086" transform="rotate(25 88 118)"/>
+  <g stroke="#9C4F3A" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M106 72 C100 86 96 104 96 122"/>
+    <path d="M118 72 C126 86 134 104 136 122"/>
+  </g>
+  <ellipse cx="87" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 167 Q112 175 120 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

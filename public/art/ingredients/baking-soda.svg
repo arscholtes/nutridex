@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Baking soda</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EFE9E2"/>
+  <ellipse cx="128" cy="224" rx="86" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M80 80 L200 80 L210 40 L94 40 Z" fill="#E8E8E2"/>
+    <path d="M172 96 L200 80 L200 196 L172 212 Z" fill="#D6D6CE"/>
+    <path d="M52 96 L80 80 L200 80 L172 96 Z" fill="#FFFFFF"/>
+    <rect x="52" y="96" width="120" height="116" rx="4" fill="#F4F4EF"/>
+  </g>
+  <g fill="#D4EEF9" stroke="#1B1B1F" stroke-width="3">
+    <circle cx="118" cy="70" r="8"/><circle cx="140" cy="56" r="5.5"/><circle cx="104" cy="50" r="4.5"/><circle cx="158" cy="72" r="4"/><circle cx="126" cy="34" r="3.5"/>
+  </g>
+  <path d="M62 110 L70 110 L70 202 L62 202 Z" fill="#FFFFFF"/>
+  <circle cx="112" cy="117" r="15" fill="#6EC1E4" stroke="#1B1B1F" stroke-width="3"/>
+  <g fill="#FFFFFF" stroke="#1B1B1F" stroke-width="2.2">
+    <circle cx="107" cy="122" r="4.8"/><circle cx="118" cy="114" r="3.8"/><circle cx="108" cy="110" r="2.6"/><circle cx="119" cy="124" r="2.2"/>
+  </g>
+  <ellipse cx="87" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 173 Q112 181 120 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

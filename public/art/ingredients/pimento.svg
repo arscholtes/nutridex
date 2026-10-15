@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pimento</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="50" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M123 84 C123 70 126 60 134 52 C139 48 145 53 141 58 C135 64 133 74 133 84 Z" fill="#3E9E52"/>
+    <path d="M128 84 C112 56 60 58 54 106 C50 144 96 180 122 208 C125 211 131 211 134 208 C160 180 206 144 202 106 C196 58 144 56 128 84 Z" fill="#E2342D"/>
+    <path d="M106 86 C110 72 146 72 150 86 C142 92 136 88 128 94 C120 88 114 92 106 86 Z" fill="#3E9E52"/>
+  </g>
+  <ellipse cx="80" cy="104" rx="9" ry="19" fill="#FF7B6E" transform="rotate(32 80 104)"/>
+  <ellipse cx="103" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="125" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="125" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 145 Q128 153 136 145" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

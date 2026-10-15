@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chicory root</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="42" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M100 94 C92 68 106 38 128 26 C150 38 164 68 156 94 Z" fill="#F3EDC6"/>
+    <path d="M80 92 C104 82 152 82 176 92 C180 128 168 160 152 186 C144 200 136 212 130 222 C127 228 123 227 122 221 C116 206 106 188 98 170 C86 146 78 122 80 92 Z" fill="#B98C5C"/>
+  </g>
+  <path d="M113 40 C118 33 123 29 128 27 C133 29 139 34 143 40 C136 45 120 45 113 40 Z" fill="#D7E08A"/>
+  <g stroke="#B5C27A" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M124 84 C118 66 118 50 124 38 M134 84 C142 66 144 54 140 42"/>
+  </g>
+  <path d="M90 100 C94 96 100 94 104 94 C100 118 102 142 108 162 C98 144 90 122 90 100 Z" fill="#D1A878"/>
+  <g stroke="#7E5A36" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M104 166 Q128 172 150 166 M112 188 Q128 192 142 188 M120 206 Q128 209 134 206"/>
+  </g>
+  <ellipse cx="103" cy="139" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="139" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="119" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="119" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 139 Q128 147 136 139" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

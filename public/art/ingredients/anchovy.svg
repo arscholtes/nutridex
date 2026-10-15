@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Anchovy</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="126" cy="224" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 56 L160 42 L170 58 Z" fill="#4F7F7B"/>
+    <path d="M96 70 C115.04 55 177.6 55 207.52 67 L232 55 L223.84 70 L232 85 L207.52 73 C177.6 85 115.04 85 96 70 Z" fill="#C9D4D9"/>
+  </g>
+  <path d="M100 66 C130 56 170 56 206 66 L206 70 C170 66 130 66 100 70 Z" fill="#4F7F7B"/>
+  <path d="M112 73 L200 73" stroke="#F7FAFB" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="110" cy="66" r="3" fill="#1B1B1F"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4F7F7B">
+    <path d="M192 132 C202 116 212 104 228 96 C221 114 217 126 215 136 C217 146 221 158 228 176 C212 168 202 156 192 140 Z"/>
+    <path d="M118 104 L132 84 L146 104 Z"/>
+    <path d="M126 168 L136 184 L148 168 Z"/>
+    <path d="M24 136 C34 110 76 100 120 100 C160 100 186 116 198 130 L198 140 C186 154 160 172 120 172 C76 172 34 162 24 136 Z" fill="#C5D0D6"/>
+  </g>
+  <path d="M24 136 C34 110 76 100 120 100 C160 100 186 116 198 130 L198 132 C176 130 150 128 132 128 C118 126 110 112 94 110 C74 106 46 112 28 126 Z" fill="#4F7F7B"/>
+  <path d="M30 140 C50 150 80 154 110 150 L122 128 C116 112 74 110 50 116 Z" fill="#E4EAEE"/>
+  <path d="M128 136 L196 136" stroke="#F7FAFB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M24 136 C34 110 76 100 120 100 C160 100 186 116 198 130 L198 140 C186 154 160 172 120 172 C76 172 34 162 24 136 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <ellipse cx="162" cy="114" rx="11" ry="3.5" fill="#79A7A2" transform="rotate(8 162 114)"/>
+  <path d="M120 114 C130 130 130 152 120 166" stroke="#8FA2AC" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="51" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="101" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="61" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="91" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="63" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="93" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="65" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="95" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M68 147 Q76 155 84 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

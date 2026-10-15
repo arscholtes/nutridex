@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Artichoke</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="56" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M118 200 L118 216 Q128 222 138 216 L138 200 Z" fill="#5E8A4A"/>
+    <path d="M73 171 Q56 165 50 154 Q49 141 60 126 Q49 111 50 98 Q56 87 73 81 Q72 63 80 53 Q91 48 107 54 Q117 39 128 36 Q139 39 149 54 Q165 48 176 53 Q184 63 183 81 Q200 87 206 98 Q207 111 196 126 Q207 141 206 154 Q200 165 183 171 C178 200 152 212 128 212 C104 212 78 200 73 171 Z" fill="#7EAD5E"/>
+  </g>
+  <path d="M100 112 C100 79 120 57 128 52 C136 57 156 79 156 112 M68 136 C68 102 86 79 94 74 C102 79 120 102 120 136 M136 136 C136 102 154 79 162 74 C170 79 188 102 188 136 M54 166 C54 135 68 114 74 110 C80 114 94 135 94 166 M162 166 C162 135 176 114 182 110 C188 114 202 135 202 166" stroke="#46703A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M84 190 C84 134 115 96 128 88 C141 96 172 134 172 190 Q128 206 84 190 Z" fill="#7EAD5E" stroke="#46703A" stroke-width="3.5" stroke-linejoin="round"/>
+  <ellipse cx="98" cy="180" rx="5" ry="13" fill="#A6CF86"/>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

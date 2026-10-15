@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Beef liver</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M42 116 C40 80 84 60 128 64 C146 66 160 76 172 70 C200 62 224 86 216 114 C212 136 194 148 176 170 C160 192 136 208 106 204 C68 198 44 158 42 116 Z" fill="#7A2E2B" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="76" cy="100" rx="8" ry="22" fill="#A24C45" transform="rotate(48 76 100)"/>
+  <path d="M170 76 Q166 108 190 136" stroke="#A85A52" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="95" cy="145" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="145" cy="145" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="105" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="135" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="107" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="137" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="109" cy="125" r="1.9" fill="#FFFFFF"/>
+  <circle cx="139" cy="125" r="1.9" fill="#FFFFFF"/>
+  <path d="M112 145 Q120 153 128 145" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

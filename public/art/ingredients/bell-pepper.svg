@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Bell pepper</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="68" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 78 C112 64 88 60 74 70 C56 82 50 106 52 134 C54 164 58 190 72 204 C84 216 104 214 114 204 C120 212 136 212 142 204 C152 214 172 216 184 204 C198 190 202 164 204 134 C206 106 200 82 182 70 C168 60 144 64 128 78 Z" fill="#D92B2B"/>
+    <path d="M122 74 C122 58 128 46 140 38 C146 34 152 40 148 46 C140 52 134 60 134 74 Z" fill="#3E9E52"/>
+    <path d="M100 78 C104 64 152 64 156 78 C150 86 138 80 128 86 C118 80 106 86 100 78 Z" fill="#3E9E52"/>
+  </g>
+  <g stroke="#9E1B1B" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M114 202 L113 192"/>
+    <path d="M142 202 L143 192"/>
+  </g>
+  <ellipse cx="76" cy="134" rx="8" ry="28" fill="#F26A5E"/>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

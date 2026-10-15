@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Bitter melon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="44" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M125 46 C124 38 126 31 133 26 C137 23 142 28 138 31 C134 36 133 41 133 46 Z" fill="#6B8E3A"/>
+    <path d="M128 40 Q144.1 44.9 143.5 49.8 Q153.9 54.7 151.7 59.6 Q161.0 64.4 157.9 69.3 Q166.6 74.2 163.0 79.1 Q171.1 84.0 167.0 88.9 Q174.6 93.8 170.1 98.7 Q177.3 103.6 172.3 108.4 Q179.0 113.3 173.6 118.2 Q179.9 123.1 174.0 128.0 Q179.9 132.9 173.6 137.8 Q179.0 142.7 172.3 147.6 Q177.3 152.4 170.1 157.3 Q174.6 162.2 167.0 167.1 Q171.1 172.0 163.0 176.9 Q166.6 181.8 157.9 186.7 Q161.0 191.6 151.7 196.4 Q153.9 201.3 143.5 206.2 Q144.1 211.1 128.0 216.0 Q111.9 211.1 112.5 206.2 Q102.1 201.3 104.3 196.4 Q95.0 191.6 98.1 186.7 Q89.4 181.8 93.0 176.9 Q84.9 172.0 89.0 167.1 Q81.4 162.2 85.9 157.3 Q78.7 152.4 83.7 147.6 Q77.0 142.7 82.4 137.8 Q76.1 132.9 82.0 128.0 Q76.1 123.1 82.4 118.2 Q77.0 113.3 83.7 108.4 Q78.7 103.6 85.9 98.7 Q81.4 93.8 89.0 88.9 Q84.9 84.0 93.0 79.1 Q89.4 74.2 98.1 69.3 Q95.0 64.4 104.3 59.6 Q102.1 54.7 112.5 49.8 Q111.9 44.9 128.0 40.0 Z" fill="#A6D46A"/>
+  </g>
+  <g stroke="#6FA23C" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M100 84 L97 98 M92 166 L95 180 M156 84 L159 98 M164 166 L161 180"/>
+    <path d="M118 58 L116 70 M138 58 L140 70 M112 192 L115 202 M144 192 L141 202 M128 176 L128 192"/>
+    <path d="M90 116 L89 130 M166 116 L167 130"/>
+  </g>
+  <ellipse cx="110" cy="74" rx="4.5" ry="11" fill="#CDEA9F" transform="rotate(22 110 74)"/>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

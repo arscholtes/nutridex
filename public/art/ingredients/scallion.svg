@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Scallion</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="46" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#B39E70" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M118 206 L112 222 M128 210 L128 224 M138 206 L144 222"/>
+  </g>
+  <g stroke-linecap="round" fill="none">
+    <path d="M120 96 Q108 64 88 38 M125 94 Q118 60 110 28 M131 94 Q138 60 146 28 M136 96 Q148 64 168 38" stroke="#1B1B1F" stroke-width="16"/>
+    <path d="M120 96 Q108 64 88 38 M125 94 Q118 60 110 28 M131 94 Q138 60 146 28 M136 96 Q148 64 168 38" stroke="#5DBB63" stroke-width="8"/>
+  </g>
+  <path d="M115 84 L141 84 C143 112 166 130 166 168 C166 194 150 210 128 210 C106 210 90 194 90 168 C90 130 113 112 115 84 Z" fill="#F7F7EE" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M118 87 L138 87 C139 98 142 106 146 112 Q128 120 110 112 C114 106 117 98 118 87 Z" fill="#CFE8AE"/>
+  <path d="M110 112 Q128 120 146 112" stroke="#ACD38A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="100" cy="188" rx="4" ry="8" fill="#FFFFFF" transform="rotate(-20 100 188)"/>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

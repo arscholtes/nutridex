@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Marjoram</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M69 148 L56 148 M73 133 L61 128 M83 119 L73 111 M97 108 L90 98 M114 102 L111 90 M132 101 L133 88 M150 104 L155 93 M166 113 L174 103 M178 125 L189 118 M185 140 L198 137 M187 156 L200 156" stroke="#1B1B1F" stroke-width="9"/>
+    <path d="M69 148 L56 148 M73 133 L61 128 M83 119 L73 111 M97 108 L90 98 M114 102 L111 90 M132 101 L133 88 M150 104 L155 93 M166 113 L174 103 M178 125 L189 118 M185 140 L198 137 M187 156 L200 156" stroke="#B9CB9E" stroke-width="3.5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="5" fill="#93AC80">
+    <ellipse cx="50" cy="147" rx="11" ry="16" transform="rotate(274 50 147)"/>
+    <ellipse cx="56" cy="126" rx="11" ry="16" transform="rotate(292 56 126)"/>
+    <ellipse cx="68" cy="107" rx="11" ry="16" transform="rotate(310 68 107)"/>
+    <ellipse cx="87" cy="93" rx="11" ry="16" transform="rotate(328 87 93)"/>
+    <ellipse cx="109" cy="84" rx="11" ry="16" transform="rotate(346 109 84)"/>
+    <ellipse cx="133" cy="82" rx="11" ry="16" transform="rotate(364 133 82)"/>
+    <ellipse cx="157" cy="87" rx="11" ry="16" transform="rotate(382 157 87)"/>
+    <ellipse cx="178" cy="98" rx="11" ry="16" transform="rotate(400 178 98)"/>
+    <ellipse cx="194" cy="115" rx="11" ry="16" transform="rotate(418 194 115)"/>
+    <ellipse cx="204" cy="135" rx="11" ry="16" transform="rotate(436 204 135)"/>
+    <ellipse cx="206" cy="157" rx="11" ry="16" transform="rotate(454 206 157)"/>
+  </g>
+  <path d="M128 98 Q143 94 155 103 Q171 106 176 118 Q189 126 188 140 Q196 152 188 164 Q189 178 176 186 Q171 198 155 201 Q143 210 128 206 Q113 210 101 201 Q85 198 80 186 Q67 178 68 164 Q60 152 68 140 Q67 126 80 118 Q85 106 101 103 Q113 94 128 98 Z" fill="#A6BC90" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M84 142 C86 124 98 110 112 106 C104 120 98 134 98 150 C92 156 82 152 84 142 Z" fill="#C6D6B3"/>
+  <g stroke="#1B1B1F" stroke-width="3.5" fill="#E8EDCF">
+    <circle cx="67" cy="125" r="6.5"/>
+    <circle cx="79" cy="125" r="6.5"/>
+    <circle cx="73" cy="116" r="6.5"/>
+    <circle cx="116" cy="98" r="6.5"/>
+    <circle cx="128" cy="98" r="6.5"/>
+    <circle cx="122" cy="89" r="6.5"/>
+    <circle cx="170" cy="117" r="6.5"/>
+    <circle cx="182" cy="117" r="6.5"/>
+    <circle cx="176" cy="108" r="6.5"/>
+  </g>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

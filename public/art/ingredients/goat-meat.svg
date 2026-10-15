@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Goat meat</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="130" cy="224" rx="76" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <path d="M60 100 L88 76 L200 76 L172 100 Z" fill="#C4555A"/>
+    <path d="M172 100 L200 76 L200 180 L172 206 Z" fill="#82272E"/>
+    <rect x="60" y="100" width="112" height="106" fill="#A6363C"/>
+  </g>
+  <path d="M182 112 Q190 136 186 168" stroke="#C9696E" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="76" cy="132" rx="5.5" ry="16" fill="#C24E54"/>
+  <g transform="translate(128 50)">
+    <circle r="26" fill="#FFF8F2" stroke="#1B1B1F" stroke-width="5"/>
+    <path d="M-12 18 C-18 -6 -2 -20 18 -15 C20 -14 20 -11 17 -10 C2 -9 -3 2 -1 18 Z" fill="#3A2A22"/>
+    <path d="M-13 8 L-2 8 M-11 -3 L-1 -1 M-4 -12 L1 -6 M6 -15 L8 -9" stroke="#FFF8F2" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <ellipse cx="91" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="141" cy="165" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="101" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="131" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="103" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="133" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="135" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M108 165 Q116 173 124 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

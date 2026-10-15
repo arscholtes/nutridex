@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Blue cheese</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="126" cy="224" rx="94" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M40 72 L64 58 L64 210 L40 202 Z" fill="#D6CCAE"/>
+    <path d="M64 58 L79 65 L85 81 L102 86 L108 103 L125 108 L130 124 L147 130 L153 146 L170 152 L176 168 L192 173 L198 190 L215 195 L222 210 L64 210 Z" fill="#F6F4EC"/>
+    <path d="M24 206 L32 198 L40 208 L32 214 Z" fill="#F6F4EC" stroke-width="4"/>
+  </g>
+  <path d="M70 92 L76 88 L76 200 L70 202 Z" fill="#FFFFFF"/>
+  <g stroke="#2E7486" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M84 90 Q96 98 88 110 Q80 122 94 130"/><path d="M140 200 Q152 190 164 198 Q176 206 192 198"/><path d="M78 202 Q92 192 106 200"/><path d="M106 100 Q118 108 112 122 Q108 132 120 138"/><path d="M150 160 Q160 166 158 178 Q156 188 168 190"/>
+  </g>
+  <g fill="#3E8A98"><ellipse cx="132" cy="122" rx="5" ry="3.5" transform="rotate(30 132 122)"/><ellipse cx="180" cy="186" rx="5" ry="3.5"/><ellipse cx="124" cy="200" rx="4.5" ry="3"/><ellipse cx="76" cy="160" rx="3.5" ry="5"/><ellipse cx="74" cy="116" rx="3" ry="4.5"/><ellipse cx="100" cy="76" rx="3" ry="4"/><ellipse cx="146" cy="138" rx="4" ry="3"/></g>
+  <ellipse cx="87" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 177 Q112 185 120 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

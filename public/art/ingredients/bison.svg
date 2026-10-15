@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Bison</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="130" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M48 128 C44 94 74 76 112 78 C134 79 146 86 166 82 C198 76 218 102 212 134 C206 172 176 202 128 202 C80 202 52 170 48 128 Z" fill="#F3E4D8" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M62 130 C60 104 86 92 114 94 C134 95 146 100 164 98 C188 94 200 112 196 136 C192 164 168 188 128 188 C88 188 64 162 62 130 Z" fill="#76292A" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="78" cy="128" rx="5.5" ry="15" fill="#984340" transform="rotate(14 78 128)"/>
+  <g transform="translate(128 58)">
+    <circle r="26" fill="#FFF8F2" stroke="#1B1B1F" stroke-width="5"/>
+    <path d="M-12 16 C-12 2 -6 -4 0 -4 C6 -4 12 2 12 16 Z M-8 6 C-22 8 -26 -8 -16 -18 C-18 -6 -14 -2 -6 -2 Z M8 6 C22 8 26 -8 16 -18 C18 -6 14 -2 6 -2 Z" fill="#3A2A22"/>
+  </g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

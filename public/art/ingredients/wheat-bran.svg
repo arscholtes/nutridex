@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Wheat bran</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="134" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M178 134 L222 118 C228 116 232 119 232 124 L232 130 C232 135 229 138 224 140 L176 156 Z" fill="#AEB4BE"/>
+    <path d="M64 118 C60 104 70 98 72 92 C70 80 84 74 88 70 C90 58 106 56 110 54 C116 46 132 46 138 52 C148 50 160 58 162 66 C172 68 178 80 176 88 C184 94 188 106 184 118 Z" fill="#8E5B2C"/>
+    <path d="M62 114 L186 114 L172 196 C170 206 162 212 152 212 L96 212 C86 212 78 206 76 196 Z" fill="#C9CED6"/>
+    <rect x="54" y="106" width="140" height="17" rx="8.5" fill="#DDE1E7"/>
+  </g>
+  <path d="M76 132 C80 132 82 134 83 138 L89 186 C90 192 93 196 98 200 C88 198 83 192 82 186 L75 138 C74 134 74 132 76 132 Z" fill="#EEF0F3"/>
+  <g stroke="#C99258" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M78 98 q8 -7 16 0 M108 78 q8 -7 16 0 M140 88 q8 -7 16 0 M158 104 q6 -6 12 0 M98 98 q7 -6 14 0 M124 100 q7 -6 14 0 M120 62 q6 -5 12 0 M156 74 q5 -4 10 2 M86 82 q5 -5 10 -2"/>
+  </g>
+  <ellipse cx="99" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="149" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="109" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="139" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="111" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="143" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M116 173 Q124 181 132 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

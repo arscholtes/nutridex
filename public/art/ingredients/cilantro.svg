@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cilantro</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="48" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 214 L128 150 M126 196 C106 160 76 108 50 72 M130 196 C150 160 180 108 206 72 M124 196 C100 176 72 160 50 148 M132 196 C156 176 184 160 206 148" stroke="#1B1B1F" stroke-width="11"/>
+    <path d="M128 214 L128 150 M126 196 C106 160 76 108 50 72 M130 196 C150 160 180 108 206 72 M124 196 C100 176 72 160 50 148 M132 196 C156 176 184 160 206 148" stroke="#A9D98C" stroke-width="4.5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#5DB043">
+    <path d="M32 72 Q28 68 29 63 Q28 57 33 53 Q39 51 44 55 Q47 50 52 49 Q58 47 63 50 Q66 56 64 62 Q67 65 64 69 Q67 72 63 75 Q62 79 58 78 Q60 81 56 83 Q56 87 52 86 Q49 90 45 87 Q41 91 35 89 Q29 88 27 82 Q27 76 32 72 Z"/>
+    <path d="M192 72 Q189 69 192 66 Q189 61 192 56 Q192 50 198 47 Q204 48 208 53 Q212 50 217 54 Q223 52 227 57 Q229 63 224 68 Q228 71 227 76 Q230 82 227 87 Q221 90 215 88 Q211 90 208 86 Q204 89 202 85 Q198 84 199 80 Q196 80 195 77 Q191 76 192 72 Z"/>
+    <path d="M27 148 Q29 142 35 140 Q33 134 37 129 Q42 126 48 129 Q53 130 55 135 Q59 135 60 140 Q62 143 59 146 Q63 147 62 151 Q64 155 60 157 Q60 162 56 163 Q54 170 47 172 Q41 169 40 162 Q34 162 32 157 Q27 154 27 148 Z"/>
+    <path d="M196 148 Q193 146 196 143 Q195 139 198 137 Q200 133 204 133 Q208 127 214 126 Q220 129 220 135 Q225 138 224 144 Q229 147 229 154 Q225 159 218 159 Q219 165 214 168 Q209 172 204 169 Q198 166 198 160 Q194 158 194 154 Q193 150 196 148 Z"/>
+    <path d="M62 112 Q54 107 52 97 Q50 89 55 83 Q60 75 70 74 Q77 69 86 72 Q90 66 97 68 Q97 61 104 58 Q104 49 111 43 Q115 35 124 33 Q133 31 139 37 Q147 41 149 51 Q156 56 156 64 Q162 64 164 71 Q172 68 178 73 Q187 71 195 78 Q203 81 204 90 Q206 98 200 105 Q196 114 187 118 Q185 125 177 126 Q177 133 170 134 Q171 140 165 141 Q164 147 158 147 Q157 153 151 152 Q148 156 142 154 Q138 157 134 153 Q130 157 126 153 Q122 157 118 154 Q113 157 109 153 Q104 155 101 150 Q95 150 94 144 Q88 144 88 138 Q82 136 83 130 Q76 129 74 122 Q66 120 62 112 Z" fill="#74C356"/>
+  </g>
+  <ellipse cx="88" cy="96" rx="5" ry="11" fill="#A2DB84" transform="rotate(30 88 96)"/>
+  <path d="M128 40 L128 72 M128 58 L118 48 M128 58 L138 48" stroke="#C4E8AE" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M114 188 L142 188" stroke="#1B1B1F" stroke-width="14" stroke-linecap="round"/>
+  <path d="M114 188 L142 188" stroke="#D9A45B" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="103" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="125" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="106" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="108" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="105" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="105" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 125 Q128 133 136 125" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

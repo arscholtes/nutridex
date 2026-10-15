@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tempeh</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="130" cy="225" rx="96" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M190 100 L222 68 L222 180 L190 212 Z" fill="#CDB070"/>
+  <path d="M38 100 L70 68 L222 68 L190 100 Z" fill="#EEDCAA"/>
+  <path d="M38 100 L190 100 L190 212 L38 212 Z" fill="#E0C88C"/>
+  <path d="M46 112 L54 112 L54 200 L46 200 Z" fill="#F0E0B4"/>
+  <g fill="#C79A4E" stroke="#8F6A2E" stroke-width="3"><ellipse cx="70" cy="116" rx="10" ry="6"/><ellipse cx="100" cy="110" rx="9" ry="5"/><ellipse cx="132" cy="114" rx="10" ry="6"/><ellipse cx="164" cy="112" rx="9" ry="6"/><ellipse cx="176" cy="138" rx="8" ry="10"/><ellipse cx="172" cy="170" rx="9" ry="7"/><ellipse cx="166" cy="196" rx="10" ry="6"/><ellipse cx="136" cy="198" rx="9" ry="6"/><ellipse cx="104" cy="200" rx="10" ry="6"/><ellipse cx="72" cy="196" rx="9" ry="6"/><ellipse cx="66" cy="168" rx="9" ry="7"/><ellipse cx="68" cy="138" rx="8" ry="9"/><ellipse cx="80" cy="86" rx="9" ry="4"/><ellipse cx="110" cy="78" rx="10" ry="4"/><ellipse cx="144" cy="88" rx="10" ry="4"/><ellipse cx="176" cy="78" rx="9" ry="4"/><ellipse cx="204" cy="74" rx="8" ry="3"/><ellipse cx="118" cy="94" rx="8" ry="3"/><ellipse cx="206" cy="104" rx="6" ry="9"/><ellipse cx="206" cy="142" rx="6" ry="10"/><ellipse cx="206" cy="180" rx="6" ry="9"/></g>
+  <ellipse cx="114" cy="156" rx="42" ry="28" fill="#E0C88C"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="none"><path d="M190 100 L222 68 L222 180 L190 212 Z"/><path d="M38 100 L70 68 L222 68 L190 100 Z"/><path d="M38 100 L190 100 L190 212 L38 212 Z"/></g>
+  <ellipse cx="89" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="139" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="99" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="129" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="101" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="131" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="103" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="133" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M106 167 Q114 175 122 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

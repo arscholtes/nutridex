@@ -1,0 +1,717 @@
+[
+ {
+  "group": "fresh herbs",
+  "items": [
+   {
+    "key": "basil",
+    "name": "Basil",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "dill",
+    "name": "Dill",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "rosemary",
+    "name": "Rosemary",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "spearmint",
+    "name": "Spearmint",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "peppermint",
+    "name": "Peppermint",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "thyme",
+    "name": "Thyme",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "bay-leaf",
+    "name": "Bay leaf",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "chervil",
+    "name": "Chervil",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "marjoram",
+    "name": "Marjoram",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "oregano",
+    "name": "Oregano",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "sage",
+    "name": "Sage",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "savory",
+    "name": "Savory",
+    "tint": "#E6F4E8"
+   },
+   {
+    "key": "tarragon",
+    "name": "Tarragon",
+    "tint": "#E6F4E8"
+   }
+  ]
+ },
+ {
+  "group": "whole spices and seeds",
+  "items": [
+   {
+    "key": "cinnamon",
+    "name": "Cinnamon",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "cloves",
+    "name": "Cloves",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "nutmeg",
+    "name": "Nutmeg",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "mace",
+    "name": "Mace",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "cardamom",
+    "name": "Cardamom",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "allspice",
+    "name": "Allspice",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "anise-seed",
+    "name": "Anise seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "caraway-seed",
+    "name": "Caraway seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "celery-seed",
+    "name": "Celery seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "coriander-seed",
+    "name": "Coriander seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "cumin-seed",
+    "name": "Cumin seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "dill-seed",
+    "name": "Dill seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "fennel-seed",
+    "name": "Fennel seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "fenugreek-seed",
+    "name": "Fenugreek seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "mustard-seed",
+    "name": "Mustard seed",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "poppy-seed",
+    "name": "Poppy seed",
+    "tint": "#FBF1DE"
+   }
+  ]
+ },
+ {
+  "group": "powders and condiments",
+  "items": [
+   {
+    "key": "chili-powder",
+    "name": "Chili powder",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "paprika",
+    "name": "Paprika",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "curry-powder",
+    "name": "Curry powder",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "garlic-powder",
+    "name": "Garlic powder",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "onion-powder",
+    "name": "Onion powder",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "ground-ginger",
+    "name": "Ground ginger",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "saffron",
+    "name": "Saffron",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "vanilla",
+    "name": "Vanilla",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "salt",
+    "name": "Salt",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "horseradish",
+    "name": "Horseradish",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "mustard",
+    "name": "Mustard",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "capers",
+    "name": "Capers",
+    "tint": "#FBF1DE"
+   },
+   {
+    "key": "vinegar",
+    "name": "Vinegar",
+    "tint": "#FBF1DE"
+   }
+  ]
+ },
+ {
+  "group": "dry beans and pulses",
+  "items": [
+   {
+    "key": "black-beans",
+    "name": "Black beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "kidney-beans",
+    "name": "Kidney beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "pinto-beans",
+    "name": "Pinto beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "navy-beans",
+    "name": "Navy beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "great-northern-beans",
+    "name": "Great northern beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "lima-beans",
+    "name": "Lima beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "mung-beans",
+    "name": "Mung beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "adzuki-beans",
+    "name": "Adzuki beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "black-eyed-peas",
+    "name": "Black-eyed peas",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "fava-beans",
+    "name": "Fava beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "cranberry-beans",
+    "name": "Cranberry beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "lupini-beans",
+    "name": "Lupini beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "lentils",
+    "name": "Lentils",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "split-peas",
+    "name": "Split peas",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "pigeon-peas",
+    "name": "Pigeon peas",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "soybeans",
+    "name": "Soybeans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "chickpeas",
+    "name": "Chickpeas",
+    "tint": "#EEF0DC"
+   }
+  ]
+ },
+ {
+  "group": "legume foods",
+  "items": [
+   {
+    "key": "peanut",
+    "name": "Peanut",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "peanut-butter",
+    "name": "Peanut butter",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "hummus",
+    "name": "Hummus",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "falafel",
+    "name": "Falafel",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "tofu",
+    "name": "Tofu",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "tempeh",
+    "name": "Tempeh",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "miso",
+    "name": "Miso",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "natto",
+    "name": "Natto",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "soy-milk",
+    "name": "Soy milk",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "soy-sauce",
+    "name": "Soy sauce",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "refried-beans",
+    "name": "Refried beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "baked-beans",
+    "name": "Baked beans",
+    "tint": "#EEF0DC"
+   },
+   {
+    "key": "carob",
+    "name": "Carob",
+    "tint": "#EEF0DC"
+   }
+  ]
+ },
+ {
+  "group": "tree nuts",
+  "items": [
+   {
+    "key": "almond",
+    "name": "Almond",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "cashew",
+    "name": "Cashew",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "pecan",
+    "name": "Pecan",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "walnut",
+    "name": "Walnut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "hazelnut",
+    "name": "Hazelnut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "macadamia",
+    "name": "Macadamia",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "pistachio",
+    "name": "Pistachio",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "brazil-nut",
+    "name": "Brazil nut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "pine-nut",
+    "name": "Pine nut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "chestnut",
+    "name": "Chestnut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "acorn",
+    "name": "Acorn",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "beechnut",
+    "name": "Beechnut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "hickory-nut",
+    "name": "Hickory nut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "ginkgo-nut",
+    "name": "Ginkgo nut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "pili-nut",
+    "name": "Pili nut",
+    "tint": "#F4E9DF"
+   }
+  ]
+ },
+ {
+  "group": "seeds and coconut",
+  "items": [
+   {
+    "key": "coconut",
+    "name": "Coconut",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "coconut-milk",
+    "name": "Coconut milk",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "coconut-water",
+    "name": "Coconut water",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "almond-butter",
+    "name": "Almond butter",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "tahini",
+    "name": "Tahini",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "sunflower-seeds",
+    "name": "Sunflower seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "pumpkin-seeds",
+    "name": "Pumpkin seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "sesame-seeds",
+    "name": "Sesame seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "chia-seeds",
+    "name": "Chia seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "flaxseed",
+    "name": "Flaxseed",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "hemp-seeds",
+    "name": "Hemp seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "lotus-seeds",
+    "name": "Lotus seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "watermelon-seeds",
+    "name": "Watermelon seeds",
+    "tint": "#F4E9DF"
+   },
+   {
+    "key": "mixed-nuts",
+    "name": "Mixed nuts",
+    "tint": "#F4E9DF"
+   }
+  ]
+ },
+ {
+  "group": "whole grains",
+  "items": [
+   {
+    "key": "wheat",
+    "name": "Wheat",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "spelt",
+    "name": "Spelt",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "kamut",
+    "name": "Kamut",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "barley",
+    "name": "Barley",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "rye",
+    "name": "Rye",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "oats",
+    "name": "Oats",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "millet",
+    "name": "Millet",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "quinoa",
+    "name": "Quinoa",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "amaranth-grain",
+    "name": "Amaranth grain",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "buckwheat",
+    "name": "Buckwheat",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "sorghum",
+    "name": "Sorghum",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "teff",
+    "name": "Teff",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "wild-rice",
+    "name": "Wild rice",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "white-rice",
+    "name": "White rice",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "brown-rice",
+    "name": "Brown rice",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "hominy",
+    "name": "Hominy",
+    "tint": "#F7F0D8"
+   }
+  ]
+ },
+ {
+  "group": "flours, pasta and noodles",
+  "items": [
+   {
+    "key": "wheat-flour",
+    "name": "Wheat flour",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "semolina",
+    "name": "Semolina",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "bulgur",
+    "name": "Bulgur",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "couscous",
+    "name": "Couscous",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "wheat-germ",
+    "name": "Wheat germ",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "wheat-bran",
+    "name": "Wheat bran",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "oat-bran",
+    "name": "Oat bran",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "cornmeal",
+    "name": "Cornmeal",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "cornstarch",
+    "name": "Cornstarch",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "tapioca",
+    "name": "Tapioca",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "arrowroot",
+    "name": "Arrowroot",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "pasta",
+    "name": "Pasta",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "spaghetti",
+    "name": "Spaghetti",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "macaroni",
+    "name": "Macaroni",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "egg-noodles",
+    "name": "Egg noodles",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "rice-noodles",
+    "name": "Rice noodles",
+    "tint": "#F7F0D8"
+   },
+   {
+    "key": "rice-flour",
+    "name": "Rice flour",
+    "tint": "#F7F0D8"
+   }
+  ]
+ }
+]

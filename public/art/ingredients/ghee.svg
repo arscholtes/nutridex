@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ghee</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M78 90 L178 90 C188 90 192 96 192 106 L192 196 C192 206 186 212 176 212 L80 212 C70 212 64 206 64 196 L64 106 C64 96 68 90 78 90 Z" fill="#F2BE3A"/>
+    <rect x="72" y="54" width="112" height="38" rx="10" fill="#C3C8D1"/>
+  </g>
+  <path d="M67 104 L67 100 C67 96 70 93 76 93 L180 93 C186 93 189 96 189 100 L189 104 Z" fill="#E4ECF3"/>
+  <path d="M68 105 Q98 99 128 105 Q158 111 188 105" stroke="#D9A21F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M94 64 L94 82 M114 64 L114 82 M134 64 L134 82 M154 64 L154 82 M174 64 L174 76" stroke="#8E949F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M74 110 C74 104 78 102 82 102 L82 196 C77 195 74 191 74 186 Z" fill="#F8D772"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M112 116 L120 106 L148 106 L140 116 Z" fill="#FDF0BE"/>
+    <path d="M140 116 L148 106 L148 124 L140 134 Z" fill="#EBCB62"/>
+    <rect x="112" y="116" width="28" height="18" fill="#F8DE84"/>
+  </g>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

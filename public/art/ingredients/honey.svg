@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Honey</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8ECF3"/>
+  <ellipse cx="128" cy="223" rx="78" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M150 74 L186 46" stroke="#1B1B1F" stroke-width="15"/>
+    <path d="M150 74 L186 46" stroke="#B9783E" stroke-width="6"/>
+  </g>
+  <g transform="translate(192 40) rotate(-45)">
+    <ellipse rx="14" ry="11" fill="#D99A55" stroke="#1B1B1F" stroke-width="5"/>
+    <path d="M-6 -8 L-6 8 M0 -9 L0 9 M6 -8 L6 8" stroke="#8A5528" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#F4B63C">
+    <circle cx="128" cy="50" r="8"/>
+    <path d="M86 88 C86 68 104 58 128 58 C152 58 170 68 170 88 Z"/>
+    <path d="M92 98 C56 108 46 144 54 176 C62 204 94 214 128 214 C162 214 194 204 202 176 C210 144 200 108 164 98 Z"/>
+    <rect x="78" y="84" width="100" height="20" rx="9"/>
+  </g>
+  <path d="M80 96 C80 89 84 86 90 86 L166 86 C172 86 176 89 176 96 L176 104 C176 114 166 116 164 108 C162 102 156 102 152 106 C150 112 150 118 146 120 C140 122 136 118 136 112 L136 108 C126 108 114 108 106 108 C100 110 98 114 98 120 L98 134 C98 144 84 144 84 134 L84 112 C81 108 80 104 80 96 Z" fill="#E2861B" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M66 150 C66 130 76 118 88 112 C80 132 78 160 84 190 C72 180 66 166 66 150 Z" fill="#F9D27F"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

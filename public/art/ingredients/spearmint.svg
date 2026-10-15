@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Spearmint</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="50" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="117" y="140" width="22" height="80" rx="2" fill="#86D29A"/>
+    <path d="M120 192 L117 178 L110 166 L102 165 L94 157 L85 158 L76 153 L66 156 L56 153 L46 157 L34 160 L41 170 L46 179 L55 184 L61 193 L71 194 L77 202 L88 201 L96 205 L108 201 L120 192 Z" fill="#34B06A"/>
+    <path d="M136 192 L148 201 L160 205 L168 201 L179 202 L185 194 L195 193 L201 184 L210 179 L215 170 L222 160 L210 157 L200 153 L190 156 L180 153 L171 158 L162 157 L154 165 L146 166 L139 178 L136 192 Z" fill="#34B06A"/>
+    <path d="M128 172 L156 165 L176 156 L177 148 L191 140 L185 132 L197 123 L188 116 L197 107 L186 100 L193 91 L181 84 L184 75 L172 67 L171 58 L159 51 L154 42 L142 35 L128 26 L114 35 L102 42 L97 51 L85 58 L84 67 L72 75 L75 84 L63 91 L70 100 L59 107 L68 116 L59 123 L71 132 L65 140 L79 148 L80 156 L100 165 L128 172 Z" fill="#46C97E"/>
+  </g>
+  <path d="M82 118 C84 92 100 66 116 52 C108 74 102 96 100 122 C94 132 82 128 82 118 Z" fill="#A2F0C2"/>
+  <g stroke="#23894F" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M128 36 L128 86"/>
+    <path d="M128 56 L116 48"/>
+    <path d="M128 72 L142 64"/>
+    <path d="M128 186 L128 216"/>
+    <path d="M108 186 L58 170"/>
+    <path d="M148 186 L198 170"/>
+  </g>
+  <ellipse cx="103" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="137" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="118" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="120" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="117" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="117" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 137 Q128 145 136 137" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

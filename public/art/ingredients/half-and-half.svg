@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Half-and-half</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#F4F6FA">
+    <rect x="92" y="50" width="72" height="18" rx="4"/>
+    <path d="M62 102 L92 66 L164 66 L194 102 Z"/>
+    <path d="M62 102 L194 102 L194 200 C194 207 189 212 182 212 L74 212 C67 212 62 207 62 200 Z"/>
+  </g>
+  <g fill="#F3D99A">
+    <rect x="128" y="53" width="33" height="12"/>
+    <path d="M128 69 L162.5 69 L188 99 L128 99 Z"/>
+    <path d="M128 105 L191 105 L191 200 C191 205 187 209 182 209 L128 209 Z"/>
+  </g>
+  <rect x="72" y="112" width="9" height="88" rx="4.5" fill="#FFFFFF"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M128 108 C123 116 117 121 117 127 C117 134 122 138 128 138 Z" fill="#F3D99A"/>
+    <path d="M128 108 C133 116 139 121 139 127 C139 134 134 138 128 138 Z" fill="#FFFFFF"/>
+  </g>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

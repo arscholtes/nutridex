@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Bay leaf</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 18 C138 32 174 74 174 128 C174 174 146 208 128 234 C110 208 82 174 82 128 C82 74 118 32 128 18 Z" fill="#6F7834" transform="rotate(-34 128 128) translate(128 128) scale(0.88) translate(-128 -128)"/>
+    <g transform="rotate(30 128 128)">
+      <path d="M128 230 L128 240" fill="none"/>
+      <path d="M128 18 C138 32 174 74 174 128 C174 174 146 208 128 234 C110 208 82 174 82 128 C82 74 118 32 128 18 Z" fill="#959F4E"/>
+    </g>
+  </g>
+  <g transform="rotate(30 128 128)">
+    <path d="M92 96 C94 74 104 54 118 40 C112 60 106 80 104 102 C98 110 92 106 92 96 Z" fill="#BCC676"/>
+    <path d="M128 34 L128 78 M128 52 L142 42 M128 68 L146 56 M128 180 L128 222 M128 188 L110 178 M128 204 L146 194" stroke="#D5D89A" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  </g>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

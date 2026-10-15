@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Baked beans</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="128" cy="225" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M102 196 L154 196 L158 212 L98 212 Z" fill="#D9D2C0"/>
+    <path d="M44 112 C44 172 84 204 128 204 C172 204 212 172 212 112 Z" fill="#F3EEE2"/>
+    <path d="M46 114 C42 86 78 68 102 72 C114 56 146 56 158 68 C184 68 216 88 210 114 C200 128 164 134 128 134 C92 134 56 128 46 114 Z" fill="#E0602A"/>
+  </g>
+  <path d="M50 137 Q128 153 206 137" stroke="#4A78C2" stroke-width="8" fill="none"/>
+  <path d="M58 150 C62 172 76 186 92 194 C82 178 74 164 72 150 Z" fill="#FFFFFF"/>
+  <g fill="#F7BC72" stroke="#9E3A12" stroke-width="3"><ellipse cx="70" cy="108" rx="9" ry="6"/><ellipse cx="92" cy="96" rx="9" ry="6" transform="rotate(-20 92 96)"/><ellipse cx="118" cy="88" rx="9" ry="6" transform="rotate(10 118 88)"/><ellipse cx="146" cy="84" rx="9" ry="6" transform="rotate(-10 146 84)"/><ellipse cx="170" cy="94" rx="9" ry="6" transform="rotate(20 170 94)"/><ellipse cx="192" cy="108" rx="9" ry="6" transform="rotate(-15 192 108)"/><ellipse cx="84" cy="120" rx="9" ry="6" transform="rotate(15 84 120)"/><ellipse cx="110" cy="114" rx="9" ry="6" transform="rotate(-10 110 114)"/><ellipse cx="136" cy="110" rx="9" ry="6" transform="rotate(15 136 110)"/><ellipse cx="162" cy="116" rx="9" ry="6" transform="rotate(-20 162 116)"/><ellipse cx="128" cy="72" rx="9" ry="6"/><ellipse cx="102" cy="78" rx="9" ry="6" transform="rotate(25 102 78)"/><ellipse cx="156" cy="70" rx="9" ry="6" transform="rotate(-25 156 70)"/><ellipse cx="58" cy="96" rx="9" ry="6" transform="rotate(30 58 96)"/><ellipse cx="186" cy="88" rx="9" ry="6" transform="rotate(-30 186 88)"/></g>
+  <ellipse cx="103" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="163" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="163" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 183 Q128 191 136 183" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Nutmeg</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="132" rx="66" ry="80" fill="#946244" stroke="#1B1B1F" stroke-width="6"/>
+  <ellipse cx="88" cy="100" rx="9" ry="26" fill="#B4825E" transform="rotate(20 88 100)"/>
+  <path d="M65 117Q75 117 84 115M84 115Q74 120 68 130M68 130Q73 138 77 147M77 147Q75 157 73 167M73 167Q81 170 88 167M97 74Q107 76 116 73M97 74Q92 84 93 95M93 95Q102 96 111 98M88 167Q96 171 105 174M88 167Q95 177 96 190M96 190Q106 192 116 191M112 59Q121 59 129 54M112 59Q113 66 116 73M116 73Q129 74 141 73M116 73Q116 86 111 98M111 98Q119 98 124 92M105 174Q116 177 127 173M105 174Q108 184 116 191M116 191Q129 191 141 190M129 54Q137 58 147 58M129 54Q136 63 141 73M141 73Q147 79 155 79M141 73Q130 81 124 92M124 92Q134 92 144 94M127 173Q136 169 146 171M127 173Q134 181 141 190M141 190Q150 192 160 192M141 190Q134 198 130 209M147 58Q151 68 155 79M155 79Q152 89 144 94M144 94Q156 97 168 95M159 154Q165 150 172 152M159 154Q150 161 146 171M146 171Q155 167 166 168M146 171Q154 181 160 192M168 95Q175 96 183 93M168 95Q174 104 175 116M172 152Q171 161 166 168M166 168Q174 169 182 170M93 95Q84 104 84 115M175 116Q184 124 186 136M175 116Q172 126 175 138M175 138Q182 146 172 152M84 115Q90 104 93 95M77 147Q86 150 90 160" stroke="#D2AA80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <ellipse cx="128" cy="133" rx="42" ry="28" fill="#946244"/>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

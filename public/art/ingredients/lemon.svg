@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lemon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="76" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M136 72 C140 50 160 36 186 38 C182 62 162 76 136 72 Z" fill="#43B05C"/>
+    <path d="M28 138 C28 132 34 128 42 124 C56 86 92 68 128 68 C164 68 200 86 214 124 C222 128 228 132 228 138 C228 144 222 148 214 152 C200 190 164 208 128 208 C92 208 56 190 42 152 C34 148 28 144 28 138 Z" fill="#FFE14A"/>
+  </g>
+  <path d="M143 68 L176 46" stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="80" cy="108" rx="8" ry="22" fill="#FFF1A0" transform="rotate(55 80 108)"/>
+  <g fill="#E0B400"><circle cx="96" cy="86" r="2.6"/><circle cx="160" cy="84" r="2.6"/><circle cx="186" cy="104" r="2.6"/><circle cx="200" cy="150" r="2.6"/><circle cx="176" cy="184" r="2.6"/><circle cx="140" cy="198" r="2.6"/><circle cx="104" cy="196" r="2.6"/><circle cx="72" cy="176" r="2.6"/><circle cx="60" cy="140" r="2.6"/><circle cx="170" cy="140" r="2.6"/></g>
+  <ellipse cx="103" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 151 Q128 159 136 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

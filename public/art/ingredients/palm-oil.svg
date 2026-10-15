@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Palm oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="56" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M116 54 L116 86 C88 94 66 118 66 152 C66 188 92 214 128 214 C164 214 190 188 190 152 C190 118 168 94 140 86 L140 54 Z" fill="#D8431C"/>
+    <rect x="108" y="34" width="40" height="24" rx="8" fill="#3E7A34"/>
+  </g>
+  <path d="M80 150 C80 130 88 116 98 108 C90 130 90 160 98 188 C86 178 80 166 80 150 Z" fill="#EE7448"/>
+  <circle cx="128" cy="120" r="23" fill="#FFF3DD" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M128 108 L120 99 M128 108 L128 98 M128 108 L136 99" stroke="#3E7A34" stroke-width="3" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="2" fill="#E8361E">
+    <ellipse cx="119" cy="114" rx="5" ry="6"/><ellipse cx="137" cy="114" rx="5" ry="6"/>
+    <ellipse cx="128" cy="112" rx="5" ry="6" fill="#8E1F12"/>
+    <ellipse cx="114" cy="124" rx="5" ry="6" fill="#F27A1A"/><ellipse cx="142" cy="124" rx="5" ry="6" fill="#F27A1A"/>
+    <ellipse cx="123" cy="124" rx="5" ry="6" fill="#8E1F12"/><ellipse cx="133" cy="124" rx="5" ry="6"/>
+    <ellipse cx="128" cy="134" rx="5" ry="6" fill="#F27A1A"/><ellipse cx="119" cy="133" rx="5" ry="5.5"/><ellipse cx="137" cy="133" rx="5" ry="5.5" fill="#8E1F12"/>
+  </g>
+  <ellipse cx="103" cy="185" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="185" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="165" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="165" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 185 Q128 193 136 185" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

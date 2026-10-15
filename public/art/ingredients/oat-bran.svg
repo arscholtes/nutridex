@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Oat bran</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="225" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M166 112 L206 34 C209 28 215 27 219 30 C223 33 224 38 221 44 L182 120 Z" fill="#B9773E"/>
+    <path d="M68 122 C64 108 74 102 76 96 C74 84 88 78 92 74 C94 62 110 60 114 58 C120 50 136 50 142 56 C152 54 164 62 166 70 C176 72 182 84 180 92 C188 98 192 110 188 122 Z" fill="#EAD9B0"/>
+  </g>
+  <g stroke="#C4A774" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M136 100 q8 -7 16 0 M150 82 q7 -6 14 0 M162 106 q6 -6 12 0 M84 106 q7 -6 14 0 M114 104 q7 -6 14 0 M140 68 q6 -5 12 0"/>
+  </g>
+  <path d="M112 64 C104 50 104 36 110 22 M108 50 Q94 44 84 52 M107 36 Q120 30 130 38 M109 24 Q100 20 92 24" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="3.5" fill="#BDB65A">
+    <ellipse cx="83" cy="63" rx="6.5" ry="11"/>
+    <ellipse cx="131" cy="49" rx="6.5" ry="11"/>
+    <ellipse cx="91" cy="34" rx="6" ry="10"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M58 124 L198 124 C198 172 168 208 128 208 C88 208 58 172 58 124 Z" fill="#B9773E"/>
+    <rect x="52" y="114" width="152" height="17" rx="8.5" fill="#CB8A4E"/>
+  </g>
+  <path d="M72 140 C76 140 78 142 78 146 C80 164 90 180 104 190 C86 186 72 170 68 148 C68 142 70 140 72 140 Z" fill="#D59A5F"/>
+  <path d="M186 146 Q182 170 164 188" stroke="#8E5528" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

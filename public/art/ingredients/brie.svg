@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Brie</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="124" cy="224" rx="98" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M30 128 L206 116 L206 186 Q118 192 30 194 Z" fill="#FFFFFF"/>
+    <path d="M30 128 L184 72 Q200 92 206 116 Z" fill="#FFFFFF"/>
+  </g>
+  <path d="M33 134 L192 123 L192 178 Q112 184 33 188 Z" fill="#F5DE96"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M38 178 C36 196 44 208 54 206 C62 205 62 196 68 196 C74 196 74 212 84 212 C94 212 94 198 102 194 C110 190 112 184 110 180 Z" fill="#F5DE96"/>
+  </g>
+  <path d="M42 140 Q47 137 52 137 L52 178 Q46 180 42 178 Z" fill="#FBEDC2"/>
+  <g stroke="#D6D3C6" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M90 108 q6 -4 12 0"/><path d="M130 96 q6 -4 12 0"/><path d="M160 84 q6 -4 12 0"/><path d="M150 108 q6 -4 12 0"/>
+  </g>
+  <ellipse cx="93" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="143" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="103" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="133" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="105" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="135" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="107" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="137" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M110 169 Q118 177 126 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

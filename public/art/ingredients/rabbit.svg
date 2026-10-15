@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Rabbit</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="132" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M97.6 172.4 L91.0 174.7 L84.3 177.3 L77.6 180.1 L70.9 183.0 L64.0 186.1 L57.2 189.5 L50.3 193.0 L43.3 196.6 A9.5 9.5 0 1 0 48.7 207.4 L55.7 204.2 L62.6 201.3 L69.4 198.5 L76.1 196.0 L82.8 193.6 L89.4 191.4 L95.9 189.4 L102.4 187.6 Z" fill="#F6ECD6" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M70 172 C88 158 92 124 110 102 C128 80 176 78 198 104 C218 130 212 174 186 194 C162 210 122 206 102 194 C94 189 86 188 78 190 Z" fill="#FFF5EE" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M82 180 C98 166 104 134 120 116 C136 98 172 98 190 118 C204 138 202 176 182 190 C160 204 124 202 104 192 C98 189 90 186 82 186 Z" fill="#F2C1BA" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="114" cy="138" rx="5" ry="14" fill="#F9DAD5" transform="rotate(28 114 138)"/>
+  <g stroke="#DC9890" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M96 178 Q106 166 110 154"/>
+    <path d="M118 190 Q140 192 160 186"/>
+    <path d="M188 130 Q196 148 190 168"/>
+    <path d="M136 112 Q152 106 170 110"/>
+  </g>
+  <g transform="translate(150 54)">
+    <circle r="26" fill="#FFF8F2" stroke="#1B1B1F" stroke-width="5"/>
+    <g fill="#3A2A22">
+      <ellipse cx="-8" cy="-1" rx="6" ry="17" transform="rotate(-12 -8 -1)"/>
+      <ellipse cx="8" cy="-1" rx="6" ry="17" transform="rotate(12 8 -1)"/>
+    </g>
+  </g>
+  <ellipse cx="125" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="175" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="135" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="165" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="137" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="167" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="139" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="169" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M142 159 Q150 167 158 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

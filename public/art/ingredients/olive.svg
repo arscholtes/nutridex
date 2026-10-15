@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Olive</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="126" cy="226" rx="58" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M138 72 L150 38" stroke="#1B1B1F" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M138 72 L150 38" stroke="#7A5A2E" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M146 52 C128 36 100 30 66 34 C88 50 118 58 146 52 Z" fill="#7F9E6C"/>
+    <path d="M150 48 C164 34 188 28 216 30 C198 44 174 52 150 48 Z" fill="#7F9E6C"/>
+    <ellipse cx="124" cy="142" rx="62" ry="76" fill="#9FAF38" transform="rotate(-14 124 142)"/>
+  </g>
+  <g stroke="#C9D6B4" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M136 49 L80 37"/>
+    <path d="M160 45 L206 32"/>
+  </g>
+  <ellipse cx="86" cy="112" rx="8" ry="22" fill="#C8D676" transform="rotate(14 86 112)"/>
+  <ellipse cx="101" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="151" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="111" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="141" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="113" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="143" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="115" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="145" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M118 157 Q126 165 134 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

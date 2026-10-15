@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Shrimp</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="124" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M186 84 C204 70 214 52 212 30"/>
+    <path d="M184 96 C210 92 226 76 230 56"/>
+    <path d="M100 144 L116 138"/>
+    <path d="M106 164 L120 154"/>
+    <path d="M124 176 L132 164"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M144 184 C164 166 194 160 204 174 C210 184 200 190 190 190 C206 196 210 212 198 218 C188 222 176 214 170 206 C168 216 156 222 148 214 C142 206 142 194 144 184 Z" fill="#FF8F7A"/>
+    <path d="M168 58 C138 30 80 34 56 72 C36 106 42 158 70 188 C92 210 128 214 156 202 L150 172 C130 180 110 174 102 158 C94 142 100 126 116 120 C132 114 156 118 180 118 C196 106 194 76 168 58 Z" fill="#FF8F7A"/>
+  </g>
+  <path d="M70 92 C78 70 96 56 114 52 C98 66 84 88 80 112 C76 108 70 100 70 92 Z" fill="#FFC1B2"/>
+  <g stroke="#E0574A" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M52 132 C68 134 84 136 98 142"/>
+    <path d="M58 164 C74 158 90 156 102 158"/>
+    <path d="M78 194 C90 182 104 174 116 172"/>
+    <path d="M110 208 C116 196 124 186 132 180"/>
+    <path d="M170 196 L190 190"/>
+    <path d="M168 200 L182 210"/>
+  </g>
+  <ellipse cx="101" cy="97" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="151" cy="97" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="111" cy="78" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="141" cy="78" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="113" cy="80" r="5.2" fill="#1B1B1F"/>
+  <circle cx="143" cy="80" r="5.2" fill="#1B1B1F"/>
+  <circle cx="115" cy="77" r="1.9" fill="#FFFFFF"/>
+  <circle cx="145" cy="77" r="1.9" fill="#FFFFFF"/>
+  <path d="M118 97 Q126 105 134 97" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

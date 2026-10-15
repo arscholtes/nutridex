@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Veal</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M222 146 Q218 160 201 169 Q191 184 173 188 Q153 197 130 192 Q107 198 87 190 Q69 186 58 171 Q40 163 35 149 Q26 135 32 122 Q37 108 55 99 Q64 84 83 79 Q103 71 126 76 Q148 71 168 79 Q187 83 198 97 Q217 105 223 119 Q229 132 222 146 Z" fill="#F8CBC5" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" transform="rotate(-16 128 134)"/>
+  <ellipse cx="70" cy="128" rx="6.5" ry="18" fill="#FCE3DF" transform="rotate(30 70 128)"/>
+  <g stroke="#E39C96" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M136 92 Q156 82 176 84"/>
+    <path d="M176 116 Q192 112 200 102"/>
+    <path d="M168 168 Q186 160 196 146"/>
+    <path d="M78 168 Q98 176 120 170"/>
+    <path d="M90 104 Q102 96 116 96"/>
+  </g>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cocoa butter</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="225" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M56 106 L74 78 L100 88 L122 64 L146 82 L172 68 L200 92 L200 202 C200 208 196 214 190 214 L66 214 C60 214 56 208 56 202 Z" fill="#EFDB9C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M62 106 L76 86 L102 96 L122 74 L146 90 L172 78 L194 96 L192 104 L172 90 L146 100 L122 86 L102 106 L76 96 Z" fill="#F8EDC6"/>
+  <g transform="translate(129 126) rotate(-25) scale(0.92)" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M0 -28 L2 -34" fill="none" stroke="#5A3418"/>
+    <path d="M0 -28 C10 -22 14 -8 14 2 C14 14 8 24 0 28 C-8 24 -14 14 -14 2 C-14 -8 -10 -22 0 -28 Z" fill="#C2601F"/>
+    <path d="M-6 -19 Q-9 2 -6 21 M0 -24 L0 25 M6 -19 Q9 2 6 21" stroke="#843E12" stroke-width="2.5" fill="none"/>
+  </g>
+  <ellipse cx="103" cy="189" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="189" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="170" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="170" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="172" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="172" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="169" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="169" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 189 Q128 197 136 189" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

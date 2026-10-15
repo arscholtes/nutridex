@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chili pepper</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="146" cy="224" rx="60" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 66 C120 52 114 44 104 38 C108 31 118 31 124 36 C132 44 135 54 134 66 Z" fill="#3E9E52"/>
+    <path d="M84 92 C84 70 106 62 128 62 C154 62 172 76 172 102 C172 126 164 142 166 158 C168 174 184 182 204 176 C212 174 216 182 210 188 C192 206 158 210 134 196 C108 180 90 158 86 130 C84 118 84 104 84 92 Z" fill="#D2261E"/>
+    <path d="M98 74 C104 60 152 60 158 74 C148 80 138 74 128 80 C118 74 108 80 98 74 Z" fill="#3E9E52"/>
+  </g>
+  <ellipse cx="124" cy="176" rx="6" ry="16" fill="#F2645A" transform="rotate(-58 124 176)"/>
+  <ellipse cx="103" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="129" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 129 Q128 137 136 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

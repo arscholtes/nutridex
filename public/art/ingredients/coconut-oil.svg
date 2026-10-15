@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Coconut oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="72" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M80 84 L176 84 C188 84 196 92 196 104 L196 196 C196 206 188 214 178 214 L78 214 C68 214 60 206 60 196 L60 104 C60 92 68 84 80 84 Z" fill="#F4F0E4"/>
+    <rect x="68" y="58" width="120" height="32" rx="9" fill="#2F8F83"/>
+  </g>
+  <path d="M70 116 C70 104 74 98 80 96 C78 128 78 164 80 200 C74 194 70 180 70 116 Z" fill="#FFFFFF"/>
+  <path d="M76 70 L180 70" stroke="#5DB3A6" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M98 112 A30 23 0 0 0 158 112 Z" fill="#6B4426"/>
+    <ellipse cx="128" cy="112" rx="30" ry="9" fill="#FFFFFF"/>
+  </g>
+  <ellipse cx="128" cy="112.5" rx="17" ry="4.5" fill="#E2D6BC"/>
+  <ellipse cx="103" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 173 Q128 181 136 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

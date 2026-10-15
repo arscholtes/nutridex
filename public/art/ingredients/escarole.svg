@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Escarole</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M92 114 C84 94 92 72 106 68 C108 52 124 46 132 54 C142 46 156 54 154 68 C168 74 174 96 164 114 Z" fill="#F2E27C"/>
+    <path d="M120 212 C88 208 54 192 38 164 C24 156 22 136 34 128 C26 116 34 100 48 102 C54 90 72 90 78 100 C90 100 100 110 104 122 L128 160 Z" fill="#4F9A3C"/>
+    <path d="M136 212 C168 208 202 192 218 164 C232 156 234 136 222 128 C230 116 222 100 208 102 C202 90 184 90 178 100 C166 100 156 110 152 122 L128 160 Z" fill="#4F9A3C"/>
+    <path d="M128 214 C98 214 80 196 80 168 C80 146 84 128 90 116 C98 122 106 112 116 116 C122 108 134 108 140 116 C150 112 158 122 166 116 C172 128 176 146 176 168 C176 196 158 214 128 214 Z" fill="#7DBE52"/>
+  </g>
+  <ellipse cx="92" cy="142" rx="4.5" ry="12" fill="#A6D97E"/>
+  <g stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M114 74 C118 84 120 96 120 108" stroke="#D2B94A"/>
+    <path d="M144 74 C140 84 138 96 138 108" stroke="#D2B94A"/>
+    <path d="M78 198 C60 186 46 166 40 142" stroke="#A6D486"/>
+    <path d="M178 198 C196 186 210 166 216 142" stroke="#A6D486"/>
+    <path d="M128 208 L128 186" stroke="#DDEFB0"/>
+  </g>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

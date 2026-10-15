@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Camembert</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="223" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="128" cy="148" rx="88" ry="20" fill="#A8723A"/>
+    <path d="M54 76 L54 156 L202 156 L202 76 Z" fill="#F4F0E2"/>
+    <ellipse cx="128" cy="76" rx="74" ry="20" fill="#FFFFFF"/>
+    <path d="M40 148 A88 20 0 0 0 216 148 L214 186 A86 20 0 0 1 42 186 Z" fill="#DDAA6A"/>
+  </g>
+  <path d="M64 100 Q69 97 74 98 L74 150 Q68 152 64 150 Z" fill="#FFFFFF"/>
+  <g stroke="#B07E44" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M56 182 Q96 194 136 194"/><path d="M150 196 Q182 192 202 180"/><path d="M84 200 Q110 204 128 204"/>
+  </g>
+  <g fill="#DCD6C4"><circle cx="96" cy="70" r="2.5"/><circle cx="128" cy="64" r="2.5"/><circle cx="160" cy="72" r="2.5"/><circle cx="112" cy="84" r="2"/><circle cx="148" cy="84" r="2"/><circle cx="180" cy="80" r="2"/><circle cx="78" cy="78" r="2"/></g>
+  <ellipse cx="103" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="139" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="119" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="119" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 139 Q128 147 136 139" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

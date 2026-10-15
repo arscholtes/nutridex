@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Dill</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="52" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M76 161 L29 173 M53 167 l-12 14 M53 167 l-17 -6 M40 170 l-8 9 M40 170 l-11 -4 M75 141 L28 132 M52 137 l-17 7 M52 137 l-13 -13 M39 134 l-11 4 M39 134 l-8 -9 M86 124 L49 95 M67 109 l-18 -2 M67 109 l-5 -17 M57 101 l-12 -1 M57 101 l-4 -11 M106 112 L87 70 M96 91 l-15 -10 M96 91 l3 -18 M91 79 l-10 -6 M91 79 l2 -12 M150 112 L169 70 M160 91 l-3 -18 M160 91 l15 -10 M165 79 l-2 -12 M165 79 l10 -6 M170 124 L207 95 M189 109 l5 -17 M189 109 l18 -2 M199 101 l4 -11 M199 101 l12 -1 M181 141 L228 132 M204 137 l13 -13 M204 137 l17 7 M217 134 l8 -9 M217 134 l11 4 M180 161 L227 173 M203 167 l17 -6 M203 167 l12 14 M216 170 l11 -4 M216 170 l8 9 M128 214 L128 72 M128 72 L80 52 M128 72 L98 42 M128 72 L118 36 M128 72 L138 36 M128 72 L158 42 M128 72 L176 52" stroke="#1B1B1F" stroke-width="8"/>
+    <path d="M76 161 L29 173 M53 167 l-12 14 M53 167 l-17 -6 M40 170 l-8 9 M40 170 l-11 -4 M75 141 L28 132 M52 137 l-17 7 M52 137 l-13 -13 M39 134 l-11 4 M39 134 l-8 -9 M86 124 L49 95 M67 109 l-18 -2 M67 109 l-5 -17 M57 101 l-12 -1 M57 101 l-4 -11 M106 112 L87 70 M96 91 l-15 -10 M96 91 l3 -18 M91 79 l-10 -6 M91 79 l2 -12 M150 112 L169 70 M160 91 l-3 -18 M160 91 l15 -10 M165 79 l-2 -12 M165 79 l10 -6 M170 124 L207 95 M189 109 l5 -17 M189 109 l18 -2 M199 101 l4 -11 M199 101 l12 -1 M181 141 L228 132 M204 137 l13 -13 M204 137 l17 7 M217 134 l8 -9 M217 134 l11 4 M180 161 L227 173 M203 167 l17 -6 M203 167 l12 14 M216 170 l11 -4 M216 170 l8 9 M128 214 L128 72 M128 72 L80 52 M128 72 L98 42 M128 72 L118 36 M128 72 L138 36 M128 72 L158 42 M128 72 L176 52" stroke="#8CC48F" stroke-width="3"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="4" fill="#F5C842">
+    <circle cx="80" cy="48" r="8"/>
+    <circle cx="98" cy="38" r="8"/>
+    <circle cx="118" cy="32" r="8"/>
+    <circle cx="138" cy="32" r="8"/>
+    <circle cx="158" cy="38" r="8"/>
+    <circle cx="176" cy="48" r="8"/>
+  </g>
+  <path d="M188 150 Q196 162 182 170 Q182 183 165 186 Q158 198 141 195 Q128 203 115 195 Q98 198 91 186 Q74 183 74 170 Q60 162 68 150 Q60 138 74 130 Q74 117 91 114 Q98 102 115 105 Q128 97 141 105 Q158 102 165 114 Q182 117 182 130 Q196 138 188 150 Z" fill="#7DBB86" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M84 138 C86 122 98 112 112 108 C104 120 98 132 98 146 C92 152 82 148 84 138 Z" fill="#AEDDB2"/>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

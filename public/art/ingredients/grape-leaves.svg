@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Grape leaves</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="76" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 168 C128 186 126 200 122 214" stroke="#1B1B1F" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M128 168 C128 186 126 200 122 214" stroke="#8C9B45" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M127 196 C140 200 150 194 148 186 C146 180 138 182 140 188" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M128 170 L150 190 L160 194 L166 188 L176 192 L182 186 L189 179 L186 172 L193 165 L190 158 L187 145 L178 142 L189 142 L192 135 L203 135 L206 128 L215 121 L213 113 L222 106 L220 98 L218 87 L210 85 L208 74 L200 72 L190 68 L184 74 L174 70 L168 76 L172 67 L167 62 L171 53 L166 48 L161 39 L153 41 L148 32 L141 33 L136 25 L128 26 L118 26 L115 33 L105 33 L103 41 L93 41 L90 48 L84 56 L89 62 L83 70 L88 76 L79 70 L72 74 L63 68 L56 72 L46 77 L46 85 L36 90 L36 98 L36 109 L43 113 L43 124 L50 128 L56 137 L64 135 L70 144 L78 142 L67 149 L66 158 L64 168 L70 172 L68 182 L74 186 L83 192 L90 188 L99 194 L106 190 Z" fill="#6E9A3C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="66" cy="96" rx="6" ry="14" fill="#93BC5E" transform="rotate(-50 66 96)"/>
+  <g stroke="#B5D38A" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M150 156 L208 104 M106 156 L48 104"/>
+    <path d="M144 168 L176 182 M112 168 L80 182"/>
+    <path d="M128 34 L128 76 M128 56 L114 46 M128 56 L142 46"/>
+  </g>
+  <ellipse cx="103" cy="131" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="131" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 131 Q128 139 136 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

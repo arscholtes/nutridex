@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Swiss chard</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="50" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 166 L128 214" stroke="#1B1B1F" stroke-width="24" stroke-linecap="round"/>
+  <path d="M128 166 L128 214" stroke="#FFC23A" stroke-width="12" stroke-linecap="round"/>
+  <path d="M128 26 C142 29.6 158 38.6 168 51.2 C184 56.6 194 74.6 190 89 C200 101.6 198 119.6 186 128.6 C188 144.8 160 166.4 132 175.4 L124 175.4 C96 166.4 68 144.8 70 128.6 C58 119.6 56 101.6 66 89 C62 74.6 72 56.6 88 51.2 C98 38.6 114 29.6 128 26 Z" fill="#2F7A3A" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="82" cy="74" rx="6" ry="13" fill="#4E9A50" transform="rotate(35 82 74)"/>
+  <path d="M121 178 C123 162 126 148 128 136 C130 148 133 162 135 178 Z" fill="#FFC23A"/>
+  <g stroke="#FFC23A" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M128 34 L128 68"/>
+    <path d="M128 52 C120 46 112 44 104 44"/>
+    <path d="M128 52 C136 46 144 44 152 44"/>
+    <path d="M127 154 C114 146 98 140 82 136"/>
+    <path d="M129 154 C142 146 158 140 174 136"/>
+  </g>
+  <path d="M122 186 L122 210 M134 186 L134 210" stroke="#D99A14" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="103" cy="115" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="115" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="96" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="96" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="98" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="98" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="95" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="95" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 115 Q128 123 136 115" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

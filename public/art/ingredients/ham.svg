@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ham</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="124" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M176 70 L204 42" stroke="#1B1B1F" stroke-width="22" stroke-linecap="round"/>
+  <g fill="#F6ECD6" stroke="#1B1B1F" stroke-width="5">
+    <circle cx="198" cy="36" r="9"/>
+    <circle cx="210" cy="48" r="9"/>
+  </g>
+  <path d="M176 70 L204 42" stroke="#F6ECD6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M57 124 C58 96 86 76 118 74 C140 72 156 66 168 58 L188 78 C182 92 186 106 190 118 C204 158 190 196 146 204 C102 212 60 190 57 124 Z" fill="#F2A29C"/>
+  <path d="M57 124 C58 96 86 76 118 74 C140 72 156 66 168 58 L188 78 C182 92 186 106 190 118 Q180 130 170 120 Q160 134 148 122 Q136 134 124 122 Q112 134 100 122 Q88 134 76 122 Q66 132 57 124 Z" fill="#D9844C"/>
+  <g stroke="#F5BC86" stroke-width="3" stroke-linecap="round">
+    <path d="M70 112 L96 86 M96 118 L132 82 M126 118 L162 82 M156 118 L180 94"/>
+    <path d="M84 86 L112 114 M110 80 L142 112 M140 78 L172 110 M68 100 L82 114"/>
+  </g>
+  <path d="M57 124 C58 96 86 76 118 74 C140 72 156 66 168 58 L188 78 C182 92 186 106 190 118 C204 158 190 196 146 204 C102 212 60 190 57 124 Z" fill="none" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="80" cy="158" rx="5.5" ry="12" fill="#F8C6C0" transform="rotate(14 80 158)"/>
+  <ellipse cx="97" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="147" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="107" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="137" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="109" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="139" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="111" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="141" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M114 165 Q122 173 130 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

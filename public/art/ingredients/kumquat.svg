@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Kumquat</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="138" cy="225" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M58 60 C96 50 146 58 194 86 M106 86 L105 58 M178 124 L180 74" stroke="#1B1B1F" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M58 60 C96 50 146 58 194 86 M106 86 L105 58 M178 124 L180 74" stroke="#8A6234" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M84 56 C72 36 52 28 30 32 C38 54 60 62 84 56 Z" fill="#2E9E4A"/>
+    <path d="M150 64 C162 42 186 32 210 36 C204 58 180 70 150 64 Z" fill="#2E9E4A"/>
+    <ellipse cx="180" cy="166" rx="34" ry="44" fill="#F57C10"/>
+    <ellipse cx="108" cy="150" rx="50" ry="64" fill="#FF9418"/>
+  </g>
+  <g stroke="#1E6E34" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M76 52 L40 36"/>
+    <path d="M158 60 L200 40"/>
+  </g>
+  <ellipse cx="80" cy="120" rx="7" ry="17" fill="#FFC064" transform="rotate(25 80 120)"/>
+  <ellipse cx="83" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="133" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="93" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="123" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="95" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="125" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="97" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="127" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M100 165 Q108 173 116 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

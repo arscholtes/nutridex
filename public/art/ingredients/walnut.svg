@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Walnut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 62 A18 18 0 0 1 150 46 A18 18 0 0 1 176 52 A18 18 0 0 1 196 72 A18 18 0 0 1 206 98 A18 18 0 0 1 208 126 A18 18 0 0 1 202 154 A18 18 0 0 1 188 178 A18 18 0 0 1 166 196 A18 18 0 0 1 142 204 A12 12 0 0 1 128 194 A12 12 0 0 1 114 204 A18 18 0 0 1 90 196 A18 18 0 0 1 68 178 A18 18 0 0 1 54 154 A18 18 0 0 1 48 126 A18 18 0 0 1 50 98 A18 18 0 0 1 60 72 A18 18 0 0 1 80 52 A18 18 0 0 1 106 46 A18 18 0 0 1 128 62 Z" fill="#C68E4E" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <ellipse cx="96" cy="62" rx="12" ry="6" fill="#E0B07A" transform="rotate(-20 96 62)"/>
+  <g stroke="#8A5528" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M128 66 C124 78 132 88 128 100"/>
+    <path d="M128 190 C132 184 124 180 128 174"/>
+    <path d="M84 80 C96 74 102 88 112 82"/>
+    <path d="M68 106 C80 100 86 114 98 106"/>
+    <path d="M144 82 C154 88 160 74 172 80"/>
+    <path d="M158 106 C170 114 176 100 188 106"/>
+    <path d="M60 134 C68 126 74 142 78 132"/>
+    <path d="M178 132 C182 142 188 126 196 134"/>
+    <path d="M70 168 C80 160 86 176 96 168"/>
+    <path d="M94 188 C102 180 110 192 114 184"/>
+    <path d="M160 168 C170 176 176 160 186 168"/>
+    <path d="M142 184 C146 192 154 180 162 188"/>
+  </g>
+  <ellipse cx="103" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 151 Q128 159 136 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

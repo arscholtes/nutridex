@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Brussels sprouts</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="132" cy="225" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <circle cx="178" cy="96" r="40" fill="#6AA536" stroke="#1B1B1F" stroke-width="6"/>
+  <g stroke="#3F7420" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M206 120 C212 100 204 76 182 66"/>
+    <path d="M160 70 Q170 64 180 66"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="116" cy="146" r="64" fill="#8CC64C"/>
+    <ellipse cx="116" cy="206" rx="13" ry="6" fill="#E4EFC0"/>
+    <circle cx="192" cy="190" r="24" fill="#7AB741"/>
+  </g>
+  <ellipse cx="80" cy="112" rx="7" ry="12" fill="#B5DC84" transform="rotate(40 80 112)"/>
+  <g stroke="#4E8A26" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M64 128 C66 166 82 190 102 200"/>
+    <path d="M168 128 C166 166 150 190 130 200"/>
+    <path d="M92 94 Q116 106 140 94"/>
+    <path d="M179 198 Q176 180 194 174"/>
+  </g>
+  <ellipse cx="91" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="141" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="101" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="131" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="103" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="133" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="135" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M108 155 Q116 163 124 155" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Green leaf lettuce</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="44" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#52A83E">
+    <path d="M118 212 C96 196 70 176 56 150 C44 150 38 138 44 130 C34 124 34 110 44 106 C38 96 44 84 54 84 C54 72 66 66 74 72 C78 62 90 60 96 68 L120 120 Z"/>
+    <path d="M138 212 C160 196 186 176 200 150 C212 150 218 138 212 130 C222 124 222 110 212 106 C218 96 212 84 202 84 C202 72 190 66 182 72 C178 62 166 60 160 68 L136 120 Z"/>
+    <path d="M118 212 C108 190 96 166 88 140 C80 136 78 124 84 118 C76 110 78 98 88 96 C84 86 90 74 100 76 C100 64 112 58 120 64 C124 54 136 54 140 64 C148 58 160 64 158 76 C168 74 174 86 168 96 C178 98 180 110 172 118 C178 124 176 136 168 140 C160 166 148 190 138 212 Z" fill="#7CCB52"/>
+  </g>
+  <path d="M96 100 C98 90 104 84 110 84 C106 94 104 104 104 114 C99 110 96 106 96 100 Z" fill="#AEE184"/>
+  <path d="M123 209 C125 192 126 176 128 162 C130 176 131 192 133 209 Z" fill="#E6F6C6"/>
+  <g stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M86 170 C74 150 64 130 58 104" stroke="#9FD67E"/>
+    <path d="M170 170 C182 150 192 130 198 104" stroke="#9FD67E"/>
+    <path d="M127 190 L112 172" stroke="#E6F6C6"/>
+    <path d="M129 190 L144 172" stroke="#E6F6C6"/>
+  </g>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

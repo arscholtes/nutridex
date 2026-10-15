@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Allspice</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="225" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 74 Q184 32 224 42 Q200 86 150 74 Z" fill="#3F8F4A"/>
+    <path d="M114 76 L116 57 L123 65 L128 53 L133 65 L140 57 L142 76 Z" fill="#5A2A1E"/>
+    <circle cx="128" cy="138" r="72" fill="#943F2C"/>
+  </g>
+  <path d="M166 66 Q192 50 216 46" stroke="#86C98A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M64 138 C64 106 80 84 104 72 C90 90 80 112 80 136 C76 142 64 144 64 138 Z" fill="#B0573F"/>
+  <g fill="#B8664E">
+    <circle cx="96" cy="88" r="3"/><circle cx="160" cy="88" r="3"/><circle cx="182" cy="108" r="3"/>
+    <circle cx="140" cy="80" r="3"/><circle cx="188" cy="144" r="3"/><circle cx="72" cy="168" r="3"/>
+    <circle cx="90" cy="190" r="3"/><circle cx="116" cy="198" r="3"/><circle cx="148" cy="196" r="3"/>
+    <circle cx="174" cy="178" r="3"/><circle cx="128" cy="176" r="3"/><circle cx="112" cy="84" r="3"/>
+  </g>
+  <ellipse cx="103" cy="151" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="151" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 151 Q128 159 136 151" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

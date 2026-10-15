@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Yogurt</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="56" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M134 72 L162 46" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M134 72 L162 46" stroke="#C9D1DB" stroke-width="5" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="170" cy="38" rx="15" ry="11" fill="#C9D1DB" transform="rotate(-42 170 38)"/>
+    <path d="M70 76 C72 58 96 52 110 52 C118 42 138 42 146 52 C164 52 184 58 186 76 Z" fill="#FFFFFF"/>
+    <path d="M66 82 L190 82 L176 204 C175 209 171 212 166 212 L90 212 C85 212 81 209 80 204 Z" fill="#F7C3D3"/>
+    <rect x="58" y="70" width="140" height="18" rx="8" fill="#EFA7BF"/>
+  </g>
+  <path d="M78 98 L86 98 L94 200 L88 200 Z" fill="#FBDDE7"/>
+  <ellipse cx="171" cy="37" rx="7" ry="4.5" fill="#FFFFFF" transform="rotate(-42 171 37)"/>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

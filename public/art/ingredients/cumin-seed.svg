@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cumin seed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="92" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M156 32 L170 22" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#A08A54">
+    <path d="M0 -26 C11 -12 11 12 0 26 C-11 12 -11 -12 0 -26 Z" transform="translate(52 198) rotate(62)"/>
+    <path d="M0 -26 C11 -12 11 12 0 26 C-11 12 -11 -12 0 -26 Z" transform="translate(206 196) rotate(-58)"/>
+    <path d="M0 -26 C11 -12 11 12 0 26 C-11 12 -11 -12 0 -26 Z" transform="translate(212 136) rotate(-15)"/>
+    <path d="M156 30 C206 64 198 168 106 212 C62 182 66 76 156 30 Z" fill="#B09A62"/>
+  </g>
+  <path d="M84 132 C84 100 104 72 132 54 C114 76 102 100 100 128 C96 136 84 138 84 132 Z" fill="#C9B482"/>
+  <g stroke="#7F6C3E" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M150 42 C102 70 74 140 104 200"/>
+    <path d="M154 40 C190 72 192 150 120 202"/>
+    <path d="M152 40 C138 60 132 84 132 108"/>
+    <path d="M108 180 Q110 190 106 204"/>
+    <path d="M206 112 Q212 136 206 160"/>
+  </g>
+  <ellipse cx="103" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 151 Q128 159 136 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

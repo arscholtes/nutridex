@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Feta</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="170" rx="100" ry="22" fill="#CFE6F2" stroke="#1B1B1F" stroke-width="6"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M170 70 L198 44 Q202 96 198 150 L170 176 Q174 124 170 70 Z" fill="#DCE1E6"/>
+    <path d="M70 72 L80 62 L88 63 L98 44 Q148 40 198 44 L170 70 Q120 68 70 72 Z" fill="#FFFFFF"/>
+    <path d="M70 72 Q120 68 170 70 Q174 124 170 176 Q120 180 70 176 Q66 124 70 72 Z" fill="#F8F8F2"/>
+  </g>
+  <path d="M39 160 L217 160 A100 22 0 1 1 39 160 Z" fill="#CFE6F2"/>
+  <path d="M72 160 Q96 155 120 160 Q144 165 168 160" stroke="#8DBBD6" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M28 170 C32 202 76 212 128 212 C180 212 224 202 228 170 A100 22 0 0 1 28 170 Z" fill="#4A7BB7"/>
+    <path d="M190 166 L198 160 L206 166 L200 174 Z" fill="#F8F8F2" stroke-width="4"/>
+    <path d="M48 168 L56 162 L62 170 L54 175 Z" fill="#F8F8F2" stroke-width="4"/>
+  </g>
+  <path d="M80 86 Q84 82 88 82 L88 152 Q82 154 80 150 Z" fill="#FFFFFF"/>
+  <g fill="#C9CED6"><circle cx="184" cy="84" r="2.5"/><circle cx="188" cy="118" r="2.5"/><circle cx="180" cy="140" r="2"/><circle cx="130" cy="54" r="2.5"/><circle cx="160" cy="58" r="2"/><circle cx="154" cy="150" r="2"/></g>
+  <ellipse cx="95" cy="127" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="145" cy="127" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="105" cy="108" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="135" cy="108" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="107" cy="110" r="5.2" fill="#1B1B1F"/>
+  <circle cx="137" cy="110" r="5.2" fill="#1B1B1F"/>
+  <circle cx="109" cy="107" r="1.9" fill="#FFFFFF"/>
+  <circle cx="139" cy="107" r="1.9" fill="#FFFFFF"/>
+  <path d="M112 127 Q120 135 128 127" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

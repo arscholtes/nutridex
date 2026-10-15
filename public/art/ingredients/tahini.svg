@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tahini</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="224" rx="74" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M74 96 L182 96 C194 96 198 104 198 116 L198 194 C198 205 190 212 180 212 L76 212 C66 212 58 205 58 194 L58 116 C58 104 62 96 74 96 Z" fill="#EBDDBC"/>
+    <rect x="64" y="56" width="128" height="42" rx="11" fill="#3B3B42"/>
+  </g>
+  <path d="M70 118 C70 110 76 106 82 106 L82 196 C74 194 70 188 70 180 Z" fill="#F7F0DF"/>
+  <g fill="#F4E6C2"><ellipse cx="86" cy="77" rx="4.3" ry="7.2" transform="rotate(-20 86 77)"/><ellipse cx="107" cy="82" rx="4.3" ry="7.2" transform="rotate(25 107 82)"/><ellipse cx="127" cy="73" rx="4.3" ry="7.2" transform="rotate(-5 127 73)"/><ellipse cx="148" cy="82" rx="4.3" ry="7.2" transform="rotate(30 148 82)"/><ellipse cx="169" cy="75" rx="4.3" ry="7.2" transform="rotate(-25 169 75)"/></g>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

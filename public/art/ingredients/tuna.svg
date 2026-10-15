@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tuna</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="124" cy="225" rx="94" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#F5C518">
+    <path d="M190 124 C202 100 214 78 230 60 C226 90 214 116 212 128 C214 140 226 166 230 196 C214 178 202 156 190 132 Z" fill="#22406E"/>
+    <path d="M84 68 C90 52 104 46 116 64 Z" fill="#22406E"/>
+    <path d="M128 70 L150 38 L156 78 Z"/>
+    <path d="M128 186 L150 214 L156 178 Z"/>
+    <path d="M25 128 C32 86 70 64 112 64 C150 64 176 96 196 120 L196 136 C176 160 150 192 112 192 C70 192 32 170 25 128 Z" fill="#DCE2EA"/>
+  </g>
+  <path d="M25 128 C32 86 70 64 112 64 C150 64 176 96 196 120 L196 128 C170 132 146 140 120 152 C96 164 56 166 28 150 Z" fill="#22406E"/>
+  <path d="M130 116 C152 114 172 118 190 124" stroke="#F5C518" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M25 128 C32 86 70 64 112 64 C150 64 176 96 196 120 L196 136 C176 160 150 192 112 192 C70 192 32 170 25 128 Z" stroke="#1B1B1F" stroke-width="6" fill="none"/>
+  <ellipse cx="96" cy="80" rx="18" ry="5" fill="#3F67A6" transform="rotate(-12 96 80)"/>
+  <path d="M122 84 C136 110 136 150 122 176" stroke="#6E8DBA" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M130 146 C146 144 162 150 172 162 C156 164 140 158 130 152 Z" fill="#22406E" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <g fill="#F5C518" stroke="#1B1B1F" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M160 82 L172 74 L170 90 Z"/><path d="M172 94 L184 86 L181 102 Z"/><path d="M183 107 L194 100 L191 114 Z"/>
+    <path d="M160 176 L172 184 L170 168 Z"/><path d="M172 164 L184 172 L181 156 Z"/><path d="M183 151 L194 158 L191 144 Z"/>
+  </g>
+  <ellipse cx="49" cy="139" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="99" cy="139" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="59" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="89" cy="120" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="61" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="91" cy="122" r="5.2" fill="#1B1B1F"/>
+  <circle cx="63" cy="119" r="1.9" fill="#FFFFFF"/>
+  <circle cx="93" cy="119" r="1.9" fill="#FFFFFF"/>
+  <path d="M66 139 Q74 147 82 139" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

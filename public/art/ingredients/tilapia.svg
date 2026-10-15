@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tilapia</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="124" cy="224" rx="78" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#7C8287">
+    <path d="M188 120 C204 108 218 104 228 106 C232 120 232 142 228 156 C218 158 204 154 188 142 Z"/>
+    <path d="M58 98 L62 80 L72 86 L78 70 L88 76 L96 62 L106 68 L116 56 L126 62 L138 52 C170 50 196 70 206 102 L186 112 Z"/>
+    <path d="M128 190 C148 210 182 208 202 162 L186 150 Z"/>
+    <path d="M80 182 C78 196 84 206 94 206 C100 198 102 190 102 186 Z"/>
+    <path d="M34 132 C36 102 68 68 116 68 C158 68 186 98 194 120 L194 142 C186 168 160 196 116 196 C70 196 36 164 34 132 Z" fill="#A9AEB1"/>
+  </g>
+  <path d="M142 80 L142 184M162 92 L162 172M180 108 L180 156" stroke="#8A9094" stroke-width="10" stroke-linecap="round"/>
+  <path d="M50 112 C56 94 72 82 92 78 C78 88 68 98 60 114 Z" fill="#C9CDD0"/>
+  <path d="M128 90 C140 110 140 152 126 172" stroke="#6E7479" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M146 140 C156 130 172 134 178 146 C166 152 154 150 146 140 Z" fill="#7C8287" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="71" cy="141" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="121" cy="141" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="81" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="111" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="83" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="85" cy="121" r="1.9" fill="#FFFFFF"/>
+  <circle cx="115" cy="121" r="1.9" fill="#FFFFFF"/>
+  <path d="M88 141 Q96 149 104 141" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

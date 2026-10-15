@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Flaxseed oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="50" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M110 74 L110 84 C110 92 84 94 84 110 L84 200 C84 208 90 214 98 214 L158 214 C166 214 172 208 172 200 L172 110 C172 94 146 92 146 84 L146 74 Z" fill="#33261F"/>
+    <rect x="100" y="52" width="56" height="26" rx="6" fill="#E9E9EF"/>
+  </g>
+  <path d="M112 58 L112 72 M122 58 L122 72 M134 58 L134 72 M144 58 L144 72" stroke="#A9A9B4" stroke-width="3" stroke-linecap="round"/>
+  <path d="M94 124 C94 114 97 108 101 106 C99 136 99 168 101 198 C96 190 94 176 94 124 Z" fill="#4E3D33"/>
+  <g transform="translate(128 120) scale(1.2)" fill="#5B8DEF" stroke="#1B1B1F" stroke-width="2.5" stroke-linejoin="round">
+    <ellipse cy="-10" rx="7" ry="9.5"/><ellipse cy="-10" rx="7" ry="9.5" transform="rotate(72)"/><ellipse cy="-10" rx="7" ry="9.5" transform="rotate(144)"/><ellipse cy="-10" rx="7" ry="9.5" transform="rotate(216)"/><ellipse cy="-10" rx="7" ry="9.5" transform="rotate(288)"/>
+    <circle r="4.5" fill="#FFD54A"/>
+  </g>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cornmeal</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="225" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g transform="rotate(16 128 104)">
+    <path d="M128 24 C144 24 150 42 150 62 L150 112 L106 112 L106 62 C106 42 112 24 128 24 Z" fill="#F8D44C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M121 32 L121 104 M135 32 L135 104 M110 48 L146 48 M108 64 L148 64 M108 80 L148 80 M108 96 L148 96" stroke="#D49A12" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#5DAA3E">
+    <path d="M122 110 C102 96 90 76 90 54 C106 68 118 86 128 104 Z"/>
+    <path d="M140 112 C158 100 172 84 180 64 C184 86 168 106 150 114 Z"/>
+    <path d="M38 208 C40 152 82 104 128 102 C174 104 216 152 218 208 C218 213 214 216 209 216 L47 216 C42 216 38 213 38 208 Z" fill="#F3B83A"/>
+  </g>
+  <path d="M54 196 C58 164 76 138 98 124 C84 144 74 168 72 196 C68 204 54 204 54 196 Z" fill="#F9D27A"/>
+  <g fill="#B8700E">
+    <circle cx="112" cy="118" r="2.8"/><circle cx="142" cy="122" r="2.8"/><circle cx="168" cy="136" r="2.8"/>
+    <circle cx="186" cy="162" r="2.8"/><circle cx="198" cy="190" r="2.8"/><circle cx="176" cy="204" r="2.8"/>
+    <circle cx="150" cy="202" r="2.8"/><circle cx="124" cy="206" r="2.8"/><circle cx="98" cy="202" r="2.8"/>
+    <circle cx="86" cy="180" r="2.8"/><circle cx="174" cy="186" r="2.8"/><circle cx="96" cy="140" r="2.8"/>
+    <circle cx="128" cy="134" r="2.8"/><circle cx="202" cy="206" r="2.8"/><circle cx="60" cy="208" r="2.8"/>
+  </g>
+  <ellipse cx="103" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="159" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="159" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 179 Q128 187 136 179" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Tamarind</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M50 64 C46 56 42 50 34 44" stroke="#1B1B1F" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M50 64 C46 56 42 50 34 44" stroke="#6B4423" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <g stroke="#1B1B1F"><path d="M58 84 Q78 130 128 148 Q170 164 206 174" stroke-width="52" stroke-linecap="round" fill="none"/><g stroke-width="12"><circle cx="58" cy="84" r="25"/><circle cx="84" cy="120" r="34"/><circle cx="128" cy="148" r="46"/><circle cx="172" cy="166" r="34"/><circle cx="206" cy="174" r="24"/></g></g>
+  <g fill="#A8703C"><path d="M58 84 Q78 130 128 148 Q170 164 206 174" stroke="#A8703C" stroke-width="40" stroke-linecap="round" fill="none"/><circle cx="58" cy="84" r="25"/><circle cx="84" cy="120" r="34"/><circle cx="128" cy="148" r="46"/><circle cx="172" cy="166" r="34"/><circle cx="206" cy="174" r="24"/></g>
+  <ellipse cx="90" cy="118" rx="6" ry="16" fill="#C99A66" transform="rotate(-30 90 118)"/>
+  <path d="M50 78 L58 72 M64 98 L56 102 M70 112 L78 108 M180 186 L188 180 M176 152 L182 158 M200 166 L206 160 M212 182 L216 176" stroke="#744620" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

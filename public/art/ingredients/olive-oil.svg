@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Olive oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="56" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M114 56 L114 80 C114 90 76 94 76 120 L76 194 C76 204 84 212 94 212 L162 212 C172 212 180 204 180 194 L180 120 C180 94 142 90 142 80 L142 56 Z" fill="#C9B53A"/>
+    <rect x="106" y="34" width="44" height="26" rx="8" fill="#3B3B42"/>
+  </g>
+  <path d="M86 126 C86 112 92 104 98 102 C94 126 94 158 98 186 C90 176 86 158 86 126 Z" fill="#E3D46A"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <ellipse cx="122" cy="190" rx="8" ry="10.5" fill="#3D5A1E" transform="rotate(-25 122 190)"/>
+    <path d="M129 182 Q138 170 148 176 Q141 188 129 182 Z" fill="#7FA343"/>
+  </g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

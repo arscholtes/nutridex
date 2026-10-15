@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cheddar</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M168 92 L206 56 Q210 116 206 176 L168 212 Q172 152 168 92 Z" fill="#CF6716"/>
+    <path d="M50 92 L88 56 Q147 52 206 56 L168 92 Q109 88 50 92 Z" fill="#FBAE52"/>
+    <path d="M50 92 Q109 88 168 92 Q172 152 168 212 Q109 216 50 212 Q46 152 50 92 Z" fill="#F2861E"/>
+  </g>
+  <path d="M62 106 Q67 103 73 104 L71 198 Q64 200 60 195 Q58 150 62 106 Z" fill="#F9A64C"/>
+  <g stroke="#B85A10" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M182 108 L184 122"/><path d="M190 140 L192 152"/><path d="M180 172 L182 186"/>
+  </g>
+  <ellipse cx="84" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="134" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="94" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="124" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="96" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="126" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="98" cy="143" r="1.9" fill="#FFFFFF"/>
+  <circle cx="128" cy="143" r="1.9" fill="#FFFFFF"/>
+  <path d="M101 163 Q109 171 117 163" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

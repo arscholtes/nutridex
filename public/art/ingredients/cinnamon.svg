@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cinnamon</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#9A4F22">
+    <g transform="rotate(-12 84 210)">
+      <rect x="62" y="62" width="44" height="150" rx="8"/>
+      <ellipse cx="84" cy="64" rx="22" ry="8" fill="#6E3415"/>
+    </g>
+    <g transform="rotate(12 172 210)">
+      <rect x="150" y="62" width="44" height="150" rx="8"/>
+      <ellipse cx="172" cy="64" rx="22" ry="8" fill="#6E3415"/>
+    </g>
+    <rect x="93" y="48" width="70" height="164" rx="10" fill="#B8662E"/>
+    <ellipse cx="128" cy="50" rx="35" ry="11" fill="#6E3415"/>
+  </g>
+  <rect x="97" y="64" width="6" height="112" rx="3" fill="#D88C50"/>
+  <g stroke="#D98E52" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M106 50 C106 41 124 39 132 45 C138 50 132 56 124 53"/>
+    <path d="M72 64 C72 58 84 57 89 61 C92 65 87 68 82 66" transform="rotate(-12 84 210)"/>
+    <path d="M160 64 C160 58 172 57 177 61 C180 65 175 68 170 66" transform="rotate(12 172 210)"/>
+  </g>
+  <g stroke="#6E3415" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M154 64 L154 100"/>
+    <path d="M154 156 L154 176"/>
+    <path d="M96 80 L96 176" transform="rotate(-12 84 210)"/>
+    <path d="M160 80 L160 176" transform="rotate(12 172 210)"/>
+  </g>
+  <path d="M54 186 Q128 202 202 186" stroke="#1B1B1F" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M54 186 Q128 202 202 186" stroke="#E6CF9A" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="115" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="115" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 135 Q128 143 136 135" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
