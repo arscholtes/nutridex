@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Red leaf lettuce</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M112 212 C84 206 50 194 40 164 C26 156 26 134 40 128 C30 114 38 96 52 96 C50 80 64 68 78 74 C82 60 98 54 108 62 C116 50 134 48 142 60 C152 52 170 56 172 70 C186 64 202 76 198 92 C214 94 222 112 212 124 C226 132 226 154 212 162 C206 194 172 206 144 212 Z" fill="#9A2B4C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="66" cy="104" rx="6" ry="13" fill="#C25676" transform="rotate(40 66 104)"/>
+  <path d="M116 209 C96 200 74 186 68 166 C58 156 60 140 70 136 C66 122 76 110 88 112 C90 98 104 92 114 98 C120 88 136 88 142 98 C152 92 166 98 168 112 C180 110 190 122 186 136 C196 140 198 156 188 166 C182 186 160 200 140 209 Z" fill="#86C45A" stroke="#6B1F38" stroke-width="3.5" stroke-linejoin="round"/>
+  <g stroke="#D3EDAE" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M120 206 C106 198 94 188 86 176"/>
+    <path d="M136 206 C150 198 162 188 170 176"/>
+    <path d="M128 204 L128 182"/>
+  </g>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

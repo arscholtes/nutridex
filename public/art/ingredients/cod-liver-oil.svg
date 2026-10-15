@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cod liver oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="52" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M114 92 L114 100 C114 108 82 110 82 128 L82 200 C82 208 88 214 96 214 L160 214 C168 214 174 208 174 200 L174 128 C174 110 142 108 142 100 L142 92 Z" fill="#6B3A1C"/>
+    <path d="M114 76 L114 54 C114 36 142 36 142 54 L142 76 Z" fill="#2E2E34"/>
+    <rect x="104" y="72" width="48" height="24" rx="6" fill="#DCDCE2"/>
+  </g>
+  <path d="M92 140 C92 130 95 125 99 123 C97 150 97 176 99 200 C94 194 92 182 92 140 Z" fill="#8A5230"/>
+  <g transform="translate(126 133)" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M14 0 L26 -10 L26 10 Z" fill="#5E8DB8"/>
+    <path d="M-20 0 C-12 -13 8 -13 16 0 C8 13 -12 13 -20 0 Z" fill="#8DB5DA"/>
+    <circle cx="-10" cy="-2" r="2.5" fill="#1B1B1F" stroke="none"/>
+  </g>
+  <ellipse cx="103" cy="185" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="185" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="165" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="165" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 185 Q128 193 136 185" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

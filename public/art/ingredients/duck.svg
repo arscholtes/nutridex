@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Duck</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <g transform="translate(188 198) rotate(24)">
+    <path d="M-34 0 C-34 -67 -18 -96 0 -96 C18 -96 34 -67 34 0 Z" fill="#A0520F" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M-27 -3 C-27 -51 -13 -74 0 -74 C13 -74 27 -51 27 -3 Z" fill="#E8907F"/>
+    <path d="M2 -87 L13 -77 M13 -86 L2 -77" stroke="#E0A048" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(170 198) rotate(16)">
+    <path d="M-34 0 C-34 -72 -18 -104 0 -104 C18 -104 34 -72 34 0 Z" fill="#A0520F" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M-27 -3 C-27 -57 -13 -82 0 -82 C13 -82 27 -57 27 -3 Z" fill="#E8907F"/>
+    <path d="M2 -95 L13 -85 M13 -94 L2 -85" stroke="#E0A048" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(150 198) rotate(8)">
+    <path d="M-34 0 C-34 -78 -18 -112 0 -112 C18 -112 34 -78 34 0 Z" fill="#A0520F" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M-27 -3 C-27 -63 -13 -90 0 -90 C13 -90 27 -63 27 -3 Z" fill="#E8907F"/>
+    <path d="M2 -103 L13 -93 M13 -102 L2 -93" stroke="#E0A048" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <path d="M28 198 C26 112 62 56 104 56 C146 56 176 112 174 198 Z" fill="#A0520F" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M38 195 C38 130 68 88 104 88 C140 88 164 130 164 195 Z" fill="#E8907F"/>
+  <path d="M42 150 C50 112 74 88 104 88 C134 88 158 112 166 150" stroke="#FCE3C4" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M52 138 C56 118 66 106 80 100 C72 114 68 130 68 148 C60 148 52 144 52 138 Z" fill="#F4B3A6"/>
+  <g stroke="#E0A048" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M44 124 L66 92 M58 116 L84 78 M78 92 L96 70 M118 70 L140 94 M134 72 L156 104 M146 98 L160 120"/>
+    <path d="M46 102 L60 120 M62 82 L82 104 M86 66 L100 84 M128 64 L114 84 M150 84 L136 104 M162 112 L152 124"/>
+  </g>
+  <path d="M104 68 L82 42 Q78 34 86 34 Q92 38 96 40 L100 30 Q104 22 108 30 L112 40 Q116 38 122 34 Q130 34 126 42 Z" fill="#F28C28" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M104 62 L88 40 M104 62 L104 32 M104 62 L120 40" stroke="#B85E0E" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="77" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="127" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="87" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="117" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="89" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="119" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="91" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="121" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M94 153 Q102 161 110 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

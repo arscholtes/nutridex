@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Jujube</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="50" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M123 78 C123 66 125 56 129 48 L137 50 C134 58 133 68 133 78 Z" fill="#7A5230"/>
+    <path d="M136 58 C142 42 160 36 172 40 C170 54 154 64 136 58 Z" fill="#43B05C"/>
+  </g>
+  <path d="M141 56 L165 45" stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="128" cy="144" rx="58" ry="70" fill="#A23E26"/>
+  <path d="M82.9 188 C100 181 114 197 128 190 C142 183 158 195 173.1 188 A58 70 0 0 1 82.9 188 Z" fill="#D9A35A"/>
+  <ellipse cx="94" cy="114" rx="9" ry="20" fill="#C9674A" transform="rotate(20 94 114)"/>
+  <ellipse cx="128" cy="144" rx="58" ry="70" fill="none" stroke="#1B1B1F" stroke-width="6"/>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

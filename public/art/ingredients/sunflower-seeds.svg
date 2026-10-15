@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sunflower seeds</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="126" cy="225" rx="86" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 32 C164 56 186 120 178 170 C172 202 150 212 122 212 C94 212 72 202 66 170 C58 120 80 56 122 32 Z" fill="#2F2C2B"/>
+    <g transform="rotate(-50 48 200)"><path d="M48 183 C60 192 60 214 48 215 C36 214 36 192 48 183 Z" fill="#2F2C2B"/><path d="M48 190 L48 209" stroke="#EDE8DE" stroke-width="3" stroke-linecap="round"/></g>
+    <g transform="rotate(60 204 200)"><path d="M204 183 C216 192 216 214 204 215 C192 214 192 192 204 183 Z" fill="#2F2C2B"/><path d="M204 190 L204 209" stroke="#EDE8DE" stroke-width="3" stroke-linecap="round"/></g>
+  </g>
+  <path d="M84 110 C88 84 100 64 112 54 C106 74 100 96 98 122 C92 126 84 120 84 110 Z" fill="#4A4645"/>
+  <g stroke="#EDE8DE" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M110 46 C92 72 80 112 78 150 C78 172 82 190 90 200"/>
+    <path d="M134 46 C152 72 164 112 166 150 C166 172 162 190 154 200"/>
+    <path d="M122 46 L122 104"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M213 58Q236 67 210 67Q222 82 203 72Q198 88 193 72Q174 82 186 67Q160 67 183 58Q160 49 186 49Q174 34 193 44Q198 28 203 44Q222 34 210 49Q236 49 213 58Z" fill="#F9C623"/>
+    <circle cx="198" cy="58" r="13" fill="#6B4423"/>
+  </g>
+  <ellipse cx="97" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="147" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="107" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="137" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="109" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="139" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="111" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="141" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M114 159 Q122 167 130 159" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

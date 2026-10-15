@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Crayfish</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="132" cy="214" rx="86" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M90 104 C96 76 116 58 144 56"/>
+    <path d="M100 100 C112 80 134 72 158 76"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g stroke="#1B1B1F" stroke-width="13">
+      <path d="M78 128 L54 112"/><path d="M80 164 L56 172"/>
+      <path d="M100 174 L94 196"/><path d="M122 178 L122 200"/><path d="M144 174 L150 196"/>
+    </g>
+    <g stroke="#A8503A" stroke-width="4">
+      <path d="M78 128 L54 112"/><path d="M80 164 L56 172"/>
+      <path d="M100 174 L94 196"/><path d="M122 178 L122 200"/><path d="M144 174 L150 196"/>
+    </g>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#A8503A">
+    <path d="M200 136 C214 120 232 126 230 140 C232 150 226 160 220 162 C230 168 232 182 220 188 C208 192 198 180 196 172 Z"/>
+    <path d="M156 112 C176 114 196 124 204 140 C208 152 206 166 198 176 C186 182 170 180 156 172 Z"/>
+    <path d="M44 120 C30 108 28 80 40 58 C46 66 50 74 52 82 C56 76 62 70 70 68 C76 86 70 108 58 120 C54 124 48 124 44 120 Z"/>
+    <path d="M52 182 C36 182 22 166 24 148 C32 152 40 156 46 160 C44 152 46 144 50 138 C64 144 70 162 62 176 C60 180 56 182 52 182 Z"/>
+    <path d="M66 132 C70 110 94 98 122 98 C152 98 170 116 170 140 C170 164 150 182 120 182 C90 182 66 166 64 144 L56 138 Z"/>
+  </g>
+  <ellipse cx="88" cy="118" rx="7" ry="15" fill="#C9735C" transform="rotate(50 88 118)"/>
+  <g stroke="#7A3626" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M172 118 C168 134 168 160 172 178"/>
+    <path d="M186 124 C182 140 182 160 186 179"/><path d="M198 136 C196 148 196 160 198 172"/>
+    <path d="M212 136 L222 140"/><path d="M210 172 L222 180"/>
+  </g>
+  <ellipse cx="93" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="143" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="103" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="133" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="105" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="135" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="107" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="137" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M110 153 Q118 161 126 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

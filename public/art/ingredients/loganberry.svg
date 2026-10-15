@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Loganberry</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="46" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M182 134A14 14 0 0 1 177 156A14 14 0 0 1 169 177A13 13 0 0 1 159 195A11 11 0 0 1 149 208A8 8 0 0 1 139 217A7 7 0 0 1 128 220A7 7 0 0 1 117 217A8 8 0 0 1 107 208A11 11 0 0 1 97 195A13 13 0 0 1 87 177A14 14 0 0 1 79 156A14 14 0 0 1 74 134A14 14 0 0 1 76 112A13 13 0 0 1 81 91A12 12 0 0 1 90 73A11 11 0 0 1 101 60A10 10 0 0 1 114 51A9 9 0 0 1 128 48A9 9 0 0 1 142 51A10 10 0 0 1 155 60A11 11 0 0 1 166 73A12 12 0 0 1 175 91A13 13 0 0 1 180 112A14 14 0 0 1 182 134Z" fill="#A81E36" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="96" cy="106" rx="7" ry="22" fill="#D4506A" transform="rotate(16 96 106)"/>
+  <path d="M107 65a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M123 65a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M99 79a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M115 79a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M131 79a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M147 79a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M91 93a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M107 93a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M123 93a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M139 93a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M155 93a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M83 106a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M83 134a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M163 134a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M99 162a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M115 162a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M131 162a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M147 162a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M91 176a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M107 176a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M123 176a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M139 176a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M99 190a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M115 190a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M131 190a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M107 203a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M123 203a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" fill="none" stroke="#6E0C22" stroke-width="3"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M128 36 L128 26" fill="none"/>
+  <path d="M128 58 L110 66 L114 52 L98 46 L116 42 L128 32 L140 42 L158 46 L142 52 L146 66 Z" fill="#43B05C"/>
+  </g>
+  <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

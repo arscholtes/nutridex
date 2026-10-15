@@ -1,0 +1,2 @@
+ALTER TABLE "prep_effect" ADD COLUMN "direction" text;--> statement-breakpoint
+ALTER TABLE "prep_effect" ADD CONSTRAINT "prep_effect_direction_known" CHECK (direction in ('decreases', 'increases', 'unchanged'));

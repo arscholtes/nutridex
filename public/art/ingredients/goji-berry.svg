@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Goji berry</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="46" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M128 48 C126 40 128 32 134 26" fill="none"/>
+  <path d="M128 56 C162 54 180 96 178 136 C176 178 156 206 138 213 L128 220 L118 213 C100 206 80 178 78 136 C76 96 94 54 128 56 Z" fill="#F4532C"/>
+  <path d="M128 66 L112 70 L116 58 L104 50 L120 48 L128 40 L136 48 L152 50 L140 58 L144 70 Z" fill="#43B05C"/>
+  </g>
+  <ellipse cx="98" cy="112" rx="8" ry="22" fill="#FF8A62" transform="rotate(14 98 112)"/>
+  <ellipse cx="103" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="149" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="129" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="129" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 149 Q128 157 136 149" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

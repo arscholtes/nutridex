@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Blackberry</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 66 C128 52 132 42 140 34" fill="none" stroke="#1B1B1F" stroke-width="6" stroke-linecap="round"/>
+  <path d="M196 138A16 16 0 0 1 192 164A16 16 0 0 1 180 187A15 15 0 0 1 162 204A15 15 0 0 1 140 213A15 15 0 0 1 116 213A15 15 0 0 1 94 204A15 15 0 0 1 76 187A16 16 0 0 1 64 164A16 16 0 0 1 60 138A16 16 0 0 1 64 112A16 16 0 0 1 76 89A15 15 0 0 1 94 72A15 15 0 0 1 116 63A15 15 0 0 1 140 63A15 15 0 0 1 162 72A15 15 0 0 1 180 89A16 16 0 0 1 192 112A16 16 0 0 1 196 138Z" fill="#2B1838" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="88" cy="114" rx="8" ry="19" fill="#5A3C74" transform="rotate(30 88 114)"/>
+  <path d="M98 78a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M117 78a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M135 78a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M89 94a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M108 94a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M126 94a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M144 94a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M80 110a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M98 110a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M117 110a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M135 110a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M154 110a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M70 126a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M163 126a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M80 142a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M172 142a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M70 158a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M163 158a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M80 174a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M98 174a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M117 174a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M135 174a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M154 174a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M89 190a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M108 190a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M126 190a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M144 190a8 8 0 1 0 16 0a8 8 0 1 0 -16 0M117 206a8 8 0 1 0 16 0a8 8 0 1 0 -16 0" fill="none" stroke="#7B5A9E" stroke-width="3"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M128 72 L100 86 L110 70 L84 66 L112 60 L128 50 L144 60 L172 66 L146 70 L156 86 Z" fill="#43B05C"/>
+  </g>
+  <ellipse cx="103" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 155 Q128 163 136 155" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

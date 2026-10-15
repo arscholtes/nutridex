@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sardine</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="225" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M44 68 L52 44 C54 38 58 36 64 36 L196 32 C202 32 206 34 208 40 L214 66 Z" fill="#B3BFCB"/>
+    <rect x="58" y="27" width="144" height="15" rx="7.5" fill="#D5DDE5" transform="rotate(-2 130 34)"/>
+    <rect x="28" y="58" width="200" height="142" rx="26" fill="#A9B6C3"/>
+    <rect x="28" y="58" width="200" height="84" rx="26" fill="#D3DBE3"/>
+  </g>
+  <rect x="40" y="68" width="176" height="64" rx="16" fill="#F2D68E" stroke="#1B1B1F" stroke-width="4"/>
+  <g fill="#C7D3DF" stroke="#1B1B1F" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M50 85 C69.32 77 132.8 77 163.16 83.4 L188 77 L179.72 85 L188 93 L163.16 86.6 C132.8 93 69.32 93 50 85 Z"/>
+    <path d="M206 101 C186.68 93 123.2 93 92.84 99.4 L68 93 L76.28 101 L68 109 L92.84 102.6 C123.2 109 186.68 109 206 101 Z"/>
+    <path d="M50 117 C69.32 109 132.8 109 163.16 115.4 L188 109 L179.72 117 L188 125 L163.16 118.6 C132.8 125 69.32 125 50 117 Z"/>
+  </g>
+  <g stroke="#4E6F99" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M80 81 Q124 76 160 81 M176 97 Q132 92 96 97 M80 113 Q124 108 160 113"/>
+  </g>
+  <g fill="#1B1B1F"><circle cx="62" cy="83" r="2.6"/><circle cx="194" cy="99" r="2.6"/><circle cx="62" cy="115" r="2.6"/></g>
+  <path d="M42 160 C42 152 46 148 52 148 C48 160 48 172 52 186 C46 182 42 176 42 160 Z" fill="#CFD8E1"/>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

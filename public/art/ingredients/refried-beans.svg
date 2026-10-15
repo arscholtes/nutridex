@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Refried beans</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="124" cy="225" rx="90" ry="8" fill="#000" opacity="0.14"/>
+  <g fill="none" stroke-linecap="round"><path d="M206 168 L226 156" stroke="#1B1B1F" stroke-width="18"/><path d="M206 168 L226 156" stroke="#3A3A41" stroke-width="7"/></g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M24 166 L30 192 C36 204 72 212 116 212 C160 212 196 204 202 192 L208 166 Z" fill="#3A3A41"/>
+    <ellipse cx="116" cy="166" rx="92" ry="24" fill="#26262B"/>
+    <path d="M32 168 C30 108 70 70 116 70 C162 70 200 108 200 168 C200 180 162 187 116 187 C70 187 32 180 32 168 Z" fill="#9A5A30"/>
+  </g>
+  <path d="M48 146 C48 118 60 100 78 92 C70 112 64 130 64 150 C58 156 48 154 48 146 Z" fill="#B97A4B"/>
+  <path d="M84 94 Q96 86 108 92M140 88 Q154 90 162 100M170 132 Q180 144 184 158M58 168 Q74 178 92 176M146 174 Q162 174 176 166" stroke="#74401E" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <g fill="#FFF8E7" stroke="#1B1B1F" stroke-width="2.5" stroke-linejoin="round"><path d="M118 74 L128 72 L130 81 L120 83 Z"/><path d="M164 112 L173 108 L177 116 L168 120 Z"/><path d="M66 114 L74 108 L80 115 L72 121 Z"/></g>
+  <path d="M40 198 Q76 209 116 209" stroke="#5A5A62" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="91" cy="141" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="141" cy="141" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="101" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="131" cy="122" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="103" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="133" cy="124" r="5.2" fill="#1B1B1F"/>
+  <circle cx="105" cy="121" r="1.9" fill="#FFFFFF"/>
+  <circle cx="135" cy="121" r="1.9" fill="#FFFFFF"/>
+  <path d="M108 141 Q116 149 124 141" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

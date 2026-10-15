@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pineapple</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="60" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M98 100 L76 62 L104 76 L98 38 L120 66 L128 24 L136 66 L158 38 L152 76 L180 62 L158 100Z" fill="#3E9E52"/>
+    <path d="M112 100 L128 52 L144 100 Z" fill="#5CC06E"/>
+    <ellipse cx="128" cy="152" rx="58" ry="64" fill="#F7BE38"/>
+  </g>
+  <ellipse cx="90" cy="134" rx="9" ry="22" fill="#FFDB78" transform="rotate(18 90 134)"/>
+  <path d="M136.7 92.8 L180.1 136.2M106.8 96.8 L179.6 169.7M87.9 111.9 L168.1 192.1M76.4 134.3 L149.2 207.2M75.9 167.8 L119.3 211.2M75.9 136.2 L119.3 92.8M76.4 169.7 L149.2 96.8M87.9 192.1 L168.1 111.9M106.8 207.2 L179.6 134.3M136.7 211.2 L180.1 167.8" stroke="#C98420" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="128" cy="153" rx="41" ry="29" fill="#F7BE38"/>
+  <ellipse cx="103" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="163" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="144" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="146" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="143" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="143" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 163 Q128 171 136 163" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

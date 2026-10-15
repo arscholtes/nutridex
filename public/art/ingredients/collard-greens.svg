@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Collard greens</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="66" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 190 L128 218" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 190 L128 218" stroke="#C6E2D4" stroke-width="8" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <ellipse cx="166" cy="94" rx="50" ry="62" fill="#2F6655" transform="rotate(30 166 94)"/>
+    <path d="M128 44 C150 40 172 50 182 66 C196 80 200 104 196 124 C194 150 180 174 156 186 C146 192 136 194 132 196 L124 196 C120 194 110 192 100 186 C76 174 62 150 60 124 C56 104 60 80 74 66 C84 50 106 40 128 44 Z" fill="#3F806A"/>
+  </g>
+  <path d="M196 44 L184 64" stroke="#8FBFAA" stroke-width="3.5" stroke-linecap="round"/>
+  <ellipse cx="84" cy="90" rx="6" ry="14" fill="#62A088" transform="rotate(30 84 90)"/>
+  <path d="M122 194 C124 176 126 160 128 146 C130 160 132 176 134 194 Z" fill="#C6E2D4"/>
+  <g stroke="#C6E2D4" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M127 178 C112 170 94 164 76 162"/>
+    <path d="M129 178 C144 170 162 164 180 162"/>
+    <path d="M127 160 C116 154 100 150 86 146"/>
+    <path d="M129 160 C140 154 156 150 170 146"/>
+  </g>
+  <ellipse cx="103" cy="129" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="129" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 129 Q128 137 136 129" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

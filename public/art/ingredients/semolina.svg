@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Semolina</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#2B2620" stroke-width="3" stroke-linecap="round">
+    <path d="M118 74 L96 30 M118 60 L106 22 M125 42 L120 20 M131 42 L136 20 M138 60 L150 22 M138 74 L160 30"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="3" fill="#D9A441">
+    <ellipse cx="121" cy="78" rx="6" ry="9" transform="rotate(-20 121 78)"/>
+    <ellipse cx="135" cy="78" rx="6" ry="9" transform="rotate(20 135 78)"/>
+    <ellipse cx="121" cy="64" rx="6" ry="9" transform="rotate(-20 121 64)"/>
+    <ellipse cx="135" cy="64" rx="6" ry="9" transform="rotate(20 135 64)"/>
+    <ellipse cx="128" cy="49" rx="6" ry="9"/>
+  </g>
+  <path d="M46 210 C58 160 92 92 128 88 C164 92 198 160 210 210 C210 214 206 216 200 216 L56 216 C50 216 46 214 46 210 Z" fill="#F2DC95" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M68 192 C76 158 92 126 112 106 C100 132 90 162 86 194 C80 200 68 200 68 192 Z" fill="#FAEDC0"/>
+  <g fill="#C99D3E">
+    <circle cx="128" cy="104" r="2.6"/><circle cx="146" cy="116" r="2.6"/><circle cx="114" cy="124" r="2.6"/>
+    <circle cx="164" cy="132" r="2.6"/><circle cx="178" cy="158" r="2.6"/><circle cx="188" cy="186" r="2.6"/>
+    <circle cx="172" cy="200" r="2.6"/><circle cx="146" cy="198" r="2.6"/><circle cx="120" cy="202" r="2.6"/>
+    <circle cx="96" cy="198" r="2.6"/><circle cx="160" cy="184" r="2.6"/><circle cx="198" cy="204" r="2.6"/>
+    <circle cx="74" cy="206" r="2.6"/><circle cx="134" cy="126" r="2.6"/><circle cx="84" cy="168" r="2.6"/>
+  </g>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

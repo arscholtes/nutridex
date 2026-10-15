@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Eggplant</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 62 L122 40 C122 34 134 34 134 40 L134 62 Z" fill="#4E8A3A"/>
+    <path d="M128 64 C152 64 162 82 168 104 C174 126 198 142 198 174 C198 204 168 216 128 216 C88 216 58 204 58 174 C58 142 82 126 88 104 C94 82 104 64 128 64 Z" fill="#5E2D84"/>
+    <path d="M128 58 C110 58 94 66 86 84 C94 82 98 88 98 98 C104 90 112 92 116 102 C120 94 124 92 128 100 C132 92 136 94 140 102 C144 92 152 90 158 98 C158 88 162 82 170 84 C162 66 146 58 128 58 Z" fill="#3E9E52"/>
+  </g>
+  <path d="M74 178 C72 154 86 138 100 128 C94 146 90 162 92 184 C86 192 76 190 74 178 Z" fill="#9466BE"/>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

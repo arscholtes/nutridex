@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chili powder</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="222" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M204 66 C212 60 216 52 216 44" stroke="#1B1B1F" stroke-width="11"/>
+    <path d="M204 66 C212 60 216 52 216 44" stroke="#7C8F35" stroke-width="4.5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M34 210 C40 190 62 178 78 162 C94 146 98 112 128 108 C158 112 162 146 178 162 C194 178 216 190 222 210 C222 214 218 216 214 216 L42 216 C38 216 34 214 34 210 Z" fill="#E85A24"/>
+    <path d="M188 54 C150 52 104 70 70 110 C110 94 152 84 196 84 C204 76 200 58 188 54 Z" fill="#A4161A"/>
+    <ellipse cx="198" cy="69" rx="9" ry="15" fill="#6B7A2A"/>
+  </g>
+  <path d="M110 118 C100 128 94 146 82 166 C78 172 72 170 76 162 C88 142 94 126 110 118 Z" fill="#F58C5C"/>
+  <g stroke="#6E0E10" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M98 84 Q112 76 126 74"/>
+    <path d="M140 70 Q156 66 172 66"/>
+    <path d="M150 80 Q164 76 178 76"/>
+  </g>
+  <g fill="#B83A12">
+    <circle cx="132" cy="120" r="2.6"/><circle cx="148" cy="132" r="2.6"/><circle cx="100" cy="198" r="2.6"/>
+    <circle cx="134" cy="200" r="2.6"/><circle cx="166" cy="194" r="2.6"/><circle cx="190" cy="204" r="2.6"/>
+    <circle cx="72" cy="204" r="2.6"/><circle cx="176" cy="172" r="2.6"/>
+  </g>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

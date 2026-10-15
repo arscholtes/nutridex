@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Sauerkraut</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M94 64 L162 64 L162 76 C182 80 190 94 190 114 L190 194 C190 205 182 212 171 212 L85 212 C74 212 66 205 66 194 L66 114 C66 94 74 80 94 76 Z" fill="#F0E09A"/>
+  <path d="M94 64 L162 64 L162 76 C182 80 190 94 190 108 Q180 100 170 106 Q160 112 150 106 Q140 100 130 106 Q120 112 110 106 Q100 100 90 106 Q78 112 66 108 C66 94 74 80 94 76 Z" fill="#D3E6E8"/>
+  <path d="M75 122 C75 115 82 114 83 120 L83 186 C83 193 75 193 75 186 Z" fill="#FAF3CF"/>
+  <g stroke="#A8893A" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M90 118 q5 -6 10 0 t10 0 t10 0"/>
+    <path d="M136 118 q5 -6 10 0 t10 0 t10 0"/>
+    <path d="M110 127 q5 -6 10 0 t10 0 t10 0 t10 0"/>
+    <path d="M168 129 q5 -6 10 0"/>
+    <path d="M178 148 q5 5 0 10 t0 10"/>
+    <path d="M176 182 q5 5 0 10"/>
+    <path d="M94 192 q5 -5 10 0"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M94 64 L162 64 L162 76 C182 80 190 94 190 114 L190 194 C190 205 182 212 171 212 L85 212 C74 212 66 205 66 194 L66 114 C66 94 74 80 94 76 Z" fill="none"/>
+    <rect x="84" y="42" width="88" height="24" rx="6" fill="#C9CED6"/>
+  </g>
+  <g stroke="#8E959F" stroke-width="3" stroke-linecap="round">
+    <path d="M98 49 L98 59 M108 49 L108 59 M148 49 L148 59 M158 49 L158 59"/>
+  </g>
+  <circle cx="128" cy="54" r="8" fill="#8BC46A" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M123 52 Q128 48 133 52" stroke="#4E8A33" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 167 Q128 175 136 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

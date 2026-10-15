@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mayonnaise</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M94 74 L94 84 C72 92 62 108 62 134 L62 192 C62 205 72 214 86 214 L170 214 C184 214 194 205 194 192 L194 134 C194 108 184 92 162 84 L162 74 Z" fill="#F6F3E9"/>
+    <rect x="84" y="46" width="88" height="32" rx="9" fill="#F2C230"/>
+  </g>
+  <path d="M74 136 C74 116 82 104 94 98 C86 120 84 160 88 202 C80 198 74 190 74 176 Z" fill="#FFFFFF"/>
+  <path d="M128 98 C139 98 145 114 145 123 C145 133 138 139 128 139 C118 139 111 133 111 123 C111 114 117 98 128 98 Z" fill="#EFC994" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M120 112 C121 107 124 104 127 103" stroke="#FBE6C6" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="179" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="160" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="162" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="159" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="159" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 179 Q128 187 136 179" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

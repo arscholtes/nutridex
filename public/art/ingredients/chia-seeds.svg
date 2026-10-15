@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chia seeds</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="225" rx="62" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M66 78 L190 78 L178 200 C177 207 171 212 164 212 L92 212 C85 212 79 207 78 200 Z" fill="#D3CEC6"/>
+  <path d="M68 80 L188 80 L186 94 C166 100 146 92 128 96 C108 100 88 92 70 98 Z" fill="#F2F5F5"/>
+  <path d="M70 98 C88 92 108 100 128 96 C146 92 166 100 186 94" stroke="#9E978C" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M80 110 L90 108 L88 196 C84 194 82 190 82 184 Z" fill="#E9E5DE"/>
+  <path d="M132 125h1M126 204h1M126 190h1M100 114h1M169 189h1M134 194h1M169 189h1M168 192h1M119 121h1M172 133h1M129 198h1M130 202h1M169 170h1M123 187h1M124 192h1M107 113h1M173 100h1M170 145h1M144 194h1M134 194h1" stroke="#2E2E33" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M162 101h1M126 187h1M168 146h1M123 200h1M167 190h1M134 186h1M158 109h1M174 153h1M165 104h1M118 193h1M109 125h1M140 102h1M122 119h1M100 189h1M106 119h1M100 196h1M169 192h1M105 196h1M161 196h1M153 101h1" stroke="#80808A" stroke-width="4.5" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round">
+    <path d="M66 78 L190 78 L178 200 C177 207 171 212 164 212 L92 212 C85 212 79 207 78 200 Z" fill="none"/>
+    <circle cx="112" cy="70" r="13" fill="#4A5BA8"/>
+    <circle cx="142" cy="66" r="12" fill="#5B6DBE"/>
+  </g>
+  <path d="M138 58 l4 5 l4 -5" stroke="#2E3A78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

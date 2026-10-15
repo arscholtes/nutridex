@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Paprika</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="225" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62 132 L62 202 A66 14 0 0 0 194 202 L194 132 Z" fill="#C9CED6"/>
+    <path d="M62 132 C66 104 98 88 128 88 C158 88 190 104 194 132 A66 14 0 0 1 62 132 Z" fill="#A8211B"/>
+  </g>
+  <rect x="72" y="156" width="9" height="40" rx="4.5" fill="#E6E9EE"/>
+  <path d="M68 196 A60 12 0 0 0 188 196" stroke="#8E959F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <g fill="#741510">
+    <circle cx="96" cy="114" r="2.6"/><circle cx="118" cy="104" r="2.6"/><circle cx="110" cy="126" r="2.6"/><circle cx="142" cy="122" r="2.6"/>
+  </g>
+  <g stroke-linecap="round" fill="none">
+    <path d="M172 62 C172 54 175 48 181 44" stroke="#1B1B1F" stroke-width="10"/>
+    <path d="M172 62 C172 54 175 48 181 44" stroke="#3E9E52" stroke-width="4"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round">
+    <path d="M174 62 C166 56 156 56 152 62 C148 70 148 84 152 94 C156 102 164 102 168 98 C171 102 177 102 180 98 C184 102 192 102 196 94 C200 84 200 70 196 62 C192 56 182 56 174 62 Z" fill="#E53935"/>
+    <path d="M162 63 C166 56 182 56 186 63 C180 66 176 64 174 67 C172 64 168 66 162 63 Z" fill="#3E9E52"/>
+  </g>
+  <ellipse cx="103" cy="185" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="185" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="166" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="168" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="165" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="165" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 185 Q128 193 136 185" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

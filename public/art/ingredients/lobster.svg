@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lobster</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="226" rx="58" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M114 58 C106 40 92 30 76 30"/>
+    <path d="M142 58 C150 40 164 30 180 30"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g stroke="#1B1B1F" stroke-width="16">
+      <path d="M92 124 L66 128"/><path d="M164 124 L190 128"/>
+      <path d="M92 140 L70 154 L66 170"/><path d="M164 140 L186 154 L190 170"/>
+    </g>
+    <g stroke="#D7372B" stroke-width="5">
+      <path d="M92 124 L66 128"/><path d="M164 124 L190 128"/>
+      <path d="M92 140 L70 154 L66 170"/><path d="M164 140 L186 154 L190 170"/>
+    </g>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#D7372B">
+    <path d="M104 200 C88 202 80 214 90 221 C98 225 110 222 116 217 C120 224 136 224 140 217 C146 222 158 225 166 221 C176 214 168 202 152 200 Z"/>
+    <path d="M100 146 L156 146 C156 170 152 190 146 204 L110 204 C104 190 100 170 100 146 Z"/>
+    <path d="M40 132 C24 114 22 78 38 50 C44 60 50 70 52 80 C56 70 64 62 76 56 C88 80 82 114 66 130 C58 136 46 136 40 132 Z"/>
+    <path d="M216 132 C232 114 234 78 218 50 C212 60 206 70 204 80 C200 70 192 62 180 56 C168 80 174 114 190 130 C198 136 210 136 216 132 Z"/>
+    <path d="M128 54 C160 54 172 76 172 104 C172 128 164 144 152 150 L104 150 C92 144 84 128 84 104 C84 76 96 54 128 54 Z"/>
+  </g>
+  <ellipse cx="102" cy="82" rx="8" ry="17" fill="#F0675A" transform="rotate(30 102 82)"/>
+  <g stroke="#9E2219" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M102 168 L154 168"/>
+    <path d="M106 186 L150 186"/>
+    <path d="M116 207 L116 216"/><path d="M140 207 L140 216"/>
+  </g>
+  <ellipse cx="103" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="119" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 119 Q128 127 136 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

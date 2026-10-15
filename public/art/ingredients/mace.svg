@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Mace</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="130" rx="64" ry="80" fill="#D7362B" stroke="#1B1B1F" stroke-width="6"/>
+  <path d="M76 150 C80 172 92 188 108 196 C96 196 82 186 76 172 C74 164 74 156 76 150 Z" fill="#EE6A5A"/>
+  <g fill="#4A2C1F" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round">
+    <path d="M128 56 Q102 88 128 116 Q154 88 128 56 Z"/>
+    <path d="M110 58 Q72 80 92 118 Q116 92 110 58 Z"/>
+    <path d="M146 58 Q184 80 164 118 Q140 92 146 58 Z"/>
+    <path d="M84 78 Q62 104 72 138 Q92 110 84 78 Z"/>
+    <path d="M172 78 Q194 104 184 138 Q164 110 172 78 Z"/>
+    <path d="M172 148 Q188 172 162 198 Q156 168 172 148 Z"/>
+    <path d="M140 178 Q160 188 148 206 Q132 194 140 178 Z"/>
+  </g>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

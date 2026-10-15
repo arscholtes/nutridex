@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Jerusalem artichoke</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="66" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M150 84 C158 72 166 62 174 54" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M150 84 C158 72 166 62 174 54" stroke="#5FAE4E" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M178 31 Q188 19 188 35 Q203 32 193 43 Q207 51 191 54 Q197 68 183 60 Q178 75 173 60 Q159 68 165 54 Q149 51 163 43 Q153 32 168 35 Q168 19 178 31 Z" fill="#F7C531"/>
+    <path d="M96 80 C112 66 140 72 156 84 C176 82 196 98 194 120 C210 134 206 162 190 174 C184 200 156 212 128 208 C104 216 76 206 70 184 C50 174 46 148 60 132 C54 110 70 86 96 80 Z" fill="#C48E74"/>
+  </g>
+  <circle cx="178" cy="46" r="7" fill="#6B4226"/>
+  <ellipse cx="96" cy="98" rx="7" ry="16" fill="#D9AC94" transform="rotate(60 96 98)"/>
+  <g stroke="#9C664E" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M62 152 Q72 158 82 152 M176 102 Q184 108 192 106 M180 172 Q188 166 194 158 M118 196 Q128 200 140 196 M150 88 Q156 94 158 100"/>
+  </g>
+  <ellipse cx="103" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="155" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 155 Q128 163 136 155" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

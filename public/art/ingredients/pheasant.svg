@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pheasant</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="80" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="butt" stroke-linejoin="round" fill="none">
+    <g transform="translate(118 136) rotate(-30)">
+      <path d="M0 -108 C10 -92 12 -30 8 0 L-8 0 C-12 -30 -10 -92 0 -108 Z" fill="#D9A85C" stroke="#1B1B1F" stroke-width="4"/>
+      <path d="M-8 -84 L8 -84 M-10 -62 L10 -62 M-10 -40 L10 -40 M-10 -18 L10 -18" stroke="#4A2A12" stroke-width="7"/>
+      <path d="M0 -98 L0 0" stroke="#1B1B1F" stroke-width="2.5"/>
+    </g>
+    <g transform="translate(138 136) rotate(30)">
+      <path d="M0 -108 C10 -92 12 -30 8 0 L-8 0 C-12 -30 -10 -92 0 -108 Z" fill="#D9A85C" stroke="#1B1B1F" stroke-width="4"/>
+      <path d="M-8 -84 L8 -84 M-10 -62 L10 -62 M-10 -40 L10 -40 M-10 -18 L10 -18" stroke="#4A2A12" stroke-width="7"/>
+      <path d="M0 -98 L0 0" stroke="#1B1B1F" stroke-width="2.5"/>
+    </g>
+    <g transform="translate(128 132)">
+      <path d="M0 -108 C10 -92 12 -30 8 0 L-8 0 C-12 -30 -10 -92 0 -108 Z" fill="#D9A85C" stroke="#1B1B1F" stroke-width="4"/>
+      <path d="M-8 -84 L8 -84 M-10 -62 L10 -62 M-10 -40 L10 -40 M-10 -18 L10 -18" stroke="#4A2A12" stroke-width="7"/>
+      <path d="M0 -98 L0 0" stroke="#1B1B1F" stroke-width="2.5"/>
+    </g>
+  </g>
+  <path d="M58 168 C56 136 88 118 128 118 C168 118 200 136 198 168 C196 196 166 208 128 208 C90 208 60 196 58 168 Z" fill="#B9592E" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M72 156 C76 142 86 132 100 128 C92 140 88 152 88 168 C80 166 72 162 72 156 Z" fill="#D98452"/>
+  <g stroke="#7A3416" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M168 140 C186 146 194 162 188 178"/>
+    <path d="M112 200 C122 203 134 203 144 200"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="translate(70 193) rotate(-60)">
+      <path d="M-4 -26 L-4 -42 C-12 -41 -14 -52 -7 -54 C-4 -55 -1 -54 0 -52 C1 -54 4 -55 7 -54 C14 -52 12 -41 4 -42 L4 -26 Z" fill="#FFF3DF"/>
+      <path d="M0 -34 C10 -34 20 -18 20 -4 C20 10 10 14 0 14 C-10 14 -20 10 -20 -4 C-20 -18 -10 -34 0 -34 Z" fill="#9C4622"/>
+    </g>
+    <g transform="translate(186 193) rotate(60)">
+      <path d="M-4 -26 L-4 -42 C-12 -41 -14 -52 -7 -54 C-4 -55 -1 -54 0 -52 C1 -54 4 -55 7 -54 C14 -52 12 -41 4 -42 L4 -26 Z" fill="#FFF3DF"/>
+      <path d="M0 -34 C10 -34 20 -18 20 -4 C20 10 10 14 0 14 C-10 14 -20 10 -20 -4 C-20 -18 -10 -34 0 -34 Z" fill="#9C4622"/>
+    </g>
+  </g>
+  <ellipse cx="103" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 177 Q128 185 136 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

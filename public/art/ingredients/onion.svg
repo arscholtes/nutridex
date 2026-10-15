@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Onion</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#8A6A3E" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M118 208 L112 220 M128 210 L128 222 M138 208 L144 220"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M120 72 C120 56 124 44 134 32 C138 29 142 33 138 38 C132 46 134 58 136 72 Z" fill="#E0B26C"/>
+    <path d="M128 60 C140 76 196 92 196 150 C196 190 166 212 128 212 C90 212 60 190 60 150 C60 92 116 76 128 60 Z" fill="#D08A3A"/>
+  </g>
+  <ellipse cx="100" cy="108" rx="7" ry="14" fill="#E9AE62" transform="rotate(35 100 108)"/>
+  <g stroke="#9E5F22" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M114 72 C80 92 70 150 96 206"/>
+    <path d="M142 72 C176 92 186 150 160 206"/>
+    <path d="M126 48 L130 40"/>
+  </g>
+  <ellipse cx="103" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 167 Q128 175 136 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

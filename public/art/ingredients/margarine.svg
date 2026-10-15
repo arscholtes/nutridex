@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Margarine</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M60 112 L74 202 C76 209 100 214 128 214 C156 214 180 209 182 202 L196 112 Z" fill="#F7CF36"/>
+    <path d="M54 92 L54 104 C54 116 92 122 128 122 C164 122 202 116 202 104 L202 92 Z" fill="#E9B81E"/>
+    <ellipse cx="128" cy="92" rx="74" ry="20" fill="#FBE07E"/>
+  </g>
+  <path d="M108 90 C102 80 112 70 124 74 C132 77 140 74 146 66 C154 76 150 92 136 94 C126 95 116 96 108 90 Z" fill="#FFF3B0" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M120 84 C126 86 134 84 140 78" stroke="#E9B81E" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M74 130 L80 130 L90 200 C85 198 82 195 81 190 Z" fill="#FBE07E"/>
+  <ellipse cx="103" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 173 Q128 181 136 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

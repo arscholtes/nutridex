@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Maitake mushroom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="60" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M100 186 C98 202 102 214 128 214 C154 214 158 202 156 186 Z" fill="#EFE3C9"/>
+    <path d="M64 176 C40 168 26 144 34 124 C24 104 36 84 56 84 C54 62 74 48 94 56 C102 38 126 32 140 44 C156 32 180 40 184 58 C204 54 222 72 214 92 C232 104 230 132 214 142 C222 162 206 178 190 176 Z" fill="#6B4C33"/>
+  </g>
+  <g stroke="#A88563" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M56 84 L66 94"/>
+    <path d="M94 56 L100 68"/>
+    <path d="M140 44 L138 58"/>
+    <path d="M184 58 L176 70"/>
+    <path d="M214 92 L202 100"/>
+    <path d="M34 124 L48 126"/>
+    <path d="M214 142 L202 140"/>
+  </g>
+  <path d="M80 196 C58 186 50 160 60 142 C52 122 66 104 84 106 C86 88 104 78 120 86 C130 74 150 76 156 90 C172 82 192 94 190 112 C206 120 208 146 196 156 C204 176 190 196 176 196 Z" fill="#94704C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="76" cy="128" rx="5" ry="11" fill="#B08A63" transform="rotate(-25 76 128)"/>
+  <g stroke="#6B4C33" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M60 142 L72 146"/>
+    <path d="M84 106 L94 114"/>
+    <path d="M120 86 L122 98"/>
+    <path d="M156 90 L152 102"/>
+    <path d="M190 112 L178 118"/>
+    <path d="M196 156 L184 158"/>
+  </g>
+  <ellipse cx="103" cy="149" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="149" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="130" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="132" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="129" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="129" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 149 Q128 157 136 149" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

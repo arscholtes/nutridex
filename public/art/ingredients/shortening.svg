@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Shortening</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="64" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M70 104 L70 202 C70 210 96 214 128 214 C160 214 186 210 186 202 L186 104 Z" fill="#EDECE5"/>
+    <path d="M70 116 L186 116 L186 130 C160 134 96 134 70 130 Z" fill="#3D7BC8"/>
+    <ellipse cx="128" cy="104" rx="58" ry="12" fill="#D9D7CE"/>
+    <rect x="80" y="82" width="96" height="24" rx="12" fill="#FFFFFF"/>
+    <rect x="94" y="62" width="68" height="24" rx="12" fill="#FFFFFF"/>
+    <rect x="107" y="44" width="42" height="22" rx="11" fill="#FFFFFF"/>
+    <path d="M124 46 C122 34 136 30 142 38" fill="none"/>
+  </g>
+  <path d="M80 140 L86 140 L86 204 C82 202 80 200 80 196 Z" fill="#FFFFFF"/>
+  <ellipse cx="103" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="155" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="155" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 175 Q128 183 136 175" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

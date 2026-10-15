@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Fenugreek seed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="132" cy="224" rx="100" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#C99230">
+    <path d="M30 116 C28 80 40 50 66 30 L76 27 L72 38 C56 58 48 84 48 114 Q40 124 30 116 Z" fill="#C4C47A"/>
+    <path d="M26 196 L46 188 L56 206 L36 214 Z"/>
+    <path d="M58 212 L66 194 L84 200 L76 216 Z"/>
+    <path d="M206 194 L226 186 L232 206 L212 212 Z"/>
+    <path d="M124 75 L170 68 Q182 66 185 78 L203 174 Q206 186 194 188 L124 202 L110 186 L102 206 Q84 210 82 198 L66 96 Q64 84 76 82 Z" fill="#D49A2E"/>
+  </g>
+  <path d="M74 98 Q72 88 84 87 L112 82 Q94 92 86 108 Q76 110 74 98 Z" fill="#E8B852"/>
+  <g stroke="#8F5E17" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M37 102 C38 82 46 64 58 50"/>
+    <path d="M110 186 Q116 174 130 170"/>
+    <path d="M182 82 Q174 96 180 110"/>
+  </g>
+  <ellipse cx="109" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="159" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="119" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="149" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="121" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="151" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="123" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="153" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M126 153 Q134 161 142 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

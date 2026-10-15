@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Soy sauce</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF0DC"/>
+  <ellipse cx="128" cy="225" rx="54" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M112 66 L112 82 C112 98 78 104 78 140 L78 194 C78 205 86 212 97 212 L159 212 C170 212 178 205 178 194 L178 140 C178 104 144 98 144 82 L144 66 Z" fill="#3A2216"/>
+    <path d="M120 33 L136 33 L138 46 L118 46 Z" fill="#E0322B"/>
+    <rect x="104" y="42" width="48" height="28" rx="9" fill="#E0322B"/>
+  </g>
+  <path d="M90 136 C90 122 96 114 102 110 C98 134 98 164 102 192 C94 184 90 166 90 136 Z" fill="#5E3A26"/>
+  <ellipse cx="128" cy="116" rx="15" ry="12" fill="#F0D98F" stroke="#1B1B1F" stroke-width="3"/>
+  <path d="M122 116 Q128 121 134 115" stroke="#9C7A3A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="103" cy="173" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="173" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 173 Q128 181 136 173" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

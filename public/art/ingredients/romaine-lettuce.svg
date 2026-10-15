@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Romaine lettuce</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="38" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#4E9A3E">
+    <path d="M120 210 C96 178 74 138 72 98 C70 70 78 46 92 38 C102 34 110 42 114 52 L128 100 Z"/>
+    <path d="M136 210 C160 178 182 138 184 98 C186 70 178 46 164 38 C154 34 146 42 142 52 L128 100 Z"/>
+    <path d="M120 212 C104 182 90 142 90 104 C88 84 94 66 104 60 C104 50 114 44 122 48 C126 40 138 40 142 48 C150 46 158 54 156 62 C166 70 168 88 166 106 C164 142 152 182 136 212 Z" fill="#8DCB5B"/>
+  </g>
+  <path d="M100 96 C100 80 104 68 112 62 C110 78 108 94 108 110 C103 106 100 102 100 96 Z" fill="#B7E28D"/>
+  <path d="M122 209 C124 186 126 166 128 150 C130 166 132 186 134 209 Z" fill="#EDF7CF"/>
+  <g stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M84 66 C82 100 88 140 104 182" stroke="#A9DA86"/>
+    <path d="M172 66 C174 100 168 140 152 182" stroke="#A9DA86"/>
+    <path d="M110 152 C110 172 114 190 120 204" stroke="#5FA83F"/>
+    <path d="M146 152 C146 172 142 190 136 204" stroke="#5FA83F"/>
+  </g>
+  <ellipse cx="103" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="131" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="112" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="114" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="111" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="111" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 131 Q128 139 136 131" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

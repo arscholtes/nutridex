@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Monterey Jack</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="130" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M84 104 L44 70 Q40 123 44 176 L84 210 Q80 157 84 104 Z" fill="#E2D2A0"/>
+    <path d="M84 104 L44 70 Q113 66 182 70 L222 104 Q153 100 84 104 Z" fill="#FBF5DF"/>
+    <path d="M84 104 Q153 100 222 104 Q226 157 222 210 Q153 214 84 210 Q80 157 84 104 Z" fill="#F5EAC4"/>
+  </g>
+  <path d="M96 118 Q101 115 106 116 L106 198 Q100 200 96 197 Z" fill="#FBF4DC"/>
+  <g fill="#CDB97C"><ellipse cx="80" cy="80" rx="3" ry="1.8"/><ellipse cx="116" cy="76" rx="2.5" ry="1.6"/><ellipse cx="150" cy="84" rx="3" ry="1.8"/><ellipse cx="186" cy="92" rx="2.5" ry="1.6"/><ellipse cx="128" cy="94" rx="2.2" ry="1.4"/><circle cx="58" cy="104" r="2.2"/><circle cx="64" cy="138" r="2.5"/><circle cx="56" cy="166" r="2"/><circle cx="70" cy="186" r="2.2"/><circle cx="208" cy="124" r="2.2"/><circle cx="210" cy="190" r="2.5"/><circle cx="118" cy="196" r="2"/><circle cx="196" cy="200" r="2"/><circle cx="102" cy="208" r="1.8"/><circle cx="212" cy="160" r="1.8"/></g>
+  <ellipse cx="129" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="179" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="139" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="169" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="141" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="171" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="143" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="173" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M146 169 Q154 177 162 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

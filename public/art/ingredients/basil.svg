@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Basil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="70" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M128 204 L128 220" stroke="#1B1B1F" stroke-width="16" stroke-linecap="round"/>
+  <path d="M128 204 L128 220" stroke="#7CCB62" stroke-width="8" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#2FA043">
+    <path d="M124 200 C102 214 62 214 36 194 C62 174 104 182 124 200 Z"/>
+    <path d="M132 200 C154 214 194 214 220 194 C194 174 152 182 132 200 Z"/>
+    <path d="M128 28 C154 50 208 86 208 134 C208 176 170 198 128 198 C86 198 48 176 48 134 C48 86 102 50 128 28 Z" fill="#3DBB4F"/>
+  </g>
+  <path d="M74 112 C82 82 104 60 120 50 C108 70 96 92 90 124 C84 134 72 126 74 112 Z" fill="#92E584"/>
+  <g stroke="#23893A" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M128 44 L128 96"/>
+    <path d="M128 70 Q140 62 150 64"/>
+    <path d="M128 88 Q146 78 162 82"/>
+    <path d="M128 88 Q112 80 102 84"/>
+    <path d="M70 162 Q128 206 186 162"/>
+    <path d="M50 194 L80 194"/>
+    <path d="M206 194 L176 194"/>
+  </g>
+  <ellipse cx="103" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="145" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="126" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="128" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="125" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="125" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 145 Q128 153 136 145" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

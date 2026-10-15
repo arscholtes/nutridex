@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Turkey</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M28 160 C24 104 74 70 128 70 C182 70 232 104 228 160 C224 200 182 214 128 214 C74 214 32 200 28 160 Z" fill="#C77432"/>
+    <g transform="translate(68 176) rotate(-20)">
+      <path d="M-5 -42 L-5 -56 L5 -56 L5 -42 Z" fill="#FFF3DF"/>
+      <path d="M-10 -52 L-14 -74 L-7 -68 L-4 -78 L0 -71 L4 -78 L7 -68 L14 -74 L10 -52 Z" fill="#FFFFFF"/>
+      <path d="M0 -50 C12 -50 28 -30 28 -8 C28 12 16 22 0 22 C-16 22 -28 12 -28 -8 C-28 -30 -12 -50 0 -50 Z" fill="#B9682A"/>
+    </g>
+    <g transform="translate(188 176) rotate(20)">
+      <path d="M-5 -42 L-5 -56 L5 -56 L5 -42 Z" fill="#FFF3DF"/>
+      <path d="M-10 -52 L-14 -74 L-7 -68 L-4 -78 L0 -71 L4 -78 L7 -68 L14 -74 L10 -52 Z" fill="#FFFFFF"/>
+      <path d="M0 -50 C12 -50 28 -30 28 -8 C28 12 16 22 0 22 C-16 22 -28 12 -28 -8 C-28 -30 -12 -50 0 -50 Z" fill="#B9682A"/>
+    </g>
+  </g>
+  <path d="M84 96 C96 86 110 82 124 82 C110 90 98 100 90 114 C82 110 80 102 84 96 Z" fill="#E09A55"/>
+  <g stroke="#8E4E1C" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M100 196 C118 202 138 202 156 196"/>
+    <path d="M128 84 L128 100"/>
+  </g>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

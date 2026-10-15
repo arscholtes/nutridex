@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Vegetable oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="126" cy="225" rx="76" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M52 198 L52 104 C52 82 66 70 86 70 L116 70 L128 46 C130 42 134 38 140 38 L182 38 C192 38 200 46 200 56 L200 198 C200 207 193 214 184 214 L68 214 C59 214 52 207 52 198 Z" fill="#F7D73E"/>
+    <rect x="148" y="52" width="36" height="22" rx="8" fill="#FBF7DC"/>
+    <rect x="66" y="42" width="38" height="30" rx="8" fill="#E2462E"/>
+  </g>
+  <path d="M64 116 C64 100 70 90 78 86 C74 120 74 160 78 198 C70 190 64 170 64 116 Z" fill="#FCEB8E"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M108 126 C110 102 130 92 152 96 C150 118 130 130 108 126 Z" fill="#4FAE48"/>
+    <path d="M113 121 Q128 112 144 102" fill="none"/>
+  </g>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

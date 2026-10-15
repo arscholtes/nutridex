@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Clementine</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="225" rx="52" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M124 94 L125 78 L134 78 L133 94 Z" fill="#4E7A22"/>
+    <path d="M126 88 C112 64 86 52 58 56 C66 82 96 94 126 88 Z" fill="#2E9E4A"/>
+    <path d="M133 86 C142 60 166 44 196 46 C192 74 164 90 133 86 Z" fill="#2E9E4A"/>
+    <circle cx="128" cy="152" r="64" fill="#FFA31A"/>
+  </g>
+  <g stroke="#1E6E34" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M118 84 L72 62"/>
+    <path d="M140 80 L184 54"/>
+  </g>
+  <ellipse cx="94" cy="126" rx="7" ry="16" fill="#FFCB66" transform="rotate(38 94 126)"/>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

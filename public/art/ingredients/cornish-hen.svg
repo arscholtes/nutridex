@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cornish hen</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="222" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="204" rx="82" ry="14" fill="#F4F1EC" stroke="#1B1B1F" stroke-width="6"/>
+  <path d="M66 162 C64 132 92 114 128 114 C164 114 192 132 190 162 C188 188 162 202 128 202 C94 202 68 188 66 162 Z" fill="#EBA53F" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M80 152 C84 138 94 128 108 124 C100 136 96 148 96 164 C88 162 80 158 80 152 Z" fill="#F8C878"/>
+  <g stroke="#A65F16" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M168 146 C182 152 188 164 184 178"/>
+    <path d="M112 194 C122 197 134 197 144 194"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="translate(99 128) rotate(50)">
+      <path d="M-4 -30 L-4 -50 C-12 -49 -14 -60 -7 -62 C-4 -63 -1 -62 0 -60 C1 -62 4 -63 7 -62 C14 -60 12 -49 4 -50 L4 -30 Z" fill="#FFF3DF"/>
+      <path d="M0 -38 C10 -38 20 -22 20 -6 C20 8 10 14 0 14 C-10 14 -20 8 -20 -6 C-20 -22 -10 -38 0 -38 Z" fill="#D68B2E"/>
+    </g>
+    <g transform="translate(157 128) rotate(-50)">
+      <path d="M-4 -30 L-4 -50 C-12 -49 -14 -60 -7 -62 C-4 -63 -1 -62 0 -60 C1 -62 4 -63 7 -62 C14 -60 12 -49 4 -50 L4 -30 Z" fill="#FFF3DF"/>
+      <path d="M0 -38 C10 -38 20 -22 20 -6 C20 8 10 14 0 14 C-10 14 -20 8 -20 -6 C-20 -22 -10 -38 0 -38 Z" fill="#D68B2E"/>
+    </g>
+  </g>
+  <g fill="none" stroke-linecap="round">
+    <ellipse cx="128" cy="104" rx="9" ry="12" stroke="#1B1B1F" stroke-width="9"/>
+    <ellipse cx="128" cy="104" rx="9" ry="12" stroke="#FFF6E6" stroke-width="3.5"/>
+    <path d="M128 116 L122 126 M128 116 L134 126" stroke="#1B1B1F" stroke-width="8"/>
+    <path d="M128 116 L122 126 M128 116 L134 126" stroke="#FFF6E6" stroke-width="3"/>
+  </g>
+  <ellipse cx="103" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="181" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="162" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="164" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="161" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="161" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 181 Q128 189 136 181" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Shiitake mushroom</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="40" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M110 128 C110 162 106 190 110 206 C114 214 142 214 146 206 C150 190 146 162 146 128 Z" fill="#EFE3C8"/>
+    <path d="M40 120 C40 70 82 46 128 46 C174 46 216 70 216 120 C216 136 204 142 190 136 C160 128 96 128 66 136 C52 142 40 136 40 120 Z" fill="#8E5B37"/>
+  </g>
+  <ellipse cx="78" cy="84" rx="9" ry="20" fill="#AE774C" transform="rotate(45 78 84)"/>
+  <g stroke="#F3E0BC" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M108 60 L118 68 L114 78"/>
+    <path d="M118 68 L130 66"/>
+    <path d="M144 58 L150 68 L162 70"/>
+    <path d="M150 68 L148 78"/>
+    <path d="M172 66 L180 78 L192 82"/>
+    <path d="M180 78 L176 88"/>
+    <path d="M190 100 L198 108 L196 120"/>
+    <path d="M58 106 L68 112 L64 124"/>
+    <path d="M68 112 L80 114"/>
+  </g>
+  <ellipse cx="103" cy="119" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="119" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="100" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="102" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="99" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="99" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 119 Q128 127 136 119" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

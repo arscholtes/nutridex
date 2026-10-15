@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Avocado oil</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF7DC"/>
+  <ellipse cx="128" cy="224" rx="54" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M116 52 L116 72 C116 92 96 102 88 122 C80 142 77 170 81 190 C84 205 97 214 112 214 L144 214 C159 214 172 205 175 190 C179 170 176 142 168 122 C160 102 140 92 140 72 L140 52 Z" fill="#86B04A"/>
+    <rect x="108" y="32" width="40" height="24" rx="8" fill="#D9B44A"/>
+  </g>
+  <path d="M92 150 C92 136 96 128 100 124 C97 150 97 176 101 200 C94 192 91 176 92 150 Z" fill="#A9CB6E"/>
+  <g transform="translate(128 117) scale(1.15)" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <path d="M0 -19 C9 -19 11 -8 13 0 C17 11 12 19 0 19 C-12 19 -17 11 -13 0 C-11 -8 -9 -19 0 -19 Z" fill="#2F5A26"/>
+    <path d="M0 -13 C6 -13 7 -6 8.5 0 C11 8 8 13 0 13 C-8 13 -11 8 -8.5 0 C-7 -6 -6 -13 0 -13 Z" fill="#DCE88E" stroke="none"/>
+    <circle cy="5" r="6.5" fill="#8A5A2B"/>
+  </g>
+  <ellipse cx="103" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="183" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="164" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="166" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="163" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="163" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 183 Q128 191 136 183" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

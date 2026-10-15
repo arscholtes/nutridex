@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Molasses</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8ECF3"/>
+  <ellipse cx="128" cy="224" rx="74" ry="8" fill="#000" opacity="0.14"/>
+  <path d="M80 76 L176 76 C186 76 192 84 192 94 L192 196 C192 206 184 214 174 214 L82 214 C72 214 64 206 64 196 L64 94 C64 84 70 76 80 76 Z" fill="#E2EAEE"/>
+  <path d="M66 116 C86 110 104 120 128 114 C150 108 170 118 190 112 L190 196 C190 205 183 212 174 212 L82 212 C73 212 66 205 66 196 Z" fill="#2A1A12"/>
+  <path d="M78 132 C80 126 86 122 92 122 C88 146 88 176 92 200 C82 190 78 170 78 150 Z" fill="#4E3427"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M80 76 L176 76 C186 76 192 84 192 94 L192 196 C192 206 184 214 174 214 L82 214 C72 214 64 206 64 196 L64 94 C64 84 70 76 80 76 Z" fill="none"/>
+    <rect x="72" y="50" width="112" height="28" rx="8" fill="#B4BAC3"/>
+  </g>
+  <path d="M88 58 L88 70 M102 58 L102 70 M116 58 L116 70 M130 58 L130 70 M178 58 L178 70" stroke="#858D99" stroke-width="3" stroke-linecap="round"/>
+  <path d="M144 50 C144 44 168 44 168 50 C168 60 162 66 162 76 L162 86 C166 90 168 94 168 99 C168 107 150 107 150 99 C150 94 152 90 154 86 L154 76 C154 68 144 60 144 50 Z" fill="#2A1A12" stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="155" cy="98" r="2.2" fill="#8A6A55"/>
+  <ellipse cx="103" cy="171" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="171" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="152" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="154" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="151" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="151" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 171 Q128 179 136 171" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

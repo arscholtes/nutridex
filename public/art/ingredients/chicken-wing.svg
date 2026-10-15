@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Chicken wing</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M184 100 C204 110 220 142 228 194 C204 180 188 158 176 128 Z" fill="#E08A2A"/>
+    <g transform="translate(64 120) rotate(-18)">
+      <path d="M-4 -44 L-4 -60 C-12 -59 -14 -70 -7 -72 C-4 -73 -1 -72 0 -70 C1 -72 4 -73 7 -72 C14 -70 12 -59 4 -60 L4 -44 Z" fill="#FFF3DF"/>
+      <path d="M0 -52 C16 -52 28 -36 28 -14 C28 10 18 30 16 46 L-16 46 C-18 30 -28 10 -28 -14 C-28 -36 -16 -52 0 -52 Z" fill="#E59430"/>
+    </g>
+    <path transform="translate(136 136) rotate(-31)" d="M-62 -38 C-40 -50 40 -52 62 -42 C78 -32 78 32 62 42 C40 52 -40 50 -62 38 C-76 28 -76 -28 -62 -38 Z" fill="#EC9E35"/>
+  </g>
+  <path d="M90 140 C94 124 104 110 118 104 C110 116 106 128 104 140 C98 142 92 142 90 140 Z" fill="#F8C66E"/>
+  <g fill="#C26E1C">
+    <path d="M180 96 C188 90 198 94 198 102 C196 110 186 110 182 104 Z"/>
+    <path d="M80 170 C86 164 96 168 94 176 C90 182 82 180 80 170 Z"/>
+    <path d="M48 90 C54 84 64 88 62 96 C58 102 50 100 48 90 Z"/>
+  </g>
+  <g stroke="#FFF3D6" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M188 122 L194 118"/>
+    <path d="M150 172 L158 169"/>
+    <path d="M70 128 L72 120"/>
+  </g>
+  <ellipse cx="111" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="161" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="121" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="151" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="123" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="153" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="125" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="155" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M128 151 Q136 159 144 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

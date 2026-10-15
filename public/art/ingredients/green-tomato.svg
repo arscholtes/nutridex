@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Green tomato</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="224" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 72 C150 60 202 66 204 130 C206 186 172 212 128 212 C84 212 50 186 52 130 C54 66 106 60 128 72 Z" fill="#8DC444"/>
+    <path d="M123 72 C123 60 121 52 117 44 C121 37 131 38 134 44 C135 52 134 62 134 72 Z" fill="#2E7D32"/>
+    <path d="M128 62 Q104 56 78 70 Q98 77 111 79 Q101 88 96 100 Q115 91 128 85 Q141 91 160 100 Q155 88 145 79 Q158 77 178 70 Q152 56 128 62 Z" fill="#2E7D32"/>
+  </g>
+  <ellipse cx="80" cy="124" rx="10" ry="23" fill="#B9E07E" transform="rotate(22 80 124)"/>
+  <ellipse cx="103" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 157 Q128 165 136 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

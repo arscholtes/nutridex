@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cottage cheese</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#EEF3F8"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <ellipse cx="128" cy="120" rx="88" ry="18" fill="#4E86BE" stroke="#1B1B1F" stroke-width="6"/>
+  <g stroke="#1B1B1F" stroke-width="12"><circle cx="108" cy="72" r="13"/><circle cx="136" cy="64" r="14"/><circle cx="162" cy="76" r="12"/><circle cx="70" cy="100" r="15"/><circle cx="96" cy="88" r="16"/><circle cx="126" cy="84" r="17"/><circle cx="156" cy="90" r="16"/><circle cx="184" cy="102" r="14"/><circle cx="54" cy="118" r="12"/><circle cx="202" cy="118" r="12"/><circle cx="84" cy="116" r="14"/><circle cx="116" cy="114" r="14"/><circle cx="146" cy="114" r="14"/><circle cx="176" cy="116" r="14"/></g>
+  <g fill="#FBFAF4"><circle cx="108" cy="72" r="13"/><circle cx="136" cy="64" r="14"/><circle cx="162" cy="76" r="12"/><circle cx="70" cy="100" r="15"/><circle cx="96" cy="88" r="16"/><circle cx="126" cy="84" r="17"/><circle cx="156" cy="90" r="16"/><circle cx="184" cy="102" r="14"/><circle cx="54" cy="118" r="12"/><circle cx="202" cy="118" r="12"/><circle cx="84" cy="116" r="14"/><circle cx="116" cy="114" r="14"/><circle cx="146" cy="114" r="14"/><circle cx="176" cy="116" r="14"/></g>
+  <g stroke="#BFC6CF" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M118 74 q8 -6 16 -2"/><path d="M88 94 q6 -6 14 -4"/><path d="M146 92 q8 -5 16 0"/><path d="M62 104 q6 -5 12 -2"/><path d="M174 104 q6 -5 14 0"/><path d="M128 60 q6 -4 12 0"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M40 120 A88 18 0 0 0 216 120 L216 192 A88 18 0 0 1 40 192 Z" fill="#79AEE0"/>
+    <path d="M40 120 A88 18 0 0 0 216 120 L216 132 A88 18 0 0 1 40 132 Z" fill="#5E95CC"/>
+  </g>
+  <path d="M52 152 Q57 149 62 150 L62 196 Q56 196 52 192 Z" fill="#A6CBEE"/>
+  <ellipse cx="103" cy="187" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="187" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="168" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="170" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="167" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="167" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 187 Q128 195 136 187" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

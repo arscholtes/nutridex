@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pistachio</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="224" rx="56" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="128" cy="86" rx="36" ry="42" fill="#8CC152"/>
+    <path d="M90 56 C76 70 66 100 66 136 C66 182 94 212 128 212 C162 212 190 182 190 136 C190 100 180 70 166 56 C158 76 146 96 128 102 C110 96 98 76 90 56 Z" fill="#E6CB98"/>
+  </g>
+  <ellipse cx="142" cy="66" rx="7" ry="10" fill="#A65C80" transform="rotate(30 142 66)"/>
+  <path d="M78 150 C78 126 82 106 92 90 C90 110 90 130 92 152 C86 158 78 158 78 150 Z" fill="#F5E2BE"/>
+  <g stroke="#C29E62" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M128 106 L128 124"/>
+    <path d="M128 190 L128 204"/>
+  </g>
+  <ellipse cx="103" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="167" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="148" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="150" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="147" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="147" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 167 Q128 175 136 167" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

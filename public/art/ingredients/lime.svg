@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Lime</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="130" cy="225" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 84 L124 68 L133 68 L133 84 Z" fill="#6B7F2A"/>
+    <path d="M124 76 C110 56 90 48 68 52 C74 72 98 82 124 76 Z" fill="#2F8F3E"/>
+    <path d="M128 80 C172 80 200 106 204 138 C210 140 214 143 214 147 C214 151 210 154 204 155 C198 190 168 214 128 214 C84 214 54 186 54 147 C54 108 84 80 128 80 Z" fill="#4C9E2C"/>
+  </g>
+  <path d="M116 72 L78 56" stroke="#1C5E28" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="88" cy="114" rx="7" ry="18" fill="#7FC65C" transform="rotate(45 88 114)"/>
+  <g fill="#2E6E1A"><circle cx="100" cy="96" r="2.6"/><circle cx="156" cy="94" r="2.6"/><circle cx="182" cy="116" r="2.6"/><circle cx="192" cy="156" r="2.6"/><circle cx="170" cy="190" r="2.6"/><circle cx="132" cy="204" r="2.6"/><circle cx="96" cy="198" r="2.6"/><circle cx="70" cy="176" r="2.6"/><circle cx="64" cy="138" r="2.6"/><circle cx="176" cy="142" r="2.6"/></g>
+  <ellipse cx="103" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="159" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="140" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="142" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="139" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="139" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 159 Q128 167 136 159" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

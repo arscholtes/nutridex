@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Quail</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F8E6E3"/>
+  <ellipse cx="128" cy="224" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M82 172 C80 138 100 118 128 118 C156 118 176 138 174 172 C172 200 154 212 128 212 C102 212 84 200 82 172 Z" fill="#C46A2C" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <g stroke="#1B1B1F" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="translate(82 196) rotate(-52)">
+      <path d="M-4 -24 L-4 -38 C-11 -37 -12 -46 -7 -47 C-4 -48 -1 -47 0 -45 C1 -47 4 -48 7 -47 C12 -46 11 -37 4 -38 L4 -24 Z" fill="#FFF3DF"/>
+      <path d="M0 -30 C8 -30 16 -16 16 -4 C16 8 8 12 0 12 C-8 12 -16 8 -16 -4 C-16 -16 -8 -30 0 -30 Z" fill="#B05A22"/>
+    </g>
+    <g transform="translate(174 196) rotate(52)">
+      <path d="M-4 -24 L-4 -38 C-11 -37 -12 -46 -7 -47 C-4 -48 -1 -47 0 -45 C1 -47 4 -48 7 -47 C12 -46 11 -37 4 -38 L4 -24 Z" fill="#FFF3DF"/>
+      <path d="M0 -30 C8 -30 16 -16 16 -4 C16 8 8 12 0 12 C-8 12 -16 8 -16 -4 C-16 -16 -8 -30 0 -30 Z" fill="#B05A22"/>
+    </g>
+  </g>
+  <path d="M94 160 C96 146 104 136 114 132 C108 144 106 158 108 172 C100 170 94 166 94 160 Z" fill="#E0924E"/>
+  <path d="M112 202 C122 205 134 205 144 202" stroke="#8A4416" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="128" cy="86" rx="22" ry="28" fill="#F1E6CF" stroke="#1B1B1F" stroke-width="4"/>
+  <g fill="#6B4A2E">
+    <circle cx="120" cy="74" r="3.5"/><circle cx="135" cy="70" r="2.5"/><circle cx="138" cy="86" r="4"/>
+    <circle cx="118" cy="92" r="3"/><circle cx="130" cy="102" r="3"/><circle cx="142" cy="100" r="2"/><circle cx="114" cy="80" r="2"/>
+  </g>
+  <ellipse cx="103" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="155" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="155" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 175 Q128 183 136 175" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

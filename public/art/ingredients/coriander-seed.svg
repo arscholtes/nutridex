@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Coriander seed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="128" cy="225" rx="96" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M174 100 L198 46" stroke="#4E8A3A" stroke-width="5" stroke-linecap="round"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#5DB246" transform="translate(0 4)">
+    <path d="M196 40 C186 30 196 18 206 24 C216 18 228 28 220 38 C230 44 224 58 212 54 C206 62 192 56 196 40 Z"/>
+    <path d="M182 60 C170 54 160 62 164 72 C156 80 166 90 176 84 C182 88 190 80 182 60 Z"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#D2B07C">
+    <circle cx="42" cy="204" r="13"/>
+    <circle cx="68" cy="210" r="11"/>
+    <circle cx="212" cy="204" r="13"/>
+    <circle cx="128" cy="140" r="68" fill="#DDBE8E"/>
+  </g>
+  <path d="M68 140 C68 112 82 90 104 80 C92 98 84 116 84 138 C80 144 68 146 68 140 Z" fill="#EED7AE"/>
+  <g stroke="#B48C5A" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M128 74 C84 90 80 190 128 206"/>
+    <path d="M128 74 C68 86 64 194 128 206"/>
+    <path d="M128 74 C172 90 176 190 128 206"/>
+    <path d="M128 74 C188 86 192 194 128 206"/>
+    <path d="M128 76 L128 112"/>
+    <path d="M128 176 L128 204"/>
+    <path d="M42 192 Q36 204 42 216 M212 192 Q218 204 212 216"/>
+  </g>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

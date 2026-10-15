@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Snapper</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="82" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#C7354C">
+    <path d="M190 122 C204 106 218 94 232 86 C222 108 222 150 232 174 C218 166 204 154 190 140 Z"/>
+    <path d="M74 92 L80 70 L90 78 L98 60 L108 70 L118 54 L128 64 L140 56 C164 54 182 74 190 104 L176 110 Z"/>
+    <path d="M134 182 C144 198 162 204 174 198 C176 186 178 172 176 162 Z"/>
+    <path d="M82 176 C80 190 86 198 96 200 C100 192 104 184 104 180 Z"/>
+    <path d="M32 140 C40 116 70 80 112 72 C156 66 184 100 196 122 L196 140 C182 162 156 184 112 186 C72 186 40 168 32 140 Z" fill="#EF5B6C"/>
+  </g>
+  <path d="M52 118 C60 102 74 90 92 84 C80 94 70 106 62 122 Z" fill="#F89AA5"/>
+  <path d="M136 96 C146 116 146 150 134 170" stroke="#B42C44" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M150 142 C160 134 174 138 180 150 C168 156 156 154 150 142 Z" fill="#C7354C" stroke="#1B1B1F" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="73" cy="143" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="123" cy="143" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="83" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="85" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/>
+  <circle cx="87" cy="123" r="1.9" fill="#FFFFFF"/>
+  <circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/>
+  <path d="M90 143 Q98 151 106 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

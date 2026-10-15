@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Durian</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M119 52 L121 30 L135 30 L137 52 Z" fill="#7A6A3A"/>
+    <path d="M128 66.1 L146.3 50.5 L156.5 72 L179.7 64.9 L180 88.6 L204.2 91.3 L194.6 113 L215.5 125.1 L197.6 141.1 L211.7 160.4 L188.6 167.9 L193.4 191.1 L169.1 188.9 L163.8 212 L142.6 200.4 L128 219.4 L113.4 200.4 L92.2 212 L86.9 188.9 L62.6 191.1 L67.4 167.9 L44.3 160.4 L58.4 141.1 L40.5 125.1 L61.4 113 L51.8 91.3 L76 88.6 L76.3 64.9 L99.5 72 L109.7 50.5Z" fill="#A3B03C"/>
+  </g>
+  <ellipse cx="88" cy="112" rx="8" ry="20" fill="#C5D06A" transform="rotate(32 88 112)"/>
+  <path d="M91 94.1 L97 82.1 L103 94.1ZM113 94.1 L119 82.1 L125 94.1ZM135 94.1 L141 82.1 L147 94.1ZM80 113.1 L86 101.1 L92 113.1ZM168 113.1 L174 101.1 L180 113.1ZM69 132.2 L75 120.2 L81 132.2ZM168 151.2 L174 139.2 L180 151.2ZM102 189.3 L108 177.3 L114 189.3Z" fill="#6E7D22" stroke="#6E7D22" stroke-width="2" stroke-linejoin="round"/>
+  <ellipse cx="103" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="151" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="132" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="134" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="131" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="131" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 151 Q128 159 136 151" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

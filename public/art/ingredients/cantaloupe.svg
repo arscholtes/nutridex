@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Cantaloupe</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="64" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M121 64 C121 56 123 50 126 46 L134 48 C133 54 135 60 135 64 Z" fill="#8A6A3A"/>
+    <ellipse cx="128" cy="136" rx="86" ry="76" fill="#C9B27A"/>
+  </g>
+  <ellipse cx="78" cy="112" rx="10" ry="24" fill="#DCCA98" transform="rotate(35 78 112)"/>
+  <path d="M83 79 L93 77 L104 72 L113 74 L129 70 L139 73 L152 72 L164 77 L170 87 L155 90 L157 106 L176 116 L184 108 L195 118 L199 111 L205 119 L206 131 L203 138 L202 152 L193 163 L190 174 L178 183 L175 190 L161 198 L151 197 L154 187 L142 185 L147 167M93 77 L87 87 L75 95 L72 107 L63 116 L60 133 L54 138 L55 154 L53 157M113 74 L115 84 L100 89 L95 103 L80 116 L81 130 L70 140 L69 154 L62 160 L65 174 L63 175M139 73 L143 83 L128 89 L130 106M182 86 L187 92 L179 94 L184 108M60 102 L71 91 L75 95M60 102 L55 114 L51 120 L49 131 L54 138M87 87 L100 89M115 84 L128 89M143 83 L155 90M170 87 L179 94M187 92 L195 101 L199 111M55 114 L63 116M72 107 L80 116M176 116 L176 134 L188 140 L197 135 L203 138M195 118 L197 135M60 133 L70 140M188 140 L185 158 L172 166 L168 180 L154 187M55 154 L62 160M69 154 L85 167 L87 180 L75 182 L84 193 L96 199 L101 197 L115 202 L125 199 L141 202 L151 197M114 167 L115 183 L99 188 L101 197M185 158 L193 163M65 174 L75 182M87 180 L99 188M115 183 L131 190 L142 185M131 190 L125 199M168 180 L178 183" stroke="#F3E4BE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <ellipse cx="128" cy="136" rx="42" ry="29" fill="#C9B27A"/>
+  <ellipse cx="103" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="147" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="128" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="130" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="127" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="127" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 147 Q128 155 136 147" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

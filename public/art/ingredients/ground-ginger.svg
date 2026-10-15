@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Ground ginger</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FBF1DE"/>
+  <ellipse cx="124" cy="223" rx="100" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="12" stroke-linejoin="round" fill="#1B1B1F">
+    <ellipse cx="186" cy="160" rx="32" ry="44"/>
+    <ellipse cx="168" cy="102" rx="16" ry="26" transform="rotate(-15 168 102)"/>
+    <ellipse cx="206" cy="112" rx="15" ry="22" transform="rotate(25 206 112)"/>
+  </g>
+  <g fill="#D2A060">
+    <ellipse cx="186" cy="160" rx="32" ry="44"/>
+    <ellipse cx="168" cy="102" rx="16" ry="26" transform="rotate(-15 168 102)"/>
+    <ellipse cx="206" cy="112" rx="15" ry="22" transform="rotate(25 206 112)"/>
+  </g>
+  <ellipse cx="165" cy="82" rx="10" ry="6" fill="#F3D98B" stroke="#1B1B1F" stroke-width="3" transform="rotate(-15 165 82)"/>
+  <g stroke="#9C733C" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M158 112 Q168 118 178 110 M196 122 Q206 126 214 118 M200 146 Q210 152 214 164"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M28 210 C34 182 60 166 76 146 C88 128 94 110 112 110 C130 110 136 128 148 146 C164 166 190 182 196 210 C196 214 192 216 188 216 L36 216 C32 216 28 214 28 210 Z" fill="#EACD8C"/>
+  </g>
+  <path d="M44 198 C50 180 62 166 78 156 C70 170 64 184 62 200 C58 206 44 206 44 198 Z" fill="#F7E6BC"/>
+  <g fill="#C29C55">
+    <circle cx="60" cy="205" r="2.6"/><circle cx="92" cy="206" r="2.6"/><circle cx="130" cy="206" r="2.6"/>
+    <circle cx="166" cy="203" r="2.6"/><circle cx="162" cy="172" r="2.6"/><circle cx="120" cy="124" r="2.6"/>
+  </g>
+  <ellipse cx="87" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="137" cy="177" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="97" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="127" cy="158" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="99" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="129" cy="160" r="5.2" fill="#1B1B1F"/>
+  <circle cx="101" cy="157" r="1.9" fill="#FFFFFF"/>
+  <circle cx="131" cy="157" r="1.9" fill="#FFFFFF"/>
+  <path d="M104 177 Q112 185 120 177" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

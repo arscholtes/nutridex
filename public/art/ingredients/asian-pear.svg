@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Asian pear</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="70" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M123 78 C122 62 124 48 128 34 C130 28 137 29 136 35 C133 48 133 62 134 78 Z" fill="#7A5230"/>
+    <path d="M128 76 C150 62 198 66 206 114 C212 162 182 208 128 210 C74 208 44 162 50 114 C58 66 106 62 128 76 Z" fill="#D6A257"/>
+  </g>
+  <ellipse cx="80" cy="110" rx="10" ry="22" fill="#EEC888" transform="rotate(30 80 110)"/>
+  <g fill="#F7E2B2">
+    <circle cx="104" cy="92" r="3"/>
+    <circle cx="150" cy="90" r="3"/>
+    <circle cx="172" cy="102" r="3"/>
+    <circle cx="186" cy="124" r="3"/>
+    <circle cx="164" cy="116" r="3"/>
+    <circle cx="192" cy="150" r="3"/>
+    <circle cx="178" cy="176" r="3"/>
+    <circle cx="160" cy="194" r="3"/>
+    <circle cx="136" cy="200" r="3"/>
+    <circle cx="112" cy="198" r="3"/>
+    <circle cx="90" cy="186" r="3"/>
+    <circle cx="72" cy="164" r="3"/>
+    <circle cx="66" cy="140" r="3"/>
+    <circle cx="128" cy="108" r="3"/>
+    <circle cx="96" cy="114" r="3"/>
+    <circle cx="140" cy="182" r="3"/>
+  </g>
+  <ellipse cx="103" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="157" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="138" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="140" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="137" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="137" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 157 Q128 165 136 157" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

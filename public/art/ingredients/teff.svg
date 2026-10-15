@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Teff</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F7F0D8"/>
+  <ellipse cx="128" cy="224" rx="92" ry="9" fill="#000" opacity="0.14"/>
+  <path d="M128 100 C126 76 130 54 142 34 M130 76 C120 64 108 58 94 56 M131 62 C142 56 156 54 168 56" stroke="#1B1B1F" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M128 100 C126 76 130 54 142 34 M130 76 C120 64 108 58 94 56 M131 62 C142 56 156 54 168 56" stroke="#7DB04C" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <g fill="#8E3B2E" stroke="#1B1B1F" stroke-width="3">
+    <ellipse cx="142" cy="32" rx="5" ry="7"/>
+    <ellipse cx="92" cy="56" rx="7" ry="5"/>
+    <ellipse cx="170" cy="56" rx="7" ry="5"/>
+  </g>
+  <path d="M34 212 C38 150 90 96 128 96 C166 96 218 150 222 212 Z" fill="#A44C38" stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M62 170 C70 140 90 120 108 112 C96 130 86 150 80 172 C74 178 60 178 62 170 Z" fill="#BC634D"/>
+  <g fill="#5A1E16">
+    <circle cx="66" cy="196" r="3.2"/>
+    <circle cx="86" cy="188" r="3.2"/>
+    <circle cx="52" cy="204" r="3.2"/>
+    <circle cx="102" cy="200" r="3.2"/>
+    <circle cx="110" cy="112" r="3.2"/>
+    <circle cx="146" cy="112" r="3.2"/>
+    <circle cx="128" cy="108" r="3.2"/>
+    <circle cx="176" cy="160" r="3.2"/>
+    <circle cx="196" cy="190" r="3.2"/>
+    <circle cx="158" cy="200" r="3.2"/>
+    <circle cx="184" cy="182" r="3.2"/>
+    <circle cx="168" cy="138" r="3.2"/>
+    <circle cx="208" cy="204" r="3.2"/>
+    <circle cx="128" cy="204" r="3.2"/>
+    <circle cx="118" cy="124" r="3.2"/>
+    <circle cx="140" cy="124" r="3.2"/>
+  </g>
+  <ellipse cx="103" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="169" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="150" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="152" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="149" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="149" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 169 Q128 177 136 169" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

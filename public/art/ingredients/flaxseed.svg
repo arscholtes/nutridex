@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Flaxseed</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#F4E9DF"/>
+  <ellipse cx="128" cy="225" rx="88" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#9A5426">
+    <path d="M118 48 C146 48 180 98 180 142 C180 188 154 214 122 214 C90 214 64 188 64 142 C64 98 92 48 118 48 Z" transform="rotate(-15 122 132)"/>
+    <ellipse cx="50" cy="200" rx="10" ry="16" transform="rotate(-50 50 200)"/>
+    <ellipse cx="206" cy="206" rx="10" ry="16" transform="rotate(60 206 206)"/>
+  </g>
+  <path d="M76 108 C80 84 94 64 112 56 C102 72 94 92 92 116 C86 122 76 118 76 108 Z" fill="#D08A55"/>
+  <g stroke="#1B1B1F" stroke-width="3" stroke-linejoin="round">
+    <g fill="#6C8EE0"><circle cx="194" cy="46" r="12"/><circle cx="207" cy="56" r="12"/><circle cx="202" cy="71" r="12"/><circle cx="186" cy="71" r="12"/><circle cx="181" cy="56" r="12"/></g>
+    <circle cx="194" cy="60" r="6.5" fill="#F6E27A"/>
+  </g>
+  <ellipse cx="99" cy="153" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="149" cy="153" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="109" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="139" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="111" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="141" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="113" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="143" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M116 153 Q124 161 132 153" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

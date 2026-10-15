@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Longan</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#FDECEF"/>
+  <ellipse cx="128" cy="224" rx="58" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M126 80 C126 62 132 48 142 36 M134 56 C148 54 160 60 168 68" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M126 80 C126 62 132 48 142 36 M134 56 C148 54 160 60 168 68" stroke="#7A5230" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" fill="#D6AE74">
+    <circle cx="180" cy="80" r="19"/>
+    <circle cx="128" cy="148" r="68"/>
+  </g>
+  <ellipse cx="91" cy="124" rx="9" ry="20" fill="#EBCFA0" transform="rotate(32 91 124)"/>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

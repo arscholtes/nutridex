@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Leek</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="50" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#B39E70" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M110 208 L104 222 M120 210 L118 224 M136 210 L138 224 M146 208 L152 222"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M96 84 C90 64 74 46 52 34 C78 38 106 52 122 82 Z" fill="#2D7A57"/>
+    <path d="M160 84 C166 64 182 46 204 34 C178 38 150 52 134 82 Z" fill="#2D7A57"/>
+    <path d="M112 84 C112 60 118 40 128 24 C138 40 144 60 144 84 Z" fill="#3C9068"/>
+    <path d="M90 80 L166 80 L168 200 C168 207 162 212 154 212 L102 212 C94 212 88 207 88 200 Z" fill="#F4F5E8"/>
+  </g>
+  <path d="M93 83 L163 83 L164 118 C146 126 110 126 92 118 Z" fill="#C2DFA3"/>
+  <ellipse cx="102" cy="100" rx="4" ry="9" fill="#E3F2D2"/>
+  <g stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M92 118 C110 126 146 126 164 118" stroke="#A8CD86"/>
+    <path d="M118 90 L118 116 M138 90 L138 116 M154 90 L154 114" stroke="#9CC77E"/>
+    <path d="M100 72 C92 58 82 50 68 42 M156 72 C164 58 174 50 188 42 M128 76 L128 42" stroke="#6CB792"/>
+  </g>
+  <ellipse cx="103" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="173" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="154" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="156" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="153" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="153" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 173 Q128 181 136 173" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

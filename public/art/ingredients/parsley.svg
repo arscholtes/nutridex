@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Parsley</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="225" rx="44" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 190 L128 138 M124 190 C104 150 78 100 54 60 M132 190 C152 150 178 100 202 60 M122 192 C100 168 76 148 52 132 M134 192 C156 168 180 148 204 132 M124 196 L118 214 M128 196 L128 214 M132 196 L138 214" stroke="#1B1B1F" stroke-width="10"/>
+    <path d="M128 190 L128 138 M124 190 C104 150 78 100 54 60 M132 190 C152 150 178 100 202 60 M122 192 C100 168 76 148 52 132 M134 192 C156 168 180 148 204 132 M124 196 L118 214 M128 196 L128 214 M132 196 L138 214" stroke="#B5DE97" stroke-width="4"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" fill="#3A9C45">
+    <path d="M75 60 Q79 68 71 72 Q69 81 60 80 Q54 86 48 80 Q39 81 37 72 Q29 68 33 60 Q29 52 37 48 Q39 39 48 40 Q54 34 60 40 Q69 39 71 48 Q79 52 75 60 Z"/>
+    <path d="M223 60 Q227 68 219 72 Q217 81 208 80 Q202 86 196 80 Q187 81 185 72 Q177 68 181 60 Q177 52 185 48 Q187 39 196 40 Q202 34 208 40 Q217 39 219 48 Q227 52 223 60 Z"/>
+    <path d="M71 132 Q75 139 67 143 Q66 152 58 150 Q52 156 46 150 Q38 152 37 143 Q29 139 33 132 Q29 125 37 121 Q38 112 46 114 Q52 108 58 114 Q66 112 67 121 Q75 125 71 132 Z"/>
+    <path d="M223 132 Q227 139 219 143 Q218 152 210 150 Q204 156 198 150 Q190 152 189 143 Q181 139 185 132 Q181 125 189 121 Q190 112 198 114 Q204 108 210 114 Q218 112 219 121 Q227 125 223 132 Z"/>
+    <path d="M174 94 Q179 104 170 111 Q171 122 160 125 Q157 136 146 135 Q138 143 128 138 Q118 143 110 135 Q99 136 96 125 Q85 122 86 111 Q77 104 82 94 Q77 84 86 77 Q85 66 96 63 Q99 52 110 53 Q118 45 128 50 Q138 45 146 53 Q157 52 160 63 Q171 66 170 77 Q179 84 174 94 Z" fill="#45A94E"/>
+  </g>
+  <ellipse cx="96" cy="74" rx="5" ry="11" fill="#6FC072" transform="rotate(40 96 74)"/>
+  <path d="M106 62 Q114 54 122 62 M134 62 Q142 54 150 62 M44 58 Q50 50 58 56 M198 56 Q206 50 212 58 M44 130 Q50 122 58 128 M198 128 Q206 122 212 130" stroke="#7FCB7C" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M112 194 L144 194" stroke="#1B1B1F" stroke-width="14" stroke-linecap="round"/>
+  <path d="M112 194 L144 194" stroke="#D9A45B" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="103" cy="115" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="153" cy="115" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="96" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="96" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="98" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="98" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="95" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="95" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 115 Q128 123 136 115" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

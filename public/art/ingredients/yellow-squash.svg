@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Yellow squash</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="132" cy="225" rx="62" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M142 46 C150 40 160 36 170 38 C176 42 174 50 168 52 C160 52 152 54 146 58 Z" fill="#6B8E3A"/>
+    <path d="M70 162 C70 122 90 106 96 90 C100 78 94 68 100 56 C108 42 132 36 146 46 C152 50 150 58 144 60 C130 58 122 66 122 78 C122 94 140 102 166 114 C186 124 196 142 194 166 C192 198 166 214 132 214 C96 214 70 198 70 162 Z" fill="#FFCB2E"/>
+  </g>
+  <path d="M84 148 C84 132 92 120 102 112 C98 128 96 146 98 164 C90 168 84 160 84 148 Z" fill="#FFE590"/>
+  <ellipse cx="109" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="159" cy="175" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="119" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="149" cy="156" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="121" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="151" cy="158" r="5.2" fill="#1B1B1F"/>
+  <circle cx="123" cy="155" r="1.9" fill="#FFFFFF"/>
+  <circle cx="153" cy="155" r="1.9" fill="#FFFFFF"/>
+  <path d="M126 175 Q134 183 142 175" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

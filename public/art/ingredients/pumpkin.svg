@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Pumpkin</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>
+  <ellipse cx="128" cy="226" rx="84" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M120 88 C120 70 118 60 110 48 C118 40 136 42 140 48 C136 62 136 74 136 88 Z" fill="#6B7F2A"/>
+    <ellipse cx="84" cy="150" rx="46" ry="62" fill="#EE7A16"/>
+    <ellipse cx="172" cy="150" rx="46" ry="62" fill="#EE7A16"/>
+    <ellipse cx="104" cy="148" rx="50" ry="68" fill="#F98B22"/>
+    <ellipse cx="152" cy="148" rx="50" ry="68" fill="#F98B22"/>
+    <ellipse cx="128" cy="147" rx="44" ry="71" fill="#FF9A2E"/>
+  </g>
+  <ellipse cx="72" cy="134" rx="6" ry="22" fill="#FFB866"/>
+  <ellipse cx="103" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="165" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="146" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="148" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="145" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="145" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 165 Q128 173 136 165" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Scallop</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="60" ry="8" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#F4A08A">
+    <path d="M128 192 L94 184 Q90 200 98 212 L158 212 Q166 200 162 184 Z"/>
+    <path d="M116 196 Q39.8 179.1 31.8 127.1 Q22.3 100.2 50.4 105.8 Q47.7 77.3 73.5 89.6 Q77.8 61.3 99.9 79.4 Q110.9 53 128 76 Q145.1 53 156.1 79.4 Q178.2 61.3 182.5 89.6 Q208.3 77.3 205.6 105.8 Q233.7 100.2 224.2 127.1 Q216.2 179.1 140 196 Z"/>
+  </g>
+  <path d="M42 126 C40 114 46 106 56 104 C58 120 66 136 78 150 C60 146 46 138 42 126 Z" fill="#FBC6B6"/>
+  <g stroke="#D46A55" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M53.1 108.8 L89.2 148.9"/><path d="M75.4 93.1 L89.5 119.6"/><path d="M100.9 83.3 L108.2 112.4"/><path d="M128 80 L128 110"/><path d="M155.1 83.3 L147.8 112.4"/><path d="M180.6 93.1 L166.5 119.6"/><path d="M202.9 108.8 L166.8 148.9"/>
+    <path d="M112 200 L110 208"/><path d="M144 200 L146 208"/>
+  </g>
+  <ellipse cx="103" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="155" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="136" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="138" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="135" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="135" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 155 Q128 163 136 155" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

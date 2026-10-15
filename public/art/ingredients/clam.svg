@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Clam</title>
+  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F1F5"/>
+  <ellipse cx="128" cy="224" rx="74" ry="9" fill="#000" opacity="0.14"/>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#E9CB98">
+    <path d="M36 148 C36 186 80 208 128 208 C176 208 220 186 220 148 Z"/>
+    <path d="M36 150 C36 100 74 60 118 48 Q128 42 138 48 C182 60 220 100 220 150 Q128 178 36 150 Z"/>
+  </g>
+  <path d="M58 116 C62 94 78 76 98 68 C88 84 82 102 80 122 C72 124 62 122 58 116 Z" fill="#F7E6C6"/>
+  <g stroke="#B8925A" stroke-width="3.5" stroke-linecap="round" fill="none">
+    <path d="M52 142 C52 104 84 70 120 62 Q128 59 136 62 C172 70 204 104 204 142"/>
+    <path d="M68 140 C70 112 96 82 128 82 C160 82 186 112 188 140"/>
+    <path d="M58 180 Q128 206 198 180"/>
+    <path d="M78 194 Q128 210 178 194"/>
+  </g>
+  <ellipse cx="103" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="135" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="116" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="118" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="115" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="115" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 135 Q128 143 136 135" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
