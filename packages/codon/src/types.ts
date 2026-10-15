@@ -47,6 +47,8 @@ export type PrepEffectFact = {
 export type PrepDirection = "decreases" | "increases" | "unchanged";
 
 export type ModifierFact = {
+  /** The rule's id in its store, carried onto the flag so a reader can trace it. */
+  id: string;
   targetCompoundSlug: string;
   modifierCompoundSlug: string | null;
   condition: string | null;
@@ -152,8 +154,11 @@ export type AbsorptionFlag = {
   status: "enhanced" | "reduced" | "missed" | "unknown";
   reason: string;
   suggestion?: string;
+  /** The best grade among the rules behind the flag. */
   grade: Grade;
+  /** Measured when any rule behind the flag measured this compound. */
   basis: Basis;
+  ruleIds: string[];
 };
 
 export type CautionFlag = {

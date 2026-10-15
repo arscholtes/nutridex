@@ -16,7 +16,9 @@ const CONDITIONS: Record<string, { compoundSlug: string; noun: string; threshold
 
 /**
  * Flag each modifier whose target the recipe contains: enhanced, reduced, a missed opportunity,
- * or unknown when missing amounts leave a condition untestable.
+ * or unknown when missing amounts leave a condition untestable. Rules that say the same thing
+ * about one compound (same modifier or condition, same direction) make one flag carrying the
+ * best grade and every rule's id.
  * @param totals [CompoundTotal[]] the recipe's totals per serving
  * @param ingredientSlugs [string[]] the recipe's ingredients, to tell unmeasured from absent
  * @param modifiers [ModifierFact[]] absorption_modifier facts
@@ -31,17 +33,25 @@ export function checkModifiers(
   settings: EngineSettings,
 ): AbsorptionFlag[] {
   const present = presentCompounds(totals);
-  const flags: AbsorptionFlag[] = [];
+  const byClaim = new Map<string, AbsorptionFlag>();
   for (const m of modifiers) {
     if (!present.has(m.targetCompoundSlug)) continue;
-    const base = { compoundSlug: m.targetCompoundSlug, grade: m.grade, basis: m.basis };
+    const base = { compoundSlug: m.targetCompoundSlug, grade: m.grade, basis: m.basis, ruleIds: [m.id] };
+    const add = (flag: AbsorptionFlag) => {
+      const key = JSON.stringify([m.targetCompoundSlug, m.modifierCompoundSlug ?? m.condition, m.direction]);
+      const same = byClaim.get(key);
+      if (!same) return void byClaim.set(key, flag);
+      if (flag.grade < same.grade) same.grade = flag.grade;
+      if (flag.basis === "measured") same.basis = "measured";
+      same.ruleIds.push(m.id);
+    };
     if (m.modifierCompoundSlug !== null) {
       const name = m.modifierCompoundSlug;
       if (present.has(name)) {
-        flags.push({ ...base, status: m.direction === "enhances" ? "enhanced" : "reduced", reason: `${name} is in the recipe` });
+        add({ ...base, status: m.direction === "enhances" ? "enhanced" : "reduced", reason: `${name} is in the recipe` });
       } else if (m.direction === "enhances") {
         const carrier = m.modifierFoundIn.length > 0 ? m.modifierFoundIn.join(" or ") : "a source";
-        flags.push({ ...base, status: "missed", reason: `no ${name} in the recipe`, suggestion: `Add ${carrier} for its ${name}` });
+        add({ ...base, status: "missed", reason: `no ${name} in the recipe`, suggestion: `Add ${carrier} for its ${name}` });
       }
       continue;
     }
@@ -54,15 +64,15 @@ export function checkModifiers(
     const amountText = `${formatAmount(grams)} g of ${condition.noun} per serving`;
     const unmeasured = ingredientSlugs.filter((s) => !t?.contributors.some((c) => c.ingredientSlug === s && c.amount !== null));
     if (!met && unmeasured.length > 0) {
-      flags.push({ ...base, status: "unknown", reason: `${amountText}, but no ${condition.noun} amount for ${unmeasured.join(", ")}` });
+      add({ ...base, status: "unknown", reason: `${amountText}, but no ${condition.noun} amount for ${unmeasured.join(", ")}` });
     } else if (met) {
-      flags.push({
+      add({
         ...base,
         status: m.direction === "enhances" ? "enhanced" : "reduced",
         reason: `${amountText}, at or above the ${formatAmount(threshold)} g that counts as enough`,
       });
     } else if (m.direction === "enhances") {
-      flags.push({
+      add({
         ...base,
         status: "missed",
         reason: `${amountText}, under the ${formatAmount(threshold)} g that counts as enough`,
@@ -70,5 +80,5 @@ export function checkModifiers(
       });
     }
   }
-  return flags;
+  return [...byClaim.values()];
 }

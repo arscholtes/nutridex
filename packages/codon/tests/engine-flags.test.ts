@@ -23,6 +23,7 @@ const total = (compoundSlug: string, amount: number | null, unit: MassUnit | nul
 });
 
 const modifier = (over: Partial<ModifierFact>): ModifierFact => ({
+  id: "rule-1",
   targetCompoundSlug: "beta-carotene",
   modifierCompoundSlug: null,
   condition: "dietary fat present",
@@ -53,6 +54,7 @@ describe("checkModifiers", () => {
       suggestion: "Add a fat, such as olive oil",
       grade: "B",
       basis: "measured",
+      ruleIds: ["rule-1"],
     });
   });
 
@@ -93,7 +95,7 @@ describe("checkModifiers", () => {
   test("an inhibitor in the recipe reduces; an absent one says nothing", () => {
     const rule = modifier({ targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });
     expect(checkModifiers([total("calcium", 100, "mg"), total("oxalate", null)], juice, [rule], settings)).toEqual([
-      { compoundSlug: "calcium", status: "reduced", reason: "oxalate is in the recipe", grade: "B", basis: "measured" },
+      { compoundSlug: "calcium", status: "reduced", reason: "oxalate is in the recipe", grade: "B", basis: "measured", ruleIds: ["rule-1"] },
     ]);
     expect(checkModifiers([total("calcium", 100, "mg")], juice, [rule], settings)).toEqual([]);
   });
@@ -106,6 +108,21 @@ describe("checkModifiers", () => {
   test("says whether a flag rests on a measurement or on the compound's class", () => {
     const [flag] = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, [modifier({ basis: "by-class" })], settings);
     expect(flag.basis).toBe("by-class");
+  });
+
+  test("two rules saying the same thing about one compound make one flag, with the best grade and both rules", () => {
+    const weaker = modifier({ id: "rule-c", grade: "C", basis: "by-class" });
+    const stronger = modifier({ id: "rule-b", grade: "B", basis: "measured" });
+    const flags = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, [weaker, stronger], settings);
+    expect(flags).toHaveLength(1);
+    expect(flags[0]).toMatchObject({ status: "missed", grade: "B", basis: "measured", ruleIds: ["rule-c", "rule-b"] });
+  });
+
+  test("rules that disagree in direction stay separate flags", () => {
+    const helps = modifier({ id: "helps", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null });
+    const hurts = modifier({ id: "hurts", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });
+    const flags = checkModifiers([total("calcium", 100, "mg"), total("oxalate", null)], juice, [helps, hurts], settings);
+    expect(flags.map((f) => [f.status, f.ruleIds])).toEqual([["enhanced", ["helps"]], ["reduced", ["hurts"]]]);
   });
 
   test("refuses a condition it does not know how to test", () => {

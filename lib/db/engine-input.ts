@@ -69,8 +69,8 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
     where c.slug = any(${compoundSlugs})`;
 
   // Modifiers come applied: a class rule arrives once per compound it reaches, with its basis.
-  const modifiers = await sql<{ targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[]; basis: string }[]>`
-    select t.slug as "targetCompoundSlug", m.slug as "modifierCompoundSlug", am.modifier_condition as condition,
+  const modifiers = await sql<{ id: string; targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[]; basis: string }[]>`
+    select am.modifier_id as id, t.slug as "targetCompoundSlug", m.slug as "modifierCompoundSlug", am.modifier_condition as condition,
            am.direction, am.magnitude, am.mechanism, am.evidence_grade as grade, am.source_id as "sourceId", am.basis,
            coalesce((select array_agg(i.name order by i.name) from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id
                      where ic.compound_id = am.modifier_compound_id), '{}') as "modifierFoundIn"
@@ -129,6 +129,7 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
     modifiers: modifiers.map((m): ModifierFact => {
       const where = `absorption_modifier on ${m.targetCompoundSlug}`;
       return {
+        id: m.id,
         targetCompoundSlug: m.targetCompoundSlug,
         modifierCompoundSlug: m.modifierCompoundSlug,
         condition: m.condition,
