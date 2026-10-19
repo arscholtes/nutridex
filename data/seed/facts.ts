@@ -1,6 +1,7 @@
 // Sourced facts the engine's first check needs: fat helps carotenoids absorb, and juicing leaves
-// fiber in the pulp. Each was read in its source (abstract, or the table named) before it was
-// written here; a number appears only where the source gives one.
+// fiber in the pulp; and the one effect the Dex walk from carrot to pumpkin needs, beta-carotene's
+// on skin color. Each was read in its source (abstract, or the table named) before it was written
+// here; a number appears only where the source gives one.
 
 export type SeedSource = {
   key: string;
@@ -38,6 +39,19 @@ export type SeedPrepEffect = {
   retentionFactor: number | null;
   direction: "decreases" | "increases" | "unchanged";
   note: string;
+  source: string;
+};
+
+/** Something a compound does. Neutral when the change is neither good nor bad by itself. */
+export type SeedEffect = { slug: string; name: string; bodySystem: string; direction: "benefit" | "risk" | "neutral" };
+
+export type SeedCompoundEffect = {
+  compound: string;
+  effect: string;
+  summary: string;
+  doseContext: string;
+  onset: string;
+  grade: "A" | "B" | "C" | "D";
   source: string;
 };
 
@@ -97,6 +111,18 @@ export const SOURCES: SeedSource[] = [
     year: 2026,
     limitations: "Class membership is ChEBI's curation, as of this release",
   },
+  {
+    key: "micozzi-1988",
+    title: "Carotenodermia in men with elevated carotenoid intake from foods and beta-carotene supplements",
+    url: "https://pubmed.ncbi.nlm.nih.gov/3421202/",
+    doi: "10.1093/ajcn/48.4.1061",
+    pmid: "3421202",
+    studyType: "rct",
+    population:
+      "30 men, 5 per group for 42 days: 30 or 12 mg beta-carotene a day, 272 g cooked carrots, 300 g cooked broccoli, 180 g tomato juice, or placebo",
+    year: 1988,
+    limitations: "Small (5 per group); men only; 42 days; only the 30 mg supplement group showed definite carotenodermia",
+  },
 ];
 
 export const CLASSES: SeedClass[] = [
@@ -151,5 +177,21 @@ export const PREP_EFFECTS: SeedPrepEffect[] = [
     direction: "decreases",
     note: "Juice keeps only water-soluble pectin, and clarified juice none; the rest leaves with the pulp",
     source: "licht-2010",
+  },
+];
+
+// Neutral: carotenodermia is a visible change the trial reports, not a harm or a benefit it measured.
+export const EFFECTS: SeedEffect[] = [{ slug: "skin-color", name: "Skin color", bodySystem: "skin", direction: "neutral" }];
+
+export const COMPOUND_EFFECTS: SeedCompoundEffect[] = [
+  {
+    compound: "beta-carotene",
+    effect: "skin-color",
+    summary:
+      "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+    doseContext: "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+    onset: "25 to 42 days",
+    grade: "B",
+    source: "micozzi-1988",
   },
 ];

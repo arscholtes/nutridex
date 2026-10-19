@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { COMPOUNDS } from "../data/seed/compounds.ts";
-import { CLASSES, MODIFIERS } from "../data/seed/facts.ts";
+import { CLASSES, COMPOUND_EFFECTS, EFFECTS, MODIFIERS, SOURCES } from "../data/seed/facts.ts";
 import { INGREDIENTS } from "../data/seed/ingredients.ts";
 import { USDA_NUTRIENTS } from "../lib/usda/nutrients.ts";
 
@@ -40,5 +40,17 @@ describe("seed data, as the build plan lists it", () => {
       return measured.filter((slug) => !members.includes(slug)).map((slug) => `${m.source}: ${slug} is not in CHEBI:${chebiClass}`);
     });
     expect(outside).toEqual([]);
+  });
+
+  test("every compound effect names a seeded compound, a seeded effect and a seeded source", () => {
+    const effects = new Set(EFFECTS.map((e) => e.slug));
+    const sources = new Set(SOURCES.map((s) => s.key));
+    const unknown = COMPOUND_EFFECTS.flatMap((ce) => [
+      ...(compoundSlugs.has(ce.compound) ? [] : [`compound ${ce.compound}`]),
+      ...(effects.has(ce.effect) ? [] : [`effect ${ce.effect}`]),
+      ...(sources.has(ce.source) ? [] : [`source ${ce.source}`]),
+    ]);
+    expect(COMPOUND_EFFECTS.length).toBeGreaterThan(0);
+    expect(unknown).toEqual([]);
   });
 });

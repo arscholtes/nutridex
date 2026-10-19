@@ -1,6 +1,6 @@
 // npm run seed — fills the database with the plan's seed ingredients and compounds, imports their
-// amounts per 100 g from USDA FoodData Central, and adds the sourced facts and the recipe the
-// engine's first check needs. Safe to re-run: facts and rules are upserted, class and measured
+// amounts per 100 g from USDA FoodData Central, and adds the sourced facts, effects and the recipe
+// the engine's first check needs. Safe to re-run: facts and rules are upserted, class and measured
 // members are only ever added, and a recipe that already exists is left as it is. The only rows it
 // deletes are the rules it names as retired: a retired key deletes the matching row whoever wrote
 // it, and each deletion is logged. Members the database holds beyond the seed's lists are reported
@@ -11,7 +11,7 @@
 // naming the USDA record; a compound USDA does not measure keeps a null amount.
 import { and, eq, isNull, type SQL } from "drizzle-orm";
 import { COMPOUNDS } from "../data/seed/compounds.ts";
-import { CLASSES, MODIFIERS, PREP_EFFECTS, RETIRED_MODIFIERS, SOURCES } from "../data/seed/facts.ts";
+import { CLASSES, COMPOUND_EFFECTS, EFFECTS, MODIFIERS, PREP_EFFECTS, RETIRED_MODIFIERS, SOURCES } from "../data/seed/facts.ts";
 import { INGREDIENTS } from "../data/seed/ingredients.ts";
 import { RECIPES } from "../data/seed/recipes.ts";
 import { seedDrift } from "./seed-drift.ts";
@@ -21,6 +21,8 @@ import {
   compound,
   compoundClass,
   compoundClassMember,
+  compoundEffect,
+  effect,
   ingredient,
   ingredientCompound,
   modifierMeasuredMember,
@@ -196,6 +198,37 @@ await db.transaction(async (tx) => {
     else await tx.insert(prepEffect).values(values);
   }
 
+  const effectIds = new Map<string, string>();
+  for (const e of EFFECTS) {
+    const values = { name: e.name, bodySystem: e.bodySystem, direction: e.direction };
+    const [row] = await tx
+      .insert(effect)
+      .values({ slug: e.slug, ...values })
+      .onConflictDoUpdate({ target: effect.slug, set: values })
+      .returning({ id: effect.id });
+    effectIds.set(e.slug, row.id);
+  }
+
+  for (const ce of COMPOUND_EFFECTS) {
+    const values = {
+      compoundId: compoundIds.get(ce.compound)!,
+      effectId: effectIds.get(ce.effect)!,
+      summary: ce.summary,
+      doseContext: ce.doseContext,
+      onset: ce.onset,
+      evidenceGrade: ce.grade,
+      sourceId: sourceIds.get(ce.source)!,
+    };
+    const same = and(
+      eq(compoundEffect.compoundId, values.compoundId),
+      eq(compoundEffect.effectId, values.effectId),
+      eq(compoundEffect.sourceId, values.sourceId),
+    );
+    const [existing] = await tx.select({ id: compoundEffect.id }).from(compoundEffect).where(same);
+    if (existing) await tx.update(compoundEffect).set(values).where(eq(compoundEffect.id, existing.id));
+    else await tx.insert(compoundEffect).values(values);
+  }
+
   for (const r of RECIPES) {
     const [created] = await tx
       .insert(recipe)
@@ -226,7 +259,9 @@ await db.transaction(async (tx) => {
 const [{ amounts }] = await sql`select count(*)::int as amounts from ingredient_compound where amount_per_100g is not null`;
 console.log(`seeded ${INGREDIENTS.length} ingredients and ${COMPOUNDS.length} compounds`);
 console.log(`imported ${amounts} amounts per 100 g from ${foods.size} USDA records`);
-console.log(`seeded ${MODIFIERS.length} absorption modifiers and ${PREP_EFFECTS.length} prep effects from ${SOURCES.length} sources`);
+console.log(
+  `seeded ${MODIFIERS.length} absorption modifiers, ${PREP_EFFECTS.length} prep effects and ${COMPOUND_EFFECTS.length} compound effect(s) from ${SOURCES.length} sources`,
+);
 for (const r of retired) console.log(`retired 1 absorption modifier: ${r}`);
 for (const line of await seedDrift(sql)) console.log(`not in the seed's lists, left in place: ${line}`);
 console.log(`seeded ${CLASSES.length} ChEBI class(es) with ${CLASSES.reduce((n, k) => n + k.members.length, 0)} member(s)`);
