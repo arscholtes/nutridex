@@ -6,20 +6,9 @@ import { sql } from "../lib/db/client.ts";
 import { CLASSES } from "../data/seed/facts.ts";
 import { loadFacts, loadRecipe } from "../lib/db/engine-input.ts";
 import { seedDrift } from "../scripts/seed-drift.ts";
+import { inRolledBackTransaction } from "./helpers/db.ts";
 
 afterAll(() => sql.end());
-
-const ROLLBACK = new Error("rollback the fixture");
-
-/** Run `body` in a transaction that is always rolled back, so fixtures never persist. */
-async function inRolledBackTransaction(body: (tx: typeof sql) => Promise<void>): Promise<void> {
-  await expect(
-    sql.begin(async (tx) => {
-      await body(tx as unknown as typeof sql);
-      throw ROLLBACK;
-    }),
-  ).rejects.toBe(ROLLBACK);
-}
 
 describe("ChEBI identity and classes", () => {
   test("each carotenoid carries its ChEBI id; the combined lutein + zeaxanthin measurement has none", async () => {
