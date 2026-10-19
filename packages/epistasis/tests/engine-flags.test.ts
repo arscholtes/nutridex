@@ -1,11 +1,11 @@
 // Modifiers, cautions, effects and goal scores: what the totals mean.
 import { describe, expect, test } from "vitest";
-import { collectCautions } from "../lib/engine/cautions.ts";
-import { rollUpEffects } from "../lib/engine/effects.ts";
-import { scoreGoals } from "../lib/engine/goals.ts";
-import { checkModifiers } from "../lib/engine/modifiers.ts";
-import type { EngineSettings } from "../lib/engine/settings.ts";
-import type { CautionFact, CompoundEffectFact, CompoundTotal, MassUnit, ModifierFact } from "../lib/engine/types.ts";
+import { collectCautions } from "../src/cautions.ts";
+import { rollUpEffects } from "../src/effects.ts";
+import { scoreGoals } from "../src/goals.ts";
+import { checkModifiers } from "../src/modifiers.ts";
+import type { EngineSettings } from "../src/settings.ts";
+import type { CautionFact, CompoundEffectFact, CompoundTotal, MassUnit, ModifierFact } from "../src/types.ts";
 
 const settings: EngineSettings = {
   gradeWeights: { A: 1, B: 0.6, C: 0.25, D: 0.1 },
@@ -23,6 +23,7 @@ const total = (compoundSlug: string, amount: number | null, unit: MassUnit | nul
 });
 
 const modifier = (over: Partial<ModifierFact>): ModifierFact => ({
+  id: "rule-1",
   targetCompoundSlug: "beta-carotene",
   modifierCompoundSlug: null,
   condition: "dietary fat present",
@@ -31,6 +32,7 @@ const modifier = (over: Partial<ModifierFact>): ModifierFact => ({
   mechanism: null,
   grade: "B",
   modifierFoundIn: [],
+  basis: "measured",
   ...over,
 });
 
@@ -51,6 +53,8 @@ describe("checkModifiers", () => {
       reason: "0.6 g of fat per serving, under the 3 g that counts as enough",
       suggestion: "Add a fat, such as olive oil",
       grade: "B",
+      basis: "measured",
+      ruleIds: ["rule-1"],
     });
   });
 
@@ -91,7 +95,7 @@ describe("checkModifiers", () => {
   test("an inhibitor in the recipe reduces; an absent one says nothing", () => {
     const rule = modifier({ targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });
     expect(checkModifiers([total("calcium", 100, "mg"), total("oxalate", null)], juice, [rule], settings)).toEqual([
-      { compoundSlug: "calcium", status: "reduced", reason: "oxalate is in the recipe", grade: "B" },
+      { compoundSlug: "calcium", status: "reduced", reason: "oxalate is in the recipe", grade: "B", basis: "measured", ruleIds: ["rule-1"] },
     ]);
     expect(checkModifiers([total("calcium", 100, "mg")], juice, [rule], settings)).toEqual([]);
   });
@@ -99,6 +103,37 @@ describe("checkModifiers", () => {
   test("ignores rules whose target the recipe does not contain, or contains at zero", () => {
     expect(checkModifiers([fat(14)], juice, [fatRule], settings)).toEqual([]);
     expect(checkModifiers([total("beta-carotene", 0), fat(14)], juice, [fatRule], settings)).toEqual([]);
+  });
+
+  test("says whether a flag rests on a measurement or on the compound's class", () => {
+    const [flag] = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, [modifier({ basis: "by-class" })], settings);
+    expect(flag.basis).toBe("by-class");
+  });
+
+  test("two rules saying the same thing about one compound make one flag, with the best grade and both rules", () => {
+    const weaker = modifier({ id: "rule-c", grade: "C", basis: "by-class" });
+    const stronger = modifier({ id: "rule-b", grade: "B", basis: "measured" });
+    const flags = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, [weaker, stronger], settings);
+    expect(flags).toHaveLength(1);
+    expect(flags[0]).toMatchObject({ status: "missed", grade: "B", basis: "measured", ruleIds: ["rule-c", "rule-b"] });
+  });
+
+  test("a measured rule and a class guess make one flag, graded by the measurement and naming both, in either order", () => {
+    const guess = modifier({ id: "class-a", grade: "A", basis: "by-class" });
+    const measured = modifier({ id: "measured-c", grade: "C", basis: "measured" });
+    for (const rules of [[guess, measured], [measured, guess]]) {
+      const flags = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, rules, settings);
+      expect(flags).toHaveLength(1);
+      expect(flags[0]).toMatchObject({ grade: "C", basis: "measured" });
+      expect([...flags[0].ruleIds].sort()).toEqual(["class-a", "measured-c"]);
+    }
+  });
+
+  test("rules that disagree in direction stay separate flags", () => {
+    const helps = modifier({ id: "helps", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null });
+    const hurts = modifier({ id: "hurts", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });
+    const flags = checkModifiers([total("calcium", 100, "mg"), total("oxalate", null)], juice, [helps, hurts], settings);
+    expect(flags.map((f) => [f.status, f.ruleIds])).toEqual([["enhanced", ["helps"]], ["reduced", ["hurts"]]]);
   });
 
   test("refuses a condition it does not know how to test", () => {

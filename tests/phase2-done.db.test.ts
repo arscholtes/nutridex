@@ -3,9 +3,7 @@
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { loadFacts, loadRecipe } from "../lib/db/engine-input.ts";
-import { recipeProfile } from "../lib/engine/profile.ts";
-import { DEFAULT_SETTINGS } from "../lib/engine/settings.ts";
-import type { RecipeInput } from "../lib/engine/types.ts";
+import { DEFAULT_SETTINGS, recipeProfile, type RecipeInput } from "epistasis";
 
 afterAll(() => sql.end());
 

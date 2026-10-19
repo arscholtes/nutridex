@@ -25,7 +25,7 @@ export function recipeProfile(recipe: RecipeInput, facts: Facts, settings: Engin
   const ingredientSlugs = recipe.ingredients.map((ri) => ri.ingredientSlug);
   return {
     perServing,
-    prep: contributions.flatMap((c) => (c.prep === null ? [] : [c.prep])),
+    prep: contributions.flatMap((c) => c.prep),
     absorption: checkModifiers(perServing, ingredientSlugs, facts.modifiers, settings),
     effects: rollUpEffects(perServing, facts.compoundEffects),
     cautions: collectCautions(perServing, ingredientSlugs, facts.cautions, facts.upperLimits),

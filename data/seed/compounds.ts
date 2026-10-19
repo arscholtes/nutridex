@@ -10,6 +10,8 @@ export type SeedCompound = {
   class: string;
   /** Ingredient slugs the plan names as this compound's main seed sources. */
   mainIngredients: string[];
+  /** The ChEBI entity, when the compound is one (checked against ChEBI release 256). */
+  chebiId?: number;
 };
 
 export const COMPOUNDS: SeedCompound[] = [
@@ -26,9 +28,11 @@ export const COMPOUNDS: SeedCompound[] = [
       "kale",
       "cantaloupe",
     ],
+    chebiId: 17579,
   },
-  { slug: "alpha-carotene", name: "Alpha-carotene", class: "carotenoid", mainIngredients: ["carrot", "canned-pumpkin-puree"] },
-  { slug: "lycopene", name: "Lycopene", class: "carotenoid", mainIngredients: ["tomato-paste", "watermelon"] },
+  { slug: "alpha-carotene", name: "Alpha-carotene", class: "carotenoid", mainIngredients: ["carrot", "canned-pumpkin-puree"], chebiId: 28425 },
+  { slug: "lycopene", name: "Lycopene", class: "carotenoid", mainIngredients: ["tomato-paste", "watermelon"], chebiId: 15948 },
+  // USDA measures lutein and zeaxanthin together, so this is two ChEBI entities and has no one id.
   {
     slug: "lutein-zeaxanthin",
     name: "Lutein / zeaxanthin",

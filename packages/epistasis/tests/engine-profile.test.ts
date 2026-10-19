@@ -1,8 +1,8 @@
 // The whole pipeline on one recipe: every step's output lands in the profile.
 import { describe, expect, test } from "vitest";
-import { recipeProfile } from "../lib/engine/profile.ts";
-import type { EngineSettings } from "../lib/engine/settings.ts";
-import type { Facts, RecipeInput } from "../lib/engine/types.ts";
+import { recipeProfile } from "../src/profile.ts";
+import type { EngineSettings } from "../src/settings.ts";
+import type { Facts, RecipeInput } from "../src/types.ts";
 
 const settings: EngineSettings = { gradeWeights: { A: 1, B: 0.6, C: 0.25, D: 0.1 }, fatThresholdG: 3, referenceAmounts: { "beta-carotene": { amount: 1, unit: "mg" } } };
 
@@ -25,7 +25,7 @@ const facts: Facts = {
   ],
   prepEffects: [{ compoundSlug: "beta-carotene", prepMethod: "blended", retentionFactor: null, direction: "increases", note: "blending frees it from cell walls" }],
   modifiers: [
-    { targetCompoundSlug: "beta-carotene", modifierCompoundSlug: null, condition: "dietary fat present", direction: "enhances", magnitude: null, mechanism: null, grade: "B", modifierFoundIn: [] },
+    { id: "rule-fat", targetCompoundSlug: "beta-carotene", modifierCompoundSlug: null, condition: "dietary fat present", direction: "enhances", magnitude: null, mechanism: null, grade: "B", modifierFoundIn: [], basis: "measured" },
   ],
   cautions: [{ compoundSlug: "vitamin-k1", ingredientSlug: null, kind: "drug-interaction", summary: "Vitamin K counters warfarin", grade: "A" }],
   compoundEffects: [{ compoundSlug: "beta-carotene", effectSlug: "skin-color", direction: "benefit", onset: "~6 weeks", grade: "B" }],

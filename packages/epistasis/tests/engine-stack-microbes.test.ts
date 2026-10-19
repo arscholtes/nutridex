@@ -1,9 +1,9 @@
 // The microbiome feed check and supplement stacks: food plus pills, against upper limits.
 import { describe, expect, test } from "vitest";
-import { collectCautions } from "../lib/engine/cautions.ts";
-import { feedCheck } from "../lib/engine/microbes.ts";
-import { checkExcess, stackTotals } from "../lib/engine/stack.ts";
-import type { CompoundTotal, MassUnit, MicrobeMetaboliteFact, MicrobeSubstrateFact } from "../lib/engine/types.ts";
+import { collectCautions } from "../src/cautions.ts";
+import { feedCheck } from "../src/microbes.ts";
+import { checkExcess, stackTotals } from "../src/stack.ts";
+import type { CompoundTotal, MassUnit, MicrobeMetaboliteFact, MicrobeSubstrateFact } from "../src/types.ts";
 
 const total = (compoundSlug: string, amount: number | null, unit: MassUnit | null = "g"): CompoundTotal => ({
   compoundSlug,

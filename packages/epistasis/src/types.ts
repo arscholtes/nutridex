@@ -15,7 +15,7 @@ export type RecipeIngredientInput = {
   id: string;
   ingredientSlug: string;
   grams: number;
-  /** The ingredient's own prep; a step that names a prep method overrides it. */
+  /** The ingredient's own prep, applied before any step that uses it. */
   prepMethod: string;
 };
 
@@ -47,6 +47,8 @@ export type PrepEffectFact = {
 export type PrepDirection = "decreases" | "increases" | "unchanged";
 
 export type ModifierFact = {
+  /** The rule's id in its store, carried onto the flag so a reader can trace it. */
+  id: string;
   targetCompoundSlug: string;
   modifierCompoundSlug: string | null;
   condition: string | null;
@@ -56,7 +58,11 @@ export type ModifierFact = {
   grade: Grade;
   /** Names of ingredients that carry the modifier compound, for the "add one" suggestion. */
   modifierFoundIn: string[];
+  basis: Basis;
 };
+
+/** Whether a rule's source measured this compound, or the rule reaches it through its class. */
+export type Basis = "measured" | "by-class";
 
 export type CautionFact = {
   compoundSlug: string | null;
@@ -116,10 +122,11 @@ export type Contribution = {
   amount: number | null;
   unit: MassUnit | null;
   range: [number, number] | null;
-  prep: PrepNote | null;
+  /** One note per prep method applied, in order; empty when nothing changed the food. */
+  prep: PrepNote[];
 };
 
-/** How the effective prep method changed one contribution, or that no source says. */
+/** How one prep method changed one contribution, or that no source says. */
 export type PrepNote = {
   ingredientSlug: string;
   compoundSlug: string;
@@ -148,7 +155,11 @@ export type AbsorptionFlag = {
   status: "enhanced" | "reduced" | "missed" | "unknown";
   reason: string;
   suggestion?: string;
+  /** The best grade among the rules behind the flag that share its basis. */
   grade: Grade;
+  /** Measured when any rule behind the flag measured this compound. */
+  basis: Basis;
+  ruleIds: string[];
 };
 
 export type CautionFlag = {

@@ -1,22 +1,29 @@
 // npm run seed — fills the database with the plan's seed ingredients and compounds, imports their
 // amounts per 100 g from USDA FoodData Central, and adds the sourced facts and the recipe the
-// engine's first check needs. Safe to re-run: every write is an upsert, and a recipe that already
-// exists is left as it is.
+// engine's first check needs. Safe to re-run: facts and rules are upserted, class and measured
+// members are only ever added, and a recipe that already exists is left as it is. The only rows it
+// deletes are the rules it names as retired: a retired key deletes the matching row whoever wrote
+// it, and each deletion is logged. Members the database holds beyond the seed's lists are reported
+// (seed-drift.ts) for a person to judge, never deleted.
 //
 // All USDA records are fetched before anything is written, so a network failure leaves the
 // database untouched. Amounts are stored exactly as USDA reports them, each with a source row
 // naming the USDA record; a compound USDA does not measure keeps a null amount.
 import { and, eq, isNull, type SQL } from "drizzle-orm";
 import { COMPOUNDS } from "../data/seed/compounds.ts";
-import { MODIFIERS, PREP_EFFECTS, SOURCES } from "../data/seed/facts.ts";
+import { CLASSES, MODIFIERS, PREP_EFFECTS, RETIRED_MODIFIERS, SOURCES } from "../data/seed/facts.ts";
 import { INGREDIENTS } from "../data/seed/ingredients.ts";
 import { RECIPES } from "../data/seed/recipes.ts";
+import { seedDrift } from "./seed-drift.ts";
 import { db, sql } from "../lib/db/client.ts";
 import {
   absorptionModifier,
   compound,
+  compoundClass,
+  compoundClassMember,
   ingredient,
   ingredientCompound,
+  modifierMeasuredMember,
   prepEffect,
   recipe,
   recipeIngredient,
@@ -41,13 +48,15 @@ for (const seed of INGREDIENTS) {
 }
 
 const missing: string[] = [];
+const retired: string[] = [];
 await db.transaction(async (tx) => {
   const compoundIds = new Map<string, string>();
   for (const c of COMPOUNDS) {
+    const values = { name: c.name, class: c.class, chebiId: c.chebiId ?? null };
     const [row] = await tx
       .insert(compound)
-      .values({ slug: c.slug, name: c.name, class: c.class })
-      .onConflictDoUpdate({ target: compound.slug, set: { name: c.name, class: c.class } })
+      .values({ slug: c.slug, ...values })
+      .onConflictDoUpdate({ target: compound.slug, set: values })
       .returning({ id: compound.id });
     compoundIds.set(c.slug, row.id);
   }
@@ -111,9 +120,40 @@ await db.transaction(async (tx) => {
     sourceIds.set(key, id);
   }
 
+  const classIds = new Map<number, string>();
+  for (const k of CLASSES) {
+    const values = { name: k.name, sourceId: sourceIds.get(k.source)! };
+    const [row] = await tx
+      .insert(compoundClass)
+      .values({ chebiId: k.chebiId, ...values })
+      .onConflictDoUpdate({ target: compoundClass.chebiId, set: values })
+      .returning({ id: compoundClass.id });
+    classIds.set(k.chebiId, row.id);
+    await tx
+      .insert(compoundClassMember)
+      .values(k.members.map((slug) => ({ classId: row.id, compoundId: compoundIds.get(slug)!, sourceId: values.sourceId })))
+      .onConflictDoNothing();
+  }
+
+  for (const r of RETIRED_MODIFIERS) {
+    const deleted = await tx
+      .delete(absorptionModifier)
+      .where(
+        and(
+          eq(absorptionModifier.targetCompoundId, compoundIds.get(r.target)!),
+          isNull(absorptionModifier.modifierCompoundId),
+          eq(absorptionModifier.modifierCondition, r.condition),
+          eq(absorptionModifier.sourceId, sourceIds.get(r.source)!),
+        ),
+      )
+      .returning({ id: absorptionModifier.id });
+    for (const _ of deleted) retired.push(`${r.source} · ${r.target} · ${r.condition}`);
+  }
+
   for (const m of MODIFIERS) {
     const values = {
-      targetCompoundId: compoundIds.get(m.target)!,
+      targetCompoundId: "compound" in m.target ? compoundIds.get(m.target.compound)! : null,
+      targetClassId: "chebiClass" in m.target ? classIds.get(m.target.chebiClass)! : null,
       modifierCompoundId: m.modifierCompound === null ? null : compoundIds.get(m.modifierCompound)!,
       modifierCondition: m.condition,
       direction: m.direction,
@@ -123,14 +163,22 @@ await db.transaction(async (tx) => {
       sourceId: sourceIds.get(m.source)!,
     };
     const same = and(
-      eq(absorptionModifier.targetCompoundId, values.targetCompoundId),
+      matches(absorptionModifier.targetCompoundId, values.targetCompoundId),
+      matches(absorptionModifier.targetClassId, values.targetClassId),
       matches(absorptionModifier.modifierCompoundId, values.modifierCompoundId),
       matches(absorptionModifier.modifierCondition, values.modifierCondition),
       eq(absorptionModifier.sourceId, values.sourceId),
     );
     const [existing] = await tx.select({ id: absorptionModifier.id }).from(absorptionModifier).where(same);
-    if (existing) await tx.update(absorptionModifier).set(values).where(eq(absorptionModifier.id, existing.id));
-    else await tx.insert(absorptionModifier).values(values);
+    const id = existing
+      ? (await tx.update(absorptionModifier).set(values).where(eq(absorptionModifier.id, existing.id)).returning({ id: absorptionModifier.id }))[0].id
+      : (await tx.insert(absorptionModifier).values(values).returning({ id: absorptionModifier.id }))[0].id;
+    if ("chebiClass" in m.target) {
+      await tx
+        .insert(modifierMeasuredMember)
+        .values(m.target.measured.map((slug) => ({ modifierId: id, compoundId: compoundIds.get(slug)! })))
+        .onConflictDoNothing();
+    }
   }
 
   for (const p of PREP_EFFECTS) {
@@ -179,6 +227,9 @@ const [{ amounts }] = await sql`select count(*)::int as amounts from ingredient_
 console.log(`seeded ${INGREDIENTS.length} ingredients and ${COMPOUNDS.length} compounds`);
 console.log(`imported ${amounts} amounts per 100 g from ${foods.size} USDA records`);
 console.log(`seeded ${MODIFIERS.length} absorption modifiers and ${PREP_EFFECTS.length} prep effects from ${SOURCES.length} sources`);
+for (const r of retired) console.log(`retired 1 absorption modifier: ${r}`);
+for (const line of await seedDrift(sql)) console.log(`not in the seed's lists, left in place: ${line}`);
+console.log(`seeded ${CLASSES.length} ChEBI class(es) with ${CLASSES.reduce((n, k) => n + k.members.length, 0)} member(s)`);
 console.log(`seeded ${RECIPES.length} recipe(s), leaving any that already existed as they were`);
 console.log(`no amount yet (USDA does not measure these; shown as missing): ${missing.length}`);
 for (const pair of missing) console.log(`  ${pair}`);
