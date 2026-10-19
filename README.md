@@ -10,11 +10,11 @@ npm install
 cp .env.example .env.local   # add your USDA key; DATABASE_URL already points at the local cluster
 npm run db:local             # project-local Postgres 16 in .pgdata, port 54329
 npm run db:migrate
-npm run seed                 # the plan's ingredients and compounds, amounts from USDA, the juice recipe
+npm run seed                 # the plan's ingredients and compounds, amounts from USDA, sourced facts, the juice recipe
 npm test                     # unit tests, no database
 npm run test:db              # each phase's "Done when", against the seeded database; one test re-runs
                              # the real seed (it writes and fetches USDA) to check it keeps others' rows
-npm run dev
+npm run dev                  # the Dex at http://localhost:3000
 ```
 
 To move to Supabase, set `DATABASE_URL` in `.env.local` to the project's connection string, then
@@ -26,9 +26,27 @@ run `db:migrate` and `seed` against it.
 | --- | --- | --- |
 | 1. Foundation | `npm run seed` fills the database and a test query returns beta-carotene per 100 g of carrot | passing locally |
 | 2. Engine | the juice recipe returns "no fat" and "fiber lost", and olive oil flips carotenoids to "enhanced" | passing locally |
-| 3. Dex UI | carrot → beta-carotene → skin colour → pumpkin, with by-class flags visibly different from measured ones | not started |
+| 3. Dex UI | carrot → beta-carotene → skin color → pumpkin, with by-class flags visibly different from measured ones | passing locally |
 | 4. Recipes | a built recipe's grid and profile render from the same data | not started |
 | 5. Ingest | a pasted finding becomes an approvable effect row with source and limitations | not started |
+
+## The Dex
+
+| Screen | Path | What it shows |
+| --- | --- | --- |
+| Home | `/` | Every entry as a card. Search with fuzzy matching ("tumeric" finds turmeric), filter by kind and type |
+| Ingredient | `/ingredients/<slug>` | What is in 100 g, against the richest food in the Dex; absorption flags; pairings; prep; effects; cautions; sources |
+| Compound | `/compounds/<slug>` | How it works, solubility, what helps it absorb, prep, the foods that carry it, effects, cautions, sources |
+| Effect | `/effects/<slug>` | The compounds behind it, with dose and onset, and the foods richest in each |
+| Sources | `/sources` | Every citation, what it supports, and its limitations |
+
+An ingredient's flags come from the engine run on 100 g of it, so the Dex and a recipe judge the same
+facts the same way. `lib/db/dex.ts` reads every screen's data. Every claim carries its grade badge, with
+its source's limitations on hover. A claim resting on a ChEBI class is drawn dashed and striped and
+says "By class", wherever it appears. A section with nothing on file says so; it does not disappear.
+
+Ingredients have drawn creatures (`public/art/ingredients/`). Compounds have none yet, so each gets a creature
+drawn from its data (`lib/art/creature.ts`): its class sets the colour and shape, in the same house style.
 
 ## The engine
 

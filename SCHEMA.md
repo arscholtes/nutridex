@@ -2,6 +2,7 @@
 
 Foodi Dex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted.
 The migration in `drizzle/` is generated from `lib/db/schema.ts`; this file describes what each table is for.
+The `pg_trgm` extension (`drizzle/0004_search_trigram.sql`) gives the Dex search its fuzzy matching.
 
 ## Facts this store owns, and who else reads them
 
@@ -126,7 +127,7 @@ How much of a compound an ingredient has, per 100 g. Amounts are USDA's as repor
 
 ### `effect`
 
-Something a compound does, good or bad: skin colour, blood pressure.
+Something a compound does, good or bad: skin color, blood pressure. `direction` is `benefit`, `risk` or `neutral`; the seed's one effect, skin color, is neutral.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
