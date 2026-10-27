@@ -132,10 +132,13 @@ await db.transaction(async (tx) => {
       .onConflictDoUpdate({ target: compoundClass.chebiId, set: values })
       .returning({ id: compoundClass.id });
     classIds.set(k.chebiId, row.id);
-    await tx
-      .insert(compoundClassMember)
-      .values(k.members.map((slug) => ({ classId: row.id, compoundId: compoundIds.get(slug)!, sourceId: values.sourceId })))
-      .onConflictDoNothing();
+    // A class may hold none of the seeded compounds, and Drizzle refuses an insert of no rows.
+    if (k.members.length > 0) {
+      await tx
+        .insert(compoundClassMember)
+        .values(k.members.map((slug) => ({ classId: row.id, compoundId: compoundIds.get(slug)!, sourceId: values.sourceId })))
+        .onConflictDoNothing();
+    }
   }
 
   for (const r of RETIRED_MODIFIERS) {
@@ -176,7 +179,7 @@ await db.transaction(async (tx) => {
     const id = existing
       ? (await tx.update(absorptionModifier).set(values).where(eq(absorptionModifier.id, existing.id)).returning({ id: absorptionModifier.id }))[0].id
       : (await tx.insert(absorptionModifier).values(values).returning({ id: absorptionModifier.id }))[0].id;
-    if ("chebiClass" in m.target) {
+    if ("chebiClass" in m.target && m.target.measured.length > 0) {
       await tx
         .insert(modifierMeasuredMember)
         .values(m.target.measured.map((slug) => ({ modifierId: id, compoundId: compoundIds.get(slug)! })))
