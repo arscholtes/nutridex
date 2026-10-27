@@ -1,8 +1,10 @@
 // Re-running the real seed keeps what another writer added, even rows citing a source the seed
 // cites, and removes only the rules it names as retired. It writes to the database and fetches
 // USDA records over the network, so it refuses any database that is not on this machine.
-// It touches no real compound: its rules carry MARKER and its class and measured members belong to a
-// fixture compound, all swept before and after, so an interrupted run leaves nothing behind.
+// Its rules carry MARKER, and its class and measured members belong to a fixture compound, all
+// swept before and after, so an interrupted run leaves nothing behind. The only real compound
+// facts it changes are two ChEBI ids, put back after the run; an interrupted run can leave
+// vitamin C with the id the test gave it, or beta-carotene with none until the next seed.
 import { execFileSync } from "node:child_process";
 import { afterAll, beforeAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
@@ -56,5 +58,22 @@ describe("re-running the seed", () => {
     expect(out).toMatch(/retired 1 absorption modifier: brown-2004 · beta-carotene · dietary fat present/);
     expect(out).toMatch(/left in place: CHEBI:23042 \(carotene\) has member seed-ownership-fixture/);
     expect(out).toMatch(/left in place: brown-2004's rule on CHEBI:23042 lists seed-ownership-fixture as measured/);
+  });
+
+  test("keeps a ChEBI id another writer looked up for a compound the seed has none for, and writes its own", { timeout: 120_000 }, async () => {
+    const before = await sql`select slug, chebi_id from compound where slug in ('beta-carotene', 'vitamin-c')`;
+    await sql`update compound set chebi_id = 29073 where slug = 'vitamin-c'`;
+    await sql`update compound set chebi_id = null where slug = 'beta-carotene'`;
+    try {
+      execFileSync("node", ["--env-file=.env.local", "scripts/seed.ts"], { encoding: "utf8" });
+
+      const after = await sql`select slug, chebi_id from compound where slug in ('beta-carotene', 'vitamin-c') order by slug`;
+      expect(after.map((r) => [r.slug, r.chebi_id])).toEqual([
+        ["beta-carotene", 17579],
+        ["vitamin-c", 29073],
+      ]);
+    } finally {
+      for (const r of before) await sql`update compound set chebi_id = ${r.chebi_id} where slug = ${r.slug}`;
+    }
   });
 });

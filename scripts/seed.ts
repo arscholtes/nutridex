@@ -1,10 +1,11 @@
 // npm run seed — fills the database with the plan's seed ingredients and compounds, imports their
 // amounts per 100 g from USDA FoodData Central, and adds the sourced facts and the recipe the
-// engine's first check needs. Safe to re-run: facts and rules are upserted, class and measured
-// members are only ever added, and a recipe that already exists is left as it is. The only rows it
-// deletes are the rules it names as retired: a retired key deletes the matching row whoever wrote
-// it, and each deletion is logged. Members the database holds beyond the seed's lists are reported
-// (seed-drift.ts) for a person to judge, never deleted.
+// engine's first check needs. Safe to re-run: facts and rules are upserted, a compound's ChEBI id
+// is written only where the seed has one, class and measured members are only ever added, and a
+// recipe that already exists is left as it is. The only rows it deletes are the rules it names as
+// retired: a retired key deletes the matching row whoever wrote it, and each deletion is logged.
+// Members the database holds beyond the seed's lists are reported (seed-drift.ts) for a person to
+// judge, never deleted.
 //
 // All USDA records are fetched before anything is written, so a network failure leaves the
 // database untouched. Amounts are stored exactly as USDA reports them, each with a source row
@@ -52,7 +53,9 @@ const retired: string[] = [];
 await db.transaction(async (tx) => {
   const compoundIds = new Map<string, string>();
   for (const c of COMPOUNDS) {
-    const values = { name: c.name, class: c.class, chebiId: c.chebiId ?? null };
+    // Another writer may have looked up an id the seed lacks, so the seed writes only ids it has.
+    const identity = { name: c.name, class: c.class };
+    const values = c.chebiId === undefined ? identity : { ...identity, chebiId: c.chebiId };
     const [row] = await tx
       .insert(compound)
       .values({ slug: c.slug, ...values })
