@@ -6,7 +6,9 @@ Read it with the Claude Docs tools, never a web fetch.
 ## Rules from the plan's kickoff
 
 - One phase at a time. Stop at each phase's "Done when", show it passing, and wait for the go-ahead.
-- `lib/engine/` is pure functions with no database access, fully unit-tested.
+- The engine (`packages/epistasis/`, imported as `epistasis`) is pure functions with no database access,
+  fully unit-tested. It imports nothing outside itself and names no food database; its boundary test
+  enforces both.
 - Never invent nutrient amounts, retention factors or absorption magnitudes. Amounts come from USDA
   FoodData Central; anything without a source stays `null` and the UI shows it as missing.
 - Every effect, modifier and caution row needs a `source_id` and an evidence grade (A–D).

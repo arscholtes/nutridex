@@ -31,7 +31,8 @@ run `db:migrate` and `seed` against it.
 
 ## The engine
 
-`lib/engine/` works out what a recipe gives you, as pure functions with no database: expand each
+The engine is its own package, `packages/epistasis/`, imported as `epistasis` so other projects can use it.
+It works out what a recipe gives you, as pure functions with no database: expand each
 ingredient to its compounds, apply prep, total per serving, then check absorption modifiers,
 cautions, effects, goal scores and which gut microbes it would feed. `recipeProfile` runs them in
 order; `stackTotals` and `checkExcess` add supplements and check upper limits. `lib/db/engine-input.ts`
@@ -40,7 +41,7 @@ reads a recipe and its facts from the database into the engine's input.
 The engine never fills a gap: an unmeasured amount, a prep with no sourced retention factor, or a
 condition it cannot test comes back marked as missing or unknown. Its judgement calls (grade
 weights, how much fat counts as enough, reference amounts for goal scores) are settings in
-`lib/engine/settings.ts`, not facts.
+`packages/epistasis/src/settings.ts`, not facts.
 
 ## Disclaimer
 

@@ -6,6 +6,9 @@
   "engines": {
     "node": ">=22.18"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,6 +22,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "epistasis": "0.1.0",
     "drizzle-orm": "^0.45.4",
     "next": "^16.4.0",
     "postgres": "^3.4.9",
