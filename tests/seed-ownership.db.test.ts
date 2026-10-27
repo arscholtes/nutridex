@@ -6,13 +6,11 @@
 import { execFileSync } from "node:child_process";
 import { afterAll, beforeAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
+import { localDatabaseUrl } from "./local-database.ts";
 
 const MARKER = "fixture: seed-ownership test";
 const FIXTURE = "seed-ownership-fixture";
-const host = new URL(process.env.DATABASE_URL!).hostname;
-if (!["localhost", "127.0.0.1", "[::1]"].includes(host)) {
-  throw new Error(`the seed-ownership test writes to the database; refusing ${host}, which is not this machine`);
-}
+localDatabaseUrl("the seed-ownership test writes to the database");
 
 async function sweep(): Promise<void> {
   await sql`delete from compound where slug = ${FIXTURE}`;
