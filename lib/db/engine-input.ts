@@ -68,13 +68,14 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
     from prep_effect p join compound c on c.id = p.compound_id
     where c.slug = any(${compoundSlugs})`;
 
-  const modifiers = await sql<{ targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[] }[]>`
-    select t.slug as "targetCompoundSlug", m.slug as "modifierCompoundSlug", am.modifier_condition as condition,
-           am.direction, am.magnitude, am.mechanism, am.evidence_grade as grade, am.source_id as "sourceId",
+  // Modifiers come applied: a class rule arrives once per compound it reaches, with its basis.
+  const modifiers = await sql<{ id: string; targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[]; basis: string }[]>`
+    select am.modifier_id as id, t.slug as "targetCompoundSlug", m.slug as "modifierCompoundSlug", am.modifier_condition as condition,
+           am.direction, am.magnitude, am.mechanism, am.evidence_grade as grade, am.source_id as "sourceId", am.basis,
            coalesce((select array_agg(i.name order by i.name) from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id
                      where ic.compound_id = am.modifier_compound_id), '{}') as "modifierFoundIn"
-    from absorption_modifier am
-    join compound t on t.id = am.target_compound_id
+    from absorption_modifier_applied am
+    join compound t on t.id = am.compound_id
     left join compound m on m.id = am.modifier_compound_id
     where t.slug = any(${compoundSlugs})`;
 
@@ -128,6 +129,7 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
     modifiers: modifiers.map((m): ModifierFact => {
       const where = `absorption_modifier on ${m.targetCompoundSlug}`;
       return {
+        id: m.id,
         targetCompoundSlug: m.targetCompoundSlug,
         modifierCompoundSlug: m.modifierCompoundSlug,
         condition: m.condition,
@@ -136,6 +138,7 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
         mechanism: m.mechanism,
         grade: graded(m.grade, m.sourceId, where),
         modifierFoundIn: m.modifierFoundIn,
+        basis: oneOf(m.basis, ["measured", "by-class"] as const, where),
       };
     }),
     cautions: cautions.map((k): CautionFact => ({

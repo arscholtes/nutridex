@@ -15,6 +15,20 @@
       "when": 1791864870124,
       "tag": "0001_prep_effect_direction",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792081769330,
+      "tag": "0002_class_rules",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792084706660,
+      "tag": "0003_view_measured_wins",
+      "breakpoints": true
     }
   ]
 }

@@ -25,7 +25,7 @@ const facts: Facts = {
   ],
   prepEffects: [{ compoundSlug: "beta-carotene", prepMethod: "blended", retentionFactor: null, direction: "increases", note: "blending frees it from cell walls" }],
   modifiers: [
-    { targetCompoundSlug: "beta-carotene", modifierCompoundSlug: null, condition: "dietary fat present", direction: "enhances", magnitude: null, mechanism: null, grade: "B", modifierFoundIn: [] },
+    { id: "rule-fat", targetCompoundSlug: "beta-carotene", modifierCompoundSlug: null, condition: "dietary fat present", direction: "enhances", magnitude: null, mechanism: null, grade: "B", modifierFoundIn: [], basis: "measured" },
   ],
   cautions: [{ compoundSlug: "vitamin-k1", ingredientSlug: null, kind: "drug-interaction", summary: "Vitamin K counters warfarin", grade: "A" }],
   compoundEffects: [{ compoundSlug: "beta-carotene", effectSlug: "skin-color", direction: "benefit", onset: "~6 weeks", grade: "B" }],

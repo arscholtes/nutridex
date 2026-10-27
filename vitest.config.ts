@@ -19,6 +19,8 @@ export default defineConfig({
         test: {
           name: "db",
           include: ["tests/**/*.db.test.ts"],
+          // Every file shares one database, and one re-runs the real seed against it.
+          fileParallelism: false,
           env: localEnv,
         },
       },
