@@ -100,6 +100,21 @@ describe("checkModifiers", () => {
     expect(checkModifiers([total("calcium", 100, "mg")], juice, [rule], settings)).toEqual([]);
   });
 
+  test("an inhibiting condition that is met reduces; one that is not met says nothing", () => {
+    const rule = modifier({ direction: "inhibits" });
+    expect(checkModifiers([total("beta-carotene", 9000), fat(14)], juice, [rule], settings)).toEqual([
+      {
+        compoundSlug: "beta-carotene",
+        status: "reduced",
+        reason: "14 g of fat per serving, at or above the 3 g that counts as enough",
+        grade: "B",
+        basis: "measured",
+        ruleIds: ["rule-1"],
+      },
+    ]);
+    expect(checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, [rule], settings)).toEqual([]);
+  });
+
   test("ignores rules whose target the recipe does not contain, or contains at zero", () => {
     expect(checkModifiers([fat(14)], juice, [fatRule], settings)).toEqual([]);
     expect(checkModifiers([total("beta-carotene", 0), fat(14)], juice, [fatRule], settings)).toEqual([]);
