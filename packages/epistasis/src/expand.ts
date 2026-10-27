@@ -21,7 +21,7 @@ export function expand(recipe: RecipeInput, amounts: AmountFact[]): Contribution
           amount: a.amountPer100g === null ? null : a.amountPer100g * scale,
           unit: a.unit,
           range: hasRange ? [a.amountLow! * scale, a.amountHigh! * scale] : null,
-          prep: null,
+          prep: [],
         };
       }),
   );

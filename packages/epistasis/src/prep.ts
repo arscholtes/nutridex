@@ -14,23 +14,23 @@ export const PREP_METHODS = [
 const AS_RECORDED = "raw";
 
 /**
- * The prep method that applies to an ingredient: its own, overridden by the last step that uses it
- * and names a method.
+ * The prep methods an ingredient goes through, in order: its own (unless raw), then each step that
+ * uses it and names a method, by step position. Each is applied in turn, so steps stack.
  * @param ingredient [RecipeIngredientInput] the recipe ingredient
  * @param steps [RecipeStepInput[]] the recipe's steps, in any order
- * @return [string] the effective prep method
+ * @return [string[]] the methods in the order they happen; empty when nothing changes the food
  */
-export function effectivePrep(ingredient: RecipeIngredientInput, steps: RecipeStepInput[]): string {
-  const last = steps
+export function prepSequence(ingredient: RecipeIngredientInput, steps: RecipeStepInput[]): string[] {
+  const fromSteps = steps
     .filter((s) => s.prepMethod !== null && s.recipeIngredientIds.includes(ingredient.id))
     .sort((a, b) => a.position - b.position)
-    .at(-1);
-  return last?.prepMethod ?? ingredient.prepMethod;
+    .map((s) => s.prepMethod!);
+  return [ingredient.prepMethod, ...fromSteps].filter((m) => m !== AS_RECORDED);
 }
 
 /**
- * Apply each contribution's effective prep: multiply by a sourced retention factor, and record
- * a prep note either way, so an unknown retention shows as unknown rather than as 100%.
+ * Apply each contribution's prep methods in order: every sourced retention factor multiplies, and
+ * each method leaves a prep note either way, so an unknown retention shows as unknown, not 100%.
  * @param recipe [RecipeInput] the recipe
  * @param contributions [Contribution[]] expanded contributions
  * @param prepEffects [PrepEffectFact[]] prep_effect facts
@@ -39,26 +39,31 @@ export function effectivePrep(ingredient: RecipeIngredientInput, steps: RecipeSt
  */
 export function applyPrep(recipe: RecipeInput, contributions: Contribution[], prepEffects: PrepEffectFact[]): Contribution[] {
   for (const p of prepEffects) knownMethod(p.prepMethod, `prep fact on ${p.compoundSlug}`);
-  const methods = new Map(recipe.ingredients.map((ri) => [ri.id, knownMethod(effectivePrep(ri, recipe.steps), ri.ingredientSlug)]));
-  return contributions.map((c) => {
-    const method = methods.get(c.recipeIngredientId)!;
-    if (method === AS_RECORDED) return c;
-    const fact = prepEffects.find((p) => p.compoundSlug === c.compoundSlug && p.prepMethod === method);
-    const factor = fact?.retentionFactor ?? null;
-    return {
-      ...c,
-      amount: factor === null || c.amount === null ? c.amount : c.amount * factor,
-      range: factor === null || c.range === null ? c.range : [c.range[0] * factor, c.range[1] * factor],
-      prep: {
-        ingredientSlug: c.ingredientSlug,
-        compoundSlug: c.compoundSlug,
-        method,
-        retentionFactor: factor,
-        direction: fact?.direction ?? null,
-        note: fact?.note ?? null,
-      },
-    };
-  });
+  const sequences = new Map(
+    recipe.ingredients.map((ri) => [ri.id, prepSequence(ri, recipe.steps).map((m) => knownMethod(m, ri.ingredientSlug))]),
+  );
+  return contributions.map((c) =>
+    sequences.get(c.recipeIngredientId)!.reduce((done, method) => {
+      const fact = prepEffects.find((p) => p.compoundSlug === c.compoundSlug && p.prepMethod === method);
+      const factor = fact?.retentionFactor ?? null;
+      return {
+        ...done,
+        amount: factor === null || done.amount === null ? done.amount : done.amount * factor,
+        range: factor === null || done.range === null ? done.range : [done.range[0] * factor, done.range[1] * factor],
+        prep: [
+          ...done.prep,
+          {
+            ingredientSlug: c.ingredientSlug,
+            compoundSlug: c.compoundSlug,
+            method,
+            retentionFactor: factor,
+            direction: fact?.direction ?? null,
+            note: fact?.note ?? null,
+          },
+        ],
+      };
+    }, c),
+  );
 }
 
 function knownMethod(method: string, where: string): string {

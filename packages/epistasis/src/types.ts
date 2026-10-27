@@ -15,7 +15,7 @@ export type RecipeIngredientInput = {
   id: string;
   ingredientSlug: string;
   grams: number;
-  /** The ingredient's own prep; a step that names a prep method overrides it. */
+  /** The ingredient's own prep, applied before any step that uses it. */
   prepMethod: string;
 };
 
@@ -122,10 +122,11 @@ export type Contribution = {
   amount: number | null;
   unit: MassUnit | null;
   range: [number, number] | null;
-  prep: PrepNote | null;
+  /** One note per prep method applied, in order; empty when nothing changed the food. */
+  prep: PrepNote[];
 };
 
-/** How the effective prep method changed one contribution, or that no source says. */
+/** How one prep method changed one contribution, or that no source says. */
 export type PrepNote = {
   ingredientSlug: string;
   compoundSlug: string;
