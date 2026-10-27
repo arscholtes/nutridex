@@ -144,6 +144,17 @@ describe("checkModifiers", () => {
     }
   });
 
+  test("two measured rules for one claim make one flag with the better grade, naming both, in either order", () => {
+    const weaker = modifier({ id: "measured-c", grade: "C" });
+    const stronger = modifier({ id: "measured-a", grade: "A" });
+    for (const rules of [[weaker, stronger], [stronger, weaker]]) {
+      const flags = checkModifiers([total("beta-carotene", 9000), fat(0.6)], juice, rules, settings);
+      expect(flags).toHaveLength(1);
+      expect(flags[0]).toMatchObject({ grade: "A", basis: "measured" });
+      expect([...flags[0].ruleIds].sort()).toEqual(["measured-a", "measured-c"]);
+    }
+  });
+
   test("rules that disagree in direction stay separate flags", () => {
     const helps = modifier({ id: "helps", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null });
     const hurts = modifier({ id: "hurts", targetCompoundSlug: "calcium", modifierCompoundSlug: "oxalate", condition: null, direction: "inhibits" });
