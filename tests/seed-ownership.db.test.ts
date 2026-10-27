@@ -57,4 +57,24 @@ describe("re-running the seed", () => {
     expect(out).toMatch(/left in place: CHEBI:23042 \(carotene\) has member seed-ownership-fixture/);
     expect(out).toMatch(/left in place: brown-2004's rule on CHEBI:23042 lists seed-ownership-fixture as measured/);
   });
+
+  test("keeps a Brown 2004 rule on a retired target that has a modifier compound or another condition", { timeout: 120_000 }, async () => {
+    const [brown] = await sql`select id from source where pmid = '15277161'`;
+    const [beta] = await sql`select id from compound where slug = 'beta-carotene'`;
+    const [piperine] = await sql`select id from compound where slug = 'piperine'`;
+    const [withModifier] = await sql`
+      insert into absorption_modifier (target_compound_id, modifier_compound_id, modifier_condition, direction, magnitude, evidence_grade, source_id)
+      values (${beta.id}, ${piperine.id}, 'dietary fat present', 'enhances', ${MARKER}, 'B', ${brown.id}) returning id`;
+    const [otherCondition] = await sql`
+      insert into absorption_modifier (target_compound_id, modifier_condition, direction, magnitude, evidence_grade, source_id)
+      values (${beta.id}, 'dietary fiber present', 'enhances', ${MARKER}, 'B', ${brown.id}) returning id`;
+
+    const out = execFileSync("node", ["--env-file=.env.local", "scripts/seed.ts"], { encoding: "utf8" });
+
+    const [counts] = await sql`
+      select (select count(*)::int from absorption_modifier where id = ${withModifier.id}) as "withModifier",
+             (select count(*)::int from absorption_modifier where id = ${otherCondition.id}) as "otherCondition"`;
+    expect(counts).toEqual({ withModifier: 1, otherCondition: 1 });
+    expect(out).not.toMatch(/retired/);
+  });
 });
