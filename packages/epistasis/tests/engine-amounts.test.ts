@@ -2,7 +2,7 @@
 import { describe, expect, test } from "vitest";
 import { aggregate } from "../src/aggregate.ts";
 import { expand } from "../src/expand.ts";
-import { applyPrep, effectivePrep } from "../src/prep.ts";
+import { PREP_METHODS, applyPrep, effectivePrep } from "../src/prep.ts";
 import type { AmountFact, PrepEffectFact, RecipeInput } from "../src/types.ts";
 
 const amount = (ingredientSlug: string, compoundSlug: string, amountPer100g: number | null, extra: Partial<AmountFact> = {}): AmountFact => ({
@@ -100,6 +100,32 @@ describe("applyPrep", () => {
       direction: null,
       note: null,
     });
+  });
+
+  test("knows the plan's methods and the cooking methods USDA's retention table uses", () => {
+    expect(PREP_METHODS).toEqual([
+      "raw", "juiced", "blended", "boiled", "roasted", "fermented",
+      "baked", "fried", "broiled", "simmered", "sauteed", "steamed", "stewed", "braised",
+    ]);
+  });
+
+  test("profiles kale sauteed in olive oil, the pairing the rules exist for", () => {
+    const pan = recipe({ ingredients: [{ id: "ri-kale", ingredientSlug: "kale", grams: 100, prepMethod: "sauteed" }] });
+    const [c] = applyPrep(pan, expand(pan, [amount("kale", "beta-carotene", 5000)]), []);
+    expect(c.prep).toMatchObject({ method: "sauteed", retentionFactor: null });
+  });
+
+  test("the app can offer the list, from the package itself", async () => {
+    expect((await import("epistasis")).PREP_METHODS).toBe(PREP_METHODS);
+  });
+
+  test("refuses a recipe's prep method outside its vocabulary, naming it", () => {
+    const typo = recipe({ ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "juice" }] });
+    expect(() => applyPrep(typo, expand(typo, [amount("carrot", "beta-carotene", 8000)]), [])).toThrow(/"juice"/);
+  });
+
+  test("refuses a prep fact whose method is outside its vocabulary, rather than never matching it", () => {
+    expect(() => applyPrep(recipe(), [], [{ ...juiced, prepMethod: "juice" }])).toThrow(/"juice"/);
   });
 
   test("keeps a qualitative direction when the source gives no number", () => {

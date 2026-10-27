@@ -1,6 +1,15 @@
 // Step 2: how the way an ingredient is prepared changes what it delivers.
 import type { Contribution, PrepEffectFact, RecipeIngredientInput, RecipeInput, RecipeStepInput } from "./types.ts";
 
+/**
+ * The prep methods the engine knows: the plan's six, then the cooking methods published nutrient
+ * retention tables use. A method outside this list is a typo, not a new one.
+ */
+export const PREP_METHODS = [
+  "raw", "juiced", "blended", "boiled", "roasted", "fermented",
+  "baked", "fried", "broiled", "simmered", "sauteed", "steamed", "stewed", "braised",
+] as const;
+
 /** The prep method a source's per-100 g amount already describes. */
 const AS_RECORDED = "raw";
 
@@ -26,9 +35,11 @@ export function effectivePrep(ingredient: RecipeIngredientInput, steps: RecipeSt
  * @param contributions [Contribution[]] expanded contributions
  * @param prepEffects [PrepEffectFact[]] prep_effect facts
  * @return [Contribution[]] the contributions after prep
+ * @throws when the recipe or a prep fact names a method outside PREP_METHODS
  */
 export function applyPrep(recipe: RecipeInput, contributions: Contribution[], prepEffects: PrepEffectFact[]): Contribution[] {
-  const methods = new Map(recipe.ingredients.map((ri) => [ri.id, effectivePrep(ri, recipe.steps)]));
+  for (const p of prepEffects) knownMethod(p.prepMethod, `prep fact on ${p.compoundSlug}`);
+  const methods = new Map(recipe.ingredients.map((ri) => [ri.id, knownMethod(effectivePrep(ri, recipe.steps), ri.ingredientSlug)]));
   return contributions.map((c) => {
     const method = methods.get(c.recipeIngredientId)!;
     if (method === AS_RECORDED) return c;
@@ -48,4 +59,11 @@ export function applyPrep(recipe: RecipeInput, contributions: Contribution[], pr
       },
     };
   });
+}
+
+function knownMethod(method: string, where: string): string {
+  if (!(PREP_METHODS as readonly string[]).includes(method)) {
+    throw new Error(`${where}: prep method "${method}" is not one of ${PREP_METHODS.join(", ")}`);
+  }
+  return method;
 }
