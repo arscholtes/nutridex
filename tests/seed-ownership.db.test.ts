@@ -8,15 +8,13 @@
 import { execFileSync } from "node:child_process";
 import { afterAll, beforeAll, describe, expect, onTestFinished, test, vi } from "vitest";
 import { sql } from "../lib/db/client.ts";
+import { localDatabaseUrl } from "./local-database.ts";
 
 const MARKER = "fixture: seed-ownership test";
 const FIXTURE = "seed-ownership-fixture";
+localDatabaseUrl("the seed-ownership test writes to the database");
 // ChEBI ids are positive, so no real class can collide with this one.
 const EMPTY_CLASS = -1;
-const host = new URL(process.env.DATABASE_URL!).hostname;
-if (!["localhost", "127.0.0.1", "[::1]"].includes(host)) {
-  throw new Error(`the seed-ownership test writes to the database; refusing ${host}, which is not this machine`);
-}
 
 async function sweep(): Promise<void> {
   await sql`delete from compound where slug = ${FIXTURE}`;
@@ -61,6 +59,26 @@ describe("re-running the seed", () => {
     expect(out).toMatch(/retired 1 absorption modifier: brown-2004 · beta-carotene · dietary fat present/);
     expect(out).toMatch(/left in place: CHEBI:23042 \(carotene\) has member seed-ownership-fixture/);
     expect(out).toMatch(/left in place: brown-2004's rule on CHEBI:23042 lists seed-ownership-fixture as measured/);
+  });
+
+  test("keeps a Brown 2004 rule on a retired target that has a modifier compound or another condition", { timeout: 120_000 }, async () => {
+    const [brown] = await sql`select id from source where pmid = '15277161'`;
+    const [beta] = await sql`select id from compound where slug = 'beta-carotene'`;
+    const [piperine] = await sql`select id from compound where slug = 'piperine'`;
+    const [withModifier] = await sql`
+      insert into absorption_modifier (target_compound_id, modifier_compound_id, modifier_condition, direction, magnitude, evidence_grade, source_id)
+      values (${beta.id}, ${piperine.id}, 'dietary fat present', 'enhances', ${MARKER}, 'B', ${brown.id}) returning id`;
+    const [otherCondition] = await sql`
+      insert into absorption_modifier (target_compound_id, modifier_condition, direction, magnitude, evidence_grade, source_id)
+      values (${beta.id}, 'dietary fiber present', 'enhances', ${MARKER}, 'B', ${brown.id}) returning id`;
+
+    const out = execFileSync("node", ["--env-file=.env.local", "scripts/seed.ts"], { encoding: "utf8" });
+
+    const [counts] = await sql`
+      select (select count(*)::int from absorption_modifier where id = ${withModifier.id}) as "withModifier",
+             (select count(*)::int from absorption_modifier where id = ${otherCondition.id}) as "otherCondition"`;
+    expect(counts).toEqual({ withModifier: 1, otherCondition: 1 });
+    expect(out).not.toMatch(/retired/);
   });
 
   test("keeps a ChEBI id another writer looked up for a compound the seed has none for, and writes its own", { timeout: 120_000 }, async () => {
