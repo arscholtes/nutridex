@@ -169,4 +169,38 @@ describe("claims resting on class extension", () => {
       expect(rows.map((r) => [r.basis, r.direction])).toEqual([["measured", "inhibits"]]);
     });
   });
+
+  test("stay listed when the compound's measured rules are for another condition or modifier compound", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const [gamma] = await tx`insert into compound (slug, name, class) values ('gamma-carotene-fixture', 'gamma-Carotene (fixture)', 'carotenoid') returning id`;
+      const [k] = await tx`select id, source_id from compound_class where chebi_id = 23042`;
+      await tx`insert into compound_class_member (class_id, compound_id, source_id) values (${k.id}, ${gamma.id}, ${k.source_id})`;
+      const [brown] = await tx`select source_id from absorption_modifier where target_class_id = ${k.id}`;
+      const [piperine] = await tx`select id from compound where slug = 'piperine'`;
+      const [curcumin] = await tx`select id from compound where slug = 'curcumin'`;
+      // Brown's class rule is keyed by a condition; this one is keyed by a modifier compound, so
+      // each half of the view's same-claim test has a claim to keep.
+      await tx`
+        insert into absorption_modifier (target_class_id, modifier_compound_id, direction, evidence_grade, source_id)
+        values (${k.id}, ${piperine.id}, 'enhances', 'B', ${brown.source_id})`;
+      await tx`
+        insert into absorption_modifier (target_compound_id, modifier_condition, direction, evidence_grade, source_id)
+        values (${gamma.id}, 'dietary fiber present', 'enhances', 'B', ${brown.source_id})`;
+      await tx`
+        insert into absorption_modifier (target_compound_id, modifier_compound_id, direction, evidence_grade, source_id)
+        values (${gamma.id}, ${curcumin.id}, 'enhances', 'B', ${brown.source_id})`;
+
+      const rows = await tx`
+        select a.basis, m.slug as modifier, a.modifier_condition as condition from absorption_modifier_applied a
+        left join compound m on m.id = a.modifier_compound_id
+        where a.compound_id = ${gamma.id}
+        order by a.basis, m.slug nulls first, a.modifier_condition`;
+      expect(rows.map((r) => [r.basis, r.modifier, r.condition])).toEqual([
+        ["by-class", null, "dietary fat present"],
+        ["by-class", "piperine", null],
+        ["measured", null, "dietary fiber present"],
+        ["measured", "curcumin", null],
+      ]);
+    });
+  });
 });
