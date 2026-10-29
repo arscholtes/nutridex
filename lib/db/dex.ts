@@ -1,0 +1,547 @@
+// What the Dex screens show, read from the database. An ingredient's flags and effects come from
+// the engine run on 100 g of it, so a Dex entry and a recipe judge the same facts the same way.
+import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type MassUnit } from "epistasis";
+import { sql } from "./client.ts";
+import { loadFacts } from "./engine-input.ts";
+
+type Sql = typeof sql;
+
+export type Named = { slug: string; name: string };
+
+export type SourceRef = {
+  id: string;
+  title: string;
+  url: string | null;
+  year: number | null;
+  studyType: string | null;
+  limitations: string | null;
+};
+
+/** One food's amount of one compound, against the richest seeded food for that compound. */
+export type FoodAmount = Named & {
+  imageUrl: string | null;
+  amount: number;
+  unit: MassUnit;
+  /** Per typical serving, when the food has one on file. */
+  perServing: number | null;
+  /** amount ÷ the most any seeded food carries, 0 to 1. */
+  share: number;
+};
+
+/** One compound in a food, against the richest seeded food for that compound. */
+export type CompoundAmount = Named & {
+  class: string | null;
+  amount: number;
+  unit: MassUnit;
+  share: number;
+  richest: Named;
+};
+
+/** Foods and compounds a source measured as none, or that no source measured. */
+export type Absences = { none: Named[]; unmeasured: Named[] };
+
+export type AbsorptionTip = {
+  flag: AbsorptionFlag;
+  compound: Named;
+  /** The ChEBI class a by-class flag reaches the compound through. */
+  className: string | null;
+  sources: SourceRef[];
+};
+
+export type ModifierClaim = {
+  ruleId: string;
+  basis: Basis;
+  className: string | null;
+  direction: "enhances" | "inhibits";
+  condition: string | null;
+  modifierCompound: Named | null;
+  magnitude: string | null;
+  mechanism: string | null;
+  grade: Grade;
+  source: SourceRef;
+};
+
+export type PrepClaim = {
+  compound: Named;
+  method: string;
+  retentionFactor: number | null;
+  direction: string | null;
+  note: string | null;
+  source: SourceRef;
+};
+
+export type EffectClaim = {
+  effect: Named & { direction: string; bodySystem: string | null };
+  compound: Named & { class: string | null };
+  summary: string | null;
+  doseContext: string | null;
+  onset: string | null;
+  grade: Grade;
+  source: SourceRef;
+};
+
+export type IngredientEntry = {
+  ingredient: Named & { category: string | null; imageUrl: string | null };
+  /** Ranked by share of the richest seeded food: what this food stands out for. */
+  compounds: CompoundAmount[];
+  absent: Absences;
+  absorption: AbsorptionTip[];
+  /** What the missed absorption flags suggest adding. */
+  pairsWellWith: string[];
+  prep: PrepClaim[];
+  /** The effects of the compounds it carries, each with the evidence behind it. */
+  effects: EffectClaim[];
+  cautions: CautionFlag[];
+  sources: SourceRef[];
+  bestGrade: Grade | null;
+};
+
+export type CompoundEntry = {
+  compound: Named & {
+    class: string | null;
+    chebiId: number | null;
+    solubility: string | null;
+    heatStability: string | null;
+    lightStability: string | null;
+    mechanismSummary: string | null;
+    mechanismDetail: string | null;
+  };
+  classes: { name: string; chebiId: number }[];
+  /** Ranked by amount per 100 g. */
+  foods: FoodAmount[];
+  absent: Absences;
+  modifiers: ModifierClaim[];
+  prep: PrepClaim[];
+  effects: EffectClaim[];
+  cautions: { kind: string; summary: string; grade: Grade; source: SourceRef }[];
+  sources: SourceRef[];
+  bestGrade: Grade | null;
+};
+
+export type EffectEntry = {
+  effect: Named & { direction: string; bodySystem: string | null };
+  /** Best grade first. */
+  compounds: EffectClaim[];
+  /** Per contributing compound, the foods that carry it, most first. */
+  foods: { compound: Named; ranked: FoodAmount[]; unmeasured: Named[] }[];
+  sources: SourceRef[];
+  bestGrade: Grade | null;
+};
+
+export type EntryKind = "ingredient" | "compound" | "effect";
+
+export type EntryCard = Named & {
+  kind: EntryKind;
+  href: string;
+  /** Its category, compound class or body system. */
+  type: string | null;
+  imageUrl: string | null;
+  compoundClass: string | null;
+  bestGrade: Grade | null;
+  stats: string[];
+};
+
+export type SourceUse = SourceRef & { doi: string | null; pmid: string | null; population: string | null; supports: string[] };
+
+const ENTRY_GRAMS = 100;
+
+// Names containing the words win; when none does, a name this close counts as a misspelling of it
+// (pg_trgm word similarity, 0 to 1). Measured: "tumeric" scores 0.55 against Turmeric and 0.13
+// against Tomato paste, the next closest name; "skin" scores 0.4 against Canned pumpkin purée.
+const SEARCH_SIMILARITY = 0.4;
+
+/**
+ * One ingredient's Dex entry.
+ * @param slug [string] the ingredient's slug
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<IngredientEntry | null>] null when no ingredient has that slug
+ */
+export async function ingredientEntry(slug: string, q: Sql = sql): Promise<IngredientEntry | null> {
+  const [row] = await q<{ id: string; slug: string; name: string; category: string | null; imageUrl: string | null }[]>`
+    select id, slug, name, category, image_url as "imageUrl" from ingredient where slug = ${slug}`;
+  if (!row) return null;
+
+  const amounts = await q<{ slug: string; name: string; class: string | null; amount: string | null; unit: MassUnit | null; sourceId: string | null; richestAmount: string | null; richestSlug: string | null; richestName: string | null }[]>`
+    select c.slug, c.name, c.class, ic.amount_per_100g as amount, ic.unit, ic.source_id as "sourceId",
+           top.amount_per_100g as "richestAmount", top.slug as "richestSlug", top.name as "richestName"
+    from ingredient_compound ic
+    join compound c on c.id = ic.compound_id
+    left join lateral (
+      select x.amount_per_100g, i.slug, i.name from ingredient_compound x join ingredient i on i.id = x.ingredient_id
+      where x.compound_id = c.id and x.amount_per_100g is not null
+      order by x.amount_per_100g desc, i.name limit 1
+    ) top on true
+    where ic.ingredient_id = ${row.id}
+    order by c.name`;
+  const compounds = amounts
+    .filter((a) => a.amount !== null && Number(a.amount) > 0)
+    .map((a): CompoundAmount => ({
+      slug: a.slug,
+      name: a.name,
+      class: a.class,
+      amount: Number(a.amount),
+      unit: a.unit!,
+      share: Number(a.amount) / Number(a.richestAmount),
+      richest: { slug: a.richestSlug!, name: a.richestName! },
+    }))
+    .sort((a, b) => b.share - a.share || a.name.localeCompare(b.name));
+  const absent = {
+    none: amounts.filter((a) => a.amount !== null && Number(a.amount) === 0).map(named),
+    unmeasured: amounts.filter((a) => a.amount === null).map(named),
+  };
+  const compoundNames = new Map(amounts.map((a) => [a.slug, a.name]));
+
+  const facts = await loadFacts([slug], q);
+  const profile = recipeProfile(
+    { slug: `dex-${slug}`, servings: 1, ingredients: [{ id: slug, ingredientSlug: slug, grams: ENTRY_GRAMS, prepMethod: "raw" }], steps: [] },
+    facts,
+    DEFAULT_SETTINGS,
+    [],
+  );
+
+  const rules = await rulesById(profile.absorption.flatMap((f) => f.ruleIds), q);
+  const absorption = profile.absorption.map((flag): AbsorptionTip => {
+    const behind = flag.ruleIds.map((id) => rules.get(id)!);
+    return {
+      flag,
+      compound: { slug: flag.compoundSlug, name: compoundNames.get(flag.compoundSlug)! },
+      className: flag.basis === "by-class" ? (behind.find((r) => r.className !== null)?.className ?? null) : null,
+      sources: dedupe(behind.map((r) => r.source)),
+    };
+  }).sort((a, b) => a.compound.name.localeCompare(b.compound.name));
+
+  const present = profile.effects.flatMap((e) => e.compounds);
+  const effects = (await effectClaims({ compounds: present }, q)).filter((e) => profile.effects.some((r) => r.effectSlug === e.effect.slug));
+  const prep = await prepClaims(amounts.map((a) => a.slug), q);
+  const usda = await sourcesByIds([...new Set(amounts.flatMap((a) => (a.sourceId ? [a.sourceId] : [])))], q);
+
+  const sources = dedupe([...usda, ...absorption.flatMap((a) => a.sources), ...effects.map((e) => e.source), ...prep.map((p) => p.source)]);
+  return {
+    ingredient: { slug: row.slug, name: row.name, category: row.category, imageUrl: row.imageUrl },
+    compounds,
+    absent,
+    absorption,
+    pairsWellWith: [...new Set(profile.absorption.flatMap((f) => (f.status === "missed" && f.suggestion ? [f.suggestion] : [])))],
+    prep,
+    effects,
+    cautions: profile.cautions,
+    sources,
+    bestGrade: best([...absorption.map((a) => a.flag.grade), ...effects.map((e) => e.grade), ...profile.cautions.flatMap((c) => (c.grade ? [c.grade] : []))]),
+  };
+}
+
+/**
+ * One compound's Dex entry.
+ * @param slug [string] the compound's slug
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<CompoundEntry | null>] null when no compound has that slug
+ */
+export async function compoundEntry(slug: string, q: Sql = sql): Promise<CompoundEntry | null> {
+  const [row] = await q<{ id: string; slug: string; name: string; class: string | null; chebiId: number | null; solubility: string | null; heatStability: string | null; lightStability: string | null; mechanismSummary: string | null; mechanismDetail: string | null }[]>`
+    select id, slug, name, class, chebi_id as "chebiId", solubility, heat_stability as "heatStability",
+           light_stability as "lightStability", mechanism_summary as "mechanismSummary", mechanism_detail as "mechanismDetail"
+    from compound where slug = ${slug}`;
+  if (!row) return null;
+  const { id, ...compound } = row;
+
+  const classes = await q<{ name: string; chebiId: number }[]>`
+    select k.name, k.chebi_id as "chebiId" from compound_class_member m join compound_class k on k.id = m.class_id
+    where m.compound_id = ${id} order by k.name`;
+  const { ranked: foods, absent } = await foodsCarrying(id, q);
+
+  const modifierRows = await q<{ ruleId: string; basis: Basis; className: string | null; direction: "enhances" | "inhibits"; condition: string | null; modifierSlug: string | null; modifierName: string | null; magnitude: string | null; mechanism: string | null; grade: Grade; sourceId: string }[]>`
+    select a.modifier_id as "ruleId", a.basis, k.name as "className", a.direction, a.modifier_condition as condition,
+           m.slug as "modifierSlug", m.name as "modifierName", a.magnitude, a.mechanism, a.evidence_grade as grade, a.source_id as "sourceId"
+    from absorption_modifier_applied a
+    join absorption_modifier r on r.id = a.modifier_id
+    left join compound_class k on k.id = r.target_class_id
+    left join compound m on m.id = a.modifier_compound_id
+    where a.compound_id = ${id}
+    order by a.basis desc, a.evidence_grade`;
+  const cautionRows = await q<{ kind: string; summary: string; grade: Grade; sourceId: string }[]>`
+    select kind, summary, evidence_grade as grade, source_id as "sourceId" from caution where compound_id = ${id} order by evidence_grade`;
+  const refs = await sourceMap([...modifierRows.map((m) => m.sourceId), ...cautionRows.map((c) => c.sourceId)], q);
+
+  const modifiers = modifierRows.map(({ sourceId, modifierSlug, modifierName, ...m }): ModifierClaim => ({
+    ...m,
+    className: m.basis === "by-class" ? m.className : null,
+    modifierCompound: modifierSlug === null ? null : { slug: modifierSlug, name: modifierName! },
+    source: refs.get(sourceId)!,
+  }));
+  const cautions = cautionRows.map(({ sourceId, ...c }) => ({ ...c, source: refs.get(sourceId)! }));
+  const effects = await effectClaims({ compounds: [slug] }, q);
+  const prep = await prepClaims([slug], q);
+
+  return {
+    compound,
+    classes: [...classes],
+    foods,
+    absent,
+    modifiers,
+    prep,
+    effects,
+    cautions,
+    sources: dedupe([...modifiers.map((m) => m.source), ...prep.map((p) => p.source), ...effects.map((e) => e.source), ...cautions.map((c) => c.source)]),
+    bestGrade: best([...modifiers.map((m) => m.grade), ...effects.map((e) => e.grade), ...cautions.map((c) => c.grade)]),
+  };
+}
+
+/**
+ * One effect's page: the compounds behind it and the foods that carry them.
+ * @param slug [string] the effect's slug
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<EffectEntry | null>] null when no effect has that slug
+ */
+export async function effectEntry(slug: string, q: Sql = sql): Promise<EffectEntry | null> {
+  const [row] = await q<{ slug: string; name: string; direction: string; bodySystem: string | null }[]>`
+    select slug, name, direction, body_system as "bodySystem" from effect where slug = ${slug}`;
+  if (!row) return null;
+  const compounds = await effectClaims({ effect: slug }, q);
+  const ids = await q<{ id: string; slug: string; name: string }[]>`
+    select id, slug, name from compound where slug = any(${[...new Set(compounds.map((c) => c.compound.slug))]}) order by name`;
+  const foods = [];
+  for (const c of ids) {
+    const { ranked, absent } = await foodsCarrying(c.id, q);
+    foods.push({ compound: { slug: c.slug, name: c.name }, ranked, unmeasured: absent.unmeasured });
+  }
+  return {
+    effect: row,
+    compounds,
+    foods,
+    sources: dedupe(compounds.map((c) => c.source)),
+    bestGrade: best(compounds.map((c) => c.grade)),
+  };
+}
+
+/**
+ * Every ingredient, compound and effect as a Dex card, matching a search and filters.
+ * @param search [{ q?, kind?, type? }] words to match (fuzzily), an entry kind, a type badge
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<EntryCard[]>] best match first when searching; ingredients, compounds, then effects, by name
+ */
+export async function listEntries(search: { q?: string; kind?: EntryKind; type?: string }, q: Sql = sql): Promise<EntryCard[]> {
+  const words = search.q?.trim() ?? "";
+  const rows = await q<{ kind: EntryKind; slug: string; name: string; type: string | null; imageUrl: string | null; compoundClass: string | null }[]>`
+    with entry as (
+      select 'ingredient' as kind, slug, name, category as type, image_url as "imageUrl", null as "compoundClass" from ingredient
+      union all select 'compound', slug, name, class, null, class from compound
+      union all select 'effect', slug, name, body_system, null, null from effect
+    ),
+    scored as (
+      select *, name ilike ${"%" + words + "%"} as contains, word_similarity(${words}::text, name) as score from entry
+      where (${search.kind ?? null}::text is null or kind = ${search.kind ?? null})
+        and (${search.type ?? null}::text is null or type = ${search.type ?? null})
+    )
+    select kind, slug, name, type, "imageUrl", "compoundClass" from scored
+    where ${words}::text = '' or contains
+       or (not exists (select 1 from scored where contains) and score >= ${SEARCH_SIMILARITY})
+    order by contains desc, score desc, array_position(array['ingredient', 'compound', 'effect'], kind), name`;
+
+  const compoundStats = await q<{ slug: string; carriers: number; foods: number; topName: string | null }[]>`
+    select c.slug, count(ic.*) filter (where ic.amount_per_100g is null)::int as carriers,
+           count(ic.*) filter (where ic.amount_per_100g > 0)::int as foods,
+           (select i.name from ingredient_compound x join ingredient i on i.id = x.ingredient_id
+            where x.compound_id = c.id and x.amount_per_100g > 0 order by x.amount_per_100g desc limit 1) as "topName"
+    from compound c left join ingredient_compound ic on ic.compound_id = c.id group by c.id`;
+  const ingredientStats = await q<{ slug: string; measured: number; topIn: string[] }[]>`
+    select i.slug, count(ic.*) filter (where ic.amount_per_100g is not null)::int as measured,
+           coalesce(array_agg(c.name order by c.name) filter (where ic.amount_per_100g > 0 and ic.amount_per_100g = (
+             select max(x.amount_per_100g) from ingredient_compound x where x.compound_id = ic.compound_id)), '{}') as "topIn"
+    from ingredient i
+    left join ingredient_compound ic on ic.ingredient_id = i.id
+    left join compound c on c.id = ic.compound_id
+    group by i.id`;
+  const effectStats = await q<{ slug: string; compounds: number }[]>`
+    select e.slug, count(distinct ce.compound_id)::int as compounds from effect e left join compound_effect ce on ce.effect_id = e.id group by e.id`;
+  const grades = await bestGrades(q);
+
+  return rows.map((r): EntryCard => {
+    const stats: string[] = [];
+    if (r.kind === "ingredient") {
+      const s = ingredientStats.find((x) => x.slug === r.slug)!;
+      stats.push(`${s.measured} compounds measured`);
+      if (s.topIn.length > 0) stats.push(`Most ${s.topIn.slice(0, 2).join(" and ")} in the Dex`);
+    } else if (r.kind === "compound") {
+      const s = compoundStats.find((x) => x.slug === r.slug)!;
+      if (s.foods > 0) {
+        stats.push(s.foods === 1 ? "In 1 food" : `In ${s.foods} foods`);
+        stats.push(`Most in ${s.topName}`);
+      } else if (s.carriers > 0) {
+        stats.push(`${s.carriers === 1 ? "In 1 food" : `In ${s.carriers} foods`}, no amount measured`);
+      } else {
+        stats.push("In no food in the Dex");
+      }
+    } else {
+      const s = effectStats.find((x) => x.slug === r.slug)!;
+      stats.push(s.compounds === 1 ? "1 compound" : `${s.compounds} compounds`);
+    }
+    return { ...r, href: hrefOf(r.kind, r.slug), bestGrade: grades.get(`${r.kind}:${r.slug}`) ?? null, stats };
+  });
+}
+
+/**
+ * The distinct type badges of each entry kind, for the home filters.
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<Record<EntryKind, string[]>>] categories, compound classes and body systems
+ */
+export async function entryTypes(q: Sql = sql): Promise<Record<EntryKind, string[]>> {
+  const rows = await q<{ kind: EntryKind; types: string[] }[]>`
+    select 'ingredient' as kind, array_agg(distinct category order by category) filter (where category is not null) as types from ingredient
+    union all select 'compound', array_agg(distinct class order by class) filter (where class is not null) from compound
+    union all select 'effect', array_agg(distinct body_system order by body_system) filter (where body_system is not null) from effect`;
+  return Object.fromEntries(rows.map((r) => [r.kind, r.types ?? []])) as Record<EntryKind, string[]>;
+}
+
+/**
+ * Every source, with what it supports.
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<SourceUse[]>] studies first, then databases; newest first within each
+ */
+export async function sourceList(q: Sql = sql): Promise<SourceUse[]> {
+  const rows = await q<(SourceUse & { amounts: string[]; modifiers: string[]; prep: string[]; effects: string[]; classes: string[] })[]>`
+    select s.id, s.title, s.url, s.year, s.study_type as "studyType", s.limitations, s.doi, s.pmid, s.population,
+      coalesce((select array_agg(distinct i.name) from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id where ic.source_id = s.id), '{}') as amounts,
+      coalesce((select array_agg(distinct coalesce(c.name, k.name)) from absorption_modifier am
+                left join compound c on c.id = am.target_compound_id left join compound_class k on k.id = am.target_class_id
+                where am.source_id = s.id), '{}') as modifiers,
+      coalesce((select array_agg(distinct c.name || ', ' || p.prep_method) from prep_effect p join compound c on c.id = p.compound_id where p.source_id = s.id), '{}') as prep,
+      coalesce((select array_agg(distinct c.name || ' → ' || e.name) from compound_effect ce join compound c on c.id = ce.compound_id join effect e on e.id = ce.effect_id where ce.source_id = s.id), '{}') as effects,
+      coalesce((select array_agg(distinct k.name) from compound_class k where k.source_id = s.id), '{}') as classes
+    from source s
+    order by (s.study_type = 'database'), s.year desc nulls last, s.title`;
+  return rows.map(({ amounts, modifiers, prep, effects, classes, ...s }) => ({
+    ...s,
+    supports: [
+      ...(amounts.length ? [`Amounts per 100 g for ${amounts.join(", ")}`] : []),
+      ...modifiers.map((m) => `Absorption rule on ${m}`),
+      ...prep.map((p) => `Prep effect: ${p}`),
+      ...effects.map((e) => `Effect: ${e}`),
+      ...classes.map((k) => `ChEBI class: ${k}`),
+    ],
+  }));
+}
+
+/** @return [string] the Dex path of an entry */
+export function hrefOf(kind: EntryKind, slug: string): string {
+  return `/${kind === "ingredient" ? "ingredients" : kind === "compound" ? "compounds" : "effects"}/${slug}`;
+}
+
+async function foodsCarrying(compoundId: string, q: Sql): Promise<{ ranked: FoodAmount[]; absent: Absences }> {
+  const rows = await q<{ slug: string; name: string; imageUrl: string | null; amount: string | null; unit: MassUnit | null; servingG: string | null }[]>`
+    select i.slug, i.name, i.image_url as "imageUrl", ic.amount_per_100g as amount, ic.unit, i.typical_serving_g as "servingG"
+    from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id
+    where ic.compound_id = ${compoundId}
+    order by ic.amount_per_100g desc nulls last, i.name`;
+  const measured = rows.filter((r) => r.amount !== null && Number(r.amount) > 0);
+  const top = measured.length > 0 ? Number(measured[0].amount) : 0;
+  return {
+    ranked: measured.map((r) => ({
+      slug: r.slug,
+      name: r.name,
+      imageUrl: r.imageUrl,
+      amount: Number(r.amount),
+      unit: r.unit!,
+      perServing: r.servingG === null ? null : (Number(r.amount) * Number(r.servingG)) / 100,
+      share: Number(r.amount) / top,
+    })),
+    absent: {
+      none: rows.filter((r) => r.amount !== null && Number(r.amount) === 0).map(named),
+      unmeasured: rows.filter((r) => r.amount === null).map(named),
+    },
+  };
+}
+
+async function effectClaims(by: { compounds: string[] } | { effect: string }, q: Sql): Promise<EffectClaim[]> {
+  const compounds = "compounds" in by ? by.compounds : null;
+  const effectSlug = "effect" in by ? by.effect : null;
+  const rows = await q<{ effectSlug: string; effectName: string; direction: string; bodySystem: string | null; compoundSlug: string; compoundName: string; compoundClass: string | null; summary: string | null; doseContext: string | null; onset: string | null; grade: Grade; sourceId: string }[]>`
+    select e.slug as "effectSlug", e.name as "effectName", e.direction, e.body_system as "bodySystem",
+           c.slug as "compoundSlug", c.name as "compoundName", c.class as "compoundClass",
+           ce.summary, ce.dose_context as "doseContext", ce.onset, ce.evidence_grade as grade, ce.source_id as "sourceId"
+    from compound_effect ce join effect e on e.id = ce.effect_id join compound c on c.id = ce.compound_id
+    where (${compounds}::text[] is null or c.slug = any(${compounds}::text[]))
+      and (${effectSlug}::text is null or e.slug = ${effectSlug})
+    order by ce.evidence_grade, e.name, c.name`;
+  const refs = await sourceMap(rows.map((r) => r.sourceId), q);
+  return rows.map((r) => ({
+    effect: { slug: r.effectSlug, name: r.effectName, direction: r.direction, bodySystem: r.bodySystem },
+    compound: { slug: r.compoundSlug, name: r.compoundName, class: r.compoundClass },
+    summary: r.summary,
+    doseContext: r.doseContext,
+    onset: r.onset,
+    grade: r.grade,
+    source: refs.get(r.sourceId)!,
+  }));
+}
+
+async function prepClaims(compoundSlugs: string[], q: Sql): Promise<PrepClaim[]> {
+  const rows = await q<{ slug: string; name: string; method: string; retentionFactor: string | null; direction: string | null; note: string | null; sourceId: string }[]>`
+    select c.slug, c.name, p.prep_method as method, p.retention_factor as "retentionFactor", p.direction,
+           p.bioavailability_note as note, p.source_id as "sourceId"
+    from prep_effect p join compound c on c.id = p.compound_id
+    where c.slug = any(${compoundSlugs})
+    order by p.prep_method, c.name`;
+  const refs = await sourceMap(rows.map((r) => r.sourceId), q);
+  return rows.map((r) => ({
+    compound: { slug: r.slug, name: r.name },
+    method: r.method,
+    retentionFactor: r.retentionFactor === null ? null : Number(r.retentionFactor),
+    direction: r.direction,
+    note: r.note,
+    source: refs.get(r.sourceId)!,
+  }));
+}
+
+async function rulesById(ids: string[], q: Sql): Promise<Map<string, { className: string | null; source: SourceRef }>> {
+  const rows = await q<{ id: string; className: string | null; sourceId: string }[]>`
+    select am.id, k.name as "className", am.source_id as "sourceId"
+    from absorption_modifier am left join compound_class k on k.id = am.target_class_id
+    where am.id = any(${ids}::uuid[])`;
+  const refs = await sourceMap(rows.map((r) => r.sourceId), q);
+  return new Map(rows.map((r) => [r.id, { className: r.className, source: refs.get(r.sourceId)! }]));
+}
+
+async function sourcesByIds(ids: string[], q: Sql): Promise<SourceRef[]> {
+  return [
+    ...(await q<SourceRef[]>`
+      select id, title, url, year, study_type as "studyType", limitations from source
+      where id = any(${ids}::uuid[]) order by title`),
+  ];
+}
+
+async function sourceMap(ids: string[], q: Sql): Promise<Map<string, SourceRef>> {
+  return new Map((await sourcesByIds([...new Set(ids)], q)).map((s) => [s.id, s]));
+}
+
+async function bestGrades(q: Sql): Promise<Map<string, Grade>> {
+  const rows = await q<{ key: string; grade: Grade }[]>`
+    with compound_grade as (
+      select compound_id, min(grade) as grade from (
+        select compound_id, evidence_grade as grade from compound_effect
+        union all select compound_id, evidence_grade from absorption_modifier_applied
+        union all select compound_id, evidence_grade from caution where compound_id is not null
+      ) g group by compound_id
+    )
+    select 'compound:' || c.slug as key, cg.grade from compound_grade cg join compound c on c.id = cg.compound_id
+    union all
+    select 'ingredient:' || i.slug, min(g.grade) from ingredient i join (
+      select ic.ingredient_id, cg.grade from ingredient_compound ic join compound_grade cg on cg.compound_id = ic.compound_id
+      where ic.amount_per_100g > 0
+      union all select ingredient_id, evidence_grade from caution where ingredient_id is not null
+    ) g on g.ingredient_id = i.id group by i.slug
+    union all
+    select 'effect:' || e.slug, min(ce.evidence_grade) from effect e join compound_effect ce on ce.effect_id = e.id group by e.slug`;
+  return new Map(rows.map((r) => [r.key, r.grade]));
+}
+
+function named(r: { slug: string; name: string }): Named {
+  return { slug: r.slug, name: r.name };
+}
+
+function dedupe(sources: SourceRef[]): SourceRef[] {
+  return [...new Map(sources.map((s) => [s.id, s])).values()].sort((a, b) => a.title.localeCompare(b.title));
+}
+
+function best(grades: Grade[]): Grade | null {
+  return grades.length === 0 ? null : grades.reduce((a, b) => (b < a ? b : a));
+}

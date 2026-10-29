@@ -16,6 +16,8 @@ import type {
   UpperLimitFact,
 } from "epistasis";
 
+type Sql = typeof sql;
+
 /**
  * Load a recipe with its ingredients (in position order) and steps.
  * @param slug [string] the recipe's slug
@@ -48,11 +50,12 @@ export async function loadRecipe(slug: string): Promise<RecipeInput> {
 /**
  * Load every fact about some ingredients and the compounds they carry.
  * @param ingredientSlugs [string[]] the ingredients in play
+ * @param q [Sql] the connection or transaction to read through
  * @return [Promise<Facts>] amounts, prep effects, modifiers, cautions, effects, upper limits, microbes
  * @throws when a fact lacks the source or grade the plan requires, or carries an unknown unit
  */
-export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
-  const amounts = await sql<{ ingredientSlug: string; compoundSlug: string; amountPer100g: string | null; unit: string | null; amountLow: string | null; amountHigh: string | null }[]>`
+export async function loadFacts(ingredientSlugs: string[], q: Sql = sql): Promise<Facts> {
+  const amounts = await q<{ ingredientSlug: string; compoundSlug: string; amountPer100g: string | null; unit: string | null; amountLow: string | null; amountHigh: string | null }[]>`
     select i.slug as "ingredientSlug", c.slug as "compoundSlug", ic.amount_per_100g as "amountPer100g", ic.unit,
            ic.amount_low as "amountLow", ic.amount_high as "amountHigh"
     from ingredient_compound ic
@@ -62,14 +65,14 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
     order by i.slug, c.slug`;
   const compoundSlugs = [...new Set(amounts.map((a) => a.compoundSlug))];
 
-  const prepEffects = await sql<{ compoundSlug: string; prepMethod: string; retentionFactor: string | null; direction: string | null; note: string | null; sourceId: string | null }[]>`
+  const prepEffects = await q<{ compoundSlug: string; prepMethod: string; retentionFactor: string | null; direction: string | null; note: string | null; sourceId: string | null }[]>`
     select c.slug as "compoundSlug", p.prep_method as "prepMethod", p.retention_factor as "retentionFactor",
            p.direction, p.bioavailability_note as note, p.source_id as "sourceId"
     from prep_effect p join compound c on c.id = p.compound_id
     where c.slug = any(${compoundSlugs})`;
 
   // Modifiers come applied: a class rule arrives once per compound it reaches, with its basis.
-  const modifiers = await sql<{ id: string; targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[]; basis: string }[]>`
+  const modifiers = await q<{ id: string; targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[]; basis: string }[]>`
     select am.modifier_id as id, t.slug as "targetCompoundSlug", m.slug as "modifierCompoundSlug", am.modifier_condition as condition,
            am.direction, am.magnitude, am.mechanism, am.evidence_grade as grade, am.source_id as "sourceId", am.basis,
            coalesce((select array_agg(i.name order by i.name) from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id
@@ -79,32 +82,32 @@ export async function loadFacts(ingredientSlugs: string[]): Promise<Facts> {
     left join compound m on m.id = am.modifier_compound_id
     where t.slug = any(${compoundSlugs})`;
 
-  const cautions = await sql<{ compoundSlug: string | null; ingredientSlug: string | null; kind: string; summary: string; grade: string | null; sourceId: string | null }[]>`
+  const cautions = await q<{ compoundSlug: string | null; ingredientSlug: string | null; kind: string; summary: string; grade: string | null; sourceId: string | null }[]>`
     select c.slug as "compoundSlug", i.slug as "ingredientSlug", k.kind, k.summary, k.evidence_grade as grade, k.source_id as "sourceId"
     from caution k
     left join compound c on c.id = k.compound_id
     left join ingredient i on i.id = k.ingredient_id
     where c.slug = any(${compoundSlugs}) or i.slug = any(${ingredientSlugs})`;
 
-  const compoundEffects = await sql<{ compoundSlug: string; effectSlug: string; direction: string; onset: string | null; grade: string | null; sourceId: string | null }[]>`
+  const compoundEffects = await q<{ compoundSlug: string; effectSlug: string; direction: string; onset: string | null; grade: string | null; sourceId: string | null }[]>`
     select c.slug as "compoundSlug", e.slug as "effectSlug", e.direction, ce.onset, ce.evidence_grade as grade, ce.source_id as "sourceId"
     from compound_effect ce
     join compound c on c.id = ce.compound_id
     join effect e on e.id = ce.effect_id
     where c.slug = any(${compoundSlugs})`;
 
-  const upperLimits = await sql<{ compoundSlug: string; amount: string; unit: string }[]>`
+  const upperLimits = await q<{ compoundSlug: string; amount: string; unit: string }[]>`
     select slug as "compoundSlug", upper_limit_amount as amount, upper_limit_unit as unit
     from compound where slug = any(${compoundSlugs}) and upper_limit_amount is not null`;
 
-  const microbeSubstrates = await sql<{ microbeSlug: string; compoundSlug: string; relationship: string; grade: string | null; sourceId: string | null }[]>`
+  const microbeSubstrates = await q<{ microbeSlug: string; compoundSlug: string; relationship: string; grade: string | null; sourceId: string | null }[]>`
     select m.slug as "microbeSlug", c.slug as "compoundSlug", ms.relationship, ms.evidence_grade as grade, ms.source_id as "sourceId"
     from microbe_substrate ms
     join microbe m on m.id = ms.microbe_id
     join compound c on c.id = ms.compound_id
     where c.slug = any(${compoundSlugs})`;
 
-  const microbeMetabolites = await sql<{ microbeSlug: string; substrateCompoundSlug: string | null; productCompoundSlug: string; grade: string | null; sourceId: string | null }[]>`
+  const microbeMetabolites = await q<{ microbeSlug: string; substrateCompoundSlug: string | null; productCompoundSlug: string; grade: string | null; sourceId: string | null }[]>`
     select m.slug as "microbeSlug", s.slug as "substrateCompoundSlug", p.slug as "productCompoundSlug",
            mm.evidence_grade as grade, mm.source_id as "sourceId"
     from microbe_metabolite mm
