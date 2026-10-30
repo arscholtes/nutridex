@@ -7,6 +7,7 @@ import type {
   Facts,
   Grade,
   MassUnit,
+  Unit,
   MicrobeMetaboliteFact,
   MicrobeSubstrateFact,
   ModifierFact,
@@ -120,7 +121,7 @@ export async function loadFacts(ingredientSlugs: string[], q: Sql = sql): Promis
     amounts: amounts.map((a) => ({
       ...a,
       amountPer100g: numberOrNull(a.amountPer100g),
-      unit: a.unit === null ? null : massUnit(a.unit, `${a.ingredientSlug} · ${a.compoundSlug}`),
+      unit: a.unit === null ? null : amountUnit(a.unit, `${a.ingredientSlug} · ${a.compoundSlug}`),
       amountLow: numberOrNull(a.amountLow),
       amountHigh: numberOrNull(a.amountHigh),
     })),
@@ -182,6 +183,10 @@ export async function loadFacts(ingredientSlugs: string[], q: Sql = sql): Promis
 
 function numberOrNull(value: string | null): number | null {
   return value === null ? null : Number(value);
+}
+
+function amountUnit(unit: string, where: string): Unit {
+  return oneOf(unit, ["g", "mg", "µg", "kcal"] as const, where);
 }
 
 function massUnit(unit: string, where: string): MassUnit {

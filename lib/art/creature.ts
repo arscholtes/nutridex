@@ -1,6 +1,8 @@
 // A creature for a compound, drawn from its data until it has drawn art: its class sets the colour
-// and body shape, and its slug places the two atoms it holds, so no two compounds look the same.
+// and body shape, and its place among its class in the seed sets where its two atoms sit and how
+// big they are, so no two seeded compounds look the same (up to 21 per class).
 // The tile, outline and face follow tools/art/STYLE.md, the house style of the drawn ingredients.
+import { COMPOUNDS } from "../../data/seed/compounds.ts";
 import { isDark, tint, typeColor } from "./palette.ts";
 
 type Shape = "round" | "tall" | "hex" | "drop" | "gem" | "block";
@@ -15,6 +17,9 @@ const SHAPE_OF: Record<string, Shape> = {
   nitrate: "gem",
   antinutrient: "gem",
   macronutrient: "drop",
+  energy: "drop",
+  mineral: "gem",
+  nutrient: "round",
 };
 
 const BODIES: Record<Shape, (fill: string) => string> = {
@@ -37,6 +42,8 @@ const ATOMS: [number, number, number, number][][] = [
   [[204, 56, 182, 78], [48, 196, 68, 184]],
 ];
 
+const ATOM_RADII = [13, 11, 15];
+
 /**
  * @param compound [{ slug, name, class }] the compound to draw
  * @return [string] a 256 x 256 SVG
@@ -44,8 +51,10 @@ const ATOMS: [number, number, number, number][][] = [
 export function compoundCreature(compound: { slug: string; name: string; class: string | null }): string {
   const body = typeColor(compound.class);
   const dark = isDark(body);
-  const atoms = ATOMS[hash(compound.slug) % ATOMS.length]
-    .map(([x, y, bx, by]) => `<path d="M${x} ${y} L${bx} ${by}"/><circle cx="${x}" cy="${y}" r="13" fill="${tint(body, 0.25)}"/>`)
+  const look = variant(compound);
+  const radius = ATOM_RADII[Math.floor(look / ATOMS.length) % ATOM_RADII.length];
+  const atoms = ATOMS[look % ATOMS.length]
+    .map(([x, y, bx, by]) => `<path d="M${x} ${y} L${bx} ${by}"/><circle cx="${x}" cy="${y}" r="${radius}" fill="${tint(body, 0.25)}"/>`)
     .join("");
   const smile = dark ? "#FFFFFF" : "#1B1B1F";
   const blush = dark ? `fill="#FF9EC4" opacity="0.55"` : `fill="#FF5F6D" opacity="0.45"`;
@@ -68,6 +77,12 @@ export function compoundCreature(compound: { slug: string; name: string; class: 
 /** @return [string] the SVG as a data URL an <img> can show */
 export function creatureDataUrl(svg: string): string {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+// A seeded compound's place among its class, so each gets its own look; a hash for any other.
+function variant(compound: { slug: string; class: string | null }): number {
+  const place = COMPOUNDS.filter((c) => c.class === compound.class).findIndex((c) => c.slug === compound.slug);
+  return place >= 0 ? place : hash(compound.slug);
 }
 
 function hash(text: string): number {

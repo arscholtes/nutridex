@@ -32,7 +32,7 @@ export type AmountFact = {
   ingredientSlug: string;
   compoundSlug: string;
   amountPer100g: number | null;
-  unit: MassUnit | null;
+  unit: Unit | null;
   amountLow: number | null;
   amountHigh: number | null;
 };
@@ -122,7 +122,7 @@ export type Contribution = {
   ingredientSlug: string;
   compoundSlug: string;
   amount: number | null;
-  unit: MassUnit | null;
+  unit: Unit | null;
   range: [number, number] | null;
   /** One note per prep method applied, in order; empty when nothing changed the food. */
   prep: PrepNote[];
@@ -139,13 +139,13 @@ export type PrepNote = {
 };
 
 /** The part of a total that presence, caution, effect and excess checks read. */
-export type AmountOf = { compoundSlug: string; amount: number | null; unit: MassUnit | null };
+export type AmountOf = { compoundSlug: string; amount: number | null; unit: Unit | null };
 
 export type CompoundTotal = {
   compoundSlug: string;
   /** Per serving; null when no ingredient's amount is known. */
   amount: number | null;
-  unit: MassUnit | null;
+  unit: Unit | null;
   range: [number, number] | null;
   contributors: { ingredientSlug: string; amount: number | null }[];
   /** Ingredients that carry the compound with no measured amount: the total leaves them out. */
@@ -201,7 +201,7 @@ export type FeedFlag = {
 export type StackTotal = {
   compoundSlug: string;
   amount: number | null;
-  unit: MassUnit | null;
+  unit: Unit | null;
   contributors: { itemSlug: string; amount: number | null }[];
   missingFrom: string[];
 };
@@ -209,7 +209,7 @@ export type StackTotal = {
 export type ExcessCheck = {
   compoundSlug: string;
   amount: number;
-  unit: MassUnit;
+  unit: Unit;
   upperLimit: { amount: number; unit: MassUnit } | null;
   status: "over" | "within" | "no upper limit on file";
 };

@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, test } from "vitest";
-import { compoundAmounts, type FdcFood } from "../lib/usda/nutrients.ts";
+import { compoundAmounts, PANEL, USDA_NUTRIENTS, type FdcFood } from "../lib/usda/nutrients.ts";
 
 const carrots: FdcFood = JSON.parse(
   readFileSync(new URL("./fixtures/fdc-170393-carrots-raw.json", import.meta.url), "utf8"),
@@ -30,9 +30,36 @@ describe("compoundAmounts, against USDA's own record for raw carrots (fdcId 1703
   });
 
   test("every mapped compound USDA reports for carrots is returned, and nothing else", () => {
-    expect([...bySlug(carrots).keys()].sort()).toEqual(
-      ["alpha-carotene", "beta-carotene", "dietary-fiber", "lutein-zeaxanthin", "lycopene", "total-fat", "vitamin-c", "vitamin-k1"],
-    );
+    expect([...bySlug(carrots).keys()].sort()).toEqual([
+      "alpha-carotene", "beta-carotene", "calcium", "carbohydrate", "choline", "copper", "dietary-fiber", "energy",
+      "folate", "iron", "lutein-zeaxanthin", "lycopene", "magnesium", "manganese", "niacin", "pantothenic-acid",
+      "phosphorus", "potassium", "protein", "retinol", "riboflavin", "saturated-fat", "selenium", "sodium",
+      "thiamin", "total-fat", "total-sugars", "vitamin-a", "vitamin-b12", "vitamin-b6", "vitamin-c", "vitamin-d",
+      "vitamin-e", "vitamin-k1", "zinc",
+    ]);
+  });
+});
+
+describe("the nutrient panel", () => {
+  test("shows 30 nutrients, each mapped to a USDA nutrient", () => {
+    expect(PANEL).toHaveLength(30);
+    expect(new Set(PANEL.map((p) => p.slug)).size).toBe(30);
+    for (const p of PANEL) expect(USDA_NUTRIENTS).toHaveProperty(p.slug);
+  });
+
+  test("maps retinol too, for vitamin A's upper limit, without showing it", () => {
+    expect(USDA_NUTRIENTS).toHaveProperty("retinol");
+    expect(PANEL.map((p) => p.slug)).not.toContain("retinol");
+  });
+
+  test("energy comes back in kcal, as USDA reports it", () => {
+    expect(bySlug(carrots).get("energy")).toEqual({ compoundSlug: "energy", amountPer100g: 41, unit: "kcal" });
+  });
+
+  test("raw carrots fill every panel cell, measured zeros included", () => {
+    const amounts = bySlug(carrots);
+    expect(PANEL.filter((p) => !amounts.has(p.slug))).toEqual([]);
+    expect(amounts.get("vitamin-b12")).toMatchObject({ amountPer100g: 0, unit: "µg" });
   });
 });
 

@@ -9,7 +9,7 @@ describe("home search", () => {
   test("lists every ingredient, compound and effect when nothing is searched", async () => {
     const cards = await listEntries({});
     const count = (kind: string) => cards.filter((c) => c.kind === kind).length;
-    expect([count("ingredient"), count("compound"), count("effect")]).toEqual([15, 14, 1]);
+    expect([count("ingredient"), count("compound"), count("effect")]).toEqual([15, 41, 1]);
   });
 
   test('finds turmeric when you type "tumeric", the plan\'s own example', async () => {
