@@ -29,8 +29,8 @@ describe("browsing carrot → beta-carotene → skin color → pumpkin", () => {
   test("every compound the carrot carries links to its own entry, not only those with a flag", async () => {
     const entry = found(await ingredientEntry("carrot"));
     const html = renderToStaticMarkup(<IngredientEntryView entry={entry} />);
-    expect(entry.compounds.map((c) => c.slug)).toContain("vitamin-k1");
-    expect(links(html)).toEqual(expect.arrayContaining(entry.compounds.map((c) => `/compounds/${c.slug}`)));
+    expect(entry.panel.map((r) => r.slug)).toContain("vitamin-k1");
+    expect(links(html)).toEqual(expect.arrayContaining([...entry.compounds, ...entry.panel].map((c) => `/compounds/${c.slug}`)));
   });
 
   test("the beta-carotene entry links to skin color", async () => {

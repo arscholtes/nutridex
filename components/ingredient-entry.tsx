@@ -1,5 +1,6 @@
 import { typeColor } from "../lib/art/palette.ts";
-import { hrefOf, type IngredientEntry } from "../lib/db/dex.ts";
+import { hrefOf, type IngredientEntry, type PanelRow } from "../lib/db/dex.ts";
+import type { PanelGroup } from "../lib/usda/nutrients.ts";
 import { AbsorptionTipCard, EffectCard, PrepCard } from "./claims.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
 import { AmountBar, EntryArt, EntryLink, formatAmount, Section, SourcesSection, TypeBadge } from "./parts.tsx";
@@ -49,6 +50,15 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
         )}
       </Section>
 
+      <Section title="Nutrition per 100 g" empty="No panel nutrients are in the Dex yet.">
+        {PANEL_GROUPS.map(({ group, title }) => (
+          <PanelTable key={group} title={title} rows={entry.panel.filter((r) => r.group === group)} />
+        ))}
+        {entry.panel.length > 0 && (
+          <p className="text-sm text-neutral-500">From USDA FoodData Central. Where USDA has no value for this food it says missing, never zero.</p>
+        )}
+      </Section>
+
       <Section title="Absorption, for 100 g eaten on its own" empty="No absorption rule reaches what is in it yet.">
         {entry.absorption.map((tip) => (
           <AbsorptionTipCard key={`${tip.flag.compoundSlug}:${tip.flag.ruleIds.join(",")}`} tip={tip} />
@@ -92,5 +102,34 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
 
       <SourcesSection sources={entry.sources} />
     </main>
+  );
+}
+
+const PANEL_GROUPS: { group: PanelGroup; title: string }[] = [
+  { group: "macro", title: "Energy and macronutrients" },
+  { group: "vitamin", title: "Vitamins and choline" },
+  { group: "mineral", title: "Minerals" },
+];
+
+/** One group of the nutrient panel: each nutrient's amount per 100 g, or missing. */
+function PanelTable({ title, rows }: { title: string; rows: PanelRow[] }) {
+  return (
+    <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4">
+      <h3 className="text-sm font-semibold text-neutral-300">{title}</h3>
+      <table className="mt-2 w-full text-sm">
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.slug} className="border-t border-neutral-800">
+              <td className="py-1.5">
+                <EntryLink href={hrefOf("compound", r.slug)}>{r.name}</EntryLink>
+              </td>
+              <td className="py-1.5 text-right tabular-nums text-neutral-300">
+                {r.amount === null ? <span className="text-neutral-500">missing</span> : formatAmount(r.amount, r.unit!)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

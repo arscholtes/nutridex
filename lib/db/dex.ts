@@ -1,6 +1,7 @@
 // What the Dex screens show, read from the database. An ingredient's flags and effects come from
 // the engine run on 100 g of it, so a Dex entry and a recipe judge the same facts the same way.
-import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type MassUnit } from "epistasis";
+import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type Unit } from "epistasis";
+import { PANEL, PANEL_COMPOUNDS, type PanelGroup } from "../usda/nutrients.ts";
 import { sql } from "./client.ts";
 import { loadFacts } from "./engine-input.ts";
 
@@ -21,18 +22,21 @@ export type SourceRef = {
 export type FoodAmount = Named & {
   imageUrl: string | null;
   amount: number;
-  unit: MassUnit;
+  unit: Unit;
   /** Per typical serving, when the food has one on file. */
   perServing: number | null;
   /** amount ÷ the most any seeded food carries, 0 to 1. */
   share: number;
 };
 
+/** One row of a food's nutrient panel: USDA's amount per 100 g, or null when USDA has none. */
+export type PanelRow = { slug: string; name: string; group: PanelGroup; amount: number | null; unit: Unit | null };
+
 /** One compound in a food, against the richest seeded food for that compound. */
 export type CompoundAmount = Named & {
   class: string | null;
   amount: number;
-  unit: MassUnit;
+  unit: Unit;
   share: number;
   richest: Named;
 };
@@ -85,6 +89,8 @@ export type IngredientEntry = {
   /** Ranked by share of the richest seeded food: what this food stands out for. */
   compounds: CompoundAmount[];
   absent: Absences;
+  /** The 30-nutrient panel in display order; panel nutrients are not repeated in compounds or absent. */
+  panel: PanelRow[];
   absorption: AbsorptionTip[];
   /** What the missed absorption flags suggest adding. */
   pairsWellWith: string[];
@@ -161,7 +167,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     select id, slug, name, category, image_url as "imageUrl" from ingredient where slug = ${slug}`;
   if (!row) return null;
 
-  const amounts = await q<{ slug: string; name: string; class: string | null; amount: string | null; unit: MassUnit | null; sourceId: string | null; richestAmount: string | null; richestSlug: string | null; richestName: string | null }[]>`
+  const amounts = await q<{ slug: string; name: string; class: string | null; amount: string | null; unit: Unit | null; sourceId: string | null; richestAmount: string | null; richestSlug: string | null; richestName: string | null }[]>`
     select c.slug, c.name, c.class, ic.amount_per_100g as amount, ic.unit, ic.source_id as "sourceId",
            top.amount_per_100g as "richestAmount", top.slug as "richestSlug", top.name as "richestName"
     from ingredient_compound ic
@@ -173,7 +179,15 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     ) top on true
     where ic.ingredient_id = ${row.id}
     order by c.name`;
-  const compounds = amounts
+  const panelNames = new Map(
+    (await q<{ slug: string; name: string }[]>`select slug, name from compound where slug = any(${PANEL.map((p) => p.slug)})`).map((c) => [c.slug, c.name]),
+  );
+  const panel = PANEL.map((p): PanelRow => {
+    const a = amounts.find((x) => x.slug === p.slug && x.amount !== null);
+    return { slug: p.slug, name: panelNames.get(p.slug)!, group: p.group, amount: a ? Number(a.amount) : null, unit: a ? a.unit : null };
+  });
+  const others = amounts.filter((a) => !PANEL_COMPOUNDS.includes(a.slug));
+  const compounds = others
     .filter((a) => a.amount !== null && Number(a.amount) > 0)
     .map((a): CompoundAmount => ({
       slug: a.slug,
@@ -186,8 +200,8 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     }))
     .sort((a, b) => b.share - a.share || a.name.localeCompare(b.name));
   const absent = {
-    none: amounts.filter((a) => a.amount !== null && Number(a.amount) === 0).map(named),
-    unmeasured: amounts.filter((a) => a.amount === null).map(named),
+    none: others.filter((a) => a.amount !== null && Number(a.amount) === 0).map(named),
+    unmeasured: others.filter((a) => a.amount === null).map(named),
   };
   const compoundNames = new Map(amounts.map((a) => [a.slug, a.name]));
 
@@ -220,6 +234,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     ingredient: { slug: row.slug, name: row.name, category: row.category, imageUrl: row.imageUrl },
     compounds,
     absent,
+    panel,
     absorption,
     pairsWellWith: [...new Set(profile.absorption.flatMap((f) => (f.status === "missed" && f.suggestion ? [f.suggestion] : [])))],
     prep,
@@ -427,7 +442,7 @@ export function hrefOf(kind: EntryKind, slug: string): string {
 }
 
 async function foodsCarrying(compoundId: string, q: Sql): Promise<{ ranked: FoodAmount[]; absent: Absences }> {
-  const rows = await q<{ slug: string; name: string; imageUrl: string | null; amount: string | null; unit: MassUnit | null; servingG: string | null }[]>`
+  const rows = await q<{ slug: string; name: string; imageUrl: string | null; amount: string | null; unit: Unit | null; servingG: string | null }[]>`
     select i.slug, i.name, i.image_url as "imageUrl", ic.amount_per_100g as amount, ic.unit, i.typical_serving_g as "servingG"
     from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id
     where ic.compound_id = ${compoundId}
