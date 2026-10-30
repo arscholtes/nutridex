@@ -3,6 +3,8 @@
 
 export type Grade = "A" | "B" | "C" | "D";
 export type MassUnit = "g" | "mg" | "µg";
+/** What a compound amount is measured in: a mass, or energy in kcal. */
+export type Unit = MassUnit | "kcal";
 
 export type RecipeInput = {
   slug: string;
