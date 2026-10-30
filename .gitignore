@@ -9,3 +9,6 @@ next-env.d.ts
 
 # Project-local Postgres cluster (scripts/db-local.sh)
 .pgdata/
+
+# WebStorm's per-project settings
+.idea/
