@@ -12,6 +12,9 @@ const TYPE_COLORS: Record<string, string> = {
   nitrate: "#4FC3F7",
   antinutrient: "#9E9E9E",
   macronutrient: "#FFE082",
+  energy: "#FF7043",
+  mineral: "#7986CB",
+  nutrient: "#A1887F",
   // Ingredient categories
   vegetable: "#43B05C",
   fruit: "#FF5F6D",

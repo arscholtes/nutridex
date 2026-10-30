@@ -1,17 +1,21 @@
 // Mass units are exact multiples of each other, so the engine converts freely between them.
-import type { MassUnit } from "./types.ts";
+// Energy (kcal) is not a mass: it converts to nothing but itself.
+import type { MassUnit, Unit } from "./types.ts";
 
 const MICROGRAMS: Record<MassUnit, number> = { g: 1_000_000, mg: 1_000, "µg": 1 };
 
 /**
- * Convert a mass from one unit to another.
- * @param amount [number] the mass in `from`
- * @param from [MassUnit] its unit
- * @param to [MassUnit] the unit wanted
- * @return [number] the same mass in `to`
+ * Convert an amount from one unit to another.
+ * @param amount [number] the amount in `from`
+ * @param from [Unit] its unit
+ * @param to [Unit] the unit wanted
+ * @return [number] the same amount in `to`
+ * @throws when one unit is energy and the other a mass
  */
-export function convert(amount: number, from: MassUnit, to: MassUnit): number {
-  return from === to ? amount : (amount * MICROGRAMS[from]) / MICROGRAMS[to];
+export function convert(amount: number, from: Unit, to: Unit): number {
+  if (from === to) return amount;
+  if (from === "kcal" || to === "kcal") throw new Error(`can't convert ${from} to ${to}: energy is not a mass`);
+  return (amount * MICROGRAMS[from]) / MICROGRAMS[to];
 }
 
 /**

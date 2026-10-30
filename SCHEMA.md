@@ -58,7 +58,7 @@ Things you eat. Seeded with the plan's 15; `usda_fdc_id` pins each to one USDA r
 
 ### `compound`
 
-Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USDA's total lipid, which the engine's "dietary fat present" condition reads) and `dietary-fiber` (USDA's total dietary fiber, which gives juicing's fiber loss an amount), identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
+Chemical compounds, first-class. Seeded with the plan's 12 plus `total-fat` (USDA's total lipid, which the engine's "dietary fat present" condition reads) and `dietary-fiber` (USDA's total dietary fiber, which gives juicing's fiber loss an amount), and the nutrient panel's other 27 (`PANEL_COMPOUNDS` in `lib/usda/nutrients.ts`: energy, macronutrients, vitamins, choline, minerals, and retinol for vitamin A's upper limit), identity only: properties wait for a source. `upper_limit_amount`/`upper_limit_unit` feed the supplement excess check; `art_url` is the creature card.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -110,7 +110,7 @@ Primary key (`class_id`, `compound_id`).
 
 ### `ingredient_compound`
 
-How much of a compound an ingredient has, per 100 g. Amounts are USDA's as reported, measured zeros included; `null` means not measured and the app shows it as missing, never as zero.
+How much of a compound an ingredient has, per 100 g. Amounts are USDA's as reported, measured zeros included; `null` means not measured and the app shows it as missing, never as zero. A panel nutrient USDA does not report for a food has no row at all, and the panel shows it as missing too. `unit` is `g`, `mg` or `µg`, or `kcal` for `energy`; the engine never converts kcal to a mass.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |

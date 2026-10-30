@@ -1,7 +1,7 @@
 // Small pieces every Dex screen uses: type badges, art, amount bars, source links and sections.
 import Link from "next/link";
 import type { ReactNode } from "react";
-import type { MassUnit } from "epistasis";
+import type { Unit } from "epistasis";
 import { compoundCreature, creatureDataUrl } from "../lib/art/creature.ts";
 import { typeColor } from "../lib/art/palette.ts";
 import type { Named, SourceRef } from "../lib/db/dex.ts";
@@ -9,7 +9,7 @@ import type { Named, SourceRef } from "../lib/db/dex.ts";
 const NUMBER = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
 
 /** @return [string] e.g. "8,285 µg" */
-export function formatAmount(amount: number, unit: MassUnit): string {
+export function formatAmount(amount: number, unit: Unit): string {
   return `${NUMBER.format(amount)} ${unit}`;
 }
 
