@@ -13,8 +13,11 @@ plus granny-smith-apple.svg, watermelon.svg, butternut-squash.svg, olive-oil.svg
 - Keep every painted pixel (stroke included) inside the tile; aim for x and y within 20–236.
 - Outlines #1B1B1F, width 6 on bodies, leaves, stems, caps; stroke-linejoin and stroke-linecap round.
   Detail lines (veins, ridges, seeds, texture) width 3–4, in a colour that shows against the body.
-- Flat fills plus ONE lighter highlight shape on the body, no stroke. No gradients, filters, masks, text,
-  <image>, <script>, href or external references. Under 4 KB.
+- No text, <image>, <script>, foreignObject, or any reference outside the file (href="#id" within the file is
+  fine). Under 16 KB. These are the rules tests/art-style.test.ts enforces; everything else in this file is the
+  look, and the look is changing: a new, slightly more realistic style is being chosen from samples (2026-10-31).
+  Until it is written up here, gradients, filters and masks are allowed and the face below is not required.
+- Flat fills plus ONE lighter highlight shape on the body, no stroke: the 2026-10-12 look, kept for reference.
 - Body fills about 60–75% of the tile height, centred.
 
 ## The face — identical on every creature
