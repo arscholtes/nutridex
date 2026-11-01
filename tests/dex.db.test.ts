@@ -1,9 +1,59 @@
 // The Dex home's search and filters, and the sources page, against a database `npm run seed` has filled.
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
-import { compoundEntry, entryTypes, ingredientEntry, listEntries, sourceList } from "../lib/db/dex.ts";
+import { compoundEntry, dexCounts, dexPager, entryTypes, ingredientEntry, listEntries, sourceList } from "../lib/db/dex.ts";
 
 afterAll(() => sql.end());
+
+describe("dex numbers", () => {
+  test("a card's number is its place by name within its kind", async () => {
+    const cards = await listEntries({});
+    const number = (slug: string) => cards.find((c) => c.slug === slug)!.number;
+    expect([number("beet"), number("carrot"), number("watermelon"), number("skin-color")]).toEqual(["F001", "F006", "F015", "E001"]);
+    expect(number("alpha-carotene")).toMatch(/^C\d{3}$/);
+  });
+
+  test("a search keeps each entry's number rather than renumbering what it found", async () => {
+    const [carrot] = await listEntries({ q: "carrot", kind: "ingredient" });
+    expect(carrot.number).toBe("F006");
+  });
+});
+
+describe("the dex's counts", () => {
+  test("says how many entries each kind holds", async () => {
+    expect(await dexCounts()).toEqual({ ingredient: 15, compound: 41, effect: 1 });
+  });
+});
+
+describe("stepping through the dex", () => {
+  test("goes to the neighbours by number, within the entry's kind", async () => {
+    expect(await dexPager("ingredient", "carrot")).toEqual({
+      number: "F006",
+      total: 15,
+      prev: { slug: "cantaloupe", name: "Cantaloupe", number: "F005", href: "/ingredients/cantaloupe" },
+      next: { slug: "egg", name: "Egg", number: "F007", href: "/ingredients/egg" },
+    });
+  });
+
+  test("has nothing before the first entry or after the last", async () => {
+    expect((await dexPager("ingredient", "beet"))?.prev).toBeNull();
+    expect((await dexPager("ingredient", "watermelon"))?.next).toBeNull();
+    expect(await dexPager("effect", "skin-color")).toMatchObject({ prev: null, next: null, total: 1 });
+  });
+
+  test("returns null for an entry that does not exist", async () => {
+    expect(await dexPager("ingredient", "not-a-food")).toBeNull();
+  });
+});
+
+describe("an entry's measured count", () => {
+  test("matches its home card, so the two never disagree", async () => {
+    const [card] = await listEntries({ q: "carrot", kind: "ingredient" });
+    const entry = (await ingredientEntry("carrot"))!;
+    expect(card.stats[0]).toBe(`${entry.measured} compounds measured`);
+    expect(entry.measured).toBeGreaterThan(entry.compounds.length);
+  });
+});
 
 describe("home search", () => {
   test("lists every ingredient, compound and effect when nothing is searched", async () => {
