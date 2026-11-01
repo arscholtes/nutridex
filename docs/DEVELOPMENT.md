@@ -20,8 +20,30 @@ npm run test:db              # each phase's "Done when", against that database; 
 npm run dev                  # the Dex at http://localhost:3000
 ```
 
-To move to Supabase, set `DATABASE_URL` in `.env.local` to the project's connection string, then
-run `db:migrate` and `seed` against it.
+## Going live
+
+The Dex runs on Vercel, with its data in Supabase Postgres. The app connects to Postgres directly
+and never uses Supabase's generated API.
+
+1. Create a Supabase project in the East US region, next to Vercel's default Washington, D.C.
+   functions.
+2. Turn off **Enable Data API** in that project's Data API settings. No table here has row-level
+   security, so that API would otherwise serve them to anyone holding the project's public key.
+3. Copy the project's two shared pooler connection strings, then load the schema and data through
+   the session pooler (port 5432). `USDA_API_KEY` still comes from `.env.local`:
+
+   ```bash
+   DATABASE_URL='<session pooler string>' npm run db:migrate
+   DATABASE_URL='<session pooler string>' npm run seed
+   ```
+
+4. Import the repo into Vercel and set `DATABASE_URL` to the transaction pooler string (port 6543)
+   before the first deploy. The build fails without it.
+5. Confirm the Data API is off: this must return no rows.
+
+   ```bash
+   curl -H 'apikey: <project public key>' 'https://<project ref>.supabase.co/rest/v1/ingredient'
+   ```
 
 ## Native apps
 
