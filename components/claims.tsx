@@ -6,10 +6,10 @@ import { GradeBadge } from "./grade-badge.tsx";
 import { EntryLink, SourceLink } from "./parts.tsx";
 
 const STATUS: Record<AbsorptionFlag["status"], { label: string; style: string }> = {
-  enhanced: { label: "Enhanced", style: "bg-emerald-500/15 text-emerald-300" },
-  missed: { label: "Missed", style: "bg-amber-500/15 text-amber-300" },
-  reduced: { label: "Reduced", style: "bg-rose-500/15 text-rose-300" },
-  unknown: { label: "Unknown", style: "bg-neutral-500/15 text-neutral-300" },
+  enhanced: { label: "Enhanced", style: "bg-emerald-100 text-emerald-900" },
+  missed: { label: "Missed", style: "bg-amber-200 text-amber-950" },
+  reduced: { label: "Reduced", style: "bg-rose-100 text-rose-900" },
+  unknown: { label: "Unknown", style: "bg-neutral-200 text-neutral-800" },
 };
 
 /** An engine absorption flag on a food: what happens to one compound, and what would help. */
@@ -23,8 +23,8 @@ export function AbsorptionTipCard({ tip }: { tip: AbsorptionTip }) {
         <EntryLink href={hrefOf("compound", tip.compound.slug)}>{tip.compound.name}</EntryLink>
         <GradeBadge grade={flag.grade} limitations={tip.sources[0]?.limitations ?? null} />
       </div>
-      <p className="mt-2 text-sm text-neutral-300">{flag.reason}.</p>
-      {flag.suggestion && <p className="mt-1 text-sm text-neutral-100">{flag.suggestion}.</p>}
+      <p className="mt-2 text-sm">{flag.reason}.</p>
+      {flag.suggestion && <p className="mt-1 text-sm font-bold">{flag.suggestion}.</p>}
       {tip.sources.map((s) => (
         <p key={s.id} className="mt-2 text-xs">
           <SourceLink source={s} />
@@ -39,17 +39,17 @@ export function ModifierCard({ claim }: { claim: ModifierClaim }) {
   const by = claim.modifierCompound ? (
     <EntryLink href={hrefOf("compound", claim.modifierCompound.slug)}>{claim.modifierCompound.name}</EntryLink>
   ) : (
-    <span className="font-semibold text-neutral-100">{claim.condition}</span>
+    <span className="font-bold">{claim.condition}</span>
   );
   return (
     <BasisFrame basis={claim.basis} className={claim.className}>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-sm text-neutral-400">{claim.direction === "enhances" ? "Helped by" : "Hindered by"}</span>
+        <span className="text-sm text-ink-soft">{claim.direction === "enhances" ? "Helped by" : "Hindered by"}</span>
         {by}
         <GradeBadge grade={claim.grade} limitations={claim.source.limitations} />
       </div>
-      {claim.magnitude && <p className="mt-2 text-sm text-neutral-300">{claim.magnitude}.</p>}
-      {claim.mechanism && <p className="mt-1 text-sm text-neutral-400">{claim.mechanism}.</p>}
+      {claim.magnitude && <p className="mt-2 text-sm">{claim.magnitude}.</p>}
+      {claim.mechanism && <p className="mt-1 text-sm text-ink-soft">{claim.mechanism}.</p>}
       <p className="mt-2 text-xs">
         <SourceLink source={claim.source} />
       </p>
@@ -62,18 +62,18 @@ export function PrepCard({ claim, showCompound }: { claim: PrepClaim; showCompou
   const change =
     claim.retentionFactor !== null ? `keeps ${Math.round(claim.retentionFactor * 100)}%` : claim.direction ? claim.direction : "changes by an amount no source gives";
   return (
-    <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4">
+    <div className="rounded-xl border-2 border-line bg-card p-3">
       <p className="text-sm">
-        <span className="font-semibold capitalize text-neutral-100">{claim.method}</span>
-        <span className="text-neutral-400">: </span>
+        <span className="font-bold capitalize">{claim.method}</span>
+        <span className="text-ink-soft">: </span>
         {showCompound && (
           <>
             <EntryLink href={hrefOf("compound", claim.compound.slug)}>{claim.compound.name}</EntryLink>{" "}
           </>
         )}
-        <span className="text-neutral-300">{change}</span>
+        <span>{change}</span>
       </p>
-      {claim.note && <p className="mt-1 text-sm text-neutral-400">{claim.note}.</p>}
+      {claim.note && <p className="mt-1 text-sm text-ink-soft">{claim.note}.</p>}
       <p className="mt-2 text-xs">
         <SourceLink source={claim.source} />
       </p>
@@ -87,29 +87,29 @@ export function PrepCard({ claim, showCompound }: { claim: PrepClaim; showCompou
  */
 export function EffectCard({ claim, on }: { claim: EffectClaim; on: "effect" | "compound" | "ingredient" }) {
   return (
-    <div className="rounded-xl border border-neutral-800 bg-neutral-900 p-4">
+    <div className="rounded-xl border-2 border-line bg-card p-3">
       <div className="flex flex-wrap items-center gap-2">
         {on === "effect" ? (
           <EntryLink href={hrefOf("compound", claim.compound.slug)}>{claim.compound.name}</EntryLink>
         ) : (
           <EntryLink href={hrefOf("effect", claim.effect.slug)}>{claim.effect.name}</EntryLink>
         )}
-        {on === "ingredient" && <span className="text-sm text-neutral-500">via {claim.compound.name}</span>}
-        {on !== "effect" && <span className="text-xs uppercase tracking-wide text-neutral-500">{claim.effect.direction}</span>}
+        {on === "ingredient" && <span className="text-sm text-ink-soft">via {claim.compound.name}</span>}
+        {on !== "effect" && <span className="text-xs font-bold capitalize text-ink-soft">{claim.effect.direction}</span>}
         <GradeBadge grade={claim.grade} limitations={claim.source.limitations} />
       </div>
-      {claim.summary && <p className="mt-2 text-sm text-neutral-300">{claim.summary}</p>}
+      {claim.summary && <p className="mt-2 text-sm">{claim.summary}</p>}
       <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
         {claim.doseContext && (
           <>
-            <dt className="text-neutral-500">Dose</dt>
-            <dd className="text-neutral-300">{claim.doseContext}</dd>
+            <dt className="text-ink-soft">Dose</dt>
+            <dd>{claim.doseContext}</dd>
           </>
         )}
         {claim.onset && (
           <>
-            <dt className="text-neutral-500">Onset</dt>
-            <dd className="text-neutral-300">{claim.onset}</dd>
+            <dt className="text-ink-soft">Onset</dt>
+            <dd>{claim.onset}</dd>
           </>
         )}
       </dl>

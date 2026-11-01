@@ -12,11 +12,11 @@ export function BasisFrame({ basis, className, children }: { basis: Basis; class
     return (
       <div
         data-basis="by-class"
-        className="rounded-xl border-2 border-dashed border-amber-400/70 bg-[repeating-linear-gradient(135deg,transparent_0_10px,rgb(251_191_36/0.08)_10px_20px)] p-4"
+        className="rounded-xl border-2 border-dashed border-amber-600 bg-[repeating-linear-gradient(135deg,transparent_0_10px,rgb(217_119_6/0.12)_10px_20px)] p-3"
       >
         {children}
         <p
-          className="mt-2 text-xs font-semibold uppercase tracking-wide text-amber-300"
+          className="mt-2 text-xs font-bold text-amber-900"
           title={`Its source measured other members of ChEBI's ${className} class, not this compound`}
         >
           {`By class: ${className}`}
@@ -25,9 +25,9 @@ export function BasisFrame({ basis, className, children }: { basis: Basis; class
     );
   }
   return (
-    <div data-basis="measured" className="rounded-xl border border-solid border-neutral-800 bg-neutral-900 p-4">
+    <div data-basis="measured" className="rounded-xl border-2 border-solid border-line bg-card p-3">
       {children}
-      <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">Measured</p>
+      <p className="mt-2 text-xs font-bold text-ink-soft">Measured</p>
     </div>
   );
 }
