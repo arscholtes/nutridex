@@ -192,7 +192,142 @@
   }
 }
 
+/* The unlock: a blacked-out shape on turning rays, a flash, then the creature in colour. */
+.dex-unlock {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(10 16 14 / 0.86);
+}
+
+.dex-unlock-card {
+  position: relative;
+  width: min(100%, 26rem);
+  overflow: hidden;
+  border: 3px solid var(--color-ink);
+  border-radius: 1.5rem;
+  background: var(--color-shell);
+  color: #fff;
+  text-align: center;
+}
+
+.dex-unlock-stage {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #1f86c9;
+}
+
+.dex-unlock-rays {
+  position: absolute;
+  inset: -50%;
+  background: repeating-conic-gradient(rgb(255 255 255 / 0.16) 0 12.857deg, transparent 12.857deg 25.714deg);
+  animation: dex-rays 9s linear infinite;
+}
+
+.dex-unlock-shape,
+.dex-unlock-art {
+  position: absolute;
+  inset: 8%;
+  width: 84%;
+  height: 84%;
+}
+
+.dex-unlock-shape {
+  filter: brightness(0);
+  animation: dex-shape-out 1.5s ease-in forwards;
+}
+
+.dex-unlock-art {
+  opacity: 0;
+  animation: dex-art-in 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 1.35s forwards;
+}
+
+.dex-unlock-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  animation: dex-flash 0.6s ease-out 1.25s forwards;
+}
+
+.dex-unlock-text {
+  opacity: 0;
+  animation: dex-text-in 0.35s ease-out 1.65s forwards;
+}
+
+@keyframes dex-rays {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes dex-shape-out {
+  0%,
+  80% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.08;
+  }
+}
+
+@keyframes dex-art-in {
+  from {
+    opacity: 0;
+    scale: 0.7;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes dex-flash {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dex-text-in {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .dex-unlock-rays,
+  .dex-unlock-flash {
+    animation: none;
+  }
+
+  .dex-unlock-shape {
+    animation: none;
+    opacity: 0;
+  }
+
+  .dex-unlock-art,
+  .dex-unlock-text {
+    animation: none;
+    opacity: 1;
+  }
+
   .dex-lens::after {
     animation: none;
   }

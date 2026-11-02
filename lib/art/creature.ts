@@ -94,3 +94,15 @@ function hash(text: string): number {
 function escapeXml(text: string): string {
   return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
+
+/**
+ * The creature with its tile and shadow removed, so blacking it out leaves its shape and not a square.
+ * @param svg [string] the creature's art
+ * @return [string] the art without them
+ * @throws when the art has no tile, because the silhouette would come out square
+ */
+export function creatureSilhouette(svg: string): string {
+  const tile = /\s*<rect x="8" y="8" width="240" height="240" rx="40"[^>]*\/>/;
+  if (!tile.test(svg)) throw new Error("this art has no tile to remove, so its silhouette would be wrong");
+  return svg.replace(tile, "").replace(/\s*<ellipse [^>]*fill="#000" opacity="0\.14"\/>/, "");
+}

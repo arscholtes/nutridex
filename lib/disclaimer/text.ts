@@ -52,14 +52,15 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
   {
     heading: "What is stored about you",
     body:
-      "Nothing, except a cookie on this device that remembers which version of this notice you accepted, so it " +
-      "only appears again after an update.",
+      "The foods you mark as had, and when: kept in a cookie on this device until you upload them, then in " +
+      "NutriDex's database. Another cookie remembers which version of this notice you accepted, so it only " +
+      "appears again after an update. Nothing else.",
   },
 ];
 
 /** The same notice for the native apps, which keep their one remembered thing in a setting. */
 export const NATIVE_DISCLAIMER_SECTIONS: { heading: string; body: string }[] = DISCLAIMER_SECTIONS.map((s) =>
   s.heading === "What is stored about you"
-    ? { ...s, body: "Nothing, except a setting on this device that remembers which version of this notice you accepted, so it only appears again after an update." }
+    ? { ...s, body: "The foods you mark as had, and when: kept on this device until you upload them, then in NutriDex's database. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. Nothing else." }
     : s,
 );

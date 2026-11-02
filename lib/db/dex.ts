@@ -30,7 +30,16 @@ export type FoodAmount = Named & {
 };
 
 /** One row of a food's nutrient panel: USDA's amount per 100 g and its share of the richest food in the Dex, both null when USDA has none. */
-export type PanelRow = { slug: string; name: string; group: PanelGroup; amount: number | null; unit: Unit | null; share: number | null };
+export type PanelRow = {
+  slug: string;
+  name: string;
+  group: PanelGroup;
+  amount: number | null;
+  unit: Unit | null;
+  share: number | null;
+  /** True when the nutrient is not unlocked yet, so it has no page to link to. */
+  locked?: boolean;
+};
 
 /** One compound in a food, against the richest seeded food for that compound. */
 export type CompoundAmount = Named & {
@@ -38,7 +47,8 @@ export type CompoundAmount = Named & {
   amount: number;
   unit: Unit;
   share: number;
-  richest: Named;
+  /** The richest seeded food, or null when naming it would give away a food not yet encountered. */
+  richest: Named | null;
 };
 
 /** Foods and compounds a source measured as none, or that no source measured. */

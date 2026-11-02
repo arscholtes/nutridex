@@ -2,7 +2,9 @@
 // judgments and the claim bars have one implementation. `npm run export:native` writes it into the
 // app; tests/native-snapshot.db.test.ts fails when the committed copy no longer matches.
 import { readFileSync } from "node:fs";
-import { compoundCreature } from "../art/creature.ts";
+import { compoundCreature, creatureSilhouette } from "../art/creature.ts";
+
+export { creatureSilhouette };
 import { isDark, typeColor } from "../art/palette.ts";
 import { sql } from "../db/client.ts";
 import {
@@ -145,24 +147,18 @@ function reveals(entries: Pick<NativeSnapshot, "ingredients" | "compounds">): Na
       slug,
       {
         compounds: Object.entries(entries.compounds)
-          .filter(([, c]) => c.foods.some((f) => f.slug === slug) || c.absent.unmeasured.some((f) => f.slug === slug))
+          .filter(([, c]) => {
+            // A trace does not unlock a nutrient: where a claim sets a bar, the food must clear it.
+            const bar = c.effects.find((e) => e.minFoodPer100g !== null)?.minFoodPer100g ?? null;
+            if (bar === null) return c.foods.some((f) => f.slug === slug) || c.absent.unmeasured.some((f) => f.slug === slug);
+            // The richest food always counts, so a nutrient no food clears the bar for can still be unlocked.
+            return c.foods.some((f) => f.slug === slug && (f.amount >= bar || f.amount === c.foods[0].amount));
+          })
           .map(([compound]) => compound),
         effects: [...new Set(entry.effects.map((e) => e.effect.slug))],
       },
     ]),
   );
-}
-
-/**
- * The creature with its tile and shadow removed, so blacking it out leaves its shape and not a square.
- * @param svg [string] the creature's art
- * @return [string] the art without them
- * @throws when the art has no tile, because the silhouette would come out square
- */
-export function creatureSilhouette(svg: string): string {
-  const tile = /\s*<rect x="8" y="8" width="240" height="240" rx="40"[^>]*\/>/;
-  if (!tile.test(svg)) throw new Error("this art has no tile to remove, so its silhouette would be wrong");
-  return svg.replace(tile, "").replace(/\s*<ellipse [^>]*fill="#000" opacity="0\.14"\/>/, "");
 }
 
 /**

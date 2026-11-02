@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { needsAcceptance } from "../lib/disclaimer/gate.ts";
-import { DISCLAIMER_INTRO, DISCLAIMER_SECTIONS, DISCLAIMER_TITLE } from "../lib/disclaimer/text.ts";
+import { DISCLAIMER_INTRO, DISCLAIMER_SECTIONS, DISCLAIMER_TITLE, NATIVE_DISCLAIMER_SECTIONS } from "../lib/disclaimer/text.ts";
 
 describe("needsAcceptance: shown until this app version is accepted, then gone until the next", () => {
   test("someone who has never accepted sees it", () => {
@@ -44,5 +44,21 @@ describe("the disclaimer covers every topic it has to", () => {
     const words = [DISCLAIMER_INTRO, ...DISCLAIMER_SECTIONS.map((s) => s.body)].join(" ");
     expect(words).toContain("NutriDex");
     expect(words).not.toContain("Foodi Dex");
+  });
+});
+
+describe("what the disclaimer says is stored", () => {
+  const stored = (sections: { heading: string; body: string }[]) => sections.find((s) => s.heading === "What is stored about you")!.body;
+
+  test("names the foods you mark and where they go, on every platform", () => {
+    for (const sections of [DISCLAIMER_SECTIONS, NATIVE_DISCLAIMER_SECTIONS]) {
+      expect(stored(sections)).toContain("foods you mark");
+      expect(stored(sections)).toContain("upload");
+    }
+  });
+
+  test("the web mentions its cookies and the apps do not", () => {
+    expect(stored(DISCLAIMER_SECTIONS)).toContain("cookie");
+    expect(stored(NATIVE_DISCLAIMER_SECTIONS)).not.toContain("cookie");
   });
 });

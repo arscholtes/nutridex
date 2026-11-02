@@ -52,7 +52,7 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
                 <AmountBar
                   share={c.share}
                   color={typeColor(c.class)}
-                  label={c.richest.slug === ingredient.slug ? "The most of any food in the Dex" : `${Math.round(c.share * 100)}% of ${c.richest.name}, the most in the Dex`}
+                  label={c.richest?.slug === ingredient.slug ? "The most of any food in your Dex" : c.richest ? `${Math.round(c.share * 100)}% of ${c.richest.name}, the most in your Dex` : `${Math.round(c.share * 100)}% of the richest food there is`}
                 />
               </div>
             </div>
@@ -123,7 +123,7 @@ function PanelTable({ title, rows }: { title: string; rows: PanelRow[] }) {
         {rows.map((r) => (
           <li key={r.slug}>
             <div className="flex items-baseline justify-between gap-2 text-sm">
-              <EntryLink href={hrefOf("compound", r.slug)}>{r.name}</EntryLink>
+              {r.locked ? <span className="font-bold">{r.name}</span> : <EntryLink href={hrefOf("compound", r.slug)}>{r.name}</EntryLink>}
               {r.amount === null ? <span className="text-ink-soft">missing</span> : <span className="font-medium tabular-nums">{formatAmount(r.amount, r.unit!)}</span>}
             </div>
             {r.share !== null && (

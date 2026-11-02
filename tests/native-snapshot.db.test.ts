@@ -135,8 +135,12 @@ describe("what each entry says before you have encountered it", () => {
 describe("what marking a food as had reveals", () => {
   const carrot = () => committed().reveals.carrot;
 
-  test("the compounds it carries, even in trace amounts", () => {
-    expect(carrot().compounds).toEqual(expect.arrayContaining(["beta-carotene", "vitamin-a", "zinc"]));
+  test("the compounds it is a real source of, and any it carries that no bar applies to", () => {
+    expect(carrot().compounds).toEqual(expect.arrayContaining(["beta-carotene", "vitamin-a"]));
+  });
+
+  test("not a trace of something a bar applies to", () => {
+    expect(carrot().compounds).not.toContain("zinc");
   });
 
   test("not the compounds it does not carry", () => {

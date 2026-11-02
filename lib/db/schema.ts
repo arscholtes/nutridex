@@ -113,6 +113,16 @@ export const effect = pgTable("effect", {
   direction: text("direction"),
 });
 
+export const encounter = pgTable("encounter", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  ingredientId: uuid("ingredient_id")
+    .notNull()
+    .unique()
+    .references(() => ingredient.id, { onDelete: "cascade" }),
+  encounteredAt: timestamp("encountered_at", { withTimezone: true }).notNull(),
+  uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const compoundEffect = pgTable(
   "compound_effect",
   {

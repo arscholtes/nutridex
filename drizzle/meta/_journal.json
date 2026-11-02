@@ -43,6 +43,13 @@
       "when": 1793579173691,
       "tag": "0005_compound_effect_food_bar",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793639750302,
+      "tag": "0006_encounter",
+      "breakpoints": true
     }
   ]
 }

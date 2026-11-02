@@ -36,11 +36,20 @@ Where every claim comes from. Every amount, effect, modifier and caution row poi
 | `limitations` | text | yes |  |
 | `added_at` | timestamp with time zone | yes | `now()` |
 
-## On this device
+## What someone has encountered
 
-### `encounteredFoods`
+### `encounter`
 
-Which foods someone has marked as had, and when: a dictionary of food slug to date in `UserDefaults`, kept by the Mac app. This is a fact about the person and NutriDex owns it; no other app reads it, and it does not sync between devices yet. Compounds and effects are not recorded: what a food reveals comes from the bundled snapshot, so it cannot drift from what the Dex says.
+One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on the web, iPhone or iPad until it is encountered, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it. Apps write it only through `POST /api/encounters`, which needs the upload token.
+
+Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a cookie on the web) so the game works offline and new encounters can wait to be uploaded. On the next sync a device adds what the server has, and this table is the record.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `ingredient_id` | uuid | no |  |
+| `encountered_at` | timestamp with time zone | no |  |
+| `uploaded_at` | timestamp with time zone | no | `now()` |
 
 ## Food and what is in it
 

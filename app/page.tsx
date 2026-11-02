@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { DexShell } from "../components/dex-shell.tsx";
 import { EntryCardView } from "../components/entry-card.tsx";
-import { dexCounts, entryTypes, listEntries, type EntryKind } from "../lib/db/dex.ts";
+import { GameShell, HadComposer, Progress } from "../components/game.tsx";
+import { listEntries, type EntryCard, type EntryKind } from "../lib/db/dex.ts";
+import { scrubCards } from "../lib/db/reveal.ts";
+import { viewer } from "../lib/viewer.ts";
 
 const KINDS: { value: EntryKind; label: string }[] = [
   { value: "ingredient", label: "Foods" },
@@ -9,7 +11,7 @@ const KINDS: { value: EntryKind; label: string }[] = [
   { value: "effect", label: "Effects" },
 ];
 
-type Search = { q?: string; kind?: string; type?: string };
+type Search = { q?: string; kind?: string; type?: string; had?: string };
 
 /** @return [string] the home link for a kind tab, keeping the words searched */
 function tabHref(q: string | undefined, kind?: EntryKind): string {
@@ -21,18 +23,25 @@ function tabHref(q: string | undefined, kind?: EntryKind): string {
 export default async function Home({ searchParams }: { searchParams: Promise<Search> }) {
   const params = await searchParams;
   const kind = KINDS.find((k) => k.value === params.kind)?.value;
-  const [types, counts] = await Promise.all([entryTypes(), dexCounts()]);
+  const { revealed } = await viewer();
+  const everything = await listEntries({});
+  const unlocked = scrubCards(everything, revealed);
+  const typesOf = (k: EntryKind) => [...new Set(unlocked.filter((c: EntryCard) => c.kind === k).flatMap((c) => (c.type ? [c.type] : [])))].sort();
+  const types: Record<EntryKind, string[]> = { ingredient: typesOf("ingredient"), compound: typesOf("compound"), effect: typesOf("effect") };
   const type = params.type && Object.values(types).some((list) => list.includes(params.type!)) ? params.type : undefined;
-  const cards = await listEntries({ q: params.q, kind, type });
+  const cards = scrubCards(await listEntries({ q: params.q, kind, type }), revealed);
+  const count = (k: EntryKind) => unlocked.filter((c) => c.kind === k).length;
   const tabs = [
-    { label: "All", value: undefined, count: counts.ingredient + counts.compound + counts.effect },
-    ...KINDS.map((k) => ({ label: k.label, value: k.value, count: counts[k.value] })),
+    { label: "All", value: undefined, count: unlocked.length },
+    ...KINDS.map((k) => ({ label: k.label, value: k.value, count: count(k.value) })),
   ];
 
   return (
-    <DexShell>
+    <GameShell>
       <main className="p-3 sm:p-5">
         <h1 className="text-lg font-bold">What is in your food, what it does, and what helps it work.</h1>
+        <Progress unlocked={unlocked.length} total={everything.length} />
+        <HadComposer had={params.had} />
 
         <nav className="mt-3 flex flex-wrap gap-1.5" aria-label="Kinds of entry">
           {tabs.map((t) => (
@@ -73,9 +82,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
           </button>
         </form>
 
-        {cards.length === 0 ? (
+        {unlocked.length === 0 ? (
+          <p className="mt-8 pb-6">Your Dex is empty. Tell it what you had to unlock your first entry.</p>
+        ) : cards.length === 0 ? (
           <p className="mt-8 pb-6">
-            Nothing in the Dex matches that.{" "}
+            Nothing you have unlocked matches that.{" "}
             <Link href="/" className="font-bold underline decoration-shell decoration-2 underline-offset-4">
               Show everything
             </Link>
@@ -88,6 +99,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
           </div>
         )}
       </main>
-    </DexShell>
+    </GameShell>
   );
 }
