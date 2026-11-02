@@ -16,13 +16,21 @@ const post = (body: unknown, token: string | null = TOKEN) =>
 const get = (token: string | null = TOKEN) => GET(new Request("http://dex.test/api/encounters", { headers: token ? { authorization: `Bearer ${token}` } : {} }));
 const clear = () => sql`delete from encounter`;
 
-beforeAll(() => {
+// This table is someone's game progress, so what is in it goes back when the tests finish.
+let saved: { ingredient_id: string; encountered_at: string; uploaded_at: string }[] = [];
+
+beforeAll(async () => {
   vi.stubEnv("NUTRIDEX_UPLOAD_TOKEN", TOKEN);
+  saved = await sql`select ingredient_id, encountered_at, uploaded_at from encounter`;
+  await clear();
 });
 afterEach(clear);
 afterAll(async () => {
   vi.unstubAllEnvs();
   await clear();
+  for (const row of saved) {
+    await sql`insert into encounter (ingredient_id, encountered_at, uploaded_at) values (${row.ingredient_id}, ${row.encountered_at}, ${row.uploaded_at})`;
+  }
   await sql.end();
 });
 

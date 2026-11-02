@@ -13,7 +13,8 @@ struct MacRootView: View {
     @AppStorage("acceptedDisclaimerVersion") private var accepted: String?
     @State private var nav = DexNavigator()
     @State private var browser = DexBrowser()
-    @State private var store = EncounterStore(defaults: MacRootView.storeDefaults)
+    @State private var game = DexGame(store: EncounterStore(defaults: MacRootView.storeDefaults), transport: HTTPEncounterTransport.configured)
+    @Environment(\.scenePhase) private var scenePhase
 
     /// A launch argument such as `-debugEncountered carrot,kale` fills a throwaway record, for checking screens.
     private static var storeDefaults: UserDefaults {
@@ -34,21 +35,32 @@ struct MacRootView: View {
             }
         }
         .frame(minWidth: 1340, idealWidth: 1500, maxWidth: .infinity, minHeight: 720, idealHeight: 960, maxHeight: .infinity)
+        .overlay {
+            if let card = game.unlocking {
+                UnlockOverlay(card: card, position: game.unlockProgress.position, total: game.unlockProgress.total) { game.next() }
+            }
+        }
         .environment(nav)
         .environment(browser)
-        .environment(store)
+        .environment(game)
+        .environment(game.store)
         .preferredColorScheme(.light)
         .tint(Theme.shell)
         #if DEBUG
         .onAppear(perform: applyDebugArguments)
         #endif
+        // Getting on the computer is what plays anything new from your other devices.
+        .task { await game.sync() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { await game.sync() } }
+        }
     }
 
     #if DEBUG
     private func applyDebugArguments() {
         let arguments = UserDefaults.standard
         for food in arguments.string(forKey: "debugEncountered")?.split(separator: ",") ?? [] {
-            store.encounter(food: String(food))
+            game.store.encounter(food: String(food))
         }
         if let parts = arguments.string(forKey: "debugRoute")?.split(separator: "/"), parts.count == 2, let kind = EntryKind(rawValue: String(parts[0])) {
             nav.choose(.entry(kind, String(parts[1])))
@@ -86,12 +98,17 @@ struct MacBrowserView: View {
                 SourcesList().background(Theme.screen)
             case .dex, .type:
                 HSplitView {
-                    CardPane(filter: filter)
-                        .frame(minWidth: 560, maxWidth: .infinity)
+                    VStack(spacing: 0) {
+                        MacSyncNotice()
+                        CardPane(filter: filter)
+                    }
+                    .frame(minWidth: 560, maxWidth: .infinity)
                     EntryPane()
-                        .frame(minWidth: 500, maxWidth: .infinity)
+                        .frame(minWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
+                        .layoutPriority(1)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity)
+                .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity)
+                .background(Theme.screen)
                 .searchable(text: $browser.query, placement: .toolbar, prompt: "Search foods, compounds, effects")
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -115,6 +132,25 @@ struct MacBrowserView: View {
                 break
             }
         }
+    }
+}
+
+/// Anything waiting to go up, and a plain word when the home database cannot be reached.
+struct MacSyncNotice: View {
+    @Environment(DexGame.self) private var game
+
+    var body: some View {
+        VStack(spacing: 6) {
+            UploadBar()
+            if let problem = game.syncProblem {
+                Label(problem, systemImage: "exclamationmark.triangle.fill")
+                    .font(.dex(.footnote, weight: .medium))
+                    .foregroundStyle(Theme.ink)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .padding(game.store.pending.isEmpty && game.syncProblem == nil ? 0 : 10)
+        .background(Theme.screen)
     }
 }
 

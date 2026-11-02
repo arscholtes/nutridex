@@ -95,11 +95,12 @@ struct EntryChrome<Content: View>: View {
     let type: String?
     let pager: DexPager
     @ViewBuilder let content: Content
+    @Environment(\.dexVisibility) private var visibility
 
     var body: some View {
         ScreenBezel { content }
             .background(Theme.shellBody.ignoresSafeArea())
-            .safeAreaInset(edge: .bottom, spacing: 0) { DexDeck(pager: pager, kind: kind) }
+            .safeAreaInset(edge: .bottom, spacing: 0) { DexDeck(pager: visibility.pager(pager, kind: kind), kind: kind) }
             .navigationTitle(pager.number)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(Theme.shell, for: .navigationBar)

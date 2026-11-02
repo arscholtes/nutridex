@@ -32,31 +32,37 @@ struct CompoundDetails: View {
 /// What a compound does, which foods carry it, what helps it absorb, what prep does, and how it works.
 struct CompoundSections: View {
     let entry: CompoundEntry
+    @Environment(\.dexVisibility) private var visibility
+
+    private var foods: [FoodAmount] { entry.foods.filter { visibility.shows(.ingredient, $0.slug) } }
+    private var absentNone: [Named] { entry.absent.none.filter { visibility.shows(.ingredient, $0.slug) } }
+    private var absentUnmeasured: [Named] { entry.absent.unmeasured.filter { visibility.shows(.ingredient, $0.slug) } }
+    private var effects: [EffectClaim] { entry.effects.filter { visibility.shows(.effect, $0.effect.slug) } }
 
     private static let notOnFile = "Not on file yet"
 
     private var compound: CompoundEntry.Compound { entry.compound }
 
     var body: some View {
-        DexSection(title: "What it does", empty: "No sourced effect on file for it yet.", isEmpty: entry.effects.isEmpty) {
-            EffectList(claims: entry.effects, page: .compound)
-            if entry.effects.contains(where: { $0.minFoodPer100g != nil }) {
+        DexSection(title: "What it does", empty: "No sourced effect on file for it yet.", isEmpty: effects.isEmpty) {
+            EffectList(claims: effects, page: .compound)
+            if effects.contains(where: { $0.minFoodPer100g != nil }) {
                 Note(text: ClaimNotes.meaning)
             }
         }
         DexSection(title: "Cautions", empty: "No caution on file. That means none has been sourced yet, not that there are none.", isEmpty: entry.cautions.isEmpty) {
             ForEach(entry.cautions, id: \.self) { CautionCard(kind: $0.kind, summary: $0.summary, grade: $0.grade, source: $0.source) }
         }
-        DexSection(title: "Foods that carry it, per 100 g", empty: "No food in the Dex has a measured amount of it.", isEmpty: entry.foods.isEmpty && entry.absent.none.isEmpty && entry.absent.unmeasured.isEmpty) {
-            ForEach(entry.foods, id: \.slug) { FoodRow(food: $0, color: Dex.bundled.palette.swatch(for: compound.compoundClass).background) }
-            if !entry.foods.isEmpty, entry.foods.allSatisfy({ $0.perServing == nil }) {
+        DexSection(title: "Foods that carry it, per 100 g", empty: "No food in the Dex has a measured amount of it.", isEmpty: foods.isEmpty && absentNone.isEmpty && absentUnmeasured.isEmpty) {
+            ForEach(foods, id: \.slug) { FoodRow(food: $0, color: Dex.bundled.palette.swatch(for: compound.compoundClass).background) }
+            if !foods.isEmpty, foods.allSatisfy({ $0.perServing == nil }) {
                 Note(text: "No typical serving sizes on file yet, so amounts are per 100 g only.")
             }
-            if !entry.absent.none.isEmpty {
-                Note(text: "USDA measured none in: \(entry.absent.none.map(\.name).joined(separator: ", ")).")
+            if !absentNone.isEmpty {
+                Note(text: "USDA measured none in: \(absentNone.map(\.name).joined(separator: ", ")).")
             }
-            if !entry.absent.unmeasured.isEmpty {
-                Note(text: "Carried by, with no measured amount: \(entry.absent.unmeasured.map(\.name).joined(separator: ", ")).")
+            if !absentUnmeasured.isEmpty {
+                Note(text: "Carried by, with no measured amount: \(absentUnmeasured.map(\.name).joined(separator: ", ")).")
             }
         }
         DexSection(title: "What helps or hinders absorption", empty: "No absorption rule on file for it yet.", isEmpty: entry.modifiers.isEmpty) {

@@ -32,8 +32,16 @@ Read it with the Claude Docs tools, never a web fetch.
 NutriDex ships on the web (`app/`, Next.js) and natively on iPhone, iPad and Mac (`apple/`, SwiftUI). Native
 stays SwiftUI: no React Native and no web views. What both Apple apps share lives in `apple/Shared/`.
 
-The Mac app is the home database: it also tracks what you have encountered, blacks out the rest and compares
-foods across every nutrient. Those are Mac-only until encounters sync between devices.
+NutriDex is a collection game: over time you unlock everything. On the web, iPhone and iPad nothing shows until
+it is encountered: no list, name, link or count may give a hidden entry away, and new screens must keep that
+true. You say what you had, press Upload to send new encounters to the server as an array, and an unlock
+animation plays, with Next returning you to where you were. The Mac app is the home database: it shows
+everything, blacks out what is not unlocked, plays new arrivals when you get on it, and compares foods.
+
+- A food unlocks the compounds it is a real source of, carries where no bar applies, or holds the most of in the
+  Dex, and the effects it clears a bar for. A test holds that everything can be unlocked.
+- That rule lives in `lib/db/encounters.ts` and `lib/native/snapshot.ts`, and a test holds them equal.
+- `app/api/encounters` is the only way any app writes the record, behind `NUTRIDEX_UPLOAD_TOKEN`.
 
 - A change someone can see ships on every platform in the same PR.
 - After any change to the seed, the data functions in `lib/db/dex.ts`, the art or the disclaimer, run

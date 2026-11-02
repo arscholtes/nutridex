@@ -2,6 +2,8 @@ import SwiftUI
 
 /// Every citation, with what it supports and its limitations.
 struct SourcesList: View {
+    @Environment(\.dexVisibility) private var visibility
+
     /// Past this, a source's list folds away so the other sources stay in view.
     private static let longList = 8
 
@@ -9,8 +11,8 @@ struct SourcesList: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Sources").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink).accessibilityAddTraits(.isHeader)
-                Note(text: "Every citation in the Dex, what it supports, and where it falls short.")
-                ForEach(Dex.bundled.sources) { row(for: $0) }
+                Note(text: visibility.isEverything ? "Every citation in the Dex, what it supports, and where it falls short." : "The citations behind what you have unlocked, and where they fall short.")
+                ForEach(visibility.sources) { row(for: $0) }
             }
             .padding(12)
         }
@@ -29,7 +31,10 @@ struct SourcesList: View {
                     .foregroundStyle(Theme.inkSoft)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            if source.supports.count > Self.longList {
+            // What a source supports names entries, so only the full database shows it.
+            if !visibility.isEverything {
+                EmptyView()
+            } else if source.supports.count > Self.longList {
                 DisclosureGroup {
                     supports(source.supports)
                 } label: {

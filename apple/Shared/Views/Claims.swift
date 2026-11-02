@@ -209,6 +209,7 @@ struct AbsorptionTipCard: View {
 /// An absorption rule on a compound: what helps or hinders it, how much, and why.
 struct ModifierCard: View {
     let claim: ModifierClaim
+    @Environment(\.dexVisibility) private var visibility
 
     var body: some View {
         BasisFrame(basis: claim.basis, className: claim.className) {
@@ -216,7 +217,11 @@ struct ModifierCard: View {
                 FlowRow {
                     Text(claim.direction == "enhances" ? "Helped by" : "Hindered by").font(.dex(.subheadline)).foregroundStyle(Theme.inkSoft)
                     if let compound = claim.modifierCompound {
-                        EntryLinkText(route: .entry(.compound, compound.slug), title: compound.name)
+                        if visibility.shows(.compound, compound.slug) {
+                            EntryLinkText(route: .entry(.compound, compound.slug), title: compound.name)
+                        } else {
+                            Text("another compound").font(.dex(.subheadline, weight: .bold)).foregroundStyle(Theme.ink)
+                        }
                     } else if let condition = claim.condition {
                         Text(condition).font(.dex(.subheadline, weight: .bold)).foregroundStyle(Theme.ink)
                     }

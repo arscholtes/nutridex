@@ -123,16 +123,25 @@ struct EffectTile: View {
 struct EntryLinkText: View {
     let route: DexRoute
     let title: String
+    @Environment(\.dexVisibility) private var visibility
 
     var body: some View {
-        NavigationLink(value: route) {
+        if visibility.shows(route) {
+            NavigationLink(value: route) {
+                Text(title)
+                    .font(.dex(.subheadline, weight: .bold))
+                    .foregroundStyle(Theme.ink)
+                    .underline(color: Theme.shell.opacity(0.55))
+                    .multilineTextAlignment(.leading)
+            }
+            .buttonStyle(.plain)
+        } else {
+            // Not unlocked yet, so it has no page to go to.
             Text(title)
                 .font(.dex(.subheadline, weight: .bold))
                 .foregroundStyle(Theme.ink)
-                .underline(color: Theme.shell.opacity(0.55))
                 .multilineTextAlignment(.leading)
         }
-        .buttonStyle(.plain)
     }
 }
 

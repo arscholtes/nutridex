@@ -5,7 +5,20 @@ struct RootView: View {
     @AppStorage("acceptedDisclaimerVersion") private var accepted: String?
     @State private var nav = DexNavigator()
     @State private var browser = DexBrowser()
+    @State private var game = DexGame(store: EncounterStore(defaults: RootView.storeDefaults), transport: HTTPEncounterTransport.configured)
     @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.scenePhase) private var scenePhase
+
+    /// A launch argument such as `-debugEncountered carrot,kale` fills a throwaway record, for checking screens.
+    private static var storeDefaults: UserDefaults {
+        #if DEBUG
+        let arguments = UserDefaults.standard
+        if arguments.string(forKey: "debugEncountered") != nil || arguments.string(forKey: "debugUpload") != nil {
+            return UserDefaults(suiteName: "nutridex-debug-\(UUID().uuidString)")!
+        }
+        #endif
+        return .standard
+    }
 
     var body: some View {
         Group {
@@ -17,10 +30,22 @@ struct RootView: View {
                 stackView
             }
         }
+        .overlay {
+            if let card = game.unlocking {
+                UnlockOverlay(card: card, position: game.unlockProgress.position, total: game.unlockProgress.total) { game.next() }
+            }
+        }
         .environment(nav)
         .environment(browser)
+        .environment(game)
+        .environment(game.store)
+        .environment(\.dexVisibility, DexVisibility(store: game.store))
         .preferredColorScheme(.light)
         .tint(Theme.shell)
+        .task { await game.sync() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { await game.sync() } }
+        }
         #if DEBUG
         .onAppear(perform: openDebugRoute)
         #endif
@@ -29,6 +54,13 @@ struct RootView: View {
     #if DEBUG
     /// Opens a screen from a launch argument such as `-debugRoute ingredient/carrot`, for checking screens on a simulator.
     private func openDebugRoute() {
+        for food in UserDefaults.standard.string(forKey: "debugEncountered")?.split(separator: ",") ?? [] {
+            game.store.encounter(food: String(food))
+        }
+        if let food = UserDefaults.standard.string(forKey: "debugUpload") {
+            game.store.encounter(food: food)
+            Task { await game.upload() }
+        }
         guard let parts = UserDefaults.standard.string(forKey: "debugRoute")?.split(separator: "/"), parts.count == 2,
               let kind = EntryKind(rawValue: String(parts[0])) else { return }
         let route = DexRoute.entry(kind, String(parts[1]))
@@ -64,11 +96,20 @@ struct RootView: View {
     }
 }
 
-/// The screen for a place in the app.
+/// The screen for a place in the app. Something not yet encountered does not exist here.
 struct RouteView: View {
     let route: DexRoute
+    @Environment(\.dexVisibility) private var visibility
 
     var body: some View {
+        if !visibility.shows(route) {
+            MissingEntry()
+        } else {
+            screen
+        }
+    }
+
+    @ViewBuilder private var screen: some View {
         switch route {
         case .sources:
             SourcesScreen()
@@ -88,7 +129,7 @@ struct MissingEntry: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("That entry is not in the Dex.").font(.dex(.title2, weight: .bold)).foregroundStyle(Theme.ink)
+            Text("That is not in your Dex.").font(.dex(.title2, weight: .bold)).foregroundStyle(Theme.ink)
             Button("Back to the list") { nav.backToList() }.font(.dex(.body, weight: .bold))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

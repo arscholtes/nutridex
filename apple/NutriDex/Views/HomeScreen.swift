@@ -3,15 +3,16 @@ import SwiftUI
 /// The search box, kind tabs and type filter.
 struct BrowserControls: View {
     @Environment(DexBrowser.self) private var browser
+    @Environment(EncounterStore.self) private var store
 
     private static let kinds: [(label: String, kind: EntryKind?)] = [("All", nil), ("Foods", .ingredient), ("Compounds", .compound), ("Effects", .effect)]
 
     private func count(_ kind: EntryKind?) -> Int {
-        kind.map { k in Dex.bundled.cards.filter { $0.kind == k }.count } ?? Dex.bundled.cards.count
+        Dex.bundled.cards.filter { (kind == nil || $0.kind == kind) && store.isRevealed($0) }.count
     }
 
     private func types(of kind: EntryKind) -> [String] {
-        Set(Dex.bundled.cards.filter { $0.kind == kind }.compactMap(\.type)).sorted()
+        Set(Dex.bundled.cards.filter { $0.kind == kind && store.isRevealed($0) }.compactMap(\.type)).sorted()
     }
 
     var body: some View {
@@ -39,7 +40,7 @@ struct BrowserControls: View {
             HStack(spacing: 8) {
                 HStack(spacing: 6) {
                     Image(systemName: "magnifyingglass").foregroundStyle(Theme.inkSoft).accessibilityHidden(true)
-                    TextField("Search foods, compounds, effects", text: $browser.query)
+                    TextField("Search what you have unlocked", text: $browser.query)
                         .font(.dex(.body))
                         .foregroundStyle(Theme.ink)
                         .autocorrectionDisabled()
@@ -90,13 +91,19 @@ struct BrowserControls: View {
 struct CardGrid: View {
     let onChoose: ((EntryCard) -> Void)?
     @Environment(DexBrowser.self) private var browser
+    @Environment(EncounterStore.self) private var store
     @Environment(\.horizontalSizeClass) private var sizeClass
 
     var body: some View {
-        let cards = browser.cards
-        if cards.isEmpty {
+        let cards = browser.cards.filter(store.isRevealed)
+        if store.totalProgress.seen == 0 {
+            Text("Your Dex is empty. Tell it what you had to unlock your first entry.")
+                .font(.dex(.body))
+                .foregroundStyle(Theme.ink)
+                .padding(.vertical, 20)
+        } else if cards.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Nothing in the Dex matches that.").font(.dex(.body)).foregroundStyle(Theme.ink)
+                Text("Nothing you have unlocked matches that.").font(.dex(.body)).foregroundStyle(Theme.ink)
                 Button("Show everything") {
                     browser.query = ""
                     browser.choose(kind: nil)
@@ -136,6 +143,9 @@ struct HomeScreen: View {
                             .font(.dex(.headline, weight: .heavy))
                             .foregroundStyle(Theme.ink)
                             .fixedSize(horizontal: false, vertical: true)
+                        UploadBar()
+                        UnlockProgressBar()
+                        HadComposer()
                         BrowserControls()
                         CardGrid(onChoose: nil)
                     }
@@ -153,6 +163,7 @@ struct HomeScreen: View {
 struct SidebarScreen: View {
     @Environment(DexNavigator.self) private var nav
     @Environment(DexBrowser.self) private var browser
+    @Environment(EncounterStore.self) private var store
 
     private var selection: Binding<DexRoute?> {
         Binding { nav.selection } set: { route in
@@ -168,8 +179,14 @@ struct SidebarScreen: View {
     var body: some View {
         VStack(spacing: 0) {
             DexPlate(lens: lens, onSources: { nav.choose(.sources) })
-            BrowserControls().padding(10)
-            List(browser.cards, selection: selection) { card in
+            VStack(alignment: .leading, spacing: 10) {
+                UploadBar()
+                UnlockProgressBar()
+                HadComposer()
+                BrowserControls()
+            }
+            .padding(10)
+            List(browser.cards.filter(store.isRevealed), selection: selection) { card in
                 HStack(spacing: 10) {
                     if card.kind == .effect {
                         EffectTile(name: card.name, type: card.type)

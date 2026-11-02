@@ -6,6 +6,8 @@ struct EntryCardView: View {
     /// False blacks out the creature and shows its description instead of its stats.
     var revealed = true
 
+    @Environment(\.dexVisibility) private var visibility
+
     private static let hidden = TypeSwatch(color: "#33403B", textOnColor: "light")
 
     var body: some View {
@@ -25,7 +27,7 @@ struct EntryCardView: View {
             if revealed {
                 TypeBadge(type: card.type)
                 VStack(alignment: .leading, spacing: 2) {
-                    ForEach(card.stats, id: \.self) { Text($0).font(.dex(.caption, weight: .medium)).fixedSize(horizontal: false, vertical: true) }
+                    ForEach(visibility.stats(of: card), id: \.self) { Text($0).font(.dex(.caption, weight: .medium)).fixedSize(horizontal: false, vertical: true) }
                 }
             } else {
                 Text(card.description).font(.dex(.caption)).lineLimit(5).fixedSize(horizontal: false, vertical: true)

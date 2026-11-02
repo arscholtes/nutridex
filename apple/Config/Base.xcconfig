@@ -2,4 +2,8 @@
 BUNDLE_ID_PREFIX = dev.local
 DEVELOPMENT_TEAM =
 
+// Where the apps upload encounters. A real device needs this Mac's address or a hosted server here.
+NUTRIDEX_API_URL = http:/$()/localhost:3200
+NUTRIDEX_UPLOAD_TOKEN =
+
 #include? "Local.xcconfig"

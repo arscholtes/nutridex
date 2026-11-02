@@ -34,6 +34,10 @@ xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex \
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac -destination 'platform=macOS'
 ```
 
+Uploading needs the server running and the same `NUTRIDEX_UPLOAD_TOKEN` in `.env.local` and in
+`apple/Config/Local.xcconfig`. Simulators and the Mac reach it at `localhost:3200`; a real device needs this Mac's
+address or a hosted server in `NUTRIDEX_API_URL`.
+
 To install on a device, copy `apple/Config/Local.example.xcconfig` to `apple/Config/Local.xcconfig` and fill
 in your team and bundle id prefix. The Mac app signs to run locally, so it needs neither.
 

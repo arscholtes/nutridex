@@ -133,6 +133,7 @@ struct EncounterControl: View {
     let card: EntryCard
     @Environment(DexNavigator.self) private var nav
     @Environment(EncounterStore.self) private var store
+    @Environment(DexGame.self) private var game
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -146,15 +147,14 @@ struct EncounterControl: View {
 
     @ViewBuilder private var food: some View {
         if let date = store.date(of: card.slug) {
-            HStack(spacing: 10) {
-                Label("Encountered \(date.formatted(date: .abbreviated, time: .omitted))", systemImage: "checkmark.seal.fill")
-                    .font(.dex(.subheadline, weight: .bold))
-                    .foregroundStyle(Theme.ink)
-                Button("Undo") { withAnimation { store.forget(food: card.slug) } }
-            }
+            Label("Encountered \(date.formatted(date: .abbreviated, time: .omitted))", systemImage: "checkmark.seal.fill")
+                .font(.dex(.subheadline, weight: .bold))
+                .foregroundStyle(Theme.ink)
         } else {
             Button {
-                withAnimation { store.encounter(food: card.slug) }
+                // At home there is nothing to carry back, so it goes up and plays straight away.
+                store.encounter(food: card.slug)
+                Task { await game.upload() }
             } label: {
                 Text("I've had this").font(.dex(.headline, weight: .heavy)).padding(.horizontal, 6).padding(.vertical, 2)
             }
