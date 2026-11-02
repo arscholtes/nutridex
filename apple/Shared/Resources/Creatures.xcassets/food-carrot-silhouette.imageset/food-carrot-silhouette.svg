@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Carrot</title>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 78 C110 50 92 40 82 26 C102 28 122 44 128 78 Z" fill="#43B05C"/>
+    <path d="M128 78 C122 50 124 30 132 14 C142 32 138 54 128 78 Z" fill="#43B05C"/>
+    <path d="M128 78 C146 46 164 38 176 30 C168 50 148 62 128 78 Z" fill="#43B05C"/>
+    <path d="M82 92 C82 70 174 70 174 92 C174 134 148 184 133 210 C130 216 126 216 123 210 C108 184 82 134 82 92 Z" fill="#FF8A2A"/>
+  </g>
+  <path d="M96 94 C96 84 108 80 115 82 C109 110 111 140 117 168 C105 146 96 120 96 94 Z" fill="#FFB066"/>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M98 152 L110 150"/>
+    <path d="M150 140 L160 137"/>
+    <path d="M120 186 L128 185"/>
+  </g>
+  <ellipse cx="104" cy="128" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="152" cy="128" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="110" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="112" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="109.5" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="109.5" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 128 Q128 136 136 128" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

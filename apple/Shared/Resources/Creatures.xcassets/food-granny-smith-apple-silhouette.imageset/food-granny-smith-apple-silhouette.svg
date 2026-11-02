@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Granny Smith apple</title>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M122 84 C121 70 125 56 131 46 C134 41 141 43 140 49 C136 58 134 70 134 84 Z" fill="#8D5A2B"/>
+    <path d="M136 64 C148 46 170 40 186 46 C180 64 158 74 136 64 Z" fill="#43B05C"/>
+    <path d="M128 80 C144 64 182 62 196 92 C210 122 198 172 176 196 C162 212 146 214 138 208 C132 204 124 204 118 208 C110 214 94 212 80 196 C58 172 46 122 60 92 C74 62 112 64 128 80 Z" fill="#8BC34A"/>
+  </g>
+  <path d="M141 62 L177 49" stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <ellipse cx="86" cy="104" rx="10" ry="22" fill="#BBE283" transform="rotate(28 86 104)"/>
+  <ellipse cx="103" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="153" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="134" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="136" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="133" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="133" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 153 Q128 161 136 153" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

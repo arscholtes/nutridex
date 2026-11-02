@@ -29,8 +29,11 @@ Read it with the Claude Docs tools, never a web fetch.
 
 ## Every platform
 
-NutriDex ships on the web (`app/`, Next.js) and natively on iPhone and iPad (`apple/`, SwiftUI), with a
-Mac app to come. Native stays SwiftUI: no React Native and no web views.
+NutriDex ships on the web (`app/`, Next.js) and natively on iPhone, iPad and Mac (`apple/`, SwiftUI). Native
+stays SwiftUI: no React Native and no web views. What both Apple apps share lives in `apple/Shared/`.
+
+The Mac app is the home database: it also tracks what you have encountered, blacks out the rest and compares
+foods across every nutrient. Those are Mac-only until encounters sync between devices.
 
 - A change someone can see ships on every platform in the same PR.
 - After any change to the seed, the data functions in `lib/db/dex.ts`, the art or the disclaimer, run

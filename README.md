@@ -22,18 +22,20 @@ run `db:migrate` and `seed` against it.
 
 ## Native apps
 
-`apple/NutriDex.xcodeproj` is the SwiftUI app for iPhone and iPad. It needs no server: it bundles
-`apple/NutriDex/Resources/dex.json` and a catalog of creature art, both written by `npm run export:native`
+`apple/NutriDex.xcodeproj` holds the SwiftUI apps: `NutriDex` for iPhone and iPad, and `NutriDexMac`, the
+home database. Neither needs a server: they bundle
+`apple/Shared/Resources/dex.json` and a catalog of creature art, both written by `npm run export:native`
 from the local database, through the same functions the website reads.
 
 ```bash
 npm run export:native        # after any change to the seed, data functions, art or disclaimer
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex \
   -destination 'platform=iOS Simulator,name=iPhone 17'
+xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac -destination 'platform=macOS'
 ```
 
 To install on a device, copy `apple/Config/Local.example.xcconfig` to `apple/Config/Local.xcconfig` and fill
-in your team and bundle id prefix.
+in your team and bundle id prefix. The Mac app signs to run locally, so it needs neither.
 
 ## Phases
 

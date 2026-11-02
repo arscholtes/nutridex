@@ -1,39 +1,5 @@
 import SwiftUI
 
-/// One Dex card on its type colour: number, art, name, type badge, evidence badge and stats from real data.
-struct EntryCardView: View {
-    let card: EntryCard
-
-    var body: some View {
-        let swatch = Dex.bundled.palette.swatch(for: card.type)
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
-                Text(card.number).font(.dexNumber(.subheadline))
-                Spacer()
-                if let grade = card.bestGrade { GradeBadge(grade: grade) }
-            }
-            if card.kind == .effect {
-                EffectTile(name: card.name, type: card.type)
-            } else {
-                CreatureArt(kind: card.kind, slug: card.slug)
-            }
-            Text(card.name).font(.dex(.headline, weight: .bold)).fixedSize(horizontal: false, vertical: true)
-            TypeBadge(type: card.type)
-            VStack(alignment: .leading, spacing: 2) {
-                ForEach(card.stats, id: \.self) { Text($0).font(.dex(.caption, weight: .medium)).fixedSize(horizontal: false, vertical: true) }
-            }
-        }
-        .foregroundStyle(swatch.foreground)
-        .multilineTextAlignment(.leading)
-        .padding(10)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(swatch.background, in: RoundedRectangle(cornerRadius: 18))
-        .overlay(RoundedRectangle(cornerRadius: 18).stroke(Theme.ink, lineWidth: 2))
-        .background(RoundedRectangle(cornerRadius: 18).fill(Theme.ink).offset(y: 3))
-        .accessibilityElement(children: .combine)
-    }
-}
-
 /// The search box, kind tabs and type filter.
 struct BrowserControls: View {
     @Environment(DexBrowser.self) private var browser

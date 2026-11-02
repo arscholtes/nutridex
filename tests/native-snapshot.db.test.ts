@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { listEntries } from "../lib/db/dex.ts";
-import { buildSnapshot, CREATURE_CATALOG, creatureAssetName, SNAPSHOT_PATH, type NativeSnapshot } from "../lib/native/snapshot.ts";
+import { buildSnapshot, CREATURE_CATALOG, creatureAssetName, creatureSilhouette, SNAPSHOT_PATH, type NativeSnapshot } from "../lib/native/snapshot.ts";
 
 afterAll(() => sql.end());
 
@@ -71,5 +71,85 @@ describe("the creature art the native apps bundle", () => {
       const name = creatureAssetName(card.kind, card.slug);
       expect(existsSync(`${CREATURE_CATALOG}/${name}.imageset/${name}.svg`), name).toBe(true);
     }
+  });
+});
+
+describe("the silhouettes the Mac app shows for what you have not encountered", () => {
+  const art = '<svg viewBox="0 0 256 256">\n  <title id="t">Carrot</title>\n  <rect x="8" y="8" width="240" height="240" rx="40" fill="#E6F4E8"/>\n  <ellipse cx="128" cy="224" rx="50" ry="9" fill="#000" opacity="0.14"/>\n  <g stroke="#1B1B1F"><path d="M1 1"/></g>\n</svg>';
+
+  test("keep the creature and drop its tile and shadow, or the shape would be a black square", () => {
+    const shape = creatureSilhouette(art);
+    expect(shape).not.toContain('rx="40"');
+    expect(shape).not.toContain("<ellipse");
+    expect(shape).toContain('<path d="M1 1"/>');
+  });
+
+  test("stop loudly on art that has no tile, rather than bundling a square", () => {
+    expect(() => creatureSilhouette('<svg><g><path d="M1 1"/></g></svg>')).toThrow(/tile/);
+  });
+
+  test("exist for every food and compound", () => {
+    for (const card of committed().cards) {
+      if (card.kind === "effect") continue;
+      const name = `${creatureAssetName(card.kind, card.slug)}-silhouette`;
+      expect(existsSync(`${CREATURE_CATALOG}/${name}.imageset/${name}.svg`), name).toBe(true);
+    }
+  });
+});
+
+describe("what each entry says before you have encountered it", () => {
+  const description = (kind: string, slug: string) => committed().cards.find((c) => c.kind === kind && c.slug === slug)!.description;
+
+  test("a food says what it is and what it is a source of, and nothing below the bar", () => {
+    const carrot = description("ingredient", "carrot");
+    expect(carrot).toContain("A vegetable");
+    expect(carrot).toContain("A source of");
+    expect(carrot).toContain("Vitamin A (RAE)");
+    expect(carrot).not.toContain("Zinc");
+  });
+
+  test("a food clearing no bar says so", () => {
+    expect(description("ingredient", "watermelon")).toContain("No nutrient in it reaches the bar");
+  });
+
+  test("a compound names what it does and where it is found", () => {
+    const vitaminC = description("compound", "vitamin-c");
+    expect(vitaminC).toContain("A vitamin");
+    expect(vitaminC).toContain("Immune system");
+    expect(vitaminC).toContain("Most in Kale");
+  });
+
+  test("a compound with no sourced effect says that rather than guessing", () => {
+    expect(description("compound", "retinol")).toContain("No sourced effect on file yet");
+  });
+
+  test("an effect names the compounds behind it", () => {
+    expect(description("effect", "skin-color")).toContain("Beta-carotene");
+  });
+
+  test("every entry has one", () => {
+    expect(committed().cards.filter((c) => !c.description)).toEqual([]);
+  });
+});
+
+describe("what marking a food as had reveals", () => {
+  const carrot = () => committed().reveals.carrot;
+
+  test("the compounds it carries, even in trace amounts", () => {
+    expect(carrot().compounds).toEqual(expect.arrayContaining(["beta-carotene", "vitamin-a", "zinc"]));
+  });
+
+  test("not the compounds it does not carry", () => {
+    expect(carrot().compounds).not.toContain("curcumin");
+  });
+
+  test("the effects it clears a bar for, and none it does not", () => {
+    expect(carrot().effects).toEqual(expect.arrayContaining(["vision", "skin-color"]));
+    expect(carrot().effects).not.toContain("nails");
+  });
+
+  test("covers every food", () => {
+    const snapshot = committed();
+    expect(Object.keys(snapshot.reveals).sort()).toEqual(Object.keys(snapshot.ingredients).sort());
   });
 });

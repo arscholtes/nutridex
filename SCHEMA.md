@@ -36,6 +36,12 @@ Where every claim comes from. Every amount, effect, modifier and caution row poi
 | `limitations` | text | yes |  |
 | `added_at` | timestamp with time zone | yes | `now()` |
 
+## On this device
+
+### `encounteredFoods`
+
+Which foods someone has marked as had, and when: a dictionary of food slug to date in `UserDefaults`, kept by the Mac app. This is a fact about the person and NutriDex owns it; no other app reads it, and it does not sync between devices yet. Compounds and effects are not recorded: what a food reveals comes from the bundled snapshot, so it cannot drift from what the Dex says.
+
 ## Food and what is in it
 
 ### `ingredient`
