@@ -1,6 +1,6 @@
 import { typeColor } from "../lib/art/palette.ts";
 import { hrefOf, type EffectEntry } from "../lib/db/dex.ts";
-import { EffectCard } from "./claims.tsx";
+import { EffectList } from "./claims.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
 import { AmountBar, EffectTile, EntryArt, EntryLink, EntryViewer, formatAmount, Section, SourcesSection, TypeBadge } from "./parts.tsx";
 
@@ -19,13 +19,18 @@ export function EffectEntryView({ entry }: { entry: EffectEntry }) {
 
       <div className="min-w-0 space-y-6">
         <Section title="Compounds behind it" empty="No sourced compound reaches it yet.">
-          {entry.compounds.map((c) => (
-            <EffectCard key={`${c.compound.slug}:${c.source.id}`} claim={c} on="effect" />
-          ))}
+          {entry.compounds.length > 0 && <EffectList claims={entry.compounds} on="effect" />}
+          {entry.compounds.some((c) => c.minFoodPer100g !== null) && (
+            <p className="text-sm text-ink-soft">These are the wordings EU law allows on food labels. They mean a nutrient contributes to that function at adequate intake, not that eating more improves it.</p>
+          )}
         </Section>
 
-        {entry.foods.map(({ compound, ranked, unmeasured }) => (
-          <Section key={compound.slug} title={`Foods richest in ${compound.name}, per 100 g`} empty={`No food in the Dex has a measured amount of ${compound.name}.`}>
+        {entry.foods.map(({ compound, bar, ranked, unmeasured }) => (
+          <Section
+            key={compound.slug}
+            title={bar === null ? `Foods richest in ${compound.name}, per 100 g` : `Foods that are a source of ${compound.name}, per 100 g`}
+            empty={bar === null ? `No food in the Dex has a measured amount of ${compound.name}.` : `No food in the Dex reaches the bar for ${compound.name} yet.`}
+          >
             {ranked.map((f, i) => (
               <div key={f.slug} className="flex items-center gap-3 rounded-xl border-2 border-line bg-card p-2.5">
                 <span className="w-6 text-right text-sm font-medium tabular-nums text-ink-soft">{i + 1}</span>
@@ -46,8 +51,8 @@ export function EffectEntryView({ entry }: { entry: EffectEntry }) {
         ))}
         {entry.foods.length > 0 && (
           <p className="text-sm text-ink-soft">
-            Ranked by amount. A goal score that weighs several compounds together needs a reference amount for each, and none is set yet; with one compound behind this effect, the order is the same either
-            way.
+            Ranked by amount.
+            {entry.foods.some((f) => f.bar !== null) && " A food is listed when 100 g supplies at least 15% of the nutrient's reference value, the EU's bar for calling a food a source."}
           </p>
         )}
 

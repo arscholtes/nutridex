@@ -80,6 +80,8 @@ export type EffectClaim = {
   summary: string | null;
   doseContext: string | null;
   onset: string | null;
+  /** The amount per 100 g a food must reach for the claim to apply to it; null when the source sets no bar. */
+  minFoodPer100g: number | null;
   grade: Grade;
   source: SourceRef;
 };
@@ -140,7 +142,7 @@ export type EffectEntry = {
   /** Best grade first. */
   compounds: EffectClaim[];
   /** Per contributing compound, the foods that carry it, most first. */
-  foods: { compound: Named; ranked: FoodAmount[]; unmeasured: Named[] }[];
+  foods: { compound: Named; bar: number | null; ranked: FoodAmount[]; unmeasured: Named[] }[];
   sources: SourceRef[];
   bestGrade: Grade | null;
 };
@@ -246,7 +248,10 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
   }).sort((a, b) => a.compound.name.localeCompare(b.compound.name));
 
   const present = profile.effects.flatMap((e) => e.compounds);
-  const effects = (await effectClaims({ compounds: present }, q)).filter((e) => profile.effects.some((r) => r.effectSlug === e.effect.slug));
+  const measured = new Map(amounts.map((a) => [a.slug, a.amount === null ? null : Number(a.amount)]));
+  const effects = (await effectClaims({ compounds: present }, q)).filter(
+    (e) => profile.effects.some((r) => r.effectSlug === e.effect.slug) && (e.minFoodPer100g === null || (measured.get(e.compound.slug) ?? 0) >= e.minFoodPer100g),
+  );
   const prep = await prepClaims(amounts.map((a) => a.slug), q);
   const usda = await sourcesByIds([...new Set(amounts.flatMap((a) => (a.sourceId ? [a.sourceId] : [])))], q);
 
@@ -340,8 +345,14 @@ export async function effectEntry(slug: string, q: Sql = sql): Promise<EffectEnt
     select id, slug, name from compound where slug = any(${[...new Set(compounds.map((c) => c.compound.slug))]}) order by name`;
   const foods = [];
   for (const c of ids) {
+    const bar = compounds.find((claim) => claim.compound.slug === c.slug)!.minFoodPer100g;
     const { ranked, absent } = await foodsCarrying(c.id, q);
-    foods.push({ compound: { slug: c.slug, name: c.name }, ranked, unmeasured: absent.unmeasured });
+    foods.push({
+      compound: { slug: c.slug, name: c.name },
+      bar,
+      ranked: bar === null ? ranked : ranked.filter((f) => f.amount >= bar),
+      unmeasured: bar === null ? absent.unmeasured : [],
+    });
   }
   return {
     pager: (await dexPager("effect", slug, q))!,
@@ -533,10 +544,10 @@ async function foodsCarrying(compoundId: string, q: Sql): Promise<{ ranked: Food
 async function effectClaims(by: { compounds: string[] } | { effect: string }, q: Sql): Promise<EffectClaim[]> {
   const compounds = "compounds" in by ? by.compounds : null;
   const effectSlug = "effect" in by ? by.effect : null;
-  const rows = await q<{ effectSlug: string; effectName: string; direction: string; bodySystem: string | null; compoundSlug: string; compoundName: string; compoundClass: string | null; summary: string | null; doseContext: string | null; onset: string | null; grade: Grade; sourceId: string }[]>`
+  const rows = await q<{ effectSlug: string; effectName: string; direction: string; bodySystem: string | null; compoundSlug: string; compoundName: string; compoundClass: string | null; summary: string | null; doseContext: string | null; onset: string | null; minFoodPer100g: string | null; grade: Grade; sourceId: string }[]>`
     select e.slug as "effectSlug", e.name as "effectName", e.direction, e.body_system as "bodySystem",
            c.slug as "compoundSlug", c.name as "compoundName", c.class as "compoundClass",
-           ce.summary, ce.dose_context as "doseContext", ce.onset, ce.evidence_grade as grade, ce.source_id as "sourceId"
+           ce.summary, ce.dose_context as "doseContext", ce.onset, ce.min_food_per_100g as "minFoodPer100g", ce.evidence_grade as grade, ce.source_id as "sourceId"
     from compound_effect ce join effect e on e.id = ce.effect_id join compound c on c.id = ce.compound_id
     where (${compounds}::text[] is null or c.slug = any(${compounds}::text[]))
       and (${effectSlug}::text is null or e.slug = ${effectSlug})
@@ -548,6 +559,7 @@ async function effectClaims(by: { compounds: string[] } | { effect: string }, q:
     summary: r.summary,
     doseContext: r.doseContext,
     onset: r.onset,
+    minFoodPer100g: r.minFoodPer100g === null ? null : Number(r.minFoodPer100g),
     grade: r.grade,
     source: refs.get(r.sourceId)!,
   }));
@@ -594,17 +606,22 @@ async function sourceMap(ids: string[], q: Sql): Promise<Map<string, SourceRef>>
 
 async function bestGrades(q: Sql): Promise<Map<string, Grade>> {
   const rows = await q<{ key: string; grade: Grade }[]>`
-    with compound_grade as (
+    with fact_grade as (
+      select compound_id, evidence_grade as grade from absorption_modifier_applied
+      union all select compound_id, evidence_grade from caution where compound_id is not null
+    ),
+    compound_grade as (
       select compound_id, min(grade) as grade from (
         select compound_id, evidence_grade as grade from compound_effect
-        union all select compound_id, evidence_grade from absorption_modifier_applied
-        union all select compound_id, evidence_grade from caution where compound_id is not null
+        union all select compound_id, grade from fact_grade
       ) g group by compound_id
     )
     select 'compound:' || c.slug as key, cg.grade from compound_grade cg join compound c on c.id = cg.compound_id
     union all
     select 'ingredient:' || i.slug, min(g.grade) from ingredient i join (
-      select ic.ingredient_id, cg.grade from ingredient_compound ic join compound_grade cg on cg.compound_id = ic.compound_id
+      select ic.ingredient_id, ce.evidence_grade as grade from ingredient_compound ic join compound_effect ce on ce.compound_id = ic.compound_id
+      where ic.amount_per_100g > 0 and ic.amount_per_100g >= coalesce(ce.min_food_per_100g, 0)
+      union all select ic.ingredient_id, f.grade from ingredient_compound ic join fact_grade f on f.compound_id = ic.compound_id
       where ic.amount_per_100g > 0
       union all select ingredient_id, evidence_grade from caution where ingredient_id is not null
     ) g on g.ingredient_id = i.id group by i.slug

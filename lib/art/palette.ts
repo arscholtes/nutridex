@@ -21,8 +21,18 @@ const TYPE_COLORS: Record<string, string> = {
   spice: "#D68A3A",
   oil: "#E0C341",
   egg: "#B0BEC5",
-  // Body systems
+  // Body systems (energy shares the compound class's colour)
   skin: "#F4A261",
+  immune: "#4DB6AC",
+  brain: "#9575CD",
+  bones: "#D7CCC8",
+  muscle: "#E57373",
+  heart: "#EC407A",
+  blood: "#D32F2F",
+  digestion: "#AED581",
+  eyes: "#64B5F6",
+  cells: "#26C6DA",
+  hormones: "#BA68C8",
 };
 
 const UNTYPED = "#90A4AE";

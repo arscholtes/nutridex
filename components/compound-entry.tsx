@@ -1,6 +1,6 @@
 import { typeColor } from "../lib/art/palette.ts";
 import { hrefOf, type CompoundEntry } from "../lib/db/dex.ts";
-import { EffectCard, ModifierCard, PrepCard } from "./claims.tsx";
+import { EffectList, ModifierCard, PrepCard } from "./claims.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
 import { AmountBar, EntryArt, EntryLink, EntryViewer, formatAmount, Section, SectionTitle, SourceLink, SourcesSection, TypeBadge } from "./parts.tsx";
 
@@ -31,9 +31,10 @@ export function CompoundEntryView({ entry }: { entry: CompoundEntry }) {
 
       <div className="min-w-0 space-y-6">
         <Section title="What it does" empty="No sourced effect on file for it yet.">
-          {entry.effects.map((e) => (
-            <EffectCard key={`${e.effect.slug}:${e.source.id}`} claim={e} on="compound" />
-          ))}
+          {entry.effects.length > 0 && <EffectList claims={entry.effects} on="compound" />}
+          {entry.effects.some((e) => e.minFoodPer100g !== null) && (
+            <p className="text-sm text-ink-soft">These are the wordings EU law allows on food labels. They mean a nutrient contributes to that function at adequate intake, not that eating more improves it.</p>
+          )}
         </Section>
 
         <Section title="Cautions" empty="No caution on file. That means none has been sourced yet, not that there are none.">

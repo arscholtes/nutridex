@@ -2,6 +2,19 @@ import { DexShell } from "../../components/dex-shell.tsx";
 import { SourceLink } from "../../components/parts.tsx";
 import { sourceList } from "../../lib/db/dex.ts";
 
+// Past this, a source's list folds away so the other sources stay in view.
+const LONG_LIST = 8;
+
+function Supports({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-2 list-disc pl-5 text-sm">
+      {items.map((x) => (
+        <li key={x}>{x}</li>
+      ))}
+    </ul>
+  );
+}
+
 /** Every citation, with what it supports and its limitations. */
 export default async function SourcesPage() {
   const sources = await sourceList();
@@ -26,12 +39,12 @@ export default async function SourcesPage() {
                 {s.limitations}
               </p>
             )}
-            {s.supports.length > 0 && (
-              <ul className="mt-2 list-disc pl-5 text-sm">
-                {s.supports.map((x) => (
-                  <li key={x}>{x}</li>
-                ))}
-              </ul>
+            {s.supports.length > 0 && s.supports.length <= LONG_LIST && <Supports items={s.supports} />}
+            {s.supports.length > LONG_LIST && (
+              <details className="mt-2 text-sm">
+                <summary className="cursor-pointer font-bold">Supports {s.supports.length} facts in the Dex</summary>
+                <Supports items={s.supports} />
+              </details>
             )}
           </li>
         ))}

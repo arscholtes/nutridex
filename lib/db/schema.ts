@@ -122,6 +122,7 @@ export const compoundEffect = pgTable(
     summary: text("summary"),
     doseContext: text("dose_context"),
     onset: text("onset"),
+    minFoodPer100g: amount("min_food_per_100g"),
     evidenceGrade: evidenceGrade(),
     sourceId: uuid("source_id").references(() => source.id),
   },

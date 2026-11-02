@@ -127,7 +127,7 @@ How much of a compound an ingredient has, per 100 g. Amounts are USDA's as repor
 
 ### `effect`
 
-Something a compound does, good or bad: skin color, blood pressure. `direction` is `benefit`, `risk` or `neutral`; the seed's one effect, skin color, is neutral.
+Something a compound does, good or bad: skin color, blood pressure. `direction` is `benefit`, `risk` or `neutral`. Skin color is neutral; the effects from the permitted nutrient claims are benefits.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -139,7 +139,7 @@ Something a compound does, good or bad: skin color, blood pressure. `direction` 
 
 ### `compound_effect`
 
-One compound's effect, with dose context, onset, evidence grade and source.
+One compound's effect, with dose context, onset, evidence grade and source. `min_food_per_100g`, in the unit USDA reports the compound in, is the amount a food must reach for the claim to apply to it; null when the source sets no bar. A food below the bar does not show the effect, though the compound's own page still does.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |

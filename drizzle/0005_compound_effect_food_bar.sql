@@ -1,0 +1,1 @@
+ALTER TABLE "compound_effect" ADD COLUMN "min_food_per_100g" numeric;

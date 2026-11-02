@@ -222,6 +222,7 @@ await db.transaction(async (tx) => {
       summary: ce.summary,
       doseContext: ce.doseContext,
       onset: ce.onset,
+      minFoodPer100g: ce.minFoodPer100g,
       evidenceGrade: ce.grade,
       sourceId: sourceIds.get(ce.source)!,
     };

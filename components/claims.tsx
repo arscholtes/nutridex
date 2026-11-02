@@ -82,40 +82,106 @@ export function PrepCard({ claim, showCompound }: { claim: PrepClaim; showCompou
 }
 
 /**
- * What a compound does, with the dose and onset its source reports.
- * @param on [string] the page it sits on: an effect's names the compound, the others name the effect
+ * What compounds do, each with the dose and onset its source reports. A source behind several claims
+ * is cited once, under them, with any bar they share.
+ * @param claims [EffectClaim[]] in display order
+ * @param on [string] the page it sits on: an effect's names the compound, a compound's names the effect
  */
-export function EffectCard({ claim, on }: { claim: EffectClaim; on: "effect" | "compound" | "ingredient" }) {
-  return (
-    <div className="rounded-xl border-2 border-line bg-card p-3">
-      <div className="flex flex-wrap items-center gap-2">
-        {on === "effect" ? (
-          <EntryLink href={hrefOf("compound", claim.compound.slug)}>{claim.compound.name}</EntryLink>
-        ) : (
-          <EntryLink href={hrefOf("effect", claim.effect.slug)}>{claim.effect.name}</EntryLink>
-        )}
-        {on === "ingredient" && <span className="text-sm text-ink-soft">via {claim.compound.name}</span>}
-        {on !== "effect" && <span className="text-xs font-bold capitalize text-ink-soft">{claim.effect.direction}</span>}
-        <GradeBadge grade={claim.grade} limitations={claim.source.limitations} />
+export function EffectList({ claims, on }: { claims: EffectClaim[]; on: "effect" | "compound" }) {
+  return [...Map.groupBy(claims, (c) => c.source.id).values()].map((group) => {
+    const shared = group.length > 1 && group.every((c) => c.doseContext === group[0].doseContext) ? group[0].doseContext : null;
+    return (
+      <div key={group[0].source.id} className="rounded-xl border-2 border-line bg-card p-3">
+        <ul className="divide-y divide-line">
+          {group.map((c) => (
+            <li key={`${c.effect.slug}:${c.compound.slug}`} className="py-2.5 first:pt-0 last:pb-0">
+              <div className="flex flex-wrap items-center gap-2">
+                {on === "effect" ? <EntryLink href={hrefOf("compound", c.compound.slug)}>{c.compound.name}</EntryLink> : <EntryLink href={hrefOf("effect", c.effect.slug)}>{c.effect.name}</EntryLink>}
+                {on !== "effect" && c.effect.direction !== "benefit" && <span className="text-xs font-bold capitalize text-ink-soft">{c.effect.direction}</span>}
+                <GradeBadge grade={c.grade} limitations={c.source.limitations} />
+              </div>
+              {c.summary && <p className="mt-1 text-sm">{c.summary}</p>}
+              <ClaimFacts doseContext={shared ? null : c.doseContext} onset={c.onset} isBar={c.minFoodPer100g !== null} />
+            </li>
+          ))}
+        </ul>
+        {shared && <p className="mt-2 border-t border-line pt-2 text-sm text-ink-soft">{shared}</p>}
+        <p className="mt-2 text-xs">
+          <SourceLink source={group[0].source} />
+        </p>
       </div>
-      {claim.summary && <p className="mt-2 text-sm">{claim.summary}</p>}
-      <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
-        {claim.doseContext && (
-          <>
-            <dt className="text-ink-soft">Dose</dt>
-            <dd>{claim.doseContext}</dd>
-          </>
-        )}
-        {claim.onset && (
-          <>
-            <dt className="text-ink-soft">Onset</dt>
-            <dd>{claim.onset}</dd>
-          </>
-        )}
-      </dl>
-      <p className="mt-2 text-xs">
-        <SourceLink source={claim.source} />
-      </p>
-    </div>
+    );
+  });
+}
+
+/**
+ * What a food does: one line per effect, naming the nutrients behind it, with each claim's exact
+ * wording and source a click away.
+ * @param claims [EffectClaim[]] the claims that apply to this food
+ */
+export function FoodEffects({ claims }: { claims: EffectClaim[] }) {
+  return (
+    <ul className="divide-y divide-line rounded-xl border-2 border-line bg-card px-3">
+      {[...Map.groupBy(claims, (c) => c.effect.slug).values()].map((group) => {
+        const { effect } = group[0];
+        return (
+          <li key={effect.slug} className="py-2.5">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <EntryLink href={hrefOf("effect", effect.slug)}>{effect.name}</EntryLink>
+              {effect.direction !== "benefit" && <span className="text-xs font-bold capitalize text-ink-soft">{effect.direction}</span>}
+              <GradeBadge grade={group.reduce((best, c) => (c.grade < best ? c.grade : best), group[0].grade)} limitations={null} />
+              <span className="text-sm text-ink-soft">
+                via{" "}
+                {group.map((c, i) => (
+                  <span key={c.compound.slug}>
+                    {i > 0 && ", "}
+                    <EntryLink href={hrefOf("compound", c.compound.slug)}>{c.compound.name}</EntryLink>
+                  </span>
+                ))}
+              </span>
+            </div>
+            <details className="mt-1 text-sm">
+              <summary className="cursor-pointer text-ink-soft hover:text-ink">What the source says</summary>
+              <ul className="mt-1.5 space-y-2">
+                {group.map((c) => (
+                  <li key={c.compound.slug}>
+                    {c.summary && <p>{c.summary}</p>}
+                    <ClaimFacts doseContext={c.doseContext} onset={c.onset} isBar={c.minFoodPer100g !== null} />
+                    <p className="mt-1 text-xs">
+                      <SourceLink source={c.source} />
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+/**
+ * A claim's dose and onset, where its source gives them.
+ * @param isBar [boolean] the context states what a food must supply, which is not a dose someone takes
+ */
+function ClaimFacts({ doseContext, onset, isBar }: { doseContext: string | null; onset: string | null; isBar: boolean }) {
+  if (isBar) return doseContext ? <p className="mt-1 text-sm text-ink-soft">{doseContext}</p> : null;
+  if (!doseContext && !onset) return null;
+  return (
+    <dl className="mt-1.5 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
+      {doseContext && (
+        <>
+          <dt className="text-ink-soft">Dose</dt>
+          <dd>{doseContext}</dd>
+        </>
+      )}
+      {onset && (
+        <>
+          <dt className="text-ink-soft">Onset</dt>
+          <dd>{onset}</dd>
+        </>
+      )}
+    </dl>
   );
 }
