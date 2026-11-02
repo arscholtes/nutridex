@@ -1,0 +1,3 @@
+// Copy to Local.xcconfig (gitignored) to install on a phone or iPad.
+BUNDLE_ID_PREFIX = com.example
+DEVELOPMENT_TEAM = ABCDE12345

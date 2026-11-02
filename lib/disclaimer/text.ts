@@ -56,3 +56,10 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
       "only appears again after an update.",
   },
 ];
+
+/** The same notice for the native apps, which keep their one remembered thing in a setting. */
+export const NATIVE_DISCLAIMER_SECTIONS: { heading: string; body: string }[] = DISCLAIMER_SECTIONS.map((s) =>
+  s.heading === "What is stored about you"
+    ? { ...s, body: "Nothing, except a setting on this device that remembers which version of this notice you accepted, so it only appears again after an update." }
+    : s,
+);

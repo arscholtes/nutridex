@@ -1,6 +1,6 @@
 # Schema
 
-NutriDex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted.
+NutriDex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted. The native apps bundle a snapshot generated from it (`npm run export:native`) and write nothing back.
 The migration in `drizzle/` is generated from `lib/db/schema.ts`; this file describes what each table is for.
 The `pg_trgm` extension (`drizzle/0004_search_trigram.sql`) gives the Dex search its fuzzy matching.
 

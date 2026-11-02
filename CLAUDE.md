@@ -26,3 +26,16 @@ Read it with the Claude Docs tools, never a web fetch.
 - The disclaimer gate (`lib/disclaimer/`, `app/disclaimer-gate.tsx`) shows until this device has
   accepted the running version from `package.json`. Bump the version for every user-visible release;
   that is what brings the disclaimer back. Any change to its text ships with a bump.
+
+## Every platform
+
+NutriDex ships on the web (`app/`, Next.js) and natively on iPhone and iPad (`apple/`, SwiftUI), with a
+Mac app to come. Native stays SwiftUI: no React Native and no web views.
+
+- A change someone can see ships on every platform in the same PR.
+- After any change to the seed, the data functions in `lib/db/dex.ts`, the art or the disclaimer, run
+  `npm run export:native`. `tests/native-snapshot.db.test.ts` fails when it is forgotten.
+- Judgments stay in TypeScript and reach the apps as data: the engine's flags, claim bars and dex numbers.
+  Swift shows them and never works them out again.
+- Layout and interface wording live in each platform's views, so nothing checks those for you. Change both.
+

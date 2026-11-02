@@ -20,6 +20,21 @@ npm run dev                  # the Dex at http://localhost:3000
 To move to Supabase, set `DATABASE_URL` in `.env.local` to the project's connection string, then
 run `db:migrate` and `seed` against it.
 
+## Native apps
+
+`apple/NutriDex.xcodeproj` is the SwiftUI app for iPhone and iPad. It needs no server: it bundles
+`apple/NutriDex/Resources/dex.json` and a catalog of creature art, both written by `npm run export:native`
+from the local database, through the same functions the website reads.
+
+```bash
+npm run export:native        # after any change to the seed, data functions, art or disclaimer
+xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex \
+  -destination 'platform=iOS Simulator,name=iPhone 17'
+```
+
+To install on a device, copy `apple/Config/Local.example.xcconfig` to `apple/Config/Local.xcconfig` and fill
+in your team and bundle id prefix.
+
 ## Phases
 
 | Phase | Done when | State |

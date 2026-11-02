@@ -1,0 +1,5 @@
+// Signing identity is configuration, kept out of the repo in Local.xcconfig.
+BUNDLE_ID_PREFIX = dev.local
+DEVELOPMENT_TEAM =
+
+#include? "Local.xcconfig"
