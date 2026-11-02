@@ -1,4 +1,4 @@
-# Foodi Dex
+# NutriDex
 
 The spec is the Claude Docs plan "Foodi Dex: Build Plan" (artifact 6a704801-1a77-4111-aee7-d16c0a7b60e7).
 Read it with the Claude Docs tools, never a web fetch.

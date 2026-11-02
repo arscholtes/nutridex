@@ -1,4 +1,4 @@
-# Foodi Dex
+# NutriDex
 
 What is in your food, what it does, and what helps it work. Built from the plan in Claude Docs,
 "Foodi Dex: Build Plan" (https://claude.ai/code/artifact/6a704801-1a77-4111-aee7-d16c0a7b60e7), one phase at a time.

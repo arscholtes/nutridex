@@ -8,7 +8,7 @@ const text = Fredoka({ subsets: ["latin"], variable: "--font-fredoka" });
 const readout = VT323({ weight: "400", subsets: ["latin"], variable: "--font-vt323" });
 
 export const metadata: Metadata = {
-  title: "Foodi Dex",
+  title: "NutriDex",
   description: "What is in your food, what it does, and what helps it work.",
 };
 

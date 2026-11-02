@@ -1,12 +1,12 @@
 # Schema
 
-Foodi Dex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted.
+NutriDex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted.
 The migration in `drizzle/` is generated from `lib/db/schema.ts`; this file describes what each table is for.
 The `pg_trgm` extension (`drizzle/0004_search_trigram.sql`) gives the Dex search its fuzzy matching.
 
 ## Facts this store owns, and who else reads them
 
-Foodi Dex owns food composition (amounts per 100 g), compound, microbe and supplement facts and the sources behind them, and recipes and stacks.
+NutriDex owns food composition (amounts per 100 g), compound, microbe and supplement facts and the sources behind them, and recipes and stacks.
 No other app reads this store. `fps stores` does not exist yet, so this section is the registration.
 
 ## Rules the schema enforces

@@ -34,6 +34,11 @@ describe("the handheld", () => {
   const step = (slug: string, name: string, number: string) => ({ slug, name, number, href: `/ingredients/${slug}` });
   const middle = { number: "F006", total: 15, prev: step("cantaloupe", "Cantaloupe", "F005"), next: step("egg", "Egg", "F007") };
 
+  test("wears the app's name, locked or not", () => {
+    expect(html(<DexShell>List</DexShell>)).toContain("NutriDex");
+    expect(html(<DexShell locked>Read this</DexShell>)).toContain("NutriDex");
+  });
+
   test("offers no way into the Dex while the disclaimer is showing", () => {
     const locked = html(<DexShell locked>Read this</DexShell>);
     expect(locked).toContain("Read this");

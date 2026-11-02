@@ -21,10 +21,10 @@ export function DexShell({ lens, pager, locked = false, children }: { lens?: str
               <span className="dex-light bg-[#52d273]" />
             </div>
             {locked ? (
-              <span className="text-xl font-bold text-white sm:text-2xl">Foodi Dex</span>
+              <span className="text-xl font-bold text-white sm:text-2xl">NutriDex</span>
             ) : (
               <Link href="/" className="text-xl font-bold text-white sm:text-2xl">
-                Foodi Dex
+                NutriDex
               </Link>
             )}
           </div>

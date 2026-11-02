@@ -1,4 +1,4 @@
-// Which USDA FoodData Central nutrients are Foodi Dex compounds. Pure: no network, no database.
+// Which USDA FoodData Central nutrients are NutriDex compounds. Pure: no network, no database.
 // Ids, names and units were read from USDA's own record for raw carrots (fdcId 170393).
 
 export type FdcNutrient = { id: number; number?: string; name: string; unitName: string };
