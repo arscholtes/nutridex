@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Beet</title>
+  <g stroke-linecap="round" fill="none">
+    <path d="M128 88 C120 74 108 62 98 54" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M128 88 C120 74 108 62 98 54" stroke="#D0306F" stroke-width="5"/>
+    <path d="M128 88 C136 72 148 60 158 52" stroke="#1B1B1F" stroke-width="12"/>
+    <path d="M128 88 C136 72 148 60 158 52" stroke="#D0306F" stroke-width="5"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M98 54 C66 56 50 40 60 26 C72 14 102 30 98 54 Z" fill="#3E9E52"/>
+    <path d="M158 52 C190 54 206 38 196 24 C184 12 154 28 158 52 Z" fill="#3E9E52"/>
+  </g>
+  <g stroke="#2A7A3B" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M96 50 L70 30"/>
+    <path d="M160 48 L186 28"/>
+  </g>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M128 200 C130 212 134 220 142 228" fill="none" stroke-width="5"/>
+    <path d="M128 86 C178 86 198 126 186 162 C176 192 148 204 128 204 C108 204 80 192 70 162 C58 126 78 86 128 86 Z" fill="#A3195B"/>
+  </g>
+  <ellipse cx="96" cy="126" rx="11" ry="22" fill="#D6407E" transform="rotate(-22 96 126)"/>
+  <g stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M160 178 L168 172"/>
+    <path d="M150 188 L156 184"/>
+  </g>
+  <ellipse cx="102" cy="162" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <ellipse cx="154" cy="162" rx="8" ry="4.5" fill="#FF9EC4" opacity="0.55"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

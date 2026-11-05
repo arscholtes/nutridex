@@ -1,4 +1,4 @@
-# Foodi Dex creature art: house style (approved by Alex, 2026-10-12)
+# NutriDex creature art: house style (approved by Alex, 2026-10-12)
 
 Read these approved examples first and match them exactly in structure, proportion and face:
 /Users/alexscholtes/Developer/foodi-dex/public/art/ingredients/ — carrot.svg, beet.svg, kale.svg (the three originals),

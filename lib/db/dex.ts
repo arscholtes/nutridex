@@ -3,6 +3,7 @@
 import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type Unit } from "epistasis";
 import { PANEL, PANEL_COMPOUNDS, type PanelGroup } from "../usda/nutrients.ts";
 import { sql } from "./client.ts";
+import { bentoTiles, type BentoTile } from "./effect-tiles.ts";
 import { loadFacts } from "./engine-input.ts";
 
 type Sql = typeof sql;
@@ -29,8 +30,17 @@ export type FoodAmount = Named & {
   share: number;
 };
 
-/** One row of a food's nutrient panel: USDA's amount per 100 g, or null when USDA has none. */
-export type PanelRow = { slug: string; name: string; group: PanelGroup; amount: number | null; unit: Unit | null };
+/** One row of a food's nutrient panel: USDA's amount per 100 g and its share of the richest food in the Dex, both null when USDA has none. */
+export type PanelRow = {
+  slug: string;
+  name: string;
+  group: PanelGroup;
+  amount: number | null;
+  unit: Unit | null;
+  share: number | null;
+  /** True when the nutrient is not unlocked yet, so it has no page to link to. */
+  locked?: boolean;
+};
 
 /** One compound in a food, against the richest seeded food for that compound. */
 export type CompoundAmount = Named & {
@@ -38,7 +48,8 @@ export type CompoundAmount = Named & {
   amount: number;
   unit: Unit;
   share: number;
-  richest: Named;
+  /** The richest seeded food, or null when naming it would give away a food not yet encountered. */
+  richest: Named | null;
 };
 
 /** Foods and compounds a source measured as none, or that no source measured. */
@@ -80,12 +91,23 @@ export type EffectClaim = {
   summary: string | null;
   doseContext: string | null;
   onset: string | null;
+  /** The amount per 100 g a food must reach for the claim to apply to it; null when the source sets no bar. */
+  minFoodPer100g: number | null;
   grade: Grade;
   source: SourceRef;
 };
 
+/** A neighbouring entry in the dex. */
+export type DexStep = Named & { number: string; href: string };
+
+/** An entry's place in the dex and the entries either side of it within its kind. */
+export type DexPager = { number: string; total: number; prev: DexStep | null; next: DexStep | null };
+
 export type IngredientEntry = {
   ingredient: Named & { category: string | null; imageUrl: string | null };
+  pager: DexPager;
+  /** How many compounds USDA gives this food a value for, zeros included. */
+  measured: number;
   /** Ranked by share of the richest seeded food: what this food stands out for. */
   compounds: CompoundAmount[];
   absent: Absences;
@@ -97,12 +119,15 @@ export type IngredientEntry = {
   prep: PrepClaim[];
   /** The effects of the compounds it carries, each with the evidence behind it. */
   effects: EffectClaim[];
+  /** The same effects as tiles, sized by how much of a daily amount is behind each. */
+  tiles: BentoTile[];
   cautions: CautionFlag[];
   sources: SourceRef[];
   bestGrade: Grade | null;
 };
 
 export type CompoundEntry = {
+  pager: DexPager;
   compound: Named & {
     class: string | null;
     chebiId: number | null;
@@ -125,11 +150,12 @@ export type CompoundEntry = {
 };
 
 export type EffectEntry = {
+  pager: DexPager;
   effect: Named & { direction: string; bodySystem: string | null };
   /** Best grade first. */
   compounds: EffectClaim[];
   /** Per contributing compound, the foods that carry it, most first. */
-  foods: { compound: Named; ranked: FoodAmount[]; unmeasured: Named[] }[];
+  foods: { compound: Named; bar: number | null; ranked: FoodAmount[]; unmeasured: Named[] }[];
   sources: SourceRef[];
   bestGrade: Grade | null;
 };
@@ -138,6 +164,8 @@ export type EntryKind = "ingredient" | "compound" | "effect";
 
 export type EntryCard = Named & {
   kind: EntryKind;
+  /** Its dex number, such as F006. */
+  number: string;
   href: string;
   /** Its category, compound class or body system. */
   type: string | null;
@@ -184,7 +212,15 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
   );
   const panel = PANEL.map((p): PanelRow => {
     const a = amounts.find((x) => x.slug === p.slug && x.amount !== null);
-    return { slug: p.slug, name: panelNames.get(p.slug)!, group: p.group, amount: a ? Number(a.amount) : null, unit: a ? a.unit : null };
+    const top = Number(a?.richestAmount);
+    return {
+      slug: p.slug,
+      name: panelNames.get(p.slug)!,
+      group: p.group,
+      amount: a ? Number(a.amount) : null,
+      unit: a ? a.unit : null,
+      share: a ? (top > 0 ? Number(a.amount) / top : 0) : null,
+    };
   });
   const others = amounts.filter((a) => !PANEL_COMPOUNDS.includes(a.slug));
   const compounds = others
@@ -225,13 +261,18 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
   }).sort((a, b) => a.compound.name.localeCompare(b.compound.name));
 
   const present = profile.effects.flatMap((e) => e.compounds);
-  const effects = (await effectClaims({ compounds: present }, q)).filter((e) => profile.effects.some((r) => r.effectSlug === e.effect.slug));
+  const measured = new Map(amounts.map((a) => [a.slug, a.amount === null ? null : Number(a.amount)]));
+  const effects = (await effectClaims({ compounds: present }, q)).filter(
+    (e) => profile.effects.some((r) => r.effectSlug === e.effect.slug) && (e.minFoodPer100g === null || (measured.get(e.compound.slug) ?? 0) >= e.minFoodPer100g),
+  );
   const prep = await prepClaims(amounts.map((a) => a.slug), q);
   const usda = await sourcesByIds([...new Set(amounts.flatMap((a) => (a.sourceId ? [a.sourceId] : [])))], q);
 
   const sources = dedupe([...usda, ...absorption.flatMap((a) => a.sources), ...effects.map((e) => e.source), ...prep.map((p) => p.source)]);
   return {
     ingredient: { slug: row.slug, name: row.name, category: row.category, imageUrl: row.imageUrl },
+    pager: (await dexPager("ingredient", slug, q))!,
+    measured: amounts.filter((a) => a.amount !== null).length,
     compounds,
     absent,
     panel,
@@ -239,6 +280,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     pairsWellWith: [...new Set(profile.absorption.flatMap((f) => (f.status === "missed" && f.suggestion ? [f.suggestion] : [])))],
     prep,
     effects,
+    tiles: bentoTiles(effects, new Map(amounts.map((a) => [a.slug, { amount: a.amount === null ? null : Number(a.amount) }]))),
     cautions: profile.cautions,
     sources,
     bestGrade: best([...absorption.map((a) => a.flag.grade), ...effects.map((e) => e.grade), ...profile.cautions.flatMap((c) => (c.grade ? [c.grade] : []))]),
@@ -288,6 +330,7 @@ export async function compoundEntry(slug: string, q: Sql = sql): Promise<Compoun
   const prep = await prepClaims([slug], q);
 
   return {
+    pager: (await dexPager("compound", slug, q))!,
     compound,
     classes: [...classes],
     foods,
@@ -316,16 +359,66 @@ export async function effectEntry(slug: string, q: Sql = sql): Promise<EffectEnt
     select id, slug, name from compound where slug = any(${[...new Set(compounds.map((c) => c.compound.slug))]}) order by name`;
   const foods = [];
   for (const c of ids) {
+    const bar = compounds.find((claim) => claim.compound.slug === c.slug)!.minFoodPer100g;
     const { ranked, absent } = await foodsCarrying(c.id, q);
-    foods.push({ compound: { slug: c.slug, name: c.name }, ranked, unmeasured: absent.unmeasured });
+    foods.push({
+      compound: { slug: c.slug, name: c.name },
+      bar,
+      ranked: bar === null ? ranked : ranked.filter((f) => f.amount >= bar),
+      unmeasured: bar === null ? absent.unmeasured : [],
+    });
   }
   return {
+    pager: (await dexPager("effect", slug, q))!,
     effect: row,
     compounds,
     foods,
     sources: dedupe(compounds.map((c) => c.source)),
     bestGrade: best(compounds.map((c) => c.grade)),
   };
+}
+
+const KIND_PREFIX: Record<EntryKind, string> = { ingredient: "F", compound: "C", effect: "E" };
+
+/** @return [string] an entry's dex number from its place within its kind, such as F006 */
+function dexNumber(kind: EntryKind, place: number): string {
+  return `${KIND_PREFIX[kind]}${String(place).padStart(3, "0")}`;
+}
+
+/** Every ingredient, compound and effect, numbered by name within its kind before anything filters them. */
+const numberedEntries = (q: Sql) => q`
+  select *, row_number() over (partition by kind order by name)::int as place from (
+    select 'ingredient' as kind, slug, name, category as type, image_url as "imageUrl", null as "compoundClass" from ingredient
+    union all select 'compound', slug, name, class, null, class from compound
+    union all select 'effect', slug, name, body_system, null, null from effect
+  ) unnumbered`;
+
+/**
+ * An entry's dex number and its neighbours within its kind.
+ * @param kind [EntryKind] the entry's kind
+ * @param slug [string] the entry's slug
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<DexPager | null>] null when no entry of that kind has that slug
+ */
+export async function dexPager(kind: EntryKind, slug: string, q: Sql = sql): Promise<DexPager | null> {
+  const rows = await q<{ slug: string; name: string; place: number }[]>`
+    select slug, name, place from (${numberedEntries(q)}) numbered where kind = ${kind} order by place`;
+  const at = rows.findIndex((r) => r.slug === slug);
+  if (at === -1) return null;
+  const step = (r: (typeof rows)[number] | undefined): DexStep | null =>
+    r ? { slug: r.slug, name: r.name, number: dexNumber(kind, r.place), href: hrefOf(kind, r.slug) } : null;
+  return { number: dexNumber(kind, rows[at].place), total: rows.length, prev: step(rows[at - 1]), next: step(rows[at + 1]) };
+}
+
+/**
+ * How many entries the dex holds, for the home tabs.
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<Record<EntryKind, number>>] the count of each kind
+ */
+export async function dexCounts(q: Sql = sql): Promise<Record<EntryKind, number>> {
+  const rows = await q<{ kind: EntryKind; n: number }[]>`
+    select kind, count(*)::int as n from (${numberedEntries(q)}) numbered group by kind`;
+  return Object.fromEntries(rows.map((r) => [r.kind, r.n])) as Record<EntryKind, number>;
 }
 
 /**
@@ -336,18 +429,14 @@ export async function effectEntry(slug: string, q: Sql = sql): Promise<EffectEnt
  */
 export async function listEntries(search: { q?: string; kind?: EntryKind; type?: string }, q: Sql = sql): Promise<EntryCard[]> {
   const words = search.q?.trim() ?? "";
-  const rows = await q<{ kind: EntryKind; slug: string; name: string; type: string | null; imageUrl: string | null; compoundClass: string | null }[]>`
-    with entry as (
-      select 'ingredient' as kind, slug, name, category as type, image_url as "imageUrl", null as "compoundClass" from ingredient
-      union all select 'compound', slug, name, class, null, class from compound
-      union all select 'effect', slug, name, body_system, null, null from effect
-    ),
+  const rows = await q<{ kind: EntryKind; slug: string; name: string; type: string | null; imageUrl: string | null; compoundClass: string | null; place: number }[]>`
+    with entry as (${numberedEntries(q)}),
     scored as (
       select *, name ilike ${"%" + words + "%"} as contains, word_similarity(${words}::text, name) as score from entry
       where (${search.kind ?? null}::text is null or kind = ${search.kind ?? null})
         and (${search.type ?? null}::text is null or type = ${search.type ?? null})
     )
-    select kind, slug, name, type, "imageUrl", "compoundClass" from scored
+    select kind, slug, name, type, "imageUrl", "compoundClass", place from scored
     where ${words}::text = '' or contains
        or (not exists (select 1 from scored where contains) and score >= ${SEARCH_SIMILARITY})
     order by contains desc, score desc, array_position(array['ingredient', 'compound', 'effect'], kind), name`;
@@ -370,7 +459,7 @@ export async function listEntries(search: { q?: string; kind?: EntryKind; type?:
     select e.slug, count(distinct ce.compound_id)::int as compounds from effect e left join compound_effect ce on ce.effect_id = e.id group by e.id`;
   const grades = await bestGrades(q);
 
-  return rows.map((r): EntryCard => {
+  return rows.map(({ place, ...r }): EntryCard => {
     const stats: string[] = [];
     if (r.kind === "ingredient") {
       const s = ingredientStats.find((x) => x.slug === r.slug)!;
@@ -390,7 +479,7 @@ export async function listEntries(search: { q?: string; kind?: EntryKind; type?:
       const s = effectStats.find((x) => x.slug === r.slug)!;
       stats.push(s.compounds === 1 ? "1 compound" : `${s.compounds} compounds`);
     }
-    return { ...r, href: hrefOf(r.kind, r.slug), bestGrade: grades.get(`${r.kind}:${r.slug}`) ?? null, stats };
+    return { ...r, number: dexNumber(r.kind, place), href: hrefOf(r.kind, r.slug), bestGrade: grades.get(`${r.kind}:${r.slug}`) ?? null, stats };
   });
 }
 
@@ -469,10 +558,10 @@ async function foodsCarrying(compoundId: string, q: Sql): Promise<{ ranked: Food
 async function effectClaims(by: { compounds: string[] } | { effect: string }, q: Sql): Promise<EffectClaim[]> {
   const compounds = "compounds" in by ? by.compounds : null;
   const effectSlug = "effect" in by ? by.effect : null;
-  const rows = await q<{ effectSlug: string; effectName: string; direction: string; bodySystem: string | null; compoundSlug: string; compoundName: string; compoundClass: string | null; summary: string | null; doseContext: string | null; onset: string | null; grade: Grade; sourceId: string }[]>`
+  const rows = await q<{ effectSlug: string; effectName: string; direction: string; bodySystem: string | null; compoundSlug: string; compoundName: string; compoundClass: string | null; summary: string | null; doseContext: string | null; onset: string | null; minFoodPer100g: string | null; grade: Grade; sourceId: string }[]>`
     select e.slug as "effectSlug", e.name as "effectName", e.direction, e.body_system as "bodySystem",
            c.slug as "compoundSlug", c.name as "compoundName", c.class as "compoundClass",
-           ce.summary, ce.dose_context as "doseContext", ce.onset, ce.evidence_grade as grade, ce.source_id as "sourceId"
+           ce.summary, ce.dose_context as "doseContext", ce.onset, ce.min_food_per_100g as "minFoodPer100g", ce.evidence_grade as grade, ce.source_id as "sourceId"
     from compound_effect ce join effect e on e.id = ce.effect_id join compound c on c.id = ce.compound_id
     where (${compounds}::text[] is null or c.slug = any(${compounds}::text[]))
       and (${effectSlug}::text is null or e.slug = ${effectSlug})
@@ -484,6 +573,7 @@ async function effectClaims(by: { compounds: string[] } | { effect: string }, q:
     summary: r.summary,
     doseContext: r.doseContext,
     onset: r.onset,
+    minFoodPer100g: r.minFoodPer100g === null ? null : Number(r.minFoodPer100g),
     grade: r.grade,
     source: refs.get(r.sourceId)!,
   }));
@@ -530,17 +620,22 @@ async function sourceMap(ids: string[], q: Sql): Promise<Map<string, SourceRef>>
 
 async function bestGrades(q: Sql): Promise<Map<string, Grade>> {
   const rows = await q<{ key: string; grade: Grade }[]>`
-    with compound_grade as (
+    with fact_grade as (
+      select compound_id, evidence_grade as grade from absorption_modifier_applied
+      union all select compound_id, evidence_grade from caution where compound_id is not null
+    ),
+    compound_grade as (
       select compound_id, min(grade) as grade from (
         select compound_id, evidence_grade as grade from compound_effect
-        union all select compound_id, evidence_grade from absorption_modifier_applied
-        union all select compound_id, evidence_grade from caution where compound_id is not null
+        union all select compound_id, grade from fact_grade
       ) g group by compound_id
     )
     select 'compound:' || c.slug as key, cg.grade from compound_grade cg join compound c on c.id = cg.compound_id
     union all
     select 'ingredient:' || i.slug, min(g.grade) from ingredient i join (
-      select ic.ingredient_id, cg.grade from ingredient_compound ic join compound_grade cg on cg.compound_id = ic.compound_id
+      select ic.ingredient_id, ce.evidence_grade as grade from ingredient_compound ic join compound_effect ce on ce.compound_id = ic.compound_id
+      where ic.amount_per_100g > 0 and ic.amount_per_100g >= coalesce(ce.min_food_per_100g, 0)
+      union all select ic.ingredient_id, f.grade from ingredient_compound ic join fact_grade f on f.compound_id = ic.compound_id
       where ic.amount_per_100g > 0
       union all select ingredient_id, evidence_grade from caution where ingredient_id is not null
     ) g on g.ingredient_id = i.id group by i.slug

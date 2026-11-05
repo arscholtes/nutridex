@@ -1,0 +1,141 @@
+/* New age: the way a product page reads. A thin frosted bar, a name set very large and centred above its
+   creature, flat grey tiles with no lines or shadows, and blue reserved for what you can press. */
+
+[data-skin="new-age"] body {
+  font-size: 1.0625rem;
+  letter-spacing: -0.022em;
+}
+
+[data-skin="new-age"] .dex-page {
+  width: min(100%, 70rem);
+}
+
+[data-skin="new-age"] .dex-top {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  min-height: 3rem;
+  margin-inline: calc(50% - 50vw);
+  padding: 0 max(0.875rem, calc(50vw - 35rem + 0.875rem));
+  background: rgb(255 255 255 / 0.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+}
+
+[data-skin="new-age"] .dex-wordmark {
+  font-size: 1.0625rem;
+}
+
+[data-skin="new-age"] .dex-round {
+  height: 3rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+[data-skin="new-age"] .dex-round:hover {
+  opacity: 1;
+}
+
+.dex-hero-line {
+  display: none;
+}
+
+[data-hero="title-first"] .dex-hero-line {
+  display: block;
+  margin-top: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: -0.015em;
+  line-height: 1.07;
+}
+
+/* One centred column at every width, where other skins put the creature beside its details. */
+[data-hero="title-first"] .dex-entry {
+  display: block;
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+[data-hero="title-first"] .dex-entry > * + * {
+  margin-top: 3.5rem;
+}
+
+[data-hero="title-first"] .dex-viewer {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+[data-hero="title-first"] .dex-number-under-card {
+  order: -3;
+  margin-top: 1.5rem;
+  font-weight: 400;
+}
+
+[data-hero="title-first"] .dex-viewer-name {
+  order: -2;
+  margin-top: 0.25rem;
+  font-size: clamp(2.75rem, 9vw, 5rem);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+[data-hero="title-first"] .dex-viewer-details {
+  order: -1;
+  margin-block: 0.75rem 1.75rem;
+  max-width: 40rem;
+}
+
+[data-hero="title-first"] .dex-viewer-details > * {
+  justify-content: center;
+}
+
+[data-hero="title-first"] .dex-holo-card {
+  width: 100%;
+  padding-block: 2.5rem;
+}
+
+[data-hero="title-first"] .dex-holo-card > div {
+  max-width: 22rem;
+}
+
+[data-hero="title-first"] .dex-section-title {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+[data-skin="new-age"] .dex-chip {
+  background: var(--color-card);
+  font-weight: 400;
+}
+
+[data-skin="new-age"] .dex-chip[aria-current="page"] {
+  background: var(--color-chip);
+}
+
+[data-skin="new-age"] .dex-field {
+  border-radius: 0.75rem;
+}
+
+/* Links read as blue words, underlined only under the pointer. */
+[data-skin="new-age"] .dex-link {
+  color: var(--color-accent);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+[data-skin="new-age"] .dex-link:hover {
+  text-decoration: underline;
+}
+
+[data-skin="new-age"] .dex-button {
+  font-weight: 400;
+}
+
+[data-skin="new-age"] .dex-button:hover {
+  background: #0077ed;
+}

@@ -1,5 +1,480 @@
 @import "tailwindcss";
 
+@theme {
+  --color-screen: #f6f5fc;
+  --color-card: #ffffff;
+  --color-line: #e4e1f3;
+  --color-ink: #1f1b3d;
+  --color-ink-soft: #5b5780;
+  --color-accent: #5b45e0;
+  --color-night: #211b4e;
+  --color-on-night: #ffffff;
+  --color-tile: #211b4e;
+  --color-on-tile: #ffffff;
+  --color-chip: #211b4e;
+  --color-on-chip: #ffffff;
+  --color-hidden: #6a55f0;
+  --color-notice: #efe9ff;
+  --color-danger: #9f1239;
+  --font-sans: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+}
+
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+  --holo: #7df0d2, #7cc8ff, #9c9bff, #d38bff, #ff9ad5, #ffd29a, #7df0d2;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* The pearly page: colour that shifts across the screen, too pale to fight the text. */
+body,
+.dex-backdrop-pearl {
+  background:
+    radial-gradient(at 0% 0%, #d9faf0 0, transparent 55%),
+    radial-gradient(at 100% 0%, #e6dcff 0, transparent 55%),
+    radial-gradient(at 100% 50%, #ffe0f2 0, transparent 45%),
+    radial-gradient(at 0% 50%, #d3eeff 0, transparent 45%),
+    radial-gradient(at 0% 100%, #e6dcff 0, transparent 55%),
+    radial-gradient(at 100% 100%, #d5f9ea 0, transparent 55%),
+    #fbfaff;
+  background-attachment: fixed;
+}
+
+.dex-page {
+  width: min(100%, 74rem);
+  min-height: 100dvh;
+  margin-inline: auto;
+}
+
+.dex-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.875rem 0.25rem;
+}
+
+.dex-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.dex-dot {
+  width: 1.375rem;
+  height: 1.375rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: conic-gradient(var(--holo));
+  box-shadow: 0 2px 5px rgb(91 69 224 / 0.3);
+}
+
+/* Anything a thumb presses is at least 44 by 44. */
+.dex-round {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  color: var(--color-ink);
+  box-shadow: 0 4px 14px rgb(91 69 224 / 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.dex-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1rem;
+  border-radius: var(--radius-control);
+  background: var(--color-night);
+  color: var(--color-on-night);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  transition: scale 120ms ease-out;
+}
+
+.dex-button:active {
+  scale: 0.96;
+}
+
+.dex-button:disabled {
+  opacity: 0.6;
+}
+
+.dex-chip {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.25rem;
+  padding-inline: 0.8rem;
+  border-radius: var(--radius-control);
+  background: var(--color-card);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dex-chip[aria-current="page"] {
+  background: var(--color-chip);
+  color: var(--color-on-chip);
+}
+
+.dex-field {
+  min-height: 2.75rem;
+  border-radius: var(--radius-control);
+  background: var(--color-card);
+  padding-inline: 0.9rem;
+}
+
+.dex-panel {
+  border-radius: var(--radius-panel);
+  background: var(--color-card);
+  box-shadow: 0 4px 16px rgb(91 69 224 / 0.07);
+}
+
+/* Holographic foil: the one loud thing on any screen. */
+.dex-foil {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, transparent 30%, rgb(255 255 255 / 0.5) 48%, transparent 66%),
+    radial-gradient(at 0% 0%, #d38bff 0, transparent 55%),
+    radial-gradient(at 50% 0%, #ff9ad5 0, transparent 50%),
+    radial-gradient(at 100% 0%, #ffd29a 0, transparent 55%),
+    radial-gradient(at 100% 50%, #7df0d2 0, transparent 50%),
+    radial-gradient(at 0% 50%, #9c9bff 0, transparent 50%),
+    radial-gradient(at 0% 100%, #7cc8ff 0, transparent 55%),
+    radial-gradient(at 50% 100%, #7de3f0 0, transparent 50%),
+    radial-gradient(at 100% 100%, #b8f5c9 0, transparent 55%),
+    #f4f1ff;
+}
+
+.dex-holo-card {
+  border: 2.5px solid rgb(255 255 255 / 0.85);
+  border-radius: 1.75rem;
+  box-shadow: 0 12px 28px rgb(91 69 224 / 0.28);
+}
+
+.dex-holo-line {
+  background: linear-gradient(90deg, var(--holo));
+}
+
+/* The bar for a share: none at exactly zero, a sliver for any amount. */
+.dex-meter {
+  height: 0.55rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(31 27 61 / 0.09);
+}
+
+.dex-meter > div {
+  border-radius: 999px;
+}
+
+/* A card: a wash of its type colour on white, with a pearly edge. */
+.dex-card {
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(var(--wash), var(--wash)) padding-box,
+    conic-gradient(var(--holo)) border-box;
+  box-shadow: 0 6px 18px rgb(91 69 224 / 0.12);
+  transition: translate 120ms ease-out, box-shadow 120ms ease-out;
+}
+
+.dex-card:hover {
+  translate: 0 -2px;
+  box-shadow: 0 10px 24px rgb(91 69 224 / 0.18);
+}
+
+/* What a food does: the more of your daily amount behind an effect, the bigger its tile. */
+.dex-bento {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(10rem, auto);
+  grid-auto-flow: dense;
+  gap: 0.75rem;
+}
+
+@media (min-width: 40rem) {
+  .dex-bento {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.dex-tile {
+  overflow: hidden;
+  border-radius: var(--radius-tile);
+  background: var(--wash);
+  box-shadow: 0 6px 18px rgb(91 69 224 / 0.1);
+  transition: translate 120ms ease-out;
+}
+
+.dex-tile:hover {
+  translate: 0 -2px;
+}
+
+.dex-tile-wide {
+  grid-column: span 2;
+}
+
+.dex-tile-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: var(--color-tile);
+  color: var(--color-on-tile);
+}
+
+.dex-holo-text {
+  background: linear-gradient(90deg, var(--holo));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The skin picker: each choice shows the look it gives. */
+.dex-skin-card {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 2.5px solid transparent;
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  text-align: left;
+  box-shadow: 0 6px 18px rgb(91 69 224 / 0.12);
+}
+
+.dex-skin-card[aria-pressed="true"] {
+  border-color: var(--color-accent);
+}
+
+.dex-skin-preview {
+  position: relative;
+  display: block;
+  height: 9rem;
+}
+
+.dex-skin-preview-yellow-version {
+  background: #bd1c25;
+}
+
+.dex-skin-preview-yellow-version::before {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  left: 0.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, #9ad8f7, #38b6f2 55%, #1f6f96);
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #8f141c;
+}
+
+.dex-skin-preview-yellow-version::after {
+  content: "";
+  position: absolute;
+  inset: 4rem 0.75rem 0.75rem;
+  border: 5px solid #e4e7e8;
+  border-radius: 0.4rem 0.4rem 0.4rem 1.25rem;
+  background: #eef3e6;
+}
+
+/* Frosted controls float over what scrolls beneath them. */
+.dex-glass {
+  background: rgb(255 255 255 / 0.72);
+  box-shadow: 0 8px 26px rgb(91 69 224 / 0.16);
+  backdrop-filter: blur(18px) saturate(1.4);
+}
+
+/* "What did you have?" stays at the bottom of the screen, under your thumb. */
+.dex-dock {
+  position: sticky;
+  z-index: 10;
+  bottom: 0.625rem;
+  margin-top: 0.75rem;
+}
+
+.dex-steps {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  translate: -50% 0;
+  background: rgb(255 255 255 / 0.72);
+  box-shadow: 0 8px 26px rgb(91 69 224 / 0.16);
+  backdrop-filter: blur(18px) saturate(1.4);
+}
+
+.dex-step {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+a.dex-step:hover {
+  background: rgb(91 69 224 / 0.1);
+}
+
+/* The unlock: a blacked-out shape on turning rays, a flash, then the creature in colour. */
+.dex-unlock {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--color-tile) 86%, transparent);
+}
+
+.dex-unlock-card {
+  position: relative;
+  width: min(100%, 26rem);
+  overflow: hidden;
+  border: 2.5px solid rgb(255 255 255 / 0.85);
+  border-radius: 1.875rem;
+  background: var(--color-card);
+  color: var(--color-ink);
+  text-align: center;
+  box-shadow: 0 0 40px rgb(91 69 224 / 0.5);
+}
+
+.dex-unlock-stage {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.dex-unlock-rays {
+  position: absolute;
+  inset: -50%;
+  background: repeating-conic-gradient(rgb(255 255 255 / 0.22) 0 12.857deg, transparent 12.857deg 25.714deg);
+  animation: dex-rays 9s linear infinite;
+}
+
+.dex-unlock-shape,
+.dex-unlock-art {
+  position: absolute;
+  inset: 12%;
+  width: 76%;
+  height: 76%;
+}
+
+.dex-unlock-shape {
+  filter: brightness(0);
+  animation: dex-shape-out 1.5s ease-in forwards;
+}
+
+.dex-unlock-art {
+  opacity: 0;
+  filter: drop-shadow(0 12px 14px rgb(33 27 78 / 0.3));
+  animation: dex-art-in 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) 1.35s forwards;
+}
+
+.dex-unlock-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  animation: dex-flash 0.6s ease-out 1.25s forwards;
+}
+
+.dex-unlock-text {
+  opacity: 0;
+  animation: dex-text-in 0.35s ease-out 1.65s forwards;
+}
+
+@keyframes dex-rays {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes dex-shape-out {
+  0%,
+  80% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.08;
+  }
+}
+
+@keyframes dex-art-in {
+  from {
+    opacity: 0;
+    scale: 0.7;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes dex-flash {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dex-text-in {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dex-unlock-rays,
+  .dex-unlock-flash {
+    animation: none;
+  }
+
+  .dex-unlock-shape {
+    animation: none;
+    opacity: 0;
+  }
+
+  .dex-unlock-art,
+  .dex-unlock-text {
+    animation: none;
+    opacity: 1;
+  }
+
+  .dex-card,
+  .dex-card:hover,
+  .dex-tile,
+  .dex-tile:hover,
+  .dex-button {
+    transition: none;
+    translate: none;
+  }
 }

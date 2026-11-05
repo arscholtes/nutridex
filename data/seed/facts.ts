@@ -1,7 +1,9 @@
 // Sourced facts the engine's first check needs: fat helps carotenoids absorb, and juicing leaves
 // fiber in the pulp; and the one effect the Dex walk from carrot to pumpkin needs, beta-carotene's
 // on skin color. Each was read in its source (abstract, or the table named) before it was written
-// here; a number appears only where the source gives one.
+// here; a number appears only where the source gives one. What each vitamin and mineral does comes
+// from nutrient-claims.ts.
+import { NUTRIENT_COMPOUND_EFFECTS, NUTRIENT_EFFECTS, NUTRIENT_SOURCE } from "./nutrient-claims.ts";
 
 export type SeedSource = {
   key: string;
@@ -50,7 +52,9 @@ export type SeedCompoundEffect = {
   effect: string;
   summary: string;
   doseContext: string;
-  onset: string;
+  onset: string | null;
+  /** The amount per 100 g a food must reach for the claim to apply to it; null when the source sets no bar. */
+  minFoodPer100g: number | null;
   grade: "A" | "B" | "C" | "D";
   source: string;
 };
@@ -123,6 +127,7 @@ export const SOURCES: SeedSource[] = [
     year: 1988,
     limitations: "Small (5 per group); men only; 42 days; only the 30 mg supplement group showed definite carotenodermia",
   },
+  NUTRIENT_SOURCE,
 ];
 
 export const CLASSES: SeedClass[] = [
@@ -181,7 +186,7 @@ export const PREP_EFFECTS: SeedPrepEffect[] = [
 ];
 
 // Neutral: carotenodermia is a visible change the trial reports, not a harm or a benefit it measured.
-export const EFFECTS: SeedEffect[] = [{ slug: "skin-color", name: "Skin color", bodySystem: "skin", direction: "neutral" }];
+export const EFFECTS: SeedEffect[] = [{ slug: "skin-color", name: "Skin color", bodySystem: "skin", direction: "neutral" }, ...NUTRIENT_EFFECTS];
 
 export const COMPOUND_EFFECTS: SeedCompoundEffect[] = [
   {
@@ -191,7 +196,9 @@ export const COMPOUND_EFFECTS: SeedCompoundEffect[] = [
       "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
     doseContext: "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
     onset: "25 to 42 days",
+    minFoodPer100g: null,
     grade: "B",
     source: "micozzi-1988",
   },
+  ...NUTRIENT_COMPOUND_EFFECTS,
 ];

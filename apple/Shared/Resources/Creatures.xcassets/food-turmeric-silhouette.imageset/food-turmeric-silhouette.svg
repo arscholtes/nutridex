@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+  <title id="t">Turmeric</title>
+  <g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="#C98A4B">
+    <rect x="45" y="132" width="30" height="56" rx="15" transform="rotate(-80 60 160)"/>
+    <rect x="170.9" y="144.5" width="30" height="68" rx="15" transform="rotate(110 185.9 178.5)"/>
+    <path d="M131.7 110.4 Q141.2 80.6 157.9 54.2 L190.5 69.4 Q181 99.2 164.3 125.6 Z"/>
+    <ellipse cx="174.2" cy="61.8" rx="18" ry="11" fill="#F59E0B" transform="rotate(25 174.2 61.8)"/>
+    <path d="M128 104 C164 102 194 122 194 152 C194 182 168 200 132 200 C100 200 84 194 70 182 C58 172 60 152 64 140 C68 122 92 106 128 104 Z"/>
+  </g>
+  <ellipse cx="174.2" cy="61.8" rx="9" ry="5" fill="none" stroke="#D97706" stroke-width="3" transform="rotate(25 174.2 61.8)"/>
+  <path d="M76 144 C80 126 94 114 110 112 C100 122 94 132 92 146 C88 150 76 150 76 144 Z" fill="#DDA46A"/>
+  <g stroke="#8A5A2B" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M48 144 Q60 148 72 144" transform="rotate(-80 60 160)"/>
+    <path d="M173.9 168 Q185.9 172 197.9 168" transform="rotate(110 185.9 178.5)"/>
+    <path d="M150.5 77.2 Q161.9 88.1 177.7 89.9"/>
+    <path d="M74 160 Q76 178 92 190"/>
+    <path d="M182 130 Q190 152 180 174"/>
+  </g>
+  <ellipse cx="103" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <ellipse cx="153" cy="161" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+  <g stroke="#1B1B1F" stroke-width="3.5">
+    <ellipse cx="113" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+    <ellipse cx="143" cy="142" rx="9.5" ry="11" fill="#FFFFFF"/>
+  </g>
+  <circle cx="115" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="145" cy="144" r="5.2" fill="#1B1B1F"/>
+  <circle cx="117" cy="141" r="1.9" fill="#FFFFFF"/>
+  <circle cx="147" cy="141" r="1.9" fill="#FFFFFF"/>
+  <path d="M120 161 Q128 169 136 161" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

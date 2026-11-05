@@ -12,3 +12,7 @@ next-env.d.ts
 
 # WebStorm's per-project settings
 .idea/
+
+# Native apps: this Mac's signing identity and Xcode's per-user state
+apple/Config/Local.xcconfig
+xcuserdata/

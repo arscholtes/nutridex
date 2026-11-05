@@ -1,82 +1,173 @@
-# Foodi Dex
+# NutriDex
 
-What is in your food, what it does, and what helps it work. Built from the plan in Claude Docs,
-"Foodi Dex: Build Plan" (https://claude.ai/code/artifact/6a704801-1a77-4111-aee7-d16c0a7b60e7), one phase at a time.
+**What is in your food, what it does, and what helps it work.**
 
-## Run it
+NutriDex is a collection game built on a sourced nutrition database. Tell it what you ate and that food's creature
+unlocks, along with the nutrients and compounds in it and what each one does. Every amount and claim traces back to
+a source, and when nothing is known, the app says so instead of guessing.
 
-```bash
-npm install
-cp .env.example .env.local   # add your USDA key; DATABASE_URL already points at the local cluster
-npm run db:local             # project-local Postgres 16 in .pgdata, port 54329
-npm run db:migrate
-npm run seed                 # the plan's ingredients and compounds, amounts from USDA, sourced facts, the juice recipe
-npm test                     # unit tests, no database
-npm run test:db              # each phase's "Done when", against the seeded database; one test re-runs
-                             # the real seed (it writes and fetches USDA) to check it keeps others' rows
-npm run dev                  # the Dex at http://localhost:3000
+![NutriDex on the web and on iPhone](docs/screenshots/hero.png)
+
+> **Status:** an early working version, running on the web, iPhone, iPad and Mac. It is not publicly hosted or on the
+> App Store yet. I am looking for people to help build it: see [who I'm looking for](#who-im-looking-for).
+
+## What makes it different
+
+### You collect what you actually eat
+
+Nothing shows until you have encountered it. You say what you had, upload it, and a silhouette turns into a creature.
+Each food reveals the compounds it is a real source of and the effects they support, so what you learn follows what
+is on your plate.
+
+![Say what you had, a silhouette appears, and the creature unlocks](docs/screenshots/unlock.png)
+
+The Mac app is the home database. It shows the whole collection, blacks out what you have not found, and compares
+foods side by side.
+
+![The Mac app, with undiscovered foods shown as silhouettes](docs/screenshots/mac-wall.png)
+
+### It tells you what the food can do, and what it needs
+
+Compounds are entries in their own right. Beta-carotene is one entry linked to every food that contains it, so its
+absorption rules, prep effects and evidence apply everywhere it appears. A carrot's page says plainly that it has
+0.24 g of fat per 100 g, under the 6 g that counts as enough to absorb its carotenoids, and suggests adding a fat
+such as olive oil.
+
+![A carrot's effects, cautions and absorption flags](docs/screenshots/entry.png)
+
+### It would rather say "we don't know"
+
+Honesty is part of the design, and it shows in the app's own words:
+
+- *"No caution on file. That means none has been sourced yet, not that there are none."*
+- *"Where USDA has no value for this food it says missing, never zero."*
+- *"They mean a nutrient contributes to that function at adequate intake, not that eating more improves it."*
+
+Every effect, absorption rule and caution must carry a source and an evidence grade: the engine refuses to load one
+without them, and a test fails if the database holds one. A rule extended to a whole chemical class is marked
+"By class", so it never passes for something that was measured.
+
+| Grade | Meaning | Typical sources |
+| --- | --- | --- |
+| **A** | Consistent human trials | Meta-analyses, multiple randomised trials |
+| **B** | Some human evidence | A single trial, small trials, large cohort studies |
+| **C** | Mechanistic only | Animal, in-vitro or cross-sectional studies |
+| **D** | Traditional or anecdotal | Traditional use, testimonials, marketing |
+
+### It is a real native app on every screen
+
+The website is Next.js and the Apple apps are SwiftUI, with no web views. They share one dataset, so every platform
+gives the same answers. Compare foods is one of the research tools on the Mac:
+
+![The Mac app comparing foods by nutrient](docs/screenshots/mac-compare.png)
+
+![NutriDex on Mac, iPad and iPhone](docs/screenshots/everywhere.png)
+
+### It can look however you like
+
+There are ten skins, each a row in one table of design tokens that web and native both read. Foods keep their true
+colours in every one: a carrot is never green. Nine of the ten are shown here.
+
+![Nine NutriDex skins on a phone](docs/screenshots/skins.png)
+
+### Every food gets a creature
+
+There are 456 original drawings so far. They were drawn by Claude, Anthropic's AI model, to a house style I approved.
+This sample takes evenly spaced entries from the alphabetical list:
+
+![A sample of 60 NutriDex creatures](docs/screenshots/creatures.png)
+
+The next step is creatures built from the food's own anatomy, not a food with a face. This concept is the direction
+I would most like an illustrator's help with:
+
+![A banana with a face beside a creature built from a peeled banana](docs/screenshots/art-direction.png)
+
+## Where it stands
+
+Counted on 2026-11-05, on version 0.5.0. The depth is the honest gap: the structure is ahead of the content.
+
+| | |
+| --- | --- |
+| Foods in the game | 15, with 518 measured amounts from USDA |
+| Compounds and nutrients | 41 |
+| Effects | 29 |
+| Effect claims | 140: 139 in the wording [EU Regulation 432/2012](https://www.legislation.gov.uk/eur/2012/432/annex) permits, 1 from a human study |
+| Absorption rules | 2 |
+| Cautions | 0 sourced so far |
+| Creature drawings | 456 |
+| Skins | 10 |
+| Automated checks | 759 unit tests passing |
+
+A separate working branch already loads all 7,793 foods in USDA's SR Legacy database and 152 compounds on the web.
+
+## What's next
+
+1. **Every food on every platform.** Bring the 7,793 foods to the main app. The native data file would reach 548 MB at
+   that size, so it needs a new design.
+2. **Depth of evidence.** Add sourced cautions, more absorption rules and study-backed effects.
+3. **Recipes.** The engine already works out what a recipe gives you, and it needs its builder and recipe screens.
+4. **Paste a finding.** Paste a study, have AI draft the entries, and approve each one before it is saved.
+5. **A public home.** Hosting, real accounts in place of the upload passcode, and a route to the App Store.
+6. **Gut microbes and supplements.** The tables and engine checks exist, and they have no entries yet.
+
+## Who I'm looking for
+
+| Who | What you would shape |
+| --- | --- |
+| **Illustrator or character designer** | The creature style, and how one look stretches across thousands of foods |
+| **Dietitian or nutrition scientist** | Evidence grades, how claims are worded, and the cautions that are missing today |
+| **iOS / SwiftUI developer** | The Apple apps, getting all 7,793 foods onto a phone, and the route to the App Store |
+| **Full-stack developer** | Hosting, accounts, the recipe builder and the paste-a-finding pipeline |
+| **Game or product designer** | What makes collecting rewarding, and how it can reward curiosity without rewarding overeating |
+| **Lawyer with health-app or IP experience** | The disclaimer, which is a draft that needs review before anyone else uses the app, and clearing the name |
+
+**Interested?** Reach me through my GitHub profile, [@arscholtes](https://github.com/arscholtes).
+
+## How it's made
+
+I am building NutriDex on my own, with Claude Code as my coding partner, since October 2026. The commit history
+shows which work it co-authored.
+
+```mermaid
+flowchart LR
+  usda["USDA FoodData Central"] --> seed["Seed script"]
+  research["Studies, EU regulation, ChEBI"] --> seed
+  seed --> db[("Postgres")]
+  db --> data["Shared data functions"]
+  engine["epistasis engine<br/>pure functions"] --> data
+  data --> web["Website<br/>Next.js"]
+  data --> snapshot["Snapshot<br/>data and art"]
+  snapshot --> apps["SwiftUI apps<br/>iPhone, iPad, Mac"]
+  web -- encounters --> db
+  apps -- encounters --> db
 ```
 
-To move to Supabase, set `DATABASE_URL` in `.env.local` to the project's connection string, then
-run `db:migrate` and `seed` against it.
+| Layer | Choice |
+| --- | --- |
+| Web | Next.js 16, React 19, TypeScript, Tailwind CSS |
+| Apple | SwiftUI, with no React Native and no web views |
+| Data | Postgres 16, Drizzle ORM, `pg_trgm` for fuzzy search |
+| Engine | `epistasis`: pure TypeScript functions with no database access |
+| Tests | Vitest and Xcode's test tools |
 
-## Phases
+To run it, see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md). Every table is described in [SCHEMA.md](SCHEMA.md), and
+every version in [CHANGELOG.md](CHANGELOG.md).
 
-| Phase | Done when | State |
-| --- | --- | --- |
-| 1. Foundation | `npm run seed` fills the database and a test query returns beta-carotene per 100 g of carrot | passing locally |
-| 2. Engine | the juice recipe returns "no fat" and "fiber lost", and olive oil flips carotenoids to "enhanced" | passing locally |
-| 3. Dex UI | carrot → beta-carotene → skin color → pumpkin, with by-class flags visibly different from measured ones | passing locally |
-| 4. Recipes | a built recipe's grid and profile render from the same data | not started |
-| 5. Ingest | a pasted finding becomes an approvable effect row with source and limitations | not started |
+## Data sources
 
-## The Dex
+- **[USDA FoodData Central](https://fdc.nal.usda.gov/)**, for nutrient amounts. U.S. Department of Agriculture,
+  Agricultural Research Service. FoodData Central, 2019. Published under
+  [CC0 1.0](https://fdc.nal.usda.gov/api-guide/).
+- **[ChEBI](https://www.ebi.ac.uk/chebi/)**, for chemical classes. EMBL-EBI, used under
+  [CC BY 4.0](https://www.ebi.ac.uk/chebi/about).
+- **[EU Regulation 432/2012](https://www.legislation.gov.uk/eur/2012/432/annex)**, for permitted health-claim wording.
+- **Published studies**, each cited in the app with its limitations.
 
-| Screen | Path | What it shows |
-| --- | --- | --- |
-| Home | `/` | Every entry as a card. Search with fuzzy matching ("tumeric" finds turmeric), filter by kind and type |
-| Ingredient | `/ingredients/<slug>` | What is in 100 g, against the richest food in the Dex; absorption flags; pairings; prep; effects; cautions; sources |
-| Compound | `/compounds/<slug>` | How it works, solubility, what helps it absorb, prep, the foods that carry it, effects, cautions, sources |
-| Effect | `/effects/<slug>` | The compounds behind it, with dose and onset, and the foods richest in each |
-| Sources | `/sources` | Every citation, what it supports, and its limitations |
+## Not medical advice
 
-An ingredient's flags come from the engine run on 100 g of it, so the Dex and a recipe judge the same
-facts the same way. `lib/db/dex.ts` reads every screen's data. Every claim carries its grade badge, with
-its source's limitations on hover. A claim resting on a ChEBI class is drawn dashed and striped and
-says "By class", wherever it appears. A section with nothing on file says so; it does not disappear.
+NutriDex is for general information and learning. It does not diagnose, treat, cure or prevent any disease, and it
+does not replace advice from a doctor, registered dietitian or pharmacist.
 
-Ingredients have drawn creatures (`public/art/ingredients/`). Compounds have none yet, so each gets a creature
-drawn from its data (`lib/art/creature.ts`): its class sets the colour and shape, in the same house style.
+## License
 
-## The engine
-
-The engine is its own package, `packages/epistasis/`, imported as `epistasis` so other projects can use it.
-It works out what a recipe gives you, as pure functions with no database: expand each
-ingredient to its compounds, apply prep, total per serving, then check absorption modifiers,
-cautions, effects, goal scores and which gut microbes it would feed. `recipeProfile` runs them in
-order; `stackTotals` and `checkExcess` add supplements and check upper limits. `lib/db/engine-input.ts`
-reads a recipe and its facts from the database into the engine's input.
-
-The engine never fills a gap: an unmeasured amount, a prep with no sourced retention factor, or a
-condition it cannot test comes back marked as missing or unknown. Its judgement calls (grade
-weights, how much fat counts as enough, reference amounts for goal scores) are settings in
-`packages/epistasis/src/settings.ts`, not facts.
-
-## Disclaimer
-
-Every visitor sees a disclaimer (`lib/disclaimer/text.ts`) before anything else. Accepting it sets a
-cookie holding the app version from `package.json`; it stays dismissed until that version changes, so
-bump the version with each release. The text is a plain-language draft and needs legal review before
-anyone other than its maker uses the app.
-
-## Data
-
-Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row
-naming the USDA record it came from. A compound USDA does not measure is linked to its
-ingredient with no amount, and the app shows it as missing. See `SCHEMA.md` for every table.
-
-A rule can target a ChEBI class instead of one compound, so one sourced finding reaches every
-compound ChEBI places in that class. The rule names the members its source measured; any other
-member is reached `by-class`, and every flag says which. `absorption_modifier_applied` lists
-them: `select * from absorption_modifier_applied where basis = 'by-class'` is every claim resting
-on class extension rather than measurement.
+There is no open-source license yet, so all rights are reserved. Data from the sources above stays under its own terms.

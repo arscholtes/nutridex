@@ -113,6 +113,22 @@ export const effect = pgTable("effect", {
   direction: text("direction"),
 });
 
+export const encounter = pgTable("encounter", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  ingredientId: uuid("ingredient_id")
+    .notNull()
+    .unique()
+    .references(() => ingredient.id, { onDelete: "cascade" }),
+  encounteredAt: timestamp("encountered_at", { withTimezone: true }).notNull(),
+  uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const preference = pgTable("preference", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const compoundEffect = pgTable(
   "compound_effect",
   {
@@ -122,6 +138,7 @@ export const compoundEffect = pgTable(
     summary: text("summary"),
     doseContext: text("dose_context"),
     onset: text("onset"),
+    minFoodPer100g: amount("min_food_per_100g"),
     evidenceGrade: evidenceGrade(),
     sourceId: uuid("source_id").references(() => source.id),
   },

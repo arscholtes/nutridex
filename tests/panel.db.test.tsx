@@ -76,3 +76,25 @@ describe("a food's panel on its Dex entry", () => {
     expect(carrot.compounds.map((c) => c.slug)).toContain("beta-carotene");
   });
 });
+
+describe("a panel row's stat bar", () => {
+  test("is the food's amount as a share of the richest food in the Dex", async () => {
+    const entry = (await ingredientEntry("carrot"))!;
+    const row = entry.panel.find((r) => r.slug === "vitamin-a")!;
+    const [{ top }] = await sql<{ top: string }[]>`
+      select max(ic.amount_per_100g) as top from ingredient_compound ic
+      join compound c on c.id = ic.compound_id where c.slug = 'vitamin-a'`;
+    expect(Number(top)).toBeGreaterThan(0);
+    expect(row.share).toBeCloseTo(row.amount! / Number(top), 6);
+  });
+
+  test("is a real share or, where USDA has no value, nothing at all", async () => {
+    for (const food of INGREDIENTS) {
+      const entry = (await ingredientEntry(food.slug))!;
+      for (const row of entry.panel) {
+        if (row.amount === null) expect(row.share).toBeNull();
+        else expect(row.share).toBeGreaterThanOrEqual(0), expect(row.share).toBeLessThanOrEqual(1);
+      }
+    }
+  });
+});

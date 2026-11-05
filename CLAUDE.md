@@ -1,4 +1,4 @@
-# Foodi Dex
+# NutriDex
 
 The spec is the Claude Docs plan "Foodi Dex: Build Plan" (artifact 6a704801-1a77-4111-aee7-d16c0a7b60e7).
 Read it with the Claude Docs tools, never a web fetch.
@@ -26,3 +26,40 @@ Read it with the Claude Docs tools, never a web fetch.
 - The disclaimer gate (`lib/disclaimer/`, `app/disclaimer-gate.tsx`) shows until this device has
   accepted the running version from `package.json`. Bump the version for every user-visible release;
   that is what brings the disclaimer back. Any change to its text ships with a bump.
+- `CHANGELOG.md` gets a line under `## Unreleased` with every change someone can see, in words for the people using
+  the app. A version bump renames that section to `## <version> - <date>`; `tests/changelog.test.ts` fails if the
+  running version has no entry.
+- `docs/DEVELOPMENT.md` holds how to run and change the code. `README.md` is the pitch: when a number in its
+  "Where it stands" table changes, recount it from the database and update the date.
+
+## Every platform
+
+NutriDex ships on the web (`app/`, Next.js) and natively on iPhone, iPad and Mac (`apple/`, SwiftUI). Native
+stays SwiftUI: no React Native and no web views. What both Apple apps share lives in `apple/Shared/`.
+
+Skins are one table, `SKINS` in `lib/skins.ts`: colours, type, shapes and which treatment each thing uses. The web
+reads it through `app/skin-treatments.css`, and the apps read it from the snapshot through `Theme`, so a new skin
+is a new row and `npm run export:native`. Only something a treatment cannot say needs its own rules: `app/skin-new-age.css`
+for the product-page layout, `app/skin-yellow.css` for the original handheld. Every screen must work in every skin, so
+draw colours from the tokens and never assume a light page. The choice is stored on the server (`preference`) and
+follows you between devices. Foods always keep their real colour in every skin: foil and backgrounds may shift, a
+creature never does.
+
+NutriDex is a collection game: over time you unlock everything. On the web, iPhone and iPad nothing shows until
+it is encountered: no list, name, link or count may give a hidden entry away, and new screens must keep that
+true. You say what you had, press Upload to send new encounters to the server as an array, and an unlock
+animation plays, with Next returning you to where you were. The Mac app is the home database: it shows
+everything, blacks out what is not unlocked, plays new arrivals when you get on it, and compares foods.
+
+- A food unlocks the compounds it is a real source of, carries where no bar applies, or holds the most of in the
+  Dex, and the effects it clears a bar for. A test holds that everything can be unlocked.
+- That rule lives in `lib/db/encounters.ts` and `lib/native/snapshot.ts`, and a test holds them equal.
+- `app/api/encounters` is the only way any app writes the record, behind `NUTRIDEX_UPLOAD_TOKEN`.
+
+- A change someone can see ships on every platform in the same PR.
+- After any change to the seed, the data functions in `lib/db/dex.ts`, the art or the disclaimer, run
+  `npm run export:native`. `tests/native-snapshot.db.test.ts` fails when it is forgotten.
+- Judgments stay in TypeScript and reach the apps as data: the engine's flags, claim bars and dex numbers.
+  Swift shows them and never works them out again.
+- Layout and interface wording live in each platform's views, so nothing checks those for you. Change both.
+

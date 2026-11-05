@@ -1,12 +1,12 @@
 # Schema
 
-Foodi Dex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted.
+NutriDex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted. The native apps bundle a snapshot generated from it (`npm run export:native`) and write nothing back.
 The migration in `drizzle/` is generated from `lib/db/schema.ts`; this file describes what each table is for.
 The `pg_trgm` extension (`drizzle/0004_search_trigram.sql`) gives the Dex search its fuzzy matching.
 
 ## Facts this store owns, and who else reads them
 
-Foodi Dex owns food composition (amounts per 100 g), compound, microbe and supplement facts and the sources behind them, and recipes and stacks.
+NutriDex owns food composition (amounts per 100 g), compound, microbe and supplement facts and the sources behind them, and recipes and stacks.
 No other app reads this store. `fps stores` does not exist yet, so this section is the registration.
 
 ## Rules the schema enforces
@@ -35,6 +35,33 @@ Where every claim comes from. Every amount, effect, modifier and caution row poi
 | `year` | integer | yes |  |
 | `limitations` | text | yes |  |
 | `added_at` | timestamp with time zone | yes | `now()` |
+
+## What follows someone between devices
+
+### `preference`
+
+A choice that should be the same on every device, such as the skin (`key` is `skin`, `value` is a skin's id). The last choice wins. Devices sharing the upload passcode share these rows, like `encounter`, because NutriDex has no accounts yet. Only NutriDex reads it.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `key` | text | no |  |
+| `value` | text | no |  |
+| `updated_at` | timestamp with time zone | no | `now()` |
+
+## What someone has encountered
+
+### `encounter`
+
+One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on the web, iPhone or iPad until it is encountered, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it. Apps write it only through `POST /api/encounters`, which needs the upload token.
+
+Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a cookie on the web) so the game works offline and new encounters can wait to be uploaded. On the next sync a device adds what the server has, and this table is the record.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `ingredient_id` | uuid | no |  |
+| `encountered_at` | timestamp with time zone | no |  |
+| `uploaded_at` | timestamp with time zone | no | `now()` |
 
 ## Food and what is in it
 
@@ -127,7 +154,7 @@ How much of a compound an ingredient has, per 100 g. Amounts are USDA's as repor
 
 ### `effect`
 
-Something a compound does, good or bad: skin color, blood pressure. `direction` is `benefit`, `risk` or `neutral`; the seed's one effect, skin color, is neutral.
+Something a compound does, good or bad: skin color, blood pressure. `direction` is `benefit`, `risk` or `neutral`. Skin color is neutral; the effects from the permitted nutrient claims are benefits.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -139,7 +166,7 @@ Something a compound does, good or bad: skin color, blood pressure. `direction` 
 
 ### `compound_effect`
 
-One compound's effect, with dose context, onset, evidence grade and source.
+One compound's effect, with dose context, onset, evidence grade and source. `min_food_per_100g`, in the unit USDA reports the compound in, is the amount a food must reach for the claim to apply to it; null when the source sets no bar. A food below the bar does not show the effect, though the compound's own page still does.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
