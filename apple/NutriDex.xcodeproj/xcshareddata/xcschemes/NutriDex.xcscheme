@@ -39,6 +39,17 @@
                ReferencedContainer = "container:NutriDex.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4E44000000000000000000A2"
+               BuildableName = "NutriDexUITests.xctest"
+               BlueprintName = "NutriDexUITests"
+               ReferencedContainer = "container:NutriDex.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

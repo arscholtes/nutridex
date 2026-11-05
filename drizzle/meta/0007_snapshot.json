@@ -1,0 +1,2270 @@
+{
+  "id": "d18287d8-f46e-48d3-9bdf-5576f0551de8",
+  "prevId": "529f375f-264c-44e2-a008-30008e4e0c7c",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.absorption_modifier": {
+      "name": "absorption_modifier",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "target_compound_id": {
+          "name": "target_compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "modifier_compound_id": {
+          "name": "modifier_compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "modifier_condition": {
+          "name": "modifier_condition",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "direction": {
+          "name": "direction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "magnitude": {
+          "name": "magnitude",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mechanism": {
+          "name": "mechanism",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evidence_grade": {
+          "name": "evidence_grade",
+          "type": "char(1)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "target_class_id": {
+          "name": "target_class_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "absorption_modifier_target_compound_id_compound_id_fk": {
+          "name": "absorption_modifier_target_compound_id_compound_id_fk",
+          "tableFrom": "absorption_modifier",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "target_compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "absorption_modifier_modifier_compound_id_compound_id_fk": {
+          "name": "absorption_modifier_modifier_compound_id_compound_id_fk",
+          "tableFrom": "absorption_modifier",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "modifier_compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "absorption_modifier_source_id_source_id_fk": {
+          "name": "absorption_modifier_source_id_source_id_fk",
+          "tableFrom": "absorption_modifier",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "absorption_modifier_target_class_id_compound_class_id_fk": {
+          "name": "absorption_modifier_target_class_id_compound_class_id_fk",
+          "tableFrom": "absorption_modifier",
+          "tableTo": "compound_class",
+          "columnsFrom": [
+            "target_class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "absorption_modifier_evidence_grade_known": {
+          "name": "absorption_modifier_evidence_grade_known",
+          "value": "evidence_grade in ('A', 'B', 'C', 'D')"
+        },
+        "absorption_modifier_one_target": {
+          "name": "absorption_modifier_one_target",
+          "value": "(target_compound_id is null) <> (target_class_id is null)"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.caution": {
+      "name": "caution",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ingredient_id": {
+          "name": "ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "summary": {
+          "name": "summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "threshold_note": {
+          "name": "threshold_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evidence_grade": {
+          "name": "evidence_grade",
+          "type": "char(1)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "caution_compound_id_compound_id_fk": {
+          "name": "caution_compound_id_compound_id_fk",
+          "tableFrom": "caution",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "caution_ingredient_id_ingredient_id_fk": {
+          "name": "caution_ingredient_id_ingredient_id_fk",
+          "tableFrom": "caution",
+          "tableTo": "ingredient",
+          "columnsFrom": [
+            "ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "caution_source_id_source_id_fk": {
+          "name": "caution_source_id_source_id_fk",
+          "tableFrom": "caution",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "caution_evidence_grade_known": {
+          "name": "caution_evidence_grade_known",
+          "value": "evidence_grade in ('A', 'B', 'C', 'D')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.compound": {
+      "name": "compound",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "class": {
+          "name": "class",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pubchem_cid": {
+          "name": "pubchem_cid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "solubility": {
+          "name": "solubility",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heat_stability": {
+          "name": "heat_stability",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "light_stability": {
+          "name": "light_stability",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mechanism_summary": {
+          "name": "mechanism_summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mechanism_detail": {
+          "name": "mechanism_detail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "upper_limit_note": {
+          "name": "upper_limit_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "upper_limit_amount": {
+          "name": "upper_limit_amount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "upper_limit_unit": {
+          "name": "upper_limit_unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "art_url": {
+          "name": "art_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "chebi_id": {
+          "name": "chebi_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "compound_slug_unique": {
+          "name": "compound_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.compound_class": {
+      "name": "compound_class",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "chebi_id": {
+          "name": "chebi_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "compound_class_source_id_source_id_fk": {
+          "name": "compound_class_source_id_source_id_fk",
+          "tableFrom": "compound_class",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "compound_class_chebi_id_unique": {
+          "name": "compound_class_chebi_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "chebi_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.compound_class_member": {
+      "name": "compound_class_member",
+      "schema": "",
+      "columns": {
+        "class_id": {
+          "name": "class_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "compound_class_member_class_id_compound_class_id_fk": {
+          "name": "compound_class_member_class_id_compound_class_id_fk",
+          "tableFrom": "compound_class_member",
+          "tableTo": "compound_class",
+          "columnsFrom": [
+            "class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "compound_class_member_compound_id_compound_id_fk": {
+          "name": "compound_class_member_compound_id_compound_id_fk",
+          "tableFrom": "compound_class_member",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "compound_class_member_source_id_source_id_fk": {
+          "name": "compound_class_member_source_id_source_id_fk",
+          "tableFrom": "compound_class_member",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "compound_class_member_class_id_compound_id_pk": {
+          "name": "compound_class_member_class_id_compound_id_pk",
+          "columns": [
+            "class_id",
+            "compound_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.compound_effect": {
+      "name": "compound_effect",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "effect_id": {
+          "name": "effect_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "summary": {
+          "name": "summary",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dose_context": {
+          "name": "dose_context",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "onset": {
+          "name": "onset",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "min_food_per_100g": {
+          "name": "min_food_per_100g",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evidence_grade": {
+          "name": "evidence_grade",
+          "type": "char(1)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "compound_effect_compound_id_compound_id_fk": {
+          "name": "compound_effect_compound_id_compound_id_fk",
+          "tableFrom": "compound_effect",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "compound_effect_effect_id_effect_id_fk": {
+          "name": "compound_effect_effect_id_effect_id_fk",
+          "tableFrom": "compound_effect",
+          "tableTo": "effect",
+          "columnsFrom": [
+            "effect_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "compound_effect_source_id_source_id_fk": {
+          "name": "compound_effect_source_id_source_id_fk",
+          "tableFrom": "compound_effect",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "compound_effect_evidence_grade_known": {
+          "name": "compound_effect_evidence_grade_known",
+          "value": "evidence_grade in ('A', 'B', 'C', 'D')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.effect": {
+      "name": "effect",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "body_system": {
+          "name": "body_system",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "direction": {
+          "name": "direction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "effect_slug_unique": {
+          "name": "effect_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.encounter": {
+      "name": "encounter",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "ingredient_id": {
+          "name": "ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "encountered_at": {
+          "name": "encountered_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "uploaded_at": {
+          "name": "uploaded_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "encounter_ingredient_id_ingredient_id_fk": {
+          "name": "encounter_ingredient_id_ingredient_id_fk",
+          "tableFrom": "encounter",
+          "tableTo": "ingredient",
+          "columnsFrom": [
+            "ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "encounter_ingredient_id_unique": {
+          "name": "encounter_ingredient_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "ingredient_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ingest_draft": {
+      "name": "ingest_draft",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "raw_input": {
+          "name": "raw_input",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "proposed": {
+          "name": "proposed",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'pending'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ingredient": {
+      "name": "ingredient",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "usda_fdc_id": {
+          "name": "usda_fdc_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "default_unit": {
+          "name": "default_unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'g'"
+        },
+        "typical_serving_g": {
+          "name": "typical_serving_g",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cost_tier": {
+          "name": "cost_tier",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ingredient_slug_unique": {
+          "name": "ingredient_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ingredient_compound": {
+      "name": "ingredient_compound",
+      "schema": "",
+      "columns": {
+        "ingredient_id": {
+          "name": "ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "amount_per_100g": {
+          "name": "amount_per_100g",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "unit": {
+          "name": "unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "amount_low": {
+          "name": "amount_low",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "amount_high": {
+          "name": "amount_high",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "form_note": {
+          "name": "form_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ingredient_compound_ingredient_id_ingredient_id_fk": {
+          "name": "ingredient_compound_ingredient_id_ingredient_id_fk",
+          "tableFrom": "ingredient_compound",
+          "tableTo": "ingredient",
+          "columnsFrom": [
+            "ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "ingredient_compound_compound_id_compound_id_fk": {
+          "name": "ingredient_compound_compound_id_compound_id_fk",
+          "tableFrom": "ingredient_compound",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "ingredient_compound_source_id_source_id_fk": {
+          "name": "ingredient_compound_source_id_source_id_fk",
+          "tableFrom": "ingredient_compound",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "ingredient_compound_ingredient_id_compound_id_pk": {
+          "name": "ingredient_compound_ingredient_id_compound_id_pk",
+          "columns": [
+            "ingredient_id",
+            "compound_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.microbe": {
+      "name": "microbe",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "common_name": {
+          "name": "common_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "name": "rank",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ncbi_taxon_id": {
+          "name": "ncbi_taxon_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "habitat": {
+          "name": "habitat",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "art_url": {
+          "name": "art_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "microbe_slug_unique": {
+          "name": "microbe_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.microbe_metabolite": {
+      "name": "microbe_metabolite",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "microbe_id": {
+          "name": "microbe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "substrate_compound_id": {
+          "name": "substrate_compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "product_compound_id": {
+          "name": "product_compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evidence_grade": {
+          "name": "evidence_grade",
+          "type": "char(1)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "microbe_metabolite_microbe_id_microbe_id_fk": {
+          "name": "microbe_metabolite_microbe_id_microbe_id_fk",
+          "tableFrom": "microbe_metabolite",
+          "tableTo": "microbe",
+          "columnsFrom": [
+            "microbe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "microbe_metabolite_substrate_compound_id_compound_id_fk": {
+          "name": "microbe_metabolite_substrate_compound_id_compound_id_fk",
+          "tableFrom": "microbe_metabolite",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "substrate_compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "microbe_metabolite_product_compound_id_compound_id_fk": {
+          "name": "microbe_metabolite_product_compound_id_compound_id_fk",
+          "tableFrom": "microbe_metabolite",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "product_compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "microbe_metabolite_source_id_source_id_fk": {
+          "name": "microbe_metabolite_source_id_source_id_fk",
+          "tableFrom": "microbe_metabolite",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "microbe_metabolite_evidence_grade_known": {
+          "name": "microbe_metabolite_evidence_grade_known",
+          "value": "evidence_grade in ('A', 'B', 'C', 'D')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.microbe_substrate": {
+      "name": "microbe_substrate",
+      "schema": "",
+      "columns": {
+        "microbe_id": {
+          "name": "microbe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "relationship": {
+          "name": "relationship",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "evidence_grade": {
+          "name": "evidence_grade",
+          "type": "char(1)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "microbe_substrate_microbe_id_microbe_id_fk": {
+          "name": "microbe_substrate_microbe_id_microbe_id_fk",
+          "tableFrom": "microbe_substrate",
+          "tableTo": "microbe",
+          "columnsFrom": [
+            "microbe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "microbe_substrate_compound_id_compound_id_fk": {
+          "name": "microbe_substrate_compound_id_compound_id_fk",
+          "tableFrom": "microbe_substrate",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "microbe_substrate_source_id_source_id_fk": {
+          "name": "microbe_substrate_source_id_source_id_fk",
+          "tableFrom": "microbe_substrate",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "microbe_substrate_microbe_id_compound_id_relationship_pk": {
+          "name": "microbe_substrate_microbe_id_compound_id_relationship_pk",
+          "columns": [
+            "microbe_id",
+            "compound_id",
+            "relationship"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "microbe_substrate_evidence_grade_known": {
+          "name": "microbe_substrate_evidence_grade_known",
+          "value": "evidence_grade in ('A', 'B', 'C', 'D')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.modifier_measured_member": {
+      "name": "modifier_measured_member",
+      "schema": "",
+      "columns": {
+        "modifier_id": {
+          "name": "modifier_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "modifier_measured_member_modifier_id_absorption_modifier_id_fk": {
+          "name": "modifier_measured_member_modifier_id_absorption_modifier_id_fk",
+          "tableFrom": "modifier_measured_member",
+          "tableTo": "absorption_modifier",
+          "columnsFrom": [
+            "modifier_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "modifier_measured_member_compound_id_compound_id_fk": {
+          "name": "modifier_measured_member_compound_id_compound_id_fk",
+          "tableFrom": "modifier_measured_member",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "modifier_measured_member_modifier_id_compound_id_pk": {
+          "name": "modifier_measured_member_modifier_id_compound_id_pk",
+          "columns": [
+            "modifier_id",
+            "compound_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.preference": {
+      "name": "preference",
+      "schema": "",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.prep_effect": {
+      "name": "prep_effect",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prep_method": {
+          "name": "prep_method",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retention_factor": {
+          "name": "retention_factor",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bioavailability_note": {
+          "name": "bioavailability_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "direction": {
+          "name": "direction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "prep_effect_compound_id_compound_id_fk": {
+          "name": "prep_effect_compound_id_compound_id_fk",
+          "tableFrom": "prep_effect",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "prep_effect_source_id_source_id_fk": {
+          "name": "prep_effect_source_id_source_id_fk",
+          "tableFrom": "prep_effect",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "prep_effect_direction_known": {
+          "name": "prep_effect_direction_known",
+          "value": "direction in ('decreases', 'increases', 'unchanged')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.recipe": {
+      "name": "recipe",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "servings": {
+          "name": "servings",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 1
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "recipe_slug_unique": {
+          "name": "recipe_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.recipe_ingredient": {
+      "name": "recipe_ingredient",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "recipe_id": {
+          "name": "recipe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ingredient_id": {
+          "name": "ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grams": {
+          "name": "grams",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prep_method": {
+          "name": "prep_method",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'raw'"
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "recipe_ingredient_recipe_id_recipe_id_fk": {
+          "name": "recipe_ingredient_recipe_id_recipe_id_fk",
+          "tableFrom": "recipe_ingredient",
+          "tableTo": "recipe",
+          "columnsFrom": [
+            "recipe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "recipe_ingredient_ingredient_id_ingredient_id_fk": {
+          "name": "recipe_ingredient_ingredient_id_ingredient_id_fk",
+          "tableFrom": "recipe_ingredient",
+          "tableTo": "ingredient",
+          "columnsFrom": [
+            "ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.recipe_step": {
+      "name": "recipe_step",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "recipe_id": {
+          "name": "recipe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "instruction": {
+          "name": "instruction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "timer_seconds": {
+          "name": "timer_seconds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prep_method": {
+          "name": "prep_method",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "recipe_step_recipe_id_recipe_id_fk": {
+          "name": "recipe_step_recipe_id_recipe_id_fk",
+          "tableFrom": "recipe_step",
+          "tableTo": "recipe",
+          "columnsFrom": [
+            "recipe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.recipe_step_ingredient": {
+      "name": "recipe_step_ingredient",
+      "schema": "",
+      "columns": {
+        "step_id": {
+          "name": "step_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "recipe_ingredient_id": {
+          "name": "recipe_ingredient_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "recipe_step_ingredient_step_id_recipe_step_id_fk": {
+          "name": "recipe_step_ingredient_step_id_recipe_step_id_fk",
+          "tableFrom": "recipe_step_ingredient",
+          "tableTo": "recipe_step",
+          "columnsFrom": [
+            "step_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "recipe_step_ingredient_recipe_ingredient_fk": {
+          "name": "recipe_step_ingredient_recipe_ingredient_fk",
+          "tableFrom": "recipe_step_ingredient",
+          "tableTo": "recipe_ingredient",
+          "columnsFrom": [
+            "recipe_ingredient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "recipe_step_ingredient_step_id_recipe_ingredient_id_pk": {
+          "name": "recipe_step_ingredient_step_id_recipe_ingredient_id_pk",
+          "columns": [
+            "step_id",
+            "recipe_ingredient_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.source": {
+      "name": "source",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "doi": {
+          "name": "doi",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pmid": {
+          "name": "pmid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "study_type": {
+          "name": "study_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "population": {
+          "name": "population",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "limitations": {
+          "name": "limitations",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "added_at": {
+          "name": "added_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stack": {
+      "name": "stack",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stack_item": {
+      "name": "stack_item",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "stack_id": {
+          "name": "stack_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "recipe_id": {
+          "name": "recipe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "supplement_id": {
+          "name": "supplement_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "servings": {
+          "name": "servings",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stack_item_stack_id_stack_id_fk": {
+          "name": "stack_item_stack_id_stack_id_fk",
+          "tableFrom": "stack_item",
+          "tableTo": "stack",
+          "columnsFrom": [
+            "stack_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stack_item_recipe_id_recipe_id_fk": {
+          "name": "stack_item_recipe_id_recipe_id_fk",
+          "tableFrom": "stack_item",
+          "tableTo": "recipe",
+          "columnsFrom": [
+            "recipe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "stack_item_supplement_id_supplement_id_fk": {
+          "name": "stack_item_supplement_id_supplement_id_fk",
+          "tableFrom": "stack_item",
+          "tableTo": "supplement",
+          "columnsFrom": [
+            "supplement_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "stack_item_recipe_xor_supplement": {
+          "name": "stack_item_recipe_xor_supplement",
+          "value": "(recipe_id is null) <> (supplement_id is null)"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.supplement": {
+      "name": "supplement",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "brand": {
+          "name": "brand",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dsld_id": {
+          "name": "dsld_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "serving_unit": {
+          "name": "serving_unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "third_party_tested": {
+          "name": "third_party_tested",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "art_url": {
+          "name": "art_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "supplement_slug_unique": {
+          "name": "supplement_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.supplement_compound": {
+      "name": "supplement_compound",
+      "schema": "",
+      "columns": {
+        "supplement_id": {
+          "name": "supplement_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "amount_per_serving": {
+          "name": "amount_per_serving",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "unit": {
+          "name": "unit",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "form": {
+          "name": "form",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "standardized_to": {
+          "name": "standardized_to",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "supplement_compound_supplement_id_supplement_id_fk": {
+          "name": "supplement_compound_supplement_id_supplement_id_fk",
+          "tableFrom": "supplement_compound",
+          "tableTo": "supplement",
+          "columnsFrom": [
+            "supplement_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "supplement_compound_compound_id_compound_id_fk": {
+          "name": "supplement_compound_compound_id_compound_id_fk",
+          "tableFrom": "supplement_compound",
+          "tableTo": "compound",
+          "columnsFrom": [
+            "compound_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "supplement_compound_source_id_source_id_fk": {
+          "name": "supplement_compound_source_id_source_id_fk",
+          "tableFrom": "supplement_compound",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "supplement_compound_supplement_id_compound_id_pk": {
+          "name": "supplement_compound_supplement_id_compound_id_pk",
+          "columns": [
+            "supplement_id",
+            "compound_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.supplement_microbe": {
+      "name": "supplement_microbe",
+      "schema": "",
+      "columns": {
+        "supplement_id": {
+          "name": "supplement_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "microbe_id": {
+          "name": "microbe_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "strain": {
+          "name": "strain",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cfu_per_serving": {
+          "name": "cfu_per_serving",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "supplement_microbe_supplement_id_supplement_id_fk": {
+          "name": "supplement_microbe_supplement_id_supplement_id_fk",
+          "tableFrom": "supplement_microbe",
+          "tableTo": "supplement",
+          "columnsFrom": [
+            "supplement_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "supplement_microbe_microbe_id_microbe_id_fk": {
+          "name": "supplement_microbe_microbe_id_microbe_id_fk",
+          "tableFrom": "supplement_microbe",
+          "tableTo": "microbe",
+          "columnsFrom": [
+            "microbe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "supplement_microbe_source_id_source_id_fk": {
+          "name": "supplement_microbe_source_id_source_id_fk",
+          "tableFrom": "supplement_microbe",
+          "tableTo": "source",
+          "columnsFrom": [
+            "source_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "supplement_microbe_supplement_id_microbe_id_pk": {
+          "name": "supplement_microbe_supplement_id_microbe_id_pk",
+          "columns": [
+            "supplement_id",
+            "microbe_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {
+    "public.absorption_modifier_applied": {
+      "columns": {
+        "modifier_id": {
+          "name": "modifier_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "compound_id": {
+          "name": "compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "basis": {
+          "name": "basis",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "modifier_compound_id": {
+          "name": "modifier_compound_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "modifier_condition": {
+          "name": "modifier_condition",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "direction": {
+          "name": "direction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "magnitude": {
+          "name": "magnitude",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mechanism": {
+          "name": "mechanism",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "evidence_grade": {
+          "name": "evidence_grade",
+          "type": "char(1)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "definition": "\n  with applied as (\n    select am.id as modifier_id, am.target_compound_id as compound_id, 'measured'::text as basis,\n           am.modifier_compound_id, am.modifier_condition, am.direction, am.magnitude, am.mechanism,\n           am.evidence_grade, am.source_id\n    from absorption_modifier am\n    where am.target_compound_id is not null\n    union all\n    select am.id, m.compound_id, case when mm.compound_id is null then 'by-class' else 'measured' end,\n           am.modifier_compound_id, am.modifier_condition, am.direction, am.magnitude, am.mechanism,\n           am.evidence_grade, am.source_id\n    from absorption_modifier am\n    join compound_class_member m on m.class_id = am.target_class_id\n    left join modifier_measured_member mm on mm.modifier_id = am.id and mm.compound_id = m.compound_id\n  )\n  select a.* from applied a\n  where a.basis = 'measured'\n     or not exists (\n       select 1 from applied b\n       where b.basis = 'measured'\n         and b.compound_id = a.compound_id\n         and b.modifier_compound_id is not distinct from a.modifier_compound_id\n         and b.modifier_condition is not distinct from a.modifier_condition\n     )\n",
+      "name": "absorption_modifier_applied",
+      "schema": "public",
+      "isExisting": false,
+      "materialized": false
+    }
+  },
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

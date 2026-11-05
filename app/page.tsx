@@ -38,18 +38,20 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
   return (
     <GameShell>
-      <main className="p-3 sm:p-5">
-        <h1 className="text-lg font-bold">What is in your food, what it does, and what helps it work.</h1>
+      <main className="px-3.5 pb-3">
+        <h1 className="sr-only">What is in your food, what it does, and what helps it work.</h1>
+        <p className="dex-hero-line" aria-hidden>
+          Your Dex.
+        </p>
         <Progress unlocked={unlocked.length} total={everything.length} />
-        <HadComposer had={params.had} />
 
-        <nav className="mt-3 flex flex-wrap gap-1.5" aria-label="Kinds of entry">
+        <nav className="mt-3 -mr-3.5 flex gap-2 overflow-x-auto pr-3.5 [scrollbar-width:none]" aria-label="Kinds of entry">
           {tabs.map((t) => (
             <Link
               key={t.label}
               href={tabHref(params.q, t.value)}
               aria-current={t.value === kind ? "page" : undefined}
-              className={`rounded-lg border-2 border-ink px-2.5 py-1 text-sm font-bold ${t.value === kind ? "bg-ink text-screen" : "bg-card text-ink hover:bg-white"}`}
+              className="dex-chip"
             >
               {t.label} <span className="font-medium tabular-nums">{t.count}</span>
             </Link>
@@ -62,10 +64,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
             name="q"
             aria-label="Search the Dex"
             defaultValue={params.q ?? ""}
-            placeholder="Search foods, compounds, effects"
-            className="min-w-0 flex-1 basis-56 rounded-lg border-2 border-ink bg-card px-3 py-2 placeholder:text-ink-soft"
+            placeholder="Search your Dex"
+            className="dex-field min-w-0 flex-1 basis-32 placeholder:text-ink-soft"
           />
-          <select name="type" aria-label="Type" defaultValue={type ?? ""} className="rounded-lg border-2 border-ink bg-card px-2 py-2 text-sm font-bold">
+          <select name="type" aria-label="Type" defaultValue={type ?? ""} className="dex-field w-28 text-sm font-bold sm:w-auto">
             <option value="">Any type</option>
             {KINDS.filter((k) => !kind || k.value === kind).map((k) => (
               <optgroup key={k.value} label={k.label}>
@@ -77,27 +79,28 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               </optgroup>
             ))}
           </select>
-          <button type="submit" className="rounded-lg border-2 border-ink bg-shell px-4 py-2 text-sm font-bold text-white hover:bg-shell-body">
+          <button type="submit" className="dex-button">
             Search
           </button>
         </form>
 
         {unlocked.length === 0 ? (
-          <p className="mt-8 pb-6">Your Dex is empty. Tell it what you had to unlock your first entry.</p>
+          <p className="mt-8 pb-6">Your Dex is empty. Tell it what you had, down below, to unlock your first entry.</p>
         ) : cards.length === 0 ? (
           <p className="mt-8 pb-6">
             Nothing you have unlocked matches that.{" "}
-            <Link href="/" className="font-bold underline decoration-shell decoration-2 underline-offset-4">
+            <Link href="/" className="font-bold underline decoration-accent decoration-2 underline-offset-4">
               Show everything
             </Link>
           </p>
         ) : (
-          <div className="mt-4 grid grid-cols-2 gap-3 pb-3 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {cards.map((card) => (
               <EntryCardView key={`${card.kind}:${card.slug}`} card={card} />
             ))}
           </div>
         )}
+        <HadComposer had={params.had} />
       </main>
     </GameShell>
   );

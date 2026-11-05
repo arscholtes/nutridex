@@ -50,6 +50,13 @@
       "when": 1793639750302,
       "tag": "0006_encounter",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793654293581,
+      "tag": "0007_bright_redwing",
+      "breakpoints": true
     }
   ]
 }

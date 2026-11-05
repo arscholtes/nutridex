@@ -171,17 +171,28 @@ struct DisplayTests {
         #expect(formatAmount(0.123456, unit: "g") == "0.12 g")
     }
 
+    @Test func anUnlockCountsInPlainEnglish() {
+        #expect(UnlockOverlay.summary(compounds: 10, effects: 1) == "It reveals 10 compounds and 1 effect.")
+        #expect(UnlockOverlay.summary(compounds: 1, effects: 2) == "It reveals 1 compound and 2 effects.")
+    }
+
     @Test func aMeterIsEmptyAtExactlyZero() {
-        #expect(Meter.litSegments(share: 0, total: 20) == 0)
+        #expect(Meter.fill(share: 0) == 0)
     }
 
     @Test func aMeterKeepsASliverForATinyAmount() {
+        #expect(Meter.fill(share: 0.001) == 0.02)
+    }
+
+    @Test func theHandheldsMeterLightsSegmentsOnTheSameTerms() {
+        #expect(Meter.litSegments(share: 0, total: 20) == 0)
         #expect(Meter.litSegments(share: 0.001, total: 20) == 1)
+        #expect(Meter.litSegments(share: 0.5, total: 20) == 10)
     }
 
     @Test func aMeterFillsInProportion() {
-        #expect(Meter.litSegments(share: 0.5, total: 20) == 10)
-        #expect(Meter.litSegments(share: 1, total: 20) == 20)
+        #expect(Meter.fill(share: 0.5) == 0.5)
+        #expect(Meter.fill(share: 1) == 1)
     }
 
     @Test func aChebiIdIsAnIdentifierNotAQuantity() throws {
@@ -208,11 +219,44 @@ struct DisplayTests {
         #expect(abs(c.blue - 42.0 / 255) < 0.001)
     }
 
-    @Test func aFoodsClaimsGroupByEffect() throws {
+    @Test func aFoodsEffectsComeAsOneTilePerEffect() throws {
         let carrot = try #require(Dex.bundled.ingredients["carrot"])
-        let groups = carrot.effects.groupedByEffect()
-        #expect(Set(groups.map(\.effect.slug)).count == groups.count)
-        #expect(groups.contains { $0.effect.slug == "vision" })
+        #expect(Set(carrot.tiles.map(\.effect.slug)).count == carrot.tiles.count)
+        #expect(carrot.tiles.contains { $0.effect.slug == "vision" })
+    }
+
+    @Test func theTileWithMostOfYourDailyAmountLeadsAndIsLargest() throws {
+        let carrot = try #require(Dex.bundled.ingredients["carrot"])
+        #expect(carrot.tiles.first?.size == "large")
+        #expect(carrot.tiles.filter { $0.size == "large" }.count == 1)
+    }
+
+    @Test func tilesFillGapsWithTheNextThatFits() {
+        let small = BentoLayout.span(of: "small")
+        let wide = BentoLayout.span(of: "wide")
+        let placed = BentoLayout.place([small, wide, small], columns: 2)
+        #expect(placed.cells == [.init(column: 0, row: 0), .init(column: 0, row: 1), .init(column: 1, row: 0)])
+        #expect(placed.rows == 2)
+    }
+
+    @Test func aLargeTileTakesTwoRowsAndTwoColumns() {
+        let placed = BentoLayout.place([BentoLayout.span(of: "large"), BentoLayout.span(of: "small")], columns: 2)
+        #expect(placed.cells == [.init(column: 0, row: 0), .init(column: 0, row: 2)])
+        #expect(placed.rows == 3)
+    }
+
+    @Test func everyRowStaysItsUsualHeightWhenTheWordsFit() {
+        #expect(BentoLayout.rowHeight(needed: [120, 150], minimum: 156) == 156)
+    }
+
+    @Test func everyRowGrowsToFitTheTallestWords() {
+        #expect(BentoLayout.rowHeight(needed: [120, 190], minimum: 156) == 190)
+    }
+
+    @Test func moreRoomMeansMoreColumns() {
+        #expect(BentoLayout.columns(for: 370) == 2)
+        #expect(BentoLayout.columns(for: 700) == 4)
+        #expect(BentoLayout.columns(for: 1000) == 6)
     }
 
     @Test func aCompoundsClaimsGroupBySourceSoItIsCitedOnce() throws {

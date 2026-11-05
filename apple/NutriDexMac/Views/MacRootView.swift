@@ -6,6 +6,7 @@ enum MacSection: Hashable {
     case type(EntryKind, String)
     case compare
     case sources
+    case skins
 }
 
 /// Shows the notice until this Mac has accepted the running version, then the home database.
@@ -13,7 +14,7 @@ struct MacRootView: View {
     @AppStorage("acceptedDisclaimerVersion") private var accepted: String?
     @State private var nav = DexNavigator()
     @State private var browser = DexBrowser()
-    @State private var game = DexGame(store: EncounterStore(defaults: MacRootView.storeDefaults), transport: HTTPEncounterTransport.configured)
+    @State private var game = DexGame(store: EncounterStore(defaults: MacRootView.storeDefaults), transport: MacRootView.transport, skins: SkinStore(defaults: MacRootView.storeDefaults))
     @Environment(\.scenePhase) private var scenePhase
 
     /// A launch argument such as `-debugEncountered carrot,kale` fills a throwaway record, for checking screens.
@@ -24,6 +25,22 @@ struct MacRootView: View {
         }
         #endif
         return .standard
+    }
+
+    private static var transport: EncounterTransport {
+        #if DEBUG
+        if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport() }
+        #endif
+        return HTTPEncounterTransport.configured
+    }
+
+    /// A throwaway record stays exactly what the launch argument asked for, with nothing merged in from home.
+    private static var syncs: Bool {
+        #if DEBUG
+        UserDefaults.standard.string(forKey: "debugEncountered") == nil
+        #else
+        true
+        #endif
     }
 
     var body: some View {
@@ -40,19 +57,21 @@ struct MacRootView: View {
                 UnlockOverlay(card: card, position: game.unlockProgress.position, total: game.unlockProgress.total) { game.next() }
             }
         }
+        // Colours come from the skin being worn, so changing it draws everything again. What you are looking at stays.
+        .id(game.skins.skin)
         .environment(nav)
         .environment(browser)
         .environment(game)
         .environment(game.store)
-        .preferredColorScheme(.light)
-        .tint(Theme.shell)
+        .preferredColorScheme(game.skins.skin.scheme)
+        .tint(Theme.accent)
         #if DEBUG
         .onAppear(perform: applyDebugArguments)
         #endif
         // Getting on the computer is what plays anything new from your other devices.
-        .task { await game.sync() }
+        .task { if Self.syncs { await game.sync() } }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { Task { await game.sync() } }
+            if phase == .active, Self.syncs { Task { await game.sync() } }
         }
     }
 
@@ -96,6 +115,8 @@ struct MacBrowserView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             case .sources:
                 SourcesList().background(Theme.screen)
+            case .skins:
+                SkinsList().background(DexBackdrop())
             case .dex, .type:
                 HSplitView {
                     VStack(spacing: 0) {
@@ -128,7 +149,7 @@ struct MacBrowserView: View {
             case let .type(kind, type):
                 browser.kind = kind
                 browser.type = type
-            case .compare, .sources:
+            case .compare, .sources, .skins:
                 break
             }
         }
@@ -172,14 +193,8 @@ struct MacSidebar: View {
         switch section {
         case let .dex(kind): kind
         case let .type(kind, _): kind
-        case .compare, .sources: nil
+        case .compare, .sources, .skins: nil
         }
-    }
-
-    private var lens: Color {
-        guard case let .entry(kind, slug) = nav.selection, store.isRevealed(kind, slug),
-              let card = Dex.bundled.cards.first(where: { $0.kind == kind && $0.slug == slug }) else { return Color(hex: "#38B6F2") }
-        return Dex.bundled.palette.swatch(for: card.type).background
     }
 
     private func count(_ kind: EntryKind?) -> Int {
@@ -211,12 +226,21 @@ struct MacSidebar: View {
                 Label("Compare foods", systemImage: "tablecells").tag(MacSection.compare)
                 Label("Sources", systemImage: "book.closed").tag(MacSection.sources)
             }
+            Section("Look") {
+                Label("Skins", systemImage: "paintbrush").tag(MacSection.skins)
+            }
         }
         .listStyle(.sidebar)
         .safeAreaInset(edge: .top, spacing: 0) {
-            DexPlate(lens: lens)
-                .padding(.top, 26)
-                .padding(.bottom, 6)
+            Group {
+                if Theme.isHandheld {
+                    DexPlate()
+                } else {
+                    DexWordmark().frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 14)
+                }
+            }
+            .padding(.top, 30)
+            .padding(.bottom, 10)
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             VStack(alignment: .leading, spacing: 8) {
@@ -226,7 +250,7 @@ struct MacSidebar: View {
                 progress("Effects", .effect)
             }
             .padding(12)
-            .background(Theme.bezel)
+            .background(Theme.card)
         }
     }
 
@@ -238,7 +262,7 @@ struct MacSidebar: View {
                 Spacer()
                 Text("\(value.seen) of \(value.total)").font(.dex(.caption, weight: .medium)).monospacedDigit().foregroundStyle(Theme.ink)
             }
-            Meter(share: value.total == 0 ? 0 : Double(value.seen) / Double(value.total), color: Theme.shell)
+            Meter(share: value.total == 0 ? 0 : Double(value.seen) / Double(value.total), style: Theme.progressFill)
         }
     }
 }
@@ -263,7 +287,7 @@ struct CardPane: View {
                             EntryCardView(card: card, revealed: store.isRevealed(card))
                                 .overlay {
                                     if nav.selection == card.route {
-                                        RoundedRectangle(cornerRadius: 18).stroke(Theme.shell, lineWidth: 4)
+                                        RoundedRectangle(cornerRadius: 22).strokeBorder(Theme.accent, lineWidth: 4)
                                     }
                                 }
                         }
@@ -274,6 +298,6 @@ struct CardPane: View {
                 .padding(14)
             }
         }
-        .background(Theme.screen)
+        .background(DexBackdrop())
     }
 }

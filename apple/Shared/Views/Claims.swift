@@ -3,7 +3,7 @@ import SwiftUI
 /// What the EU's permitted claims mean, wherever they appear.
 enum ClaimNotes {
     static let meaning = "These are the wordings EU law allows on food labels. They mean a nutrient contributes to that function at adequate intake, not that eating more improves it."
-    static let foodBar = "A nutrient appears here when 100 g of this food supplies at least 15% of its reference value, the EU's bar for calling a food a source. A typical serving may be far less than 100 g. \(meaning)"
+    static let foodBar = "Percentages are of the EU's daily reference value for an adult, in 100 g of this food, and a typical serving may be far less. A bigger tile means more of the nutrient behind it, not that more is better. A nutrient appears here when 100 g supplies at least 15% of that value, the EU's bar for calling a food a source. \(meaning)"
     static let effectBar = "A food is listed when 100 g supplies at least 15% of the nutrient's reference value, the EU's bar for calling a food a source."
 }
 
@@ -79,54 +79,255 @@ struct EffectList: View {
     }
 }
 
-/// What a food does: one line per effect, naming the nutrients behind it, with each claim's exact
-/// wording and source a tap away.
-struct FoodEffects: View {
-    let claims: [EffectClaim]
+/// What a food does, as a grid: the more of your daily amount behind an effect, the bigger its tile
+/// and the more it says. Its source's exact wording and citation are one tap away, on the effect's page.
+struct EffectBento: View {
+    let tiles: [BentoTile]
+    @Environment(\.dexVisibility) private var visibility
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            let groups = claims.groupedByEffect()
-            ForEach(Array(groups.enumerated()), id: \.element.id) { index, group in
-                if index > 0 { Divider() }
-                line(group)
-            }
-        }
-        .dexPanel()
+    /// - Returns: a tile with only the nutrients that may be shown; none means the tile goes too
+    private func shown(_ tile: BentoTile) -> [BentoCompound] {
+        tile.compounds.filter { visibility.shows(.compound, $0.slug) }
     }
 
-    private func line(_ group: EffectGroup) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            FlowRow {
-                EntryLinkText(route: .entry(.effect, group.effect.slug), title: group.effect.name)
-                if group.effect.direction != "benefit" {
-                    Text(group.effect.direction.capitalized).font(.dex(.caption, weight: .bold)).foregroundStyle(Theme.inkSoft)
-                }
-                GradeBadge(grade: group.bestGrade)
+    var body: some View {
+        BentoLayout {
+            ForEach(tiles.filter { !shown($0).isEmpty }) { tile in
+                BentoTileView(tile: tile, compounds: shown(tile))
+                    .layoutValue(key: BentoSpan.self, value: BentoLayout.span(of: tile.size))
             }
-            FlowRow(spacing: 5) {
-                Text("via").font(.dex(.footnote)).foregroundStyle(Theme.inkSoft)
-                ForEach(Array(group.claims.enumerated()), id: \.offset) { _, claim in
-                    EntryLinkText(route: .entry(.compound, claim.compound.slug), title: claim.compound.name)
-                }
-            }
-            DisclosureGroup {
-                VStack(alignment: .leading, spacing: 8) {
-                    ForEach(Array(group.claims.enumerated()), id: \.offset) { _, claim in
-                        VStack(alignment: .leading, spacing: 3) {
-                            if let summary = claim.summary {
-                                Text(summary).font(.dex(.footnote)).foregroundStyle(Theme.ink).fixedSize(horizontal: false, vertical: true)
-                            }
-                            ClaimFacts(doseContext: claim.doseContext, onset: claim.onset, isBar: claim.minFoodPer100g != nil)
-                            SourceLinkText(source: claim.source)
-                        }
+        }
+    }
+}
+
+/// How many columns and rows a tile takes.
+struct BentoSpan: LayoutValueKey {
+    static let defaultValue = BentoLayout.Span(columns: 1, rows: 1)
+}
+
+/// Lays tiles on a grid, filling any gap with the next tile that fits.
+struct BentoLayout: Layout {
+    struct Span: Equatable {
+        let columns: Int
+        let rows: Int
+    }
+
+    struct Cell: Equatable {
+        let column: Int
+        let row: Int
+    }
+
+    private static let shortestRow: CGFloat = 156
+
+    var spacing: CGFloat = 12
+
+    /// - Returns: how tall every row is: its usual height, or taller where a tile's words need it
+    static func rowHeight(needed: [CGFloat], minimum: CGFloat) -> CGFloat {
+        max(minimum, needed.max() ?? 0)
+    }
+
+    static func span(of size: String) -> Span {
+        switch size {
+        case "large": Span(columns: 2, rows: 2)
+        case "wide": Span(columns: 2, rows: 1)
+        default: Span(columns: 1, rows: 1)
+        }
+    }
+
+    /// - Returns: how many columns fit a width
+    static func columns(for width: CGFloat) -> Int {
+        width >= 900 ? 6 : width >= 520 ? 4 : 2
+    }
+
+    /// - Returns: where each tile goes, and how many rows that takes
+    static func place(_ spans: [Span], columns: Int) -> (cells: [Cell], rows: Int) {
+        var taken = Set<[Int]>()
+        var rows = 0
+        let cells = spans.map { span -> Cell in
+            var row = 0
+            while true {
+                for column in 0...max(0, columns - span.columns) {
+                    let wanted = (row..<row + span.rows).flatMap { r in (column..<column + span.columns).map { [$0, r] } }
+                    if wanted.allSatisfy({ !taken.contains($0) }) {
+                        taken.formUnion(wanted)
+                        rows = max(rows, row + span.rows)
+                        return Cell(column: column, row: row)
                     }
                 }
-                .padding(.top, 4)
-            } label: {
-                Text("What the source says").font(.dex(.footnote)).foregroundStyle(Theme.inkSoft)
+                row += 1
             }
-            .tint(Theme.inkSoft)
+        }
+        return (cells, rows)
+    }
+
+    private func arrangement(_ subviews: Subviews, width: CGFloat) -> (cells: [Cell], rows: Int, cellWidth: CGFloat, rowHeight: CGFloat) {
+        let columns = Self.columns(for: width)
+        let placed = Self.place(subviews.map { $0[BentoSpan.self] }, columns: columns)
+        let cellWidth = (width - spacing * CGFloat(columns - 1)) / CGFloat(columns)
+        let needed = subviews.map { subview -> CGFloat in
+            let span = subview[BentoSpan.self]
+            let tileWidth = CGFloat(span.columns) * cellWidth + CGFloat(span.columns - 1) * spacing
+            let height = subview.sizeThatFits(ProposedViewSize(width: tileWidth, height: nil)).height
+            return (height - CGFloat(span.rows - 1) * spacing) / CGFloat(span.rows)
+        }
+        return (placed.cells, placed.rows, cellWidth, Self.rowHeight(needed: needed, minimum: Self.shortestRow))
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let width = proposal.width ?? 360
+        let layout = arrangement(subviews, width: width)
+        return CGSize(width: width, height: CGFloat(layout.rows) * layout.rowHeight + CGFloat(max(0, layout.rows - 1)) * spacing)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let layout = arrangement(subviews, width: bounds.width)
+        for (index, subview) in subviews.enumerated() {
+            let span = subview[BentoSpan.self]
+            let cell = layout.cells[index]
+            subview.place(
+                at: CGPoint(x: bounds.minX + CGFloat(cell.column) * (layout.cellWidth + spacing), y: bounds.minY + CGFloat(cell.row) * (layout.rowHeight + spacing)),
+                proposal: ProposedViewSize(
+                    width: CGFloat(span.columns) * layout.cellWidth + CGFloat(span.columns - 1) * spacing,
+                    height: CGFloat(span.rows) * layout.rowHeight + CGFloat(span.rows - 1) * spacing
+                )
+            )
+        }
+    }
+}
+
+/// One effect: the bigger the tile, the more it says.
+struct BentoTileView: View {
+    let tile: BentoTile
+    let compounds: [BentoCompound]
+
+    private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: Theme.skin.radius.tile) }
+    private var isLarge: Bool { tile.size == "large" }
+    private var isWide: Bool { tile.size == "wide" }
+
+    private func percent(_ share: Double) -> String { "\(Int((share * 100).rounded()))%" }
+
+    var body: some View {
+        NavigationLink(value: DexRoute.entry(.effect, tile.effect.slug)) {
+            VStack(alignment: .leading, spacing: 6) {
+                if isLarge {
+                    large
+                } else if isWide {
+                    wide
+                } else {
+                    small
+                }
+            }
+            .foregroundStyle(isLarge ? Theme.onTile : Theme.ink)
+            .multilineTextAlignment(.leading)
+            .padding(14)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .background {
+                if isLarge {
+                    shape.fill(Theme.tile)
+                } else if Theme.skin.card == .wash {
+                    shape.fill(Theme.card).overlay(shape.fill(Dex.bundled.palette.swatch(for: tile.effect.bodySystem).background.opacity(0.14)))
+                } else {
+                    shape.fill(Theme.card)
+                }
+            }
+            .overlay {
+                if Theme.skin.card == .glow { shape.strokeBorder(Theme.line, lineWidth: 1.5) }
+            }
+            .dexOutline(shape)
+            .dexShadow(shape, soft: 0.1, radius: 10, y: 5)
+            .contentShape(shape)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var name: some View {
+        HStack(spacing: 6) {
+            Text(tile.effect.name).font(.dex(.subheadline, weight: .bold)).fixedSize(horizontal: false, vertical: true)
+            if tile.effect.direction != "benefit" {
+                Text(tile.effect.direction.capitalized).font(.dex(.caption2, weight: .bold)).opacity(0.7)
+            }
+            GradeBadge(grade: tile.grade)
+        }
+    }
+
+    /// The creatures behind a tile, the ones supplying more of your daily amount drawn larger.
+    private func creatures(most: Int) -> some View {
+        HStack(alignment: .bottom, spacing: 4) {
+            ForEach(compounds.prefix(most)) { compound in
+                let size: CGFloat = (compound.dailyShare ?? 0) >= 1 ? 52 : (compound.dailyShare ?? 0) >= 0.4 ? 42 : 32
+                // Shrinks in a narrow tile, rather than pushing it over its neighbour.
+                CreatureArt(kind: .compound, slug: compound.slug, cutout: true).frame(maxWidth: size, maxHeight: size)
+            }
+            if compounds.count > most {
+                Text("+\(compounds.count - most)").font(.dex(.caption, weight: .bold)).opacity(0.7).padding(.bottom, 3)
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(compounds.map(\.name).joined(separator: ", "))
+    }
+
+    private var small: some View {
+        Group {
+            creatures(most: 3)
+            Spacer(minLength: 0)
+            if let share = tile.topShare {
+                Text(percent(share)).font(.dexNumber(.title3))
+            }
+            name
+        }
+    }
+
+    private var wide: some View {
+        Group {
+            HStack(alignment: .top) {
+                if let share = tile.topShare {
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(percent(share)).font(.dex(.largeTitle, weight: .heavy)).monospacedDigit().fixedSize()
+                        Text("of your daily \(compounds[0].name) in 100 g").font(.dex(.caption)).opacity(0.8).fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 6)
+                }
+                creatures(most: 4)
+            }
+            if let dose = tile.dose {
+                Text("Studied at: \(dose)").font(.dex(.caption)).opacity(0.8).fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 0)
+            name
+        }
+    }
+
+    private var large: some View {
+        Group {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(percent(tile.topShare ?? 0))
+                        .font(.system(size: 60, weight: Theme.skin.font.heading.font, design: Theme.skin.font.design.font))
+                        .monospacedDigit()
+                        .foregroundStyle(Theme.skin.stage == .foil ? Theme.progressFill : AnyShapeStyle(Theme.onTile))
+                        .minimumScaleFactor(0.6)
+                        .lineLimit(1)
+                    Text("of your daily \(compounds[0].name) in 100 g").font(.dex(.footnote)).opacity(0.9).fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 4)
+                CreatureArt(kind: .compound, slug: compounds[0].slug, cutout: true)
+                    .frame(width: 104, height: 104)
+                    .accessibilityHidden(true)
+            }
+            if compounds.count > 1 {
+                HStack(alignment: .bottom, spacing: 4) {
+                    ForEach(compounds.dropFirst().prefix(5)) { compound in
+                        CreatureArt(kind: .compound, slug: compound.slug, cutout: true).frame(width: 40, height: 40)
+                    }
+                }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(compounds.dropFirst().map(\.name).joined(separator: ", "))
+            }
+            Spacer(minLength: 0)
+            name
+            if let wording = tile.wording {
+                Text(wording).font(.dex(.footnote)).opacity(0.9).lineLimit(4)
+            }
         }
     }
 }
@@ -142,7 +343,7 @@ struct BasisFrame<Content: View>: View {
         if basis == "by-class" {
             VStack(alignment: .leading, spacing: 6) {
                 content
-                Text("By class: \(className ?? "")").font(.dex(.caption, weight: .bold)).foregroundStyle(Color(hex: "#78350F"))
+                Text("By class: \(className ?? "")").font(.dex(.caption, weight: .bold)).foregroundStyle(Color(hex: Theme.skin.dark ? "#FCD34D" : "#78350F"))
             }
             .padding(12)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -271,15 +472,18 @@ struct CautionCard: View {
     var advice: String?
     var source: SourceRef?
 
+    /// The card stays rose in every skin, so what is on it stays dark.
+    private let onRose = Color(hex: "#1C1917")
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(spacing: 8) {
                 Text(kind.capitalized).font(.dex(.subheadline, weight: .bold)).foregroundStyle(Color(hex: "#881337"))
                 if let grade { GradeBadge(grade: grade) }
             }
-            Text(summary).font(.dex(.subheadline)).foregroundStyle(Theme.ink).fixedSize(horizontal: false, vertical: true)
-            if let advice { Text(advice).font(.dex(.subheadline, weight: .medium)).foregroundStyle(Theme.ink) }
-            if let source { SourceLinkText(source: source) }
+            Text(summary).font(.dex(.subheadline)).foregroundStyle(onRose).fixedSize(horizontal: false, vertical: true)
+            if let advice { Text(advice).font(.dex(.subheadline, weight: .medium)).foregroundStyle(onRose) }
+            if let source { SourceLinkText(source: source, color: onRose) }
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)

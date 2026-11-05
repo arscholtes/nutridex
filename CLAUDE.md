@@ -32,6 +32,14 @@ Read it with the Claude Docs tools, never a web fetch.
 NutriDex ships on the web (`app/`, Next.js) and natively on iPhone, iPad and Mac (`apple/`, SwiftUI). Native
 stays SwiftUI: no React Native and no web views. What both Apple apps share lives in `apple/Shared/`.
 
+Skins are one table, `SKINS` in `lib/skins.ts`: colours, type, shapes and which treatment each thing uses. The web
+reads it through `app/skin-treatments.css`, and the apps read it from the snapshot through `Theme`, so a new skin
+is a new row and `npm run export:native`. Only something a treatment cannot say needs its own rules: `app/skin-new-age.css`
+for the product-page layout, `app/skin-yellow.css` for the original handheld. Every screen must work in every skin, so
+draw colours from the tokens and never assume a light page. The choice is stored on the server (`preference`) and
+follows you between devices. Foods always keep their real colour in every skin: foil and backgrounds may shift, a
+creature never does.
+
 NutriDex is a collection game: over time you unlock everything. On the web, iPhone and iPad nothing shows until
 it is encountered: no list, name, link or count may give a hidden entry away, and new screens must keep that
 true. You say what you had, press Upload to send new encounters to the server as an array, and an unlock

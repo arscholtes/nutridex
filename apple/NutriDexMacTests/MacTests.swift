@@ -1,5 +1,6 @@
 import AppKit
 import Foundation
+import SwiftUI
 import Testing
 @testable import NutriDexMac
 
@@ -168,6 +169,21 @@ private final class StubTransport: EncounterTransport {
         return UploadResponse(new: added, encounters: serverFoods.map(Self.row))
     }
 
+    var serverSkin: String?
+    var skinFailure: EncounterProblem?
+    private(set) var savedSkins: [String] = []
+
+    func fetchSkin() async throws -> String? {
+        if let skinFailure { throw skinFailure }
+        return serverSkin
+    }
+
+    func saveSkin(_ id: String) async throws {
+        if let skinFailure { throw skinFailure }
+        savedSkins.append(id)
+        serverSkin = id
+    }
+
     func fetch() async throws -> [ServerEncounter] {
         if let failure { throw failure }
         return serverFoods.map(Self.row)
@@ -327,13 +343,19 @@ struct VisibilityTests {
         #expect(!v.shows(.compound, "zinc"))
     }
 
-    @Test func steppingSkipsWhatIsHidden() throws {
-        let v = visibility(["beet", "carrot", "watermelon"])
-        let carrot = try #require(Dex.bundled.ingredients["carrot"])
-        let pager = v.pager(carrot.pager, kind: .ingredient)
-        #expect(pager.prev?.slug == "beet")
-        #expect(pager.next?.slug == "watermelon")
-        #expect(pager.number == "F006")
+    @Test func swipingMovesOnlyThroughWhatIsUnlockedInDexOrder() {
+        let v = visibility(["watermelon", "carrot", "beet"])
+        #expect(v.entries(of: .ingredient).map(\.slug) == ["beet", "carrot", "watermelon"])
+    }
+
+    @Test func swipingStaysWithinOneKindOfEntry() {
+        let v = visibility(["carrot"])
+        #expect(v.entries(of: .compound).allSatisfy { $0.kind == .compound })
+        #expect(v.entries(of: .compound).contains { $0.slug == "vitamin-a" })
+    }
+
+    @Test func nothingUnlockedLeavesNothingToSwipeThrough() {
+        #expect(visibility([]).entries(of: .ingredient).isEmpty)
     }
 
     @Test func aCardDropsAStatNamingAHiddenFood() throws {
@@ -385,5 +407,198 @@ struct WireFormatTests {
         let response = try await transport.upload([UploadItem(food: "olive-oil", encounteredAt: .now)])
         #expect(response.encounters.contains { $0.food == "olive-oil" })
         #expect(try await transport.fetch().contains { $0.food == "olive-oil" })
+    }
+}
+
+private extension DexSkin {
+    static func named(_ id: String) -> DexSkin { Dex.bundled.skin(id: id)! }
+    static var newAge: DexSkin { named("new-age") }
+    static var yellowVersion: DexSkin { named("yellow-version") }
+}
+
+/// A tile holds a row of creatures, which must not push it over its neighbour in the grid.
+@MainActor
+struct BentoTileTests {
+    @Test func aSmallTileFitsTheWidthItIsGivenHoweverManyCreaturesItHolds() throws {
+        let kale = try #require(Dex.bundled.ingredients["kale"])
+        let small = kale.tiles.filter { $0.size == "small" }
+        #expect(small.contains { $0.compounds.count >= 3 })
+        let narrow: CGFloat = 125
+        for tile in small {
+            let host = NSHostingController(rootView: NavigationStack { BentoTileView(tile: tile, compounds: tile.compounds) })
+            let fitted = host.sizeThatFits(in: CGSize(width: narrow, height: 2000))
+            #expect(fitted.width <= narrow, "\(tile.effect.name) takes \(fitted.width) of \(narrow)")
+        }
+    }
+}
+
+/// What each skin promises, from the table the web reads too.
+struct SkinTableTests {
+    @Test func theSkinsAreTheOnesOnOffer() {
+        #expect(Dex.bundled.skins.map(\.name) == ["New age", "Iridescent", "Yellow version", "Nutrition label", "Field guide", "Seed packet", "Sticker book", "Deep sea", "Receipt", "Arcade"])
+    }
+
+    @Test func newAgeOpensWithTheNameAboveTheCreatureAndHasPlainLinks() {
+        #expect(DexSkin.newAge.hero == .titleFirst)
+        #expect(DexSkin.newAge.nav == .text)
+        #expect(DexSkin.newAge.card == .flat)
+        #expect(DexSkin.newAge.radius.card == 28)
+    }
+
+    @Test func iridescentIsTheOneWithTheFoil() {
+        #expect(Dex.bundled.skins.filter { $0.stage == .foil }.map(\.id) == ["iridescent"])
+        #expect(DexSkin.named("iridescent").backdrop == .pearl)
+    }
+
+    @Test func onlyTheYellowVersionIsTheHandheld() {
+        #expect(Dex.bundled.skins.filter { $0.shell == .handheld }.map(\.id) == ["yellow-version"])
+    }
+
+    @Test func aPillHasNoCornerOfItsOwnAndASquareDoes() {
+        #expect(DexSkin.newAge.radius.control == nil)
+        #expect(DexSkin.named("nutrition-label").radius.control == 0)
+    }
+
+    @Test func aSkinDecidesHowHeavyItsEmphasisIs() {
+        #expect(DexSkin.newAge.weight(for: .heavy) == .semibold)
+        #expect(DexSkin.newAge.weight(for: .bold) == .semibold)
+        #expect(DexSkin.named("nutrition-label").weight(for: .heavy) == .black)
+        #expect(DexSkin.named("nutrition-label").weight(for: .regular) == .regular)
+    }
+
+    @Test func aDarkSkinAsksForDarkControls() {
+        #expect(DexSkin.named("deep-sea").scheme == .dark)
+        #expect(DexSkin.named("arcade").scheme == .dark)
+        #expect(DexSkin.newAge.scheme == .light)
+    }
+
+    @Test func aHeadingReadsTheWayItsSkinWritesIt() {
+        #expect(DexSkin.newAge.heading("What it does") == "What it does.")
+        #expect(DexSkin.named("iridescent").heading("What it does") == "What it does")
+        #expect(DexSkin.named("receipt").heading("What it does") == "WHAT IT DOES")
+    }
+}
+
+/// The skin that follows someone between their devices.
+@MainActor
+struct SkinTests {
+    /// Runs against a real server when asked: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test. Puts back what it finds.
+    @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_TEST"] == "1"))
+    func theRealServerRemembersASkinForEveryDevice() async throws {
+        let transport = HTTPEncounterTransport.configured
+        let before = try await transport.fetchSkin()
+        try await transport.saveSkin("yellow-version")
+        #expect(try await transport.fetchSkin() == "yellow-version")
+        try await transport.saveSkin(before ?? "new-age")
+    }
+
+    private func game(_ transport: StubTransport, defaults: UserDefaults = UserDefaults(suiteName: "skins-\(UUID().uuidString)")!) -> DexGame {
+        DexGame(store: EncounterStore(defaults: defaults), transport: transport, skins: SkinStore(defaults: defaults))
+    }
+
+    @Test func aNewDeviceStartsOnNewAge() {
+        #expect(game(StubTransport()).skins.skin == .newAge)
+    }
+
+    @Test func aSkinThatIsNoLongerOfferedFallsBackToNewAge() {
+        let defaults = UserDefaults(suiteName: "skins-\(UUID().uuidString)")!
+        defaults.set("retired", forKey: "skin")
+        #expect(game(StubTransport(), defaults: defaults).skins.skin == .newAge)
+    }
+
+    @Test func iridescentIsRememberedLikeAnyOther() async {
+        let defaults = UserDefaults(suiteName: "skins-\(UUID().uuidString)")!
+        await game(StubTransport(), defaults: defaults).choose(skin: .named("iridescent"))
+        #expect(game(StubTransport(), defaults: defaults).skins.skin.name == "Iridescent")
+    }
+
+    @Test func choosingChangesTheLookAndTellsTheHomeDatabase() async {
+        let transport = StubTransport()
+        let dex = game(transport)
+        await dex.choose(skin: .yellowVersion)
+        #expect(dex.skins.skin == .yellowVersion)
+        #expect(transport.savedSkins == ["yellow-version"])
+    }
+
+    @Test func syncingPicksUpWhatAnotherDeviceChose() async {
+        let transport = StubTransport()
+        transport.serverSkin = "yellow-version"
+        let dex = game(transport)
+        await dex.sync()
+        #expect(dex.skins.skin == .yellowVersion)
+    }
+
+    @Test func nothingChosenAnywhereLeavesThisDeviceAlone() async {
+        let dex = game(StubTransport())
+        await dex.sync()
+        #expect(dex.skins.skin == .newAge)
+    }
+
+    @Test func aSkinThisAppDoesNotHaveLeavesTheLookAlone() async {
+        let transport = StubTransport()
+        transport.serverSkin = "from-a-newer-app"
+        let dex = game(transport)
+        await dex.sync()
+        #expect(dex.skins.skin == .newAge)
+    }
+
+    @Test func theSkinArrivesBeforeTheUnlockAnimationStarts() async {
+        let transport = StubTransport()
+        transport.serverFoods = ["carrot"]
+        transport.serverSkin = "yellow-version"
+        let dex = game(transport)
+        await dex.sync()
+        #expect(dex.skins.skin == .yellowVersion)
+        #expect(dex.unlocking?.slug == "carrot")
+    }
+
+    @Test func notReachingTheSkinStillPlaysWhatArrived() async {
+        let transport = StubTransport()
+        transport.serverFoods = ["carrot"]
+        transport.skinFailure = EncounterProblem("no skin today")
+        let dex = game(transport)
+        await dex.sync()
+        #expect(dex.unlocking?.slug == "carrot")
+        #expect(dex.skinProblem == "no skin today")
+    }
+
+    #if DEBUG
+    @Test func aTestCopyCanNeverUploadToTheRealRecord() async {
+        let defaults = UserDefaults(suiteName: "skins-\(UUID().uuidString)")!
+        let dex = DexGame(store: EncounterStore(defaults: defaults), transport: TestCopyTransport(), skins: SkinStore(defaults: defaults))
+        dex.store.encounter(food: "carrot")
+        await dex.upload()
+        #expect(dex.uploadError?.contains("test copy") == true)
+        #expect(dex.store.pending.map(\.food) == ["carrot"])
+    }
+    #endif
+
+    @Test func aChoiceSurvivesRelaunching() async {
+        let defaults = UserDefaults(suiteName: "skins-\(UUID().uuidString)")!
+        await game(StubTransport(), defaults: defaults).choose(skin: .yellowVersion)
+        #expect(game(StubTransport(), defaults: defaults).skins.skin == .yellowVersion)
+    }
+
+    @Test func choosingOfflineStillChangesTheLookAndSaysItDidNotSync() async {
+        let transport = StubTransport()
+        transport.skinFailure = EncounterProblem("The home database did not answer")
+        let dex = game(transport)
+        await dex.choose(skin: .yellowVersion)
+        #expect(dex.skins.skin == .yellowVersion)
+        #expect(dex.skinProblem == "The home database did not answer")
+    }
+
+    @Test func aChoiceMadeOfflineWinsOverTheOldOneWhenBackOnline() async {
+        let transport = StubTransport()
+        transport.skinFailure = EncounterProblem("offline")
+        let defaults = UserDefaults(suiteName: "skins-\(UUID().uuidString)")!
+        await game(transport, defaults: defaults).choose(skin: .yellowVersion)
+        transport.skinFailure = nil
+        transport.serverSkin = "new-age"
+        let relaunched = game(transport, defaults: defaults)
+        await relaunched.sync()
+        #expect(relaunched.skins.skin == .yellowVersion)
+        #expect(transport.serverSkin == "yellow-version")
+        #expect(relaunched.skinProblem == nil)
     }
 }

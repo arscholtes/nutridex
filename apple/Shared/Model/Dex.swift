@@ -3,6 +3,29 @@ import Foundation
 // What the app shows, decoded from dex.json. `npm run export:native` writes that file from the same
 // functions the web Dex reads through, so this layer decodes judgments and never makes them.
 
+/// A nutrient behind a tile. Its daily share is nil where no claim sets a bar.
+struct BentoCompound: Decodable, Hashable, Identifiable {
+    let slug: String
+    let name: String
+    let dailyShare: Double?
+
+    var id: String { slug }
+}
+
+/// One effect of a food, sized by how much of a daily amount is behind it.
+struct BentoTile: Decodable, Hashable, Identifiable {
+    let effect: ClaimEffect
+    let size: String
+    let grade: String
+    let topShare: Double?
+    let compounds: [BentoCompound]
+    let wording: String?
+    /// What a trial used, for a claim resting on one rather than on what a food holds.
+    let dose: String?
+
+    var id: String { effect.slug }
+}
+
 enum EntryKind: String, Decodable, Hashable {
     case ingredient, compound, effect
 }
@@ -193,6 +216,8 @@ struct IngredientEntry: Decodable, Hashable {
     let pairsWellWith: [String]
     let prep: [PrepClaim]
     let effects: [EffectClaim]
+    /// The same effects as tiles, sized by how much of a daily amount is behind each.
+    let tiles: [BentoTile]
     let cautions: [FoodCaution]
     let sources: [SourceRef]
     let bestGrade: String?
@@ -304,6 +329,8 @@ struct Dex: Decodable {
     let version: String
     let disclaimer: Disclaimer
     let palette: Palette
+    /// The looks on offer, the one a new device starts on first.
+    let skins: [DexSkin]
     let cards: [EntryCard]
     let reveals: [String: Reveal]
     let ingredients: [String: IngredientEntry]
@@ -326,6 +353,11 @@ struct Dex: Decodable {
 }
 
 extension Dex {
+    /// - Returns: the skin with this id, or nil when this app does not have it
+    func skin(id: String) -> DexSkin? {
+        skins.first { $0.id == id }
+    }
+
     /// - Returns: the foods whose having reveals this entry, in dex order
     func foods(revealing kind: EntryKind, _ slug: String) -> [EntryCard] {
         cards.filter { card in

@@ -1,9 +1,13 @@
 // How each kind of claim reads on a Dex screen, with its grade, basis and source.
 import type { AbsorptionFlag } from "epistasis";
+import Link from "next/link";
+import type { CSSProperties } from "react";
+import { typeColor } from "../lib/art/palette.ts";
 import { hrefOf, type AbsorptionTip, type EffectClaim, type ModifierClaim, type PrepClaim } from "../lib/db/dex.ts";
+import type { BentoTile } from "../lib/db/effect-tiles.ts";
 import { BasisFrame } from "./basis-frame.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
-import { EntryLink, SourceLink } from "./parts.tsx";
+import { EntryArt, EntryLink, SourceLink } from "./parts.tsx";
 
 const STATUS: Record<AbsorptionFlag["status"], { label: string; style: string }> = {
   enhanced: { label: "Enhanced", style: "bg-emerald-100 text-emerald-900" },
@@ -62,7 +66,7 @@ export function PrepCard({ claim, showCompound }: { claim: PrepClaim; showCompou
   const change =
     claim.retentionFactor !== null ? `keeps ${Math.round(claim.retentionFactor * 100)}%` : claim.direction ? claim.direction : "changes by an amount no source gives";
   return (
-    <div className="rounded-xl border-2 border-line bg-card p-3">
+    <div className="dex-panel p-3">
       <p className="text-sm">
         <span className="font-bold capitalize">{claim.method}</span>
         <span className="text-ink-soft">: </span>
@@ -91,7 +95,7 @@ export function EffectList({ claims, on }: { claims: EffectClaim[]; on: "effect"
   return [...Map.groupBy(claims, (c) => c.source.id).values()].map((group) => {
     const shared = group.length > 1 && group.every((c) => c.doseContext === group[0].doseContext) ? group[0].doseContext : null;
     return (
-      <div key={group[0].source.id} className="rounded-xl border-2 border-line bg-card p-3">
+      <div key={group[0].source.id} className="dex-panel p-3">
         <ul className="divide-y divide-line">
           {group.map((c) => (
             <li key={`${c.effect.slug}:${c.compound.slug}`} className="py-2.5 first:pt-0 last:pb-0">
@@ -115,49 +119,103 @@ export function EffectList({ claims, on }: { claims: EffectClaim[]; on: "effect"
 }
 
 /**
- * What a food does: one line per effect, naming the nutrients behind it, with each claim's exact
- * wording and source a click away.
- * @param claims [EffectClaim[]] the claims that apply to this food
+ * What a food does, as a grid: the more of your daily amount behind an effect, the bigger its tile and
+ * the more it says. Its source's exact wording and citation are one tap away, on the effect's page.
+ * @param tiles [BentoTile[]] biggest first
  */
-export function FoodEffects({ claims }: { claims: EffectClaim[] }) {
+export function EffectBento({ tiles }: { tiles: BentoTile[] }) {
   return (
-    <ul className="divide-y divide-line rounded-xl border-2 border-line bg-card px-3">
-      {[...Map.groupBy(claims, (c) => c.effect.slug).values()].map((group) => {
-        const { effect } = group[0];
-        return (
-          <li key={effect.slug} className="py-2.5">
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              <EntryLink href={hrefOf("effect", effect.slug)}>{effect.name}</EntryLink>
-              {effect.direction !== "benefit" && <span className="text-xs font-bold capitalize text-ink-soft">{effect.direction}</span>}
-              <GradeBadge grade={group.reduce((best, c) => (c.grade < best ? c.grade : best), group[0].grade)} limitations={null} />
-              <span className="text-sm text-ink-soft">
-                via{" "}
-                {group.map((c, i) => (
-                  <span key={c.compound.slug}>
-                    {i > 0 && ", "}
-                    <EntryLink href={hrefOf("compound", c.compound.slug)}>{c.compound.name}</EntryLink>
-                  </span>
-                ))}
-              </span>
-            </div>
-            <details className="mt-1 text-sm">
-              <summary className="cursor-pointer text-ink-soft hover:text-ink">What the source says</summary>
-              <ul className="mt-1.5 space-y-2">
-                {group.map((c) => (
-                  <li key={c.compound.slug}>
-                    {c.summary && <p>{c.summary}</p>}
-                    <ClaimFacts doseContext={c.doseContext} onset={c.onset} isBar={c.minFoodPer100g !== null} />
-                    <p className="mt-1 text-xs">
-                      <SourceLink source={c.source} />
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          </li>
-        );
-      })}
+    <ul className="dex-bento">
+      {tiles.map((tile) => (
+        <li key={tile.effect.slug} className={`dex-tile dex-tile-${tile.size}`} style={{ "--wash": `color-mix(in srgb, ${typeColor(tile.effect.bodySystem)} 14%, white)` } as CSSProperties}>
+          <Link href={hrefOf("effect", tile.effect.slug)} className="flex h-full flex-col gap-1.5 p-3.5">
+            {tile.size === "large" ? <LargeTile tile={tile} /> : tile.size === "wide" ? <WideTile tile={tile} /> : <SmallTile tile={tile} />}
+          </Link>
+        </li>
+      ))}
     </ul>
+  );
+}
+
+const percent = (share: number) => `${Math.round(share * 100)}%`;
+
+function TileName({ tile }: { tile: BentoTile }) {
+  return (
+    <span className="flex flex-wrap items-center gap-1.5 font-bold leading-tight">
+      {tile.effect.name}
+      {tile.effect.direction !== "benefit" && <span className="text-xs capitalize opacity-70">{tile.effect.direction}</span>}
+      <GradeBadge grade={tile.grade} limitations={null} />
+    </span>
+  );
+}
+
+/** The creatures behind a tile, the ones supplying more of your daily amount drawn larger. */
+function TileCreatures({ tile, most }: { tile: BentoTile; most: number }) {
+  return (
+    <span className="flex flex-wrap items-end gap-1">
+      {tile.compounds.slice(0, most).map((c) => (
+        <span key={c.slug} title={c.name} className="[&>img]:h-full [&>img]:w-full" style={{ width: creatureSize(c.dailyShare), height: creatureSize(c.dailyShare) }}>
+          <EntryArt compound={c} size={creatureSize(c.dailyShare)} cutout />
+        </span>
+      ))}
+      {tile.compounds.length > most && <span className="pb-1 text-xs font-bold opacity-70">+{tile.compounds.length - most}</span>}
+    </span>
+  );
+}
+
+function creatureSize(share: number | null): number {
+  return (share ?? 0) >= 1 ? 52 : (share ?? 0) >= 0.4 ? 42 : 32;
+}
+
+function SmallTile({ tile }: { tile: BentoTile }) {
+  return (
+    <>
+      <TileCreatures tile={tile} most={3} />
+      <span className="mt-auto" />
+      {tile.topShare !== null && <span className="text-lg font-bold tabular-nums leading-none">{percent(tile.topShare)}</span>}
+      <TileName tile={tile} />
+    </>
+  );
+}
+
+function WideTile({ tile }: { tile: BentoTile }) {
+  const leading = tile.compounds[0];
+  return (
+    <>
+      <span className="flex items-start justify-between gap-2">
+        {tile.topShare !== null && (
+          <span>
+            <span className="block text-4xl font-bold tabular-nums leading-none">{percent(tile.topShare)}</span>
+            <span className="text-xs opacity-80">of your daily {leading.name} in 100 g</span>
+          </span>
+        )}
+        <TileCreatures tile={tile} most={4} />
+      </span>
+      {tile.dose && <span className="text-xs opacity-80">Studied at: {tile.dose}</span>}
+      <span className="mt-auto" />
+      <TileName tile={tile} />
+    </>
+  );
+}
+
+function LargeTile({ tile }: { tile: BentoTile }) {
+  const leading = tile.compounds[0];
+  return (
+    <>
+      <span className="flex items-start justify-between gap-2">
+        <span>
+          <span className="dex-holo-text block text-6xl font-bold tabular-nums leading-none">{percent(tile.topShare!)}</span>
+          <span className="mt-1 block text-sm opacity-90">of your daily {leading.name} in 100 g</span>
+        </span>
+        <span className="h-24 w-24 shrink-0 [&>img]:h-full [&>img]:w-full" title={leading.name}>
+          <EntryArt compound={leading} size={96} cutout />
+        </span>
+      </span>
+      {tile.compounds.length > 1 && <TileCreatures tile={{ ...tile, compounds: tile.compounds.slice(1) }} most={5} />}
+      <span className="mt-auto" />
+      <TileName tile={tile} />
+      {tile.wording && <span className="text-sm opacity-90">{tile.wording}</span>}
+    </>
   );
 }
 

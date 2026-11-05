@@ -11,8 +11,8 @@ export function CompoundEntryView({ entry }: { entry: CompoundEntry }) {
   const { compound } = entry;
   const color = typeColor(compound.class);
   return (
-    <main className="grid gap-6 p-3 sm:p-5 md:grid-cols-[17rem_minmax(0,1fr)]">
-      <EntryViewer number={entry.pager.number} type={compound.class} name={compound.name} art={<EntryArt compound={compound} size={240} />}>
+    <main className="dex-entry grid gap-6 p-3 sm:p-5 md:grid-cols-[17rem_minmax(0,1fr)]">
+      <EntryViewer number={entry.pager.number} type={compound.class} name={compound.name} art={<EntryArt compound={compound} size={240} cutout />}>
         <div className="flex flex-wrap items-center gap-2">
           <TypeBadge type={compound.class} />
           {entry.bestGrade && <GradeBadge grade={entry.bestGrade} limitations={null} />}
@@ -39,7 +39,7 @@ export function CompoundEntryView({ entry }: { entry: CompoundEntry }) {
 
         <Section title="Cautions" empty="No caution on file. That means none has been sourced yet, not that there are none.">
           {entry.cautions.map((c) => (
-            <div key={`${c.kind}:${c.summary}`} className="rounded-xl border-2 border-rose-400 bg-rose-50 p-3 text-sm">
+            <div key={`${c.kind}:${c.summary}`} className="rounded-xl border-2 border-rose-400 bg-rose-50 p-3 text-sm text-neutral-900">
               <div className="flex items-center gap-2">
                 <span className="font-bold capitalize text-rose-900">{c.kind}</span>
                 <GradeBadge grade={c.grade} limitations={c.source.limitations} />
@@ -54,7 +54,7 @@ export function CompoundEntryView({ entry }: { entry: CompoundEntry }) {
 
         <Section title="Foods that carry it, per 100 g" empty="No food in the Dex has a measured amount of it.">
           {entry.foods.map((f) => (
-            <div key={f.slug} className="flex items-center gap-3 rounded-xl border-2 border-line bg-card p-2.5">
+            <div key={f.slug} className="flex items-center gap-3 dex-panel p-2.5">
               <EntryArt imageUrl={f.imageUrl} size={48} />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">

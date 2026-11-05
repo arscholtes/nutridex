@@ -1,7 +1,7 @@
 import { typeColor } from "../lib/art/palette.ts";
 import { hrefOf, type IngredientEntry, type PanelRow } from "../lib/db/dex.ts";
 import type { PanelGroup } from "../lib/usda/nutrients.ts";
-import { AbsorptionTipCard, FoodEffects, PrepCard } from "./claims.tsx";
+import { AbsorptionTipCard, EffectBento, PrepCard } from "./claims.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
 import { AmountBar, EntryArt, EntryLink, EntryViewer, formatAmount, Section, SourcesSection, TypeBadge } from "./parts.tsx";
 
@@ -9,8 +9,8 @@ import { AmountBar, EntryArt, EntryLink, EntryViewer, formatAmount, Section, Sou
 export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
   const { ingredient } = entry;
   return (
-    <main className="grid gap-6 p-3 sm:p-5 md:grid-cols-[17rem_minmax(0,1fr)]">
-      <EntryViewer number={entry.pager.number} type={ingredient.category} name={ingredient.name} art={<EntryArt imageUrl={ingredient.imageUrl} size={240} />}>
+    <main className="dex-entry grid gap-6 p-3 sm:p-5 md:grid-cols-[17rem_minmax(0,1fr)]">
+      <EntryViewer number={entry.pager.number} type={ingredient.category} name={ingredient.name} art={<EntryArt imageUrl={ingredient.imageUrl} size={240} cutout />}>
         <div className="flex flex-wrap items-center gap-2">
           <TypeBadge type={ingredient.category} />
           {entry.bestGrade && <GradeBadge grade={entry.bestGrade} limitations={null} />}
@@ -20,17 +20,17 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
 
       <div className="min-w-0 space-y-6">
         <Section title="What it does" empty="No sourced effect reaches what is in it yet.">
-          {entry.effects.length > 0 && <FoodEffects claims={entry.effects} />}
+          {entry.tiles.length > 0 && <EffectBento tiles={entry.tiles} />}
           {entry.effects.some((e) => e.minFoodPer100g !== null) && (
             <p className="text-sm text-ink-soft">
-              A nutrient appears here when 100 g of this food supplies at least 15% of its reference value, the EU's bar for calling a food a source. A typical serving may be far less than 100 g. These are the wordings EU law allows on food labels. They mean a nutrient contributes to that function at adequate intake, not that eating more improves it.
+              Percentages are of the EU's daily reference value for an adult, in 100 g of this food, and a typical serving may be far less. A bigger tile means more of the nutrient behind it, not that more is better. A nutrient appears here when 100 g supplies at least 15% of that value, the EU's bar for calling a food a source. These are the wordings EU law allows on food labels. They mean a nutrient contributes to that function at adequate intake, not that eating more improves it.
             </p>
           )}
         </Section>
 
         <Section title="Cautions" empty="No caution on file. That means none has been sourced yet, not that there are none.">
           {entry.cautions.map((c) => (
-            <div key={`${c.kind}:${c.summary}`} className="rounded-xl border-2 border-rose-400 bg-rose-50 p-3 text-sm">
+            <div key={`${c.kind}:${c.summary}`} className="rounded-xl border-2 border-rose-400 bg-rose-50 p-3 text-sm text-neutral-900">
               <div className="flex items-center gap-2">
                 <span className="font-bold capitalize text-rose-900">{c.kind}</span>
                 {c.grade && <GradeBadge grade={c.grade} limitations={null} />}
@@ -43,7 +43,7 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
 
         <Section title="What is in it" empty="USDA measured none of the Dex's compounds in it.">
           {entry.compounds.map((c) => (
-            <div key={c.slug} className="rounded-xl border-2 border-line bg-card p-3">
+            <div key={c.slug} className="dex-panel p-3">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <EntryLink href={hrefOf("compound", c.slug)}>{c.name}</EntryLink>
                 <span className="text-sm font-medium tabular-nums">{formatAmount(c.amount, c.unit)} per 100 g</span>
@@ -117,7 +117,7 @@ const GROUP_COLOR: Record<PanelGroup, string> = {
 /** One group of the nutrient panel: each nutrient's amount per 100 g and stat bar, or missing. */
 function PanelTable({ title, rows }: { title: string; rows: PanelRow[] }) {
   return (
-    <div className="rounded-xl border-2 border-line bg-card p-3">
+    <div className="dex-panel p-3">
       <h3 className="text-sm font-bold">{title}</h3>
       <ul className="mt-2 grid gap-x-6 gap-y-2.5 lg:grid-cols-2">
         {rows.map((r) => (

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { ACCEPTANCE_COOKIE, appVersion, needsAcceptance } from "../lib/disclaimer/gate.ts";
 import { DISCLAIMER_INTRO, DISCLAIMER_SECTIONS, DISCLAIMER_TITLE } from "../lib/disclaimer/text.ts";
 import { DexShell } from "../components/dex-shell.tsx";
+import { currentSkin } from "../lib/viewer.ts";
 import { acceptDisclaimer } from "./actions.ts";
 
 /** Shows the disclaimer in place of any page until this device has accepted the running version. */
@@ -12,7 +13,7 @@ export async function DisclaimerGate({ children }: { children: ReactNode }) {
   if (!needsAcceptance(accepted, version)) return <>{children}</>;
 
   return (
-    <DexShell locked>
+    <DexShell locked skin={(await currentSkin()).skin}>
     <main className="mx-auto max-w-2xl px-4 py-8">
       <h1 className="text-2xl font-bold">{DISCLAIMER_TITLE}</h1>
       <p className="mt-2 text-sm text-ink-soft">
@@ -29,7 +30,7 @@ export async function DisclaimerGate({ children }: { children: ReactNode }) {
       <form action={acceptDisclaimer} className="mt-10">
         <button
           type="submit"
-          className="w-full rounded-lg border-2 border-ink bg-shell px-4 py-3 font-bold text-white hover:bg-shell-body sm:w-auto"
+          className="dex-button w-full sm:w-auto"
         >
           I understand and agree
         </button>

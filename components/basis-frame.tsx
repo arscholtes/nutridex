@@ -16,7 +16,7 @@ export function BasisFrame({ basis, className, children }: { basis: Basis; class
       >
         {children}
         <p
-          className="mt-2 text-xs font-bold text-amber-900"
+          className="dex-by-class mt-2 text-xs font-bold text-amber-900"
           title={`Its source measured other members of ChEBI's ${className} class, not this compound`}
         >
           {`By class: ${className}`}

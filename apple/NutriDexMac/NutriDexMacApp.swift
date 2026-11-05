@@ -9,3 +9,4 @@ struct NutriDexMacApp: App {
         .defaultSize(width: 1500, height: 960)
     }
 }
+ 

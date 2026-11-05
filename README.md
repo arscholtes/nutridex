@@ -90,6 +90,13 @@ cookie holding the app version from `package.json`; it stays dismissed until tha
 bump the version with each release. The text is a plain-language draft and needs legal review before
 anyone other than its maker uses the app.
 
+## Skins
+
+Choose a look under Skins, on any device: New age, Iridescent, Yellow version, Nutrition label, Field guide, Seed
+packet, Sticker book, Deep sea, Receipt or Arcade. Each is a row in `lib/skins.ts`. The choice is kept on the device and, for
+devices sharing the upload passcode, on the server through `GET` and `PUT /api/preferences`, so it follows you.
+NutriDex has no accounts yet, so the passcode is what links your devices.
+
 ## Data
 
 Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row

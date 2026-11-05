@@ -4,6 +4,7 @@ import { timingSafeEqual } from "node:crypto";
 export const PENDING_COOKIE = "nutridex-pending";
 export const UNLOCKING_COOKIE = "nutridex-unlocking";
 export const UPLOAD_COOKIE = "nutridex-upload";
+export const SKIN_COOKIE = "nutridex-skin";
 
 export type PendingEncounter = { food: string; encounteredAt: string };
 
