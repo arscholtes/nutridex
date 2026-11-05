@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
+import { typeColor } from "../../../lib/art/palette.ts";
 import { GameShell } from "../../../components/game.tsx";
 import { CompoundEntryView } from "../../../components/compound-entry.tsx";
-import { typeColor } from "../../../lib/art/palette.ts";
 import { compoundEntry, dexSteps } from "../../../lib/db/dex.ts";
 import { isRevealed, scrubCompound } from "../../../lib/db/reveal.ts";
 import { viewer } from "../../../lib/viewer.ts";

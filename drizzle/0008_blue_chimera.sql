@@ -1,0 +1,2 @@
+CREATE INDEX "ingredient_compound_richest" ON "ingredient_compound" USING btree ("compound_id","amount_per_100g" DESC NULLS LAST);--> statement-breakpoint
+CREATE INDEX "ingredient_compound_source" ON "ingredient_compound" USING btree ("source_id");

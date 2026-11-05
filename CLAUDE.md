@@ -26,11 +26,24 @@ Read it with the Claude Docs tools, never a web fetch.
 - The disclaimer gate (`lib/disclaimer/`, `app/disclaimer-gate.tsx`) shows until this device has
   accepted the running version from `package.json`. Bump the version for every user-visible release;
   that is what brings the disclaimer back. Any change to its text ships with a bump.
+- `CHANGELOG.md` gets a line under `## Unreleased` with every change someone can see, in words for the people using
+  the app. A version bump renames that section to `## <version> - <date>`; `tests/changelog.test.ts` fails if the
+  running version has no entry.
+- `docs/DEVELOPMENT.md` holds how to run and change the code. `README.md` is the pitch: when a number in its
+  "Where it stands" table changes, recount it from the database and update the date.
 
 ## Every platform
 
 NutriDex ships on the web (`app/`, Next.js) and natively on iPhone, iPad and Mac (`apple/`, SwiftUI). Native
 stays SwiftUI: no React Native and no web views. What both Apple apps share lives in `apple/Shared/`.
+
+Skins are one table, `SKINS` in `lib/skins.ts`: colours, type, shapes and which treatment each thing uses. The web
+reads it through `app/skin-treatments.css`, and the apps read it from the snapshot through `Theme`, so a new skin
+is a new row and `npm run export:native`. Only something a treatment cannot say needs its own rules: `app/skin-new-age.css`
+for the product-page layout, `app/skin-yellow.css` for the original handheld. Every screen must work in every skin, so
+draw colours from the tokens and never assume a light page. The choice is stored on the server (`preference`) and
+follows you between devices. Foods always keep their real colour in every skin: foil and backgrounds may shift, a
+creature never does.
 
 NutriDex is a collection game: over time you unlock everything. On the web, iPhone and iPad nothing shows until
 it is encountered: no list, name, link or count may give a hidden entry away, and new screens must keep that

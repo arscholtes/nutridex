@@ -11,8 +11,8 @@ struct TypeBadge: View {
                 .foregroundStyle(Theme.ink)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 3)
-                .background(.white, in: Capsule())
-                .overlay(Capsule().stroke(Dex.bundled.palette.swatch(for: type).background, lineWidth: 2))
+                .background(Theme.card, in: Theme.control)
+                .overlay(Theme.control.stroke(Dex.bundled.palette.swatch(for: type).background, lineWidth: 2))
         }
     }
 }
@@ -25,7 +25,7 @@ struct GradeBadge: View {
         switch grade {
         case "A": (Color(hex: "#047857"), .white)
         case "B": (Color(hex: "#0369A1"), .white)
-        case "C": (Color(hex: "#FCD34D"), Theme.ink)
+        case "C": (Color(hex: "#FCD34D"), Color(hex: "#1C1917"))
         default: (Color(hex: "#737373"), .white)
         }
     }
@@ -43,18 +43,36 @@ struct GradeBadge: View {
         Text(grade)
             .font(.dex(.caption, weight: .heavy))
             .foregroundStyle(colors.text)
-            .frame(minWidth: 20, minHeight: 20)
-            .background(colors.background, in: RoundedRectangle(cornerRadius: 5))
-            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Theme.ink, lineWidth: 1.5))
+            .frame(minWidth: 22, minHeight: 22)
+            .background(colors.background, in: Theme.skin.radius.control == nil ? AnyShape(Circle()) : AnyShape(RoundedRectangle(cornerRadius: 5)))
+            .overlay {
+                if Theme.isHandheld { RoundedRectangle(cornerRadius: 5).strokeBorder(Theme.ink, lineWidth: 1.5) }
+            }
             .help("Evidence grade \(grade): \(meaning)")
             .accessibilityLabel("Evidence grade \(grade): \(meaning)")
     }
 }
 
-/// A segmented stat bar. The amount beside it carries the value, so VoiceOver skips the bar.
+/// A stat bar. The amount beside it carries the value, so VoiceOver skips the bar.
 struct Meter: View {
     let share: Double
-    let color: Color
+    let style: AnyShapeStyle
+
+    init(share: Double, color: Color) {
+        self.share = share
+        style = AnyShapeStyle(color)
+    }
+
+    init(share: Double, style: some ShapeStyle) {
+        self.share = share
+        self.style = AnyShapeStyle(style)
+    }
+
+    /// - Parameter share: from 0 to 1
+    /// - Returns: how much to fill: none at exactly zero, a sliver for any amount, so none never looks like a little
+    static func fill(share: Double) -> Double {
+        share == 0 ? 0 : max(0.02, share)
+    }
 
     private static let segment: CGFloat = 7
     private static let gap: CGFloat = 2.5
@@ -62,22 +80,61 @@ struct Meter: View {
     /// - Parameters:
     ///   - share: from 0 to 1
     ///   - total: how many segments fit
-    /// - Returns: how many to light: none at exactly zero, at least one for any amount, so none never looks like a little
+    /// - Returns: how many of the handheld's segments to light, on the same terms
     static func litSegments(share: Double, total: Int) -> Int {
         share == 0 ? 0 : max(1, Int((share * Double(total)).rounded()))
     }
 
     var body: some View {
+        Group {
+            switch Theme.skin.meter {
+            case .segments: segments
+            case .pill: capsule(track: Theme.ink.opacity(0.09))
+            case .thin: capsule(track: Theme.line)
+            case .solid: solid
+            }
+        }
+        .frame(height: height)
+        .accessibilityHidden(true)
+    }
+
+    private var height: CGFloat {
+        switch Theme.skin.meter {
+        case .thin: 4
+        case .solid: 12
+        case .pill, .segments: 9
+        }
+    }
+
+    private func capsule(track: Color) -> some View {
+        GeometryReader { space in
+            Capsule()
+                .fill(track)
+                .overlay(alignment: .leading) {
+                    Capsule().fill(style).frame(width: space.size.width * Self.fill(share: share))
+                }
+        }
+    }
+
+    private var solid: some View {
+        GeometryReader { space in
+            Rectangle()
+                .fill(style)
+                .frame(width: space.size.width * Self.fill(share: share))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .overlay(Rectangle().strokeBorder(Theme.ink, lineWidth: 1.5))
+        }
+    }
+
+    private var segments: some View {
         Canvas { context, size in
             let total = max(1, Int(size.width / (Self.segment + Self.gap)))
             let lit = Self.litSegments(share: share, total: total)
             for index in 0..<total {
                 let rect = CGRect(x: CGFloat(index) * (Self.segment + Self.gap), y: 0, width: Self.segment, height: size.height)
-                context.fill(Path(rect), with: .color(index < lit ? color : Theme.ink.opacity(0.13)))
+                context.fill(Path(rect), with: index < lit ? .color(Theme.accent) : .color(Theme.ink.opacity(0.13)))
             }
         }
-        .frame(height: 9)
-        .accessibilityHidden(true)
     }
 }
 
@@ -86,15 +143,25 @@ struct CreatureArt: View {
     let kind: EntryKind
     let slug: String
     var revealed = true
+    /// True draws the creature with no tile behind it, to stand directly on a card.
+    var cutout = false
 
     var body: some View {
-        if revealed {
+        if !revealed {
+            SilhouetteTile(assetName: "\(EntryKind.assetName(kind, slug))-silhouette")
+        } else if cutout, Theme.skin.card != .type {
+            // The silhouette asset is this creature without its tile, so in its own colours it is the cut-out.
+            Image("\(EntryKind.assetName(kind, slug))-silhouette")
+                .renderingMode(.original)
+                .resizable()
+                .scaledToFit()
+                .dexCreatureLook()
+                .accessibilityHidden(true)
+        } else {
             Image(EntryKind.assetName(kind, slug))
                 .resizable()
                 .scaledToFit()
                 .accessibilityHidden(true)
-        } else {
-            SilhouetteTile(assetName: "\(EntryKind.assetName(kind, slug))-silhouette")
         }
     }
 }
@@ -108,12 +175,12 @@ struct EffectTile: View {
     var body: some View {
         let swatch = Dex.bundled.palette.swatch(for: type)
         RoundedRectangle(cornerRadius: 18)
-            .fill(revealed ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(Color(hex: "#1F86C9")))
+            .fill(revealed ? AnyShapeStyle(Theme.skin.card == .type ? Color.white.opacity(0.85) : .clear) : AnyShapeStyle(Theme.hidden))
             .aspectRatio(1, contentMode: .fit)
             .overlay {
                 Text(revealed ? String(name.prefix(1)) : "?")
-                    .font(.system(size: 64, weight: .heavy, design: .rounded))
-                    .foregroundStyle(!revealed ? .black : swatch.textOnColor == "light" ? swatch.background : Theme.ink)
+                    .font(.system(size: 88, weight: Theme.skin.font.heading.font, design: Theme.skin.font.design.font))
+                    .foregroundStyle(!revealed ? .black : swatch.textOnColor == "light" && !Theme.skin.dark ? swatch.background : Theme.skin.card == .type ? Color(hex: "#1C2823") : Theme.ink)
             }
             .accessibilityHidden(true)
     }
@@ -131,7 +198,7 @@ struct EntryLinkText: View {
                 Text(title)
                     .font(.dex(.subheadline, weight: .bold))
                     .foregroundStyle(Theme.ink)
-                    .underline(color: Theme.shell.opacity(0.55))
+                    .underline(color: Theme.accent.opacity(0.55))
                     .multilineTextAlignment(.leading)
             }
             .buttonStyle(.plain)
@@ -148,6 +215,8 @@ struct EntryLinkText: View {
 /// A source's title and year, opening its page when it has one.
 struct SourceLinkText: View {
     let source: SourceRef
+    /// Set where it sits on something other than the page.
+    var color = Theme.inkSoft
 
     private var text: String { source.year.map { "\(source.title) (\($0))" } ?? source.title }
 
@@ -162,23 +231,63 @@ struct SourceLinkText: View {
             }
         }
         .font(.dex(.caption))
-        .foregroundStyle(Theme.inkSoft)
+        .foregroundStyle(color)
         .multilineTextAlignment(.leading)
     }
 }
 
-/// A section's heading, as a tab on the screen.
+/// A section's heading.
 struct SectionTitle: View {
     let title: String
 
+    private var text: Text { Text(Theme.skin.heading(title)) }
+
+    private var dashes: some View {
+        Line().stroke(Theme.ink, style: StrokeStyle(lineWidth: 1, dash: [4, 3])).frame(height: 1)
+    }
+
     var body: some View {
-        Text(title)
-            .font(.dex(.subheadline, weight: .heavy))
-            .foregroundStyle(.white)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 3)
-            .background(Theme.shell, in: Capsule())
-            .accessibilityAddTraits(.isHeader)
+        Group {
+            switch Theme.skin.title {
+            case .banner:
+                text
+                    .font(.dex(.subheadline, weight: .heavy))
+                    .foregroundStyle(Theme.onNight)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 3)
+                    .background(Theme.accent, in: Theme.control)
+            case .thick:
+                VStack(alignment: .leading, spacing: 5) {
+                    Rectangle().fill(Theme.ink).frame(height: 8)
+                    text.font(.dex(.title3, weight: .heavy)).foregroundStyle(Theme.ink)
+                }
+            case .hair:
+                VStack(alignment: .leading, spacing: 4) {
+                    text.font(.dex(.title3, weight: .heavy)).italic().foregroundStyle(Theme.ink)
+                    Rectangle().fill(Theme.line).frame(height: 1)
+                }
+            case .dashed:
+                VStack(spacing: 4) {
+                    dashes
+                    text.font(.dex(.subheadline, weight: .heavy)).foregroundStyle(Theme.ink)
+                    dashes
+                }
+            case .none:
+                text
+                    .font(.dex(Theme.skin.hero == .titleFirst ? .title : .title3, weight: .heavy))
+                    .foregroundStyle(Theme.ink)
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(title)
+        .accessibilityAddTraits(.isHeader)
+    }
+}
+
+/// A straight line across the space it has.
+private struct Line: Shape {
+    func path(in rect: CGRect) -> Path {
+        Path { $0.move(to: CGPoint(x: rect.minX, y: rect.midY)); $0.addLine(to: CGPoint(x: rect.maxX, y: rect.midY)) }
     }
 }
 
@@ -215,12 +324,17 @@ struct Note: View {
 }
 
 extension View {
-    /// A bordered panel on the screen.
-    func dexPanel() -> some View {
-        padding(12)
+    /// A panel on the page, in the skin's shape.
+    @ViewBuilder func dexPanel() -> some View {
+        let shape = RoundedRectangle(cornerRadius: Theme.skin.radius.panel)
+        let panel = padding(14)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Theme.card, in: RoundedRectangle(cornerRadius: 14))
-            .overlay(RoundedRectangle(cornerRadius: 14).stroke(Theme.line, lineWidth: 2))
+            .background(Theme.card, in: shape)
+        if Theme.isHandheld {
+            panel.overlay(shape.stroke(Theme.line, lineWidth: 2))
+        } else {
+            panel.dexOutline(shape).dexShadow(shape, soft: 0.07, radius: 10, y: 4)
+        }
     }
 }
 

@@ -18,29 +18,34 @@ struct BrowserControls: View {
     var body: some View {
         @Bindable var browser = browser
         VStack(alignment: .leading, spacing: 10) {
-            FlowRow {
-                ForEach(Self.kinds, id: \.label) { tab in
-                    let selected = browser.kind == tab.kind
-                    Button { browser.choose(kind: tab.kind) } label: {
-                        HStack(spacing: 4) {
-                            Text(tab.label).fontWeight(.bold)
-                            Text("\(count(tab.kind))").monospacedDigit()
+            ScrollView(.horizontal) {
+                HStack(spacing: 8) {
+                    ForEach(Self.kinds, id: \.label) { tab in
+                        let selected = browser.kind == tab.kind
+                        Button { browser.choose(kind: tab.kind) } label: {
+                            HStack(spacing: 4) {
+                                Text(tab.label).fontWeight(.bold)
+                                Text("\(count(tab.kind))").monospacedDigit()
+                            }
+                            .font(.dex(.subheadline))
+                            .foregroundStyle(selected ? Theme.onChip : Theme.ink)
+                            .padding(.horizontal, 13)
+                            .frame(minHeight: 40)
+                            .background(selected ? Theme.chip : Theme.card, in: Theme.control)
+                            .dexControlOutline()
+                            .contentShape(Theme.control)
                         }
-                        .font(.dex(.subheadline))
-                        .foregroundStyle(selected ? Theme.screen : Theme.ink)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(selected ? Theme.ink : Theme.card, in: RoundedRectangle(cornerRadius: 9))
-                        .overlay(RoundedRectangle(cornerRadius: 9).stroke(Theme.ink, lineWidth: 2))
+                        .buttonStyle(.plain)
+                        .accessibilityAddTraits(selected ? .isSelected : [])
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityAddTraits(selected ? .isSelected : [])
                 }
             }
+            .scrollIndicators(.hidden)
+            .scrollClipDisabled()
             HStack(spacing: 8) {
                 HStack(spacing: 6) {
                     Image(systemName: "magnifyingglass").foregroundStyle(Theme.inkSoft).accessibilityHidden(true)
-                    TextField("Search what you have unlocked", text: $browser.query)
+                    TextField("Search your Dex", text: $browser.query)
                         .font(.dex(.body))
                         .foregroundStyle(Theme.ink)
                         .autocorrectionDisabled()
@@ -53,10 +58,10 @@ struct BrowserControls: View {
                         .accessibilityLabel("Clear search")
                     }
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 8)
-                .background(Theme.card, in: RoundedRectangle(cornerRadius: 9))
-                .overlay(RoundedRectangle(cornerRadius: 9).stroke(Theme.ink, lineWidth: 2))
+                .padding(.horizontal, 14)
+                .frame(minHeight: 44)
+                .background(Theme.card, in: Theme.control)
+                .dexControlOutline()
                 typeMenu
             }
         }
@@ -79,10 +84,10 @@ struct BrowserControls: View {
             }
             .font(.dex(.subheadline, weight: .bold))
             .foregroundStyle(Theme.ink)
-            .padding(.horizontal, 10)
-            .padding(.vertical, 9)
-            .background(Theme.card, in: RoundedRectangle(cornerRadius: 9))
-            .overlay(RoundedRectangle(cornerRadius: 9).stroke(Theme.ink, lineWidth: 2))
+            .padding(.horizontal, 14)
+            .frame(minHeight: 44)
+            .background(Theme.card, in: Theme.control)
+            .dexControlOutline()
         }
     }
 }
@@ -97,7 +102,7 @@ struct CardGrid: View {
     var body: some View {
         let cards = browser.cards.filter(store.isRevealed)
         if store.totalProgress.seen == 0 {
-            Text("Your Dex is empty. Tell it what you had to unlock your first entry.")
+            Text("Your Dex is empty. Tell it what you had, down below, to unlock your first entry.")
                 .font(.dex(.body))
                 .foregroundStyle(Theme.ink)
                 .padding(.vertical, 20)
@@ -109,7 +114,7 @@ struct CardGrid: View {
                     browser.choose(kind: nil)
                 }
                 .font(.dex(.body, weight: .bold))
-                .tint(Theme.shell)
+                .tint(Theme.accent)
             }
             .padding(.vertical, 20)
         } else {
@@ -129,37 +134,89 @@ struct CardGrid: View {
     }
 }
 
-/// The phone's home: the plate, the screen and every card.
+/// The top of a list: the name with its links or small round buttons. The handheld has its plate instead.
+struct DexHeader: View {
+    let onSkins: () -> Void
+    let onSources: () -> Void
+
+    var body: some View {
+        HStack(spacing: 8) {
+            DexWordmark()
+            Spacer()
+            if Theme.skin.nav == .text {
+                link("Skins", action: onSkins)
+                link("Sources", action: onSources)
+            } else {
+                round("paintbrush", label: "Skins", action: onSkins)
+                round("book.closed", label: "Sources", action: onSources)
+            }
+        }
+    }
+
+    private func link(_ label: String, action: @escaping () -> Void) -> some View {
+        Button(label, action: action)
+            .buttonStyle(.plain)
+            .font(.dex(.footnote, weight: .bold))
+            .foregroundStyle(Theme.ink)
+            .padding(.horizontal, 6)
+            .frame(minHeight: 44)
+            .contentShape(Rectangle())
+    }
+
+    private func round(_ symbol: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.dex(.body, weight: .bold))
+                .foregroundStyle(Theme.ink)
+                .frame(width: 44, height: 44)
+        }
+        .dexFloating(in: Circle())
+        .accessibilityLabel(label)
+    }
+}
+
+/// The phone's home: progress up top, every card in the middle, and what you had under your thumb.
 struct HomeScreen: View {
     @Environment(DexNavigator.self) private var nav
 
-    var body: some View {
-        VStack(spacing: 0) {
-            DexPlate(onSources: { nav.path.append(.sources) })
-            ScreenBezel {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("What is in your food, what it does, and what helps it work.")
-                            .font(.dex(.headline, weight: .heavy))
-                            .foregroundStyle(Theme.ink)
-                            .fixedSize(horizontal: false, vertical: true)
-                        UploadBar()
-                        UnlockProgressBar()
-                        HadComposer()
-                        BrowserControls()
-                        CardGrid(onChoose: nil)
-                    }
-                    .padding(12)
+    private var content: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                if !Theme.isHandheld {
+                    DexHeader { nav.path.append(.skins) } onSources: { nav.path.append(.sources) }
                 }
-                .scrollDismissesKeyboard(.immediately)
+                if Theme.skin.hero == .titleFirst {
+                    Text("Your Dex.").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink)
+                }
+                UploadBar()
+                UnlockProgressBar()
+                BrowserControls()
+                CardGrid(onChoose: nil)
+            }
+            .padding(.horizontal, 14)
+            .padding(.top, 6)
+        }
+        .scrollDismissesKeyboard(.immediately)
+        .safeAreaInset(edge: .bottom, spacing: 0) { HadComposer() }
+    }
+
+    var body: some View {
+        Group {
+            if Theme.isHandheld {
+                VStack(spacing: 0) {
+                    DexPlate(onSkins: { nav.path.append(.skins) }, onSources: { nav.path.append(.sources) })
+                    ScreenBezel { content }
+                }
+                .background(Theme.shellBody.ignoresSafeArea())
+            } else {
+                content.background(DexBackdrop())
             }
         }
-        .background(Theme.shellBody.ignoresSafeArea())
         .toolbar(.hidden, for: .navigationBar)
     }
 }
 
-/// The iPad's sidebar: the plate, the controls and a compact list of entries.
+/// The iPad's sidebar: the controls and a compact list of entries.
 struct SidebarScreen: View {
     @Environment(DexNavigator.self) private var nav
     @Environment(DexBrowser.self) private var browser
@@ -178,22 +235,26 @@ struct SidebarScreen: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            DexPlate(lens: lens, onSources: { nav.choose(.sources) })
-            VStack(alignment: .leading, spacing: 10) {
+            if Theme.isHandheld {
+                DexPlate(lens: lens, onSkins: { nav.choose(.skins) }, onSources: { nav.choose(.sources) })
+            }
+            VStack(alignment: .leading, spacing: 12) {
+                if !Theme.isHandheld {
+                    DexHeader { nav.choose(.skins) } onSources: { nav.choose(.sources) }
+                }
                 UploadBar()
                 UnlockProgressBar()
-                HadComposer()
                 BrowserControls()
             }
-            .padding(10)
+            .padding(14)
             List(browser.cards.filter(store.isRevealed), selection: selection) { card in
-                HStack(spacing: 10) {
+                HStack(spacing: 12) {
                     if card.kind == .effect {
                         EffectTile(name: card.name, type: card.type)
-                            .frame(width: 38, height: 38)
-                            .background(Dex.bundled.palette.swatch(for: card.type).background, in: RoundedRectangle(cornerRadius: 8))
+                            .frame(width: 44, height: 44)
+                            .background(Dex.bundled.palette.swatch(for: card.type).background.opacity(0.2), in: RoundedRectangle(cornerRadius: 12))
                     } else {
-                        CreatureArt(kind: card.kind, slug: card.slug).frame(width: 38, height: 38)
+                        CreatureArt(kind: card.kind, slug: card.slug).frame(width: 44, height: 44)
                     }
                     VStack(alignment: .leading, spacing: 0) {
                         Text(card.name).font(.dex(.subheadline, weight: .bold)).foregroundStyle(Theme.ink).lineLimit(2)
@@ -201,12 +262,18 @@ struct SidebarScreen: View {
                     }
                 }
                 .tag(card.route)
+                .listRowSeparator(.hidden)
+                .listRowBackground(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(nav.selection == card.route ? Theme.accent.opacity(0.14) : .clear)
+                        .padding(.horizontal, 8)
+                )
             }
-            .listStyle(.sidebar)
+            .listStyle(.plain)
             .scrollContentBackground(.hidden)
         }
-        .background(Theme.screen)
-        .toolbar(.hidden, for: .navigationBar)
+        .safeAreaInset(edge: .bottom, spacing: 0) { HadComposer() }
+        .background(Theme.isHandheld ? Theme.screen : Theme.sidebarWash)
     }
 }
 
@@ -215,20 +282,10 @@ struct LandingScreen: View {
     @Environment(DexNavigator.self) private var nav
 
     var body: some View {
-        ScreenBezel {
+        DexScreen {
             ScrollView {
-                VStack(alignment: .leading, spacing: 14) {
-                    Text("What is in your food, what it does, and what helps it work.")
-                        .font(.dex(.title2, weight: .heavy))
-                        .foregroundStyle(Theme.ink)
-                    CardGrid(onChoose: { nav.choose($0.route) })
-                }
-                .padding(16)
+                CardGrid(onChoose: { nav.choose($0.route) }).padding(18)
             }
         }
-        .background(Theme.shellBody.ignoresSafeArea())
-        .toolbarBackground(Theme.shell, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .toolbarColorScheme(.dark, for: .navigationBar)
     }
 }

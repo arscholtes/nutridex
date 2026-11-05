@@ -32,7 +32,7 @@ struct IngredientSections: View {
 
     var body: some View {
         DexSection(title: "What it does", empty: "No sourced effect reaches what is in it yet.", isEmpty: entry.effects.isEmpty) {
-            FoodEffects(claims: entry.effects)
+            EffectBento(tiles: entry.tiles)
             if entry.effects.contains(where: { $0.minFoodPer100g != nil }) {
                 Note(text: ClaimNotes.foodBar)
             }

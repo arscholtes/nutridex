@@ -6,7 +6,7 @@ struct SilhouetteTile: View {
 
     var body: some View {
         RoundedRectangle(cornerRadius: 18)
-            .fill(Color(hex: "#1F86C9"))
+            .fill(Theme.hidden)
             .overlay {
                 Rays()
             }

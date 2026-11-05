@@ -1,9 +1,12 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { recordEncounters } from "../lib/db/encounters.ts";
+import { saveSkin } from "../lib/db/preferences.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
-import { parsePending, PENDING_COOKIE, tokenMatches, UNLOCKING_COOKIE, UPLOAD_COOKIE } from "../lib/encounter-cookies.ts";
+import { parsePending, PENDING_COOKIE, SKIN_COOKIE, tokenMatches, UNLOCKING_COOKIE, UPLOAD_COOKIE } from "../lib/encounter-cookies.ts";
+import { parseSkin } from "../lib/skins.ts";
 
 // Browsers cap a cookie's lifetime at 400 days; after that the notice appears once more.
 const MAX_AGE_SECONDS = 400 * 24 * 60 * 60;
@@ -51,4 +54,15 @@ export async function uploadEncounters(_previous: UploadState, form: FormData): 
 /** Ends the unlock animation, leaving you on the screen you were on. */
 export async function finishUnlock() {
   (await cookies()).delete(UNLOCKING_COOKIE);
+}
+
+/** Changes the look on this device, and on every device sharing its passcode. */
+export async function chooseSkin(id: string) {
+  const skin = parseSkin(id);
+  if (!skin) throw new Error(`NutriDex has no skin called ${id}`);
+  const jar = await cookies();
+  jar.set(SKIN_COOKIE, skin, privateCookie);
+  const configured = process.env.NUTRIDEX_UPLOAD_TOKEN;
+  if (configured && tokenMatches(jar.get(UPLOAD_COOKIE)?.value ?? "", configured)) await saveSkin(skin);
+  revalidatePath("/", "layout");
 }

@@ -125,6 +125,12 @@ export const encounter = pgTable("encounter", {
   uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+export const preference = pgTable("preference", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const compoundEffect = pgTable(
   "compound_effect",
   {

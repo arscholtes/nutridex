@@ -1,5 +1,5 @@
 {
-  "id": "c5f93594-288a-4803-b476-f4ffa4879058",
+  "id": "d18287d8-f46e-48d3-9bdf-5576f0551de8",
   "prevId": "529f375f-264c-44e2-a008-30008e4e0c7c",
   "version": "7",
   "dialect": "postgresql",
@@ -926,29 +926,7 @@
           "notNull": false
         }
       },
-      "indexes": {
-        "ingredient_compound_richest": {
-          "name": "ingredient_compound_richest",
-          "columns": [
-            {
-              "expression": "compound_id",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            },
-            {
-              "expression": "amount_per_100g",
-              "isExpression": false,
-              "asc": false,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
+      "indexes": {},
       "foreignKeys": {
         "ingredient_compound_ingredient_id_ingredient_id_fk": {
           "name": "ingredient_compound_ingredient_id_ingredient_id_fk",
@@ -1347,6 +1325,38 @@
           ]
         }
       },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.preference": {
+      "name": "preference",
+      "schema": "",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},

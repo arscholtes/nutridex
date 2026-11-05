@@ -22,6 +22,7 @@ import {
   type SourceUse,
 } from "../db/dex.ts";
 import { DISCLAIMER_INTRO, DISCLAIMER_TITLE, NATIVE_DISCLAIMER_SECTIONS } from "../disclaimer/text.ts";
+import { SKINS, type SkinDefinition } from "../skins.ts";
 
 export const SNAPSHOT_PATH = "apple/Shared/Resources/dex.json";
 export const CREATURE_CATALOG = "apple/Shared/Resources/Creatures.xcassets";
@@ -35,6 +36,7 @@ export type NativeSnapshot = {
   version: string;
   disclaimer: { title: string; intro: string; sections: { heading: string; body: string }[] };
   palette: { untyped: TypeSwatch; types: Record<string, TypeSwatch> };
+  skins: readonly SkinDefinition[];
   cards: NativeCard[];
   /** What marking each food as had reveals: the compounds it carries and the effects it clears a bar for. */
   reveals: Record<string, { compounds: string[]; effects: string[] }>;
@@ -88,6 +90,7 @@ export async function buildSnapshot(q: typeof sql = sql): Promise<NativeSnapshot
     version: (JSON.parse(readFileSync("package.json", "utf8")) as { version: string }).version,
     disclaimer: { title: DISCLAIMER_TITLE, intro: DISCLAIMER_INTRO, sections: NATIVE_DISCLAIMER_SECTIONS },
     palette: { untyped: swatch(null), types: Object.fromEntries(types.map((t) => [t, swatch(t)])) },
+    skins: SKINS,
     cards: cards.map((card) => ({ ...card, description: describe(card, entries) })),
     reveals: reveals(entries),
     ...entries,

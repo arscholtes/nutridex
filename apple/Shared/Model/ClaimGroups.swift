@@ -1,15 +1,5 @@
 import Foundation
 
-/// Claims under one effect, for a food's one line per effect.
-struct EffectGroup: Identifiable {
-    let effect: ClaimEffect
-    let claims: [EffectClaim]
-
-    var id: String { effect.slug }
-    /// A is the best grade, and letters sort in that order.
-    var bestGrade: String { claims.map(\.grade).min() ?? "D" }
-}
-
 /// Claims resting on one source, so it is cited once.
 struct SourceGroup: Identifiable {
     let source: SourceRef
@@ -24,16 +14,6 @@ struct SourceGroup: Identifiable {
 }
 
 extension Array where Element == EffectClaim {
-    func groupedByEffect() -> [EffectGroup] {
-        var order: [String] = []
-        var groups: [String: [EffectClaim]] = [:]
-        for claim in self {
-            if groups[claim.effect.slug] == nil { order.append(claim.effect.slug) }
-            groups[claim.effect.slug, default: []].append(claim)
-        }
-        return order.map { EffectGroup(effect: groups[$0]![0].effect, claims: groups[$0]!) }
-    }
-
     func groupedBySource() -> [SourceGroup] {
         var order: [String] = []
         var groups: [String: [EffectClaim]] = [:]

@@ -5,7 +5,7 @@ struct RootView: View {
     @AppStorage("acceptedDisclaimerVersion") private var accepted: String?
     @State private var nav = DexNavigator()
     @State private var browser = DexBrowser()
-    @State private var game = DexGame(store: EncounterStore(defaults: RootView.storeDefaults), transport: HTTPEncounterTransport.configured)
+    @State private var game = DexGame(store: EncounterStore(defaults: RootView.storeDefaults), transport: RootView.transport, skins: SkinStore(defaults: RootView.storeDefaults))
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Environment(\.scenePhase) private var scenePhase
 
@@ -18,6 +18,22 @@ struct RootView: View {
         }
         #endif
         return .standard
+    }
+
+    private static var transport: EncounterTransport {
+        #if DEBUG
+        if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport() }
+        #endif
+        return HTTPEncounterTransport.configured
+    }
+
+    /// A throwaway record stays exactly what the launch argument asked for, with nothing merged in from home.
+    private static var syncs: Bool {
+        #if DEBUG
+        UserDefaults.standard.string(forKey: "debugEncountered") == nil
+        #else
+        true
+        #endif
     }
 
     var body: some View {
@@ -35,16 +51,18 @@ struct RootView: View {
                 UnlockOverlay(card: card, position: game.unlockProgress.position, total: game.unlockProgress.total) { game.next() }
             }
         }
+        // Colours come from the skin being worn, so changing it draws everything again. What you are looking at stays.
+        .id(game.skins.skin)
         .environment(nav)
         .environment(browser)
         .environment(game)
         .environment(game.store)
         .environment(\.dexVisibility, DexVisibility(store: game.store))
-        .preferredColorScheme(.light)
-        .tint(Theme.shell)
-        .task { await game.sync() }
+        .preferredColorScheme(game.skins.skin.scheme)
+        .tint(Theme.accent)
+        .task { if Self.syncs { await game.sync() } }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { Task { await game.sync() } }
+            if phase == .active, Self.syncs { Task { await game.sync() } }
         }
         #if DEBUG
         .onAppear(perform: openDebugRoute)
@@ -76,12 +94,13 @@ struct RootView: View {
         }
     }
 
+    /// Two columns of our own, because a system split view floats its sidebar over the detail, which throws off a sideways pager.
     private var splitView: some View {
         @Bindable var nav = nav
-        return NavigationSplitView {
+        return HStack(spacing: 0) {
             SidebarScreen()
-                .navigationSplitViewColumnWidth(min: 300, ideal: 340, max: 420)
-        } detail: {
+                .frame(width: 340)
+                .background(Theme.sidebarWash)
             NavigationStack(path: $nav.path) {
                 Group {
                     if let selection = nav.selection {
@@ -93,6 +112,7 @@ struct RootView: View {
                 .navigationDestination(for: DexRoute.self) { RouteView(route: $0) }
             }
         }
+        .background(DexBackdrop())
     }
 }
 
@@ -113,17 +133,15 @@ struct RouteView: View {
         switch route {
         case .sources:
             SourcesScreen()
-        case let .entry(.ingredient, slug):
-            if let entry = Dex.bundled.ingredients[slug] { IngredientEntryScreen(entry: entry) } else { MissingEntry() }
-        case let .entry(.compound, slug):
-            if let entry = Dex.bundled.compounds[slug] { CompoundEntryScreen(entry: entry) } else { MissingEntry() }
-        case let .entry(.effect, slug):
-            if let entry = Dex.bundled.effects[slug] { EffectEntryScreen(entry: entry) } else { MissingEntry() }
+        case .skins:
+            SkinsScreen()
+        case let .entry(kind, slug):
+            EntryPager(kind: kind, slug: slug)
         }
     }
 }
 
-/// What the device shows for an entry it does not hold.
+/// What the app shows for an entry it does not hold.
 struct MissingEntry: View {
     @Environment(DexNavigator.self) private var nav
 
@@ -133,6 +151,6 @@ struct MissingEntry: View {
             Button("Back to the list") { nav.backToList() }.font(.dex(.body, weight: .bold))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Theme.screen)
+        .background(DexBackdrop())
     }
 }

@@ -36,6 +36,18 @@ Where every claim comes from. Every amount, effect, modifier and caution row poi
 | `limitations` | text | yes |  |
 | `added_at` | timestamp with time zone | yes | `now()` |
 
+## What follows someone between devices
+
+### `preference`
+
+A choice that should be the same on every device, such as the skin (`key` is `skin`, `value` is a skin's id). The last choice wins. Devices sharing the upload passcode share these rows, like `encounter`, because NutriDex has no accounts yet. Only NutriDex reads it.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `key` | text | no |  |
+| `value` | text | no |  |
+| `updated_at` | timestamp with time zone | no | `now()` |
+
 ## What someone has encountered
 
 ### `encounter`

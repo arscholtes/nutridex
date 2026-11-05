@@ -1,1 +1,0 @@
-CREATE INDEX "ingredient_compound_richest" ON "ingredient_compound" USING btree ("compound_id","amount_per_100g" DESC NULLS LAST);

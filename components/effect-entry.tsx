@@ -8,7 +8,7 @@ import { AmountBar, EffectTile, EntryArt, EntryLink, EntryViewer, formatAmount, 
 export function EffectEntryView({ entry }: { entry: EffectEntry }) {
   const { effect } = entry;
   return (
-    <main className="grid gap-6 p-3 sm:p-5 md:grid-cols-[17rem_minmax(0,1fr)]">
+    <main className="dex-entry grid gap-6 p-3 sm:p-5 md:grid-cols-[17rem_minmax(0,1fr)]">
       <EntryViewer number={entry.pager.number} type={effect.bodySystem} name={effect.name} art={<EffectTile name={effect.name} type={effect.bodySystem} />}>
         <div className="flex flex-wrap items-center gap-2">
           <TypeBadge type={effect.bodySystem} />
@@ -32,7 +32,7 @@ export function EffectEntryView({ entry }: { entry: EffectEntry }) {
             empty={bar === null ? `No food in the Dex has a measured amount of ${compound.name}.` : `No food in the Dex reaches the bar for ${compound.name} yet.`}
           >
             {ranked.map((f, i) => (
-              <div key={f.slug} className="flex items-center gap-3 rounded-xl border-2 border-line bg-card p-2.5">
+              <div key={f.slug} className="flex items-center gap-3 dex-panel p-2.5">
                 <span className="w-6 text-right text-sm font-medium tabular-nums text-ink-soft">{i + 1}</span>
                 <EntryArt imageUrl={f.imageUrl} size={48} />
                 <div className="min-w-0 flex-1">

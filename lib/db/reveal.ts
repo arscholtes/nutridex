@@ -27,6 +27,7 @@ export function scrubIngredient(entry: IngredientEntry, r: Revealed, steps: DexS
     compounds: entry.compounds.filter((c) => r.compounds.has(c.slug)).map((c) => ({ ...c, richest: c.richest && r.foods.has(c.richest.slug) ? c.richest : null })),
     absent: { none: entry.absent.none.filter((c) => r.compounds.has(c.slug)), unmeasured: entry.absent.unmeasured.filter((c) => r.compounds.has(c.slug)) },
     panel: entry.panel.map((p) => ({ ...p, locked: !r.compounds.has(p.slug) })),
+    tiles: entry.tiles.map((t) => ({ ...t, compounds: t.compounds.filter((c) => r.compounds.has(c.slug)) })).filter((t) => t.compounds.length > 0),
     absorption: entry.absorption.filter((a) => r.compounds.has(a.compound.slug)),
     prep: entry.prep.filter((p) => r.compounds.has(p.compound.slug)),
   };

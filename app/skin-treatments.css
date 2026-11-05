@@ -1,0 +1,466 @@
+/* What each skin chooses between. lib/skins.ts sets these attributes and every colour and shape on the
+   page. The plain rules in globals.css draw Iridescent, so nothing here needs to describe foil. */
+
+:is(h1, h2, h3, .dex-wordmark) {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+}
+
+[data-dark] {
+  color-scheme: dark;
+}
+
+/* The page behind everything. Each also stands alone, for the small previews in the skin picker. */
+[data-backdrop="flat"] body,
+.dex-backdrop-flat {
+  background: var(--color-screen);
+}
+
+[data-backdrop="dots"] body,
+.dex-backdrop-dots {
+  background: radial-gradient(var(--color-line) 1.5px, transparent 2px) 0 0 / 18px 18px, var(--color-screen);
+}
+
+[data-backdrop="depths"] body,
+.dex-backdrop-depths {
+  background:
+    radial-gradient(at 50% -10%, color-mix(in srgb, var(--color-accent) 22%, transparent) 0, transparent 60%),
+    radial-gradient(at 100% 100%, color-mix(in srgb, var(--color-tile) 90%, transparent) 0, transparent 55%),
+    var(--color-screen);
+  background-attachment: fixed;
+}
+
+[data-backdrop="scanlines"] body,
+.dex-backdrop-scanlines {
+  background: repeating-linear-gradient(0deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 3px), var(--color-screen);
+}
+
+/* The name and the way to the other screens. */
+.dex-round-label {
+  display: none;
+}
+
+[data-nav="text"] .dex-round {
+  width: auto;
+  padding-inline: 0.5rem;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-bold);
+}
+
+[data-nav="text"] .dex-round svg {
+  display: none;
+}
+
+[data-nav="text"] .dex-round-label {
+  display: inline;
+}
+
+[data-mark="accent"] .dex-dot {
+  border: 0;
+  background: var(--color-accent);
+  box-shadow: none;
+}
+
+[data-mark="none"] .dex-dot {
+  display: none;
+}
+
+/* Anything floating over what scrolls beneath it is solid unless the skin is frosted. */
+html:not([data-glass]) .dex-glass,
+html:not([data-glass]) .dex-steps {
+  border: max(1px, var(--outline-width)) var(--outline-style) var(--outline-color);
+  background: var(--color-card);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+[data-glass][data-dark] .dex-glass,
+[data-glass][data-dark] .dex-steps {
+  background: color-mix(in srgb, var(--color-card) 72%, transparent);
+  box-shadow: none;
+}
+
+[data-glass]:not([data-stage="foil"]) .dex-glass,
+[data-glass]:not([data-stage="foil"]) .dex-steps {
+  box-shadow: 0 2px 14px rgb(0 0 0 / 0.1);
+}
+
+/* What stands behind the creature at the top of an entry. */
+html:not([data-stage="foil"]) .dex-holo-card {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+  border-radius: var(--radius-card);
+  box-shadow: none;
+}
+
+html:not([data-stage="foil"]) .dex-holo-card > div {
+  filter: none;
+}
+
+[data-stage="flat"] .dex-holo-card {
+  background: var(--color-card);
+}
+
+[data-stage="plate"] .dex-holo-card {
+  outline: 1px solid var(--color-ink);
+  outline-offset: -0.5rem;
+  background: var(--color-card);
+}
+
+[data-stage="type"] .dex-holo-card {
+  background: var(--type);
+  color: var(--on-type);
+}
+
+[data-stage="tint"] .dex-holo-card {
+  background: color-mix(in srgb, var(--type) 28%, white);
+}
+
+[data-stage="glow"] .dex-holo-card {
+  background: radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--type) 60%, transparent) 0, transparent 62%), var(--color-card);
+}
+
+html:not([data-stage="foil"]) .dex-holo-line {
+  background: var(--color-accent);
+}
+
+html:not([data-stage="foil"]) .dex-holo-text {
+  background: none;
+  color: inherit;
+}
+
+html:not([data-stage="foil"]) .dex-upload {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+  border-radius: var(--radius-panel);
+  background: var(--color-notice);
+}
+
+html:not([data-stage="foil"]) .dex-unlock-stage {
+  background: var(--color-hidden);
+}
+
+/* A card in the grid. */
+[data-card="flat"] .dex-card {
+  border: 0;
+  background: var(--color-card);
+}
+
+[data-card="flat"] .dex-card:hover {
+  translate: none;
+  scale: 1.012;
+}
+
+[data-card="sheet"] .dex-card {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+  background: var(--color-card);
+}
+
+[data-card="type"] .dex-card {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+  background: var(--type);
+  color: var(--on-type);
+}
+
+[data-card="type"] .dex-card .text-ink-soft {
+  color: inherit;
+}
+
+[data-card="type"] .dex-card-art {
+  border-radius: var(--radius-card);
+  background: color-mix(in srgb, var(--type) 15%, white);
+}
+
+[data-card="glow"] .dex-card {
+  border: 1.5px solid color-mix(in srgb, var(--type) 70%, transparent);
+  background: var(--color-card);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--type) 35%, transparent);
+}
+
+[data-card="wash"]:not([data-stage="foil"]) .dex-card {
+  border: 0;
+  background: var(--wash);
+}
+
+/* A tile in "What it does"; the largest keeps the skin's strongest colours. */
+[data-card="flat"] .dex-tile:not(.dex-tile-large),
+[data-card="glow"] .dex-tile:not(.dex-tile-large) {
+  background: var(--color-card);
+}
+
+[data-card="sheet"] .dex-tile:not(.dex-tile-large),
+[data-card="type"] .dex-tile:not(.dex-tile-large) {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+  background: var(--color-card);
+}
+
+[data-card="glow"] .dex-tile {
+  border: 1.5px solid var(--color-line);
+}
+
+[data-card="sheet"] .dex-tile-large,
+[data-card="type"] .dex-tile-large {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+}
+
+/* Shadows. */
+[data-shadow="none"] :is(.dex-card, .dex-tile, .dex-panel, .dex-skin-card, .dex-unlock-card) {
+  box-shadow: none;
+}
+
+[data-shadow="none"][data-card="glow"] .dex-card {
+  box-shadow: 0 0 18px color-mix(in srgb, var(--type) 35%, transparent);
+}
+
+[data-shadow="hard"] :is(.dex-card, .dex-tile, .dex-panel) {
+  box-shadow: 0 3px 0 var(--color-ink);
+}
+
+[data-shadow="hard"] .dex-card:hover {
+  box-shadow: 0 5px 0 var(--color-ink);
+}
+
+/* Panels and controls take the skin's outline. */
+html:not([data-stage="foil"]) :is(.dex-panel, .dex-chip, .dex-field, .dex-skin-card) {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+}
+
+html:not([data-stage="foil"]) .dex-button {
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+}
+
+/* Badges follow the skin's corners. */
+.dex-type-badge,
+.dex-grade {
+  border-radius: var(--radius-control);
+}
+
+/* A creature is set off from what it stands on, never by touching its colours. */
+[data-creature="sticker"] :is(.dex-card-art, .dex-holo-card, .dex-tile, .dex-unlock-stage) img {
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 3px 2px rgb(43 35 80 / 0.28));
+}
+
+[data-creature="glow"] :is(.dex-card-art, .dex-holo-card, .dex-tile) img {
+  filter: drop-shadow(0 0 10px rgb(255 255 255 / 0.35));
+}
+
+/* Bars. */
+[data-meter="thin"] .dex-meter {
+  height: 0.25rem;
+  background: var(--color-line);
+}
+
+[data-meter="solid"] .dex-meter {
+  height: 0.75rem;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 0;
+  background: transparent;
+}
+
+[data-meter="solid"] .dex-meter > div,
+[data-meter="segments"] .dex-meter > div {
+  border-radius: 0;
+}
+
+[data-meter="segments"] .dex-meter {
+  height: 0.7rem;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--color-ink) 13%, transparent);
+  -webkit-mask: repeating-linear-gradient(90deg, #000 0 0.5rem, transparent 0.5rem 0.65rem);
+  mask: repeating-linear-gradient(90deg, #000 0 0.5rem, transparent 0.5rem 0.65rem);
+}
+
+/* Section headings. */
+[data-title="thick"] .dex-section-title {
+  padding-top: 0.35rem;
+  border-top: 0.5rem solid var(--color-ink);
+}
+
+[data-title="hair"] .dex-section-title {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--color-line);
+  font-style: italic;
+}
+
+[data-title="dashed"] .dex-section-title {
+  padding-block: 0.3rem;
+  border-block: 1px dashed var(--color-ink);
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+[data-title="banner"] .dex-section-title {
+  display: inline-block;
+  padding: 0.1rem 0.75rem;
+  border-radius: var(--radius-control);
+  background: var(--color-accent);
+  color: var(--color-on-night);
+}
+
+[data-period] .dex-section-title::after {
+  content: ".";
+}
+
+/* What stays readable when the page goes dark. */
+[data-dark] .dex-effect-letter {
+  color: var(--color-ink);
+}
+
+[data-dark] .dex-by-class {
+  color: #fcd34d;
+}
+
+/* The till roll: one narrow strip of paper on the counter. */
+[data-skin="receipt"] .dex-page {
+  width: min(100%, 46rem);
+  background: var(--color-card);
+}
+
+[data-skin="receipt"] .dex-card,
+[data-skin="receipt"] .dex-tile:not(.dex-tile-large) {
+  background: transparent;
+}
+
+/* A till roll has one column, so everything prints in order down it. */
+[data-skin="receipt"] .dex-entry {
+  display: block;
+}
+
+[data-skin="receipt"] .dex-entry > * + * {
+  margin-top: 1.5rem;
+}
+
+[data-skin="receipt"] .dex-viewer {
+  position: static;
+}
+
+[data-skin="receipt"] .dex-bento {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Printed off register: a hard shadow in a second ink beside the heavy outline. */
+[data-skin="seed-packet"] .dex-holo-card {
+  box-shadow: 5px 5px 0 var(--color-accent);
+}
+
+/* Heavy rules, as the panel on a packet has them. */
+[data-skin="nutrition-label"] .dex-wordmark {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+/* A sticker sits a little crooked, the way a hand left it. */
+[data-skin="sticker-book"] .dex-card:nth-child(3n + 1) {
+  rotate: -1.2deg;
+}
+
+[data-skin="sticker-book"] .dex-card:nth-child(3n + 2) {
+  rotate: 0.9deg;
+}
+
+/* The arcade's glow is on what is typed, and its heading is in pixels. */
+[data-skin="arcade"] :is(h1, h2, h3, .dex-wordmark) {
+  letter-spacing: 0.02em;
+}
+
+/* Pixel type reads small for its size, so its headings are set a step larger than the others. */
+[data-skin="arcade"] h1 {
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+[data-skin="arcade"] h2 {
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+[data-skin="arcade"] .dex-wordmark {
+  font-size: 2.25rem;
+}
+
+[data-skin="arcade"] .dex-holo-text {
+  text-shadow: 0 0 14px var(--color-accent);
+}
+
+/* The skin picker: a small page in each skin's own colours and type. */
+.dex-skin-preview-page {
+  position: relative;
+  display: flex;
+  height: 9.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  padding: 0.75rem;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+.dex-skin-preview-stage {
+  display: grid;
+  flex: none;
+  width: 7rem;
+  height: 7.5rem;
+  place-items: center;
+  border: var(--outline-width) var(--outline-style) var(--outline-color);
+  border-radius: min(var(--radius-card), 1.25rem);
+}
+
+.dex-skin-preview-stage:not(.dex-foil) {
+  background: var(--color-card);
+}
+
+.dex-skin-preview-stage img {
+  width: 5.25rem;
+  height: 5.25rem;
+}
+
+.dex-skin-preview-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-heading);
+  line-height: 1.1;
+}
+
+.dex-skin-preview-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-control);
+  background: var(--color-night);
+  color: var(--color-on-night);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.dex-skin-preview-stage[data-stage="foil"] {
+  border: 0;
+}
+
+.dex-skin-preview-stage[data-stage="plate"] {
+  outline: 1px solid var(--color-ink);
+  outline-offset: -0.3rem;
+}
+
+.dex-skin-preview-stage[data-stage="type"] {
+  background: var(--type);
+}
+
+.dex-skin-preview-stage[data-stage="tint"] {
+  background: color-mix(in srgb, var(--type) 28%, white);
+}
+
+.dex-skin-preview-stage[data-stage="glow"] {
+  background: radial-gradient(circle at 50% 48%, color-mix(in srgb, var(--type) 60%, transparent) 0, transparent 62%), var(--color-card);
+}
+
+.dex-skin-preview-stage[data-creature="sticker"] img {
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 3px 2px rgb(43 35 80 / 0.28));
+}
+
+.dex-skin-preview-stage[data-creature="glow"] img {
+  filter: drop-shadow(0 0 10px rgb(255 255 255 / 0.35));
+}

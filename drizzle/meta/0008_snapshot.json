@@ -1,6 +1,6 @@
 {
-  "id": "c3ab2c5c-b281-4b1c-8e95-1bb7c186c305",
-  "prevId": "c5f93594-288a-4803-b476-f4ffa4879058",
+  "id": "6a4b260d-1ac7-4999-b52a-889a79fe174f",
+  "prevId": "d18287d8-f46e-48d3-9bdf-5576f0551de8",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -1362,6 +1362,38 @@
           ]
         }
       },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.preference": {
+      "name": "preference",
+      "schema": "",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},

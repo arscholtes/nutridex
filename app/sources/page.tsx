@@ -16,7 +16,7 @@ export default async function SourcesPage() {
       <p className="mt-1 text-ink-soft">The citations behind what you have unlocked, and where they fall short.</p>
       <ul className="mt-6 space-y-4">
         {sources.map((s) => (
-          <li key={s.id} className="rounded-xl border-2 border-line bg-card p-3">
+          <li key={s.id} className="dex-panel p-3">
             <p className="font-bold">
               <SourceLink source={s} />
             </p>

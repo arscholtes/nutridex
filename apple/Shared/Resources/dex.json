@@ -1,5 +1,5 @@
 {
- "version": "0.4.0",
+ "version": "0.5.0",
  "disclaimer": {
   "title": "Before you use NutriDex",
   "intro": "Please read this. It appears the first time you open the app and again after each update.",
@@ -30,7 +30,7 @@
    },
    {
     "heading": "What is stored about you",
-    "body": "The foods you mark as had, and when: kept on this device until you upload them, then in NutriDex's database. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. Nothing else."
+    "body": "The foods you mark as had, and when: kept on this device until you upload them, then in NutriDex's database. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. The skin you choose: kept on this device and in NutriDex's database, so it can follow you to your other devices. Nothing else."
    }
   ]
  },
@@ -154,6 +154,539 @@
    }
   }
  },
+ "skins": [
+  {
+   "id": "new-age",
+   "name": "New age",
+   "about": "Clean white pages, big quiet type, and one blue for anything you can press.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#FFFFFF",
+    "card": "#F5F5F7",
+    "line": "#D2D2D7",
+    "ink": "#1D1D1F",
+    "inkSoft": "#6E6E73",
+    "accent": "#0066CC",
+    "night": "#0071E3",
+    "onNight": "#FFFFFF",
+    "tile": "#000000",
+    "onTile": "#F5F5F7",
+    "chip": "#1D1D1F",
+    "onChip": "#FFFFFF",
+    "hidden": "#D2D2D7",
+    "notice": "#F5F5F7",
+    "danger": "#BF4800"
+   },
+   "font": {
+    "design": "default",
+    "heading": "semibold",
+    "strong": "semibold",
+    "web": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+   },
+   "radius": {
+    "card": 28,
+    "tile": 28,
+    "panel": 18,
+    "control": "pill"
+   },
+   "outline": {
+    "width": 0,
+    "color": "line",
+    "dashed": false
+   },
+   "shadow": "none",
+   "backdrop": "flat",
+   "stage": "flat",
+   "card": "flat",
+   "creature": "plain",
+   "meter": "thin",
+   "glass": true,
+   "title": "none",
+   "period": true,
+   "hero": "title-first",
+   "nav": "text",
+   "mark": "none"
+  },
+  {
+   "id": "iridescent",
+   "name": "Iridescent",
+   "about": "Pearl and holographic foil, made for touch.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#F6F5FC",
+    "card": "#FFFFFF",
+    "line": "#E4E1F3",
+    "ink": "#1F1B3D",
+    "inkSoft": "#5B5780",
+    "accent": "#5B45E0",
+    "night": "#211B4E",
+    "onNight": "#FFFFFF",
+    "tile": "#211B4E",
+    "onTile": "#FFFFFF",
+    "chip": "#211B4E",
+    "onChip": "#FFFFFF",
+    "hidden": "#6A55F0",
+    "notice": "#EFE9FF",
+    "danger": "#9F1239"
+   },
+   "font": {
+    "design": "rounded",
+    "heading": "heavy",
+    "strong": "bold",
+    "web": "var(--font-fredoka), ui-rounded, system-ui, sans-serif"
+   },
+   "radius": {
+    "card": 22,
+    "tile": 26,
+    "panel": 20,
+    "control": "pill"
+   },
+   "outline": {
+    "width": 0,
+    "color": "line",
+    "dashed": false
+   },
+   "shadow": "soft",
+   "backdrop": "pearl",
+   "stage": "foil",
+   "card": "wash",
+   "creature": "plain",
+   "meter": "pill",
+   "glass": true,
+   "title": "none",
+   "period": false,
+   "hero": "art-first",
+   "nav": "round",
+   "mark": "holo"
+  },
+  {
+   "id": "yellow-version",
+   "name": "Yellow version",
+   "about": "The original handheld, with its lens and D-pad.",
+   "shell": "handheld",
+   "dark": false,
+   "colors": {
+    "screen": "#EEF3E6",
+    "card": "#FBFDF7",
+    "line": "#CFD8C9",
+    "ink": "#1C2823",
+    "inkSoft": "#4D5B54",
+    "accent": "#D3222A",
+    "night": "#D3222A",
+    "onNight": "#FFFFFF",
+    "tile": "#D3222A",
+    "onTile": "#FFFFFF",
+    "chip": "#1C2823",
+    "onChip": "#EEF3E6",
+    "hidden": "#1F86C9",
+    "notice": "#FFD23F",
+    "danger": "#9F1239"
+   },
+   "font": {
+    "design": "rounded",
+    "heading": "heavy",
+    "strong": "bold",
+    "web": "var(--font-fredoka), ui-rounded, system-ui, sans-serif"
+   },
+   "radius": {
+    "card": 16,
+    "tile": 16,
+    "panel": 14,
+    "control": 9
+   },
+   "outline": {
+    "width": 2,
+    "color": "ink",
+    "dashed": false
+   },
+   "shadow": "hard",
+   "backdrop": "flat",
+   "stage": "type",
+   "card": "type",
+   "creature": "plain",
+   "meter": "segments",
+   "glass": false,
+   "title": "banner",
+   "period": false,
+   "hero": "art-first",
+   "nav": "text",
+   "mark": "none"
+  },
+  {
+   "id": "nutrition-label",
+   "name": "Nutrition label",
+   "about": "Black rules and heavy type, like the panel on the back of the packet.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#FFFFFF",
+    "card": "#FFFFFF",
+    "line": "#000000",
+    "ink": "#000000",
+    "inkSoft": "#333333",
+    "accent": "#000000",
+    "night": "#000000",
+    "onNight": "#FFFFFF",
+    "tile": "#000000",
+    "onTile": "#FFFFFF",
+    "chip": "#000000",
+    "onChip": "#FFFFFF",
+    "hidden": "#BDBDBD",
+    "notice": "#FFFFFF",
+    "danger": "#B00000"
+   },
+   "font": {
+    "design": "default",
+    "heading": "black",
+    "strong": "bold",
+    "web": "var(--font-archivo), \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+   },
+   "radius": {
+    "card": 0,
+    "tile": 0,
+    "panel": 0,
+    "control": 0
+   },
+   "outline": {
+    "width": 2,
+    "color": "ink",
+    "dashed": false
+   },
+   "shadow": "none",
+   "backdrop": "flat",
+   "stage": "flat",
+   "card": "sheet",
+   "creature": "plain",
+   "meter": "solid",
+   "glass": false,
+   "title": "thick",
+   "period": false,
+   "hero": "art-first",
+   "nav": "text",
+   "mark": "none"
+  },
+  {
+   "id": "field-guide",
+   "name": "Field guide",
+   "about": "A naturalist's plates, in ink on paper.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#F1EDE0",
+    "card": "#FAF7EE",
+    "line": "#C9C2AB",
+    "ink": "#1E2A1E",
+    "inkSoft": "#56604E",
+    "accent": "#3F6B3A",
+    "night": "#1E3A26",
+    "onNight": "#F6F2E6",
+    "tile": "#1E3A26",
+    "onTile": "#F6F2E6",
+    "chip": "#1E3A26",
+    "onChip": "#F6F2E6",
+    "hidden": "#B9B39B",
+    "notice": "#E4DFC9",
+    "danger": "#8A1C1C"
+   },
+   "font": {
+    "design": "serif",
+    "heading": "semibold",
+    "strong": "semibold",
+    "web": "var(--font-newsreader), Georgia, serif"
+   },
+   "radius": {
+    "card": 4,
+    "tile": 6,
+    "panel": 4,
+    "control": 4
+   },
+   "outline": {
+    "width": 1,
+    "color": "line",
+    "dashed": false
+   },
+   "shadow": "none",
+   "backdrop": "flat",
+   "stage": "plate",
+   "card": "sheet",
+   "creature": "plain",
+   "meter": "thin",
+   "glass": false,
+   "title": "hair",
+   "period": false,
+   "hero": "art-first",
+   "nav": "text",
+   "mark": "none"
+  },
+  {
+   "id": "seed-packet",
+   "name": "Seed packet",
+   "about": "Loud flat colour and slab type, printed a little off register.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#FFF1CC",
+    "card": "#FFF9E8",
+    "line": "#E3C88A",
+    "ink": "#2A1A0E",
+    "inkSoft": "#5B4632",
+    "accent": "#C8321F",
+    "night": "#C8321F",
+    "onNight": "#FFF9E8",
+    "tile": "#2F6B3A",
+    "onTile": "#FFF9E8",
+    "chip": "#2A1A0E",
+    "onChip": "#FFF1CC",
+    "hidden": "#E3A72F",
+    "notice": "#F5C242",
+    "danger": "#8E1B0E"
+   },
+   "font": {
+    "design": "serif",
+    "heading": "black",
+    "strong": "bold",
+    "web": "var(--font-zilla), Rockwell, \"Courier New\", serif"
+   },
+   "radius": {
+    "card": 6,
+    "tile": 6,
+    "panel": 6,
+    "control": 6
+   },
+   "outline": {
+    "width": 3,
+    "color": "ink",
+    "dashed": false
+   },
+   "shadow": "hard",
+   "backdrop": "dots",
+   "stage": "type",
+   "card": "type",
+   "creature": "plain",
+   "meter": "solid",
+   "glass": false,
+   "title": "banner",
+   "period": false,
+   "hero": "art-first",
+   "nav": "text",
+   "mark": "accent"
+  },
+  {
+   "id": "sticker-book",
+   "name": "Sticker book",
+   "about": "Every creature a die-cut sticker on a dotted page.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#E8F5FF",
+    "card": "#FFFFFF",
+    "line": "#BFDDF5",
+    "ink": "#2B2350",
+    "inkSoft": "#5A5380",
+    "accent": "#D81B72",
+    "night": "#D81B72",
+    "onNight": "#FFFFFF",
+    "tile": "#6A3FD6",
+    "onTile": "#FFFFFF",
+    "chip": "#2B2350",
+    "onChip": "#FFFFFF",
+    "hidden": "#FFD84D",
+    "notice": "#FFE68A",
+    "danger": "#B3124F"
+   },
+   "font": {
+    "design": "rounded",
+    "heading": "heavy",
+    "strong": "bold",
+    "web": "var(--font-fredoka), ui-rounded, system-ui, sans-serif"
+   },
+   "radius": {
+    "card": 24,
+    "tile": 28,
+    "panel": 22,
+    "control": "pill"
+   },
+   "outline": {
+    "width": 0,
+    "color": "line",
+    "dashed": false
+   },
+   "shadow": "soft",
+   "backdrop": "dots",
+   "stage": "tint",
+   "card": "wash",
+   "creature": "sticker",
+   "meter": "pill",
+   "glass": false,
+   "title": "none",
+   "period": false,
+   "hero": "art-first",
+   "nav": "round",
+   "mark": "accent"
+  },
+  {
+   "id": "deep-sea",
+   "name": "Deep sea",
+   "about": "Dark water, with your creatures glowing in it.",
+   "shell": "page",
+   "dark": true,
+   "colors": {
+    "screen": "#05131F",
+    "card": "#0C2233",
+    "line": "#1D3B50",
+    "ink": "#E8F6FF",
+    "inkSoft": "#9CBDD0",
+    "accent": "#4FE3D0",
+    "night": "#4FE3D0",
+    "onNight": "#04202A",
+    "tile": "#0E3A52",
+    "onTile": "#E8F6FF",
+    "chip": "#4FE3D0",
+    "onChip": "#04202A",
+    "hidden": "#7FA6BD",
+    "notice": "#0F3347",
+    "danger": "#FF9BAE"
+   },
+   "font": {
+    "design": "default",
+    "heading": "bold",
+    "strong": "semibold",
+    "web": "var(--font-sora), system-ui, sans-serif"
+   },
+   "radius": {
+    "card": 20,
+    "tile": 24,
+    "panel": 18,
+    "control": "pill"
+   },
+   "outline": {
+    "width": 0,
+    "color": "line",
+    "dashed": false
+   },
+   "shadow": "none",
+   "backdrop": "depths",
+   "stage": "glow",
+   "card": "glow",
+   "creature": "glow",
+   "meter": "pill",
+   "glass": true,
+   "title": "none",
+   "period": false,
+   "hero": "art-first",
+   "nav": "round",
+   "mark": "accent"
+  },
+  {
+   "id": "receipt",
+   "name": "Receipt",
+   "about": "Till paper, typed in one width, with every line dashed.",
+   "shell": "page",
+   "dark": false,
+   "colors": {
+    "screen": "#DAD7D0",
+    "card": "#FCFBF6",
+    "line": "#8A877F",
+    "ink": "#1A1A18",
+    "inkSoft": "#55534D",
+    "accent": "#1A1A18",
+    "night": "#1A1A18",
+    "onNight": "#FCFBF6",
+    "tile": "#1A1A18",
+    "onTile": "#FCFBF6",
+    "chip": "#1A1A18",
+    "onChip": "#FCFBF6",
+    "hidden": "#B5B2A9",
+    "notice": "#FCFBF6",
+    "danger": "#A01010"
+   },
+   "font": {
+    "design": "monospaced",
+    "heading": "bold",
+    "strong": "bold",
+    "web": "var(--font-plex-mono), ui-monospace, \"SF Mono\", Menlo, monospace"
+   },
+   "radius": {
+    "card": 0,
+    "tile": 0,
+    "panel": 0,
+    "control": 0
+   },
+   "outline": {
+    "width": 1,
+    "color": "ink",
+    "dashed": true
+   },
+   "shadow": "none",
+   "backdrop": "flat",
+   "stage": "plate",
+   "card": "sheet",
+   "creature": "plain",
+   "meter": "segments",
+   "glass": false,
+   "title": "dashed",
+   "period": false,
+   "hero": "art-first",
+   "nav": "text",
+   "mark": "none"
+  },
+  {
+   "id": "arcade",
+   "name": "Arcade",
+   "about": "Neon in the dark, with scanlines and a pixel font.",
+   "shell": "page",
+   "dark": true,
+   "colors": {
+    "screen": "#120428",
+    "card": "#1E0B42",
+    "line": "#4A2A8A",
+    "ink": "#F4ECFF",
+    "inkSoft": "#C0A8E8",
+    "accent": "#39F0FF",
+    "night": "#FF2E88",
+    "onNight": "#12021F",
+    "tile": "#2B0F66",
+    "onTile": "#39F0FF",
+    "chip": "#39F0FF",
+    "onChip": "#120428",
+    "hidden": "#8E7ACB",
+    "notice": "#2B0F66",
+    "danger": "#FF8FA8"
+   },
+   "font": {
+    "design": "monospaced",
+    "heading": "heavy",
+    "strong": "bold",
+    "web": "var(--font-plex-mono), ui-monospace, \"SF Mono\", Menlo, monospace",
+    "webHeading": "var(--font-vt323), ui-monospace, monospace"
+   },
+   "radius": {
+    "card": 4,
+    "tile": 4,
+    "panel": 4,
+    "control": 4
+   },
+   "outline": {
+    "width": 2,
+    "color": "accent",
+    "dashed": false
+   },
+   "shadow": "none",
+   "backdrop": "scanlines",
+   "stage": "glow",
+   "card": "glow",
+   "creature": "glow",
+   "meter": "segments",
+   "glass": false,
+   "title": "banner",
+   "period": false,
+   "hero": "art-first",
+   "nav": "text",
+   "mark": "accent"
+  }
+ ],
  "cards": [
   {
    "kind": "ingredient",
@@ -2806,6 +3339,344 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate has a role in the process of cell division.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "reproduction",
+      "name": "Fertility and pregnancy",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to maternal tissue growth during pregnancy.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "homocysteine",
+      "name": "Homocysteine metabolism",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to normal homocysteine metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to normal amino acid synthesis.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.5449999999999999,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.5449999999999999
+      }
+     ],
+     "wording": "Folate contributes to normal blood formation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.1645,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.1645
+      }
+     ],
+     "wording": "Manganese contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.1645,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.1645
+      }
+     ],
+     "wording": "Manganese contributes to the normal formation of connective tissue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.1645,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.1645
+      }
+     ],
+     "wording": "Manganese contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.1645,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.1645
+      }
+     ],
+     "wording": "Manganese contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.1625,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.1625
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.1625,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.1625
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.1625,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.1625
+      }
+     ],
+     "wording": "Potassium contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -4823,6 +5694,701 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 6.3765,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 6.3765
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      },
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.6935714285714286
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.23316666666666666
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.2257142857142857
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Manganese contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "large"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 6.3765,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 6.3765
+      },
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 2.1826666666666665
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.2257142857142857
+      }
+     ],
+     "wording": "Manganese contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 6.3765,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 6.3765
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      }
+     ],
+     "wording": "Manganese contributes to the normal formation of connective tissue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 6.3765,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 6.3765
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      }
+     ],
+     "wording": "Manganese contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 1.33,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.6645
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Copper contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 2.1826666666666665,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 2.1826666666666665
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 1.33,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      },
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.6935714285714286
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Copper contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.6935714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.6935714285714286
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.2257142857142857
+      }
+     ],
+     "wording": "Iron has a role in the process of cell division.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.6645,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.6645
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.6935714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.6935714285714286
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.23316666666666666
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Iron contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 1.33,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      }
+     ],
+     "wording": "Copper contributes to normal iron transport in the body.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hair",
+      "name": "Hair",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.33,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      }
+     ],
+     "wording": "Copper contributes to normal hair pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.33,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.33
+      }
+     ],
+     "wording": "Copper contributes to normal skin pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.5537500000000001,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.2257142857142857
+      }
+     ],
+     "wording": "Calcium is needed for the maintenance of normal teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cognitive-function",
+      "name": "Cognitive function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.6935714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.6935714285714286
+      },
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.23316666666666666
+      }
+     ],
+     "wording": "Iron contributes to normal cognitive function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.6935714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.6935714285714286
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Iron contributes to normal formation of red blood cells and haemoglobin. Iron contributes to normal oxygen transport in the body.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.6645,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.6645
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.45599999999999996,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Magnesium contributes to electrolyte balance. Magnesium contributes to normal protein synthesis.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.45599999999999996,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.45599999999999996
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Magnesium contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "digestion",
+      "name": "Digestive enzymes",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.5537500000000001,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.5537500000000001
+      }
+     ],
+     "wording": "Calcium contributes to the normal function of digestive enzymes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hormones",
+      "name": "Hormones",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.23316666666666666,
+     "compounds": [
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.23316666666666666
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Pantothenic acid contributes to normal synthesis and metabolism of steroid hormones, vitamin D and some neurotransmitters.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "homocysteine",
+      "name": "Homocysteine metabolism",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.20785714285714285,
+     "compounds": [
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.20785714285714285
+      }
+     ],
+     "wording": "Vitamin B6 contributes to normal homocysteine metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -5836,6 +7402,410 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.6649999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.6649999999999999
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin A contributes to normal iron metabolism.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.6649999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.6649999999999999
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin A contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.6649999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.6649999999999999
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.6649999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.6649999999999999
+      }
+     ],
+     "wording": "Vitamin A has a role in the process of cell specialisation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.6649999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.6649999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.6649999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.6649999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.176
+      }
+     ],
+     "wording": "Vitamin C contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of cartilage.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "heart-and-blood-vessels",
+      "name": "Heart and blood vessels",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of blood vessels.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.2625,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.2625
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of gums. Vitamin C contributes to normal collagen formation for the normal function of teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.176,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.176
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.176,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.176
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -6501,6 +8471,197 @@
       "studyType": "regulatory review",
       "limitations": "What EU law lets a food label say, read here as retained in UK law. A claim means the nutrient contributes to that function at adequate intake, not that eating more improves it. The underlying EFSA opinions were not read one by one."
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.9724999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.9724999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to normal iron metabolism.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.9724999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.9724999999999999
+      }
+     ],
+     "wording": "Vitamin A has a role in the process of cell specialisation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.9724999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.9724999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.9724999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.9724999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.9724999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.9724999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.9724999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.9724999999999999
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.21333333333333332,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.21333333333333332
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.21333333333333332,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.21333333333333332
+      }
+     ],
+     "wording": "Vitamin K contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
     }
    ],
    "cautions": [],
@@ -7466,6 +9627,362 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.21125
+      }
+     ],
+     "wording": "Vitamin C contributes to the regeneration of the reduced form of vitamin E. Vitamin C increases iron absorption.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.21125
+      }
+     ],
+     "wording": "Vitamin C contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.21125
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of cartilage.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "heart-and-blood-vessels",
+      "name": "Heart and blood vessels",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of blood vessels.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.45875,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.45875
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of gums. Vitamin C contributes to normal collagen formation for the normal function of teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.21125,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.21125
+      }
+     ],
+     "wording": "Vitamin A has a role in the process of cell specialisation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.21125,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.21125
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.21125,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.21125
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -8288,6 +10805,260 @@
       "studyType": "regulatory review",
       "limitations": "What EU law lets a food label say, read here as retained in UK law. A claim means the nutrient contributes to that function at adequate intake, not that eating more improves it. The underlying EFSA opinions were not read one by one."
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 1.04375,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 1.04375
+      }
+     ],
+     "wording": "Vitamin A contributes to normal iron metabolism.",
+     "dose": null,
+     "size": "large"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 1.04375,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 1.04375
+      }
+     ],
+     "wording": "Vitamin A has a role in the process of cell specialisation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 1.04375,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 1.04375
+      }
+     ],
+     "wording": "Vitamin A contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.04375,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 1.04375
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.04375,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 1.04375
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 1.04375,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 1.04375
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.176,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.176
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.176,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.176
+      }
+     ],
+     "wording": "Vitamin K contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.16,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.16,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.16,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Potassium contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
     }
    ],
    "cautions": [],
@@ -10096,6 +12867,677 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.5581818181818181,
+     "compounds": [
+      {
+       "slug": "selenium",
+       "name": "Selenium",
+       "class": "mineral",
+       "dailyShare": 0.5581818181818181
+      },
+      {
+       "slug": "vitamin-d",
+       "name": "Vitamin D",
+       "class": "vitamin",
+       "dailyShare": 0.39999999999999997
+      },
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Selenium contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.39999999999999997,
+     "compounds": [
+      {
+       "slug": "vitamin-d",
+       "name": "Vitamin D",
+       "class": "vitamin",
+       "dailyShare": 0.39999999999999997
+      },
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.28285714285714286
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Vitamin D has a role in the process of cell division.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.35600000000000004,
+     "compounds": [
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.28285714285714286
+      },
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.2555
+      }
+     ],
+     "wording": "Vitamin B12 contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.35600000000000004,
+     "compounds": [
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.2555
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      }
+     ],
+     "wording": "Vitamin B12 contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "homocysteine",
+      "name": "Homocysteine metabolism",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.5341818181818182,
+     "compounds": [
+      {
+       "slug": "choline",
+       "name": "Choline",
+       "class": "nutrient",
+       "dailyShare": 0.5341818181818182
+      },
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      }
+     ],
+     "wording": "Choline contributes to normal homocysteine metabolism.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.39999999999999997,
+     "compounds": [
+      {
+       "slug": "vitamin-d",
+       "name": "Vitamin D",
+       "class": "vitamin",
+       "dailyShare": 0.39999999999999997
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Vitamin D contributes to normal absorption/utilisation of calcium and phosphorus. Vitamin D contributes to normal blood calcium levels.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.35600000000000004,
+     "compounds": [
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      }
+     ],
+     "wording": "Vitamin B12 contributes to normal red blood cell formation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.5581818181818181,
+     "compounds": [
+      {
+       "slug": "selenium",
+       "name": "Selenium",
+       "class": "mineral",
+       "dailyShare": 0.5581818181818181
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      }
+     ],
+     "wording": "Selenium contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hormones",
+      "name": "Hormones",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.5581818181818181,
+     "compounds": [
+      {
+       "slug": "selenium",
+       "name": "Selenium",
+       "class": "mineral",
+       "dailyShare": 0.5581818181818181
+      },
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.2555
+      }
+     ],
+     "wording": "Selenium contributes to the normal thyroid function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "reproduction",
+      "name": "Fertility and pregnancy",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.5581818181818181,
+     "compounds": [
+      {
+       "slug": "selenium",
+       "name": "Selenium",
+       "class": "mineral",
+       "dailyShare": 0.5581818181818181
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      }
+     ],
+     "wording": "Selenium contributes to normal spermatogenesis.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.5341818181818182,
+     "compounds": [
+      {
+       "slug": "choline",
+       "name": "Choline",
+       "class": "nutrient",
+       "dailyShare": 0.5341818181818182
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      }
+     ],
+     "wording": "Choline contributes to normal lipid metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.39999999999999997,
+     "compounds": [
+      {
+       "slug": "vitamin-d",
+       "name": "Vitamin D",
+       "class": "vitamin",
+       "dailyShare": 0.39999999999999997
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.28285714285714286
+      }
+     ],
+     "wording": "Vitamin D contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.39999999999999997,
+     "compounds": [
+      {
+       "slug": "vitamin-d",
+       "name": "Vitamin D",
+       "class": "vitamin",
+       "dailyShare": 0.39999999999999997
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.28285714285714286
+      }
+     ],
+     "wording": "Vitamin D contributes to the maintenance of normal teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.35600000000000004,
+     "compounds": [
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      }
+     ],
+     "wording": "Vitamin B12 contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.35600000000000004,
+     "compounds": [
+      {
+       "slug": "vitamin-b12",
+       "name": "Vitamin B12",
+       "class": "vitamin",
+       "dailyShare": 0.35600000000000004
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.235
+      }
+     ],
+     "wording": "Vitamin B12 contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hair",
+      "name": "Hair",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.5581818181818181,
+     "compounds": [
+      {
+       "slug": "selenium",
+       "name": "Selenium",
+       "class": "mineral",
+       "dailyShare": 0.5581818181818181
+      }
+     ],
+     "wording": "Selenium contributes to the maintenance of normal hair.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nails",
+      "name": "Nails",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.5581818181818181,
+     "compounds": [
+      {
+       "slug": "selenium",
+       "name": "Selenium",
+       "class": "mineral",
+       "dailyShare": 0.5581818181818181
+      }
+     ],
+     "wording": "Selenium contributes to the maintenance of normal nails.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "liver",
+      "name": "Liver function",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.5341818181818182,
+     "compounds": [
+      {
+       "slug": "choline",
+       "name": "Choline",
+       "class": "nutrient",
+       "dailyShare": 0.5341818181818182
+      }
+     ],
+     "wording": "Choline contributes to the maintenance of normal liver function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.32642857142857146,
+     "compounds": [
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Riboflavin contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.32642857142857146,
+     "compounds": [
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Riboflavin contributes to the maintenance of normal skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.32642857142857146,
+     "compounds": [
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.32642857142857146
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Riboflavin contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.39999999999999997,
+     "compounds": [
+      {
+       "slug": "vitamin-d",
+       "name": "Vitamin D",
+       "class": "vitamin",
+       "dailyShare": 0.39999999999999997
+      }
+     ],
+     "wording": "Vitamin D contributes to the maintenance of normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cognitive-function",
+      "name": "Cognitive function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.2555,
+     "compounds": [
+      {
+       "slug": "pantothenic-acid",
+       "name": "Pantothenic acid (B5)",
+       "class": "vitamin",
+       "dailyShare": 0.2555
+      }
+     ],
+     "wording": "Pantothenic acid contributes to normal mental performance.",
+     "dose": null,
+     "size": "small"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -11856,6 +15298,659 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 4.96,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 4.96
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.352
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      }
+     ],
+     "wording": "Vitamin K contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "large"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 4.96,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 4.96
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.7324999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.7324999999999999
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      }
+     ],
+     "wording": "Vitamin A has a role in the process of cell specialisation.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.7324999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.7324999999999999
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      }
+     ],
+     "wording": "Vitamin A contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.725,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Folate contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.725,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Folate contributes to normal amino acid synthesis.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.725,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      }
+     ],
+     "wording": "Folate contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.7324999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.7324999999999999
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Vitamin A contributes to normal iron metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.7324999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.7324999999999999
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.7324999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.7324999999999999
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.7324999999999999,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.7324999999999999
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.725,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Folate contributes to normal blood formation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.352,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.352
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Manganese contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.352,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.352
+      },
+      {
+       "slug": "vitamin-e",
+       "name": "Vitamin E",
+       "class": "vitamin",
+       "dailyShare": 0.24166666666666667
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Manganese contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "reproduction",
+      "name": "Fertility and pregnancy",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.725,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      }
+     ],
+     "wording": "Folate contributes to maternal tissue growth during pregnancy.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "homocysteine",
+      "name": "Homocysteine metabolism",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.725,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.725
+      }
+     ],
+     "wording": "Folate contributes to normal homocysteine metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.2,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.173
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.16
+      }
+     ],
+     "wording": "Magnesium contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.2,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.173
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      }
+     ],
+     "wording": "Magnesium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.2,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.2
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      }
+     ],
+     "wording": "Magnesium contributes to the maintenance of normal teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.352,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.352
+      }
+     ],
+     "wording": "Manganese contributes to the normal formation of connective tissue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.173,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.173
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "digestion",
+      "name": "Digestive enzymes",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.16124999999999998,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.16124999999999998
+      }
+     ],
+     "wording": "Calcium contributes to the normal function of digestive enzymes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -12344,6 +16439,29 @@
       "studyType": "rct",
       "limitations": "Small (5 per group); men only; 42 days; only the 30 mg supplement group showed definite carotenodermia"
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
     }
    ],
    "cautions": [],
@@ -14174,6 +18292,686 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 5.1946666666666665,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 5.1946666666666665
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.4600000000000001
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      }
+     ],
+     "wording": "Vitamin K contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "large"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 5.1946666666666665,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 5.1946666666666665
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.4600000000000001
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin C contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.174
+      }
+     ],
+     "wording": "Vitamin C contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.4600000000000001
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin C contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.30124999999999996
+      }
+     ],
+     "wording": "Vitamin C contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin C contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.30124999999999996
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin C contributes to the regeneration of the reduced form of vitamin E. Vitamin C increases iron absorption.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.30124999999999996
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.4600000000000001
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of cartilage.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of gums. Vitamin C contributes to normal collagen formation for the normal function of teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      }
+     ],
+     "wording": "Vitamin C contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "heart-and-blood-vessels",
+      "name": "Heart and blood vessels",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 1.1675,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 1.1675
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of blood vessels.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.3175,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      },
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      },
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.30124999999999996
+      }
+     ],
+     "wording": "Calcium has a role in the process of cell division and specialisation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.30999999999999994,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Folate contributes to normal blood formation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.30124999999999996,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.30124999999999996
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.30124999999999996,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.30124999999999996
+      },
+      {
+       "slug": "riboflavin",
+       "name": "Riboflavin (B2)",
+       "class": "vitamin",
+       "dailyShare": 0.24785714285714283
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.3175,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.174
+      }
+     ],
+     "wording": "Calcium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "digestion",
+      "name": "Digestive enzymes",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.3175,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.3175
+      }
+     ],
+     "wording": "Calcium contributes to the normal function of digestive enzymes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "reproduction",
+      "name": "Fertility and pregnancy",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.30999999999999994,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      }
+     ],
+     "wording": "Folate contributes to maternal tissue growth during pregnancy.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "homocysteine",
+      "name": "Homocysteine metabolism",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.30999999999999994,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      }
+     ],
+     "wording": "Folate contributes to normal homocysteine metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.30999999999999994,
+     "compounds": [
+      {
+       "slug": "folate",
+       "name": "Folate (DFE)",
+       "class": "vitamin",
+       "dailyShare": 0.30999999999999994
+      }
+     ],
+     "wording": "Folate contributes to normal amino acid synthesis.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.174,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.174
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -14615,6 +19413,71 @@
       "studyType": "regulatory review",
       "limitations": "What EU law lets a food label say, read here as retained in UK law. A claim means the nutrient contributes to that function at adequate intake, not that eating more improves it. The underlying EFSA opinions were not read one by one."
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 1.1958333333333333,
+     "compounds": [
+      {
+       "slug": "vitamin-e",
+       "name": "Vitamin E",
+       "class": "vitamin",
+       "dailyShare": 1.1958333333333333
+      }
+     ],
+     "wording": "Vitamin E contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "large"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.8026666666666666,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.8026666666666666
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.8026666666666666,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.8026666666666666
+      }
+     ],
+     "wording": "Vitamin K contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
     }
    ],
    "cautions": [],
@@ -15500,6 +20363,326 @@
       "studyType": "regulatory review",
       "limitations": "What EU law lets a food label say, read here as retained in UK law. A claim means the nutrient contributes to that function at adequate intake, not that eating more improves it. The underlying EFSA opinions were not read one by one."
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.88625,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.88625
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Vitamin A contributes to normal iron metabolism.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.88625,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.88625
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Vitamin A contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.88625,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.88625
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal skin.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.88625,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.88625
+      }
+     ],
+     "wording": "Vitamin A has a role in the process of cell specialisation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.88625,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.88625
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.88625,
+     "compounds": [
+      {
+       "slug": "vitamin-a",
+       "name": "Vitamin A (RAE)",
+       "class": "vitamin",
+       "dailyShare": 0.88625
+      }
+     ],
+     "wording": "Vitamin A contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.16849999999999998,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.16849999999999998
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Potassium contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.16849999999999998,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.16849999999999998
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.16849999999999998,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.16849999999999998
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.151,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to maintenance of normal connective tissues.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.151,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hair",
+      "name": "Hair",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.151,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to normal hair pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.151,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
     }
    ],
    "cautions": [],
@@ -17321,6 +22504,680 @@
       "studyType": "regulatory review",
       "limitations": "What EU law lets a food label say, read here as retained in UK law. A claim means the nutrient contributes to that function at adequate intake, not that eating more improves it. The underlying EFSA opinions were not read one by one."
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.507,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.507
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "niacin",
+       "name": "Niacin (B3)",
+       "class": "vitamin",
+       "dailyShare": 0.19225
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Potassium contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.21285714285714286
+      },
+      {
+       "slug": "niacin",
+       "name": "Niacin (B3)",
+       "class": "vitamin",
+       "dailyShare": 0.19225
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-e",
+       "name": "Vitamin E",
+       "class": "vitamin",
+       "dailyShare": 0.3583333333333333
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.21285714285714286
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Copper contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.27375,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.21285714285714286
+      },
+      {
+       "slug": "niacin",
+       "name": "Niacin (B3)",
+       "class": "vitamin",
+       "dailyShare": 0.19225
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Vitamin C contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "niacin",
+       "name": "Niacin (B3)",
+       "class": "vitamin",
+       "dailyShare": 0.19225
+      }
+     ],
+     "wording": "Copper contributes to normal skin pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Copper contributes to maintenance of normal connective tissues.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      },
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      }
+     ],
+     "wording": "Copper contributes to normal iron transport in the body.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.27375,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "niacin",
+       "name": "Niacin (B3)",
+       "class": "vitamin",
+       "dailyShare": 0.19225
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Vitamin C contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.27375,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      },
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.152
+      },
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 0.151
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.507,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.507
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 0.507,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 0.507
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.21285714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.21285714285714286
+      },
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Iron contributes to normal formation of red blood cells and haemoglobin. Iron contributes to normal oxygen transport in the body.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hair",
+      "name": "Hair",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.365,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 0.365
+      }
+     ],
+     "wording": "Copper contributes to normal hair pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "heart-and-blood-vessels",
+      "name": "Heart and blood vessels",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 0.27375,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of blood vessels.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.27375,
+     "compounds": [
+      {
+       "slug": "vitamin-c",
+       "name": "Vitamin C",
+       "class": "vitamin",
+       "dailyShare": 0.27375
+      }
+     ],
+     "wording": "Vitamin C contributes to normal collagen formation for the normal function of gums. Vitamin C contributes to normal collagen formation for the normal function of teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 0.21285714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.21285714285714286
+      }
+     ],
+     "wording": "Iron has a role in the process of cell division.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cognitive-function",
+      "name": "Cognitive function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.21285714285714286,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 0.21285714285714286
+      }
+     ],
+     "wording": "Iron contributes to normal cognitive function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "mucous-membranes",
+      "name": "Mucous membranes",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.19225,
+     "compounds": [
+      {
+       "slug": "niacin",
+       "name": "Niacin (B3)",
+       "class": "vitamin",
+       "dailyShare": 0.19225
+      }
+     ],
+     "wording": "Niacin contributes to the maintenance of normal mucous membranes.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "homocysteine",
+      "name": "Homocysteine metabolism",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.15428571428571428,
+     "compounds": [
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Vitamin B6 contributes to normal homocysteine metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hormones",
+      "name": "Hormones",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.15428571428571428,
+     "compounds": [
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Vitamin B6 contributes to the regulation of hormonal activity.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.15428571428571428,
+     "compounds": [
+      {
+       "slug": "vitamin-b6",
+       "name": "Vitamin B6",
+       "class": "vitamin",
+       "dailyShare": 0.15428571428571428
+      }
+     ],
+     "wording": "Vitamin B6 contributes to normal cysteine synthesis. Vitamin B6 contributes to normal protein and glycogen metabolism.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.152,
+     "compounds": [
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.152
+      }
+     ],
+     "wording": "Vitamin K contributes to normal blood clotting.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
     }
    ],
    "cautions": [],
@@ -19193,6 +25050,716 @@
      }
     }
    ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "energy-metabolism",
+      "name": "Energy from food",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 9.9,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 9.9
+      },
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 3.9285714285714284
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.42714285714285716
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      }
+     ],
+     "wording": "Manganese contributes to normal energy-yielding metabolism.",
+     "dose": null,
+     "size": "large"
+    },
+    {
+     "effect": {
+      "slug": "oxidative-stress",
+      "name": "Protecting cells from oxidative stress",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 9.9,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 9.9
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      },
+      {
+       "slug": "vitamin-e",
+       "name": "Vitamin E",
+       "class": "vitamin",
+       "dailyShare": 0.36916666666666664
+      }
+     ],
+     "wording": "Manganese contributes to the protection of cells from oxidative stress.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "bones",
+      "name": "Bones",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 9.9,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 9.9
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.42714285714285716
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      },
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.17866666666666664
+      }
+     ],
+     "wording": "Manganese contributes to the maintenance of normal bones.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "connective-tissue",
+      "name": "Connective tissue and cartilage",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 9.9,
+     "compounds": [
+      {
+       "slug": "manganese",
+       "name": "Manganese",
+       "class": "mineral",
+       "dailyShare": 9.9
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      }
+     ],
+     "wording": "Manganese contributes to the normal formation of connective tissue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "immune-system",
+      "name": "Immune system",
+      "direction": "benefit",
+      "bodySystem": "immune"
+     },
+     "grade": "B",
+     "topShare": 3.9285714285714284,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 3.9285714285714284
+      },
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Iron contributes to the normal function of the immune system.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "cell-growth",
+      "name": "Cell division and growth",
+      "direction": "benefit",
+      "bodySystem": "cells"
+     },
+     "grade": "B",
+     "topShare": 3.9285714285714284,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 3.9285714285714284
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.42714285714285716
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      }
+     ],
+     "wording": "Iron has a role in the process of cell division.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "tiredness",
+      "name": "Less tiredness and fatigue",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 3.9285714285714284,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 3.9285714285714284
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      }
+     ],
+     "wording": "Iron contributes to the reduction of tiredness and fatigue.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "cognitive-function",
+      "name": "Cognitive function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 3.9285714285714284,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 3.9285714285714284
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Iron contributes to normal cognitive function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "red-blood-cells",
+      "name": "Red blood cells and oxygen",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 3.9285714285714284,
+     "compounds": [
+      {
+       "slug": "iron",
+       "name": "Iron",
+       "class": "mineral",
+       "dailyShare": 3.9285714285714284
+      }
+     ],
+     "wording": "Iron contributes to normal formation of red blood cells and haemoglobin. Iron contributes to normal oxygen transport in the body.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nervous-system",
+      "name": "Nervous system",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 1.3,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 1.04
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      }
+     ],
+     "wording": "Copper contributes to normal functioning of the nervous system.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "muscle-function",
+      "name": "Muscle function",
+      "direction": "benefit",
+      "bodySystem": "muscle"
+     },
+     "grade": "B",
+     "topShare": 1.04,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 1.04
+      },
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      }
+     ],
+     "wording": "Potassium contributes to normal muscle function.",
+     "dose": null,
+     "size": "wide"
+    },
+    {
+     "effect": {
+      "slug": "nutrient-use",
+      "name": "Absorbing and using other nutrients",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 1.3,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Copper contributes to normal iron transport in the body.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hair",
+      "name": "Hair",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.3,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Copper contributes to normal hair pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "skin",
+      "name": "Skin",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 1.3,
+     "compounds": [
+      {
+       "slug": "copper",
+       "name": "Copper",
+       "class": "mineral",
+       "dailyShare": 1.3
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Copper contributes to normal skin pigmentation.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "teeth-and-gums",
+      "name": "Teeth and gums",
+      "direction": "benefit",
+      "bodySystem": "bones"
+     },
+     "grade": "B",
+     "topShare": 0.5546666666666666,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "phosphorus",
+       "name": "Phosphorus",
+       "class": "mineral",
+       "dailyShare": 0.42714285714285716
+      },
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      }
+     ],
+     "wording": "Magnesium contributes to the maintenance of normal teeth.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-pressure",
+      "name": "Blood pressure",
+      "direction": "benefit",
+      "bodySystem": "heart"
+     },
+     "grade": "B",
+     "topShare": 1.04,
+     "compounds": [
+      {
+       "slug": "potassium",
+       "name": "Potassium",
+       "class": "mineral",
+       "dailyShare": 1.04
+      }
+     ],
+     "wording": "Potassium contributes to the maintenance of normal blood pressure.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "metabolism",
+      "name": "Metabolism",
+      "direction": "benefit",
+      "bodySystem": "energy"
+     },
+     "grade": "B",
+     "topShare": 0.5546666666666666,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      },
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Magnesium contributes to electrolyte balance. Magnesium contributes to normal protein synthesis.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "psychological-function",
+      "name": "Psychological function",
+      "direction": "benefit",
+      "bodySystem": "brain"
+     },
+     "grade": "B",
+     "topShare": 0.5546666666666666,
+     "compounds": [
+      {
+       "slug": "magnesium",
+       "name": "Magnesium",
+       "class": "mineral",
+       "dailyShare": 0.5546666666666666
+      }
+     ],
+     "wording": "Magnesium contributes to normal psychological function.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "reproduction",
+      "name": "Fertility and pregnancy",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.44999999999999996,
+     "compounds": [
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Zinc contributes to normal fertility and reproduction.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "hormones",
+      "name": "Hormones",
+      "direction": "benefit",
+      "bodySystem": "hormones"
+     },
+     "grade": "B",
+     "topShare": 0.44999999999999996,
+     "compounds": [
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Zinc contributes to the maintenance of normal testosterone levels in the blood.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "nails",
+      "name": "Nails",
+      "direction": "benefit",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": 0.44999999999999996,
+     "compounds": [
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Zinc contributes to the maintenance of normal nails.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "vision",
+      "name": "Vision",
+      "direction": "benefit",
+      "bodySystem": "eyes"
+     },
+     "grade": "B",
+     "topShare": 0.44999999999999996,
+     "compounds": [
+      {
+       "slug": "zinc",
+       "name": "Zinc",
+       "class": "mineral",
+       "dailyShare": 0.44999999999999996
+      }
+     ],
+     "wording": "Zinc contributes to the maintenance of normal vision.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "blood-clotting",
+      "name": "Blood clotting",
+      "direction": "benefit",
+      "bodySystem": "blood"
+     },
+     "grade": "B",
+     "topShare": 0.21,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      },
+      {
+       "slug": "vitamin-k1",
+       "name": "Vitamin K1",
+       "class": "vitamin",
+       "dailyShare": 0.17866666666666664
+      }
+     ],
+     "wording": "Calcium contributes to normal blood clotting.",
+     "dose": null,
+     "size": "small"
+    },
+    {
+     "effect": {
+      "slug": "digestion",
+      "name": "Digestive enzymes",
+      "direction": "benefit",
+      "bodySystem": "digestion"
+     },
+     "grade": "B",
+     "topShare": 0.21,
+     "compounds": [
+      {
+       "slug": "calcium",
+       "name": "Calcium",
+       "class": "mineral",
+       "dailyShare": 0.21
+      }
+     ],
+     "wording": "Calcium contributes to the normal function of digestive enzymes.",
+     "dose": null,
+     "size": "small"
+    }
+   ],
    "cautions": [],
    "sources": [
     {
@@ -19665,6 +26232,29 @@
       "studyType": "rct",
       "limitations": "Small (5 per group); men only; 42 days; only the 30 mg supplement group showed definite carotenodermia"
      }
+    }
+   ],
+   "tiles": [
+    {
+     "effect": {
+      "slug": "skin-color",
+      "name": "Skin color",
+      "direction": "neutral",
+      "bodySystem": "skin"
+     },
+     "grade": "B",
+     "topShare": null,
+     "compounds": [
+      {
+       "slug": "beta-carotene",
+       "name": "Beta-carotene",
+       "class": "carotenoid",
+       "dailyShare": null
+      }
+     ],
+     "wording": "Skin turned yellow-orange (carotenodermia) in the five men taking 30 mg of purified beta-carotene a day, once plasma carotenoids passed 4.0 mg/L, and stayed so for 14 to more than 42 days after they stopped. No other group showed definite carotenodermia, including 272 g of cooked carrots a day.",
+     "dose": "30 mg of purified beta-carotene a day; 12 mg a day and every food group fell short within 42 days",
+     "size": "wide"
     }
    ],
    "cautions": [],

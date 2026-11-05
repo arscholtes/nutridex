@@ -4,6 +4,7 @@ import type { Revealed } from "./encounters.ts";
 import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type Unit } from "epistasis";
 import { PANEL, PANEL_COMPOUNDS, type PanelGroup } from "../usda/nutrients.ts";
 import { sql } from "./client.ts";
+import { bentoTiles, type BentoTile } from "./effect-tiles.ts";
 import { loadFacts } from "./engine-input.ts";
 
 type Sql = typeof sql;
@@ -119,6 +120,8 @@ export type IngredientEntry = {
   prep: PrepClaim[];
   /** The effects of the compounds it carries, each with the evidence behind it. */
   effects: EffectClaim[];
+  /** The same effects as tiles, sized by how much of a daily amount is behind each. */
+  tiles: BentoTile[];
   cautions: CautionFlag[];
   sources: SourceRef[];
   bestGrade: Grade | null;
@@ -282,6 +285,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     pairsWellWith: [...new Set(profile.absorption.flatMap((f) => (f.status === "missed" && f.suggestion ? [f.suggestion] : [])))],
     prep,
     effects,
+    tiles: bentoTiles(effects, new Map(amounts.map((a) => [a.slug, { amount: a.amount === null ? null : Number(a.amount) }]))),
     cautions: profile.cautions,
     sources,
     bestGrade: best([...absorption.map((a) => a.flag.grade), ...effects.map((e) => e.grade), ...profile.cautions.flatMap((c) => (c.grade ? [c.grade] : []))]),

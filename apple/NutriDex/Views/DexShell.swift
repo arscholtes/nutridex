@@ -1,18 +1,136 @@
 import SwiftUI
 
-/// Previous and next entry either side of a D-pad, whose up arrow goes back to the list.
-struct DexDeck: View {
-    let pager: DexPager
+/// One entry after another under your thumb: swipe sideways to the next thing you have unlocked of its
+/// kind. Dex numbers stay as they are, with the gaps where the hidden ones sit.
+struct EntryPager: View {
     let kind: EntryKind
+    let slug: String
+    @Environment(\.dexVisibility) private var visibility
     @Environment(DexNavigator.self) private var nav
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    @State private var current: String?
 
-    private func route(_ step: DexStep) -> DexRoute { .entry(kind, step.slug) }
+    private var cards: [EntryCard] { visibility.entries(of: kind) }
+
+    private func neighbour(_ offset: Int) -> EntryCard? {
+        guard let at = cards.firstIndex(where: { $0.slug == current }), cards.indices.contains(at + offset) else { return nil }
+        return cards[at + offset]
+    }
+
+    private func go(_ offset: Int) {
+        guard let card = neighbour(offset) else { return }
+        withAnimation { current = card.slug }
+    }
+
+    var body: some View {
+        let cards = cards
+        let at = cards.firstIndex { $0.slug == current }
+        DexScreen { pages(cards) }
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                if Theme.isHandheld, let at {
+                    DexDeck(
+                        prev: at > 0 ? cards[at - 1] : nil,
+                        next: at < cards.count - 1 ? cards[at + 1] : nil,
+                        number: cards[at].number,
+                        onPrev: { go(-1) },
+                        onNext: { go(1) },
+                        onBack: { nav.backToList() }
+                    )
+                }
+            }
+            .overlay(alignment: .bottom) {
+                if !Theme.isHandheld, let at, cards.count > 1 {
+                    Text("\(at + 1) of \(cards.count)")
+                        .font(.dex(.footnote, weight: .bold))
+                        .monospacedDigit()
+                        .foregroundStyle(Theme.ink)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 8)
+                        // Glass takes on what scrolls beneath it, and a dark tile would swallow the dark words.
+                        .background(Theme.screen.opacity(0.75), in: Capsule())
+                        .dexFloating(in: Capsule())
+                        .padding(.bottom, 6)
+                        .allowsHitTesting(false)
+                        .accessibilityHidden(true)
+                }
+            }
+            .overlay(alignment: .top) {
+                if !Theme.isHandheld { statusFade }
+            }
+            .background { if !Theme.isHandheld { keyboardSteps } }
+            .toolbar {
+                if Theme.isHandheld, let at {
+                    ToolbarItem(placement: .principal) { Text(cards[at].number).font(.dexNumber(.headline)).foregroundStyle(.white) }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Lens(color: Dex.bundled.palette.swatch(for: cards[at].type).background, size: 24).padding(6)
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .sensoryFeedback(.selection, trigger: current)
+            .accessibilityAction(named: "Next entry") { go(1) }
+            .accessibilityAction(named: "Previous entry") { go(-1) }
+            .onAppear { current = slug }
+            .onChange(of: slug) { _, now in current = now }
+            .onChange(of: current) { _, now in
+                // The iPad's list follows along; a phone's back button still leads to where you came from.
+                if sizeClass == .regular, nav.path.isEmpty, let now { nav.selection = .entry(kind, now) }
+            }
+    }
+
+    private func pages(_ cards: [EntryCard]) -> some View {
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 0) {
+                ForEach(cards) { card in
+                    SwipingPage { EntryPage(kind: kind, slug: card.slug) }
+                        .containerRelativeFrame(.horizontal)
+                        .id(card.slug)
+                }
+            }
+            .scrollTargetLayout()
+        }
+        .scrollTargetBehavior(.paging)
+        .scrollPosition(id: $current)
+        .scrollIndicators(.hidden)
+    }
+
+    /// The system's scroll edge effect cannot see a vertical scroll inside this sideways one.
+    private var statusFade: some View {
+        LinearGradient(
+            stops: [.init(color: Theme.screen, location: 0), .init(color: Theme.screen, location: 0.5), .init(color: Theme.screen.opacity(0), location: 1)],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        .frame(height: 56)
+        .ignoresSafeArea(edges: .top)
+        .allowsHitTesting(false)
+    }
+
+    /// Command and an arrow step along, for an iPad with a keyboard.
+    private var keyboardSteps: some View {
+        Group {
+            Button("Previous entry") { go(-1) }.keyboardShortcut(.leftArrow, modifiers: .command)
+            Button("Next entry") { go(1) }.keyboardShortcut(.rightArrow, modifiers: .command)
+        }
+        .opacity(0)
+        .accessibilityHidden(true)
+    }
+}
+
+/// The Yellow version's previous and next entry either side of a D-pad, whose up arrow goes back to the list.
+struct DexDeck: View {
+    let prev: EntryCard?
+    let next: EntryCard?
+    let number: String
+    let onPrev: () -> Void
+    let onNext: () -> Void
+    let onBack: () -> Void
 
     var body: some View {
         HStack(spacing: 12) {
-            stepLabel(pager.prev, label: "Previous", end: "First entry", alignment: .trailing)
+            stepLabel(prev, label: "Previous", end: "First entry", alignment: .trailing, action: onPrev)
             pad
-            stepLabel(pager.next, label: "Next", end: "Last entry", alignment: .leading)
+            stepLabel(next, label: "Next", end: "Last entry", alignment: .leading, action: onNext)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
@@ -24,10 +142,10 @@ struct DexDeck: View {
         }
     }
 
-    private func stepLabel(_ step: DexStep?, label: String, end: String, alignment: HorizontalAlignment) -> some View {
+    private func stepLabel(_ step: EntryCard?, label: String, end: String, alignment: HorizontalAlignment, action: @escaping () -> Void) -> some View {
         Group {
             if let step {
-                Button { nav.step(to: route(step)) } label: {
+                Button(action: action) {
                     VStack(alignment: alignment, spacing: 0) {
                         Text(step.number).font(.dexNumber(.caption))
                         Text(step.name).font(.dex(.subheadline, weight: .bold)).lineLimit(1)
@@ -46,17 +164,13 @@ struct DexDeck: View {
         Grid(horizontalSpacing: 0, verticalSpacing: 0) {
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-                padKey("arrowtriangle.up.fill", enabled: true, shortcut: .upArrow, label: "Back to the list") { nav.backToList() }
+                padKey("arrowtriangle.up.fill", enabled: true, shortcut: .upArrow, label: "Back to the list", action: onBack)
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
             }
             GridRow {
-                padKey("arrowtriangle.left.fill", enabled: pager.prev != nil, shortcut: .leftArrow, label: "Previous") {
-                    if let prev = pager.prev { nav.step(to: route(prev)) }
-                }
+                padKey("arrowtriangle.left.fill", enabled: prev != nil, shortcut: .leftArrow, label: "Previous", action: onPrev)
                 Theme.ink.frame(width: 24, height: 24)
-                padKey("arrowtriangle.right.fill", enabled: pager.next != nil, shortcut: .rightArrow, label: "Next") {
-                    if let next = pager.next { nav.step(to: route(next)) }
-                }
+                padKey("arrowtriangle.right.fill", enabled: next != nil, shortcut: .rightArrow, label: "Next", action: onNext)
             }
             GridRow {
                 Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
@@ -70,7 +184,6 @@ struct DexDeck: View {
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 4))
-        .sensoryFeedback(.selection, trigger: pager.number)
     }
 
     private func padKey(_ symbol: String, enabled: Bool, shortcut: KeyEquivalent, label: String, action: @escaping () -> Void) -> some View {
@@ -89,57 +202,68 @@ struct DexDeck: View {
     }
 }
 
-/// What every entry screen shares: the bezel, the deck and a bar in the shell's colour.
-struct EntryChrome<Content: View>: View {
-    let kind: EntryKind
-    let type: String?
-    let pager: DexPager
+/// A page that tells what it holds how far it has been swiped from rest.
+struct SwipingPage<Content: View>: View {
     @ViewBuilder let content: Content
-    @Environment(\.dexVisibility) private var visibility
+    @State private var phase: Double = 0
 
     var body: some View {
-        ScreenBezel { content }
-            .background(Theme.shellBody.ignoresSafeArea())
-            .safeAreaInset(edge: .bottom, spacing: 0) { DexDeck(pager: visibility.pager(pager, kind: kind), kind: kind) }
-            .navigationTitle(pager.number)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Theme.shell, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Lens(color: Dex.bundled.palette.swatch(for: type).background, size: 24)
-                        .padding(6)
-                }
-            }
+        content
+            .environment(\.swipePhase, phase)
+            .onGeometryChange(for: Double.self) { proxy in
+                let width = proxy.size.width
+                return width > 0 ? max(-1, min(1, proxy.frame(in: .scrollView(axis: .horizontal)).minX / width)) : 0
+            } action: { phase = $0 }
     }
 }
 
-/// An entry's viewer and sections: side by side with room to spare, one column on a phone.
+/// One entry in the pager.
+struct EntryPage: View {
+    let kind: EntryKind
+    let slug: String
+
+    var body: some View {
+        switch kind {
+        case .ingredient:
+            if let entry = Dex.bundled.ingredients[slug] { IngredientEntryScreen(entry: entry) } else { MissingEntry() }
+        case .compound:
+            if let entry = Dex.bundled.compounds[slug] { CompoundEntryScreen(entry: entry) } else { MissingEntry() }
+        case .effect:
+            if let entry = Dex.bundled.effects[slug] { EffectEntryScreen(entry: entry) } else { MissingEntry() }
+        }
+    }
+}
+
+/// An entry's viewer and sections: side by side with room to spare, one column otherwise.
 struct EntryLayout<Viewer: View, Sections: View>: View {
-    @Environment(\.horizontalSizeClass) private var sizeClass
     @ViewBuilder let viewer: Viewer
     @ViewBuilder let sections: Sections
 
+    private static var sideBySideFrom: CGFloat { 720 }
+
     var body: some View {
-        if sizeClass == .regular {
-            HStack(alignment: .top, spacing: 20) {
-                ScrollView { viewer.padding(.vertical, 16) }
-                    .frame(width: 280)
-                    .scrollBounceBehavior(.basedOnSize)
+        GeometryReader { space in
+            if space.size.width >= Self.sideBySideFrom {
+                HStack(alignment: .top, spacing: 24) {
+                    ScrollView { viewer.padding(.vertical, 16) }
+                        .frame(width: 320)
+                        .scrollBounceBehavior(.basedOnSize)
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 24) { sections }
+                            .padding(.vertical, 16)
+                            .padding(.bottom, 44)
+                    }
+                }
+                .padding(.horizontal, 20)
+            } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 22) { sections }
-                        .padding(.vertical, 16)
+                    VStack(alignment: .leading, spacing: 24) {
+                        viewer
+                        sections
+                    }
+                    .padding(16)
+                    .padding(.bottom, 44)
                 }
-            }
-            .padding(.horizontal, 16)
-        } else {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 22) {
-                    viewer
-                    sections
-                }
-                .padding(12)
             }
         }
     }

@@ -28,6 +28,8 @@ struct MacRouteView: View {
         switch route {
         case .sources:
             SourcesList().background(Theme.screen)
+        case .skins:
+            SkinsList().background(Theme.screen)
         case let .entry(kind, slug):
             if let card = Dex.bundled.cards.first(where: { $0.kind == kind && $0.slug == slug }) {
                 MacEntryView(card: card)
@@ -101,7 +103,7 @@ struct MacEntryView: View {
         if card.kind == .effect {
             EffectTile(name: card.name, type: card.type, revealed: revealed)
         } else {
-            CreatureArt(kind: card.kind, slug: card.slug, revealed: revealed)
+            CreatureArt(kind: card.kind, slug: card.slug, revealed: revealed, cutout: revealed)
         }
     }
 

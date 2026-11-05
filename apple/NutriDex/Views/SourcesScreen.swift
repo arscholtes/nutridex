@@ -1,14 +1,18 @@
 import SwiftUI
 
-/// The sources, in the device's bezel.
+/// The sources.
 struct SourcesScreen: View {
     var body: some View {
-        ScreenBezel { SourcesList() }
-            .background(Theme.shellBody.ignoresSafeArea())
+        DexScreen { SourcesList() }
             .navigationTitle("Sources")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Theme.shell, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+    }
+}
+
+/// The skins.
+struct SkinsScreen: View {
+    var body: some View {
+        DexScreen { SkinsList() }
+            .navigationBarTitleDisplayMode(.inline)
     }
 }

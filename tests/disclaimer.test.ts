@@ -50,6 +50,11 @@ describe("the disclaimer covers every topic it has to", () => {
 describe("what the disclaimer says is stored", () => {
   const stored = (sections: { heading: string; body: string }[]) => sections.find((s) => s.heading === "What is stored about you")!.body;
 
+  test("says the skin you choose is stored too, on the web and in the apps", () => {
+    expect(stored(DISCLAIMER_SECTIONS)).toMatch(/skin/);
+    expect(stored(NATIVE_DISCLAIMER_SECTIONS)).toMatch(/skin/);
+  });
+
   test("names the foods you mark and where they go, on every platform", () => {
     for (const sections of [DISCLAIMER_SECTIONS, NATIVE_DISCLAIMER_SECTIONS]) {
       expect(stored(sections)).toContain("foods you mark");

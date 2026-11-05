@@ -11,68 +11,90 @@ struct UnlockProgressBar: View {
                 .font(.dex(.subheadline, weight: .bold))
                 .monospacedDigit()
                 .foregroundStyle(Theme.ink)
-            Meter(share: progress.total == 0 ? 0 : Double(progress.seen) / Double(progress.total), color: Theme.shell)
+            Meter(share: progress.total == 0 ? 0 : Double(progress.seen) / Double(progress.total), style: Theme.progressFill)
         }
     }
 }
 
-/// The way into the game: you say what you had, and only foods matching it appear.
+/// The way into the game, at the bottom of the screen under your thumb: you say what you had, and only foods matching it appear.
 struct HadComposer: View {
     @Environment(EncounterStore.self) private var store
     @State private var words = ""
+    @FocusState private var typing: Bool
+
+    private var trimmed: String { words.trimmingCharacters(in: .whitespacesAndNewlines) }
 
     private var candidates: [EntryCard] {
-        let trimmed = words.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmed.count >= 3 else { return [] }
         return DexSearch.filter(Dex.bundled.cards, query: trimmed, kind: .ingredient, type: nil).filter { !store.isRevealed($0) }
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            TextField("What did you have?", text: $words)
-                .font(.dex(.body))
-                .foregroundStyle(Theme.ink)
-                .autocorrectionDisabled()
-                #if os(iOS)
-                .textInputAutocapitalization(.never)
-                #endif
-                .padding(.horizontal, 10)
-                .padding(.vertical, 8)
-                .background(.white, in: RoundedRectangle(cornerRadius: 9))
-                .overlay(RoundedRectangle(cornerRadius: 9).stroke(Theme.ink, lineWidth: 2))
-            if words.trimmingCharacters(in: .whitespacesAndNewlines).count >= 3, candidates.isEmpty {
-                Note(text: "Nothing new matches that yet.")
+        VStack(spacing: 8) {
+            if trimmed.count >= 3 {
+                results
             }
-            ForEach(candidates) { card in
-                HStack {
-                    Text(card.name).font(.dex(.subheadline, weight: .bold)).foregroundStyle(Theme.ink)
-                    Spacer()
-                    Button {
-                        store.encounter(food: card.slug)
-                        words = ""
-                    } label: {
-                        Text("I've had this")
-                            .font(.dex(.subheadline, weight: .heavy))
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
-                            .background(Theme.shell, in: RoundedRectangle(cornerRadius: 8))
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.ink, lineWidth: 2))
+            HStack(spacing: 8) {
+                Image(systemName: "fork.knife").foregroundStyle(Theme.accent).accessibilityHidden(true)
+                TextField("What did you have?", text: $words)
+                    .focused($typing)
+                    .font(.dex(.body))
+                    .foregroundStyle(Theme.ink)
+                    .autocorrectionDisabled()
+                    #if os(iOS)
+                    .textInputAutocapitalization(.never)
+                    #endif
+                if !words.isEmpty {
+                    Button { words = "" } label: {
+                        Image(systemName: "xmark.circle.fill").foregroundStyle(Theme.inkSoft).frame(width: 32, height: 44)
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("I've had \(card.name)")
+                    .accessibilityLabel("Clear")
                 }
             }
+            .padding(.horizontal, 16)
+            .frame(minHeight: 52)
+            .background {
+                // The field is one line tall; the whole pill has to answer a thumb.
+                Capsule().fill(.clear).contentShape(Capsule()).onTapGesture { typing = true }
+            }
+            .dexFloating(in: Capsule())
         }
-        .padding(10)
-        .background(Theme.card, in: RoundedRectangle(cornerRadius: 12))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Theme.ink, lineWidth: 2))
+        .padding(.horizontal, 12)
+        .padding(.bottom, 4)
+    }
+
+    private var results: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 6) {
+                if candidates.isEmpty {
+                    Note(text: "Nothing new matches that yet.")
+                }
+                ForEach(candidates) { card in
+                    HStack {
+                        Text(card.name).font(.dex(.subheadline, weight: .bold)).foregroundStyle(Theme.ink)
+                        Spacer()
+                        Button("I've had this") {
+                            store.encounter(food: card.slug)
+                            words = ""
+                        }
+                        .buttonStyle(DexPrimaryButton())
+                        .accessibilityLabel("I've had \(card.name)")
+                    }
+                }
+            }
+            .padding(12)
+        }
+        .frame(maxHeight: 240)
+        .fixedSize(horizontal: false, vertical: true)
+        .dexFloating(in: RoundedRectangle(cornerRadius: 24))
     }
 }
 
 /// New encounters waiting on this device, with the button that sends them home.
 struct UploadBar: View {
     @Environment(DexGame.self) private var game
+
+    private var barShape: RoundedRectangle { RoundedRectangle(cornerRadius: Theme.skin.radius.control == nil ? 26 : Theme.skin.radius.panel) }
 
     var body: some View {
         let count = game.store.pending.count
@@ -83,25 +105,25 @@ struct UploadBar: View {
                         .font(.dex(.subheadline, weight: .bold))
                         .foregroundStyle(Theme.ink)
                     Spacer(minLength: 8)
-                    Button { Task { await game.upload() } } label: {
-                        Text(game.isUploading ? "Uploading" : "Upload")
-                            .font(.dex(.subheadline, weight: .heavy))
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Theme.shell, in: RoundedRectangle(cornerRadius: 8))
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Theme.ink, lineWidth: 2))
-                    }
-                    .buttonStyle(.plain)
-                    .disabled(game.isUploading)
+                    Button(game.isUploading ? "Uploading" : "Upload") { Task { await game.upload() } }
+                        .buttonStyle(DexPrimaryButton())
+                        .disabled(game.isUploading)
                 }
                 if let problem = game.uploadError {
-                    Text(problem).font(.dex(.footnote, weight: .bold)).foregroundStyle(Color(hex: "#7F1D1D")).fixedSize(horizontal: false, vertical: true)
+                    Text(problem).font(.dex(.footnote, weight: .bold)).foregroundStyle(Theme.danger).fixedSize(horizontal: false, vertical: true)
                 }
             }
-            .padding(10)
-            .background(Color(hex: "#FFD23F"), in: RoundedRectangle(cornerRadius: 10))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Theme.ink, lineWidth: 2))
+            .padding(.leading, 16)
+            .padding([.trailing, .vertical], 8)
+            .background {
+                if Theme.skin.stage == .foil {
+                    HoloFoil().opacity(0.55).overlay(.white.opacity(0.35))
+                } else {
+                    Theme.notice
+                }
+            }
+            .clipShape(barShape)
+            .dexOutline(barShape)
         }
     }
 }
@@ -121,16 +143,23 @@ struct UnlockOverlay: View {
 
     private var assetName: String { EntryKind.assetName(card.kind, card.slug) }
 
+    /// - Returns: what an unlock brought with it, in plain English
+    static func summary(compounds: Int, effects: Int) -> String {
+        let counted = { (n: Int, word: String) in "\(n) \(word)\(n == 1 ? "" : "s")" }
+        return "It reveals \(counted(compounds, "compound")) and \(counted(effects, "effect"))."
+    }
+
     var body: some View {
         ZStack {
-            Color.black.opacity(0.82).ignoresSafeArea()
+            (Theme.isHandheld ? Color.black.opacity(0.82) : Theme.tile.opacity(0.88)).ignoresSafeArea()
             VStack(spacing: 0) {
                 stage
                 details
             }
             .frame(maxWidth: 400)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
-            .overlay(RoundedRectangle(cornerRadius: 24).stroke(Theme.ink, lineWidth: 3))
+            .clipShape(RoundedRectangle(cornerRadius: 30))
+            .overlay(RoundedRectangle(cornerRadius: 30).strokeBorder(.white.opacity(0.85), lineWidth: 2.5))
+            .shadow(color: Theme.accent.opacity(0.5), radius: 30)
             .padding(20)
         }
         .task(id: card.id) { await play() }
@@ -142,13 +171,17 @@ struct UnlockOverlay: View {
 
     private var stage: some View {
         ZStack {
-            Color(hex: "#1F86C9")
+            if Theme.skin.stage == .foil {
+                HoloFoil()
+            } else {
+                Theme.hidden
+            }
             Rays()
                 .scaleEffect(1.7)
                 .rotationEffect(.degrees(spin ? 360 : 0))
                 .animation(reduceMotion ? nil : .linear(duration: 9).repeatForever(autoreverses: false), value: spin)
             if revealed {
-                Image(assetName).resizable().scaledToFit().padding(30).transition(.scale(scale: 0.7).combined(with: .opacity))
+                CreatureArt(kind: card.kind, slug: card.slug, cutout: true).padding(30).shadow(color: .black.opacity(0.3), radius: 14, y: 12).transition(.scale(scale: 0.7).combined(with: .opacity))
             } else {
                 Image("\(assetName)-silhouette").resizable().renderingMode(.template).scaledToFit().foregroundStyle(.black).padding(30).transition(.opacity)
             }
@@ -164,29 +197,21 @@ struct UnlockOverlay: View {
             Text("Unlocked \(card.name)").font(.dex(.title2, weight: .heavy)).multilineTextAlignment(.center)
             Text(card.number).font(.dexNumber(.subheadline))
             if let reveal = Dex.bundled.reveals[card.slug] {
-                Text("It reveals \(reveal.compounds.count) compounds and \(reveal.effects.count) effects.").font(.dex(.footnote)).multilineTextAlignment(.center)
+                Text(Self.summary(compounds: reveal.compounds.count, effects: reveal.effects.count)).font(.dex(.footnote)).multilineTextAlignment(.center)
             }
-            Button(action: onNext) {
-                Text("Next")
-                    .font(.dex(.headline, weight: .heavy))
-                    .foregroundStyle(Theme.ink)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 11)
-                    .background(.white, in: RoundedRectangle(cornerRadius: 10))
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Theme.ink, lineWidth: 2))
-            }
-            .buttonStyle(.plain)
-            .keyboardShortcut(.defaultAction)
-            .padding(.top, 6)
+            Button("Next", action: onNext)
+                .buttonStyle(DexPrimaryButton(fullWidth: true, onShell: true))
+                .keyboardShortcut(.defaultAction)
+                .padding(.top, 6)
             if total > 1 {
                 Text("\(position) of \(total)").font(.dex(.caption))
             }
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(Theme.isHandheld ? .white : Theme.ink)
         .opacity(revealed ? 1 : 0)
-        .padding(16)
+        .padding(18)
         .frame(maxWidth: .infinity)
-        .background(Theme.shell)
+        .background(Theme.isHandheld ? Theme.shell : Theme.card)
     }
 
     private func play() async {
@@ -202,5 +227,145 @@ struct UnlockOverlay: View {
         try? await Task.sleep(for: .seconds(0.12))
         withAnimation(.spring(duration: 0.5, bounce: 0.4)) { revealed = true }
         withAnimation(.easeOut(duration: 0.45)) { flash = false }
+    }
+}
+
+/// Choose how the Dex looks. A choice takes effect at once and follows you to your other devices.
+struct SkinsList: View {
+    @Environment(DexGame.self) private var game
+    @State private var position: String?
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                Text("Skins").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink).accessibilityAddTraits(.isHeader)
+                Note(text: "Your choice follows you to every device using your passcode.")
+                if let problem = game.skinProblem {
+                    Text("It changed here, but did not reach your other devices yet. \(problem)")
+                        .font(.dex(.footnote, weight: .bold))
+                        .foregroundStyle(Theme.danger)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 280), spacing: 14, alignment: .top)], spacing: 14) {
+                    ForEach(Dex.bundled.skins) { skin in
+                        SkinChoice(skin: skin, worn: game.skins.skin == skin) {
+                            Task { await game.choose(skin: skin) }
+                        }
+                    }
+                }
+                .scrollTargetLayout()
+            }
+            .frame(maxWidth: 920, alignment: .leading)
+            .padding(16)
+            .frame(maxWidth: .infinity)
+        }
+        // Choosing a skin redraws the whole app, so this finds its way back to the one just chosen.
+        .scrollPosition(id: $position, anchor: .center)
+        .onAppear { position = game.skins.skin.id }
+    }
+}
+
+/// One skin, showing the look it gives.
+struct SkinChoice: View {
+    let skin: DexSkin
+    let worn: Bool
+    let action: () -> Void
+
+    private var shape: RoundedRectangle { RoundedRectangle(cornerRadius: min(24, Theme.skin.radius.card)) }
+
+    var body: some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: 0) {
+                SkinPreview(skin: skin).frame(height: 128).frame(maxWidth: .infinity).clipped()
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack {
+                        Text(skin.name).font(.dex(.headline, weight: .bold))
+                        if worn {
+                            Spacer()
+                            Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent).accessibilityHidden(true)
+                        }
+                    }
+                    Text(skin.about).font(.dex(.footnote)).foregroundStyle(Theme.inkSoft).fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(14)
+            }
+            .foregroundStyle(Theme.ink)
+            .background(Theme.card, in: shape)
+            .clipShape(shape)
+            .overlay(shape.strokeBorder(worn ? Theme.accent : Theme.line, lineWidth: worn ? 3 : 1))
+            .contentShape(shape)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(skin.name). \(skin.about)")
+        .accessibilityAddTraits(worn ? .isSelected : [])
+    }
+
+}
+
+/// A small page in a skin's own colours and type, with something you have already unlocked standing on its stage.
+struct SkinPreview: View {
+    let skin: DexSkin
+    @Environment(EncounterStore.self) private var store
+
+    private var unlocked: EntryCard? { Dex.bundled.cards.first { $0.kind == .ingredient && store.isRevealed($0) } }
+
+    var body: some View {
+        if skin.shell == .handheld {
+            handheld
+        } else {
+            HStack(spacing: 12) {
+                stage
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("NutriDex")
+                        .font(.system(.title3, design: skin.font.design.font, weight: skin.font.heading.font))
+                        .foregroundStyle(skin.colors.ink.color)
+                    Text("Upload")
+                        .font(.system(.footnote, design: skin.font.design.font, weight: skin.font.strong.font))
+                        .foregroundStyle(skin.colors.onNight.color)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 4)
+                        .background(skin.colors.night.color, in: skin.radius.control.map { AnyShape(RoundedRectangle(cornerRadius: $0)) } ?? AnyShape(Capsule()))
+                }
+                Spacer(minLength: 0)
+            }
+            .padding(12)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(DexBackdrop(skin: skin))
+        }
+    }
+
+    private var stage: some View {
+        let shape = RoundedRectangle(cornerRadius: min(skin.radius.card, 18))
+        return ZStack {
+            StageBacking(skin: skin, type: unlocked?.type)
+            if let unlocked {
+                Image("\(EntryKind.assetName(unlocked.kind, unlocked.slug))-silhouette")
+                    .renderingMode(.original)
+                    .resizable()
+                    .scaledToFit()
+                    .dexCreatureLook(skin)
+                    .padding(10)
+            }
+        }
+        .frame(width: 104, height: 104)
+        .clipShape(shape)
+        .overlay {
+            if skin.outline.width > 0 {
+                shape.strokeBorder(skin.outlineColor, style: StrokeStyle(lineWidth: skin.outline.width, dash: skin.outline.dashed ? [4, 3] : []))
+            }
+        }
+    }
+
+    private var handheld: some View {
+        ZStack(alignment: .topLeading) {
+            Theme.shellBody
+            Lens(color: Color(hex: "#38B6F2"), size: 40).padding(14)
+            RoundedRectangle(cornerRadius: 8)
+                .fill(skin.colors.screen.color)
+                .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(Theme.bezel, lineWidth: 5))
+                .padding(.top, 66)
+                .padding(.horizontal, 12)
+                .padding(.bottom, 10)
+        }
     }
 }

@@ -24,18 +24,9 @@ struct DexVisibility {
         return shows(kind, slug)
     }
 
-    /// An entry's neighbours among what is shown. Dex numbers stay as they are.
-    func pager(_ pager: DexPager, kind: EntryKind) -> DexPager {
-        guard !isEverything else { return pager }
-        let cards = Dex.bundled.cards.filter { $0.kind == kind }
-        guard let at = cards.firstIndex(where: { $0.number == pager.number }) else { return pager }
-        let step = { (card: EntryCard?) in card.map { DexStep(slug: $0.slug, name: $0.name, number: $0.number) } }
-        return DexPager(
-            number: pager.number,
-            total: cards.filter { shows(kind, $0.slug) }.count,
-            prev: step(cards[..<at].last { shows(kind, $0.slug) }),
-            next: step(cards[(at + 1)...].first { shows(kind, $0.slug) })
-        )
+    /// What can be swiped through of one kind, in dex order.
+    func entries(of kind: EntryKind) -> [EntryCard] {
+        Dex.bundled.cards.filter { $0.kind == kind && shows(kind, $0.slug) }
     }
 
     /// A card's stats, without one that would name a hidden food.

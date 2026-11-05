@@ -54,13 +54,14 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
     body:
       "The foods you mark as had, and when: kept in a cookie on this device until you upload them, then in " +
       "NutriDex's database. Another cookie remembers which version of this notice you accepted, so it only " +
-      "appears again after an update. Nothing else.",
+      "appears again after an update. The skin you choose: kept in a cookie on this device and, once you have " +
+      "uploaded with your passcode, in NutriDex's database so it can follow you to your other devices. Nothing else.",
   },
 ];
 
 /** The same notice for the native apps, which keep their one remembered thing in a setting. */
 export const NATIVE_DISCLAIMER_SECTIONS: { heading: string; body: string }[] = DISCLAIMER_SECTIONS.map((s) =>
   s.heading === "What is stored about you"
-    ? { ...s, body: "The foods you mark as had, and when: kept on this device until you upload them, then in NutriDex's database. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. Nothing else." }
+    ? { ...s, body: "The foods you mark as had, and when: kept on this device until you upload them, then in NutriDex's database. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. The skin you choose: kept on this device and in NutriDex's database, so it can follow you to your other devices. Nothing else." }
     : s,
 );
