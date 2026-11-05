@@ -26,6 +26,11 @@ Read it with the Claude Docs tools, never a web fetch.
 - The disclaimer gate (`lib/disclaimer/`, `app/disclaimer-gate.tsx`) shows until this device has
   accepted the running version from `package.json`. Bump the version for every user-visible release;
   that is what brings the disclaimer back. Any change to its text ships with a bump.
+- `CHANGELOG.md` gets a line under `## Unreleased` with every change someone can see, in words for the people using
+  the app. A version bump renames that section to `## <version> - <date>`; `tests/changelog.test.ts` fails if the
+  running version has no entry.
+- `docs/DEVELOPMENT.md` holds how to run and change the code. `README.md` is the pitch: when a number in its
+  "Where it stands" table changes, recount it from the database and update the date.
 
 ## Every platform
 
