@@ -1,6 +1,6 @@
 import Foundation
 
-// What the app shows, decoded from dex.json. `npm run export:native` writes that file from the same
+// What the app shows, read from dex.sqlite. `npm run export:native` writes that file from the same
 // functions the web Dex reads through, so this layer decodes judgments and never makes them.
 
 /// A nutrient behind a tile. Its daily share is nil where no claim sets a bar.
@@ -78,6 +78,10 @@ struct EntryCard: Decodable, Identifiable, Hashable {
     let stats: [String]
     /// A line about the entry for someone who has not encountered it.
     let description: String
+    /// The catalog name of its creature, shared by every food wearing the same drawing; an effect has none.
+    let art: String?
+    /// The ids of the sources behind its entry.
+    let sources: [String]
 
     var id: String { "\(kind.rawValue):\(slug)" }
     var route: DexRoute { .entry(kind, slug) }
@@ -85,9 +89,9 @@ struct EntryCard: Decodable, Identifiable, Hashable {
 }
 
 extension EntryKind {
-    /// - Returns: the catalog name of an entry's creature, matching the export script
+    /// - Returns: the catalog name of an entry's creature, as the export named it
     static func assetName(_ kind: EntryKind, _ slug: String) -> String {
-        "\(kind == .ingredient ? "food" : kind.rawValue)-\(slug)"
+        Dex.bundled.art(kind, slug)
     }
 }
 
@@ -325,29 +329,130 @@ struct Reveal: Decodable, Hashable {
     let effects: [String]
 }
 
-struct Dex: Decodable {
+/// A search the web Dex ran and its results in order, so a test can hold the app's search to it.
+struct SearchCheck: Decodable, Hashable {
+    let query: String
+    let kind: EntryKind?
+    let results: [String]
+}
+
+/// A food's row in the Mac's comparison table.
+struct CompareFood: Decodable, Hashable, Identifiable {
+    let slug: String
+    let name: String
+    let number: String
+    let panel: [PanelRow]
+
+    var id: String { slug }
+}
+
+/// One kind of entry, read from the bundled file the first time it is shown and kept for a while after.
+final class EntryShelf<Entry: Decodable> {
+    private final class Kept {
+        let entry: Entry
+        init(_ entry: Entry) { self.entry = entry }
+    }
+
+    private let file: DexFile
+    private let kind: EntryKind
+    private let kept = NSCache<NSString, Kept>()
+    /// Every entry of this kind, in dex order.
+    let slugs: [String]
+
+    init(file: DexFile, kind: EntryKind, slugs: [String]) {
+        self.file = file
+        self.kind = kind
+        self.slugs = slugs
+        kept.countLimit = 300
+    }
+
+    /// - Returns: the entry, or nil when the Dex has none by that slug
+    subscript(slug: String) -> Entry? {
+        if let found = kept.object(forKey: slug as NSString) { return found.entry }
+        do {
+            guard let json = try file.entry(kind, slug) else { return nil }
+            let entry = try JSONDecoder().decode(Entry.self, from: json)
+            kept.setObject(Kept(entry), forKey: slug as NSString)
+            return entry
+        } catch {
+            fatalError("the \(kind.rawValue) \(slug) in dex.sqlite does not match the app's model: \(error)")
+        }
+    }
+}
+
+final class Dex {
+    private struct Head: Decodable {
+        let version: String
+        let disclaimer: Disclaimer
+        let palette: Palette
+        let skins: [DexSkin]
+        let searchChecks: [SearchCheck]
+    }
+
     let version: String
     let disclaimer: Disclaimer
     let palette: Palette
     /// The looks on offer, the one a new device starts on first.
     let skins: [DexSkin]
+    /// Searches the web Dex ran, for the tests that hold the app's search to the web's.
+    let searchChecks: [SearchCheck]
     let cards: [EntryCard]
     let reveals: [String: Reveal]
-    let ingredients: [String: IngredientEntry]
-    let compounds: [String: CompoundEntry]
-    let effects: [String: EffectEntry]
     let sources: [SourceUse]
+    let ingredients: EntryShelf<IngredientEntry>
+    let compounds: EntryShelf<CompoundEntry>
+    let effects: EntryShelf<EffectEntry>
+    private let file: DexFile
+    private let artNames: [String: String]
+
+    /// - Parameter file: the bundled data file
+    init(file: DexFile) throws {
+        let decoder = JSONDecoder()
+        let head = try decoder.decode(Head.self, from: file.meta("head"))
+        version = head.version
+        disclaimer = head.disclaimer
+        palette = head.palette
+        skins = head.skins
+        searchChecks = head.searchChecks
+        let cards = try decoder.decode([EntryCard].self, from: file.meta("cards"))
+        self.cards = cards
+        reveals = try decoder.decode([String: Reveal].self, from: file.meta("reveals"))
+        sources = try decoder.decode([SourceUse].self, from: file.meta("sources"))
+        let slugs = { (kind: EntryKind) in cards.filter { $0.kind == kind }.map(\.slug) }
+        ingredients = EntryShelf(file: file, kind: .ingredient, slugs: slugs(.ingredient))
+        compounds = EntryShelf(file: file, kind: .compound, slugs: slugs(.compound))
+        effects = EntryShelf(file: file, kind: .effect, slugs: slugs(.effect))
+        artNames = Dictionary(uniqueKeysWithValues: cards.compactMap { card in card.art.map { (card.id, $0) } })
+        self.file = file
+    }
+
+    /// Every food against every nutrient, read the first time the Mac's table opens.
+    private(set) lazy var compare: [CompareFood] = {
+        do {
+            return try JSONDecoder().decode([CompareFood].self, from: file.meta("compare"))
+        } catch {
+            fatalError("the comparison table in dex.sqlite does not match the app's model: \(error)")
+        }
+    }()
+
+    /// - Returns: the catalog name of an entry's creature
+    func art(_ kind: EntryKind, _ slug: String) -> String {
+        guard let name = artNames["\(kind.rawValue):\(slug)"] else {
+            fatalError("the \(kind.rawValue) \(slug) has no creature in dex.sqlite: an effect has none, and every food and compound should")
+        }
+        return name
+    }
 
     /// The data the app ships with. It is written at build time and checked by tests, so a file that
     /// cannot load is a broken build and stops loudly.
     static let bundled: Dex = {
-        guard let url = Bundle.main.url(forResource: "dex", withExtension: "json") else {
-            fatalError("dex.json is missing from the app: run npm run export:native")
+        guard let url = Bundle.main.url(forResource: "dex", withExtension: "sqlite") else {
+            fatalError("dex.sqlite is missing from the app: run npm run export:native")
         }
         do {
-            return try JSONDecoder().decode(Dex.self, from: Data(contentsOf: url))
+            return try Dex(file: DexFile(url: url))
         } catch {
-            fatalError("dex.json does not match the app's model: \(error)")
+            fatalError("dex.sqlite does not match the app's model: \(error)")
         }
     }()
 }

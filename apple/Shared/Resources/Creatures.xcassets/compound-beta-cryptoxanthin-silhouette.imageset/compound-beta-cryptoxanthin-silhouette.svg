@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+<title id="t">Beta-cryptoxanthin</title>
+<g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="128" cy="136" rx="60" ry="78" fill="#FF8A2A"/><path d="M128 34 L128 58"/><circle cx="128" cy="34" r="13" fill="#FFA75F"/><path d="M48 150 L62 150"/><circle cx="48" cy="150" r="13" fill="#FFA75F"/></g>
+<ellipse cx="100" cy="98" rx="15" ry="9" fill="#FFBF8A"/>
+<ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/><ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+<g stroke="#1B1B1F" stroke-width="3.5"><ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/><ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/></g>
+<circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/><circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+<circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/><circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+<path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

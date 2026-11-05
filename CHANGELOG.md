@@ -7,6 +7,18 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## Unreleased
+
+### Added
+
+- Every food in USDA's SR Legacy database is its own entry on the web, 7,793 in all, so dried bananas and raw
+  bananas are separate things to find.
+- The iPhone, iPad and Mac apps can hold every one of those foods. They open each entry only when you look at it.
+
+### Changed
+
+- Search on iPhone, iPad and Mac ranks results the same way the website does.
+
 ## 0.5.0 - 2026-11-02
 
 ### Added

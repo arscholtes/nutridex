@@ -1,13 +1,15 @@
 // The native apps show what the bundled snapshot says, so it must match what the Dex says now.
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { DatabaseSync } from "node:sqlite";
+import { inflateRawSync } from "node:zlib";
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { listEntries } from "../lib/db/dex.ts";
-import { buildSnapshot, CREATURE_CATALOG, creatureAssetName, creatureSilhouette, SNAPSHOT_PATH, type NativeSnapshot } from "../lib/native/snapshot.ts";
+import { buildSnapshot, CREATURE_CATALOG, creatureSilhouette, readSnapshotFile, SNAPSHOT_PATH, type NativeSnapshot } from "../lib/native/snapshot.ts";
 
 afterAll(() => sql.end());
 
-const committed = (): NativeSnapshot => JSON.parse(readFileSync(SNAPSHOT_PATH, "utf8"));
+const committed = (): NativeSnapshot => readSnapshotFile(SNAPSHOT_PATH);
 const UUID = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
 
 describe("the snapshot the native apps bundle", () => {
@@ -38,7 +40,7 @@ describe("the snapshot the native apps bundle", () => {
   });
 
   test("holds no database ids, which change with every database", () => {
-    expect(readFileSync(SNAPSHOT_PATH, "utf8")).not.toMatch(UUID);
+    expect(JSON.stringify(committed())).not.toMatch(UUID);
   });
 
   test("a source keeps one id wherever it appears", () => {
@@ -64,12 +66,59 @@ describe("the snapshot the native apps bundle", () => {
   });
 });
 
+describe("the file the native apps bundle", () => {
+  test("keeps each entry on its own and compressed, so an app opens only what it shows", () => {
+    const file = new DatabaseSync(SNAPSHOT_PATH, { readOnly: true });
+    const rows = file.prepare("select kind, slug, size, body from entry").all() as { kind: string; slug: string; size: number; body: Uint8Array }[];
+    file.close();
+    expect(rows).toHaveLength(committed().cards.length);
+    for (const row of rows) {
+      const json = inflateRawSync(row.body).toString("utf8");
+      expect(Buffer.byteLength(json), `${row.kind}:${row.slug}`).toBe(row.size);
+      expect(() => JSON.parse(json), `${row.kind}:${row.slug}`).not.toThrow();
+    }
+  });
+
+  test("is the test database's, small enough to keep in git", () => {
+    expect(statSync(SNAPSHOT_PATH).size).toBeLessThan(10 * 1024 * 1024);
+  });
+});
+
+describe("what a card carries, so an app need not open every entry", () => {
+  const entryOf = (snapshot: NativeSnapshot, kind: string, slug: string) =>
+    ({ ingredient: snapshot.ingredients, compound: snapshot.compounds, effect: snapshot.effects })[kind as "ingredient"][slug];
+
+  test("the sources behind its entry", () => {
+    const snapshot = committed();
+    for (const card of snapshot.cards) {
+      expect(card.sources, card.slug).toEqual([...new Set(entryOf(snapshot, card.kind, card.slug).sources.map((s) => s.id))]);
+    }
+  });
+
+  test("a row for every food in the comparison table, with its nutrient panel", () => {
+    const snapshot = committed();
+    expect(snapshot.compare.map((f) => f.slug).sort()).toEqual(Object.keys(snapshot.ingredients).sort());
+    for (const food of snapshot.compare) expect(food.panel, food.slug).toEqual(snapshot.ingredients[food.slug].panel);
+  });
+
+  test("what the web's search returns, so the apps can check they rank the same way", async () => {
+    const { searchChecks } = committed();
+    expect(searchChecks.map((c) => c.query)).toEqual(expect.arrayContaining(["tumeric", "vitamin", "oil"]));
+    for (const check of searchChecks) {
+      const web = await listEntries({ q: check.query, kind: check.kind ?? undefined });
+      expect(check.results, `${check.query} in ${check.kind ?? "everything"}`).toEqual(web.map((c) => `${c.kind}:${c.slug}`));
+    }
+  });
+});
+
 describe("the creature art the native apps bundle", () => {
   test("has an image for every food and compound, and an effect needs none", () => {
     for (const card of committed().cards) {
-      if (card.kind === "effect") continue;
-      const name = creatureAssetName(card.kind, card.slug);
-      expect(existsSync(`${CREATURE_CATALOG}/${name}.imageset/${name}.svg`), name).toBe(true);
+      if (card.kind === "effect") {
+        expect(card.art, card.slug).toBeNull();
+        continue;
+      }
+      expect(existsSync(`${CREATURE_CATALOG}/${card.art}.imageset/${card.art}.svg`), `${card.slug}: ${card.art}`).toBe(true);
     }
   });
 });
@@ -91,7 +140,7 @@ describe("the silhouettes the Mac app shows for what you have not encountered", 
   test("exist for every food and compound", () => {
     for (const card of committed().cards) {
       if (card.kind === "effect") continue;
-      const name = `${creatureAssetName(card.kind, card.slug)}-silhouette`;
+      const name = `${card.art}-silhouette`;
       expect(existsSync(`${CREATURE_CATALOG}/${name}.imageset/${name}.svg`), name).toBe(true);
     }
   });

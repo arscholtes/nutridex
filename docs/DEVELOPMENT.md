@@ -27,11 +27,17 @@ run `db:migrate` and `seed` against it.
 
 `apple/NutriDex.xcodeproj` holds the SwiftUI apps: `NutriDex` for iPhone and iPad, and `NutriDexMac`, the
 home database. Neither needs a server: they bundle
-`apple/Shared/Resources/dex.json` and a catalog of creature art, both written by `npm run export:native`
-from the local database, through the same functions the website reads.
+`apple/Shared/Resources/dex.sqlite` and a catalog of creature art, both written by `npm run export:native`
+through the same functions the website reads. Each entry sits in that file on its own, compressed, so an app
+opens only what it shows. `SCHEMA.md` describes the file.
+
+The committed file holds the test database's 15 foods, so a fresh clone builds and the tests can check it. To put
+every food on your own devices, export with `--full`, build, then put the small file back before you commit:
+the full one is about 78 MB, and `tests/native-snapshot.db.test.ts` fails while it is in place.
 
 ```bash
 npm run export:native        # after any change to the seed, data functions, art or disclaimer
+npm run export:native -- --full   # every food in DATABASE_URL, for your own devices: about 8 minutes
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex \
   -destination 'platform=iOS Simulator,name=iPhone 17'
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac -destination 'platform=macOS'

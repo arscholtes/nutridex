@@ -119,15 +119,15 @@ struct SilhouetteTests {
 
 @MainActor
 struct CompareTests {
-    private var foods: [IngredientEntry] { Array(Dex.bundled.ingredients.values) }
+    private var foods: [CompareFood] { Dex.bundled.compare }
 
-    private func amount(_ food: IngredientEntry, _ slug: String) -> Double? {
+    private func amount(_ food: CompareFood, _ slug: String) -> Double? {
         food.panel.first { $0.slug == slug }?.amount
     }
 
     @Test func descendingPutsTheRichestFirst() throws {
         let sorted = foods.sorted(using: CompareOrder(.nutrient("vitamin-c"), order: .reverse))
-        #expect(sorted.first?.ingredient.slug == "kale")
+        #expect(sorted.first?.slug == "kale")
     }
 
     @Test func ascendingPutsTheLeastFirst() throws {
@@ -150,8 +150,8 @@ struct CompareTests {
 
     @Test func namesSortAlphabetically() {
         let sorted = foods.sorted(using: CompareOrder(.name, order: .forward))
-        #expect(sorted.first?.ingredient.slug == "beet")
-        #expect(sorted.last?.ingredient.slug == "watermelon")
+        #expect(sorted.first?.slug == "beet")
+        #expect(sorted.last?.slug == "watermelon")
     }
 }
 
@@ -382,8 +382,15 @@ struct VisibilityTests {
     }
 
     @Test func everythingCanBeUnlocked() {
-        let v = visibility(Array(Dex.bundled.ingredients.keys))
-        #expect(Dex.bundled.cards.filter { !v.shows($0.kind, $0.slug) }.map(\.slug) == [])
+        let v = visibility(Dex.bundled.ingredients.slugs)
+        // The bundled test data holds 15 foods, so a compound none of them carry waits for the rest.
+        let stuck = Dex.bundled.cards.filter { card in
+            guard !v.shows(card.kind, card.slug) else { return false }
+            guard card.kind == .compound, let compound = Dex.bundled.compounds[card.slug] else { return true }
+            return !compound.foods.isEmpty || !compound.absent.unmeasured.isEmpty
+        }
+        #expect(Dex.bundled.cards.filter { !v.shows($0.kind, $0.slug) }.count == 30)
+        #expect(stuck.map(\.slug) == [])
     }
 }
 

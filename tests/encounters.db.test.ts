@@ -1,11 +1,11 @@
 // The home database's record of what someone has encountered, and the API every app uploads through.
-import { readFileSync } from "node:fs";
 import { afterAll, afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 import { GET, POST } from "../app/api/encounters/route.ts";
 import { sql } from "../lib/db/client.ts";
 import { encounteredFoods, revealedEntries, sourcesBehind } from "../lib/db/encounters.ts";
 import { compoundEntry, dexSteps, effectEntry, foodsMatching, ingredientEntry, listEntries, sourceList, type EntryCard } from "../lib/db/dex.ts";
 import { scrubCompound, scrubEffect, scrubIngredient } from "../lib/db/reveal.ts";
+import { readSnapshotFile, SNAPSHOT_PATH } from "../lib/native/snapshot.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the encounters test writes to the database");
@@ -97,7 +97,7 @@ describe("what encountering reveals", () => {
   });
 
   test("matches what the native apps bundle, so every platform reveals the same things", async () => {
-    const { reveals } = JSON.parse(readFileSync("apple/Shared/Resources/dex.json", "utf8")) as { reveals: Record<string, { compounds: string[]; effects: string[] }> };
+    const { reveals } = readSnapshotFile(SNAPSHOT_PATH);
     for (const [food, expected] of Object.entries(reveals)) {
       const r = await revealedEntries([food]);
       expect([...r.compounds].sort(), food).toEqual([...expected.compounds].sort());
