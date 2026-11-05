@@ -138,6 +138,8 @@ How much of a compound an ingredient has, per 100 g. Amounts are USDA's as repor
 | `form_note` | text | yes |  |
 | `source_id` | uuid | yes |  |
 
+Index `ingredient_compound_richest` on `(compound_id, amount_per_100g desc)` answers which food holds the most of a compound. With every USDA food loaded, the home page's query did not finish in 9 minutes without it. Index `ingredient_compound_source` on `source_id` answers what a source supports; the sources list did not finish in 2 minutes without it.
+
 ## What compounds do
 
 ### `effect`

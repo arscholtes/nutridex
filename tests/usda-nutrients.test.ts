@@ -30,13 +30,10 @@ describe("compoundAmounts, against USDA's own record for raw carrots (fdcId 1703
   });
 
   test("every mapped compound USDA reports for carrots is returned, and nothing else", () => {
-    expect([...bySlug(carrots).keys()].sort()).toEqual([
-      "alpha-carotene", "beta-carotene", "calcium", "carbohydrate", "choline", "copper", "dietary-fiber", "energy",
-      "folate", "iron", "lutein-zeaxanthin", "lycopene", "magnesium", "manganese", "niacin", "pantothenic-acid",
-      "phosphorus", "potassium", "protein", "retinol", "riboflavin", "saturated-fat", "selenium", "sodium",
-      "thiamin", "total-fat", "total-sugars", "vitamin-a", "vitamin-b12", "vitamin-b6", "vitamin-c", "vitamin-d",
-      "vitamin-e", "vitamin-k1", "zinc",
-    ]);
+    const mapped = new Map<number, string>(Object.entries(USDA_NUTRIENTS).map(([slug, n]) => [n.id, slug]));
+    const reported = carrots.foodNutrients.filter((n) => n.amount !== undefined && mapped.has(n.nutrient.id)).map((n) => mapped.get(n.nutrient.id)!);
+    expect(reported.length).toBeGreaterThan(100);
+    expect([...bySlug(carrots).keys()].sort()).toEqual(reported.sort());
   });
 });
 

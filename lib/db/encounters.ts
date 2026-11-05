@@ -65,3 +65,24 @@ export async function revealedEntries(foods: string[], q: Sql = sql): Promise<Re
       and (ce.min_food_per_100g is null or ic.amount_per_100g >= ce.min_food_per_100g)`;
   return { foods: new Set(foods), compounds: new Set(compounds.map((c) => c.slug)), effects: new Set(effects.map((e) => e.slug)) };
 }
+
+/**
+ * The sources behind what is unlocked: each food's USDA record, and whatever an unlocked compound or effect rests on.
+ * @param r [Revealed] what is unlocked
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<string[]>] source ids
+ */
+export async function sourcesBehind(r: Revealed, q: Sql = sql): Promise<string[]> {
+  const foods = [...r.foods];
+  const compounds = [...r.compounds];
+  const effects = [...r.effects];
+  const rows = await q<{ id: string }[]>`
+    select ic.source_id as id from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id
+      where i.slug = any(${foods}::text[]) and ic.source_id is not null
+    union select ce.source_id from compound_effect ce join compound c on c.id = ce.compound_id where c.slug = any(${compounds}::text[])
+    union select ce.source_id from compound_effect ce join effect e on e.id = ce.effect_id where e.slug = any(${effects}::text[])
+    union select a.source_id from absorption_modifier_applied a join compound c on c.id = a.compound_id where c.slug = any(${compounds}::text[])
+    union select p.source_id from prep_effect p join compound c on c.id = p.compound_id where c.slug = any(${compounds}::text[])
+    union select k.source_id from caution k join compound c on c.id = k.compound_id where c.slug = any(${compounds}::text[])`;
+  return rows.map((row) => row.id);
+}

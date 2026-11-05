@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { GameShell } from "../../../components/game.tsx";
 import { IngredientEntryView } from "../../../components/ingredient-entry.tsx";
 import { typeColor } from "../../../lib/art/palette.ts";
-import { ingredientEntry, listEntries } from "../../../lib/db/dex.ts";
+import { ingredientEntry, dexSteps } from "../../../lib/db/dex.ts";
 import { isRevealed, scrubIngredient } from "../../../lib/db/reveal.ts";
 import { viewer } from "../../../lib/viewer.ts";
 
@@ -13,7 +13,7 @@ export default async function IngredientPage({ params }: { params: Promise<{ slu
   if (!isRevealed("ingredient", slug, revealed)) notFound();
   const found = await ingredientEntry(slug);
   if (!found) notFound();
-  const entry = scrubIngredient(found, revealed, await listEntries({ kind: "ingredient" }));
+  const entry = scrubIngredient(found, revealed, await dexSteps("ingredient"));
   return (
     <GameShell lens={typeColor(entry.ingredient.category)} pager={entry.pager}>
       <IngredientEntryView entry={entry} />

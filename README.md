@@ -10,9 +10,11 @@ npm install
 cp .env.example .env.local   # add your USDA key; DATABASE_URL already points at the local cluster
 npm run db:local             # project-local Postgres 16 in .pgdata, port 54329
 npm run db:migrate
-npm run seed                 # the plan's ingredients and compounds, amounts from USDA, sourced facts, the juice recipe
+npm run seed                 # the plan's ingredients, every compound, amounts from USDA, sourced facts, the juice recipe
+npm run seed:foods           # every other food in USDA's SR Legacy; the first run pulls about 390 calls' worth into .usda-cache
 npm test                     # unit tests, no database
-npm run test:db              # each phase's "Done when", against the seeded database; one test re-runs
+npm run db:test              # creates and seeds TEST_DATABASE_URL: the 15 hand-pinned foods, nothing anyone has played
+npm run test:db              # each phase's "Done when", against that database; one test re-runs
                              # the real seed (it writes and fetches USDA) to check it keeps others' rows
 npm run dev                  # the Dex at http://localhost:3000
 ```
@@ -92,7 +94,10 @@ anyone other than its maker uses the app.
 
 ## Data
 
-Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row
+Amounts come from USDA FoodData Central (SR Legacy), every food and every component it reports, but
+for the same measurement in a second unit (energy in kJ, vitamins A and D in IU). `npm run generate:foods`
+pins each food in `data/seed/usda-foods.json`, named from USDA's description so each form is its own
+food. A food with no drawing wears its category's stand-in. Each stored amount carries a `source` row
 naming the USDA record it came from. A compound USDA does not measure is linked to its
 ingredient with no amount, and the app shows it as missing. See `SCHEMA.md` for every table.
 

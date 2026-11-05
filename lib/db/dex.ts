@@ -1,5 +1,6 @@
 // What the Dex screens show, read from the database. An ingredient's flags and effects come from
 // the engine run on 100 g of it, so a Dex entry and a recipe judge the same facts the same way.
+import type { Revealed } from "./encounters.ts";
 import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type Unit } from "epistasis";
 import { PANEL, PANEL_COMPOUNDS, type PanelGroup } from "../usda/nutrients.ts";
 import { sql } from "./client.ts";
@@ -175,6 +176,10 @@ export type EntryCard = Named & {
 export type SourceUse = SourceRef & { doi: string | null; pmid: string | null; population: string | null; supports: string[] };
 
 const ENTRY_GRAMS = 100;
+
+// SR Legacy holds hundreds of foods matching a word like "chicken", more than anyone would scroll.
+// A search ranks names starting with the words first, shortest first, so the plain food leads what is made with it.
+const FOODS_SHOWN = 30;
 
 // Names containing the words win; when none does, a name this close counts as a misspelling of it
 // (pg_trgm word similarity, 0 to 1). Measured: "tumeric" scores 0.55 against Turmeric and 0.13
@@ -390,6 +395,18 @@ const numberedEntries = (q: Sql) => q`
   ) unnumbered`;
 
 /**
+ * Every entry of a kind as a step, whatever is unlocked.
+ * @param kind [EntryKind] the kind
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<DexStep[]>] in number order
+ */
+export async function dexSteps(kind: EntryKind, q: Sql = sql): Promise<DexStep[]> {
+  const rows = await q<{ slug: string; name: string; place: number }[]>`
+    select slug, name, place from (${numberedEntries(q)}) numbered where kind = ${kind} order by place`;
+  return rows.map((r) => ({ slug: r.slug, name: r.name, number: dexNumber(kind, r.place), href: hrefOf(kind, r.slug) }));
+}
+
+/**
  * An entry's dex number and its neighbours within its kind.
  * @param kind [EntryKind] the entry's kind
  * @param slug [string] the entry's slug
@@ -397,13 +414,10 @@ const numberedEntries = (q: Sql) => q`
  * @return [Promise<DexPager | null>] null when no entry of that kind has that slug
  */
 export async function dexPager(kind: EntryKind, slug: string, q: Sql = sql): Promise<DexPager | null> {
-  const rows = await q<{ slug: string; name: string; place: number }[]>`
-    select slug, name, place from (${numberedEntries(q)}) numbered where kind = ${kind} order by place`;
-  const at = rows.findIndex((r) => r.slug === slug);
+  const steps = await dexSteps(kind, q);
+  const at = steps.findIndex((r) => r.slug === slug);
   if (at === -1) return null;
-  const step = (r: (typeof rows)[number] | undefined): DexStep | null =>
-    r ? { slug: r.slug, name: r.name, number: dexNumber(kind, r.place), href: hrefOf(kind, r.slug) } : null;
-  return { number: dexNumber(kind, rows[at].place), total: rows.length, prev: step(rows[at - 1]), next: step(rows[at + 1]) };
+  return { number: steps[at].number, total: steps.length, prev: steps[at - 1] ?? null, next: steps[at + 1] ?? null };
 }
 
 /**
@@ -418,65 +432,113 @@ export async function dexCounts(q: Sql = sql): Promise<Record<EntryKind, number>
 }
 
 /**
- * Every ingredient, compound and effect as a Dex card, matching a search and filters.
- * @param search [{ q?, kind?, type? }] words to match (fuzzily), an entry kind, a type badge
+ * Ingredients, compounds and effects as Dex cards, matching a search and filters. Only the cards
+ * asked for are worked out, since a card's stats read every amount of what it describes.
+ * @param search [{ q?, kind?, type?, within?, limit? }] words to match (fuzzily), an entry kind, a type badge,
+ *   what is unlocked (nothing else is listed, and no card names a food outside it), and how many cards to stop at
  * @param q [Sql] the connection or transaction to read through
  * @return [Promise<EntryCard[]>] best match first when searching; ingredients, compounds, then effects, by name
  */
-export async function listEntries(search: { q?: string; kind?: EntryKind; type?: string }, q: Sql = sql): Promise<EntryCard[]> {
+export async function listEntries(search: { q?: string; kind?: EntryKind; type?: string; within?: Revealed; limit?: number }, q: Sql = sql): Promise<EntryCard[]> {
   const words = search.q?.trim() ?? "";
+  const { within, limit } = search;
   const rows = await q<{ kind: EntryKind; slug: string; name: string; type: string | null; imageUrl: string | null; compoundClass: string | null; place: number }[]>`
     with entry as (${numberedEntries(q)}),
     scored as (
       select *, name ilike ${"%" + words + "%"} as contains, word_similarity(${words}::text, name) as score from entry
       where (${search.kind ?? null}::text is null or kind = ${search.kind ?? null})
         and (${search.type ?? null}::text is null or type = ${search.type ?? null})
+        ${
+          within
+            ? q`and ((kind = 'ingredient' and slug = any(${[...within.foods]}::text[]))
+                  or (kind = 'compound' and slug = any(${[...within.compounds]}::text[]))
+                  or (kind = 'effect' and slug = any(${[...within.effects]}::text[])))`
+            : q``
+        }
     )
     select kind, slug, name, type, "imageUrl", "compoundClass", place from scored
     where ${words}::text = '' or contains
        or (not exists (select 1 from scored where contains) and score >= ${SEARCH_SIMILARITY})
-    order by contains desc, score desc, array_position(array['ingredient', 'compound', 'effect'], kind), name`;
+    order by contains desc, name ilike ${words + "%"} desc,
+             case when ${words}::text <> '' and name ilike ${words + "%"} then char_length(name) end, score desc,
+             array_position(array['ingredient', 'compound', 'effect'], kind),
+             case when ${words}::text = '' then 0 else char_length(name) end, name
+    ${limit === undefined ? q`` : q`limit ${limit}`}`;
 
-  const compoundStats = await q<{ slug: string; carriers: number; foods: number; topName: string | null }[]>`
-    select c.slug, count(ic.*) filter (where ic.amount_per_100g is null)::int as carriers,
-           count(ic.*) filter (where ic.amount_per_100g > 0)::int as foods,
-           (select i.name from ingredient_compound x join ingredient i on i.id = x.ingredient_id
-            where x.compound_id = c.id and x.amount_per_100g > 0 order by x.amount_per_100g desc limit 1) as "topName"
-    from compound c left join ingredient_compound ic on ic.compound_id = c.id group by c.id`;
-  const ingredientStats = await q<{ slug: string; measured: number; topIn: string[] }[]>`
-    select i.slug, count(ic.*) filter (where ic.amount_per_100g is not null)::int as measured,
-           coalesce(array_agg(c.name order by c.name) filter (where ic.amount_per_100g > 0 and ic.amount_per_100g = (
-             select max(x.amount_per_100g) from ingredient_compound x where x.compound_id = ic.compound_id)), '{}') as "topIn"
-    from ingredient i
-    left join ingredient_compound ic on ic.ingredient_id = i.id
-    left join compound c on c.id = ic.compound_id
-    group by i.id`;
-  const effectStats = await q<{ slug: string; compounds: number }[]>`
-    select e.slug, count(distinct ce.compound_id)::int as compounds from effect e left join compound_effect ce on ce.effect_id = e.id group by e.id`;
-  const grades = await bestGrades(q);
+  const slugsOf = (kind: EntryKind) => rows.filter((r) => r.kind === kind).map((r) => r.slug);
+  const foodSlugs = slugsOf("ingredient");
+  const compoundStats = new Map(
+    (
+      await q<{ slug: string; carriers: number; foods: number; topName: string | null; topSlug: string | null }[]>`
+        select c.slug, count(ic.*) filter (where ic.amount_per_100g is null)::int as carriers,
+               count(ic.*) filter (where ic.amount_per_100g > 0)::int as foods, top.name as "topName", top.slug as "topSlug"
+        from compound c
+        left join ingredient_compound ic on ic.compound_id = c.id
+        left join lateral (
+          select i.name, i.slug from ingredient_compound x join ingredient i on i.id = x.ingredient_id
+          where x.compound_id = c.id and x.amount_per_100g > 0 order by x.amount_per_100g desc, i.name limit 1
+        ) top on true
+        where c.slug = any(${slugsOf("compound")}::text[])
+        group by c.id, top.name, top.slug`
+    ).map((s) => [s.slug, s]),
+  );
+  const ingredientStats = new Map(
+    (
+      await q<{ slug: string; measured: number; topIn: string[] }[]>`
+        select i.slug, count(ic.*) filter (where ic.amount_per_100g is not null)::int as measured,
+               coalesce(array_agg(c.name order by c.name) filter (where ic.amount_per_100g > 0 and ic.amount_per_100g = (
+                 select max(x.amount_per_100g) from ingredient_compound x where x.compound_id = ic.compound_id)), '{}') as "topIn"
+        from ingredient i
+        left join ingredient_compound ic on ic.ingredient_id = i.id
+        left join compound c on c.id = ic.compound_id
+        where i.slug = any(${foodSlugs}::text[])
+        group by i.id`
+    ).map((s) => [s.slug, s]),
+  );
+  const effectStats = new Map(
+    (
+      await q<{ slug: string; compounds: number }[]>`
+        select e.slug, count(distinct ce.compound_id)::int as compounds from effect e left join compound_effect ce on ce.effect_id = e.id
+        where e.slug = any(${slugsOf("effect")}::text[]) group by e.id`
+    ).map((s) => [s.slug, s]),
+  );
+  const grades = await bestGrades(foodSlugs, q);
 
   return rows.map(({ place, ...r }): EntryCard => {
     const stats: string[] = [];
     if (r.kind === "ingredient") {
-      const s = ingredientStats.find((x) => x.slug === r.slug)!;
+      const s = ingredientStats.get(r.slug)!;
       stats.push(`${s.measured} compounds measured`);
       if (s.topIn.length > 0) stats.push(`Most ${s.topIn.slice(0, 2).join(" and ")} in the Dex`);
     } else if (r.kind === "compound") {
-      const s = compoundStats.find((x) => x.slug === r.slug)!;
+      const s = compoundStats.get(r.slug)!;
       if (s.foods > 0) {
         stats.push(s.foods === 1 ? "In 1 food" : `In ${s.foods} foods`);
-        stats.push(`Most in ${s.topName}`);
+        if (!within || within.foods.has(s.topSlug!)) stats.push(`Most in ${s.topName}`);
       } else if (s.carriers > 0) {
         stats.push(`${s.carriers === 1 ? "In 1 food" : `In ${s.carriers} foods`}, no amount measured`);
       } else {
         stats.push("In no food in the Dex");
       }
     } else {
-      const s = effectStats.find((x) => x.slug === r.slug)!;
+      const s = effectStats.get(r.slug)!;
       stats.push(s.compounds === 1 ? "1 compound" : `${s.compounds} compounds`);
     }
     return { ...r, number: dexNumber(r.kind, place), href: hrefOf(r.kind, r.slug), bestGrade: grades.get(`${r.kind}:${r.slug}`) ?? null, stats };
   });
+}
+
+/**
+ * The foods matching what someone typed, leaving out what they already have.
+ * @param words [string] what they typed
+ * @param had [Set<string>] the slugs of foods already unlocked
+ * @param max [number] how many to show
+ * @param q [Sql] the connection or transaction to read through
+ * @return [Promise<{ foods: EntryCard[]; more: boolean }>] the best matches, and whether others were left out
+ */
+export async function foodsMatching(words: string, had: Set<string>, max = FOODS_SHOWN, q: Sql = sql): Promise<{ foods: EntryCard[]; more: boolean }> {
+  const found = (await listEntries({ q: words, kind: "ingredient", limit: max + had.size + 1 }, q)).filter((c) => !had.has(c.slug));
+  return { foods: found.slice(0, max), more: found.length > max };
 }
 
 /**
@@ -493,11 +555,12 @@ export async function entryTypes(q: Sql = sql): Promise<Record<EntryKind, string
 }
 
 /**
- * Every source, with what it supports.
+ * Sources, with what each supports.
  * @param q [Sql] the connection or transaction to read through
+ * @param only [string[]] the ids to list; every source when left out
  * @return [Promise<SourceUse[]>] studies first, then databases; newest first within each
  */
-export async function sourceList(q: Sql = sql): Promise<SourceUse[]> {
+export async function sourceList(q: Sql = sql, only?: string[]): Promise<SourceUse[]> {
   const rows = await q<(SourceUse & { amounts: string[]; modifiers: string[]; prep: string[]; effects: string[]; classes: string[] })[]>`
     select s.id, s.title, s.url, s.year, s.study_type as "studyType", s.limitations, s.doi, s.pmid, s.population,
       coalesce((select array_agg(distinct i.name) from ingredient_compound ic join ingredient i on i.id = ic.ingredient_id where ic.source_id = s.id), '{}') as amounts,
@@ -508,6 +571,7 @@ export async function sourceList(q: Sql = sql): Promise<SourceUse[]> {
       coalesce((select array_agg(distinct c.name || ' → ' || e.name) from compound_effect ce join compound c on c.id = ce.compound_id join effect e on e.id = ce.effect_id where ce.source_id = s.id), '{}') as effects,
       coalesce((select array_agg(distinct k.name) from compound_class k where k.source_id = s.id), '{}') as classes
     from source s
+    ${only ? q`where s.id = any(${only}::uuid[])` : q``}
     order by (s.study_type = 'database'), s.year desc nulls last, s.title`;
   return rows.map(({ amounts, modifiers, prep, effects, classes, ...s }) => ({
     ...s,
@@ -614,7 +678,7 @@ async function sourceMap(ids: string[], q: Sql): Promise<Map<string, SourceRef>>
   return new Map((await sourcesByIds([...new Set(ids)], q)).map((s) => [s.id, s]));
 }
 
-async function bestGrades(q: Sql): Promise<Map<string, Grade>> {
+async function bestGrades(foodSlugs: string[], q: Sql): Promise<Map<string, Grade>> {
   const rows = await q<{ key: string; grade: Grade }[]>`
     with fact_grade as (
       select compound_id, evidence_grade as grade from absorption_modifier_applied
@@ -634,7 +698,7 @@ async function bestGrades(q: Sql): Promise<Map<string, Grade>> {
       union all select ic.ingredient_id, f.grade from ingredient_compound ic join fact_grade f on f.compound_id = ic.compound_id
       where ic.amount_per_100g > 0
       union all select ingredient_id, evidence_grade from caution where ingredient_id is not null
-    ) g on g.ingredient_id = i.id group by i.slug
+    ) g on g.ingredient_id = i.id where i.slug = any(${foodSlugs}::text[]) group by i.slug
     union all
     select 'effect:' || e.slug, min(ce.evidence_grade) from effect e join compound_effect ce on ce.effect_id = e.id group by e.slug`;
   return new Map(rows.map((r) => [r.key, r.grade]));

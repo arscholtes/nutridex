@@ -50,6 +50,20 @@
       "when": 1793639750302,
       "tag": "0006_encounter",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793650077580,
+      "tag": "0007_lazy_skrulls",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793650453684,
+      "tag": "0008_unknown_kylun",
+      "breakpoints": true
     }
   ]
 }

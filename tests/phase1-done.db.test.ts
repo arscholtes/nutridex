@@ -20,11 +20,11 @@ describe("a seeded database", () => {
     expect(rows[0].title).toContain("fdcId 170393");
   });
 
-  test("holds the plan's 15 ingredients, and its 12 compounds, total fat, dietary fiber and the panel's 27 more", async () => {
+  test("holds the plan's 15 ingredients, and its 12 compounds, total fat, dietary fiber, the panel's 27 more and USDA's other 111", async () => {
     const [{ ingredients, compounds }] = await sql`
       select (select count(*)::int from ingredient) as ingredients,
              (select count(*)::int from compound) as compounds`;
-    expect({ ingredients, compounds }).toEqual({ ingredients: 15, compounds: 41 });
+    expect({ ingredients, compounds }).toEqual({ ingredients: 15, compounds: 152 });
   });
 
   test("a compound USDA does not measure is linked to its ingredient with no amount, not a zero", async () => {

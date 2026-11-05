@@ -8,11 +8,11 @@ const ingredientSlugs = new Set(INGREDIENTS.map((i) => i.slug));
 const compoundSlugs = new Set(COMPOUNDS.map((c) => c.slug));
 
 describe("seed data, as the build plan lists it", () => {
-  test("15 ingredients, and the plan's 12 compounds, total fat, dietary fiber and the panel's 27 more, slugs unique", () => {
+  test("15 hand-pinned ingredients, and the plan's 12 compounds, total fat, dietary fiber, the panel's 27 more and USDA's other 111, slugs unique", () => {
     expect(ingredientSlugs.size).toBe(15);
     expect(INGREDIENTS).toHaveLength(15);
-    expect(compoundSlugs.size).toBe(41);
-    expect(COMPOUNDS).toHaveLength(41);
+    expect(compoundSlugs.size).toBe(152);
+    expect(COMPOUNDS).toHaveLength(152);
     expect([compoundSlugs.has("total-fat"), compoundSlugs.has("dietary-fiber")]).toEqual([true, true]);
   });
 

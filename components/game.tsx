@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { markEncountered } from "../app/actions.ts";
 import { creatureSilhouette } from "../lib/art/creature.ts";
 import { typeColor } from "../lib/art/palette.ts";
-import { listEntries, type DexPager } from "../lib/db/dex.ts";
+import { foodsMatching, listEntries, type DexPager } from "../lib/db/dex.ts";
 import { revealedEntries } from "../lib/db/encounters.ts";
 import { viewer } from "../lib/viewer.ts";
 import { DexShell } from "./dex-shell.tsx";
@@ -29,7 +29,7 @@ export function Progress({ unlocked, total }: { unlocked: number; total: number 
 export async function HadComposer({ had }: { had?: string }) {
   const { revealed } = await viewer();
   const words = had?.trim() ?? "";
-  const candidates = words.length >= 3 ? (await listEntries({ q: words, kind: "ingredient" })).filter((c) => !revealed.foods.has(c.slug)) : [];
+  const { foods: candidates, more } = words.length >= 3 ? await foodsMatching(words, revealed.foods) : { foods: [], more: false };
   return (
     <section className="mt-3 rounded-xl border-2 border-ink bg-card p-3">
       <form action="/" className="flex flex-wrap gap-2">
@@ -53,6 +53,7 @@ export async function HadComposer({ had }: { had?: string }) {
           ))}
         </ul>
       )}
+      {more && <p className="mt-2 text-sm text-ink-soft">These are the closest matches. Type more to find the exact one.</p>}
     </section>
   );
 }
@@ -60,7 +61,7 @@ export async function HadComposer({ had }: { had?: string }) {
 /** The shell for a game screen: the device, the upload banner, and the unlock animation when one is due. */
 export async function GameShell({ lens, pager, children }: { lens?: string; pager?: DexPager; children: ReactNode }) {
   const { pending, canUpload, unlocking } = await viewer();
-  const foods = unlocking.length > 0 ? await listEntries({ kind: "ingredient" }) : [];
+  const foods = unlocking.length > 0 ? await listEntries({ kind: "ingredient", within: { foods: new Set(unlocking), compounds: new Set(), effects: new Set() } }) : [];
   const queue: UnlockCard[] = [];
   for (const slug of unlocking) {
     const card = foods.find((c) => c.slug === slug);

@@ -1,0 +1,1 @@
+CREATE INDEX "ingredient_compound_source" ON "ingredient_compound" USING btree ("source_id");

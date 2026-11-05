@@ -1,0 +1,896 @@
+[
+ {
+  "id": 1003,
+  "name": "Protein",
+  "unit": "g",
+  "foods": 7793
+ },
+ {
+  "id": 1004,
+  "name": "Total lipid (fat)",
+  "unit": "g",
+  "foods": 7793
+ },
+ {
+  "id": 1005,
+  "name": "Carbohydrate, by difference",
+  "unit": "g",
+  "foods": 7793
+ },
+ {
+  "id": 1007,
+  "name": "Ash",
+  "unit": "g",
+  "foods": 7790
+ },
+ {
+  "id": 1008,
+  "name": "Energy",
+  "unit": "kcal",
+  "foods": 7793
+ },
+ {
+  "id": 1009,
+  "name": "Starch",
+  "unit": "g",
+  "foods": 1167
+ },
+ {
+  "id": 1010,
+  "name": "Sucrose",
+  "unit": "g",
+  "foods": 1733
+ },
+ {
+  "id": 1011,
+  "name": "Glucose",
+  "unit": "g",
+  "foods": 1740
+ },
+ {
+  "id": 1012,
+  "name": "Fructose",
+  "unit": "g",
+  "foods": 1745
+ },
+ {
+  "id": 1013,
+  "name": "Lactose",
+  "unit": "g",
+  "foods": 1712
+ },
+ {
+  "id": 1014,
+  "name": "Maltose",
+  "unit": "g",
+  "foods": 1711
+ },
+ {
+  "id": 1018,
+  "name": "Alcohol, ethyl",
+  "unit": "g",
+  "foods": 5399
+ },
+ {
+  "id": 1051,
+  "name": "Water",
+  "unit": "g",
+  "foods": 7793
+ },
+ {
+  "id": 1057,
+  "name": "Caffeine",
+  "unit": "mg",
+  "foods": 5215
+ },
+ {
+  "id": 1058,
+  "name": "Theobromine",
+  "unit": "mg",
+  "foods": 5170
+ },
+ {
+  "id": 1062,
+  "name": "Energy",
+  "unit": "kJ",
+  "foods": 7793
+ },
+ {
+  "id": 1075,
+  "name": "Galactose",
+  "unit": "g",
+  "foods": 1579
+ },
+ {
+  "id": 1079,
+  "name": "Fiber, total dietary",
+  "unit": "g",
+  "foods": 7231
+ },
+ {
+  "id": 1087,
+  "name": "Calcium, Ca",
+  "unit": "mg",
+  "foods": 7708
+ },
+ {
+  "id": 1089,
+  "name": "Iron, Fe",
+  "unit": "mg",
+  "foods": 7713
+ },
+ {
+  "id": 1090,
+  "name": "Magnesium, Mg",
+  "unit": "mg",
+  "foods": 7421
+ },
+ {
+  "id": 1091,
+  "name": "Phosphorus, P",
+  "unit": "mg",
+  "foods": 7467
+ },
+ {
+  "id": 1092,
+  "name": "Potassium, K",
+  "unit": "mg",
+  "foods": 7516
+ },
+ {
+  "id": 1093,
+  "name": "Sodium, Na",
+  "unit": "mg",
+  "foods": 7709
+ },
+ {
+  "id": 1095,
+  "name": "Zinc, Zn",
+  "unit": "mg",
+  "foods": 7406
+ },
+ {
+  "id": 1098,
+  "name": "Copper, Cu",
+  "unit": "mg",
+  "foods": 7284
+ },
+ {
+  "id": 1099,
+  "name": "Fluoride, F",
+  "unit": "µg",
+  "foods": 538
+ },
+ {
+  "id": 1101,
+  "name": "Manganese, Mn",
+  "unit": "mg",
+  "foods": 6492
+ },
+ {
+  "id": 1103,
+  "name": "Selenium, Se",
+  "unit": "µg",
+  "foods": 6865
+ },
+ {
+  "id": 1104,
+  "name": "Vitamin A, IU",
+  "unit": "IU",
+  "foods": 7356
+ },
+ {
+  "id": 1105,
+  "name": "Retinol",
+  "unit": "µg",
+  "foods": 6788
+ },
+ {
+  "id": 1106,
+  "name": "Vitamin A, RAE",
+  "unit": "µg",
+  "foods": 6918
+ },
+ {
+  "id": 1107,
+  "name": "Carotene, beta",
+  "unit": "µg",
+  "foods": 5440
+ },
+ {
+  "id": 1108,
+  "name": "Carotene, alpha",
+  "unit": "µg",
+  "foods": 5352
+ },
+ {
+  "id": 1109,
+  "name": "Vitamin E (alpha-tocopherol)",
+  "unit": "mg",
+  "foods": 5580
+ },
+ {
+  "id": 1110,
+  "name": "Vitamin D (D2 + D3), International Units",
+  "unit": "IU",
+  "foods": 5181
+ },
+ {
+  "id": 1111,
+  "name": "Vitamin D2 (ergocalciferol)",
+  "unit": "µg",
+  "foods": 138
+ },
+ {
+  "id": 1112,
+  "name": "Vitamin D3 (cholecalciferol)",
+  "unit": "µg",
+  "foods": 1819
+ },
+ {
+  "id": 1114,
+  "name": "Vitamin D (D2 + D3)",
+  "unit": "µg",
+  "foods": 5185
+ },
+ {
+  "id": 1120,
+  "name": "Cryptoxanthin, beta",
+  "unit": "µg",
+  "foods": 5341
+ },
+ {
+  "id": 1122,
+  "name": "Lycopene",
+  "unit": "µg",
+  "foods": 5314
+ },
+ {
+  "id": 1123,
+  "name": "Lutein + zeaxanthin",
+  "unit": "µg",
+  "foods": 5294
+ },
+ {
+  "id": 1125,
+  "name": "Tocopherol, beta",
+  "unit": "mg",
+  "foods": 1890
+ },
+ {
+  "id": 1126,
+  "name": "Tocopherol, gamma",
+  "unit": "mg",
+  "foods": 1888
+ },
+ {
+  "id": 1127,
+  "name": "Tocopherol, delta",
+  "unit": "mg",
+  "foods": 1872
+ },
+ {
+  "id": 1128,
+  "name": "Tocotrienol, alpha",
+  "unit": "mg",
+  "foods": 1463
+ },
+ {
+  "id": 1129,
+  "name": "Tocotrienol, beta",
+  "unit": "mg",
+  "foods": 1477
+ },
+ {
+  "id": 1130,
+  "name": "Tocotrienol, gamma",
+  "unit": "mg",
+  "foods": 1466
+ },
+ {
+  "id": 1131,
+  "name": "Tocotrienol, delta",
+  "unit": "mg",
+  "foods": 1461
+ },
+ {
+  "id": 1162,
+  "name": "Vitamin C, total ascorbic acid",
+  "unit": "mg",
+  "foods": 7332
+ },
+ {
+  "id": 1165,
+  "name": "Thiamin",
+  "unit": "mg",
+  "foods": 7402
+ },
+ {
+  "id": 1166,
+  "name": "Riboflavin",
+  "unit": "mg",
+  "foods": 7421
+ },
+ {
+  "id": 1167,
+  "name": "Niacin",
+  "unit": "mg",
+  "foods": 7402
+ },
+ {
+  "id": 1170,
+  "name": "Pantothenic acid",
+  "unit": "mg",
+  "foods": 6376
+ },
+ {
+  "id": 1175,
+  "name": "Vitamin B-6",
+  "unit": "mg",
+  "foods": 7262
+ },
+ {
+  "id": 1177,
+  "name": "Folate, total",
+  "unit": "µg",
+  "foods": 6851
+ },
+ {
+  "id": 1178,
+  "name": "Vitamin B-12",
+  "unit": "µg",
+  "foods": 7113
+ },
+ {
+  "id": 1180,
+  "name": "Choline, total",
+  "unit": "mg",
+  "foods": 4611
+ },
+ {
+  "id": 1183,
+  "name": "Vitamin K (Menaquinone-4)",
+  "unit": "µg",
+  "foods": 606
+ },
+ {
+  "id": 1184,
+  "name": "Vitamin K (Dihydrophylloquinone)",
+  "unit": "µg",
+  "foods": 1419
+ },
+ {
+  "id": 1185,
+  "name": "Vitamin K (phylloquinone)",
+  "unit": "µg",
+  "foods": 5054
+ },
+ {
+  "id": 1186,
+  "name": "Folic acid",
+  "unit": "µg",
+  "foods": 6500
+ },
+ {
+  "id": 1187,
+  "name": "Folate, food",
+  "unit": "µg",
+  "foods": 6722
+ },
+ {
+  "id": 1190,
+  "name": "Folate, DFE",
+  "unit": "µg",
+  "foods": 6482
+ },
+ {
+  "id": 1198,
+  "name": "Betaine",
+  "unit": "mg",
+  "foods": 2091
+ },
+ {
+  "id": 1210,
+  "name": "Tryptophan",
+  "unit": "g",
+  "foods": 5030
+ },
+ {
+  "id": 1211,
+  "name": "Threonine",
+  "unit": "g",
+  "foods": 5080
+ },
+ {
+  "id": 1212,
+  "name": "Isoleucine",
+  "unit": "g",
+  "foods": 5084
+ },
+ {
+  "id": 1213,
+  "name": "Leucine",
+  "unit": "g",
+  "foods": 5083
+ },
+ {
+  "id": 1214,
+  "name": "Lysine",
+  "unit": "g",
+  "foods": 5097
+ },
+ {
+  "id": 1215,
+  "name": "Methionine",
+  "unit": "g",
+  "foods": 5096
+ },
+ {
+  "id": 1216,
+  "name": "Cystine",
+  "unit": "g",
+  "foods": 4930
+ },
+ {
+  "id": 1217,
+  "name": "Phenylalanine",
+  "unit": "g",
+  "foods": 5079
+ },
+ {
+  "id": 1218,
+  "name": "Tyrosine",
+  "unit": "g",
+  "foods": 5049
+ },
+ {
+  "id": 1219,
+  "name": "Valine",
+  "unit": "g",
+  "foods": 5083
+ },
+ {
+  "id": 1220,
+  "name": "Arginine",
+  "unit": "g",
+  "foods": 5070
+ },
+ {
+  "id": 1221,
+  "name": "Histidine",
+  "unit": "g",
+  "foods": 5076
+ },
+ {
+  "id": 1222,
+  "name": "Alanine",
+  "unit": "g",
+  "foods": 5025
+ },
+ {
+  "id": 1223,
+  "name": "Aspartic acid",
+  "unit": "g",
+  "foods": 4872
+ },
+ {
+  "id": 1224,
+  "name": "Glutamic acid",
+  "unit": "g",
+  "foods": 5029
+ },
+ {
+  "id": 1225,
+  "name": "Glycine",
+  "unit": "g",
+  "foods": 5025
+ },
+ {
+  "id": 1226,
+  "name": "Proline",
+  "unit": "g",
+  "foods": 5017
+ },
+ {
+  "id": 1227,
+  "name": "Serine",
+  "unit": "g",
+  "foods": 5025
+ },
+ {
+  "id": 1228,
+  "name": "Hydroxyproline",
+  "unit": "g",
+  "foods": 1431
+ },
+ {
+  "id": 1242,
+  "name": "Vitamin E, added",
+  "unit": "mg",
+  "foods": 4616
+ },
+ {
+  "id": 1246,
+  "name": "Vitamin B-12, added",
+  "unit": "µg",
+  "foods": 4762
+ },
+ {
+  "id": 1253,
+  "name": "Cholesterol",
+  "unit": "mg",
+  "foods": 7394
+ },
+ {
+  "id": 1257,
+  "name": "Fatty acids, total trans",
+  "unit": "g",
+  "foods": 4179
+ },
+ {
+  "id": 1258,
+  "name": "Fatty acids, total saturated",
+  "unit": "g",
+  "foods": 7450
+ },
+ {
+  "id": 1259,
+  "name": "SFA 4:0",
+  "unit": "g",
+  "foods": 5692
+ },
+ {
+  "id": 1260,
+  "name": "SFA 6:0",
+  "unit": "g",
+  "foods": 5729
+ },
+ {
+  "id": 1261,
+  "name": "SFA 8:0",
+  "unit": "g",
+  "foods": 5919
+ },
+ {
+  "id": 1262,
+  "name": "SFA 10:0",
+  "unit": "g",
+  "foods": 6268
+ },
+ {
+  "id": 1263,
+  "name": "SFA 12:0",
+  "unit": "g",
+  "foods": 6450
+ },
+ {
+  "id": 1264,
+  "name": "SFA 14:0",
+  "unit": "g",
+  "foods": 6793
+ },
+ {
+  "id": 1265,
+  "name": "SFA 16:0",
+  "unit": "g",
+  "foods": 6999
+ },
+ {
+  "id": 1266,
+  "name": "SFA 18:0",
+  "unit": "g",
+  "foods": 6989
+ },
+ {
+  "id": 1267,
+  "name": "SFA 20:0",
+  "unit": "g",
+  "foods": 2849
+ },
+ {
+  "id": 1268,
+  "name": "MUFA 18:1",
+  "unit": "g",
+  "foods": 7015
+ },
+ {
+  "id": 1269,
+  "name": "PUFA 18:2",
+  "unit": "g",
+  "foods": 7031
+ },
+ {
+  "id": 1270,
+  "name": "PUFA 18:3",
+  "unit": "g",
+  "foods": 6940
+ },
+ {
+  "id": 1271,
+  "name": "PUFA 20:4",
+  "unit": "g",
+  "foods": 6304
+ },
+ {
+  "id": 1272,
+  "name": "PUFA 22:6 n-3 (DHA)",
+  "unit": "g",
+  "foods": 5772
+ },
+ {
+  "id": 1273,
+  "name": "SFA 22:0",
+  "unit": "g",
+  "foods": 2316
+ },
+ {
+  "id": 1274,
+  "name": "MUFA 14:1",
+  "unit": "g",
+  "foods": 2725
+ },
+ {
+  "id": 1275,
+  "name": "MUFA 16:1",
+  "unit": "g",
+  "foods": 6782
+ },
+ {
+  "id": 1276,
+  "name": "PUFA 18:4",
+  "unit": "g",
+  "foods": 5707
+ },
+ {
+  "id": 1277,
+  "name": "MUFA 20:1",
+  "unit": "g",
+  "foods": 6300
+ },
+ {
+  "id": 1278,
+  "name": "PUFA 20:5 n-3 (EPA)",
+  "unit": "g",
+  "foods": 5800
+ },
+ {
+  "id": 1279,
+  "name": "MUFA 22:1",
+  "unit": "g",
+  "foods": 5779
+ },
+ {
+  "id": 1280,
+  "name": "PUFA 22:5 n-3 (DPA)",
+  "unit": "g",
+  "foods": 5756
+ },
+ {
+  "id": 1283,
+  "name": "Phytosterols",
+  "unit": "mg",
+  "foods": 489
+ },
+ {
+  "id": 1285,
+  "name": "Stigmasterol",
+  "unit": "mg",
+  "foods": 137
+ },
+ {
+  "id": 1286,
+  "name": "Campesterol",
+  "unit": "mg",
+  "foods": 137
+ },
+ {
+  "id": 1288,
+  "name": "Beta-sitosterol",
+  "unit": "mg",
+  "foods": 138
+ },
+ {
+  "id": 1292,
+  "name": "Fatty acids, total monounsaturated",
+  "unit": "g",
+  "foods": 7277
+ },
+ {
+  "id": 1293,
+  "name": "Fatty acids, total polyunsaturated",
+  "unit": "g",
+  "foods": 7279
+ },
+ {
+  "id": 1299,
+  "name": "SFA 15:0",
+  "unit": "g",
+  "foods": 2373
+ },
+ {
+  "id": 1300,
+  "name": "SFA 17:0",
+  "unit": "g",
+  "foods": 2755
+ },
+ {
+  "id": 1301,
+  "name": "SFA 24:0",
+  "unit": "g",
+  "foods": 2235
+ },
+ {
+  "id": 1303,
+  "name": "TFA 16:1 t",
+  "unit": "g",
+  "foods": 1251
+ },
+ {
+  "id": 1304,
+  "name": "TFA 18:1 t",
+  "unit": "g",
+  "foods": 1913
+ },
+ {
+  "id": 1305,
+  "name": "TFA 22:1 t",
+  "unit": "g",
+  "foods": 878
+ },
+ {
+  "id": 1306,
+  "name": "TFA 18:2 t not further defined",
+  "unit": "g",
+  "foods": 1216
+ },
+ {
+  "id": 1307,
+  "name": "PUFA 18:2 i",
+  "unit": "g",
+  "foods": 55
+ },
+ {
+  "id": 1310,
+  "name": "TFA 18:2 t,t",
+  "unit": "g",
+  "foods": 352
+ },
+ {
+  "id": 1311,
+  "name": "PUFA 18:2 CLAs",
+  "unit": "g",
+  "foods": 1512
+ },
+ {
+  "id": 1312,
+  "name": "MUFA 24:1 c",
+  "unit": "g",
+  "foods": 1381
+ },
+ {
+  "id": 1313,
+  "name": "PUFA 20:2 n-6 c,c",
+  "unit": "g",
+  "foods": 2487
+ },
+ {
+  "id": 1314,
+  "name": "MUFA 16:1 c",
+  "unit": "g",
+  "foods": 1382
+ },
+ {
+  "id": 1315,
+  "name": "MUFA 18:1 c",
+  "unit": "g",
+  "foods": 1864
+ },
+ {
+  "id": 1316,
+  "name": "PUFA 18:2 n-6 c,c",
+  "unit": "g",
+  "foods": 1842
+ },
+ {
+  "id": 1317,
+  "name": "MUFA 22:1 c",
+  "unit": "g",
+  "foods": 1164
+ },
+ {
+  "id": 1321,
+  "name": "PUFA 18:3 n-6 c,c,c",
+  "unit": "g",
+  "foods": 1660
+ },
+ {
+  "id": 1323,
+  "name": "MUFA 17:1",
+  "unit": "g",
+  "foods": 2459
+ },
+ {
+  "id": 1325,
+  "name": "PUFA 20:3",
+  "unit": "g",
+  "foods": 2284
+ },
+ {
+  "id": 1329,
+  "name": "Fatty acids, total trans-monoenoic",
+  "unit": "g",
+  "foods": 1887
+ },
+ {
+  "id": 1331,
+  "name": "Fatty acids, total trans-polyenoic",
+  "unit": "g",
+  "foods": 1593
+ },
+ {
+  "id": 1332,
+  "name": "SFA 13:0",
+  "unit": "g",
+  "foods": 263
+ },
+ {
+  "id": 1333,
+  "name": "MUFA 15:1",
+  "unit": "g",
+  "foods": 2076
+ },
+ {
+  "id": 1404,
+  "name": "PUFA 18:3 n-3 c,c,c (ALA)",
+  "unit": "g",
+  "foods": 1967
+ },
+ {
+  "id": 1405,
+  "name": "PUFA 20:3 n-3",
+  "unit": "g",
+  "foods": 1035
+ },
+ {
+  "id": 1406,
+  "name": "PUFA 20:3 n-6",
+  "unit": "g",
+  "foods": 1260
+ },
+ {
+  "id": 1408,
+  "name": "PUFA 20:4 n-6",
+  "unit": "g",
+  "foods": 165
+ },
+ {
+  "id": 1409,
+  "name": "PUFA 18:3i",
+  "unit": "g",
+  "foods": 568
+ },
+ {
+  "id": 1410,
+  "name": "PUFA 21:5",
+  "unit": "g",
+  "foods": 114
+ },
+ {
+  "id": 1411,
+  "name": "PUFA 22:4",
+  "unit": "g",
+  "foods": 1069
+ },
+ {
+  "id": 1412,
+  "name": "MUFA 18:1-11 t (18:1t n-7)",
+  "unit": "g",
+  "foods": 168
+ },
+ {
+  "id": 2000,
+  "name": "Total Sugars",
+  "unit": "g",
+  "foods": 6007
+ }
+]
