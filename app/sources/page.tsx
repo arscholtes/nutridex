@@ -1,16 +1,14 @@
 import { GameShell } from "../../components/game.tsx";
 import { SourceLink } from "../../components/parts.tsx";
-import { compoundEntry, effectEntry, ingredientEntry, sourceList } from "../../lib/db/dex.ts";
+import { sql } from "../../lib/db/client.ts";
+import { sourceList } from "../../lib/db/dex.ts";
+import { sourcesBehind } from "../../lib/db/encounters.ts";
 import { viewer } from "../../lib/viewer.ts";
 
 /** The citations behind what you have unlocked, with their limitations. */
 export default async function SourcesPage() {
   const { revealed } = await viewer();
-  const behind = new Set<string>();
-  for (const slug of revealed.foods) for (const s of (await ingredientEntry(slug))?.sources ?? []) behind.add(s.id);
-  for (const slug of revealed.compounds) for (const s of (await compoundEntry(slug))?.sources ?? []) behind.add(s.id);
-  for (const slug of revealed.effects) for (const s of (await effectEntry(slug))?.sources ?? []) behind.add(s.id);
-  const sources = (await sourceList()).filter((s) => behind.has(s.id));
+  const sources = await sourceList(sql, await sourcesBehind(revealed));
   return (
     <GameShell>
     <main className="mx-auto max-w-3xl p-3 sm:p-5">

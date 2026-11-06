@@ -1,3 +1,4 @@
+import Compression
 import Foundation
 import Testing
 import UIKit
@@ -10,7 +11,7 @@ struct SnapshotTests {
     @Test func holdsEveryEntryTheWebDexHas() {
         let count = { (kind: EntryKind) in dex.cards.filter { $0.kind == kind }.count }
         #expect(count(.ingredient) == 15)
-        #expect(count(.compound) == 41)
+        #expect(count(.compound) == 152)
         #expect(count(.effect) == 29)
         #expect(!dex.version.isEmpty)
     }
@@ -41,6 +42,33 @@ struct SnapshotTests {
         #expect(vitaminC.bar == 12)
         #expect(vitaminC.ranked.contains { $0.slug == "kale" })
         #expect(!vitaminC.ranked.contains { $0.slug == "carrot" })
+    }
+
+    @Test func readsOneEntryWhenAskedFromWhatTheExportCompressed() throws {
+        let file = try DexFile(url: try #require(Bundle.main.url(forResource: "dex", withExtension: "sqlite")))
+        let carrot = try JSONDecoder().decode(IngredientEntry.self, from: try #require(try file.entry(.ingredient, "carrot")))
+        #expect(carrot.ingredient.name == "Carrot")
+        #expect(try file.entry(.ingredient, "not-a-food") == nil)
+    }
+
+    @Test func refusesAPartThatInflatesToTheWrongSize() throws {
+        let json = Data(#"{"a":"carrot carrot carrot"}"#.utf8)
+        var body = Data(count: json.count + 64)
+        let written = body.withUnsafeMutableBytes { dst in
+            json.withUnsafeBytes { src in
+                compression_encode_buffer(dst.bindMemory(to: UInt8.self).baseAddress!, dst.count, src.bindMemory(to: UInt8.self).baseAddress!, json.count, nil, COMPRESSION_ZLIB)
+            }
+        }
+        body = body.prefix(written)
+        #expect(try DexFile.inflate(body, size: json.count) == json)
+        #expect(throws: DexFileError.self) { try DexFile.inflate(body, size: json.count + 1) }
+    }
+
+    @Test func aCardCarriesTheSourcesBehindItsEntry() throws {
+        let card = try #require(dex.cards.first { $0.kind == .ingredient && $0.slug == "carrot" })
+        let carrot = try #require(dex.ingredients["carrot"])
+        #expect(!card.sources.isEmpty)
+        #expect(Set(card.sources) == Set(carrot.sources.map(\.id)))
     }
 
     @Test func everyFoodAndCompoundHasCreatureArtInTheCatalog() {
@@ -89,11 +117,20 @@ struct SearchTests {
 
     @Test func filtersByKindAndType() {
         let carotenoids = DexSearch.filter(cards, query: "", kind: .compound, type: "carotenoid").map(\.slug).sorted()
-        #expect(carotenoids == ["alpha-carotene", "beta-carotene", "lutein-zeaxanthin", "lycopene"])
+        #expect(carotenoids == ["alpha-carotene", "beta-carotene", "beta-cryptoxanthin", "lutein-zeaxanthin", "lycopene"])
     }
 
     @Test func aSearchKeepsEachEntrysNumber() {
         #expect(DexSearch.filter(cards, query: "carrot", kind: .ingredient, type: nil).first?.number == "F006")
+    }
+
+    @Test func ranksEverySearchAsTheWebDoes() {
+        let dex = Dex.bundled
+        #expect(dex.searchChecks.count > 3)
+        for check in dex.searchChecks {
+            let found = DexSearch.filter(dex.cards, query: check.query, kind: check.kind, type: nil).map(\.id)
+            #expect(found == check.results, "\(check.query) in \(check.kind?.rawValue ?? "everything")")
+        }
     }
 
     @Test func aMisspellingScoresAsTheWebComments() {
@@ -196,8 +233,8 @@ struct DisplayTests {
     }
 
     @Test func aChebiIdIsAnIdentifierNotAQuantity() throws {
-        let vitaminC = try #require(Dex.bundled.compounds["vitamin-c"])
-        #expect(vitaminC.compound.chebiLabel == "CHEBI:29073")
+        let betaCarotene = try #require(Dex.bundled.compounds["beta-carotene"])
+        #expect(betaCarotene.compound.chebiLabel == "CHEBI:17579")
     }
 
     @Test func aRowThatJustFitsStaysOneRow() {

@@ -1,6 +1,6 @@
 # Schema
 
-NutriDex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted. The native apps bundle a snapshot generated from it (`npm run export:native`) and write nothing back.
+NutriDex's own Postgres database: local in development (`npm run db:local`), Supabase when hosted. The native apps bundle a snapshot generated from it (`npm run export:native`, described at the end of this file), and write to it only through `app/api/encounters` and `app/api/preferences`.
 The migration in `drizzle/` is generated from `lib/db/schema.ts`; this file describes what each table is for.
 The `pg_trgm` extension (`drizzle/0004_search_trigram.sql`) gives the Dex search its fuzzy matching.
 
@@ -149,6 +149,8 @@ How much of a compound an ingredient has, per 100 g. Amounts are USDA's as repor
 | `amount_high` | numeric | yes |  |
 | `form_note` | text | yes |  |
 | `source_id` | uuid | yes |  |
+
+Index `ingredient_compound_richest` on `(compound_id, amount_per_100g desc)` answers which food holds the most of a compound. With every USDA food loaded, the home page's query did not finish in 9 minutes without it. Index `ingredient_compound_source` on `source_id` answers what a source supports; the sources list did not finish in 2 minutes without it.
 
 ## What compounds do
 
@@ -428,3 +430,35 @@ One recipe or one supplement in a stack, never both (enforced by a check).
 | `recipe_id` | uuid | yes |  |
 | `supplement_id` | uuid | yes |  |
 | `servings` | numeric | no | `1` |
+
+## The apps' data file
+
+`apple/Shared/Resources/dex.sqlite` is not part of this database: `npm run export:native` writes it from this
+database for the native apps to bundle, and nothing reads it back into Postgres. Every body is JSON compressed
+with raw DEFLATE, and `size` is its length before compressing, so a reader can tell a whole body from a damaged one.
+Ids in it are numbered by where they first appear (`id-0001`), since database ids change with every database.
+
+`meta` holds what the whole app shares, one row per key:
+
+| key | what it holds |
+| --- | --- |
+| `head` | the version, disclaimer, type colours, skins, and the web's results for a few searches, which the apps' tests check their own search against |
+| `cards` | every entry's card, with a line about it, its creature's image name and the ids of the sources behind it |
+| `reveals` | what marking each food as had unlocks |
+| `sources` | every citation |
+| `compare` | every food's nutrient panel, for the Mac's comparison table |
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `key` | text | no |  |
+| `size` | integer | no |  |
+| `body` | blob | no |  |
+
+`entry` holds one row per food, compound and effect: the full entry the app shows when it is opened.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `kind` | text | no |  |
+| `slug` | text | no |  |
+| `size` | integer | no |  |
+| `body` | blob | no |  |

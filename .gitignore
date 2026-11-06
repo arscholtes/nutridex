@@ -10,6 +10,9 @@ next-env.d.ts
 # Project-local Postgres cluster (scripts/db-local.sh)
 .pgdata/
 
+# USDA records as pulled, so a re-run costs no calls
+.usda-cache/
+
 # WebStorm's per-project settings
 .idea/
 

@@ -32,7 +32,7 @@ import {
   recipeIngredient,
   source,
 } from "../lib/db/schema.ts";
-import { fetchFood, foodUrl } from "../lib/usda/client.ts";
+import { fetchFood, usdaSource } from "../lib/usda/client.ts";
 import { compoundAmounts, type FdcFood } from "../lib/usda/nutrients.ts";
 
 const apiKey = process.env.USDA_API_KEY;
@@ -84,14 +84,8 @@ await db.transaction(async (tx) => {
 
   for (const seed of INGREDIENTS) {
     const food = foods.get(seed.slug)!;
-    const url = foodUrl(food.fdcId);
-    const sourceValues = {
-      title: `USDA FoodData Central: ${food.description} (${food.dataType}, fdcId ${food.fdcId})`,
-      url,
-      studyType: "database",
-      year: publicationYear(food),
-    };
-    const [existing] = await tx.select({ id: source.id }).from(source).where(eq(source.url, url));
+    const sourceValues = usdaSource(food);
+    const [existing] = await tx.select({ id: source.id }).from(source).where(eq(source.url, sourceValues.url));
     const sourceId = existing
       ? (await tx.update(source).set(sourceValues).where(eq(source.id, existing.id)).returning({ id: source.id }))[0].id
       : (await tx.insert(source).values(sourceValues).returning({ id: source.id }))[0].id;
@@ -276,12 +270,6 @@ console.log(`seeded ${RECIPES.length} recipe(s), leaving any that already existe
 console.log(`no amount yet (USDA does not measure these; shown as missing): ${missing.length}`);
 for (const pair of missing) console.log(`  ${pair}`);
 await sql.end();
-
-/** @return [number | null] the year in a USDA publicationDate such as "4/1/2019" */
-function publicationYear(food: FdcFood): number | null {
-  const year = food.publicationDate?.match(/(\d{4})$/)?.[1];
-  return year ? Number(year) : null;
-}
 
 /** @return [SQL] `column = value`, or `column is null` when value is null */
 function matches(column: Parameters<typeof eq>[0], value: string | null): SQL {

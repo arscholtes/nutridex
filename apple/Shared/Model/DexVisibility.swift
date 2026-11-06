@@ -47,10 +47,7 @@ struct DexVisibility {
     /// The citations behind what is shown.
     var sources: [SourceUse] {
         guard !isEverything else { return Dex.bundled.sources }
-        var behind = Set<String>()
-        for (slug, entry) in Dex.bundled.ingredients where shows(.ingredient, slug) { behind.formUnion(entry.sources.map(\.id)) }
-        for (slug, entry) in Dex.bundled.compounds where shows(.compound, slug) { behind.formUnion(entry.sources.map(\.id)) }
-        for (slug, entry) in Dex.bundled.effects where shows(.effect, slug) { behind.formUnion(entry.sources.map(\.id)) }
+        let behind = Set(Dex.bundled.cards.filter { shows($0.kind, $0.slug) }.flatMap(\.sources))
         return Dex.bundled.sources.filter { behind.contains($0.id) }
     }
 }

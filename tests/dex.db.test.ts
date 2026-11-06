@@ -21,7 +21,7 @@ describe("dex numbers", () => {
 
 describe("the dex's counts", () => {
   test("says how many entries each kind holds", async () => {
-    expect(await dexCounts()).toEqual({ ingredient: 15, compound: 41, effect: 29 });
+    expect(await dexCounts()).toEqual({ ingredient: 15, compound: 152, effect: 29 });
   });
 });
 
@@ -127,12 +127,27 @@ describe("home search", () => {
   test("lists every ingredient, compound and effect when nothing is searched", async () => {
     const cards = await listEntries({});
     const count = (kind: string) => cards.filter((c) => c.kind === kind).length;
-    expect([count("ingredient"), count("compound"), count("effect")]).toEqual([15, 41, 29]);
+    expect([count("ingredient"), count("compound"), count("effect")]).toEqual([15, 152, 29]);
   });
 
   test('finds turmeric when you type "tumeric", the plan\'s own example', async () => {
     const cards = await listEntries({ q: "tumeric" });
     expect(cards[0]).toMatchObject({ kind: "ingredient", slug: "turmeric", href: "/ingredients/turmeric" });
+  });
+
+  test("puts the plain food first, ahead of everything merely made with it", async () => {
+    const rollback = new Error("roll back");
+    await expect(
+      sql.begin(async (tx) => {
+        const q = tx as unknown as typeof sql;
+        for (const name of ["Babyfood, banana no tapioca, strained", "Bananas, dehydrated, or banana powder", "Bananas", "Apple banana bread"]) {
+          await tx`insert into ingredient (slug, name, category) values (${name.toLowerCase().replace(/[^a-z]+/g, "-")}, ${name}, 'fruit')`;
+        }
+        const cards = await listEntries({ q: "banana", kind: "ingredient" }, q);
+        expect(cards.map((c) => c.name)).toEqual(["Bananas", "Bananas, dehydrated, or banana powder", "Apple banana bread", "Babyfood, banana no tapioca, strained"]);
+        throw rollback;
+      }),
+    ).rejects.toBe(rollback);
   });
 
   test("searches effects too", async () => {
@@ -142,7 +157,7 @@ describe("home search", () => {
 
   test("filters by kind and by type badge", async () => {
     const carotenoids = await listEntries({ kind: "compound", type: "carotenoid" });
-    expect(carotenoids.map((c) => c.slug).sort()).toEqual(["alpha-carotene", "beta-carotene", "lutein-zeaxanthin", "lycopene"]);
+    expect(carotenoids.map((c) => c.slug).sort()).toEqual(["alpha-carotene", "beta-carotene", "beta-cryptoxanthin", "lutein-zeaxanthin", "lycopene"]);
     const types = await entryTypes();
     expect(types.effect).toEqual(expect.arrayContaining(["skin", "immune"]));
     expect(types.compound).toContain("carotenoid");

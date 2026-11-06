@@ -2,6 +2,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, test } from "vitest";
 import { COMPOUNDS } from "../data/seed/compounds.ts";
+import { PANEL_COMPOUNDS } from "../lib/usda/nutrients.ts";
 import { COMPOUND_EFFECTS, EFFECTS, SOURCES } from "../data/seed/facts.ts";
 import { CHOLINE_BAR_PER_100G, NUTRIENT_CLAIMS, NUTRIENT_SOURCE, REFERENCE_VALUES, sourceBar } from "../data/seed/nutrient-claims.ts";
 import { typeColor } from "../lib/art/palette.ts";
@@ -40,8 +41,8 @@ describe("the regulation's own words", () => {
 describe("which nutrients it covers", () => {
   const covered = new Set(NUTRIENT_CLAIMS.map((n) => n.compound));
 
-  test("every vitamin and mineral has claims, except the two the regulation gives none to use", () => {
-    const inScope = COMPOUNDS.filter((c) => c.class === "vitamin" || c.class === "mineral").map((c) => c.slug);
+  test("every vitamin and mineral on the panel has claims, except the two the regulation gives none to use", () => {
+    const inScope = COMPOUNDS.filter((c) => (c.class === "vitamin" || c.class === "mineral") && PANEL_COMPOUNDS.includes(c.slug)).map((c) => c.slug);
     expect(inScope).toHaveLength(23);
     expect(inScope.filter((slug) => !covered.has(slug)).sort()).toEqual(["retinol", "sodium"]);
   });

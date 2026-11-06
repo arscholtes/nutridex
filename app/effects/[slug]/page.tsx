@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { typeColor } from "../../../lib/art/palette.ts";
 import { GameShell } from "../../../components/game.tsx";
 import { EffectEntryView } from "../../../components/effect-entry.tsx";
-import { effectEntry, listEntries } from "../../../lib/db/dex.ts";
+import { effectEntry, dexSteps } from "../../../lib/db/dex.ts";
 import { isRevealed, scrubEffect } from "../../../lib/db/reveal.ts";
 import { viewer } from "../../../lib/viewer.ts";
 
@@ -13,7 +13,7 @@ export default async function EffectPage({ params }: { params: Promise<{ slug: s
   if (!isRevealed("effect", slug, revealed)) notFound();
   const found = await effectEntry(slug);
   if (!found) notFound();
-  const entry = scrubEffect(found, revealed, await listEntries({ kind: "effect" }));
+  const entry = scrubEffect(found, revealed, await dexSteps("effect"));
   return (
     <GameShell lens={typeColor(entry.effect.bodySystem)} pager={entry.pager}>
       <EffectEntryView entry={entry} />

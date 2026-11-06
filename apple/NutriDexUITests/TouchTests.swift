@@ -1,3 +1,5 @@
+import Compression
+import SQLite3
 import XCTest
 
 /// Drives the app the way a thumb does, from a throwaway record, so nothing reaches anyone's real one.
@@ -6,22 +8,40 @@ final class TouchTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    /// The version the disclaimer was accepted at, read from the snapshot the app bundles.
-    private var version: String {
+    /// The version and skins from the file the app bundles. A UI test cannot reach into the app, so it
+    /// reads the same file from the repo.
+    private var head: [String: Any] {
         get throws {
-            let snapshot = URL(filePath: #filePath).deletingLastPathComponent().deletingLastPathComponent().appending(path: "Shared/Resources/dex.json")
-            let json = try JSONSerialization.jsonObject(with: Data(contentsOf: snapshot)) as? [String: Any]
-            return try XCTUnwrap(json?["version"] as? String)
+            let path = URL(filePath: #filePath).deletingLastPathComponent().deletingLastPathComponent().appending(path: "Shared/Resources/dex.sqlite").path
+            var db: OpaquePointer?
+            defer { sqlite3_close(db) }
+            var statement: OpaquePointer?
+            defer { sqlite3_finalize(statement) }
+            guard sqlite3_open_v2(path, &db, SQLITE_OPEN_READONLY, nil) == SQLITE_OK,
+                  sqlite3_prepare_v2(db, "select size, body from meta where key = 'head'", -1, &statement, nil) == SQLITE_OK,
+                  sqlite3_step(statement) == SQLITE_ROW, let bytes = sqlite3_column_blob(statement, 1)
+            else {
+                XCTFail("cannot read \(path): run npm run export:native")
+                throw CocoaError(.fileReadUnknown)
+            }
+            let size = Int(sqlite3_column_int64(statement, 0))
+            var json = Data(count: size)
+            let written = json.withUnsafeMutableBytes { dst in
+                compression_decode_buffer(dst.bindMemory(to: UInt8.self).baseAddress!, size, bytes.assumingMemoryBound(to: UInt8.self), Int(sqlite3_column_bytes(statement, 1)), nil, COMPRESSION_ZLIB)
+            }
+            XCTAssertEqual(written, size, "the bundled head did not inflate whole")
+            return try XCTUnwrap(JSONSerialization.jsonObject(with: json) as? [String: Any])
         }
     }
 
-    /// Every skin's id, read from the snapshot the app bundles.
+    /// The version the disclaimer was accepted at.
+    private var version: String {
+        get throws { try XCTUnwrap(head["version"] as? String) }
+    }
+
+    /// Every skin's id.
     private var skins: [String] {
-        get throws {
-            let snapshot = URL(filePath: #filePath).deletingLastPathComponent().deletingLastPathComponent().appending(path: "Shared/Resources/dex.json")
-            let json = try JSONSerialization.jsonObject(with: Data(contentsOf: snapshot)) as? [String: Any]
-            return try XCTUnwrap(json?["skins"] as? [[String: Any]]).compactMap { $0["id"] as? String }
-        }
+        get throws { try XCTUnwrap(head["skins"] as? [[String: Any]]).compactMap { $0["id"] as? String } }
     }
 
     private func launch(foods: String = "carrot,kale,egg", route: String? = nil, skin: String? = nil) throws -> XCUIApplication {

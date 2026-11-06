@@ -1,6 +1,6 @@
 // A creature for a compound, drawn from its data until it has drawn art: its class sets the colour
-// and body shape, and its place among its class in the seed sets where its two atoms sit and how
-// big they are, so no two seeded compounds look the same (up to 21 per class).
+// and body shape, and its place among its class in the seed sets where its two atoms sit, how big
+// they are and how pale, so no two seeded compounds look the same (up to 63 per class).
 // The tile, outline and face follow tools/art/STYLE.md, the house style of the drawn ingredients.
 import { COMPOUNDS } from "../../data/seed/compounds.ts";
 import { isDark, tint, typeColor } from "./palette.ts";
@@ -20,6 +20,37 @@ const SHAPE_OF: Record<string, Shape> = {
   energy: "drop",
   mineral: "gem",
   nutrient: "round",
+  "amino acid": "hex",
+  "fatty acid": "drop",
+  sugar: "gem",
+  sterol: "hex",
+  proximate: "drop",
+  alcohol: "drop",
+};
+
+const FOOD_SHAPE_OF: Record<string, Shape> = {
+  "baby food": "round",
+  baked: "block",
+  cereal: "round",
+  dairy: "drop",
+  drink: "tall",
+  egg: "tall",
+  "fast food": "block",
+  fish: "drop",
+  fruit: "round",
+  grain: "tall",
+  legume: "tall",
+  meal: "block",
+  meat: "gem",
+  nut: "hex",
+  oil: "drop",
+  restaurant: "block",
+  snack: "gem",
+  soup: "round",
+  spice: "hex",
+  sweet: "gem",
+  traditional: "hex",
+  vegetable: "tall",
 };
 
 const BODIES: Record<Shape, (fill: string) => string> = {
@@ -43,6 +74,7 @@ const ATOMS: [number, number, number, number][][] = [
 ];
 
 const ATOM_RADII = [13, 11, 15];
+const ATOM_TINTS = [0.25, 0.5, 0.75];
 
 /**
  * @param compound [{ slug, name, class }] the compound to draw
@@ -50,20 +82,36 @@ const ATOM_RADII = [13, 11, 15];
  */
 export function compoundCreature(compound: { slug: string; name: string; class: string | null }): string {
   const body = typeColor(compound.class);
-  const dark = isDark(body);
   const look = variant(compound);
   const radius = ATOM_RADII[Math.floor(look / ATOMS.length) % ATOM_RADII.length];
+  const pale = ATOM_TINTS[Math.floor(look / (ATOMS.length * ATOM_RADII.length)) % ATOM_TINTS.length];
   const atoms = ATOMS[look % ATOMS.length]
-    .map(([x, y, bx, by]) => `<path d="M${x} ${y} L${bx} ${by}"/><circle cx="${x}" cy="${y}" r="${radius}" fill="${tint(body, 0.25)}"/>`)
+    .map(([x, y, bx, by]) => `<path d="M${x} ${y} L${bx} ${by}"/><circle cx="${x}" cy="${y}" r="${radius}" fill="${tint(body, pale)}"/>`)
     .join("");
+  return creature(compound.name, body, BODIES[SHAPE_OF[compound.class ?? ""] ?? "round"](body) + atoms);
+}
+
+/**
+ * The creature a food shows until it is drawn: one for each category.
+ * @param category [string] the food's category
+ * @return [string] a 256 x 256 SVG
+ */
+export function foodStandIn(category: string): string {
+  const body = typeColor(category);
+  const name = category[0].toUpperCase() + category.slice(1);
+  return creature(name, body, BODIES[FOOD_SHAPE_OF[category]](body));
+}
+
+function creature(name: string, body: string, shapes: string): string {
+  const dark = isDark(body);
   const smile = dark ? "#FFFFFF" : "#1B1B1F";
   const blush = dark ? `fill="#FF9EC4" opacity="0.55"` : `fill="#FF5F6D" opacity="0.45"`;
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">`,
-    `<title id="t">${escapeXml(compound.name)}</title>`,
+    `<title id="t">${escapeXml(name)}</title>`,
     `<rect x="8" y="8" width="240" height="240" rx="40" fill="${tint(body, 0.85)}"/>`,
     `<ellipse cx="128" cy="224" rx="56" ry="9" fill="#000" opacity="0.14"/>`,
-    `<g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">${BODIES[SHAPE_OF[compound.class ?? ""] ?? "round"](body)}${atoms}</g>`,
+    `<g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">${shapes}</g>`,
     `<ellipse cx="100" cy="98" rx="15" ry="9" fill="${tint(body, 0.45)}"/>`,
     `<ellipse cx="103" cy="143" rx="8" ry="4.5" ${blush}/><ellipse cx="153" cy="143" rx="8" ry="4.5" ${blush}/>`,
     `<g stroke="#1B1B1F" stroke-width="3.5"><ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/><ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/></g>`,

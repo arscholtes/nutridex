@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="t">
+<title id="t">Trans-docosenoic acid (22:1 t)</title>
+<g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M128 58 C150 92 196 126 196 160 C196 198 164 216 128 216 C92 216 60 198 60 160 C60 126 106 92 128 58 Z" fill="#B8860B"/><path d="M204 56 L182 78"/><circle cx="204" cy="56" r="13" fill="#EDE1C2"/><path d="M48 196 L68 184"/><circle cx="48" cy="196" r="13" fill="#EDE1C2"/></g>
+<ellipse cx="100" cy="98" rx="15" ry="9" fill="#D8BC79"/>
+<ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/><ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
+<g stroke="#1B1B1F" stroke-width="3.5"><ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/><ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/></g>
+<circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/><circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>
+<circle cx="117" cy="123" r="1.9" fill="#FFFFFF"/><circle cx="147" cy="123" r="1.9" fill="#FFFFFF"/>
+<path d="M120 143 Q128 151 136 143" stroke="#1B1B1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

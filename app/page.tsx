@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { EntryCardView } from "../components/entry-card.tsx";
 import { GameShell, HadComposer, Progress } from "../components/game.tsx";
-import { listEntries, type EntryCard, type EntryKind } from "../lib/db/dex.ts";
-import { scrubCards } from "../lib/db/reveal.ts";
+import { dexCounts, listEntries, type EntryCard, type EntryKind } from "../lib/db/dex.ts";
 import { viewer } from "../lib/viewer.ts";
 
 const KINDS: { value: EntryKind; label: string }[] = [
@@ -24,12 +23,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const params = await searchParams;
   const kind = KINDS.find((k) => k.value === params.kind)?.value;
   const { revealed } = await viewer();
-  const everything = await listEntries({});
-  const unlocked = scrubCards(everything, revealed);
+  const totals = await dexCounts();
+  const unlocked = await listEntries({ within: revealed });
   const typesOf = (k: EntryKind) => [...new Set(unlocked.filter((c: EntryCard) => c.kind === k).flatMap((c) => (c.type ? [c.type] : [])))].sort();
   const types: Record<EntryKind, string[]> = { ingredient: typesOf("ingredient"), compound: typesOf("compound"), effect: typesOf("effect") };
   const type = params.type && Object.values(types).some((list) => list.includes(params.type!)) ? params.type : undefined;
-  const cards = scrubCards(await listEntries({ q: params.q, kind, type }), revealed);
+  const cards = await listEntries({ q: params.q, kind, type, within: revealed });
   const count = (k: EntryKind) => unlocked.filter((c) => c.kind === k).length;
   const tabs = [
     { label: "All", value: undefined, count: unlocked.length },
@@ -43,7 +42,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         <p className="dex-hero-line" aria-hidden>
           Your Dex.
         </p>
-        <Progress unlocked={unlocked.length} total={everything.length} />
+        <Progress unlocked={unlocked.length} total={totals.ingredient + totals.compound + totals.effect} />
 
         <nav className="mt-3 -mr-3.5 flex gap-2 overflow-x-auto pr-3.5 [scrollbar-width:none]" aria-label="Kinds of entry">
           {tabs.map((t) => (

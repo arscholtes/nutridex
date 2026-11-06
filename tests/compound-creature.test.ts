@@ -2,8 +2,29 @@
 // the drawn ingredients follow (tools/art/STYLE.md).
 import { describe, expect, test } from "vitest";
 import { COMPOUNDS } from "../data/seed/compounds.ts";
-import { compoundCreature } from "../lib/art/creature.ts";
+import { compoundCreature, creatureSilhouette, foodStandIn } from "../lib/art/creature.ts";
+import { typeColor } from "../lib/art/palette.ts";
+import { FOOD_CATEGORIES } from "../lib/usda/foods.ts";
 import { styleProblems } from "./helpers/art-style.ts";
+
+describe("a food's stand-in, until the food is drawn", () => {
+  test.each(FOOD_CATEGORIES.map((c) => [c]))("%s holds to the house style", (category) => {
+    expect(styleProblems(foodStandIn(category))).toEqual([]);
+  });
+
+  test.each(FOOD_CATEGORIES.map((c) => [c]))("%s has a colour of its own", (category) => {
+    expect(typeColor(category)).not.toBe(typeColor(null));
+  });
+
+  test("no two categories are drawn the same", () => {
+    const drawings = FOOD_CATEGORIES.map((c) => foodStandIn(c).replace(/<title id="t">[^<]*<\/title>/, ""));
+    expect(new Set(drawings).size).toBe(FOOD_CATEGORIES.length);
+  });
+
+  test("can be blacked out like any other creature", () => {
+    expect(creatureSilhouette(foodStandIn("fruit"))).not.toContain('width="240"');
+  });
+});
 
 describe("a compound's creature", () => {
   test.each(COMPOUNDS.map((c) => [c.slug, c]))("%s holds to the house style", (_, c) => {

@@ -5,6 +5,7 @@ import {
   char,
   check,
   foreignKey,
+  index,
   integer,
   jsonb,
   numeric,
@@ -102,7 +103,8 @@ export const ingredientCompound = pgTable(
     formNote: text("form_note"),
     sourceId: uuid("source_id").references(() => source.id),
   },
-  (t) => [primaryKey({ columns: [t.ingredientId, t.compoundId] })],
+  // The indexes answer which food has the most of a compound, and what a source supports.
+  (t) => [primaryKey({ columns: [t.ingredientId, t.compoundId] }), index("ingredient_compound_richest").on(t.compoundId, t.amountPer100g.desc()), index("ingredient_compound_source").on(t.sourceId)],
 );
 
 export const effect = pgTable("effect", {

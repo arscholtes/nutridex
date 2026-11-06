@@ -11,9 +11,11 @@ npm install
 cp .env.example .env.local   # add your USDA key; DATABASE_URL already points at the local cluster
 npm run db:local             # project-local Postgres 16 in .pgdata, port 54329
 npm run db:migrate
-npm run seed                 # the plan's ingredients and compounds, amounts from USDA, sourced facts, the juice recipe
+npm run seed                 # the plan's ingredients, every compound, amounts from USDA, sourced facts, the juice recipe
+npm run seed:foods           # every other food in USDA's SR Legacy; the first run pulls about 390 calls' worth into .usda-cache
 npm test                     # unit tests, no database
-npm run test:db              # each phase's "Done when", against the seeded database; one test re-runs
+npm run db:test              # creates and seeds TEST_DATABASE_URL: the 15 hand-pinned foods, nothing anyone has played
+npm run test:db              # each phase's "Done when", against that database; one test re-runs
                              # the real seed (it writes and fetches USDA) to check it keeps others' rows
 npm run dev                  # the Dex at http://localhost:3000
 ```
@@ -25,11 +27,17 @@ run `db:migrate` and `seed` against it.
 
 `apple/NutriDex.xcodeproj` holds the SwiftUI apps: `NutriDex` for iPhone and iPad, and `NutriDexMac`, the
 home database. Neither needs a server: they bundle
-`apple/Shared/Resources/dex.json` and a catalog of creature art, both written by `npm run export:native`
-from the local database, through the same functions the website reads.
+`apple/Shared/Resources/dex.sqlite` and a catalog of creature art, both written by `npm run export:native`
+through the same functions the website reads. Each entry sits in that file on its own, compressed, so an app
+opens only what it shows. `SCHEMA.md` describes the file.
+
+The committed file holds the test database's 15 foods, so a fresh clone builds and the tests can check it. To put
+every food on your own devices, export with `--full`, build, then put the small file back before you commit:
+the full one is about 78 MB, and `tests/native-snapshot.db.test.ts` fails while it is in place.
 
 ```bash
 npm run export:native        # after any change to the seed, data functions, art or disclaimer
+npm run export:native -- --full   # every food in DATABASE_URL, for your own devices: about 8 minutes
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex \
   -destination 'platform=iOS Simulator,name=iPhone 17'
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac -destination 'platform=macOS'
@@ -100,7 +108,10 @@ NutriDex has no accounts yet, so the passcode is what links your devices.
 
 ## Data
 
-Amounts come from USDA FoodData Central (SR Legacy). Each stored amount carries a `source` row
+Amounts come from USDA FoodData Central (SR Legacy), every food and every component it reports, but
+for the same measurement in a second unit (energy in kJ, vitamins A and D in IU). `npm run generate:foods`
+pins each food in `data/seed/usda-foods.json`, named from USDA's description so each form is its own
+food. A food with no drawing wears its category's stand-in. Each stored amount carries a `source` row
 naming the USDA record it came from. A compound USDA does not measure is linked to its
 ingredient with no amount, and the app shows it as missing. See `SCHEMA.md` for every table.
 

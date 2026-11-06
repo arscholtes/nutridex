@@ -81,10 +81,10 @@ struct EntryPager: View {
     private func pages(_ cards: [EntryCard]) -> some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 0) {
-                ForEach(cards) { card in
+                // The scroll position finds a page by this id alone, so it has to be the slug `current` holds.
+                ForEach(cards, id: \.slug) { card in
                     SwipingPage { EntryPage(kind: kind, slug: card.slug) }
                         .containerRelativeFrame(.horizontal)
-                        .id(card.slug)
                 }
             }
             .scrollTargetLayout()
