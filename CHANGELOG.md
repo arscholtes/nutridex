@@ -27,6 +27,8 @@ running version has no entry here.
   requires. Its page says why.
 - On the web, marking a food once this browser holds as many as it can before an upload, about 30, says so. It used
   to do nothing.
+- A food without its own drawing wears a grey creature for its category, so none shows the wrong colour: a red
+  pepper is no longer green. The background still shows the category.
 - On iPhone and iPad running iOS 27, opening any entry but the first showed the first, and Next or the keyboard
   did not move at all, while the entry's number said you were where you asked to be.
 

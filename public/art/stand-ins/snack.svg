@@ -2,8 +2,8 @@
 <title id="t">Snack</title>
 <rect x="8" y="8" width="240" height="240" rx="40" fill="#FFF4E4"/>
 <ellipse cx="128" cy="224" rx="56" ry="9" fill="#000" opacity="0.14"/>
-<g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M128 62 L196 122 L164 212 L92 212 L60 122 Z" fill="#FFB74D"/></g>
-<ellipse cx="100" cy="98" rx="15" ry="9" fill="#FFD79D"/>
+<g stroke="#1B1B1F" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M128 62 L196 122 L164 212 L92 212 L60 122 Z" fill="#B5AFA6"/></g>
+<ellipse cx="100" cy="98" rx="15" ry="9" fill="#D9D4CC"/>
 <ellipse cx="103" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/><ellipse cx="153" cy="143" rx="8" ry="4.5" fill="#FF5F6D" opacity="0.45"/>
 <g stroke="#1B1B1F" stroke-width="3.5"><ellipse cx="113" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/><ellipse cx="143" cy="124" rx="9.5" ry="11" fill="#FFFFFF"/></g>
 <circle cx="115" cy="126" r="5.2" fill="#1B1B1F"/><circle cx="145" cy="126" r="5.2" fill="#1B1B1F"/>

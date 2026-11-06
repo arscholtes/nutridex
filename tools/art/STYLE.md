@@ -44,6 +44,11 @@ plus granny-smith-apple.svg, watermelon.svg, butternut-squash.svg, olive-oil.svg
   Fix anything unrecognisable, off-style, or clipped before reporting.
 - Do NOT edit any other file, do NOT overwrite an existing file, do NOT run git.
 
+## Category stand-ins
+A stand-in in `public/art/stand-ins/` is worn by every food of its category that has no drawing yet, whatever that
+food's colour, so its body is neutral grey #B5AFA6 with highlight #D9D4CC. Its tile keeps the category's tint, since
+a background may carry colour and a creature may not. `tests/ingredient-art.test.ts` checks both.
+
 ## Tile tints by group (added hour 2)
 vegetable #E6F4E8 · fresh herb #E6F4E8 · fruit #FDECEF · spice #FBF1DE · oil #FBF7DC · egg #EDF1F7 ·
 legume #EEF0DC · nut and seed #F4E9DF · grain #F7F0D8
