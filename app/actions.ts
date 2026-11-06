@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { recordEncounters } from "../lib/db/encounters.ts";
 import { saveSkin } from "../lib/db/preferences.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
-import { parsePending, PENDING_COOKIE, SKIN_COOKIE, tokenMatches, UNLOCKING_COOKIE, UPLOAD_COOKIE } from "../lib/encounter-cookies.ts";
+import { parsePending, PENDING_COOKIE, SKIN_COOKIE, tokenMatches, UNLOCKING_COOKIE, UPLOAD_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
 
 // Browsers cap a cookie's lifetime at 400 days; after that the notice appears once more.
@@ -25,12 +25,19 @@ export async function acceptDisclaimer() {
 const YEAR_SECONDS = 365 * 24 * 60 * 60;
 const privateCookie = { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: YEAR_SECONDS } as const;
 
-/** Marks a food as had on this device, which unlocks it here until it is uploaded. */
-export async function markEncountered(food: string) {
+/**
+ * Marks a food as had on this device, which unlocks it here until it is uploaded.
+ * @param food [string] the food's slug
+ * @return [Promise<{ error: string | null }>] why it was not kept, when this browser can hold no more
+ */
+export async function markEncountered(food: string): Promise<{ error: string | null }> {
   const jar = await cookies();
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
-  if (pending.some((p) => p.food === food)) return;
-  jar.set(PENDING_COOKIE, JSON.stringify([...pending, { food, encounteredAt: new Date().toISOString() }]), privateCookie);
+  if (pending.some((p) => p.food === food)) return { error: null };
+  const value = withPending(pending, food, new Date().toISOString());
+  if (value === null) return { error: "This browser is full: it holds no more foods until the ones waiting are uploaded." };
+  jar.set(PENDING_COOKIE, value, privateCookie);
+  return { error: null };
 }
 
 export type UploadState = { error: string | null };

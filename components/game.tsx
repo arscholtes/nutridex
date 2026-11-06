@@ -1,14 +1,13 @@
 // The collection game on the web: the upload banner, the "what did you have" box and progress.
 import { readFileSync } from "node:fs";
 import type { ReactNode } from "react";
-import { markEncountered } from "../app/actions.ts";
 import { creatureDataUrl, creatureSilhouette } from "../lib/art/creature.ts";
 import { foodsMatching, listEntries, type DexPager } from "../lib/db/dex.ts";
 import { revealedEntries } from "../lib/db/encounters.ts";
 import { currentSkin, viewer } from "../lib/viewer.ts";
 import { DexShell } from "./dex-shell.tsx";
 import { AmountBar } from "./parts.tsx";
-import { UnlockModal, type UnlockCard, UploadBanner } from "./unlock.tsx";
+import { HadButton, UnlockModal, type UnlockCard, UploadBanner } from "./unlock.tsx";
 
 /** How much of the collection is unlocked. It counts what is hidden without naming any of it. */
 export function Progress({ unlocked, total }: { unlocked: number; total: number }) {
@@ -38,11 +37,7 @@ export async function HadComposer({ had }: { had?: string }) {
             {candidates.map((c) => (
               <li key={c.slug} className="flex items-center justify-between gap-3">
                 <span className="font-bold">{c.name}</span>
-                <form action={markEncountered.bind(null, c.slug)}>
-                  <button type="submit" className="dex-button" aria-label={`I've had ${c.name}`}>
-                    I've had this
-                  </button>
-                </form>
+                <HadButton slug={c.slug} name={c.name} />
               </li>
             ))}
           </ul>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState, useTransition } from "react";
-import { finishUnlock, uploadEncounters } from "../app/actions.ts";
+import { finishUnlock, markEncountered, uploadEncounters } from "../app/actions.ts";
 
 export type UnlockCard = { slug: string; name: string; number: string; art: string; compounds: number; effects: number };
 
@@ -17,6 +17,23 @@ export function UploadBanner({ count, needsPasscode }: { count: number; needsPas
       </button>
       {state.error && (
         <p role="alert" className="w-full text-sm font-bold text-danger">
+          {state.error}
+        </p>
+      )}
+    </form>
+  );
+}
+
+/** "I've had this" for one food, which says so when this browser can hold no more. */
+export function HadButton({ slug, name }: { slug: string; name: string }) {
+  const [state, action, marking] = useActionState(() => markEncountered(slug), { error: null });
+  return (
+    <form action={action} className="flex flex-col items-end gap-1">
+      <button type="submit" disabled={marking} className="dex-button" aria-label={`I've had ${name}`}>
+        I've had this
+      </button>
+      {state.error && (
+        <p role="alert" className="text-right text-sm font-bold text-danger">
           {state.error}
         </p>
       )}
