@@ -24,9 +24,8 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
   {
     heading: "Supplements",
     body:
-      "NutriDex shows what supplement labels say and flags amounts above published upper limits. It never " +
-      "recommends a dose. The FDA does not approve dietary supplements before they are sold, so a label is the " +
-      "maker's claim, not a verified fact.",
+      "NutriDex covers food, not supplements. It does not show supplement labels or check what you take " +
+      "against upper limits, and it never recommends a dose of anything.",
   },
   {
     heading: "How accurate the data is",
@@ -53,15 +52,18 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
     heading: "What is stored about you",
     body:
       "The foods you mark as had, and when: kept in a cookie on this device until you upload them, then in " +
-      "NutriDex's database. Another cookie remembers which version of this notice you accepted, so it only " +
-      "appears again after an update. The skin you choose: kept in a cookie on this device and, once you have " +
-      "uploaded with your passcode, in NutriDex's database so it can follow you to your other devices. Nothing else.",
+      "NutriDex's database. The skin you choose: kept in a cookie on this device and, once you have uploaded " +
+      "with your passcode, in NutriDex's database so it can follow you to your other devices. Once you upload, " +
+      "a cookie keeps your passcode on this device for a year so you need not enter it again, and another holds " +
+      "what you just unlocked until it has been shown to you. A cookie remembers which version of this notice " +
+      "you accepted, so it only appears again after an update. The company that hosts NutriDex may keep its own " +
+      "records of each request, such as your IP address. Nothing else.",
   },
 ];
 
 /** The same notice for the native apps, which keep their one remembered thing in a setting. */
 export const NATIVE_DISCLAIMER_SECTIONS: { heading: string; body: string }[] = DISCLAIMER_SECTIONS.map((s) =>
   s.heading === "What is stored about you"
-    ? { ...s, body: "The foods you mark as had, and when: kept on this device until you upload them, then in NutriDex's database. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. The skin you choose: kept on this device and in NutriDex's database, so it can follow you to your other devices. Nothing else." }
+    ? { ...s, body: "The foods you mark as had, when, and whether each unlock has played: kept on this device, and in NutriDex's database once you upload them. The skin you choose: kept on this device and in NutriDex's database, so it can follow you to your other devices. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. When you upload, the company that hosts NutriDex's server may keep its own records of each request, such as your IP address. Nothing else." }
     : s,
 );

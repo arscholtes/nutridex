@@ -7,7 +7,7 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
-## Unreleased
+## 0.6.0 - 2026-11-06
 
 ### Added
 
@@ -18,6 +18,8 @@ running version has no entry here.
 ### Changed
 
 - Search on iPhone, iPad and Mac ranks results the same way the website does.
+- The notice you accept first now lists everything NutriDex keeps about you, including the cookie that remembers
+  your passcode and the host's records of each visit. It no longer says NutriDex checks supplements, which it does not.
 
 ### Fixed
 
