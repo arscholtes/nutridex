@@ -23,6 +23,8 @@ running version has no entry here.
 
 ### Fixed
 
+- A drink over 1.2% alcohol shows no health claims, unlocks no effects and earns no grade from a claim, as EU law
+  requires. Its page says why.
 - On iPhone and iPad running iOS 27, opening any entry but the first showed the first, and Next or the keyboard
   did not move at all, while the entry's number said you were where you asked to be.
 

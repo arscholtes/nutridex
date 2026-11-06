@@ -1,4 +1,5 @@
 import { typeColor } from "../lib/art/palette.ts";
+import { NO_CLAIMS_ON_ALCOHOL } from "../lib/db/claim-limits.ts";
 import { hrefOf, type IngredientEntry, type PanelRow } from "../lib/db/dex.ts";
 import type { PanelGroup } from "../lib/usda/nutrients.ts";
 import { AbsorptionTipCard, EffectBento, PrepCard } from "./claims.tsx";
@@ -19,7 +20,7 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
       </EntryViewer>
 
       <div className="min-w-0 space-y-6">
-        <Section title="What it does" empty="No sourced effect reaches what is in it yet.">
+        <Section title="What it does" empty={entry.bearsClaims ? "No sourced effect reaches what is in it yet." : NO_CLAIMS_ON_ALCOHOL}>
           {entry.tiles.length > 0 && <EffectBento tiles={entry.tiles} />}
           {entry.effects.some((e) => e.minFoodPer100g !== null) && (
             <p className="text-sm text-ink-soft">
