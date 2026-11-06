@@ -19,6 +19,11 @@ running version has no entry here.
 
 - Search on iPhone, iPad and Mac ranks results the same way the website does.
 
+### Fixed
+
+- On iPhone and iPad running iOS 27, opening any entry but the first showed the first, and Next or the keyboard
+  did not move at all, while the entry's number said you were where you asked to be.
+
 ## 0.5.0 - 2026-11-02
 
 ### Added
