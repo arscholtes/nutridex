@@ -84,31 +84,27 @@ I would most like an illustrator's help with:
 
 ## Where it stands
 
-Counted on 2026-11-05, on version 0.5.0. The depth is the honest gap: the structure is ahead of the content.
+Counted on 2026-11-06, on version 0.6.0. The depth is the honest gap: the structure is ahead of the content.
 
 | | |
 | --- | --- |
-| Foods in the game | 15, with 518 measured amounts from USDA |
-| Compounds and nutrients | 41 |
+| Foods in the game | 7,793, every food in USDA's SR Legacy, with 623,795 measured amounts |
+| Compounds and nutrients | 152 |
 | Effects | 29 |
 | Effect claims | 140: 139 in the wording [EU Regulation 432/2012](https://www.legislation.gov.uk/eur/2012/432/annex) permits, 1 from a human study |
 | Absorption rules | 2 |
 | Cautions | 0 sourced so far |
-| Creature drawings | 456 |
+| Creature drawings | 456, worn by 1,452 foods; the other 6,341 wear one of 21 category stand-ins |
 | Skins | 10 |
-| Automated checks | 759 unit tests passing |
-
-A separate working branch already loads all 7,793 foods in USDA's SR Legacy database and 152 compounds on the web.
+| Automated checks | 948 unit tests passing |
 
 ## What's next
 
-1. **Every food on every platform.** Bring the 7,793 foods to the main app. The native data file would reach 548 MB at
-   that size, so it needs a new design.
-2. **Depth of evidence.** Add sourced cautions, more absorption rules and study-backed effects.
-3. **Recipes.** The engine already works out what a recipe gives you, and it needs its builder and recipe screens.
-4. **Paste a finding.** Paste a study, have AI draft the entries, and approve each one before it is saved.
-5. **A public home.** Hosting, real accounts in place of the upload passcode, and a route to the App Store.
-6. **Gut microbes and supplements.** The tables and engine checks exist, and they have no entries yet.
+1. **Depth of evidence.** Add sourced cautions, more absorption rules and study-backed effects.
+2. **Recipes.** The engine already works out what a recipe gives you, and it needs its builder and recipe screens.
+3. **Paste a finding.** Paste a study, have AI draft the entries, and approve each one before it is saved.
+4. **A public home.** Hosting, real accounts in place of the upload passcode, and a route to the App Store.
+5. **Gut microbes and supplements.** The tables and engine checks exist, and they have no entries yet.
 
 ## Who I'm looking for
 
@@ -116,7 +112,7 @@ A separate working branch already loads all 7,793 foods in USDA's SR Legacy data
 | --- | --- |
 | **Illustrator or character designer** | The creature style, and how one look stretches across thousands of foods |
 | **Dietitian or nutrition scientist** | Evidence grades, how claims are worded, and the cautions that are missing today |
-| **iOS / SwiftUI developer** | The Apple apps, getting all 7,793 foods onto a phone, and the route to the App Store |
+| **iOS / SwiftUI developer** | The Apple apps, all 7,793 foods running well on a real phone, and the route to the App Store |
 | **Full-stack developer** | Hosting, accounts, the recipe builder and the paste-a-finding pipeline |
 | **Game or product designer** | What makes collecting rewarding, and how it can reward curiosity without rewarding overeating |
 | **Lawyer with health-app or IP experience** | The disclaimer, which is a draft that needs review before anyone else uses the app, and clearing the name |

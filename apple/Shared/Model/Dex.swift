@@ -219,6 +219,8 @@ struct IngredientEntry: Decodable, Hashable {
     let absorption: [AbsorptionTip]
     let pairsWellWith: [String]
     let prep: [PrepClaim]
+    /// False for a drink the law lets bear no claim, which then has no effects.
+    let bearsClaims: Bool
     let effects: [EffectClaim]
     /// The same effects as tiles, sized by how much of a daily amount is behind each.
     let tiles: [BentoTile]

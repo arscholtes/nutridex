@@ -24,6 +24,7 @@ import {
 } from "../db/dex.ts";
 import { DISCLAIMER_INTRO, DISCLAIMER_TITLE, NATIVE_DISCLAIMER_SECTIONS } from "../disclaimer/text.ts";
 import { SKINS, type SkinDefinition } from "../skins.ts";
+import { NO_CLAIMS_ON_ALCOHOL } from "../db/claim-limits.ts";
 import { creatureArtName } from "./art.ts";
 
 export { creatureSilhouette };
@@ -175,7 +176,7 @@ async function writeSnapshot(sink: SnapshotSink, q: typeof sql, progress?: (done
   await inOrder(foods, FOOD_READS_AT_ONCE, async (card) => (await ingredientEntry(card.slug, q))!, (entry, card) => {
     sink.entry("ingredient", card.slug, stable(entry));
     keep(card, entry, describeFood(card, entry));
-    reveals[card.slug] = { compounds: unlockedBy(card.slug, unlocks), effects: [...new Set(entry.effects.map((e) => e.effect.slug))] };
+    reveals[card.slug] = { compounds: unlockedBy(card.slug, entry.bearsClaims, unlocks), effects: [...new Set(entry.effects.map((e) => e.effect.slug))] };
     compare.push({ slug: card.slug, name: card.name, number: card.number, panel: entry.panel });
     progress?.(++done, foods.length);
   });
@@ -296,13 +297,14 @@ function assemble(meta: Record<string, unknown>, entries: Record<EntryKind, Reco
  * @param unlocks [Map<string, CompoundUnlock>] each compound's bar and amounts, in dex order
  * @return [string[]] compound slugs, in dex order
  */
-function unlockedBy(food: string, unlocks: Map<string, CompoundUnlock>): string[] {
+function unlockedBy(food: string, bearsClaims: boolean, unlocks: Map<string, CompoundUnlock>): string[] {
   return [...unlocks].flatMap(([compound, u]) => {
     const amount = u.amounts.get(food);
-    // A trace does not unlock a nutrient: where a claim sets a bar, the food must clear it.
+    // A trace does not unlock a nutrient: where a claim sets a bar, the food must clear it, and a drink that may
+    // bear no claim clears none.
     if (u.bar === null) return amount !== undefined || u.unmeasured.has(food) ? [compound] : [];
     // The richest food always counts, so a nutrient no food clears the bar for can still be unlocked.
-    return amount !== undefined && (amount >= u.bar || amount === u.top) ? [compound] : [];
+    return amount !== undefined && ((bearsClaims && amount >= u.bar) || amount === u.top) ? [compound] : [];
   });
 }
 
@@ -321,7 +323,9 @@ function describeFood(card: EntryCard, entry: IngredientEntry): string {
   const sourceOf = [...new Set(entry.effects.filter((e) => e.minFoodPer100g !== null).map((e) => e.compound.name))];
   return [
     `${aType(card.type ?? "food")} with ${entry.measured} compounds measured.`,
-    sourceOf.length > 0 ? `A source of ${listOf(sourceOf)}.` : "No nutrient in it reaches the bar for calling it a source.",
+    !entry.bearsClaims
+      ? NO_CLAIMS_ON_ALCOHOL
+      : sourceOf.length > 0 ? `A source of ${listOf(sourceOf)}.` : "No nutrient in it reaches the bar for calling it a source.",
     ...card.stats.slice(1).map((s) => `${s}.`),
   ].join(" ");
 }

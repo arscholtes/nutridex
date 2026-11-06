@@ -5,6 +5,8 @@ enum ClaimNotes {
     static let meaning = "These are the wordings EU law allows on food labels. They mean a nutrient contributes to that function at adequate intake, not that eating more improves it."
     static let foodBar = "Percentages are of the EU's daily reference value for an adult, in 100 g of this food, and a typical serving may be far less. A bigger tile means more of the nutrient behind it, not that more is better. A nutrient appears here when 100 g supplies at least 15% of that value, the EU's bar for calling a food a source. \(meaning)"
     static let effectBar = "A food is listed when 100 g supplies at least 15% of the nutrient's reference value, the EU's bar for calling a food a source."
+    /// The same words as the web's `NO_CLAIMS_ON_ALCOHOL`.
+    static let noClaimsOnAlcohol = "EU law allows no claims on a drink over 1.2% alcohol, so none is shown."
 }
 
 /// A claim's dose and onset, where its source gives them.

@@ -1,4 +1,5 @@
 // What someone has encountered, and what that unlocks. Reading and writing the record happens only here.
+import { mayBearClaims } from "./claim-limits.ts";
 import { sql } from "./client.ts";
 
 type Sql = typeof sql;
@@ -56,13 +57,13 @@ export async function revealedEntries(foods: string[], q: Sql = sql): Promise<Re
         ic.amount_per_100g = (select max(x.amount_per_100g) from ingredient_compound x where x.compound_id = c.id)
         or not exists (
           select 1 from compound_effect ce where ce.compound_id = c.id and ce.min_food_per_100g is not null
-            and (ic.amount_per_100g is null or ic.amount_per_100g < ce.min_food_per_100g)))`;
+            and (ic.amount_per_100g is null or ic.amount_per_100g < ce.min_food_per_100g or not ${mayBearClaims(q)})))`;
   const effects = await q<{ slug: string }[]>`
     select distinct e.slug from compound_effect ce
     join effect e on e.id = ce.effect_id
     join ingredient_compound ic on ic.compound_id = ce.compound_id join ingredient i on i.id = ic.ingredient_id
     where i.slug = any(${foods}) and (ic.amount_per_100g is null or ic.amount_per_100g > 0)
-      and (ce.min_food_per_100g is null or ic.amount_per_100g >= ce.min_food_per_100g)`;
+      and (ce.min_food_per_100g is null or ic.amount_per_100g >= ce.min_food_per_100g) and ${mayBearClaims(q)}`;
   return { foods: new Set(foods), compounds: new Set(compounds.map((c) => c.slug)), effects: new Set(effects.map((e) => e.slug)) };
 }
 

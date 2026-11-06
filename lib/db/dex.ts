@@ -4,6 +4,7 @@ import type { Revealed } from "./encounters.ts";
 import { DEFAULT_SETTINGS, recipeProfile, type AbsorptionFlag, type Basis, type CautionFlag, type Grade, type Unit } from "epistasis";
 import { PANEL, PANEL_COMPOUNDS, type PanelGroup } from "../usda/nutrients.ts";
 import { sql } from "./client.ts";
+import { mayBearClaims } from "./claim-limits.ts";
 import { bentoTiles, type BentoTile } from "./effect-tiles.ts";
 import { loadFacts } from "./engine-input.ts";
 
@@ -118,6 +119,8 @@ export type IngredientEntry = {
   /** What the missed absorption flags suggest adding. */
   pairsWellWith: string[];
   prep: PrepClaim[];
+  /** False for a drink the law lets bear no claim, which then has no effects. */
+  bearsClaims: boolean;
   /** The effects of the compounds it carries, each with the evidence behind it. */
   effects: EffectClaim[];
   /** The same effects as tiles, sized by how much of a daily amount is behind each. */
@@ -196,8 +199,9 @@ const SEARCH_SIMILARITY = 0.4;
  * @return [Promise<IngredientEntry | null>] null when no ingredient has that slug
  */
 export async function ingredientEntry(slug: string, q: Sql = sql): Promise<IngredientEntry | null> {
-  const [row] = await q<{ id: string; slug: string; name: string; category: string | null; imageUrl: string | null }[]>`
-    select id, slug, name, category, image_url as "imageUrl" from ingredient where slug = ${slug}`;
+  const [row] = await q<{ id: string; slug: string; name: string; category: string | null; imageUrl: string | null; bearsClaims: boolean }[]>`
+    select i.id, i.slug, i.name, i.category, i.image_url as "imageUrl", ${mayBearClaims(q)} as "bearsClaims"
+    from ingredient i where i.slug = ${slug}`;
   if (!row) return null;
 
   const amounts = await q<{ slug: string; name: string; class: string | null; amount: string | null; unit: Unit | null; sourceId: string | null; richestAmount: string | null; richestSlug: string | null; richestName: string | null }[]>`
@@ -267,7 +271,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
 
   const present = profile.effects.flatMap((e) => e.compounds);
   const measured = new Map(amounts.map((a) => [a.slug, a.amount === null ? null : Number(a.amount)]));
-  const effects = (await effectClaims({ compounds: present }, q)).filter(
+  const effects = !row.bearsClaims ? [] : (await effectClaims({ compounds: present }, q)).filter(
     (e) => profile.effects.some((r) => r.effectSlug === e.effect.slug) && (e.minFoodPer100g === null || (measured.get(e.compound.slug) ?? 0) >= e.minFoodPer100g),
   );
   const prep = await prepClaims(amounts.map((a) => a.slug), q);
@@ -284,6 +288,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     absorption,
     pairsWellWith: [...new Set(profile.absorption.flatMap((f) => (f.status === "missed" && f.suggestion ? [f.suggestion] : [])))],
     prep,
+    bearsClaims: row.bearsClaims,
     effects,
     tiles: bentoTiles(effects, new Map(amounts.map((a) => [a.slug, { amount: a.amount === null ? null : Number(a.amount) }]))),
     cautions: profile.cautions,
@@ -362,15 +367,17 @@ export async function effectEntry(slug: string, q: Sql = sql): Promise<EffectEnt
   const compounds = await effectClaims({ effect: slug }, q);
   const ids = await q<{ id: string; slug: string; name: string }[]>`
     select id, slug, name from compound where slug = any(${[...new Set(compounds.map((c) => c.compound.slug))]}) order by name`;
+  const claimless = new Set((await q<{ slug: string }[]>`select i.slug from ingredient i where not ${mayBearClaims(q)}`).map((r) => r.slug));
   const foods = [];
   for (const c of ids) {
     const bar = compounds.find((claim) => claim.compound.slug === c.slug)!.minFoodPer100g;
     const { ranked, absent } = await foodsCarrying(c.id, q);
+    const claimable = <T extends { slug: string }>(list: T[]) => list.filter((f) => !claimless.has(f.slug));
     foods.push({
       compound: { slug: c.slug, name: c.name },
       bar,
-      ranked: bar === null ? ranked : ranked.filter((f) => f.amount >= bar),
-      unmeasured: bar === null ? absent.unmeasured : [],
+      ranked: claimable(bar === null ? ranked : ranked.filter((f) => f.amount >= bar)),
+      unmeasured: bar === null ? claimable(absent.unmeasured) : [],
     });
   }
   return {
@@ -698,7 +705,8 @@ async function bestGrades(foodSlugs: string[], q: Sql): Promise<Map<string, Grad
     union all
     select 'ingredient:' || i.slug, min(g.grade) from ingredient i join (
       select ic.ingredient_id, ce.evidence_grade as grade from ingredient_compound ic join compound_effect ce on ce.compound_id = ic.compound_id
-      where ic.amount_per_100g > 0 and ic.amount_per_100g >= coalesce(ce.min_food_per_100g, 0)
+      join ingredient i on i.id = ic.ingredient_id
+      where ic.amount_per_100g > 0 and ic.amount_per_100g >= coalesce(ce.min_food_per_100g, 0) and ${mayBearClaims(q)}
       union all select ic.ingredient_id, f.grade from ingredient_compound ic join fact_grade f on f.compound_id = ic.compound_id
       where ic.amount_per_100g > 0
       union all select ingredient_id, evidence_grade from caution where ingredient_id is not null
