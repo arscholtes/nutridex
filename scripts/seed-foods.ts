@@ -9,6 +9,8 @@ import { compound, ingredient, ingredientCompound, source } from "../lib/db/sche
 import { pullFoods, usdaSource } from "../lib/usda/client.ts";
 import { USDA_CACHE, USDA_FOOD_PINS, type UsdaFoodPin } from "../lib/usda/foods.ts";
 import { compoundAmounts } from "../lib/usda/nutrients.ts";
+import { retentionFamilyOf } from "../lib/usda/retention.ts";
+import { seedPortions } from "./seed/portions.ts";
 
 const CHUNK = 1_000;
 
@@ -29,6 +31,7 @@ function chunks<T>(rows: T[]): T[][] {
 }
 
 let amounts = 0;
+let portions = 0;
 await db.transaction(async (tx) => {
   const compounds = new Map((await tx.select({ id: compound.id, slug: compound.slug }).from(compound)).map((c) => [c.slug, c.id]));
 
@@ -36,10 +39,28 @@ await db.transaction(async (tx) => {
   for (const rows of chunks(pins)) {
     const written = await tx
       .insert(ingredient)
-      .values(rows.map((p) => ({ slug: p.slug, name: p.name, category: p.category, usdaFdcId: p.usdaFdcId, imageUrl: p.imageUrl })))
+      .values(
+        rows.map((p) => {
+          const fat = compoundAmounts(records.get(p.usdaFdcId)!).find((a) => a.compoundSlug === "total-fat")?.amountPer100g ?? null;
+          return {
+            slug: p.slug,
+            name: p.name,
+            category: p.category,
+            usdaFdcId: p.usdaFdcId,
+            imageUrl: p.imageUrl,
+            retentionFamily: retentionFamilyOf(p.category, p.usdaDescription, { fatPer100g: fat }),
+          };
+        }),
+      )
       .onConflictDoUpdate({
         target: ingredient.slug,
-        set: { name: raw`excluded.name`, category: raw`excluded.category`, usdaFdcId: raw`excluded.usda_fdc_id`, imageUrl: raw`excluded.image_url` },
+        set: {
+          name: raw`excluded.name`,
+          category: raw`excluded.category`,
+          usdaFdcId: raw`excluded.usda_fdc_id`,
+          imageUrl: raw`excluded.image_url`,
+          retentionFamily: raw`excluded.retention_family`,
+        },
       })
       .returning({ id: ingredient.id, slug: ingredient.slug });
     for (const row of written) foodIds.set(row.slug, row.id);
@@ -65,6 +86,7 @@ await db.transaction(async (tx) => {
     });
   });
   amounts = rows.length;
+  portions = await seedPortions(tx, pins.map((p) => ({ ingredientId: foodIds.get(p.slug)!, usdaFdcId: p.usdaFdcId })));
   for (const chunk of chunks(rows)) {
     await tx
       .insert(ingredientCompound)
@@ -76,5 +98,5 @@ await db.transaction(async (tx) => {
   }
 });
 
-console.log(`seeded ${pins.length} USDA foods with ${amounts} amounts per 100 g`);
+console.log(`seeded ${pins.length} USDA foods with ${amounts} amounts per 100 g and ${portions} household measures`);
 await sql.end();

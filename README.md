@@ -84,7 +84,7 @@ I would most like an illustrator's help with:
 
 ## Where it stands
 
-Counted on 2026-11-06, on version 0.6.0. The depth is the honest gap: the structure is ahead of the content.
+Counted on 2026-11-08, on version 0.7.0. The depth is the honest gap: the structure is ahead of the content.
 
 | | |
 | --- | --- |
@@ -94,7 +94,10 @@ Counted on 2026-11-06, on version 0.6.0. The depth is the honest gap: the struct
 | Effect claims | 140: 139 in the wording [EU Regulation 432/2012](https://www.legislation.gov.uk/eur/2012/432/annex) permits, 1 from a human study |
 | Absorption rules | 2 |
 | Cautions | 0 sourced so far |
-| Creature drawings | 456, worn by 1,452 foods; the other 6,341 wear one of 21 category stand-ins |
+| Household measures | 14,449 across 7,533 foods, from USDA: "1 medium carrot" is 61 g |
+| Cooking retention factors | 7,018, the whole USDA retention table: 270 ways of cooking by 26 nutrients |
+| Adult intake references | 184: the RDA or AI and the upper limit for 23 vitamins and minerals, 8 adult groups, from Health Canada |
+| Creature drawings | 456, worn by 3,150 foods; the other 4,643 wear one of 21 category stand-ins |
 | Skins | 10 |
 | Automated checks | 948 unit tests passing |
 

@@ -2,6 +2,7 @@
 // Column names match the plan's SQL exactly; SCHEMA.md describes each table.
 import { sql } from "drizzle-orm";
 import {
+  boolean,
   char,
   check,
   foreignKey,
@@ -14,6 +15,7 @@ import {
   primaryKey,
   text,
   timestamp,
+  unique,
   uuid,
 } from "drizzle-orm/pg-core";
 
@@ -50,7 +52,24 @@ export const ingredient = pgTable("ingredient", {
   costTier: text("cost_tier"),
   imageUrl: text("image_url"),
   createdAt: createdAt(),
+  // Which USDA retention-factor family this food cooks like (lib/usda/retention.ts); null when none fits.
+  retentionFamily: text("retention_family"),
 });
+
+// USDA's household measures for a food, from SR Legacy's Weight file: "1 cup, chopped" is 128 g.
+export const portion = pgTable(
+  "portion",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    ingredientId: uuid("ingredient_id").references(() => ingredient.id, { onDelete: "cascade" }).notNull(),
+    seq: integer("seq").notNull(),
+    amount: amount("amount").notNull(),
+    description: text("description").notNull(),
+    grams: amount("grams").notNull(),
+    sourceId: uuid("source_id").references(() => source.id),
+  },
+  (t) => [unique("portion_ingredient_seq").on(t.ingredientId, t.seq)],
+);
 
 export const compound = pgTable("compound", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -230,6 +249,55 @@ export const prepEffect = pgTable(
     direction: text("direction"),
   },
   () => [check("prep_effect_direction_known", sql`direction in ('decreases', 'increases', 'unchanged')`)],
+);
+
+// Every row of the USDA Table of Nutrient Retention Factors, Release 6, whether or not the engine can
+// apply it. `prep_methods` names the engine methods the row describes and is empty for a state (canned,
+// dried, frozen); `compound_id` is null when the nutrient is not a Dex compound; `factor` is the share
+// retained, 1 for all of it, and null for the 24 rows whose cell USDA's own file leaves blank.
+export const retentionFactor = pgTable(
+  "retention_factor",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    retentionCode: integer("retention_code").notNull(),
+    foodGroupCode: integer("food_group_code").notNull(),
+    description: text("description").notNull(),
+    family: text("family").notNull(),
+    prepMethods: text("prep_methods").array().notNull(),
+    // True when the cooking liquid or drippings stay in the dish, false when they are discarded, null when the row does not say.
+    liquidKept: boolean("liquid_kept"),
+    nutrientNumber: integer("nutrient_number").notNull(),
+    nutrientName: text("nutrient_name").notNull(),
+    compoundId: uuid("compound_id").references(() => compound.id),
+    factor: amount("factor"),
+    sourceId: uuid("source_id").references(() => source.id),
+  },
+  (t) => [unique("retention_factor_code_nutrient").on(t.retentionCode, t.nutrientNumber), index("retention_factor_family").on(t.family)],
+);
+
+// Dietary Reference Intakes for one adult group, as Health Canada publishes them: the RDA or AI, and the
+// UL with what it applies to. No energy or protein target is stored; another app owns those.
+export const intakeReference = pgTable(
+  "intake_reference",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    compoundId: uuid("compound_id").references(() => compound.id, { onDelete: "cascade" }).notNull(),
+    sex: text("sex").notNull(),
+    ageLow: integer("age_low").notNull(),
+    // Null for the oldest group, which has no upper age.
+    ageHigh: integer("age_high"),
+    rda: amount("rda"),
+    ai: amount("ai"),
+    ul: amount("ul"),
+    unit: text("unit").notNull(),
+    ulAppliesTo: text("ul_applies_to"),
+    sourceId: uuid("source_id").references(() => source.id),
+  },
+  (t) => [
+    unique("intake_reference_group").on(t.compoundId, t.sex, t.ageLow),
+    check("intake_reference_sex_known", sql`sex in ('male', 'female')`),
+    check("intake_reference_has_a_value", sql`rda is not null or ai is not null or ul is not null`),
+  ],
 );
 
 export const caution = pgTable(

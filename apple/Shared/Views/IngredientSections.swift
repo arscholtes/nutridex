@@ -66,6 +66,19 @@ struct IngredientSections: View {
             PanelTable(title: "Minerals", rows: entry.panel.filter { $0.group == "mineral" }, colorType: "mineral", columns: panelColumns)
             Note(text: "From USDA FoodData Central. Each bar compares this food with the richest in the Dex. Where USDA has no value for this food it says missing, never zero.")
         }
+        DexSection(title: "Household measures", empty: "USDA lists no household measures for this food.", isEmpty: entry.portions.isEmpty) {
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(Array(entry.portions.enumerated()), id: \.offset) { _, portion in
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(formatAmount(portion.amount, unit: portion.description)).font(.dex(.subheadline)).foregroundStyle(Theme.ink)
+                        Spacer(minLength: 8)
+                        Text(formatAmount(portion.grams, unit: "g")).font(.dex(.footnote, weight: .medium)).monospacedDigit().foregroundStyle(Theme.ink)
+                    }
+                }
+            }
+            .dexPanel()
+            Note(text: "From USDA FoodData Central. Weights are for the food as described.")
+        }
         DexSection(title: "Absorption, for 100 g eaten on its own", empty: "No absorption rule reaches what is in it yet.", isEmpty: absorption.isEmpty) {
             ForEach(absorption, id: \.self) { AbsorptionTipCard(tip: $0) }
         }

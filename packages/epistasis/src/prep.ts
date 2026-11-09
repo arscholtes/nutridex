@@ -1,5 +1,5 @@
 // Step 2: how the way an ingredient is prepared changes what it delivers.
-import type { Contribution, PrepEffectFact, RecipeIngredientInput, RecipeInput, RecipeStepInput } from "./types.ts";
+import type { Contribution, PrepDirection, PrepEffectFact, RecipeIngredientInput, RecipeInput, RecipeStepInput, RetentionFact } from "./types.ts";
 
 /**
  * The prep methods the engine knows: the plan's six, then the cooking methods published nutrient
@@ -8,6 +8,7 @@ import type { Contribution, PrepEffectFact, RecipeIngredientInput, RecipeInput, 
 export const PREP_METHODS = [
   "raw", "juiced", "blended", "boiled", "roasted", "fermented",
   "baked", "fried", "broiled", "simmered", "sauteed", "steamed", "stewed", "braised",
+  "reheated", "toasted", "poached",
 ] as const;
 
 /** The prep method a source's per-100 g amount already describes. */
@@ -29,23 +30,60 @@ export function prepSequence(ingredient: RecipeIngredientInput, steps: RecipeSte
 }
 
 /**
+ * Whether a retention fact's family covers a food's: the same family, or a comma-prefix of it, so a
+ * `BEEF` fact applies to `BEEF,GROUND`.
+ * @param factFamily [string] the fact's family
+ * @param foodFamily [string] the food's family
+ * @return [boolean] true when the fact applies
+ */
+export function retentionFamilyApplies(factFamily: string, foodFamily: string): boolean {
+  return foodFamily === factFamily || foodFamily.startsWith(`${factFamily},`);
+}
+
+/** Liquid discarded is the conservative reading, then a row that does not say, then liquid kept. */
+const LIQUID_RANK = { false: 0, null: 1, true: 2 } as const;
+
+/**
+ * The retention fact for a food family, method and compound: the most specific family, then liquid
+ * discarded over kept, then the lowest retention among rows still alike.
+ * @return [RetentionFact | null] null when no fact covers the family and method
+ */
+function bestRetention(retention: RetentionFact[], family: string, method: string, compoundSlug: string): RetentionFact | null {
+  return (
+    retention
+      .filter((r) => r.compoundSlug === compoundSlug && r.prepMethod === method && retentionFamilyApplies(r.family, family))
+      .sort((a, b) => b.family.length - a.family.length || LIQUID_RANK[`${a.liquidKept}`] - LIQUID_RANK[`${b.liquidKept}`] || a.factor - b.factor)[0] ?? null
+  );
+}
+
+function directionOf(factor: number): PrepDirection {
+  return factor < 1 ? "decreases" : factor > 1 ? "increases" : "unchanged";
+}
+
+/**
  * Apply each contribution's prep methods in order: every sourced retention factor multiplies, and
  * each method leaves a prep note either way, so an unknown retention shows as unknown, not 100%.
+ * A retention-table fact for the ingredient's family wins over a generic prep_effect fact.
  * @param recipe [RecipeInput] the recipe
  * @param contributions [Contribution[]] expanded contributions
  * @param prepEffects [PrepEffectFact[]] prep_effect facts
+ * @param retention [RetentionFact[]] retention-table facts for the families in play
  * @return [Contribution[]] the contributions after prep
- * @throws when the recipe or a prep fact names a method outside PREP_METHODS
+ * @throws when the recipe or a fact names a method outside PREP_METHODS
  */
-export function applyPrep(recipe: RecipeInput, contributions: Contribution[], prepEffects: PrepEffectFact[]): Contribution[] {
+export function applyPrep(recipe: RecipeInput, contributions: Contribution[], prepEffects: PrepEffectFact[], retention: RetentionFact[] = []): Contribution[] {
   for (const p of prepEffects) knownMethod(p.prepMethod, `prep fact on ${p.compoundSlug}`);
+  for (const r of retention) knownMethod(r.prepMethod, `retention fact on ${r.family} · ${r.compoundSlug}`);
   const sequences = new Map(
     recipe.ingredients.map((ri) => [ri.id, prepSequence(ri, recipe.steps).map((m) => knownMethod(m, ri.ingredientSlug))]),
   );
+  const families = new Map(recipe.ingredients.map((ri) => [ri.id, ri.retentionFamily]));
   return contributions.map((c) =>
     sequences.get(c.recipeIngredientId)!.reduce((done, method) => {
-      const fact = prepEffects.find((p) => p.compoundSlug === c.compoundSlug && p.prepMethod === method);
-      const factor = fact?.retentionFactor ?? null;
+      const family = families.get(c.recipeIngredientId) ?? null;
+      const fromTable = family === null ? null : bestRetention(retention, family, method, c.compoundSlug);
+      const fact = fromTable ? null : (prepEffects.find((p) => p.compoundSlug === c.compoundSlug && p.prepMethod === method) ?? null);
+      const factor = fromTable ? fromTable.factor : (fact?.retentionFactor ?? null);
       return {
         ...done,
         amount: factor === null || done.amount === null ? done.amount : done.amount * factor,
@@ -57,8 +95,9 @@ export function applyPrep(recipe: RecipeInput, contributions: Contribution[], pr
             compoundSlug: c.compoundSlug,
             method,
             retentionFactor: factor,
-            direction: fact?.direction ?? null,
+            direction: fromTable ? directionOf(fromTable.factor) : (fact?.direction ?? null),
             note: fact?.note ?? null,
+            source: fromTable ? "retention-table" : fact ? "prep-effect" : null,
           },
         ],
       };

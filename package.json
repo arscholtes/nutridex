@@ -1,6 +1,6 @@
 {
   "name": "foodi-dex",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -21,6 +21,7 @@
     "generate:foods": "node --env-file=.env.local scripts/generate-usda-foods.ts",
     "seed:foods": "node --env-file=.env.local scripts/seed-foods.ts",
     "export:native": "node --env-file=.env.local scripts/export-native.ts",
+    "creatures:map": "node scripts/creature-mapping.ts",
     "test": "vitest run --project unit",
     "test:db": "vitest run --project db",
     "typecheck": "tsc --noEmit"

@@ -16,6 +16,10 @@ import { CLASSES, COMPOUND_EFFECTS, EFFECTS, MODIFIERS, PREP_EFFECTS, RETIRED_MO
 import { INGREDIENTS } from "../data/seed/ingredients.ts";
 import { RECIPES } from "../data/seed/recipes.ts";
 import { seedDrift } from "./seed-drift.ts";
+import { seedIntakeReferences } from "./seed/intake-references.ts";
+import { seedPortions } from "./seed/portions.ts";
+import { seedRetentionFactors } from "./seed/retention.ts";
+import { retentionFamilyOf } from "../lib/usda/retention.ts";
 import { db, sql } from "../lib/db/client.ts";
 import {
   absorptionModifier,
@@ -52,6 +56,9 @@ for (const seed of INGREDIENTS) {
 
 const missing: string[] = [];
 const retired: string[] = [];
+let portions = 0;
+let retentionRows = 0;
+let references = 0;
 await db.transaction(async (tx) => {
   const compoundIds = new Map<string, string>();
   for (const c of COMPOUNDS) {
@@ -68,11 +75,13 @@ await db.transaction(async (tx) => {
 
   const ingredientIds = new Map<string, string>();
   for (const seed of INGREDIENTS) {
+    const fat = compoundAmounts(foods.get(seed.slug)!).find((a) => a.compoundSlug === "total-fat")?.amountPer100g ?? null;
     const values = {
       name: seed.name,
       category: seed.category,
       usdaFdcId: seed.usdaFdcId,
       imageUrl: `/art/ingredients/${seed.slug}.svg`,
+      retentionFamily: retentionFamilyOf(seed.category, seed.usdaDescription, { fatPer100g: fat }),
     };
     const [row] = await tx
       .insert(ingredient)
@@ -98,6 +107,10 @@ await db.transaction(async (tx) => {
         .onConflictDoUpdate({ target: [ingredientCompound.ingredientId, ingredientCompound.compoundId], set: values });
     }
   }
+
+  portions = await seedPortions(tx, INGREDIENTS.map((seed) => ({ ingredientId: ingredientIds.get(seed.slug)!, usdaFdcId: seed.usdaFdcId })));
+  retentionRows = await seedRetentionFactors(tx, compoundIds);
+  references = await seedIntakeReferences(tx, compoundIds);
 
   // The plan's main seed pairs that USDA did not fill still link ingredient to compound.
   for (const c of COMPOUNDS) {
@@ -260,6 +273,7 @@ await db.transaction(async (tx) => {
 const [{ amounts }] = await sql`select count(*)::int as amounts from ingredient_compound where amount_per_100g is not null`;
 console.log(`seeded ${INGREDIENTS.length} ingredients and ${COMPOUNDS.length} compounds`);
 console.log(`imported ${amounts} amounts per 100 g from ${foods.size} USDA records`);
+console.log(`seeded ${portions} household measures, ${retentionRows} USDA retention factors and ${references} adult intake references`);
 console.log(
   `seeded ${MODIFIERS.length} absorption modifiers, ${PREP_EFFECTS.length} prep effects and ${COMPOUND_EFFECTS.length} compound effect(s) from ${SOURCES.length} sources`,
 );

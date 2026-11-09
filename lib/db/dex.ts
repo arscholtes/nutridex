@@ -105,6 +105,9 @@ export type DexStep = Named & { number: string; href: string };
 /** An entry's place in the dex and the entries either side of it within its kind. */
 export type DexPager = { number: string; total: number; prev: DexStep | null; next: DexStep | null };
 
+/** One of USDA's household measures for a food: "1 cup chopped" of raw carrot is 128 g. */
+export type Portion = { amount: number; description: string; grams: number };
+
 export type IngredientEntry = {
   ingredient: Named & { category: string | null; imageUrl: string | null };
   pager: DexPager;
@@ -115,6 +118,8 @@ export type IngredientEntry = {
   absent: Absences;
   /** The 30-nutrient panel in display order; panel nutrients are not repeated in compounds or absent. */
   panel: PanelRow[];
+  /** USDA's household measures, in USDA's order. */
+  portions: Portion[];
   absorption: AbsorptionTip[];
   /** What the missed absorption flags suggest adding. */
   pairsWellWith: string[];
@@ -252,7 +257,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
 
   const facts = await loadFacts([slug], q);
   const profile = recipeProfile(
-    { slug: `dex-${slug}`, servings: 1, ingredients: [{ id: slug, ingredientSlug: slug, grams: ENTRY_GRAMS, prepMethod: "raw" }], steps: [] },
+    { slug: `dex-${slug}`, servings: 1, ingredients: [{ id: slug, ingredientSlug: slug, grams: ENTRY_GRAMS, prepMethod: "raw", retentionFamily: null }], steps: [] },
     facts,
     DEFAULT_SETTINGS,
     [],
@@ -276,6 +281,9 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
   );
   const prep = await prepClaims(amounts.map((a) => a.slug), q);
   const usda = await sourcesByIds([...new Set(amounts.flatMap((a) => (a.sourceId ? [a.sourceId] : [])))], q);
+  const portions = (
+    await q<{ amount: string; description: string; grams: string }[]>`select amount, description, grams from portion where ingredient_id = ${row.id} order by seq`
+  ).map((p): Portion => ({ amount: Number(p.amount), description: p.description, grams: Number(p.grams) }));
 
   const sources = dedupe([...usda, ...absorption.flatMap((a) => a.sources), ...effects.map((e) => e.source), ...prep.map((p) => p.source)]);
   return {
@@ -285,6 +293,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     compounds,
     absent,
     panel,
+    portions,
     absorption,
     pairsWellWith: [...new Set(profile.absorption.flatMap((f) => (f.status === "missed" && f.suggestion ? [f.suggestion] : [])))],
     prep,

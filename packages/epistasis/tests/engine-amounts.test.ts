@@ -19,8 +19,8 @@ const recipe = (over: Partial<RecipeInput> = {}): RecipeInput => ({
   slug: "test",
   servings: 1,
   ingredients: [
-    { id: "ri-carrot", ingredientSlug: "carrot", grams: 200, prepMethod: "raw" },
-    { id: "ri-kale", ingredientSlug: "kale", grams: 50, prepMethod: "raw" },
+    { id: "ri-carrot", ingredientSlug: "carrot", grams: 200, prepMethod: "raw", retentionFamily: null },
+    { id: "ri-kale", ingredientSlug: "kale", grams: 50, prepMethod: "raw", retentionFamily: null },
   ],
   steps: [],
   ...over,
@@ -56,7 +56,7 @@ describe("prepSequence", () => {
   });
 
   test("is the ingredient's own method, then every step that uses it, in step order", () => {
-    const own = { id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "roasted" };
+    const own = { id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "roasted", retentionFamily: null };
     const steps = [
       { position: 2, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },
       { position: 1, prepMethod: "boiled", recipeIngredientIds: ["ri-carrot"] },
@@ -75,7 +75,7 @@ describe("applyPrep", () => {
     direction: "decreases",
     note: "half stays in the pulp",
   };
-  const juicedRecipe = recipe({ ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "juiced" }] });
+  const juicedRecipe = recipe({ ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "juiced", retentionFamily: null }] });
 
   test("leaves raw ingredients as their source records them", () => {
     const [c] = applyPrep(recipe(), expand(recipe(), [amount("carrot", "beta-carotene", 8000)]), [juiced]);
@@ -100,6 +100,7 @@ describe("applyPrep", () => {
       retentionFactor: null,
       direction: null,
       note: null,
+      source: null,
     }]);
   });
 
@@ -107,11 +108,12 @@ describe("applyPrep", () => {
     expect(PREP_METHODS).toEqual([
       "raw", "juiced", "blended", "boiled", "roasted", "fermented",
       "baked", "fried", "broiled", "simmered", "sauteed", "steamed", "stewed", "braised",
+      "reheated", "toasted", "poached",
     ]);
   });
 
   test("profiles kale sauteed in olive oil, the pairing the rules exist for", () => {
-    const pan = recipe({ ingredients: [{ id: "ri-kale", ingredientSlug: "kale", grams: 100, prepMethod: "sauteed" }] });
+    const pan = recipe({ ingredients: [{ id: "ri-kale", ingredientSlug: "kale", grams: 100, prepMethod: "sauteed", retentionFamily: null }] });
     const [c] = applyPrep(pan, expand(pan, [amount("kale", "beta-carotene", 5000)]), []);
     expect(c.prep).toMatchObject([{ method: "sauteed", retentionFactor: null }]);
   });
@@ -121,7 +123,7 @@ describe("applyPrep", () => {
   });
 
   test("refuses a recipe's prep method outside its vocabulary, naming it", () => {
-    const typo = recipe({ ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "juice" }] });
+    const typo = recipe({ ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "juice", retentionFamily: null }] });
     expect(() => applyPrep(typo, expand(typo, [amount("carrot", "beta-carotene", 8000)]), [])).toThrow(/"juice"/);
   });
 
@@ -135,7 +137,7 @@ describe("applyPrep", () => {
       { compoundSlug: "vitamin-c", prepMethod: "blended", retentionFactor: 0.5, direction: "decreases", note: "oxidises in the air" },
     ];
     const soup = recipe({
-      ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "raw" }],
+      ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "raw", retentionFamily: null }],
       steps: [
         { position: 1, prepMethod: "boiled", recipeIngredientIds: ["ri-carrot"] },
         { position: 2, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },
@@ -149,7 +151,7 @@ describe("applyPrep", () => {
   test("an unsourced step in the sequence is reported as unknown while the sourced ones still apply", () => {
     const facts: PrepEffectFact[] = [{ compoundSlug: "vitamin-c", prepMethod: "boiled", retentionFactor: 0.5, direction: "decreases", note: null }];
     const soup = recipe({
-      ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "raw" }],
+      ingredients: [{ id: "ri-carrot", ingredientSlug: "carrot", grams: 100, prepMethod: "raw", retentionFamily: null }],
       steps: [
         { position: 1, prepMethod: "boiled", recipeIngredientIds: ["ri-carrot"] },
         { position: 2, prepMethod: "blended", recipeIngredientIds: ["ri-carrot"] },

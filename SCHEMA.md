@@ -15,6 +15,7 @@ No other app reads this store. `fps stores` does not exist yet, so this section 
 - A `stack_item` names exactly one of `recipe_id` or `supplement_id`.
 - `prep_effect.direction` is `decreases`, `increases` or `unchanged`.
 - An `absorption_modifier` targets exactly one of `target_compound_id` or `target_class_id`.
+- An `intake_reference` row names `male` or `female` and carries at least one of `rda`, `ai` or `ul`.
 - Every `id` is a `uuid` defaulting to `gen_random_uuid()`; every `slug` is unique.
 
 ## Provenance
@@ -82,6 +83,23 @@ Things you eat. Seeded with the plan's 15; `usda_fdc_id` pins each to one USDA r
 | `cost_tier` | text | yes |  |
 | `image_url` | text | yes |  |
 | `created_at` | timestamp with time zone | yes | `now()` |
+| `retention_family` | text | yes |  |
+
+`retention_family` names which USDA retention-factor family the food cooks like (`VEG,GREENS`, `BEEF,GROUND`, `FINFISH,<5%FAT`), decided from its category and USDA description by `lib/usda/retention.ts`; null when no family fits, and then no cooking factor ever applies to it.
+
+### `portion`
+
+USDA's household measures for a food, from SR Legacy's Weight file: "1 cup, chopped" of raw carrot is 128 g. One row per measure, in USDA's order (`seq`). `npm run seed` writes them for the 15 hand-pinned foods and `npm run seed:foods` for every other food; 7,533 of the 7,793 foods have at least one.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `ingredient_id` | uuid | no |  |
+| `seq` | integer | no |  |
+| `amount` | numeric | no |  |
+| `description` | text | no |  |
+| `grams` | numeric | no |  |
+| `source_id` | uuid | yes |  |
 
 ### `compound`
 
@@ -240,6 +258,25 @@ How a preparation method changes a compound. `retention_factor` is `null` when n
 | `source_id` | uuid | yes |  |
 | `direction` | text | yes |  |
 
+### `retention_factor`
+
+Every row of the USDA Table of Nutrient Retention Factors, Release 6 (2007): 270 food-and-cooking codes by 26 nutrients, 7,018 rows, stored whole so a factor the engine cannot use yet is still on record. `family` is the code's food family (`VEG,ROOTS,ETC`), matched against `ingredient.retention_family`; `prep_methods` lists the engine methods the code describes (`{boiled}`, or `{boiled,baked}` for "BOILED/BAKED") and is empty for a state such as canned or frozen; `liquid_kept` is true when drippings or cooking water stay in the dish, false when they are discarded, null when the code does not say. `factor` is the share retained: USDA's percentage over 100, and null for the 24 rows of code 5005 (an alcoholic beverage stirred into a dish and baked or simmered 30 minutes) whose cell is blank in USDA's own file; the engine applies only rows with a factor. `compound_id` is null for the nutrients the Dex has no compound for.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `retention_code` | integer | no |  |
+| `food_group_code` | integer | no |  |
+| `description` | text | no |  |
+| `family` | text | no |  |
+| `prep_methods` | text[] | no |  |
+| `liquid_kept` | boolean | yes |  |
+| `nutrient_number` | integer | no |  |
+| `nutrient_name` | text | no |  |
+| `compound_id` | uuid | yes |  |
+| `factor` | numeric | yes |  |
+| `source_id` | uuid | yes |  |
+
 ### `caution`
 
 Drug interactions, antinutrients, excess and allergens.
@@ -253,6 +290,26 @@ Drug interactions, antinutrients, excess and allergens.
 | `summary` | text | yes |  |
 | `threshold_note` | text | yes |  |
 | `evidence_grade` | character | yes |  |
+| `source_id` | uuid | yes |  |
+
+## Daily references
+
+### `intake_reference`
+
+Dietary Reference Intakes for adults, as Health Canada's DRI tables publish them: one row per compound, sex and age group (19–30, 31–50, 51–70, 71 and over; `age_high` null for the last). `rda` or `ai` is the daily reference; `ul` the Tolerable Upper Intake Level, null where none has been set. `ul_applies_to` records what the limit counts, so a food is never flagged for a limit that covers supplements only: vitamin A's UL is preformed retinol, magnesium's is pharmacological intake, folate's, niacin's and vitamin E's are synthetic forms. No energy or protein target is stored: another app owns those.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `compound_id` | uuid | no |  |
+| `sex` | text | no |  |
+| `age_low` | integer | no |  |
+| `age_high` | integer | yes |  |
+| `rda` | numeric | yes |  |
+| `ai` | numeric | yes |  |
+| `ul` | numeric | yes |  |
+| `unit` | text | no |  |
+| `ul_applies_to` | text | yes |  |
 | `source_id` | uuid | yes |  |
 
 ## Recipes

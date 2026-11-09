@@ -14,6 +14,7 @@ import type {
   PrepDirection,
   PrepEffectFact,
   RecipeInput,
+  RetentionFact,
   UpperLimitFact,
 } from "epistasis";
 
@@ -28,8 +29,8 @@ type Sql = typeof sql;
 export async function loadRecipe(slug: string): Promise<RecipeInput> {
   const [recipe] = await sql<{ id: string; servings: number }[]>`select id, servings from recipe where slug = ${slug}`;
   if (!recipe) throw new Error(`no recipe with slug "${slug}"`);
-  const ingredients = await sql<{ id: string; ingredientSlug: string; grams: string; prepMethod: string }[]>`
-    select ri.id, i.slug as "ingredientSlug", ri.grams, ri.prep_method as "prepMethod"
+  const ingredients = await sql<{ id: string; ingredientSlug: string; grams: string; prepMethod: string; retentionFamily: string | null }[]>`
+    select ri.id, i.slug as "ingredientSlug", ri.grams, ri.prep_method as "prepMethod", i.retention_family as "retentionFamily"
     from recipe_ingredient ri join ingredient i on i.id = ri.ingredient_id
     where ri.recipe_id = ${recipe.id}
     order by ri.position`;
@@ -52,7 +53,7 @@ export async function loadRecipe(slug: string): Promise<RecipeInput> {
  * Load every fact about some ingredients and the compounds they carry.
  * @param ingredientSlugs [string[]] the ingredients in play
  * @param q [Sql] the connection or transaction to read through
- * @return [Promise<Facts>] amounts, prep effects, modifiers, cautions, effects, upper limits, microbes
+ * @return [Promise<Facts>] amounts, prep effects, retention factors, modifiers, cautions, effects, upper limits, microbes
  * @throws when a fact lacks the source or grade the plan requires, or carries an unknown unit
  */
 export async function loadFacts(ingredientSlugs: string[], q: Sql = sql): Promise<Facts> {
@@ -71,6 +72,16 @@ export async function loadFacts(ingredientSlugs: string[], q: Sql = sql): Promis
            p.direction, p.bioavailability_note as note, p.source_id as "sourceId"
     from prep_effect p join compound c on c.id = p.compound_id
     where c.slug = any(${compoundSlugs})`;
+
+  // Retention rows for the families in play, and for every family they descend from (`BEEF` covers `BEEF,GROUND`).
+  const families = (await q<{ family: string }[]>`
+    select distinct retention_family as family from ingredient where slug = any(${ingredientSlugs}) and retention_family is not null`).map((r) => r.family);
+  const retention = await q<{ family: string; prepMethods: string[]; compoundSlug: string; factor: string; liquidKept: boolean | null; sourceId: string | null }[]>`
+    select rf.family, rf.prep_methods as "prepMethods", c.slug as "compoundSlug", rf.factor, rf.liquid_kept as "liquidKept", rf.source_id as "sourceId"
+    from retention_factor rf join compound c on c.id = rf.compound_id
+    where cardinality(rf.prep_methods) > 0 and rf.factor is not null
+      and exists (select 1 from unnest(${families}::text[]) f where f = rf.family or left(f, length(rf.family) + 1) = rf.family || ',')
+    order by rf.retention_code, c.slug`;
 
   // Modifiers come applied: a class rule arrives once per compound it reaches, with its basis.
   const modifiers = await q<{ id: string; targetCompoundSlug: string; modifierCompoundSlug: string | null; condition: string | null; direction: string; magnitude: string | null; mechanism: string | null; grade: string | null; sourceId: string | null; modifierFoundIn: string[]; basis: string }[]>`
@@ -129,6 +140,10 @@ export async function loadFacts(ingredientSlugs: string[], q: Sql = sql): Promis
       const where = `prep_effect ${p.compoundSlug} · ${p.prepMethod}`;
       sourced(p.sourceId, where);
       return { compoundSlug: p.compoundSlug, prepMethod: p.prepMethod, retentionFactor: numberOrNull(p.retentionFactor), direction: p.direction as PrepDirection | null, note: p.note };
+    }),
+    retention: retention.flatMap((r): RetentionFact[] => {
+      sourced(r.sourceId, `retention_factor ${r.family} · ${r.compoundSlug}`);
+      return r.prepMethods.map((prepMethod) => ({ family: r.family, prepMethod, compoundSlug: r.compoundSlug, factor: Number(r.factor), liquidKept: r.liquidKept }));
     }),
     modifiers: modifiers.map((m): ModifierFact => {
       const where = `absorption_modifier on ${m.targetCompoundSlug}`;
