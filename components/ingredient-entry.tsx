@@ -75,6 +75,24 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
           )}
         </Section>
 
+        <Section title="Household measures" empty="USDA lists no household measures for this food.">
+          {entry.portions.length > 0 && (
+            <div className="dex-panel p-3">
+              <ul className="grid gap-x-6 gap-y-2.5 lg:grid-cols-2">
+                {entry.portions.map((p, seq) => (
+                  <li key={seq} className="flex items-baseline justify-between gap-2 text-sm">
+                    <span>
+                      {p.amount.toLocaleString("en-US", { maximumFractionDigits: 2 })} {p.description}
+                    </span>
+                    <span className="font-medium tabular-nums">{formatAmount(p.grams, "g")}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {entry.portions.length > 0 && <p className="text-sm text-ink-soft">From USDA FoodData Central. Weights are for the food as described.</p>}
+        </Section>
+
         <Section title="Absorption, for 100 g eaten on its own" empty="No absorption rule reaches what is in it yet.">
           {entry.absorption.map((tip) => (
             <AbsorptionTipCard key={`${tip.flag.compoundSlug}:${tip.flag.ruleIds.join(",")}`} tip={tip} />

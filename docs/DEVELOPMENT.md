@@ -115,6 +115,14 @@ food. A food with no drawing wears its category's stand-in. Each stored amount c
 naming the USDA record it came from. A compound USDA does not measure is linked to its
 ingredient with no amount, and the app shows it as missing. See `SCHEMA.md` for every table.
 
+Three more USDA and Health Canada tables are seeded whole, so a number is never invented: household
+measures from SR Legacy's Weight file (`data/seed/usda-portions.json`, the `portion` table), the Table of
+Nutrient Retention Factors (`data/usda/retention-factors-r6.csv`, the `retention_factor` table, with each
+food's `retention_family` decided by `lib/usda/retention.ts`), and the adult Dietary Reference Intakes
+(`data/seed/intake-references.ts`, the `intake_reference` table). `npm run creatures:map` writes
+`docs/creature-mapping.md`, which says which USDA foods wear each drawing and why the rest cannot;
+`--apply` points newly matched foods at their drawing in the pins file.
+
 A rule can target a ChEBI class instead of one compound, so one sourced finding reaches every
 compound ChEBI places in that class. The rule names the members its source measured; any other
 member is reached `by-class`, and every flag says which. `absorption_modifier_applied` lists

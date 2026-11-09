@@ -210,12 +210,21 @@ struct IngredientEntry: Decodable, Hashable {
         let category: String?
     }
 
+    /// One of USDA's household measures: "1 cup chopped" of raw carrot is 128 g.
+    struct Portion: Decodable, Hashable {
+        let amount: Double
+        let description: String
+        let grams: Double
+    }
+
     let ingredient: Ingredient
     let pager: DexPager
     let measured: Int
     let compounds: [CompoundAmount]
     let absent: Absences
     let panel: [PanelRow]
+    /// USDA's household measures, in USDA's order; empty in a snapshot written before they were exported.
+    let portions: [Portion]
     let absorption: [AbsorptionTip]
     let pairsWellWith: [String]
     let prep: [PrepClaim]
@@ -227,6 +236,30 @@ struct IngredientEntry: Decodable, Hashable {
     let cautions: [FoodCaution]
     let sources: [SourceRef]
     let bestGrade: String?
+
+    private enum CodingKeys: String, CodingKey {
+        case ingredient, pager, measured, compounds, absent, panel, portions, absorption, pairsWellWith, prep, bearsClaims, effects, tiles, cautions, sources, bestGrade
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        ingredient = try c.decode(Ingredient.self, forKey: .ingredient)
+        pager = try c.decode(DexPager.self, forKey: .pager)
+        measured = try c.decode(Int.self, forKey: .measured)
+        compounds = try c.decode([CompoundAmount].self, forKey: .compounds)
+        absent = try c.decode(Absences.self, forKey: .absent)
+        panel = try c.decode([PanelRow].self, forKey: .panel)
+        portions = try c.decodeIfPresent([Portion].self, forKey: .portions) ?? []
+        absorption = try c.decode([AbsorptionTip].self, forKey: .absorption)
+        pairsWellWith = try c.decode([String].self, forKey: .pairsWellWith)
+        prep = try c.decode([PrepClaim].self, forKey: .prep)
+        bearsClaims = try c.decode(Bool.self, forKey: .bearsClaims)
+        effects = try c.decode([EffectClaim].self, forKey: .effects)
+        tiles = try c.decode([BentoTile].self, forKey: .tiles)
+        cautions = try c.decode([FoodCaution].self, forKey: .cautions)
+        sources = try c.decode([SourceRef].self, forKey: .sources)
+        bestGrade = try c.decodeIfPresent(String.self, forKey: .bestGrade)
+    }
 }
 
 struct CompoundEntry: Decodable, Hashable {

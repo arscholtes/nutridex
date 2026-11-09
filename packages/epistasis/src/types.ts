@@ -19,6 +19,8 @@ export type RecipeIngredientInput = {
   grams: number;
   /** The ingredient's own prep, applied before any step that uses it. */
   prepMethod: string;
+  /** Which retention-table family the food cooks like (`VEG,GREENS`); null when none fits, so only prep_effect facts apply. */
+  retentionFamily: string | null;
 };
 
 export type RecipeStepInput = {
@@ -47,6 +49,17 @@ export type PrepEffectFact = {
 };
 
 export type PrepDirection = "decreases" | "increases" | "unchanged";
+
+/** One row of a published retention table, for one food family, cooking method and compound. */
+export type RetentionFact = {
+  family: string;
+  prepMethod: string;
+  compoundSlug: string;
+  /** Share of the compound that survives. */
+  factor: number;
+  /** True when the cooking liquid stays in the dish, false when discarded, null when the row does not say. */
+  liquidKept: boolean | null;
+};
 
 export type ModifierFact = {
   /** The rule's id in its store, carried onto the flag so a reader can trace it. */
@@ -108,6 +121,7 @@ export type StackItemInput =
 export type Facts = {
   amounts: AmountFact[];
   prepEffects: PrepEffectFact[];
+  retention: RetentionFact[];
   modifiers: ModifierFact[];
   cautions: CautionFact[];
   compoundEffects: CompoundEffectFact[];
@@ -136,6 +150,8 @@ export type PrepNote = {
   retentionFactor: number | null;
   direction: PrepDirection | null;
   note: string | null;
+  /** Which kind of fact the factor came from; null when no source gives one. */
+  source?: "retention-table" | "prep-effect" | null;
 };
 
 /** The part of a total that presence, caution, effect and excess checks read. */

@@ -20,7 +20,7 @@ import type { Facts, RecipeInput, RecipeProfile } from "./types.ts";
  * @return [RecipeProfile] totals, prep notes, every flag and the feed check
  */
 export function recipeProfile(recipe: RecipeInput, facts: Facts, settings: EngineSettings, goals: string[]): RecipeProfile {
-  const contributions = applyPrep(recipe, expand(recipe, facts.amounts), facts.prepEffects);
+  const contributions = applyPrep(recipe, expand(recipe, facts.amounts), facts.prepEffects, facts.retention);
   const perServing = aggregate(recipe, contributions);
   const ingredientSlugs = recipe.ingredients.map((ri) => ri.ingredientSlug);
   return {

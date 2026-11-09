@@ -10,8 +10,8 @@ const smoothie: RecipeInput = {
   slug: "smoothie",
   servings: 2,
   ingredients: [
-    { id: "ri-1", ingredientSlug: "carrot", grams: 200, prepMethod: "raw" },
-    { id: "ri-2", ingredientSlug: "kale", grams: 100, prepMethod: "raw" },
+    { id: "ri-1", ingredientSlug: "carrot", grams: 200, prepMethod: "raw", retentionFamily: null },
+    { id: "ri-2", ingredientSlug: "kale", grams: 100, prepMethod: "raw", retentionFamily: null },
   ],
   steps: [{ position: 1, prepMethod: "blended", recipeIngredientIds: ["ri-1", "ri-2"] }],
 };
@@ -24,6 +24,7 @@ const facts: Facts = {
     { ingredientSlug: "kale", compoundSlug: "total-fat", amountPer100g: 1, unit: "g", amountLow: null, amountHigh: null },
   ],
   prepEffects: [{ compoundSlug: "beta-carotene", prepMethod: "blended", retentionFactor: null, direction: "increases", note: "blending frees it from cell walls" }],
+  retention: [],
   modifiers: [
     { id: "rule-fat", targetCompoundSlug: "beta-carotene", modifierCompoundSlug: null, condition: "dietary fat present", direction: "enhances", magnitude: null, mechanism: null, grade: "B", modifierFoundIn: [], basis: "measured" },
   ],

@@ -7,6 +7,19 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## 0.7.0 - 2026-11-08
+
+### Added
+
+- Every food lists USDA's household measures, so a medium carrot is 61 g and a cup of chopped carrot is 128 g,
+  on the web, iPhone, iPad and Mac. 14,449 measures across 7,533 foods; a food USDA gives none for says so.
+- The whole USDA Table of Nutrient Retention Factors is on record: 270 ways of cooking 26 nutrients, 7,018 rows,
+  and each food knows which family it cooks like, so a boiled carrot loses what USDA measured for boiled roots
+  and boiled kale what USDA measured for boiled greens. Where USDA has no factor, nothing is invented.
+- Daily reference intakes for adults, from Health Canada's tables: the RDA or AI and the upper limit for 23
+  vitamins and minerals, for men and women in four age bands. Each upper limit records what it counts, so a
+  carrot is never flagged for vitamin A and spinach never for magnesium. No calorie or protein target is stored.
+
 ## 0.6.0 - 2026-11-06
 
 ### Added

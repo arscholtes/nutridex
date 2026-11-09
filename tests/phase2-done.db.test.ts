@@ -58,7 +58,7 @@ describe("the juice recipe", () => {
     const juice = await loadRecipe("juice");
     const withOil: RecipeInput = {
       ...juice,
-      ingredients: [...juice.ingredients, { id: "olive-oil-added", ingredientSlug: "olive-oil", grams: 13.5, prepMethod: "raw" }],
+      ingredients: [...juice.ingredients, { id: "olive-oil-added", ingredientSlug: "olive-oil", grams: 13.5, prepMethod: "raw", retentionFamily: null }],
     };
     const profile = await profileOf(withOil);
     const fat = profile.absorption.filter((a) => a.reason.includes("g of fat per serving"));
