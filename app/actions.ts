@@ -4,9 +4,11 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { recordEncounters } from "../lib/db/encounters.ts";
 import { saveSkin } from "../lib/db/preferences.ts";
+import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, PENDING_COOKIE, SKIN_COOKIE, tokenMatches, UNLOCKING_COOKIE, UPLOAD_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
+import { viewer } from "../lib/viewer.ts";
 
 // Browsers cap a cookie's lifetime at 400 days; after that the notice appears once more.
 const MAX_AGE_SECONDS = 400 * 24 * 60 * 60;
@@ -72,4 +74,23 @@ export async function chooseSkin(id: string) {
   const configured = process.env.NUTRIDEX_UPLOAD_TOKEN;
   if (configured && tokenMatches(jar.get(UPLOAD_COOKIE)?.value ?? "", configured)) await saveSkin(skin);
   revalidatePath("/", "layout");
+}
+
+/**
+ * Saves a recipe built on the web. Writing needs the passcode, as uploading does: without it a hosted
+ * site would let anyone write recipes into someone's database.
+ * @param draft [RecipeDraft] what was built
+ * @return [Promise<{ slug: string } | { problems: string[] }>] the saved recipe, or every reason it was refused
+ */
+export async function saveRecipeAction(draft: RecipeDraft): Promise<{ slug: string } | { problems: string[] }> {
+  const { revealed, canUpload } = await viewer();
+  if (!canUpload) return { problems: ["Saving a recipe needs the passcode, the same as Upload. Upload once from the home screen and this browser can save."] };
+  try {
+    const slug = await saveRecipe(draft, revealed.foods);
+    revalidatePath("/recipes");
+    return { slug };
+  } catch (error) {
+    if (error instanceof InvalidRecipe) return { problems: error.problems };
+    throw error;
+  }
 }

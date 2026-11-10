@@ -2,7 +2,7 @@ import { typeColor } from "../lib/art/palette.ts";
 import { NO_CLAIMS_ON_ALCOHOL } from "../lib/db/claim-limits.ts";
 import { hrefOf, type IngredientEntry, type PanelRow } from "../lib/db/dex.ts";
 import type { PanelGroup } from "../lib/usda/nutrients.ts";
-import { AbsorptionTipCard, EffectBento, PrepCard } from "./claims.tsx";
+import { AbsorptionTipCard, CautionCard, EffectBento, PrepCard } from "./claims.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
 import { AmountBar, EntryArt, EntryLink, EntryViewer, formatAmount, Section, SourcesSection, TypeBadge } from "./parts.tsx";
 
@@ -31,14 +31,7 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
 
         <Section title="Cautions" empty="No caution on file. That means none has been sourced yet, not that there are none.">
           {entry.cautions.map((c) => (
-            <div key={`${c.kind}:${c.summary}`} className="rounded-xl border-2 border-rose-400 bg-rose-50 p-3 text-sm text-neutral-900">
-              <div className="flex items-center gap-2">
-                <span className="font-bold capitalize text-rose-900">{c.kind}</span>
-                {c.grade && <GradeBadge grade={c.grade} limitations={null} />}
-              </div>
-              <p className="mt-1">{c.summary}</p>
-              {c.advice && <p className="mt-1 font-medium">{c.advice}</p>}
-            </div>
+            <CautionCard key={`${c.kind}:${c.summary}`} caution={c} />
           ))}
         </Section>
 
@@ -121,7 +114,7 @@ export function IngredientEntryView({ entry }: { entry: IngredientEntry }) {
   );
 }
 
-const PANEL_GROUPS: { group: PanelGroup; title: string }[] = [
+export const PANEL_GROUPS: { group: PanelGroup; title: string }[] = [
   { group: "macro", title: "Energy and macronutrients" },
   { group: "vitamin", title: "Vitamins and choline" },
   { group: "mineral", title: "Minerals" },
@@ -134,7 +127,7 @@ const GROUP_COLOR: Record<PanelGroup, string> = {
 };
 
 /** One group of the nutrient panel: each nutrient's amount per 100 g and stat bar, or missing. */
-function PanelTable({ title, rows }: { title: string; rows: PanelRow[] }) {
+export function PanelTable({ title, rows }: { title: string; rows: PanelRow[] }) {
   return (
     <div className="dex-panel p-3">
       <h3 className="text-sm font-bold">{title}</h3>

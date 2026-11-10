@@ -1,5 +1,5 @@
 // How each kind of claim reads on a Dex screen, with its grade, basis and source.
-import type { AbsorptionFlag } from "epistasis";
+import type { AbsorptionFlag, CautionFlag } from "epistasis";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { typeColor } from "../lib/art/palette.ts";
@@ -15,6 +15,20 @@ const STATUS: Record<AbsorptionFlag["status"], { label: string; style: string }>
   reduced: { label: "Reduced", style: "bg-rose-100 text-rose-900" },
   unknown: { label: "Unknown", style: "bg-neutral-200 text-neutral-800" },
 };
+
+/** An engine caution, on a food or a recipe: what to watch, its grade, and any advice. */
+export function CautionCard({ caution }: { caution: CautionFlag }) {
+  return (
+    <div className="rounded-xl border-2 border-rose-400 bg-rose-50 p-3 text-sm text-neutral-900">
+      <div className="flex items-center gap-2">
+        <span className="font-bold capitalize text-rose-900">{caution.kind}</span>
+        {caution.grade && <GradeBadge grade={caution.grade} limitations={null} />}
+      </div>
+      <p className="mt-1">{caution.summary}</p>
+      {caution.advice && <p className="mt-1 font-medium">{caution.advice}</p>}
+    </div>
+  );
+}
 
 /** An engine absorption flag on a food: what happens to one compound, and what would help. */
 export function AbsorptionTipCard({ tip }: { tip: AbsorptionTip }) {

@@ -263,16 +263,7 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     [],
   );
 
-  const rules = await rulesById(profile.absorption.flatMap((f) => f.ruleIds), q);
-  const absorption = profile.absorption.map((flag): AbsorptionTip => {
-    const behind = flag.ruleIds.map((id) => rules.get(id)!);
-    return {
-      flag,
-      compound: { slug: flag.compoundSlug, name: compoundNames.get(flag.compoundSlug)! },
-      className: flag.basis === "by-class" ? (behind.find((r) => r.className !== null)?.className ?? null) : null,
-      sources: dedupe(behind.map((r) => r.source)),
-    };
-  }).sort((a, b) => a.compound.name.localeCompare(b.compound.name));
+  const absorption = await absorptionTips(profile.absorption, compoundNames, q);
 
   const present = profile.effects.flatMap((e) => e.compounds);
   const measured = new Map(amounts.map((a) => [a.slug, a.amount === null ? null : Number(a.amount)]));
@@ -675,6 +666,26 @@ async function prepClaims(compoundSlugs: string[], q: Sql): Promise<PrepClaim[]>
     note: r.note,
     source: refs.get(r.sourceId)!,
   }));
+}
+
+/**
+ * The engine's absorption flags, each with its compound named and the sources of the rules behind it.
+ * A Dex entry and a recipe read their flags through this, so both show them the same way.
+ * @param flags [AbsorptionFlag[]] from a profile
+ * @param compoundNames [Map<string, string>] slug to name for every compound flagged
+ * @return [Promise<AbsorptionTip[]>] by compound name
+ */
+export async function absorptionTips(flags: AbsorptionFlag[], compoundNames: Map<string, string>, q: Sql = sql): Promise<AbsorptionTip[]> {
+  const rules = await rulesById(flags.flatMap((f) => f.ruleIds), q);
+  return flags.map((flag): AbsorptionTip => {
+    const behind = flag.ruleIds.map((id) => rules.get(id)!);
+    return {
+      flag,
+      compound: { slug: flag.compoundSlug, name: compoundNames.get(flag.compoundSlug)! },
+      className: flag.basis === "by-class" ? (behind.find((r) => r.className !== null)?.className ?? null) : null,
+      sources: dedupe(behind.map((r) => r.source)),
+    };
+  }).sort((a, b) => a.compound.name.localeCompare(b.compound.name));
 }
 
 async function rulesById(ids: string[], q: Sql): Promise<Map<string, { className: string | null; source: SourceRef }>> {
