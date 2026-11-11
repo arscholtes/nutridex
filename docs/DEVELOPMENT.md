@@ -35,6 +35,7 @@ and never uses Supabase's generated API.
    ```bash
    DATABASE_URL='<session pooler string>' npm run db:migrate
    DATABASE_URL='<session pooler string>' npm run seed
+   DATABASE_URL='<session pooler string>' npm run seed:foods
    ```
 
 4. Import the repo into Vercel and set `DATABASE_URL` to the transaction pooler string (port 6543)
