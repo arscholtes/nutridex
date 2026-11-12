@@ -29,7 +29,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const typesOf = (k: EntryKind) => [...new Set(unlocked.filter((c: EntryCard) => c.kind === k).flatMap((c) => (c.type ? [c.type] : [])))].sort();
   const types: Record<EntryKind, string[]> = { ingredient: typesOf("ingredient"), compound: typesOf("compound"), effect: typesOf("effect") };
   const type = params.type && Object.values(types).some((list) => list.includes(params.type!)) ? params.type : undefined;
-  const cards = await listEntries({ q: params.q, kind, type, within: revealed });
+  const cards = params.q?.trim() || kind || type ? await listEntries({ q: params.q, kind, type, within: revealed }) : unlocked;
   const count = (k: EntryKind) => unlocked.filter((c) => c.kind === k).length;
   // Searching, a type and "unlocked only" look through what you have; otherwise the page is the wall.
   const onWall = !params.q?.trim() && !type && params.mine !== "1";

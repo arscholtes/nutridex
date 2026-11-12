@@ -28,7 +28,7 @@ function SkinPreview({ skin, art, type }: { skin: SkinDefinition; art: ReactNode
 export default async function SkinsPage() {
   const { skin, syncs } = await currentSkin();
   const { revealed } = await viewer();
-  const unlocked = (await listEntries({ kind: "ingredient" })).find((c) => revealed.foods.has(c.slug));
+  const [unlocked] = await listEntries({ kind: "ingredient", within: revealed, limit: 1 });
   const art = unlocked ? <EntryArt imageUrl={unlocked.imageUrl} size={84} cutout /> : null;
   return (
     <GameShell>

@@ -8,8 +8,8 @@ a source, and when nothing is known, the app says so instead of guessing.
 
 ![NutriDex on the web and on iPhone](docs/screenshots/hero.png)
 
-> **Status:** an early working version, running on the web, iPhone, iPad and Mac. It is not publicly hosted or on the
-> App Store yet. I am looking for people to help build it: see [who I'm looking for](#who-im-looking-for).
+> **Status:** an early working version, running on the web, iPhone, iPad and Mac.
+> [Try it on the web](https://nutridex-8vtr.vercel.app). It is not on the App Store yet. I am looking for people to help build it: see [who I'm looking for](#who-im-looking-for).
 
 ## What makes it different
 
