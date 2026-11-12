@@ -425,6 +425,26 @@ const numberedEntries = (q: Sql) => q`
     union all select 'effect', slug, name, body_system, null, null from effect
   ) unnumbered`;
 
+export type WallSlot = { kind: EntryKind; slug: string; name: string; number: string; imageUrl: string | null; compoundClass: string | null };
+
+export const WALL_PAGE = 60;
+
+/**
+ * One page of the whole Dex in number order, foods then compounds then effects, whatever is unlocked.
+ * A slot's name and slug are for drawing its shape and matching it to what is unlocked; they must not
+ * reach someone who has not unlocked it.
+ * @param search [{ kind?, page }] one kind or all, and the page, counted from 1
+ * @return [Promise<WallSlot[]>] up to WALL_PAGE slots; none past the end
+ */
+export async function wallPage(search: { kind?: EntryKind; page: number }, q: Sql = sql): Promise<WallSlot[]> {
+  const rows = await q<{ kind: EntryKind; slug: string; name: string; imageUrl: string | null; compoundClass: string | null; place: number }[]>`
+    select kind, slug, name, "imageUrl", "compoundClass", place from (${numberedEntries(q)}) numbered
+    where ${search.kind ?? null}::text is null or kind = ${search.kind ?? null}
+    order by array_position(array['ingredient', 'compound', 'effect'], kind), place
+    limit ${WALL_PAGE} offset ${(Math.max(1, Math.floor(search.page)) - 1) * WALL_PAGE}`;
+  return rows.map((r) => ({ kind: r.kind, slug: r.slug, name: r.name, number: dexNumber(r.kind, r.place), imageUrl: r.imageUrl, compoundClass: r.compoundClass }));
+}
+
 /**
  * Every entry of a kind as a step, whatever is unlocked.
  * @param kind [EntryKind] the kind

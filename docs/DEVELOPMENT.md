@@ -87,7 +87,7 @@ in your team and bundle id prefix. The Mac app signs to run locally, so it needs
 
 | Screen | Path | What it shows |
 | --- | --- | --- |
-| Home | `/` | Every entry as a card. Search with fuzzy matching ("tumeric" finds turmeric), filter by kind and type |
+| Home | `/` | The wall: every entry in number order, 60 to a page, in colour once unlocked and blacked out until then. Search with fuzzy matching ("tumeric" finds turmeric), a type, or "Unlocked only" look through what you have unlocked |
 | Ingredient | `/ingredients/<slug>` | What is in 100 g, against the richest food in the Dex; absorption flags; pairings; prep; effects; cautions; sources |
 | Compound | `/compounds/<slug>` | How it works, solubility, what helps it absorb, prep, the foods that carry it, effects, cautions, sources |
 | Effect | `/effects/<slug>` | The compounds behind it, with dose and onset, and the foods richest in each |

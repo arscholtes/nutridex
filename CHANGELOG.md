@@ -14,6 +14,9 @@ running version has no entry here.
 - Accounts on the web. Sign in with a six-digit code sent to your email, with no password, and your Dex and your
   skin are saved to you and appear in any browser you sign in on. Signing in is optional: without it everything
   stays in that browser, as before.
+- The wall. The home page shows every entry in the Dex in number order, 60 to a page: yours in colour, the rest as
+  blacked-out shapes with only their number, until you have had them. Searching still looks through what you have
+  unlocked, and "Unlocked only" shows just those.
 - A Settings page: your skin, the email you are signed in with, sign out, download everything stored for your
   account, and delete your account with everything in it.
 

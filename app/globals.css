@@ -195,6 +195,32 @@ body,
   box-shadow: 0 10px 24px rgb(91 69 224 / 0.18);
 }
 
+/* A card not unlocked yet. Its shape stands on a plain light tile so black reads in every skin, dark ones included. */
+.dex-card-locked {
+  --wash: #f1f1f4;
+}
+
+.dex-card-locked:hover {
+  translate: none;
+}
+
+.dex-card-locked .dex-blackout-stage {
+  border-radius: 1rem;
+  background: #e6e6eb;
+  color: #1b1b1f;
+}
+
+.dex-card-locked .dex-card-art img.dex-blackout {
+  filter: brightness(0);
+  opacity: 0.82;
+}
+
+.dex-blackout-letter {
+  font-size: 3.75rem;
+  font-weight: 700;
+  opacity: 0.82;
+}
+
 /* What a food does: the more of your daily amount behind an effect, the bigger its tile. */
 .dex-bento {
   display: grid;

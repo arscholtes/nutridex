@@ -54,7 +54,7 @@ A choice that should be the same on every device, such as the skin (`key` is `sk
 
 ### `encounter`
 
-One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on the web, iPhone or iPad until it is encountered, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it.
+One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on iPhone or iPad until it is encountered, the web shows it blacked out until then, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it.
 
 `owner_id` is the signed-in person: the id the sign-in service (Supabase Auth, the `auth` schema of the hosted database) gives them. NutriDex does not own that fact and keeps no copy of the account, so there is no foreign key. On the web a signed-in person writes their own rows. Rows with no owner are the one record the native apps share: they write it only through `POST /api/encounters`, which needs the upload token. One row per owner and food.
 
