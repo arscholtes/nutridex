@@ -6,6 +6,9 @@ const { version } = JSON.parse(readFileSync("package.json", "utf8")) as { versio
 
 const nextConfig: NextConfig = {
   env: { APP_VERSION: version },
+  // Pages read creature drawings and category stand-ins from disk to cut their silhouettes; a hosted
+  // server function only holds the files traced into it, and nothing imports these.
+  outputFileTracingIncludes: { "/**": ["./public/art/ingredients/**", "./public/art/stand-ins/**"] },
 };
 
 export default nextConfig;

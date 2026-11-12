@@ -19,3 +19,6 @@ next-env.d.ts
 # Native apps: this Mac's signing identity and Xcode's per-user state
 apple/Config/Local.xcconfig
 xcuserdata/
+
+# Vercel's link to this checkout
+.vercel

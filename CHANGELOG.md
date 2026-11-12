@@ -11,6 +11,9 @@ running version has no entry here.
 
 ### Fixed
 
+- On the hosted site, marking a food as had no longer breaks every page. The server could not find the creature
+  drawings and category stand-ins it cuts silhouettes from, so the unlock screen, Skins, search and every entry failed
+  after your first food.
 - The Skins page opens in about a second on the hosted site. It used to read every food in the Dex to find one
   of yours for the previews, which took around ten.
 
