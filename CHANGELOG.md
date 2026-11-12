@@ -7,6 +7,13 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## Unreleased
+
+### Fixed
+
+- On the hosted site, marking a food as had no longer breaks every page. The server could not find the creature
+  drawings it cuts silhouettes from, so the unlock screen, Skins, search and every entry failed after your first food.
+
 ## 0.7.0 - 2026-11-08
 
 ### Added
