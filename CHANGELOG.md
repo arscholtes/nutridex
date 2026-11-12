@@ -16,6 +16,8 @@ running version has no entry here.
   after your first food.
 - The Skins page opens in about a second on the hosted site. It used to read every food in the Dex to find one
   of yours for the previews, which took around ten.
+- Pages open faster once you have unlocked something. Opening a food took over a second just to find which food is
+  richest in each of its nutrients, and the home page counted every food for every compound twice per visit.
 
 ## 0.7.0 - 2026-11-08
 
