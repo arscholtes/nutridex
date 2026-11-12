@@ -12,7 +12,8 @@ running version has no entry here.
 ### Fixed
 
 - On the hosted site, marking a food as had no longer breaks every page. The server could not find the creature
-  drawings it cuts silhouettes from, so the unlock screen, Skins, search and every entry failed after your first food.
+  drawings and category stand-ins it cuts silhouettes from, so the unlock screen, Skins, search and every entry failed
+  after your first food.
 
 ## 0.7.0 - 2026-11-08
 
