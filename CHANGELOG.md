@@ -7,6 +7,13 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## Unreleased
+
+### Fixed
+
+- Pages open faster once you have unlocked something. Opening a food took over a second just to find which food is
+  richest in each of its nutrients, and the home page counted every food for every compound twice per visit.
+
 ## 0.7.0 - 2026-11-08
 
 ### Added
