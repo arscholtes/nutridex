@@ -1,26 +1,20 @@
 "use client";
 
 import { useActionState, useState, useTransition } from "react";
-import { finishUnlock, markEncountered, uploadEncounters } from "../app/actions.ts";
+import Link from "next/link";
+import { finishUnlock, markEncountered } from "../app/actions.ts";
 
 export type UnlockCard = { slug: string; name: string; number: string; art: string; compounds: number; effects: number };
 
-/** New encounters waiting on this device, with the button that sends them home. */
-export function UploadBanner({ count, needsPasscode }: { count: number; needsPasscode: boolean }) {
-  const [state, action, uploading] = useActionState(uploadEncounters, { error: null });
+/** Foods this browser is holding for someone who has not signed in, with the way to keep them. */
+export function SaveBanner({ count }: { count: number }) {
   return (
-    <form action={action} className="dex-foil dex-upload mx-3 mt-2 flex flex-wrap items-center gap-2 rounded-[1.75rem] py-1.5 pl-4 pr-1.5 sm:mx-3.5">
-      <p className="mr-auto basis-full font-bold sm:basis-auto">{count === 1 ? "1 new encounter to upload" : `${count} new encounters to upload`}</p>
-      {needsPasscode && <input name="passcode" type="password" required aria-label="Upload passcode" placeholder="Upload passcode" autoComplete="current-password" className="dex-field min-w-0 flex-1 text-sm sm:flex-none" />}
-      <button type="submit" disabled={uploading} className="dex-button">
-        {uploading ? "Uploading" : "Upload"}
-      </button>
-      {state.error && (
-        <p role="alert" className="w-full text-sm font-bold text-danger">
-          {state.error}
-        </p>
-      )}
-    </form>
+    <p className="dex-foil dex-upload mx-3 mt-2 flex flex-wrap items-center gap-2 rounded-[1.75rem] py-1.5 pl-4 pr-1.5 sm:mx-3.5">
+      <span className="mr-auto basis-full font-bold sm:basis-auto">{count === 1 ? "1 food is kept in this browser only" : `${count} foods are kept in this browser only`}</span>
+      <Link href="/sign-in" className="dex-button">
+        Sign in to save your Dex
+      </Link>
+    </p>
   );
 }
 

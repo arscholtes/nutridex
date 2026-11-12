@@ -1,13 +1,14 @@
 // The collection game on the web: the upload banner, the "what did you have" box and progress.
 import { readFileSync } from "node:fs";
 import type { ReactNode } from "react";
+import { signInConfigured } from "../lib/auth/sign-in.ts";
 import { creatureDataUrl, creatureSilhouette } from "../lib/art/creature.ts";
 import { foodsMatching, listEntries, type DexPager } from "../lib/db/dex.ts";
 import { revealedEntries } from "../lib/db/encounters.ts";
 import { currentSkin, viewer } from "../lib/viewer.ts";
 import { DexShell } from "./dex-shell.tsx";
 import { AmountBar } from "./parts.tsx";
-import { HadButton, UnlockModal, type UnlockCard, UploadBanner } from "./unlock.tsx";
+import { HadButton, SaveBanner, UnlockModal, type UnlockCard } from "./unlock.tsx";
 
 /** How much of the collection is unlocked. It counts what is hidden without naming any of it. */
 export function Progress({ unlocked, total }: { unlocked: number; total: number }) {
@@ -57,7 +58,7 @@ export async function HadComposer({ had }: { had?: string }) {
 /** What a game screen sits in: the frame, the upload banner, and the unlock animation when one is due. */
 export async function GameShell({ lens, pager, children }: { lens?: string; pager?: DexPager; children: ReactNode }) {
   const { skin } = await currentSkin();
-  const { pending, canUpload, unlocking } = await viewer();
+  const { pending, account, unlocking } = await viewer();
   const foods = unlocking.length > 0 ? await listEntries({ kind: "ingredient", within: { foods: new Set(unlocking), compounds: new Set(), effects: new Set() } }) : [];
   const queue: UnlockCard[] = [];
   for (const slug of unlocking) {
@@ -75,7 +76,7 @@ export async function GameShell({ lens, pager, children }: { lens?: string; page
   }
   return (
     <DexShell skin={skin} lens={lens} pager={pager}>
-      {pending.length > 0 && <UploadBanner count={pending.length} needsPasscode={!canUpload} />}
+      {pending.length > 0 && !account && signInConfigured() && <SaveBanner count={pending.length} />}
       {children}
       {queue.length > 0 && <UnlockModal queue={queue} />}
     </DexShell>

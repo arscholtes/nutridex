@@ -1,16 +1,6 @@
 // The web game's device state, which a browser can hold in any shape.
 import { describe, expect, test } from "vitest";
-import { parsePending, parseUnlocking, PENDING_COOKIE, tokenMatches, withPending, type PendingEncounter } from "../lib/encounter-cookies.ts";
-
-describe("the upload passcode", () => {
-  test("the right one matches", () => {
-    expect(tokenMatches("secret-value", "secret-value")).toBe(true);
-  });
-
-  test.each([["wrong, same length", "secret-valuX"], ["wrong, shorter", "secret"], ["empty", ""]])("%s does not", (_what, given) => {
-    expect(tokenMatches(given, "secret-value")).toBe(false);
-  });
-});
+import { parsePending, parseUnlocking, PENDING_COOKIE, withPending, type PendingEncounter } from "../lib/encounter-cookies.ts";
 
 const AT = "2026-11-06T12:00:00.000Z";
 

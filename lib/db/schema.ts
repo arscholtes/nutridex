@@ -134,20 +134,39 @@ export const effect = pgTable("effect", {
   direction: text("direction"),
 });
 
-export const encounter = pgTable("encounter", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  ingredientId: uuid("ingredient_id")
-    .notNull()
-    .unique()
-    .references(() => ingredient.id, { onDelete: "cascade" }),
-  encounteredAt: timestamp("encountered_at", { withTimezone: true }).notNull(),
-  uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
-});
+// owner_id is the signed-in person, as the sign-in service knows them. Null is the one record the
+// apps share through the upload passcode.
+export const encounter = pgTable(
+  "encounter",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    ingredientId: uuid("ingredient_id")
+      .notNull()
+      .references(() => ingredient.id, { onDelete: "cascade" }),
+    encounteredAt: timestamp("encountered_at", { withTimezone: true }).notNull(),
+    uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
+    ownerId: uuid("owner_id"),
+  },
+  (t) => [unique("encounter_owner_ingredient").on(t.ownerId, t.ingredientId).nullsNotDistinct()],
+);
 
-export const preference = pgTable("preference", {
-  key: text("key").primaryKey(),
-  value: text("value").notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+export const preference = pgTable(
+  "preference",
+  {
+    key: text("key").notNull(),
+    value: text("value").notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    ownerId: uuid("owner_id"),
+  },
+  (t) => [unique("preference_owner_key").on(t.ownerId, t.key).nullsNotDistinct()],
+);
+
+export const session = pgTable("session", {
+  tokenHash: text("token_hash").primaryKey(),
+  ownerId: uuid("owner_id").notNull(),
+  email: text("email").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
 });
 
 export const compoundEffect = pgTable(

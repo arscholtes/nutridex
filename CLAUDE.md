@@ -54,7 +54,8 @@ everything, blacks out what is not unlocked, plays new arrivals when you get on 
 - A food unlocks the compounds it is a real source of, carries where no bar applies, or holds the most of in the
   Dex, and the effects it clears a bar for. A test holds that everything can be unlocked.
 - That rule lives in `lib/db/encounters.ts` and `lib/native/snapshot.ts`, and a test holds them equal.
-- `app/api/encounters` is the only way any app writes the record, behind `NUTRIDEX_UPLOAD_TOKEN`.
+- The native apps write the record only through `app/api/encounters`, behind `NUTRIDEX_UPLOAD_TOKEN`. On the web a signed-in
+  person writes their own rows (`app/actions.ts`); `lib/viewer.ts` is the one place that says who is asking.
 
 - A change someone can see ships on every platform in the same PR.
 - After any change to the seed, the data functions in `lib/db/dex.ts`, the art or the disclaimer, run

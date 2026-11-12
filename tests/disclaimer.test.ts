@@ -56,10 +56,14 @@ describe("what the disclaimer says is stored", () => {
   });
 
   test("names the foods you mark and where they go, on every platform", () => {
-    for (const sections of [DISCLAIMER_SECTIONS, NATIVE_DISCLAIMER_SECTIONS]) {
-      expect(stored(sections)).toContain("foods you mark");
-      expect(stored(sections)).toContain("upload");
-    }
+    for (const sections of [DISCLAIMER_SECTIONS, NATIVE_DISCLAIMER_SECTIONS]) expect(stored(sections)).toContain("foods you mark");
+    expect(stored(DISCLAIMER_SECTIONS)).toContain("sign in");
+    expect(stored(NATIVE_DISCLAIMER_SECTIONS)).toContain("upload");
+  });
+
+  test("the web says an account stores your email address, and that you can take it out or delete it", () => {
+    expect(stored(DISCLAIMER_SECTIONS)).toContain("email address");
+    expect(stored(DISCLAIMER_SECTIONS)).toMatch(/download .* or delete/);
   });
 
   test("the web mentions its cookies and the apps do not", () => {

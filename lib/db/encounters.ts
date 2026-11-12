@@ -7,26 +7,31 @@ type Sql = typeof sql;
 export type EncounterRow = { food: string; encounteredAt: string; uploadedAt: string };
 export type Revealed = { foods: Set<string>; compounds: Set<string>; effects: Set<string> };
 
-/** @return [Promise<EncounterRow[]>] every uploaded encounter, oldest first */
-export async function encounterRows(q: Sql = sql): Promise<EncounterRow[]> {
+/**
+ * @param owner [string | null] the signed-in person, or null for the record the apps share
+ * @return [Promise<EncounterRow[]>] every encounter in that record, oldest first
+ */
+export async function encounterRows(owner: string | null = null, q: Sql = sql): Promise<EncounterRow[]> {
   const rows = await q<{ food: string; encounteredAt: string; uploadedAt: string }[]>`
     select i.slug as food, e.encountered_at as "encounteredAt", e.uploaded_at as "uploadedAt"
     from encounter e join ingredient i on i.id = e.ingredient_id
+    where e.owner_id is not distinct from ${owner}
     order by e.encountered_at, i.slug`;
   return rows.map((r) => ({ food: r.food, encounteredAt: new Date(r.encounteredAt).toISOString(), uploadedAt: new Date(r.uploadedAt).toISOString() }));
 }
 
-/** @return [Promise<string[]>] the slugs of every uploaded food */
-export async function encounteredFoods(q: Sql = sql): Promise<string[]> {
-  return (await encounterRows(q)).map((r) => r.food);
+/** @return [Promise<string[]>] the slugs of every food in one record */
+export async function encounteredFoods(owner: string | null = null, q: Sql = sql): Promise<string[]> {
+  return (await encounterRows(owner, q)).map((r) => r.food);
 }
 
 /**
  * Stores newly encountered foods. An array naming an unknown food stores nothing.
  * @param items [{ food, encounteredAt }[]] the foods and when they were had
+ * @param owner [string | null] whose record, or null for the one the apps share
  * @return [Promise<{ added: string[]; unknown: string[] }>] which were new, and any unknown slugs
  */
-export async function recordEncounters(items: { food: string; encounteredAt: string }[], q: Sql = sql): Promise<{ added: string[]; unknown: string[] }> {
+export async function recordEncounters(items: { food: string; encounteredAt: string }[], owner: string | null = null, q: Sql = sql): Promise<{ added: string[]; unknown: string[] }> {
   const known = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${items.map((i) => i.food)})`;
   const ids = new Map(known.map((k) => [k.slug, k.id]));
   const unknown = items.filter((i) => !ids.has(i.food)).map((i) => i.food);
@@ -34,8 +39,8 @@ export async function recordEncounters(items: { food: string; encounteredAt: str
   const added: string[] = [];
   for (const item of items) {
     const inserted = await q`
-      insert into encounter (ingredient_id, encountered_at) values (${ids.get(item.food)!}, ${item.encounteredAt})
-      on conflict (ingredient_id) do nothing returning id`;
+      insert into encounter (ingredient_id, encountered_at, owner_id) values (${ids.get(item.food)!}, ${item.encounteredAt}, ${owner})
+      on conflict on constraint encounter_owner_ingredient do nothing returning id`;
     if (inserted.length > 0) added.push(item.food);
   }
   return { added, unknown: [] };

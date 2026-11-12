@@ -7,7 +7,21 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
-## Unreleased
+## 0.8.0 - 2026-11-12
+
+### Added
+
+- Accounts on the web. Sign in with a six-digit code sent to your email, with no password, and your Dex and your
+  skin are saved to you and appear in any browser you sign in on. Signing in is optional: without it everything
+  stays in that browser, as before.
+- A Settings page: your skin, the email you are signed in with, sign out, download everything stored for your
+  account, and delete your account with everything in it.
+
+### Changed
+
+- Signed in, a food you mark as had is saved and unlocks straight away. The upload passcode is gone from the
+  web; the iPhone, iPad and Mac apps still use it.
+- The notice you accept on first use says what an account stores, so it appears once more.
 
 ### Fixed
 
