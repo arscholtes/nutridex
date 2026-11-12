@@ -7,6 +7,13 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## Unreleased
+
+### Fixed
+
+- The Skins page opens in about a second on the hosted site. It used to read every food in the Dex to find one
+  of yours for the previews, which took around ten.
+
 ## 0.7.0 - 2026-11-08
 
 ### Added
