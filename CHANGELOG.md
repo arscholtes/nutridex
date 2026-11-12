@@ -7,6 +7,20 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## 0.9.0 - 2026-11-12
+
+### Added
+
+- Recipes on the web. Build a recipe from the foods you have unlocked, with grams, how each is prepared and the
+  steps, and watch its grid and its profile update as you go: what a serving holds, what the preparation costs,
+  what helps or blocks absorption, cautions and effects. Building and previewing need no account; saving one
+  needs you to be signed in, and a saved recipe is yours alone.
+
+### Changed
+
+- The notice you accept on first use says saved recipes are stored with your account, so it appears once more.
+- Downloading your data includes your recipes, and deleting your account deletes them.
+
 ## 0.8.0 - 2026-11-12
 
 ### Added

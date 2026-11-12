@@ -20,7 +20,7 @@ export function RecipeView({ page }: { page: RecipePage }) {
       <header>
         <h1 className="text-2xl font-bold text-ink">{page.name}</h1>
         <p className="text-sm text-ink-soft">
-          {page.servings === 1 ? "1 serving" : `${page.servings} servings`} · {grid.rows.length} ingredients · {grid.steps.length === 1 ? "1 step" : `${grid.steps.length} steps`}
+          {page.servings === 1 ? "1 serving" : `${page.servings} servings`} · {grid.rows.length === 1 ? "1 ingredient" : `${grid.rows.length} ingredients`} · {grid.steps.length === 1 ? "1 step" : `${grid.steps.length} steps`}
         </p>
       </header>
 

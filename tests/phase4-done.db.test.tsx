@@ -27,8 +27,8 @@ const DRAFT: RecipeDraft = {
 
 /** Build the recipe the way every platform saves one, then load its page. */
 async function built(tx: typeof sql): Promise<RecipePage> {
-  await recordEncounters(["carrot", "kale", "olive-oil"].map((food) => ({ food, encounteredAt: "2026-11-09T12:00:00.000Z" })), tx);
-  const page = await recipePage(await saveRecipe(DRAFT, await uploadedFoods(tx), tx), tx);
+  await recordEncounters(["carrot", "kale", "olive-oil"].map((food) => ({ food, encounteredAt: "2026-11-09T12:00:00.000Z" })), null, tx);
+  const page = await recipePage(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx), tx);
   expect(page).not.toBeNull();
   return page!;
 }

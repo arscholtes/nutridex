@@ -24,6 +24,8 @@ export type RecipePage = {
   slug: string;
   name: string;
   servings: number;
+  /** Who built it; null when it is everyone's. */
+  owner: string | null;
   /** The one piece of data the grid and the profile are both drawn from. */
   recipe: RecipeInput;
   grid: RecipeGrid;
@@ -44,11 +46,11 @@ export type RecipePage = {
  * @return [Promise<RecipePage | null>] null when no recipe has that slug
  */
 export async function recipePage(slug: string, q: Sql = sql): Promise<RecipePage | null> {
-  const [row] = await q<{ id: string; name: string; servings: number }[]>`select id, name, servings from recipe where slug = ${slug}`;
+  const [row] = await q<{ id: string; name: string; servings: number; owner: string | null }[]>`select id, name, servings, owner_id as owner from recipe where slug = ${slug}`;
   if (!row) return null;
   const titles = await q<{ position: number; title: string | null }[]>`select position, title from recipe_step where recipe_id = ${row.id}`;
   const stepTitles = Object.fromEntries(titles.map((t) => [t.position, t.title ?? `Step ${t.position}`]));
-  return pageOf({ slug, name: row.name, servings: row.servings }, await loadRecipe(slug, q), stepTitles, q);
+  return pageOf({ slug, name: row.name, servings: row.servings, owner: row.owner }, await loadRecipe(slug, q), stepTitles, q);
 }
 
 /**
@@ -72,10 +74,10 @@ export async function draftPage(draft: RecipeDraft, available: Set<string>, q: S
     steps: draft.steps.map((s, n) => ({ position: n + 1, prepMethod: s.prepMethod, recipeIngredientIds: [...new Set(s.uses)].map((u) => `draft-${u}`) })),
   };
   const stepTitles = Object.fromEntries(draft.steps.map((s, n) => [n + 1, s.title.trim() || `Step ${n + 1}`]));
-  return pageOf({ slug: "draft", name: draft.name.trim() || "Untitled recipe", servings: draft.servings }, recipe, stepTitles, q);
+  return pageOf({ slug: "draft", name: draft.name.trim() || "Untitled recipe", servings: draft.servings, owner: null }, recipe, stepTitles, q);
 }
 
-async function pageOf(meta: { slug: string; name: string; servings: number }, recipe: RecipeInput, stepTitles: Record<number, string>, q: Sql): Promise<RecipePage> {
+async function pageOf(meta: { slug: string; name: string; servings: number; owner: string | null }, recipe: RecipeInput, stepTitles: Record<number, string>, q: Sql): Promise<RecipePage> {
   const profile = await profileOf(recipe, q);
   const named = await namesFor(recipe, profile, q);
   return {
@@ -139,11 +141,12 @@ const PREPS = new Set<string>(PREP_METHODS);
  * Save a recipe built on any platform.
  * @param draft [RecipeDraft] what was built
  * @param available [Set<string>] the foods the builder could offer: the viewer's revealed foods on the web, the uploaded record for the apps
+ * @param owner [string | null] the signed-in person saving it; null when the apps save to the record they share
  * @param q [Sql] the connection or transaction to write through
  * @return [Promise<string>] the new recipe's slug
  * @raise [InvalidRecipe] naming every problem, before anything is written
  */
-export async function saveRecipe(draft: RecipeDraft, available: Set<string>, q: Sql = sql): Promise<string> {
+export async function saveRecipe(draft: RecipeDraft, available: Set<string>, owner: string | null = null, q: Sql = sql): Promise<string> {
   const foods = draft.ingredients.map((i) => i.food);
   const known = new Map((await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${foods})`).map((r) => [r.slug, r.id]));
   const problems = problemsIn(draft, known, available);
@@ -152,7 +155,7 @@ export async function saveRecipe(draft: RecipeDraft, available: Set<string>, q: 
   const write = async (tx: Sql): Promise<string> => {
     const slug = await freeSlug(slugOf(draft.name), tx);
     const [{ id: recipeId }] = await tx<{ id: string }[]>`
-      insert into recipe (slug, name, servings) values (${slug}, ${draft.name.trim()}, ${draft.servings}) returning id`;
+      insert into recipe (slug, name, servings, owner_id) values (${slug}, ${draft.name.trim()}, ${draft.servings}, ${owner}) returning id`;
     const ingredientIds: string[] = [];
     for (const [position, i] of draft.ingredients.entries()) {
       const [{ id }] = await tx<{ id: string }[]>`
@@ -176,21 +179,46 @@ export async function saveRecipe(draft: RecipeDraft, available: Set<string>, q: 
 
 /**
  * Recipes made only of foods in `visible`: on the web, iPhone and iPad nothing locked may show.
+ * Someone's own recipe is theirs alone; a recipe with no owner is everyone's.
  * @param visible [Set<string>] the food slugs this viewer may see
+ * @param owner [string | null] who is signed in
  * @return [Promise<RecipeSummary[]>] by name
  */
-export async function listRecipes(visible: Set<string>, q: Sql = sql): Promise<RecipeSummary[]> {
+export async function listRecipes(visible: Set<string>, owner: string | null = null, q: Sql = sql): Promise<RecipeSummary[]> {
   return q<RecipeSummary[]>`
     select r.slug, r.name, r.servings, count(ri.id)::int as ingredients
     from recipe r join recipe_ingredient ri on ri.recipe_id = r.id join ingredient i on i.id = ri.ingredient_id
+    where r.owner_id is null or r.owner_id = ${owner}
     group by r.id
     having bool_and(i.slug = any(${[...visible]}))
     order by r.name`;
 }
 
+/**
+ * Everything one person built, in the shape they built it.
+ * @param owner [string] whose recipes
+ * @return [Promise<(RecipeDraft & { slug: string })[]>] by name
+ */
+export async function ownedRecipes(owner: string, q: Sql = sql): Promise<(RecipeDraft & { slug: string })[]> {
+  const rows = await q<{ id: string; slug: string; name: string; servings: number }[]>`
+    select id, slug, name, servings from recipe where owner_id = ${owner} order by name, slug`;
+  return Promise.all(rows.map(async (row) => {
+    const loaded = await loadRecipe(row.slug, q);
+    const titles = new Map((await q<{ position: number; title: string }[]>`select position, title from recipe_step where recipe_id = ${row.id}`).map((t) => [t.position, t.title]));
+    const index = new Map(loaded.ingredients.map((i, n) => [i.id, n]));
+    return {
+      slug: row.slug,
+      name: row.name,
+      servings: row.servings,
+      ingredients: loaded.ingredients.map((i) => ({ food: i.ingredientSlug, grams: i.grams, prepMethod: i.prepMethod })),
+      steps: loaded.steps.map((s) => ({ title: titles.get(s.position)!, prepMethod: s.prepMethod, uses: s.recipeIngredientIds.map((id) => index.get(id)!).sort((a, b) => a - b) })),
+    };
+  }));
+}
+
 /** @return [Promise<Set<string>>] the uploaded record, which is what the apps may use */
 export async function uploadedFoods(q: Sql = sql): Promise<Set<string>> {
-  return new Set(await encounteredFoods(q));
+  return new Set(await encounteredFoods(null, q));
 }
 
 function problemsIn(draft: RecipeDraft, known: Map<string, string>, encountered: Set<string>): string[] {

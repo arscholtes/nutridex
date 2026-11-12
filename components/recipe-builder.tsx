@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { saveRecipeAction } from "../app/actions.ts";
@@ -118,7 +119,7 @@ export function RecipeBuilder({ foods, prepMethods, initial, canSave }: { foods:
         <button type="button" className="rounded-md bg-ink px-4 py-2 text-sm font-bold text-card disabled:opacity-50" disabled={!canSave || draft.ingredients.length === 0} onClick={save}>
           Save recipe
         </button>
-        {!canSave && <span className="text-sm text-ink-soft">Saving needs the passcode, the same as Upload. Everything else works without it.</span>}
+        {!canSave && <span className="text-sm text-ink-soft"><Link href="/sign-in" className="font-bold underline underline-offset-4">Sign in</Link> to save a recipe. Everything else works without an account.</span>}
         {pending && <span className="text-sm text-ink-soft" role="status">Updating the profile…</span>}
       </div>
       {problems.length > 0 && (

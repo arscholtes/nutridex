@@ -6,10 +6,10 @@ import { viewer } from "../../../lib/viewer.ts";
 
 export default async function RecipePageRoute({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const { revealed } = await viewer();
+  const { revealed, account } = await viewer();
   const page = await recipePage(slug);
-  // A recipe with a food not yet found does not exist as far as this screen can tell.
-  if (!page || page.grid.rows.some((r) => !revealed.foods.has(r.ingredientSlug))) notFound();
+  // A recipe with a food not yet found, or one that is someone else's, does not exist as far as this screen can tell.
+  if (!page || (page.owner !== null && page.owner !== account?.owner) || page.grid.rows.some((r) => !revealed.foods.has(r.ingredientSlug))) notFound();
   return (
     <GameShell>
       <RecipeView page={page} />

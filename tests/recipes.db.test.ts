@@ -3,7 +3,8 @@ import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { loadRecipe } from "../lib/db/engine-input.ts";
 import { recordEncounters } from "../lib/db/encounters.ts";
-import { draftPage, InvalidRecipe, listRecipes, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
+import { eraseOwner, ownerRecord } from "../lib/db/sessions.ts";
+import { draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
 import { inRolledBackTransaction } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
@@ -11,7 +12,7 @@ localDatabaseUrl("the recipes test writes to the database");
 afterAll(() => sql.end());
 
 const AT = "2026-11-09T12:00:00.000Z";
-const encounter = (tx: typeof sql, foods: string[]) => recordEncounters(foods.map((food) => ({ food, encounteredAt: AT })), tx);
+const encounter = (tx: typeof sql, foods: string[]) => recordEncounters(foods.map((food) => ({ food, encounteredAt: AT })), null, tx);
 
 const DRAFT: RecipeDraft = {
   name: "Carrot and kale with oil",
@@ -31,7 +32,7 @@ describe("saving a recipe", () => {
   test("what was built is what loads back, steps and all", async () => {
     await inRolledBackTransaction(async (tx) => {
       await encounter(tx, ["carrot", "kale", "olive-oil"]);
-      const slug = await saveRecipe(DRAFT, await uploadedFoods(tx), tx);
+      const slug = await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx);
       expect(slug).toBe("carrot-and-kale-with-oil");
 
       const loaded = await loadRecipe(slug, tx);
@@ -50,8 +51,8 @@ describe("saving a recipe", () => {
   test("a second recipe with the same name gets a slug of its own", async () => {
     await inRolledBackTransaction(async (tx) => {
       await encounter(tx, ["carrot", "kale", "olive-oil"]);
-      expect(await saveRecipe(DRAFT, await uploadedFoods(tx), tx)).toBe("carrot-and-kale-with-oil");
-      expect(await saveRecipe(DRAFT, await uploadedFoods(tx), tx)).toBe("carrot-and-kale-with-oil-2");
+      expect(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx)).toBe("carrot-and-kale-with-oil");
+      expect(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx)).toBe("carrot-and-kale-with-oil-2");
     });
   });
 
@@ -59,8 +60,8 @@ describe("saving a recipe", () => {
     await inRolledBackTransaction(async (tx) => {
       await encounter(tx, ["carrot", "kale"]);
       const before = await tx`select count(*)::int as n from recipe`;
-      await expect(saveRecipe(DRAFT, await uploadedFoods(tx), tx)).rejects.toThrow(InvalidRecipe);
-      await expect(saveRecipe(DRAFT, await uploadedFoods(tx), tx)).rejects.toThrow(/olive-oil/);
+      await expect(saveRecipe(DRAFT, await uploadedFoods(tx), null, tx)).rejects.toThrow(InvalidRecipe);
+      await expect(saveRecipe(DRAFT, await uploadedFoods(tx), null, tx)).rejects.toThrow(/olive-oil/);
       expect(await tx`select count(*)::int as n from recipe`).toEqual(before);
     });
   });
@@ -74,7 +75,7 @@ describe("saving a recipe", () => {
         ingredients: [{ food: "carrot", grams: 0, prepMethod: "microwaved" }],
         steps: [{ title: "Mix", prepMethod: "shaken", uses: [3] }],
       };
-      const problems = await saveRecipe(bad, await uploadedFoods(tx), tx).then(() => [], (e: InvalidRecipe) => e.problems);
+      const problems = await saveRecipe(bad, await uploadedFoods(tx), null, tx).then(() => [], (e: InvalidRecipe) => e.problems);
       expect(problems).toEqual(expect.arrayContaining([
         expect.stringMatching(/name/),
         expect.stringMatching(/servings/),
@@ -88,8 +89,39 @@ describe("saving a recipe", () => {
 
   test("a recipe needs at least one ingredient", async () => {
     await inRolledBackTransaction(async (tx) => {
-      await expect(saveRecipe({ name: "Water", servings: 1, ingredients: [], steps: [] }, new Set(), tx)).rejects.toThrow(/ingredient/);
+      await expect(saveRecipe({ name: "Water", servings: 1, ingredients: [], steps: [] }, new Set(), null, tx)).rejects.toThrow(/ingredient/);
     });
+  });
+});
+
+const ANA = "00000000-0000-4000-8000-0000000000a1";
+const BEN = "00000000-0000-4000-8000-0000000000b2";
+const ALL = new Set(["carrot", "kale", "olive-oil"]);
+
+describe("whose a recipe is", () => {
+  test("a recipe someone saved lists for them and for nobody else", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect((await listRecipes(ALL, ANA, tx)).map((r) => r.slug)).toContain(slug);
+      expect((await listRecipes(ALL, BEN, tx)).map((r) => r.slug)).not.toContain(slug);
+      expect((await listRecipes(ALL, null, tx)).map((r) => r.slug)).not.toContain(slug);
+      expect((await recipePage(slug, tx))!.owner).toBe(ANA);
+    });
+  });
+
+  test("their download holds it as they built it, and deleting the account removes it", async () => {
+    // eraseOwner opens its own transaction, so this one cleans up after itself.
+    try {
+      const slug = await saveRecipe(DRAFT, ALL, ANA);
+      await saveRecipe(DRAFT, ALL, BEN);
+      expect((await ownerRecord(ANA)).recipes).toEqual([{ slug, ...DRAFT }]);
+
+      await eraseOwner(ANA);
+      expect(await sql`select owner_id from recipe where name = ${DRAFT.name}`).toEqual([{ owner_id: BEN }]);
+      expect(await sql`select count(*)::int as n from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.name = ${DRAFT.name}`).toEqual([{ n: 3 }]);
+    } finally {
+      await sql`delete from recipe where owner_id in (${ANA}, ${BEN})`;
+    }
   });
 });
 
@@ -97,20 +129,20 @@ describe("which recipes show", () => {
   test("a recipe lists only while every food in it has been encountered", async () => {
     await inRolledBackTransaction(async (tx) => {
       await encounter(tx, ["carrot", "kale", "olive-oil"]);
-      const slug = await saveRecipe(DRAFT, await uploadedFoods(tx), tx);
-      expect((await listRecipes(await uploadedFoods(tx), tx)).map((r) => r.slug)).toContain(slug);
+      const slug = await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx);
+      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).toContain(slug);
 
       await tx`delete from encounter where ingredient_id = (select id from ingredient where slug = 'olive-oil')`;
-      expect((await listRecipes(await uploadedFoods(tx), tx)).map((r) => r.slug)).not.toContain(slug);
+      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).not.toContain(slug);
     });
   });
 
   test("the seeded juice stays hidden until all four of its foods are encountered", async () => {
     await inRolledBackTransaction(async (tx) => {
       await encounter(tx, ["granny-smith-apple", "carrot", "beet"]);
-      expect((await listRecipes(await uploadedFoods(tx), tx)).map((r) => r.slug)).not.toContain("juice");
+      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).not.toContain("juice");
       await encounter(tx, ["kale"]);
-      expect((await listRecipes(await uploadedFoods(tx), tx)).map((r) => r.slug)).toContain("juice");
+      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).toContain("juice");
     });
   });
 });

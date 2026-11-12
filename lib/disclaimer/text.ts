@@ -53,7 +53,8 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
     body:
       "The foods you mark as had, and when: kept in a cookie on this device until you sign in, then in " +
       "NutriDex's database under your account. The skin you choose: kept in a cookie on this device and, once " +
-      "you are signed in, in NutriDex's database so it can follow you. If you make an account, your email " +
+      "you are signed in, in NutriDex's database so it can follow you. Recipes you save, which needs an account: " +
+      "kept in NutriDex's database under it and shown to nobody else. If you make an account, your email " +
       "address is kept by the sign-in service NutriDex uses and with each sign-in, and a cookie keeps you signed " +
       "in on this device for 90 days. Settings lets you download everything stored for your account or delete " +
       "it. Another cookie holds what you just unlocked until it has been shown to you. A cookie remembers which version of this notice " +
