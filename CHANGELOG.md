@@ -7,6 +7,35 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## 0.8.0 - 2026-11-12
+
+### Added
+
+- Accounts on the web. Sign in with a six-digit code sent to your email, with no password, and your Dex and your
+  skin are saved to you and appear in any browser you sign in on. Signing in is optional: without it everything
+  stays in that browser, as before.
+- The wall. The home page shows every entry in the Dex in number order, 60 to a page: yours in colour, the rest as
+  blacked-out shapes with only their number, until you have had them. Searching still looks through what you have
+  unlocked, and "Unlocked only" shows just those.
+- A Settings page: your skin, the email you are signed in with, sign out, download everything stored for your
+  account, and delete your account with everything in it.
+
+### Changed
+
+- Signed in, a food you mark as had is saved and unlocks straight away. The upload passcode is gone from the
+  web; the iPhone, iPad and Mac apps still use it.
+- The notice you accept on first use says what an account stores, so it appears once more.
+
+### Fixed
+
+- On the hosted site, marking a food as had no longer breaks every page. The server could not find the creature
+  drawings and category stand-ins it cuts silhouettes from, so the unlock screen, Skins, search and every entry failed
+  after your first food.
+- The Skins page opens in about a second on the hosted site. It used to read every food in the Dex to find one
+  of yours for the previews, which took around ten.
+- Pages open faster once you have unlocked something. Opening a food took over a second just to find which food is
+  richest in each of its nutrients, and the home page counted every food for every compound twice per visit.
+
 ## 0.7.0 - 2026-11-08
 
 ### Added

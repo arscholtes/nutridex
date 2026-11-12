@@ -216,8 +216,8 @@ export async function ingredientEntry(slug: string, q: Sql = sql): Promise<Ingre
     join compound c on c.id = ic.compound_id
     left join lateral (
       select x.amount_per_100g, i.slug, i.name from ingredient_compound x join ingredient i on i.id = x.ingredient_id
-      where x.compound_id = c.id and x.amount_per_100g is not null
-      order by x.amount_per_100g desc, i.name limit 1
+      where x.compound_id = c.id and x.amount_per_100g = (${richestAmount(q, q`c.id`, q`y.amount_per_100g is not null`)})
+      order by i.name limit 1
     ) top on true
     where ic.ingredient_id = ${row.id}
     order by c.name`;
@@ -390,6 +390,17 @@ export async function effectEntry(slug: string, q: Sql = sql): Promise<EffectEnt
   };
 }
 
+/**
+ * The largest amount of one compound in any food, read off the head of the `ingredient_compound_richest`
+ * index. Asking for the richest food by sorting every food that carries the compound reads thousands of
+ * rows per compound; finding this amount first and then the foods that hold exactly it reads a handful.
+ * Counts beside it use count(*) so they are answered from the same index without visiting the table.
+ */
+const richestAmount = (q: Sql, compoundId: ReturnType<Sql>, counted: ReturnType<Sql>) => q`
+  select y.amount_per_100g from ingredient_compound y
+  where y.compound_id = ${compoundId} and ${counted}
+  order by y.amount_per_100g desc nulls last limit 1`;
+
 const KIND_PREFIX: Record<EntryKind, string> = { ingredient: "F", compound: "C", effect: "E" };
 
 /** @return [string] an entry's dex number from its place within its kind, such as F006 */
@@ -404,6 +415,26 @@ const numberedEntries = (q: Sql) => q`
     union all select 'compound', slug, name, class, null, class from compound
     union all select 'effect', slug, name, body_system, null, null from effect
   ) unnumbered`;
+
+export type WallSlot = { kind: EntryKind; slug: string; name: string; number: string; imageUrl: string | null; compoundClass: string | null };
+
+export const WALL_PAGE = 60;
+
+/**
+ * One page of the whole Dex in number order, foods then compounds then effects, whatever is unlocked.
+ * A slot's name and slug are for drawing its shape and matching it to what is unlocked; they must not
+ * reach someone who has not unlocked it.
+ * @param search [{ kind?, page }] one kind or all, and the page, counted from 1
+ * @return [Promise<WallSlot[]>] up to WALL_PAGE slots; none past the end
+ */
+export async function wallPage(search: { kind?: EntryKind; page: number }, q: Sql = sql): Promise<WallSlot[]> {
+  const rows = await q<{ kind: EntryKind; slug: string; name: string; imageUrl: string | null; compoundClass: string | null; place: number }[]>`
+    select kind, slug, name, "imageUrl", "compoundClass", place from (${numberedEntries(q)}) numbered
+    where ${search.kind ?? null}::text is null or kind = ${search.kind ?? null}
+    order by array_position(array['ingredient', 'compound', 'effect'], kind), place
+    limit ${WALL_PAGE} offset ${(Math.max(1, Math.floor(search.page)) - 1) * WALL_PAGE}`;
+  return rows.map((r) => ({ kind: r.kind, slug: r.slug, name: r.name, number: dexNumber(r.kind, r.place), imageUrl: r.imageUrl, compoundClass: r.compoundClass }));
+}
 
 /**
  * Every entry of a kind as a step, whatever is unlocked.
@@ -481,13 +512,14 @@ export async function listEntries(search: { q?: string; kind?: EntryKind; type?:
   const compoundStats = new Map(
     (
       await q<{ slug: string; carriers: number; foods: number; topName: string | null; topSlug: string | null }[]>`
-        select c.slug, count(ic.*) filter (where ic.amount_per_100g is null)::int as carriers,
-               count(ic.*) filter (where ic.amount_per_100g > 0)::int as foods, top.name as "topName", top.slug as "topSlug"
+        select c.slug, count(*) filter (where ic.compound_id is not null and ic.amount_per_100g is null)::int as carriers,
+               count(*) filter (where ic.amount_per_100g > 0)::int as foods, top.name as "topName", top.slug as "topSlug"
         from compound c
         left join ingredient_compound ic on ic.compound_id = c.id
         left join lateral (
           select i.name, i.slug from ingredient_compound x join ingredient i on i.id = x.ingredient_id
-          where x.compound_id = c.id and x.amount_per_100g > 0 order by x.amount_per_100g desc, i.name limit 1
+          where x.compound_id = c.id and x.amount_per_100g = (${richestAmount(q, q`c.id`, q`y.amount_per_100g > 0`)})
+          order by i.name limit 1
         ) top on true
         where c.slug = any(${slugsOf("compound")}::text[])
         group by c.id, top.name, top.slug`

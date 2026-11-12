@@ -3,12 +3,15 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { recordEncounters } from "../lib/db/encounters.ts";
-import { saveSkin } from "../lib/db/preferences.ts";
+import { redirect } from "next/navigation";
+import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
+import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
 import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
+import { endSession, eraseOwner, removeSignIn, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
-import { parsePending, PENDING_COOKIE, SKIN_COOKIE, tokenMatches, UNLOCKING_COOKIE, UPLOAD_COOKIE, withPending } from "../lib/encounter-cookies.ts";
+import { parsePending, parseUnlocking, PENDING_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
-import { viewer } from "../lib/viewer.ts";
+import { signedIn, viewer } from "../lib/viewer.ts";
 
 // Browsers cap a cookie's lifetime at 400 days; after that the notice appears once more.
 const MAX_AGE_SECONDS = 400 * 24 * 60 * 60;
@@ -28,36 +31,72 @@ const YEAR_SECONDS = 365 * 24 * 60 * 60;
 const privateCookie = { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: YEAR_SECONDS } as const;
 
 /**
- * Marks a food as had on this device, which unlocks it here until it is uploaded.
+ * Marks a food as had. Signed in, it goes straight onto your record; otherwise this browser keeps it.
  * @param food [string] the food's slug
- * @return [Promise<{ error: string | null }>] why it was not kept, when this browser can hold no more
+ * @return [Promise<{ error: string | null }>] why it was not kept
  */
 export async function markEncountered(food: string): Promise<{ error: string | null }> {
   const jar = await cookies();
+  const account = await signedIn();
+  if (account) {
+    const { added, unknown } = await recordEncounters([{ food, encounteredAt: new Date().toISOString() }], account.owner);
+    if (unknown.length > 0) return { error: "That is not a food in the Dex." };
+    if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify([...parseUnlocking(jar.get(UNLOCKING_COOKIE)?.value), ...added]), privateCookie);
+    return { error: null };
+  }
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
   if (pending.some((p) => p.food === food)) return { error: null };
   const value = withPending(pending, food, new Date().toISOString());
-  if (value === null) return { error: "This browser is full: it holds no more foods until the ones waiting are uploaded." };
+  if (value === null) return { error: "This browser is full: sign in to save what it holds, then carry on." };
   jar.set(PENDING_COOKIE, value, privateCookie);
   return { error: null };
 }
 
-export type UploadState = { error: string | null };
+export type SignInState = { step: "email" | "code"; email: string; error: string | null };
 
-/** Uploads everything new on this device to the home database, then queues the unlock animation. */
-export async function uploadEncounters(_previous: UploadState, form: FormData): Promise<UploadState> {
+/**
+ * Both halves of signing in: with an email alone it sends a code; with the code too it checks it, starts
+ * a session, and moves what this browser was holding onto the account.
+ */
+export async function signIn(_previous: SignInState, form: FormData): Promise<SignInState> {
+  const email = String(form.get("email") ?? "");
+  const code = form.get("code");
+  if (typeof code !== "string") {
+    const error = await requestCode(email);
+    return error ? { step: "email", email, error } : { step: "code", email, error: null };
+  }
+  const proven = await verifyCode(email, code);
+  if ("error" in proven) return { step: "code", email, error: proven.error };
+
   const jar = await cookies();
-  const passcode = (form.get("passcode") as string | null) || jar.get(UPLOAD_COOKIE)?.value || "";
-  const configured = process.env.NUTRIDEX_UPLOAD_TOKEN;
-  if (!configured) return { error: "This server has no upload passcode set, so it cannot take uploads." };
-  if (!tokenMatches(passcode, configured)) return { error: "That passcode is not right." };
+  jar.set(SESSION_COOKIE, await startSession(proven.id, proven.email), { ...privateCookie, maxAge: SESSION_DAYS * 24 * 60 * 60 });
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
-  const { added, unknown } = await recordEncounters(pending);
-  if (unknown.length > 0) return { error: `These are not foods in the Dex: ${unknown.join(", ")}.` };
-  jar.set(UPLOAD_COOKIE, passcode, privateCookie);
+  const { added, unknown } = await recordEncounters(pending, proven.id);
+  if (unknown.length > 0) console.error(`sign-in: this browser held foods the Dex does not have, so none were saved: ${unknown.join(", ")}`);
   jar.delete(PENDING_COOKIE);
-  jar.set(UNLOCKING_COOKIE, JSON.stringify(added), privateCookie);
-  return { error: null };
+  if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify(added), privateCookie);
+  const here = parseSkin(jar.get(SKIN_COOKIE)?.value);
+  if (here && (await savedSkin(proven.id)) === null) await saveSkin(here, proven.id);
+  redirect("/");
+}
+
+/** Signs this browser out. What was saved stays on the account. */
+export async function signOut() {
+  const jar = await cookies();
+  const token = jar.get(SESSION_COOKIE)?.value;
+  if (token) await endSession(token);
+  jar.delete(SESSION_COOKIE);
+  redirect("/");
+}
+
+/** Deletes the signed-in person's account and every row they own. */
+export async function deleteAccount() {
+  const account = await signedIn();
+  if (!account) redirect("/sign-in");
+  await eraseOwner(account.owner);
+  await removeSignIn(account.owner);
+  (await cookies()).delete(SESSION_COOKIE);
+  redirect("/");
 }
 
 /** Ends the unlock animation, leaving you on the screen you were on. */
@@ -65,28 +104,26 @@ export async function finishUnlock() {
   (await cookies()).delete(UNLOCKING_COOKIE);
 }
 
-/** Changes the look on this device, and on every device sharing its passcode. */
+/** Changes the look in this browser, and on your account when you are signed in. */
 export async function chooseSkin(id: string) {
   const skin = parseSkin(id);
   if (!skin) throw new Error(`NutriDex has no skin called ${id}`);
-  const jar = await cookies();
-  jar.set(SKIN_COOKIE, skin, privateCookie);
-  const configured = process.env.NUTRIDEX_UPLOAD_TOKEN;
-  if (configured && tokenMatches(jar.get(UPLOAD_COOKIE)?.value ?? "", configured)) await saveSkin(skin);
+  (await cookies()).set(SKIN_COOKIE, skin, privateCookie);
+  const account = await signedIn();
+  if (account) await saveSkin(skin, account.owner);
   revalidatePath("/", "layout");
 }
 
 /**
- * Saves a recipe built on the web. Writing needs the passcode, as uploading does: without it a hosted
- * site would let anyone write recipes into someone's database.
+ * Saves a recipe built on the web, as the signed-in person's own.
  * @param draft [RecipeDraft] what was built
  * @return [Promise<{ slug: string } | { problems: string[] }>] the saved recipe, or every reason it was refused
  */
 export async function saveRecipeAction(draft: RecipeDraft): Promise<{ slug: string } | { problems: string[] }> {
-  const { revealed, canUpload } = await viewer();
-  if (!canUpload) return { problems: ["Saving a recipe needs the passcode, the same as Upload. Upload once from the home screen and this browser can save."] };
+  const { revealed, account } = await viewer();
+  if (!account) return { problems: ["Sign in to save a recipe. Building and previewing work without an account."] };
   try {
-    const slug = await saveRecipe(draft, revealed.foods);
+    const slug = await saveRecipe(draft, revealed.foods, account.owner);
     revalidatePath("/recipes");
     return { slug };
   } catch (error) {

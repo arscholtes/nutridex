@@ -41,19 +41,22 @@ Where every claim comes from. Every amount, effect, modifier and caution row poi
 
 ### `preference`
 
-A choice that should be the same on every device, such as the skin (`key` is `skin`, `value` is a skin's id). The last choice wins. Devices sharing the upload passcode share these rows, like `encounter`, because NutriDex has no accounts yet. Only NutriDex reads it.
+A choice that should be the same on every device, such as the skin (`key` is `skin`, `value` is a skin's id). The last choice wins. `owner_id` is whose choice it is, as in `encounter`; the row with none is the one the apps share through the upload passcode. One row per owner and key. Only NutriDex reads it.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
 | `key` | text | no |  |
 | `value` | text | no |  |
 | `updated_at` | timestamp with time zone | no | `now()` |
+| `owner_id` | uuid | yes |  |
 
 ## What someone has encountered
 
 ### `encounter`
 
-One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on the web, iPhone or iPad until it is encountered, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it. Apps write it only through `POST /api/encounters`, which needs the upload token.
+One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on iPhone or iPad until it is encountered, the web shows it blacked out until then, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it.
+
+`owner_id` is the signed-in person: the id the sign-in service (Supabase Auth, the `auth` schema of the hosted database) gives them. NutriDex does not own that fact and keeps no copy of the account, so there is no foreign key. On the web a signed-in person writes their own rows. Rows with no owner are the one record the native apps share: they write it only through `POST /api/encounters`, which needs the upload token. One row per owner and food.
 
 Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a cookie on the web) so the game works offline and new encounters can wait to be uploaded. On the next sync a device adds what the server has, and this table is the record.
 
@@ -63,6 +66,21 @@ Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a coo
 | `ingredient_id` | uuid | no |  |
 | `encountered_at` | timestamp with time zone | no |  |
 | `uploaded_at` | timestamp with time zone | no | `now()` |
+| `owner_id` | uuid | yes |  |
+
+## Who is signed in
+
+### `session`
+
+One row for each browser someone is signed in on. The browser holds a random token in a cookie; this table holds only its SHA-256 hash, so a copy of the table signs nobody in. `email` is the address that session was proven with, shown back to the person on the settings page; the sign-in service owns the account itself. A row past `expires_at` no longer signs anyone in. Deleting an account removes its rows here, in `encounter` and in `preference`, and the person from the sign-in service. Only NutriDex reads it.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `token_hash` | text | no |  |
+| `owner_id` | uuid | no |  |
+| `email` | text | no |  |
+| `created_at` | timestamp with time zone | no | `now()` |
+| `expires_at` | timestamp with time zone | no |  |
 
 ## Food and what is in it
 

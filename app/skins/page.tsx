@@ -28,14 +28,14 @@ function SkinPreview({ skin, art, type }: { skin: SkinDefinition; art: ReactNode
 export default async function SkinsPage() {
   const { skin, syncs } = await currentSkin();
   const { revealed } = await viewer();
-  const unlocked = (await listEntries({ kind: "ingredient" })).find((c) => revealed.foods.has(c.slug));
+  const [unlocked] = await listEntries({ kind: "ingredient", within: revealed, limit: 1 });
   const art = unlocked ? <EntryArt imageUrl={unlocked.imageUrl} size={84} cutout /> : null;
   return (
     <GameShell>
       <main className="mx-auto max-w-5xl px-3.5 pb-8 pt-2">
         <h1 className="text-3xl font-bold">Skins</h1>
         <p className="mt-1 text-ink-soft">
-          {syncs ? "Your choice follows you to every device using your passcode." : "This stays in this browser until you upload with your passcode. After that it follows you to your other devices."}
+          {syncs ? "Your choice is saved to your account and follows you to every browser you sign in on." : "This stays in this browser. Sign in from Settings and it follows you."}
         </p>
         <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SKINS.map((s) => (

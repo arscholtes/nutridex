@@ -61,6 +61,13 @@ function Page({ pager, locked, children }: { pager?: DexPager; locked: boolean; 
               </svg>
               <span className="dex-round-label">Sources</span>
             </Link>
+            <Link href="/settings" className="dex-round" aria-label="Settings" title="Settings">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21a8 8 0 0 1 16 0" />
+              </svg>
+              <span className="dex-round-label">Settings</span>
+            </Link>
           </span>
         )}
       </header>
@@ -100,6 +107,9 @@ function Handheld({ lens, pager, locked, children }: { lens?: string; pager?: De
               </Link>
               <Link href="/sources" className="underline-offset-4 hover:underline">
                 Sources
+              </Link>
+              <Link href="/settings" className="underline-offset-4 hover:underline">
+                Settings
               </Link>
             </span>
           )}
