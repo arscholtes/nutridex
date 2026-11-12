@@ -1,9 +1,7 @@
 // The cookies that hold the web game's state on this device.
-import { timingSafeEqual } from "node:crypto";
-
 export const PENDING_COOKIE = "nutridex-pending";
 export const UNLOCKING_COOKIE = "nutridex-unlocking";
-export const UPLOAD_COOKIE = "nutridex-upload";
+export const SESSION_COOKIE = "nutridex-session";
 export const SKIN_COOKIE = "nutridex-skin";
 
 export type PendingEncounter = { food: string; encounteredAt: string };
@@ -42,11 +40,4 @@ export function parseUnlocking(value: string | undefined): string[] {
   } catch {
     return [];
   }
-}
-
-/** @return [boolean] whether a passcode is the configured upload token */
-export function tokenMatches(given: string, configured: string): boolean {
-  const a = Buffer.from(given);
-  const b = Buffer.from(configured);
-  return a.length === b.length && timingSafeEqual(a, b);
 }

@@ -126,8 +126,36 @@ anyone other than its maker uses the app.
 
 Choose a look under Skins, on any device: New age, Iridescent, Yellow version, Nutrition label, Field guide, Seed
 packet, Sticker book, Deep sea, Receipt or Arcade. Each is a row in `lib/skins.ts`. The choice is kept on the device and, for
-devices sharing the upload passcode, on the server through `GET` and `PUT /api/preferences`, so it follows you.
-NutriDex has no accounts yet, so the passcode is what links your devices.
+signed-in people, on their account, so it follows them to any browser. The native apps still share one choice
+through the upload passcode and `GET` and `PUT /api/preferences`.
+
+## Accounts
+
+On the web, signing in is optional: without it your foods and skin stay in that browser's cookies. Sign-in is a
+six-digit code by email. Supabase Auth sends and checks the code (`lib/auth/sign-in.ts`); NutriDex then keeps its
+own session (`lib/db/sessions.ts`, the `session` table), so no page asks Supabase who you are. Settings
+(`/settings`) shows the skin and the account, downloads everything stored for it, and deletes it.
+
+The server needs `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. With either missing, the sign-in page says the
+server has no sign-in and nothing else changes. On the hosted project:
+
+1. Set up custom SMTP under **Authentication → Emails**. Supabase's built-in mailer
+   [only delivers to the project's own team](https://supabase.com/docs/guides/auth/auth-smtp) and sends two an hour.
+2. Under **Magic Link**, paste `supabase/templates/magic_link.html`, so the email carries the code (`{{ .Token }}`).
+3. Add the two variables above to Vercel's Production environment, and run `npm run db:migrate` against the
+   session pooler.
+
+To try it locally, with Docker running:
+
+```bash
+npx supabase start -x studio,imgproxy,storage-api,logflare,vector,supavisor,edge-runtime,realtime,postgres-meta
+npx supabase status -o env        # API_URL and PUBLISHABLE_KEY are the two variables
+# point DATABASE_URL at the stack's database (DB_URL), then db:migrate, seed, build and start
+# codes arrive in the stack's mailbox at http://127.0.0.1:54324
+```
+
+Deleting an account removes the person from Supabase's `auth.users` over the app's own database connection, so
+the app and the sign-in service must share a database, as they do on Supabase.
 
 ## Data
 
