@@ -7,6 +7,13 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## Unreleased
+
+### Fixed
+
+- Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
+  and now reads only the foods on the list.
+
 ## 0.8.0 - 2026-11-12
 
 ### Added
