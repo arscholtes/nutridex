@@ -154,3 +154,13 @@ export function creatureSilhouette(svg: string): string {
   if (!tile.test(svg)) throw new Error("this art has no tile to remove, so its silhouette would be wrong");
   return svg.replace(tile, "").replace(/\s*<ellipse [^>]*fill="#000" opacity="0\.14"\/>/, "");
 }
+
+/**
+ * A creature's shape for a card that is still locked: the silhouette, with the title that names it removed,
+ * so nothing in the page says what it is.
+ * @param svg [string] the creature's art
+ * @return [string] the nameless silhouette, to be drawn blacked out
+ */
+export function blackoutShape(svg: string): string {
+  return creatureSilhouette(svg).replace(/\s*<title[^>]*>[^<]*<\/title>/, "").replace(/ aria-labelledby="[^"]*"/, "");
+}

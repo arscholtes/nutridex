@@ -45,9 +45,11 @@ draw colours from the tokens and never assume a light page. The choice is stored
 follows you between devices. Foods always keep their real colour in every skin: foil and backgrounds may shift, a
 creature never does.
 
-NutriDex is a collection game: over time you unlock everything. On the web, iPhone and iPad nothing shows until
-it is encountered: no list, name, link or count may give a hidden entry away, and new screens must keep that
-true. You say what you had, press Upload to send new encounters to the server as an array, and an unlock
+NutriDex is a collection game: over time you unlock everything. On iPhone and iPad nothing shows until
+it is encountered: no list, name, link or count may give a hidden entry away. On the web every entry stands on the
+wall, blacked out until it is encountered: a locked card shows its number and its shape and nothing else, so no
+name, type, link or address in the page may say what it is (`components/wall.tsx`, held by `tests/wall.db.test.tsx`).
+Searching and opening an entry stay limited to what is unlocked. New screens must keep all of this true. You say what you had, press Upload to send new encounters to the server as an array, and an unlock
 animation plays, with Next returning you to where you were. The Mac app is the home database: it shows
 everything, blacks out what is not unlocked, plays new arrivals when you get on it, and compares foods.
 
