@@ -16,8 +16,9 @@ export async function POST(request: Request): Promise<Response> {
   const body = (await request.json().catch(() => null)) as { encounters?: unknown } | null;
   if (!Array.isArray(body?.encounters)) return json(400, { error: "send { encounters: [{ food, encounteredAt }] }" });
   const items = parseCatchItems(body.encounters);
-  if (!items) return json(400, { error: "each encounter needs a food and an encounteredAt date; form, when sent, is raw, juiced or cooked" });
-  const { added, unknown } = await recordEncounters(items);
+  if (!items) return json(400, { error: "each encounter needs a food and an encounteredAt date; form, when sent, is raw, juiced or cooked; recipe, when sent, is a recipe slug" });
+  const { added, unknown, misplaced } = await recordEncounters(items);
   if (unknown.length > 0) return json(422, { error: `not foods in the Dex: ${unknown.join(", ")}` });
+  if (misplaced.length > 0) return json(422, { error: `not in a recipe this record holds: ${misplaced.join(", ")}` });
   return json(200, { new: added, encounters: await encounterRows() });
 }

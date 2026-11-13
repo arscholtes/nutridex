@@ -117,7 +117,8 @@ routes: it keeps its cookie and its server actions. The two passcode routes (`/a
 Owning a food (`encounter`) is what unlocks things. Every time someone has it is a row in `catch`, written by
 `recordEncounters` (`lib/db/encounters.ts`). `lib/tiers.ts` holds the research tiers and trainer ranks as two
 tables and the pure rules that read them; `foodHistories` counts what those rules need. Nothing draws tiers yet.
-Opened sources and recipes cooked are not recorded yet, so a food cannot pass two stars.
+An upload may name the recipe a food was had in, which counts as cooking it; no screen sends one yet. Opened sources
+are not recorded yet, so a food cannot pass two stars.
 
 ## The engine
 

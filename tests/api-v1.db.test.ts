@@ -164,6 +164,10 @@ describe("your record", () => {
     const token = await startSession(FAY, "fay@example.com");
     expect((await upload(call("POST", token, { encounters: [{ food: "carrot", encounteredAt: day(1) }, { food: "moon-rock", encounteredAt: day(1) }] }))).status).toBe(422);
     expect((await upload(call("POST", token, { encounters: [{ food: "carrot", encounteredAt: day(1), form: "fried" }] }))).status).toBe(400);
+    expect((await upload(call("POST", token, { encounters: [{ food: "carrot", encounteredAt: day(1), recipe: 7 }] }))).status).toBe(400);
+    const misplaced = await upload(call("POST", token, { encounters: [{ food: "egg", encounteredAt: day(1), recipe: "juice" }] }));
+    expect(misplaced.status).toBe(422);
+    expect((await misplaced.json()).error).toContain("egg in juice");
     expect((await (await me(call("GET", token))).json()).foods).toEqual([]);
   });
 

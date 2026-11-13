@@ -693,6 +693,17 @@
                       "type": "null"
                     }
                   ]
+                },
+                "recipe": {
+                  "description": "The slug of the recipe it was had in. The food must be in that recipe, and the recipe must be seeded or yours.",
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 }
               }
             }

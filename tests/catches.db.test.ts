@@ -53,6 +53,39 @@ describe("having a food", () => {
   });
 });
 
+describe("having a food in a recipe", () => {
+  test("keeps which recipe, and counts as cooking it once", async () => {
+    await recordEncounters([{ food: "carrot", encounteredAt: day(1), form: "juiced", recipe: "juice" }], DEE);
+    expect(await catchRows(DEE)).toEqual([{ food: "carrot", caughtAt: day(1), form: "juiced", recipe: "juice" }]);
+    const carrot = (await foodHistories(DEE)).get("carrot")!;
+    expect(carrot).toMatchObject({ catches: 1, cooked: 1, recipes: 1 });
+    expect(tierOf(carrot)).toBe(2);
+  });
+
+  test("stores nothing when the food is not in that recipe", async () => {
+    const result = await recordEncounters([{ food: "kale", encounteredAt: day(1) }, { food: "egg", encounteredAt: day(1), recipe: "juice" }], DEE);
+    expect(result.misplaced).toEqual(["egg in juice"]);
+    expect(await catchRows(DEE)).toEqual([]);
+  });
+
+  test("stores nothing when there is no such recipe", async () => {
+    expect((await recordEncounters([{ food: "carrot", encounteredAt: day(1), recipe: "moon-soup" }], DEE)).misplaced).toEqual(["carrot in moon-soup"]);
+    expect(await catchRows(DEE)).toEqual([]);
+  });
+
+  test("cannot name a recipe that is someone else's", async () => {
+    const [juice] = await sql<{ id: string }[]>`select id from recipe where slug = 'juice'`;
+    const [theirs] = await sql<{ id: string }[]>`insert into recipe (slug, name, servings, owner_id) values ('elis-secret', 'Secret', 1, ${ELI}) returning id`;
+    try {
+      await sql`insert into recipe_ingredient (recipe_id, ingredient_id, grams) select ${theirs.id}, ingredient_id, grams from recipe_ingredient where recipe_id = ${juice.id}`;
+      expect((await recordEncounters([{ food: "carrot", encounteredAt: day(1), recipe: "elis-secret" }], DEE)).misplaced).toEqual(["carrot in elis-secret"]);
+      expect((await recordEncounters([{ food: "carrot", encounteredAt: day(1), recipe: "elis-secret" }], ELI)).misplaced).toEqual([]);
+    } finally {
+      await sql`delete from recipe where id = ${theirs.id}`;
+    }
+  });
+});
+
 describe("what someone has done with each food", () => {
   test("counts its catches and forms, which is what its tier is worked out from", async () => {
     await recordEncounters(
