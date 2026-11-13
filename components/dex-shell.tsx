@@ -40,6 +40,13 @@ function Page({ pager, locked, children }: { pager?: DexPager; locked: boolean; 
         )}
         {!locked && (
           <span className="flex gap-2">
+            <Link href="/recipes" className="dex-round" aria-label="Recipes" title="Recipes">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M4 11h16a8 8 0 0 1-16 0z" />
+                <path d="M9 7c0-1.5 1-2 1-3.5M13 7c0-1.5 1-2 1-3.5" />
+              </svg>
+              <span className="dex-round-label">Recipes</span>
+            </Link>
             <Link href="/skins" className="dex-round" aria-label="Skins" title="Skins">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M14 4l6 6-8.5 8.5a3 3 0 0 1-4.2 0l-1.8-1.8a3 3 0 0 1 0-4.2z" />
@@ -92,6 +99,9 @@ function Handheld({ lens, pager, locked, children }: { lens?: string; pager?: De
           </div>
           {!locked && (
             <span className="ml-auto flex gap-3 pt-1 text-sm font-bold text-white">
+              <Link href="/recipes" className="underline-offset-4 hover:underline">
+                Recipes
+              </Link>
               <Link href="/skins" className="underline-offset-4 hover:underline">
                 Skins
               </Link>

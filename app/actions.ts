@@ -6,11 +6,12 @@ import { recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
 import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
+import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
 import { endSession, eraseOwner, removeSignIn, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, parseUnlocking, PENDING_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
-import { signedIn } from "../lib/viewer.ts";
+import { signedIn, viewer } from "../lib/viewer.ts";
 
 // Browsers cap a cookie's lifetime at 400 days; after that the notice appears once more.
 const MAX_AGE_SECONDS = 400 * 24 * 60 * 60;
@@ -111,4 +112,22 @@ export async function chooseSkin(id: string) {
   const account = await signedIn();
   if (account) await saveSkin(skin, account.owner);
   revalidatePath("/", "layout");
+}
+
+/**
+ * Saves a recipe built on the web, as the signed-in person's own.
+ * @param draft [RecipeDraft] what was built
+ * @return [Promise<{ slug: string } | { problems: string[] }>] the saved recipe, or every reason it was refused
+ */
+export async function saveRecipeAction(draft: RecipeDraft): Promise<{ slug: string } | { problems: string[] }> {
+  const { revealed, account } = await viewer();
+  if (!account) return { problems: ["Sign in to save a recipe. Building and previewing work without an account."] };
+  try {
+    const slug = await saveRecipe(draft, revealed.foods, account.owner);
+    revalidatePath("/recipes");
+    return { slug };
+  } catch (error) {
+    if (error instanceof InvalidRecipe) return { problems: error.problems };
+    throw error;
+  }
 }

@@ -63,6 +63,7 @@ describe("what the disclaimer says is stored", () => {
 
   test("the web says an account stores your email address, and that you can take it out or delete it", () => {
     expect(stored(DISCLAIMER_SECTIONS)).toContain("email address");
+    expect(stored(DISCLAIMER_SECTIONS)).toMatch(/Recipes you save.*shown to nobody else/);
     expect(stored(DISCLAIMER_SECTIONS)).toMatch(/download .* or delete/);
   });
 

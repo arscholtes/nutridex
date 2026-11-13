@@ -3,6 +3,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { sql } from "./client.ts";
 import { encounterRows, type EncounterRow } from "./encounters.ts";
 import { savedSkin } from "./preferences.ts";
+import { ownedRecipes, type RecipeDraft } from "./recipes.ts";
 import type { Skin } from "../skins.ts";
 
 type Sql = typeof sql;
@@ -38,8 +39,8 @@ export async function endSession(token: string, q: Sql = sql): Promise<void> {
 }
 
 /** @return [Promise<{ encounters: EncounterRow[]; skin: Skin | null }>] everything stored for one person */
-export async function ownerRecord(owner: string, q: Sql = sql): Promise<{ encounters: EncounterRow[]; skin: Skin | null }> {
-  return { encounters: await encounterRows(owner, q), skin: await savedSkin(owner, q) };
+export async function ownerRecord(owner: string, q: Sql = sql): Promise<{ encounters: EncounterRow[]; skin: Skin | null; recipes: (RecipeDraft & { slug: string })[] }> {
+  return { encounters: await encounterRows(owner, q), skin: await savedSkin(owner, q), recipes: await ownedRecipes(owner, q) };
 }
 
 /** Removes every row one person owns, and signs them out everywhere. */
@@ -47,6 +48,7 @@ export async function eraseOwner(owner: string, q: Sql = sql): Promise<void> {
   await q.begin(async (tx) => {
     await tx`delete from encounter where owner_id = ${owner}`;
     await tx`delete from preference where owner_id = ${owner}`;
+    await tx`delete from recipe where owner_id = ${owner}`;
     await tx`delete from session where owner_id = ${owner}`;
   });
 }
