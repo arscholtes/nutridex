@@ -25,6 +25,9 @@ export function parseDraft(value: string | undefined): { draft: RecipeDraft } | 
   return isDraft(raw) ? { draft: raw } : { error: "This link's recipe is not one the builder made; start again below." };
 }
 
+/** @return [RecipeDraft | null] the value as a draft, or null when it does not have a draft's shape */
+export const asDraft = (value: unknown): RecipeDraft | null => (isDraft(value) ? value : null);
+
 function isDraft(v: unknown): v is RecipeDraft {
   if (typeof v !== "object" || v === null) return false;
   const d = v as Record<string, unknown>;

@@ -1,7 +1,7 @@
 // Who is signed in, and everything one signed-in person owns. Reading and writing sessions happens only here.
 import { createHash, randomBytes } from "node:crypto";
 import { sql } from "./client.ts";
-import { encounterRows, type EncounterRow } from "./encounters.ts";
+import { catchRows, encounterRows, type CatchRow, type EncounterRow } from "./encounters.ts";
 import { savedSkin } from "./preferences.ts";
 import { ownedRecipes, type RecipeDraft } from "./recipes.ts";
 import type { Skin } from "../skins.ts";
@@ -38,9 +38,11 @@ export async function endSession(token: string, q: Sql = sql): Promise<void> {
   await q`delete from session where token_hash = ${hashOf(token)}`;
 }
 
-/** @return [Promise<{ encounters: EncounterRow[]; skin: Skin | null }>] everything stored for one person */
-export async function ownerRecord(owner: string, q: Sql = sql): Promise<{ encounters: EncounterRow[]; skin: Skin | null; recipes: (RecipeDraft & { slug: string })[] }> {
-  return { encounters: await encounterRows(owner, q), skin: await savedSkin(owner, q), recipes: await ownedRecipes(owner, q) };
+export type OwnerRecord = { encounters: EncounterRow[]; catches: CatchRow[]; skin: Skin | null; recipes: (RecipeDraft & { slug: string })[] };
+
+/** @return [Promise<OwnerRecord>] everything stored for one person */
+export async function ownerRecord(owner: string, q: Sql = sql): Promise<OwnerRecord> {
+  return { encounters: await encounterRows(owner, q), catches: await catchRows(owner, q), skin: await savedSkin(owner, q), recipes: await ownedRecipes(owner, q) };
 }
 
 /** Removes every row one person owns, and signs them out everywhere. */
