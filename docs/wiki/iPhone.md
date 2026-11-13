@@ -88,4 +88,4 @@ Rank, progress to the next rank, and stats: caught, seen, stars, and day run (da
 
 Badges: earned ones in colour, the rest show their count. The gear opens Settings, where skins live.
 
-The card follows your account between devices. Name and avatar are yours, and nothing is public unless a share feature is added later.
+The card follows your account between devices. Name and avatar are yours, and friends you add see your card, and nothing else is public.
