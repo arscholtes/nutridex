@@ -9,7 +9,16 @@ running version has no entry here.
 
 ## Unreleased
 
+### Added
+
+- Cook along with a recipe. Open a recipe and press Cook along to go through it a stage at a time: what to gather,
+  each step with what it does to what is in the food, then "I cooked it". Saying so counts every food in it as had.
+  The arrow keys and a sideways swipe move between stages.
+
 ### Changed
+
+- Recipes no longer hide. A recipe shows even when it holds a food you have never had; that food is marked
+  "Not had yet", and its entry opens once you have had it.
 
 - NutriDex now keeps each time you have a food, not only the first. Nothing looks different yet; it is what
   research tiers will be worked out from. Downloading your data lists every one.

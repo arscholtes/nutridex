@@ -18,7 +18,7 @@ export type RecipeDraft = {
   steps: { title: string; prepMethod: string | null; uses: number[] }[];
 };
 
-export type RecipeSummary = { slug: string; name: string; servings: number; ingredients: number };
+export type RecipeSummary = { slug: string; name: string; servings: number; ingredients: number; /** How many of its foods this viewer has never had. */ notHad: number };
 
 export type RecipePage = {
   slug: string;
@@ -41,7 +41,6 @@ export type RecipePage = {
 
 /**
  * A saved recipe as its page shows it: the grid and the profile, both from one loaded RecipeInput.
- * Shows every recipe; a screen that must hide locked foods checks them itself.
  * @param slug [string] the recipe's slug
  * @return [Promise<RecipePage | null>] null when no recipe has that slug
  */
@@ -178,19 +177,19 @@ export async function saveRecipe(draft: RecipeDraft, available: Set<string>, own
 }
 
 /**
- * Recipes made only of foods in `visible`: on the web, iPhone and iPad nothing locked may show.
- * Someone's own recipe is theirs alone; a recipe with no owner is everyone's.
- * @param visible [Set<string>] the food slugs this viewer may see
+ * Every recipe this viewer may open. A recipe shows whatever is in it; `notHad` says how many of its foods
+ * they have never had, so a screen can mark them. Someone's own recipe is theirs alone; one with no owner is everyone's.
+ * @param had [Set<string>] the food slugs this viewer has had
  * @param owner [string | null] who is signed in
  * @return [Promise<RecipeSummary[]>] by name
  */
-export async function listRecipes(visible: Set<string>, owner: string | null = null, q: Sql = sql): Promise<RecipeSummary[]> {
+export async function listRecipes(had: Set<string>, owner: string | null = null, q: Sql = sql): Promise<RecipeSummary[]> {
   return q<RecipeSummary[]>`
-    select r.slug, r.name, r.servings, count(ri.id)::int as ingredients
+    select r.slug, r.name, r.servings, count(ri.id)::int as ingredients,
+           count(distinct i.slug) filter (where not (i.slug = any(${[...had]})))::int as "notHad"
     from recipe r join recipe_ingredient ri on ri.recipe_id = r.id join ingredient i on i.id = ri.ingredient_id
     where r.owner_id is null or r.owner_id = ${owner}
     group by r.id
-    having bool_and(i.slug = any(${[...visible]}))
     order by r.name`;
 }
 

@@ -147,6 +147,38 @@ body,
   }
 }
 
+/* Cooking along: each stage arrives with a short rise, and the lit step and progress pips ease between states. */
+.cook-stage {
+  animation: cook-stage-in 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.cook-pip,
+.cook-cell {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+/* The heading takes focus only so a screen reader says the new stage; it is not a control, so it draws no ring. */
+.cook-heading:focus,
+.cook-heading:focus-visible {
+  outline: none;
+}
+@keyframes cook-stage-in {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cook-stage {
+    animation: none;
+  }
+  .cook-pip,
+  .cook-cell {
+    transition: none;
+  }
+}
+
 .dex-chip {
   display: inline-flex;
   min-height: 2.5rem;
