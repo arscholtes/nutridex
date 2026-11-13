@@ -2,7 +2,7 @@
 import { afterAll, afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 import { GET, POST } from "../app/api/encounters/route.ts";
 import { sql } from "../lib/db/client.ts";
-import { encounteredFoods, revealedEntries, sourcesBehind } from "../lib/db/encounters.ts";
+import { catchRows, encounteredFoods, revealedEntries, sourcesBehind } from "../lib/db/encounters.ts";
 import { compoundEntry, dexSteps, effectEntry, foodsMatching, ingredientEntry, listEntries, sourceList, type EntryCard } from "../lib/db/dex.ts";
 import { scrubCompound, scrubEffect, scrubIngredient } from "../lib/db/reveal.ts";
 import { readSnapshotFile, SNAPSHOT_PATH } from "../lib/native/snapshot.ts";
@@ -16,21 +16,20 @@ const post = (body: unknown, token: string | null = TOKEN) =>
 const get = (token: string | null = TOKEN) => GET(new Request("http://dex.test/api/encounters", { headers: token ? { authorization: `Bearer ${token}` } : {} }));
 const clear = () => sql`delete from encounter`;
 
-// This table is someone's game progress, so what is in it goes back when the tests finish.
-let saved: { ingredient_id: string; encountered_at: string; uploaded_at: string }[] = [];
+// These tables are someone's game progress, so what is in them goes back when the tests finish.
+let saved: { owned: Record<string, unknown>[]; catches: Record<string, unknown>[] } = { owned: [], catches: [] };
 
 beforeAll(async () => {
   vi.stubEnv("NUTRIDEX_UPLOAD_TOKEN", TOKEN);
-  saved = await sql`select ingredient_id, encountered_at, uploaded_at from encounter`;
+  saved = { owned: await sql`select * from encounter`, catches: await sql`select * from catch` };
   await clear();
 });
 afterEach(clear);
 afterAll(async () => {
   vi.unstubAllEnvs();
   await clear();
-  for (const row of saved) {
-    await sql`insert into encounter (ingredient_id, encountered_at, uploaded_at) values (${row.ingredient_id}, ${row.encountered_at}, ${row.uploaded_at})`;
-  }
+  if (saved.owned.length > 0) await sql`insert into encounter ${sql(saved.owned)}`;
+  if (saved.catches.length > 0) await sql`insert into catch ${sql(saved.catches)}`;
   await sql.end();
 });
 
@@ -50,6 +49,13 @@ describe("uploading what you have encountered", () => {
     const body = await res.json();
     expect(body.new).toEqual([]);
     expect(body.encounters[0].encounteredAt).toBe("2026-11-01T12:00:00.000Z");
+  });
+
+  test("keeps the form when an app says it, and refuses one it does not know", async () => {
+    expect((await post({ encounters: [{ food: "carrot", encounteredAt: "2026-11-01T12:00:00.000Z", form: "juiced" }] })).status).toBe(200);
+    expect(await catchRows()).toEqual([{ food: "carrot", caughtAt: "2026-11-01T12:00:00.000Z", form: "juiced", recipe: null }]);
+    expect((await post({ encounters: [{ food: "kale", encounteredAt: "2026-11-01T12:00:00.000Z", form: "fried" }] })).status).toBe(400);
+    expect(await encounteredFoods()).toEqual(["carrot"]);
   });
 
   test("rejects the whole array if any food is unknown, naming it, and stores nothing", async () => {

@@ -9,6 +9,22 @@ running version has no entry here.
 
 ## Unreleased
 
+### Changed
+
+- NutriDex now keeps each time you have a food, not only the first. Nothing looks different yet; it is what
+  research tiers will be worked out from. Downloading your data lists every one.
+
+## 0.10.0 - 2026-11-13
+
+### Added
+
+- Sign in on the web with Google or Apple, beside the emailed code. The same email address is the same account
+  whichever way you come in. Each button appears once that way in has been switched on for the site.
+
+### Changed
+
+- The notice you accept on first use says what signing in with Google or Apple shares, so it appears once more.
+
 ### Fixed
 
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,

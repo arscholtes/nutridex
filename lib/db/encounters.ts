@@ -1,10 +1,18 @@
 // What someone has encountered, and what that unlocks. Reading and writing the record happens only here.
 import { mayBearClaims } from "./claim-limits.ts";
+import type { FoodHistory } from "../tiers.ts";
 import { sql } from "./client.ts";
 
 type Sql = typeof sql;
 
 export type EncounterRow = { food: string; encounteredAt: string; uploadedAt: string };
+
+export const FORMS = ["raw", "juiced", "cooked"] as const;
+export type Form = (typeof FORMS)[number];
+
+/** One time someone had a food. `encounteredAt` is when; the form is null when nobody said. */
+export type CatchItem = { food: string; encounteredAt: string; form?: Form | null };
+export type CatchRow = { food: string; caughtAt: string; form: Form | null; recipe: string | null };
 export type Revealed = { foods: Set<string>; compounds: Set<string>; effects: Set<string> };
 
 /**
@@ -26,24 +34,77 @@ export async function encounteredFoods(owner: string | null = null, q: Sql = sql
 }
 
 /**
- * Stores newly encountered foods. An array naming an unknown food stores nothing.
- * @param items [{ food, encounteredAt }[]] the foods and when they were had
- * @param owner [string | null] whose record, or null for the one the apps share
- * @return [Promise<{ added: string[]; unknown: string[] }>] which were new, and any unknown slugs
+ * @param value [unknown] what an app sent as its encounters
+ * @return [CatchItem[] | null] the same items, or null when it is not an array of foods with dates and known forms
  */
-export async function recordEncounters(items: { food: string; encounteredAt: string }[], owner: string | null = null, q: Sql = sql): Promise<{ added: string[]; unknown: string[] }> {
+export function parseCatchItems(value: unknown): CatchItem[] | null {
+  if (!Array.isArray(value)) return null;
+  const formOf = (v: unknown): Form | null | undefined => (v === undefined || v === null ? null : FORMS.find((f) => f === v));
+  const items: CatchItem[] = [];
+  for (const i of value as Record<string, unknown>[]) {
+    if (typeof i?.food !== "string" || typeof i.encounteredAt !== "string" || Number.isNaN(Date.parse(i.encounteredAt))) return null;
+    const form = formOf(i.form);
+    if (form === undefined) return null;
+    items.push({ food: i.food, encounteredAt: i.encounteredAt, form });
+  }
+  return items;
+}
+
+/**
+ * Stores each time a food was had. The first time someone has a food they own it, which is what unlocks things;
+ * every time, that one included, is a catch. An array naming an unknown food stores nothing.
+ * @param items [CatchItem[]] the foods, when they were had, and in what form if known
+ * @param owner [string | null] whose record, or null for the one the apps share
+ * @return [Promise<{ added: string[]; unknown: string[] }>] which foods were new to this record, and any unknown slugs
+ */
+export async function recordEncounters(items: CatchItem[], owner: string | null = null, q: Sql = sql): Promise<{ added: string[]; unknown: string[] }> {
   const known = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${items.map((i) => i.food)})`;
   const ids = new Map(known.map((k) => [k.slug, k.id]));
   const unknown = items.filter((i) => !ids.has(i.food)).map((i) => i.food);
   if (unknown.length > 0) return { added: [], unknown };
   const added: string[] = [];
   for (const item of items) {
-    const inserted = await q`
+    // xmax is 0 only on a row this statement inserted, which is how a new food is told from one already owned.
+    const [owned] = await q<{ id: string; fresh: boolean }[]>`
       insert into encounter (ingredient_id, encountered_at, owner_id) values (${ids.get(item.food)!}, ${item.encounteredAt}, ${owner})
-      on conflict on constraint encounter_owner_ingredient do nothing returning id`;
-    if (inserted.length > 0) added.push(item.food);
+      on conflict on constraint encounter_owner_ingredient
+      do update set encountered_at = least(encounter.encountered_at, excluded.encountered_at)
+      returning id, (xmax = 0) as fresh`;
+    if (owned.fresh && !added.includes(item.food)) added.push(item.food);
+    await q`
+      insert into catch (encounter_id, caught_at, form) values (${owned.id}, ${item.encounteredAt}, ${item.form ?? null})
+      on conflict on constraint catch_encounter_caught_at do nothing`;
   }
   return { added, unknown: [] };
+}
+
+/**
+ * @param owner [string | null] the signed-in person, or null for the record the apps share
+ * @return [Promise<CatchRow[]>] every time a food was had in that record, oldest first
+ */
+export async function catchRows(owner: string | null = null, q: Sql = sql): Promise<CatchRow[]> {
+  const rows = await q<CatchRow[]>`
+    select i.slug as food, c.caught_at as "caughtAt", c.form, r.slug as recipe
+    from catch c join encounter e on e.id = c.encounter_id join ingredient i on i.id = e.ingredient_id
+      left join recipe r on r.id = c.recipe_id
+    where e.owner_id is not distinct from ${owner}
+    order by c.caught_at, i.slug`;
+  return rows.map((r) => ({ ...r, caughtAt: new Date(r.caughtAt).toISOString() }));
+}
+
+/**
+ * @param owner [string | null] the signed-in person, or null for the record the apps share
+ * @return [Promise<Map<string, FoodHistory>>] by food slug, what that record has done with each food it owns
+ */
+export async function foodHistories(owner: string | null = null, q: Sql = sql): Promise<Map<string, FoodHistory>> {
+  const rows = await q<{ food: string; catches: number; forms: number; cooked: number; recipes: number }[]>`
+    select i.slug as food, count(c.id)::int as catches, count(distinct c.form)::int as forms,
+      count(c.recipe_id)::int as cooked, count(distinct c.recipe_id)::int as recipes
+    from encounter e join ingredient i on i.id = e.ingredient_id left join catch c on c.encounter_id = e.id
+    where e.owner_id is not distinct from ${owner}
+    group by i.slug`;
+  // Nothing records an opened source yet, so every history says none.
+  return new Map(rows.map(({ food, ...counts }) => [food, { ...counts, sourcesOpened: 0 }]));
 }
 
 /**
