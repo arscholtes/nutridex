@@ -16,20 +16,41 @@ struct EncounterRecord: Codable, Equatable {
 @Observable
 final class EncounterStore {
     private static let key = "encounterRecords"
+    private static let cookedKey = "cookedCatches"
 
     private let defaults: UserDefaults
     private(set) var records: [String: EncounterRecord]
+    /// Foods had in a recipe that have not been uploaded yet. The server keeps every catch; this device keeps only what is waiting.
+    private(set) var cooked: [UploadItem]
 
     /// - Parameter defaults: where this device keeps its copy
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         records = defaults.data(forKey: Self.key).flatMap { try? JSONDecoder().decode([String: EncounterRecord].self, from: $0) } ?? [:]
+        cooked = defaults.data(forKey: Self.cookedKey).flatMap { try? JSONDecoder().decode([UploadItem].self, from: $0) } ?? []
     }
 
     private func save() {
         // Plain strings and dates, so encoding them cannot fail in practice; if it ever did the game must not pretend it saved.
-        guard let data = try? JSONEncoder().encode(records) else { fatalError("could not encode encounters") }
+        guard let data = try? JSONEncoder().encode(records), let waiting = try? JSONEncoder().encode(cooked) else { fatalError("could not encode encounters") }
         defaults.set(data, forKey: Self.key)
+        defaults.set(waiting, forKey: Self.cookedKey)
+    }
+
+    /// Says a recipe was cooked: every food in it is had, in that recipe. A food new to this device unlocks here
+    /// straight away, and each catch waits to be uploaded.
+    func cook(_ recipe: Recipe, on date: Date = .now) {
+        for item in recipe.cooked {
+            if records[item.food] == nil { records[item.food] = EncounterRecord(encounteredAt: date) }
+            cooked.append(UploadItem(food: item.food, encounteredAt: date, form: item.form, recipe: recipe.slug))
+        }
+        save()
+    }
+
+    /// Forgets the cooked catches an upload carried, now that the server holds them.
+    func sent(_ items: [UploadItem]) {
+        cooked.removeAll { items.contains($0) }
+        save()
     }
 
     /// Marks a food as had. It unlocks here straight away and waits to be uploaded.
@@ -45,9 +66,12 @@ final class EncounterStore {
 
     /// What is waiting to be uploaded, in a stable order.
     var pending: [UploadItem] {
-        records.filter { $0.value.uploadedAt == nil }
+        let firsts = records.filter { $0.value.uploadedAt == nil }
             .map { UploadItem(food: $0.key, encounteredAt: $0.value.encounteredAt) }
+            // A food first had by cooking goes up once, as the catch that names its recipe.
+            .filter { first in !cooked.contains { $0.food == first.food && $0.encounteredAt == first.encounteredAt } }
             .sorted { $0.food < $1.food }
+        return firsts + cooked
     }
 
     /// Takes in what the server holds: marks ours as uploaded and adds what came from another device.

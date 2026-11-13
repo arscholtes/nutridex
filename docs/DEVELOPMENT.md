@@ -80,7 +80,7 @@ in your team and bundle id prefix. The Mac app signs to run locally, so it needs
 | 1. Foundation | `npm run seed` fills the database and a test query returns beta-carotene per 100 g of carrot | passing locally |
 | 2. Engine | the juice recipe returns "no fat" and "fiber lost", and olive oil flips carotenoids to "enhanced" | passing locally |
 | 3. Dex UI | carrot → beta-carotene → skin color → pumpkin, with by-class flags visibly different from measured ones | passing locally |
-| 4. Recipes | a built recipe's grid and profile render from the same data | passing locally on the web; the apps have no recipes yet |
+| 4. Recipes | a built recipe's grid and profile render from the same data | passing locally on the web; the apps show the seeded recipes from the snapshot and cannot build one yet |
 | 5. Ingest | a pasted finding becomes an approvable effect row with source and limitations | not started |
 
 ## The Dex

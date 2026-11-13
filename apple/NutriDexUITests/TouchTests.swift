@@ -67,6 +67,38 @@ final class TouchTests: XCTestCase {
         app.staticTexts.matching(NSPredicate(format: "label == %@", name)).firstMatch
     }
 
+    func testCookingAlongWithTheJuiceGoesStageByStageAndCountsEveryFoodInIt() throws {
+        let app = try launch(foods: "carrot")
+        app.buttons["Recipes"].firstMatch.tap()
+        expectInReach(heading(app, "Recipes"))
+        XCTAssertTrue(app.staticTexts["3 foods you have never had"].exists, "the list does not say what is new in the juice")
+        picture("recipes")
+        app.staticTexts["Juice"].firstMatch.tap()
+        expectInReach(app.buttons["Cook along"])
+        XCTAssertEqual(app.staticTexts.matching(NSPredicate(format: "label == %@", "Not had yet")).count, 3, "a food never had is not marked")
+        picture("recipe-juice")
+        app.buttons["Cook along"].tap()
+        expectInReach(heading(app, "Before you start"))
+        picture("cook-gather")
+        app.buttons["Start"].tap()
+        expectInReach(heading(app, "Granny Smith apple: juiced"))
+        picture("cook-stage")
+        // A sideways swipe moves on, as the button does.
+        app.swipeLeft()
+        expectInReach(heading(app, "Carrot: juiced"))
+        app.buttons["Next"].tap()
+        app.buttons["Next"].tap()
+        expectInReach(heading(app, "Kale: juiced"))
+        app.buttons["Finish"].tap()
+        expectInReach(app.buttons["I cooked it"])
+        app.buttons["I cooked it"].tap()
+        expectInReach(heading(app, "Counted"))
+        picture("cook-counted")
+        app.buttons["Back to the recipe"].tap()
+        expectInReach(app.buttons["Cook along"])
+        XCTAssertEqual(app.staticTexts.matching(NSPredicate(format: "label == %@", "Not had yet")).count, 0, "cooking it did not count its foods as had")
+    }
+
     func testSwipingLeftMovesToTheNextEntryYouHaveUnlocked() throws {
         let app = try launch(route: "ingredient/carrot")
         expectInReach(heading(app, "Carrot"))

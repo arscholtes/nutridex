@@ -21,10 +21,16 @@ struct UploadItem: Codable, Equatable {
 
     let food: String
     let encounteredAt: String
+    /// Raw, juiced or cooked; nil when nobody said.
+    var form: String?
+    /// The recipe it was had in.
+    var recipe: String?
 
-    init(food: String, encounteredAt: Date) {
+    init(food: String, encounteredAt: Date, form: String? = nil, recipe: String? = nil) {
         self.food = food
         self.encounteredAt = Self.dateFormat.string(from: encounteredAt)
+        self.form = form
+        self.recipe = recipe
     }
 }
 
@@ -206,6 +212,7 @@ final class DexGame {
         do {
             let response = try await transport.upload(pending)
             store.merge(response.encounters)
+            store.sent(pending)
             uploadError = nil
             playAwaitingUnlocks()
         } catch {

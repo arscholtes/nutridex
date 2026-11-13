@@ -14,6 +14,8 @@ running version has no entry here.
 - Cook along with a recipe. Open a recipe and press Cook along to go through it a stage at a time: what to gather,
   each step with what it does to what is in the food, then "I cooked it". Saying so counts every food in it as had.
   The arrow keys and a sideways swipe move between stages.
+- Recipes on iPhone, iPad and Mac. The apps now list the recipes NutriDex ships with, show each as its grid, and
+  cook along with it. On the apps, "I cooked it" counts on that device and goes to your record with the next Upload.
 
 ### Changed
 

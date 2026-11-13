@@ -17,6 +17,21 @@ describe("the snapshot the native apps bundle", () => {
     expect(committed()).toEqual(await buildSnapshot());
   });
 
+  test("holds every seeded recipe as its grid and its cook-along stages, named, so no app works either out", () => {
+    const juice = committed().recipes.find((r) => r.slug === "juice")!;
+    expect(juice.rows.map((r) => [r.food, r.name, r.grams, r.prepMethod])).toEqual([
+      ["granny-smith-apple", "Granny Smith apple", 167, "juiced"],
+      ["carrot", "Carrot", 122, "juiced"],
+      ["beet", "Beet", 82, "juiced"],
+      ["kale", "Kale", 42, "juiced"],
+    ]);
+    expect(juice.steps).toEqual([]);
+    expect(juice.stages.map((s) => s.foods.map((f) => f.slug))).toEqual([["granny-smith-apple"], ["carrot"], ["beet"], ["kale"]]);
+    expect(juice.stages[1].prep.find((p) => p.note !== null)).toMatchObject({ food: "Carrot", compound: "Dietary fiber", method: "juiced" });
+    expect(juice.cooked).toEqual(["granny-smith-apple", "carrot", "beet", "kale"].map((food) => ({ food, form: "juiced" })));
+    expect(juice.absorption.length).toBeGreaterThan(0);
+  });
+
   test("carries the app's version, from package.json", () => {
     const { version } = JSON.parse(readFileSync("package.json", "utf8")) as { version: string };
     expect(committed().version).toBe(version);

@@ -72,6 +72,78 @@ struct EncounterTests {
 }
 
 @MainActor
+struct RecipeTests {
+    private var juice: Recipe { Dex.bundled.recipes.first { $0.slug == "juice" }! }
+
+    @Test func theSnapshotHoldsTheJuiceAsItsGridAndItsStages() {
+        #expect(juice.rows.map(\.name) == ["Granny Smith apple", "Carrot", "Beet", "Kale"])
+        #expect(juice.steps.isEmpty)
+        #expect(juice.stages.map { $0.foods.map(\.slug) } == [["granny-smith-apple"], ["carrot"], ["beet"], ["kale"]])
+        #expect(juice.stages[1].sourced.contains { $0.compound == "Dietary fiber" })
+        #expect(!juice.absorption.isEmpty)
+    }
+
+    @Test func aRecipeSaysWhichOfItsFoodsHaveNeverBeenHad() {
+        let (store, _) = freshStore()
+        #expect(juice.notHad(in: store).map(\.food) == ["granny-smith-apple", "carrot", "beet", "kale"])
+        store.encounter(food: "carrot")
+        #expect(juice.notHad(in: store).map(\.food) == ["granny-smith-apple", "beet", "kale"])
+    }
+
+    @Test func cookingARecipeHasEveryFoodInItAndWaitsToUploadEachInThatRecipe() {
+        let (store, _) = freshStore()
+        let when = Date(timeIntervalSince1970: 1_800_000_000)
+        store.cook(juice, on: when)
+        #expect(juice.notHad(in: store).isEmpty)
+        #expect(store.isRevealed(.ingredient, "kale"))
+        #expect(store.pending == ["granny-smith-apple", "carrot", "beet", "kale"].map { UploadItem(food: $0, encounteredAt: when, form: "juiced", recipe: "juice") })
+    }
+
+    @Test func aFoodAlreadyWaitingStillGoesUpAsItsOwnFirstTime() {
+        let (store, _) = freshStore()
+        let earlier = Date(timeIntervalSince1970: 1_700_000_000)
+        store.encounter(food: "carrot", on: earlier)
+        store.cook(juice, on: Date(timeIntervalSince1970: 1_800_000_000))
+        #expect(store.pending.first == UploadItem(food: "carrot", encounteredAt: earlier))
+        #expect(store.pending.count == 5)
+        #expect(store.date(of: "carrot") == earlier)
+    }
+
+    @Test func cookedCatchesSurviveARelaunchAndGoOnceUploaded() {
+        let (store, defaults) = freshStore()
+        store.cook(juice)
+        let relaunched = EncounterStore(defaults: defaults)
+        #expect(relaunched.cooked.count == 4)
+        relaunched.sent(relaunched.pending)
+        #expect(EncounterStore(defaults: defaults).cooked.isEmpty)
+    }
+
+    @Test func anUploadCarriesTheRecipeAndLeavesNothingWaiting() async {
+        let (store, _) = freshStore()
+        let transport = StubTransport()
+        let game = DexGame(store: store, transport: transport)
+        store.cook(juice)
+        await game.upload()
+        #expect(transport.recipes == [["juice", "juice", "juice", "juice"]])
+        #expect(store.pending.isEmpty)
+    }
+
+    @Test func anUploadThatFailsKeepsTheCookedCatchesWaiting() async {
+        let (store, _) = freshStore()
+        let transport = StubTransport()
+        transport.failure = EncounterProblem("no network")
+        store.cook(juice)
+        await DexGame(store: store, transport: transport).upload()
+        #expect(store.cooked.count == 4)
+    }
+
+    @Test func anUploadItemLeavesOutWhatNobodySaid() throws {
+        let plain = try JSONSerialization.jsonObject(with: JSONEncoder().encode(UploadItem(food: "carrot", encounteredAt: .now))) as! [String: Any]
+        #expect(Set(plain.keys) == ["food", "encounteredAt"])
+    }
+}
+
+@MainActor
 struct DescriptionTests {
     @Test func everyEntrySaysSomethingBeforeItIsEncountered() {
         #expect(Dex.bundled.cards.allSatisfy { !$0.description.isEmpty })
@@ -158,12 +230,14 @@ struct CompareTests {
 /// Stands in for the server, recording what it is sent.
 private final class StubTransport: EncounterTransport {
     var uploads: [[String]] = []
+    var recipes: [[String?]] = []
     var serverFoods: [String] = []
     var failure: EncounterProblem?
 
     func upload(_ items: [UploadItem]) async throws -> UploadResponse {
         if let failure { throw failure }
         uploads.append(items.map(\.food))
+        recipes.append(items.map(\.recipe))
         let added = items.map(\.food).filter { !serverFoods.contains($0) }
         serverFoods += added
         return UploadResponse(new: added, encounters: serverFoods.map(Self.row))

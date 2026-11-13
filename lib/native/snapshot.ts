@@ -7,7 +7,10 @@ import { DatabaseSync } from "node:sqlite";
 import { deflateRawSync, inflateRawSync } from "node:zlib";
 import { compoundCreature, creatureSilhouette } from "../art/creature.ts";
 import { isDark, typeColor } from "../art/palette.ts";
+import { cookedCatches, cookStages, type CookFood } from "../cook-along.ts";
 import { sql } from "../db/client.ts";
+import type { Form } from "../db/encounters.ts";
+import { recipePage, type RecipePage } from "../db/recipes.ts";
 import {
   compoundEntry,
   effectEntry,
@@ -62,7 +65,22 @@ export type NativeSnapshot = {
   effects: Record<string, EffectEntry>;
   sources: SourceUse[];
   compare: CompareFood[];
+  recipes: NativeRecipe[];
   searchChecks: SearchCheck[];
+};
+
+/** A seeded recipe as the apps draw it: the grid, the cook-along stages and what cooking it records, all worked out here. */
+export type NativeRecipe = {
+  slug: string;
+  name: string;
+  servings: number;
+  rows: { id: string; food: string; name: string; grams: number; prepMethod: string }[];
+  steps: { position: number; title: string; prepMethod: string | null; cells: { rowStart: number; rowSpan: number; part: number; parts: number }[] }[];
+  stages: { step: number | null; title: string | null; prepMethod: string | null; foods: CookFood[]; prep: { food: string; compound: string; method: string; keeps: number | null; note: string | null }[] }[];
+  cautions: RecipePage["profile"]["cautions"];
+  absorption: RecipePage["absorption"];
+  /** Each food cooking it is a catch of, and in what form. */
+  cooked: { food: string; form: Form | null }[];
 };
 
 /** Searches the apps must rank as the web does: a whole name, a misspelling, a word in many names, and one kind. */
@@ -202,7 +220,35 @@ async function writeSnapshot(sink: SnapshotSink, q: typeof sql, progress?: (done
   sink.meta("reveals", stable(reveals));
   sink.meta("sources", stable(await sourceList(q)));
   sink.meta("compare", stable(compare));
+  sink.meta("recipes", stable(await nativeRecipes(q)));
   return JSON.parse(stable(nativeCards)) as NativeCard[];
+}
+
+/** @return [Promise<NativeRecipe[]>] every recipe that is everyone's, by name; one somebody built stays on the server */
+async function nativeRecipes(q: typeof sql): Promise<NativeRecipe[]> {
+  const slugs = await q<{ slug: string }[]>`select slug from recipe where owner_id is null order by name`;
+  const recipes: NativeRecipe[] = [];
+  for (const { slug } of slugs) {
+    const page = (await recipePage(slug, q))!;
+    recipes.push({
+      slug,
+      name: page.name,
+      servings: page.servings,
+      rows: page.grid.rows.map((r) => ({ id: r.recipeIngredientId, food: r.ingredientSlug, name: page.foodNames[r.ingredientSlug], grams: r.grams, prepMethod: r.prepMethod })),
+      steps: page.grid.steps.map((s) => ({ position: s.position, title: page.stepTitles[s.position], prepMethod: s.prepMethod, cells: s.cells.map(({ rowStart, rowSpan, part, parts }) => ({ rowStart, rowSpan, part, parts })) })),
+      stages: cookStages(page).map((s) => ({
+        step: s.step,
+        title: s.title,
+        prepMethod: s.prepMethod,
+        foods: s.foods,
+        prep: s.prep.map((p) => ({ food: page.foodNames[p.ingredientSlug], compound: page.compoundNames[p.compoundSlug], method: p.method, keeps: p.retentionFactor, note: p.note })),
+      })),
+      cautions: page.profile.cautions,
+      absorption: page.absorption,
+      cooked: cookedCatches(page, "").map((c) => ({ food: c.food, form: c.form ?? null })),
+    });
+  }
+  return recipes;
 }
 
 /**
@@ -288,6 +334,7 @@ function assemble(meta: Record<string, unknown>, entries: Record<EntryKind, Reco
     effects: entries.effect as NativeSnapshot["effects"],
     sources: meta.sources as SourceUse[],
     compare: meta.compare as CompareFood[],
+    recipes: meta.recipes as NativeRecipe[],
   };
 }
 
