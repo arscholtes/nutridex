@@ -1,5 +1,5 @@
 // The one way any app reads or writes what someone has encountered.
-import { encounterRows, recordEncounters } from "../../../lib/db/encounters.ts";
+import { encounterRows, parseCatchItems, recordEncounters } from "../../../lib/db/encounters.ts";
 import { refusal } from "../../../lib/upload-token.ts";
 
 const json = (status: number, body: unknown) => Response.json(body, { status });
@@ -15,10 +15,9 @@ export async function POST(request: Request): Promise<Response> {
   if (refused) return refused;
   const body = (await request.json().catch(() => null)) as { encounters?: unknown } | null;
   if (!Array.isArray(body?.encounters)) return json(400, { error: "send { encounters: [{ food, encounteredAt }] }" });
-  const items = body.encounters as { food?: unknown; encounteredAt?: unknown }[];
-  const valid = items.every((i) => typeof i?.food === "string" && typeof i?.encounteredAt === "string" && !Number.isNaN(Date.parse(i.encounteredAt)));
-  if (!valid) return json(400, { error: "each encounter needs a food and an encounteredAt date" });
-  const { added, unknown } = await recordEncounters(items as { food: string; encounteredAt: string }[]);
+  const items = parseCatchItems(body.encounters);
+  if (!items) return json(400, { error: "each encounter needs a food and an encounteredAt date; form, when sent, is raw, juiced or cooked" });
+  const { added, unknown } = await recordEncounters(items);
   if (unknown.length > 0) return json(422, { error: `not foods in the Dex: ${unknown.join(", ")}` });
   return json(200, { new: added, encounters: await encounterRows() });
 }

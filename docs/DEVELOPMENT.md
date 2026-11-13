@@ -102,6 +102,13 @@ says "By class", wherever it appears. A section with nothing on file says so; it
 Ingredients have drawn creatures (`public/art/ingredients/`). Compounds have none yet, so each gets a creature
 drawn from its data (`lib/art/creature.ts`): its class sets the colour and shape, in the same house style.
 
+## Catches, tiers and ranks
+
+Owning a food (`encounter`) is what unlocks things. Every time someone has it is a row in `catch`, written by
+`recordEncounters` (`lib/db/encounters.ts`). `lib/tiers.ts` holds the research tiers and trainer ranks as two
+tables and the pure rules that read them; `foodHistories` counts what those rules need. Nothing draws tiers yet.
+Opened sources and recipes cooked are not recorded yet, so a food cannot pass two stars.
+
 ## The engine
 
 The engine is its own package, `packages/epistasis/`, imported as `epistasis` so other projects can use it.

@@ -7,6 +7,13 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
+## Unreleased
+
+### Changed
+
+- NutriDex now keeps each time you have a food, not only the first. Nothing looks different yet; it is what
+  research tiers will be worked out from. Downloading your data lists every one.
+
 ## 0.10.0 - 2026-11-13
 
 ### Added
