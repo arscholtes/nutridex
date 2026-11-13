@@ -72,7 +72,7 @@ Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a coo
 
 ### `session`
 
-One row for each browser someone is signed in on. The browser holds a random token in a cookie; this table holds only its SHA-256 hash, so a copy of the table signs nobody in. `email` is the address that session was proven with, shown back to the person on the settings page; the sign-in service owns the account itself. A row past `expires_at` no longer signs anyone in. Deleting an account removes its rows here, in `encounter` and in `preference`, and the person from the sign-in service. Only NutriDex reads it.
+One row for each browser someone is signed in on. The browser holds a random token in a cookie; this table holds only its SHA-256 hash, so a copy of the table signs nobody in. `email` is the address that session was proven with, shown back to the person on the settings page; the sign-in service owns the account itself. A row past `expires_at` no longer signs anyone in. Deleting an account removes its rows here, in `encounter`, in `preference` and in `recipe`, and the person from the sign-in service. Only NutriDex reads it.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -334,7 +334,7 @@ Dietary Reference Intakes for adults, as Health Canada's DRI tables publish them
 
 ### `recipe`
 
-A recipe.
+A recipe. `owner_id` is the signed-in person who built it on the web, as in `encounter`; only they see it, their download holds it, and deleting their account deletes it. A recipe with no owner is a seeded one or one the apps saved, and everyone sees it. Only NutriDex reads it.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
@@ -343,6 +343,7 @@ A recipe.
 | `name` | text | no |  |
 | `servings` | integer | yes | `1` |
 | `notes` | text | yes |  |
+| `owner_id` | uuid | yes |  |
 
 ### `recipe_ingredient`
 

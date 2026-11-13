@@ -78,6 +78,13 @@
       "when": 1794501310456,
       "tag": "0010_empty_cammi",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1794512260308,
+      "tag": "0011_redundant_roland_deschain",
+      "breakpoints": true
     }
   ]
 }

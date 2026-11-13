@@ -340,6 +340,8 @@ export const recipe = pgTable("recipe", {
   name: text("name").notNull(),
   servings: integer("servings").default(1),
   notes: text("notes"),
+  /** Who built it on the web; null for the seeded recipes and the ones the apps save, which everyone sees. */
+  ownerId: uuid("owner_id"),
 });
 
 export const recipeIngredient = pgTable("recipe_ingredient", {

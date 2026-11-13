@@ -23,18 +23,19 @@ type Sql = typeof sql;
 /**
  * Load a recipe with its ingredients (in position order) and steps.
  * @param slug [string] the recipe's slug
+ * @param q [Sql] the connection or transaction to read through
  * @return [Promise<RecipeInput>] the recipe as the engine reads it
  * @throws when no recipe has that slug
  */
-export async function loadRecipe(slug: string): Promise<RecipeInput> {
-  const [recipe] = await sql<{ id: string; servings: number }[]>`select id, servings from recipe where slug = ${slug}`;
+export async function loadRecipe(slug: string, q: Sql = sql): Promise<RecipeInput> {
+  const [recipe] = await q<{ id: string; servings: number }[]>`select id, servings from recipe where slug = ${slug}`;
   if (!recipe) throw new Error(`no recipe with slug "${slug}"`);
-  const ingredients = await sql<{ id: string; ingredientSlug: string; grams: string; prepMethod: string; retentionFamily: string | null }[]>`
+  const ingredients = await q<{ id: string; ingredientSlug: string; grams: string; prepMethod: string; retentionFamily: string | null }[]>`
     select ri.id, i.slug as "ingredientSlug", ri.grams, ri.prep_method as "prepMethod", i.retention_family as "retentionFamily"
     from recipe_ingredient ri join ingredient i on i.id = ri.ingredient_id
     where ri.recipe_id = ${recipe.id}
     order by ri.position`;
-  const steps = await sql<{ position: number; prepMethod: string | null; recipeIngredientIds: string[] }[]>`
+  const steps = await q<{ position: number; prepMethod: string | null; recipeIngredientIds: string[] }[]>`
     select s.position, s.prep_method as "prepMethod",
            coalesce(array_agg(si.recipe_ingredient_id) filter (where si.recipe_ingredient_id is not null), '{}') as "recipeIngredientIds"
     from recipe_step s left join recipe_step_ingredient si on si.step_id = s.id
