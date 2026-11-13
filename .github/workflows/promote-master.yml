@@ -1,0 +1,58 @@
+# Moves master up to a commit on main once Vercel has built that commit for the live site and the
+# unit tests and typecheck pass on it. master only ever moves forward, never by force.
+name: promote-master
+
+on:
+  status:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: promote-master
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    if: github.event.state == 'success' && github.event.context == 'Vercel – nutridex-8vtr'
+    runs-on: ubuntu-latest
+    env:
+      SHA: ${{ github.event.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.sha }}
+          fetch-depth: 0
+
+      # Vercel reports the same status for a pull request's preview build, so only a commit that
+      # main itself has pointed at, and that is ahead of master, is promoted.
+      - name: Decide whether this commit is a newer main
+        id: decide
+        run: |
+          git fetch origin main master
+          if ! git rev-list --first-parent origin/main | grep -qx "$SHA"; then
+            echo "$SHA is not a commit main has pointed at; nothing to promote."
+            echo "promote=false" >> "$GITHUB_OUTPUT"
+          elif [ "$(git rev-parse origin/master)" = "$SHA" ] || ! git merge-base --is-ancestor origin/master "$SHA"; then
+            echo "master is already at or past $SHA; nothing to promote."
+            echo "promote=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "promote=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.decide.outputs.promote == 'true'
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - name: Unit tests and typecheck
+        if: steps.decide.outputs.promote == 'true'
+        run: |
+          npm ci
+          npm test
+          npm run typecheck
+
+      - name: Move master to this commit
+        if: steps.decide.outputs.promote == 'true'
+        run: git push origin "$SHA:refs/heads/master"
