@@ -121,3 +121,19 @@ export async function exchangeCode(code: string, verifier: string): Promise<Prov
   if (status >= 500) console.error(`sign-in: the service could not finish a provider sign-in (${status} ${body?.error_code ?? "no code"})`);
   return { problem: "unfinished" };
 }
+
+/**
+ * Trades the identity token an app got from Apple or Google itself for who the person is.
+ * @param provider [Provider] who signed the token
+ * @param idToken [string] the token the provider's own sign-in gave the app
+ * @param nonce [string | undefined] the unhashed nonce the app asked the provider to bind into the token, if it used one
+ * @return [Promise<Proven | { error: string }>] who they are, or what to tell them
+ */
+export async function verifyIdToken(provider: Provider, idToken: string, nonce?: string): Promise<Proven | { error: string }> {
+  const { status, body } = await ask("token?grant_type=id_token", { provider, id_token: idToken, ...(nonce === undefined ? {} : { nonce }) });
+  const user = body?.user;
+  if (status === 200 && user?.id && user.email) return { id: user.id, email: user.email };
+  if (status === 200) return { error: PROVIDER_PROBLEMS["no-email"] };
+  if (status >= 500) console.error(`sign-in: the service could not check an identity token (${status} ${body?.error_code ?? "no code"})`);
+  return { error: "That sign-in was not accepted. Try again." };
+}

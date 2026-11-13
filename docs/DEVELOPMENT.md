@@ -102,6 +102,16 @@ says "By class", wherever it appears. A section with nothing on file says so; it
 Ingredients have drawn creatures (`public/art/ingredients/`). Compounds have none yet, so each gets a creature
 drawn from its data (`lib/art/creature.ts`): its class sets the colour and shape, in the same house style.
 
+## The API the apps share
+
+`/api/v1` is a thin doorway onto the same functions the web pages call, so the web and the apps cannot drift
+apart. `docs/api/v1.openapi.json` describes every call, and `tests/api-v1-spec.test.ts` fails when a route and
+that file disagree. An app signs in at `POST /api/v1/session`, with an emailed code or with the identity token
+Apple or Google gave it, and sends the session token it gets back as a bearer token. Every route starts with
+`caller` (`lib/api/v1.ts`), which is the one place that turns a token into a person. The web does not use these
+routes: it keeps its cookie and its server actions. The two passcode routes (`/api/encounters`,
+`/api/preferences`) stay until the Apple apps sign in.
+
 ## Catches, tiers and ranks
 
 Owning a food (`encounter`) is what unlocks things. Every time someone has it is a row in `catch`, written by

@@ -87,7 +87,7 @@ One row for each time someone had a food they own. `encounter` says a person own
 
 ### `session`
 
-One row for each browser someone is signed in on. The browser holds a random token in a cookie; this table holds only its SHA-256 hash, so a copy of the table signs nobody in. `email` is the address that session was proven with, shown back to the person on the settings page; the sign-in service owns the account itself. A row past `expires_at` no longer signs anyone in. Deleting an account removes its rows here, in `encounter`, in `preference` and in `recipe`, and the person from the sign-in service. Only NutriDex reads it.
+One row for each browser or app someone is signed in on. A browser holds a random token in a cookie and an app sends it as a bearer token; this table holds only its SHA-256 hash, so a copy of the table signs nobody in. `email` is the address that session was proven with, shown back to the person on the settings page; the sign-in service owns the account itself. A row past `expires_at` no longer signs anyone in. Deleting an account removes its rows here, in `encounter`, in `preference` and in `recipe`, and the person from the sign-in service. Only NutriDex reads it.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |

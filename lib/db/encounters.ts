@@ -1,6 +1,6 @@
 // What someone has encountered, and what that unlocks. Reading and writing the record happens only here.
 import { mayBearClaims } from "./claim-limits.ts";
-import type { FoodHistory } from "../tiers.ts";
+import { tierOf, type FoodHistory } from "../tiers.ts";
 import { sql } from "./client.ts";
 
 type Sql = typeof sql;
@@ -90,6 +90,20 @@ export async function catchRows(owner: string | null = null, q: Sql = sql): Prom
     where e.owner_id is not distinct from ${owner}
     order by c.caught_at, i.slug`;
   return rows.map((r) => ({ ...r, caughtAt: new Date(r.caughtAt).toISOString() }));
+}
+
+export type OwnedFood = { food: string; firstHadAt: string; catches: number; forms: number; tier: number };
+
+/**
+ * @param owner [string | null] the signed-in person, or null for the record the apps share
+ * @return [Promise<OwnedFood[]>] each food that record owns, oldest first, with how often it was had and its research tier
+ */
+export async function ownedFoods(owner: string | null = null, q: Sql = sql): Promise<OwnedFood[]> {
+  const histories = await foodHistories(owner, q);
+  return (await encounterRows(owner, q)).map((e) => {
+    const history = histories.get(e.food)!;
+    return { food: e.food, firstHadAt: e.encounteredAt, catches: history.catches, forms: history.forms, tier: tierOf(history) };
+  });
 }
 
 /**
