@@ -3,6 +3,11 @@ export const PENDING_COOKIE = "nutridex-pending";
 export const UNLOCKING_COOKIE = "nutridex-unlocking";
 export const SESSION_COOKIE = "nutridex-session";
 export const SKIN_COOKIE = "nutridex-skin";
+export const PROOF_COOKIE = "nutridex-sign-in-proof";
+
+const YEAR_SECONDS = 365 * 24 * 60 * 60;
+/** How every one of these cookies is kept: out of scripts' reach, and sent when a link brings the person here. */
+export const privateCookie = { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: YEAR_SECONDS } as const;
 
 export type PendingEncounter = { food: string; encounteredAt: string };
 

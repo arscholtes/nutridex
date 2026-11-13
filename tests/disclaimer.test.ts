@@ -61,6 +61,10 @@ describe("what the disclaimer says is stored", () => {
     expect(stored(NATIVE_DISCLAIMER_SECTIONS)).toContain("upload");
   });
 
+  test("the web says what signing in through Google or Apple hands over", () => {
+    expect(stored(DISCLAIMER_SECTIONS)).toMatch(/Google or Apple.*name and picture/);
+  });
+
   test("the web says an account stores your email address, and that you can take it out or delete it", () => {
     expect(stored(DISCLAIMER_SECTIONS)).toContain("email address");
     expect(stored(DISCLAIMER_SECTIONS)).toMatch(/Recipes you save.*shown to nobody else/);
