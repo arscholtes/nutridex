@@ -7,7 +7,16 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
-## Unreleased
+## 0.10.0 - 2026-11-13
+
+### Added
+
+- Sign in on the web with Google or Apple, beside the emailed code. The same email address is the same account
+  whichever way you come in. Each button appears once that way in has been switched on for the site.
+
+### Changed
+
+- The notice you accept on first use says what signing in with Google or Apple shares, so it appears once more.
 
 ### Fixed
 

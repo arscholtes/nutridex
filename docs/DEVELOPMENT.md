@@ -132,9 +132,16 @@ through the upload passcode and `GET` and `PUT /api/preferences`.
 
 ## Accounts
 
-On the web, signing in is optional: without it your foods and skin stay in that browser's cookies. Sign-in is a
-six-digit code by email. Supabase Auth sends and checks the code (`lib/auth/sign-in.ts`); NutriDex then keeps its
-own session (`lib/db/sessions.ts`, the `session` table), so no page asks Supabase who you are. Settings
+On the web, signing in is optional: without it your foods and skin stay in that browser's cookies. There are
+three ways in: Google, Apple, or a six-digit code by email. Supabase Auth does the proving (`lib/auth/sign-in.ts`);
+NutriDex then keeps its own session (`lib/db/sessions.ts`, the `session` table), so no page asks Supabase who you
+are. Whichever way someone came in, `lib/auth/begin-session.ts` starts the session and moves that browser's foods
+and skin onto the account.
+
+Google and Apple use the authorization-code flow with PKCE. `signInWith` (`app/actions.ts`) keeps a one-time
+verifier in a ten-minute cookie and sends the browser to Supabase's `/auth/v1/authorize`; Supabase sends it back to
+`/auth/callback` with a code, which the server trades at `/auth/v1/token?grant_type=pkce`. The sign-in page shows a
+button only for a provider that Supabase's `/auth/v1/settings` reports as switched on. Settings
 (`/settings`) shows the skin and the account, downloads everything stored for it, and deletes it.
 
 The server needs `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. With either missing, the sign-in page says the
@@ -145,6 +152,9 @@ server has no sign-in and nothing else changes. On the hosted project:
 2. Under **Magic Link**, paste `supabase/templates/magic_link.html`, so the email carries the code (`{{ .Token }}`).
 3. Add the two variables above to Vercel's Production environment, and run `npm run db:migrate` against the
    session pooler.
+4. For Google or Apple, follow Supabase's guides for [Google](https://supabase.com/docs/guides/auth/social-login/auth-google)
+   and [Apple](https://supabase.com/docs/guides/auth/social-login/auth-apple), then add `https://<the site>/auth/callback`
+   under **Authentication → URL Configuration → Redirect URLs**. The web secret for Apple expires every six months.
 
 To try it locally, with Docker running:
 
@@ -154,6 +164,10 @@ npx supabase status -o env        # API_URL and PUBLISHABLE_KEY are the two vari
 # point DATABASE_URL at the stack's database (DB_URL), then db:migrate, seed, build and start
 # codes arrive in the stack's mailbox at http://127.0.0.1:54324
 ```
+
+A Google or Apple button shows locally once that provider is enabled under `[auth.external.<name>]` in
+`supabase/config.toml` with a real client id and secret, and `http://127.0.0.1:3000/auth/callback` is in
+`additional_redirect_urls`.
 
 Deleting an account removes the person from Supabase's `auth.users` over the app's own database connection, so
 the app and the sign-in service must share a database, as they do on Supabase.

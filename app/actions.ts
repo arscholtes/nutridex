@@ -1,15 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
-import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
-import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
+import { beginSession, PROOF_MINUTES } from "../lib/auth/begin-session.ts";
+import { parseProvider, providerStart, requestCode, verifyCode } from "../lib/auth/sign-in.ts";
+import { saveSkin } from "../lib/db/preferences.ts";
 import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
-import { endSession, eraseOwner, removeSignIn, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
+import { endSession, eraseOwner, removeSignIn } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
-import { parsePending, parseUnlocking, PENDING_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
+import { parsePending, parseUnlocking, PENDING_COOKIE, privateCookie, PROOF_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
 import { signedIn, viewer } from "../lib/viewer.ts";
 
@@ -26,9 +27,6 @@ export async function acceptDisclaimer() {
     maxAge: MAX_AGE_SECONDS,
   });
 }
-
-const YEAR_SECONDS = 365 * 24 * 60 * 60;
-const privateCookie = { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: YEAR_SECONDS } as const;
 
 /**
  * Marks a food as had. Signed in, it goes straight onto your record; otherwise this browser keeps it.
@@ -68,16 +66,18 @@ export async function signIn(_previous: SignInState, form: FormData): Promise<Si
   const proven = await verifyCode(email, code);
   if ("error" in proven) return { step: "code", email, error: proven.error };
 
-  const jar = await cookies();
-  jar.set(SESSION_COOKIE, await startSession(proven.id, proven.email), { ...privateCookie, maxAge: SESSION_DAYS * 24 * 60 * 60 });
-  const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
-  const { added, unknown } = await recordEncounters(pending, proven.id);
-  if (unknown.length > 0) console.error(`sign-in: this browser held foods the Dex does not have, so none were saved: ${unknown.join(", ")}`);
-  jar.delete(PENDING_COOKIE);
-  if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify(added), privateCookie);
-  const here = parseSkin(jar.get(SKIN_COOKIE)?.value);
-  if (here && (await savedSkin(proven.id)) === null) await saveSkin(here, proven.id);
+  await beginSession(await cookies(), proven);
   redirect("/");
+}
+
+/** Sends the browser to Google or Apple by way of the sign-in service, keeping the proof the callback will need. */
+export async function signInWith(form: FormData) {
+  const provider = parseProvider(form.get("provider"));
+  const origin = (await headers()).get("origin");
+  if (!provider || !origin) throw new Error(`sign-in: cannot start a provider sign-in (provider ${String(form.get("provider"))}, origin ${origin})`);
+  const { url, verifier } = providerStart(provider, origin);
+  (await cookies()).set(PROOF_COOKIE, verifier, { ...privateCookie, maxAge: PROOF_MINUTES * 60 });
+  redirect(url);
 }
 
 /** Signs this browser out. What was saved stays on the account. */

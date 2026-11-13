@@ -109,6 +109,44 @@ body,
   opacity: 0.6;
 }
 
+/* Google and Apple each require their mark on a white, black or neutral button, so this one keeps its own
+   colours in every skin. */
+.provider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid #747775;
+  border-radius: var(--radius-control);
+  background: #fff;
+  color: #1f1f1f;
+  font-weight: 600;
+  transition: background-color 120ms ease-out, scale 120ms ease-out;
+}
+.provider-button:hover:not(:disabled) {
+  background: #f2f2f2;
+}
+.provider-button:active:not(:disabled) {
+  scale: 0.96;
+}
+.provider-button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.provider-button:disabled {
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .provider-button {
+    transition: none;
+  }
+  .provider-button:active:not(:disabled) {
+    scale: none;
+  }
+}
+
 .dex-chip {
   display: inline-flex;
   min-height: 2.5rem;
