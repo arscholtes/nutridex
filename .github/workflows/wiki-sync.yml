@@ -1,0 +1,40 @@
+# Copies docs/wiki/ to the repository's GitHub wiki whenever it changes on main.
+# Needs the wiki turned on (Settings > General > Features > Wikis) and one page created in it first,
+# so that the wiki's git repository exists.
+name: wiki-sync
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/wiki/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wiki-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push docs/wiki to the wiki
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          git clone "https://x-access-token:${TOKEN}@github.com/${REPO}.wiki.git" wiki
+          rsync -a --delete --exclude .git docs/wiki/ wiki/
+          cd wiki
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Wiki already up to date."
+          else
+            git commit -m "Sync from ${GITHUB_SHA::7}"
+            git push
+          fi
