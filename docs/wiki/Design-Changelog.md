@@ -6,6 +6,7 @@ Newest first.
 
 ## 2026-11-13
 
+- Added account screens: sign-in, settings, profile, your data and privacy, friends and a friend's card on iPhone, and settings in the Lab. The trainer card's Skins button became a gear that opens Settings, where skins live.
 - Added the Plus tier: plans and pricing sheet, paywall, Ask the professor, recipe ideas and the weekly letter. Suggested price $4.99 a month or $39.99 a year.
 - Added the Health section on every platform: label and barcode scanning, logging with portions and meals, the health score, nutrient detail, the iPad view, the Lab report and scan review. Health replaces Map in the iPhone tab bar.
 - Added iPad versions (Dex with entry panel, party and cook, regions) and the web and Mac Lab (home and research desk), with build notes on every game screen.

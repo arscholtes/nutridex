@@ -9,5 +9,6 @@
 - [[Web and Mac|Web-and-Mac]]
 - [[Health|Health]]
 - [[NutriDex Plus|Plus]]
+- [[Account|Account]]
 - [[Explorations|Explorations]]
 - [[Design changelog|Design-Changelog]]
