@@ -195,6 +195,7 @@ struct PlateShape: Shape {
 /// The handheld's top plate: lens, three lights and the name.
 struct DexPlate: View {
     var lens: Color = Color(hex: "#38B6F2")
+    var onRecipes: (() -> Void)?
     var onSkins: (() -> Void)?
     var onSources: (() -> Void)?
 
@@ -222,6 +223,9 @@ struct DexPlate: View {
             }
             Spacer(minLength: 0)
             HStack(spacing: 14) {
+                if let onRecipes {
+                    Button("Recipes", action: onRecipes)
+                }
                 if let onSkins {
                     Button("Skins", action: onSkins)
                 }

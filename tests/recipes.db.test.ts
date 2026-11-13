@@ -126,23 +126,19 @@ describe("whose a recipe is", () => {
 });
 
 describe("which recipes show", () => {
-  test("a recipe lists only while every food in it has been encountered", async () => {
+  test("a recipe lists whatever is in it, and says how many of its foods have not been had", async () => {
     await inRolledBackTransaction(async (tx) => {
-      await encounter(tx, ["carrot", "kale", "olive-oil"]);
-      const slug = await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx);
-      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).toContain(slug);
-
-      await tx`delete from encounter where ingredient_id = (select id from ingredient where slug = 'olive-oil')`;
-      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).not.toContain(slug);
+      await encounter(tx, ["granny-smith-apple", "carrot", "beet"]);
+      const juice = async () => (await listRecipes(await uploadedFoods(tx), null, tx)).find((r) => r.slug === "juice");
+      expect(await juice()).toMatchObject({ ingredients: 4, notHad: 1 });
+      await encounter(tx, ["kale"]);
+      expect(await juice()).toMatchObject({ ingredients: 4, notHad: 0 });
     });
   });
 
-  test("the seeded juice stays hidden until all four of its foods are encountered", async () => {
+  test("with nothing had yet, the seeded juice still lists", async () => {
     await inRolledBackTransaction(async (tx) => {
-      await encounter(tx, ["granny-smith-apple", "carrot", "beet"]);
-      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).not.toContain("juice");
-      await encounter(tx, ["kale"]);
-      expect((await listRecipes(await uploadedFoods(tx), null, tx)).map((r) => r.slug)).toContain("juice");
+      expect((await listRecipes(new Set(), null, tx)).find((r) => r.slug === "juice")).toMatchObject({ notHad: 4 });
     });
   });
 });

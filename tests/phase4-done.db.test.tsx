@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterAll, describe, expect, test } from "vitest";
 import { RecipeView } from "../components/recipe-view.tsx";
 import { sql } from "../lib/db/client.ts";
-import { recordEncounters } from "../lib/db/encounters.ts";
+import { recordEncounters, revealedEntries } from "../lib/db/encounters.ts";
 import { recipePage, saveRecipe, uploadedFoods, type RecipeDraft, type RecipePage } from "../lib/db/recipes.ts";
 import { inRolledBackTransaction } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
@@ -60,10 +60,25 @@ describe("a built recipe's grid and profile render from the same data", () => {
     });
   });
 
+  test("a food never had is marked, and nothing links to an entry that is still closed", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const page = await built(tx);
+      const html = renderToStaticMarkup(<RecipeView page={page} revealed={await revealedEntries(["carrot"], tx)} cookable />);
+      expect(html.match(/Not had yet/g)).toHaveLength(2);
+      expect(html).toContain('href="/ingredients/carrot"');
+      expect(html).not.toContain('href="/ingredients/kale"');
+      const open = await revealedEntries(["carrot"], tx);
+      for (const [, kind, slug] of html.matchAll(/href="\/(compounds|effects)\/([^"]+)"/g)) {
+        expect((kind === "compounds" ? open.compounds : open.effects).has(slug), `${kind}/${slug} is linked but closed`).toBe(true);
+      }
+      expect(html).toContain(`href="/recipes/${page.slug}/cook"`);
+    });
+  });
+
   test("the page draws the grid, each step spanning its rows, and the profile beneath it", async () => {
     await inRolledBackTransaction(async (tx) => {
       const page = await built(tx);
-      const html = renderToStaticMarkup(<RecipeView page={page} />);
+      const html = renderToStaticMarkup(<RecipeView page={page} revealed={await revealedEntries(["carrot", "kale", "olive-oil"], tx)} />);
       for (const name of ["Carrot", "Kale", "Olive oil", "Steam the vegetables", "Dress with oil"]) {
         expect(html).toContain(name);
       }

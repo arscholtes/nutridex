@@ -461,6 +461,15 @@ final class Dex {
         self.file = file
     }
 
+    /// Every recipe that is everyone's, read the first time a recipe screen opens.
+    private(set) lazy var recipes: [Recipe] = {
+        do {
+            return try JSONDecoder().decode([Recipe].self, from: file.meta("recipes"))
+        } catch {
+            fatalError("the recipes in dex.sqlite do not match the app's model: \(error)")
+        }
+    }()
+
     /// Every food against every nutrient, read the first time the Mac's table opens.
     private(set) lazy var compare: [CompareFood] = {
         do {

@@ -7,6 +7,7 @@ enum MacSection: Hashable {
     case compare
     case sources
     case skins
+    case recipes
 }
 
 /// Shows the notice until this Mac has accepted the running version, then the home database.
@@ -115,6 +116,8 @@ struct MacBrowserView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             case .sources:
                 SourcesList().background(Theme.screen)
+            case .recipes:
+                MacRecipes()
             case .skins:
                 SkinsList().background(DexBackdrop())
             case .dex, .type:
@@ -149,7 +152,7 @@ struct MacBrowserView: View {
             case let .type(kind, type):
                 browser.kind = kind
                 browser.type = type
-            case .compare, .sources, .skins:
+            case .compare, .sources, .skins, .recipes:
                 break
             }
         }
@@ -193,7 +196,7 @@ struct MacSidebar: View {
         switch section {
         case let .dex(kind): kind
         case let .type(kind, _): kind
-        case .compare, .sources, .skins: nil
+        case .compare, .sources, .skins, .recipes: nil
         }
     }
 
@@ -221,6 +224,9 @@ struct MacSidebar: View {
                         .tag(MacSection.type(kind, type))
                     }
                 }
+            }
+            Section("Kitchen") {
+                Label("Recipes", systemImage: "fork.knife").tag(MacSection.recipes)
             }
             Section("Research") {
                 Label("Compare foods", systemImage: "tablecells").tag(MacSection.compare)

@@ -80,7 +80,7 @@ in your team and bundle id prefix. The Mac app signs to run locally, so it needs
 | 1. Foundation | `npm run seed` fills the database and a test query returns beta-carotene per 100 g of carrot | passing locally |
 | 2. Engine | the juice recipe returns "no fat" and "fiber lost", and olive oil flips carotenoids to "enhanced" | passing locally |
 | 3. Dex UI | carrot → beta-carotene → skin color → pumpkin, with by-class flags visibly different from measured ones | passing locally |
-| 4. Recipes | a built recipe's grid and profile render from the same data | passing locally on the web; the apps have no recipes yet |
+| 4. Recipes | a built recipe's grid and profile render from the same data | passing locally on the web; the apps show the seeded recipes from the snapshot and cannot build one yet |
 | 5. Ingest | a pasted finding becomes an approvable effect row with source and limitations | not started |
 
 ## The Dex
@@ -91,7 +91,7 @@ in your team and bundle id prefix. The Mac app signs to run locally, so it needs
 | Ingredient | `/ingredients/<slug>` | What is in 100 g, against the richest food in the Dex; absorption flags; pairings; prep; effects; cautions; sources |
 | Compound | `/compounds/<slug>` | How it works, solubility, what helps it absorb, prep, the foods that carry it, effects, cautions, sources |
 | Effect | `/effects/<slug>` | The compounds behind it, with dose and onset, and the foods richest in each |
-| Recipes | `/recipes`, `/recipes/new`, `/recipes/<slug>` | Recipes made only of foods you have unlocked: the seeded ones and your own. The builder keeps the draft in the address and redraws the grid and profile from it; saving needs an account |
+| Recipes | `/recipes`, `/recipes/new`, `/recipes/<slug>`, `/recipes/<slug>/cook` | Every seeded recipe and your own, whatever is in them: a food you have never had is marked and not linked. Cooking along steps through a recipe's stages (`lib/cook-along.ts`) and ends by counting each food as had in that recipe. You still build only from foods you have unlocked. The builder keeps the draft in the address and redraws the grid and profile from it; saving needs an account |
 | Sources | `/sources` | Every citation, what it supports, and its limitations |
 
 An ingredient's flags come from the engine run on 100 g of it, so the Dex and a recipe judge the same
@@ -117,7 +117,7 @@ routes: it keeps its cookie and its server actions. The two passcode routes (`/a
 Owning a food (`encounter`) is what unlocks things. Every time someone has it is a row in `catch`, written by
 `recordEncounters` (`lib/db/encounters.ts`). `lib/tiers.ts` holds the research tiers and trainer ranks as two
 tables and the pure rules that read them; `foodHistories` counts what those rules need. Nothing draws tiers yet.
-An upload may name the recipe a food was had in, which counts as cooking it; no screen sends one yet. Opened sources
+An upload may name the recipe a food was had in, which counts as cooking it; cooking along sends one. Opened sources
 are not recorded yet, so a food cannot pass two stars.
 
 ## The engine

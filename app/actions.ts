@@ -5,9 +5,10 @@ import { cookies, headers } from "next/headers";
 import { recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
 import { beginSession, PROOF_MINUTES } from "../lib/auth/begin-session.ts";
+import { cookedCatches } from "../lib/cook-along.ts";
 import { parseProvider, providerStart, requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { saveSkin } from "../lib/db/preferences.ts";
-import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
+import { InvalidRecipe, recipePage, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
 import { endSession, eraseOwner, removeSignIn } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, parseUnlocking, PENDING_COOKIE, privateCookie, PROOF_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
@@ -97,6 +98,35 @@ export async function deleteAccount() {
   await removeSignIn(account.owner);
   (await cookies()).delete(SESSION_COOKIE);
   redirect("/");
+}
+
+/**
+ * Says a recipe was cooked: every food in it is had, in that recipe. Signed in, that goes on your record and counts
+ * as cooking each food; otherwise this browser holds the foods as had, which is all it can hold.
+ * @param slug [string] the recipe's slug
+ * @return [Promise<{ error: string | null; kept: "account" | "browser" | null }>] where it was kept, or why it was not
+ */
+export async function cookedRecipe(slug: string): Promise<{ error: string | null; kept: "account" | "browser" | null }> {
+  const jar = await cookies();
+  const account = await signedIn();
+  const page = await recipePage(slug);
+  if (!page || (page.owner !== null && page.owner !== account?.owner)) return { error: "That recipe is not here any more.", kept: null };
+  const catches = cookedCatches(page, new Date().toISOString());
+  if (account) {
+    const { added, unknown, misplaced } = await recordEncounters(catches, account.owner);
+    if (unknown.length > 0 || misplaced.length > 0) throw new Error(`cooking ${slug} named what the Dex does not hold: ${[...unknown, ...misplaced].join(", ")}`);
+    if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify([...parseUnlocking(jar.get(UNLOCKING_COOKIE)?.value), ...added]), privateCookie);
+    return { error: null, kept: "account" };
+  }
+  let pending = parsePending(jar.get(PENDING_COOKIE)?.value);
+  for (const { food, encounteredAt } of catches) {
+    if (pending.some((p) => p.food === food)) continue;
+    const value = withPending(pending, food, encounteredAt);
+    if (value === null) return { error: "This browser is full: sign in to save what it holds, then carry on.", kept: null };
+    jar.set(PENDING_COOKIE, value, privateCookie);
+    pending = parsePending(value);
+  }
+  return { error: null, kept: "browser" };
 }
 
 /** Ends the unlock animation, leaving you on the screen you were on. */
