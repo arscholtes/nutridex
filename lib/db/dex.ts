@@ -741,6 +741,7 @@ async function sourceMap(ids: string[], q: Sql): Promise<Map<string, SourceRef>>
   return new Map((await sourcesByIds([...new Set(ids)], q)).map((s) => [s.id, s]));
 }
 
+// Each food's facts are read through its own rows (the lateral join), so a short list never reads every food's amounts.
 async function bestGrades(foodSlugs: string[], q: Sql): Promise<Map<string, Grade>> {
   const rows = await q<{ key: string; grade: Grade }[]>`
     with fact_grade as (
@@ -755,14 +756,13 @@ async function bestGrades(foodSlugs: string[], q: Sql): Promise<Map<string, Grad
     )
     select 'compound:' || c.slug as key, cg.grade from compound_grade cg join compound c on c.id = cg.compound_id
     union all
-    select 'ingredient:' || i.slug, min(g.grade) from ingredient i join (
-      select ic.ingredient_id, ce.evidence_grade as grade from ingredient_compound ic join compound_effect ce on ce.compound_id = ic.compound_id
-      join ingredient i on i.id = ic.ingredient_id
-      where ic.amount_per_100g > 0 and ic.amount_per_100g >= coalesce(ce.min_food_per_100g, 0) and ${mayBearClaims(q)}
-      union all select ic.ingredient_id, f.grade from ingredient_compound ic join fact_grade f on f.compound_id = ic.compound_id
-      where ic.amount_per_100g > 0
-      union all select ingredient_id, evidence_grade from caution where ingredient_id is not null
-    ) g on g.ingredient_id = i.id where i.slug = any(${foodSlugs}::text[]) group by i.slug
+    select 'ingredient:' || i.slug, min(g.grade) from ingredient i join lateral (
+      select ce.evidence_grade as grade from ingredient_compound ic join compound_effect ce on ce.compound_id = ic.compound_id
+      where ic.ingredient_id = i.id and ic.amount_per_100g > 0 and ic.amount_per_100g >= coalesce(ce.min_food_per_100g, 0) and ${mayBearClaims(q)}
+      union all select f.grade from ingredient_compound ic join fact_grade f on f.compound_id = ic.compound_id
+      where ic.ingredient_id = i.id and ic.amount_per_100g > 0
+      union all select evidence_grade from caution where ingredient_id = i.id
+    ) g on true where i.slug = any(${foodSlugs}::text[]) group by i.slug
     union all
     select 'effect:' || e.slug, min(ce.evidence_grade) from effect e join compound_effect ce on ce.effect_id = e.id group by e.slug`;
   return new Map(rows.map((r) => [r.key, r.grade]));
