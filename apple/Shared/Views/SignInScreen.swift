@@ -6,6 +6,8 @@ struct SignInScreen: View {
     @Environment(DexGame.self) private var game
     @Environment(\.webAuthenticationSession) private var webAuthenticationSession
     @Environment(\.dismiss) private var dismiss
+    /// Closes the screen once signed in, when it was opened over something else.
+    var closesWhenDone = true
     @State private var email = ""
     @State private var code = ""
     @State private var codeSent = false
@@ -106,7 +108,7 @@ struct SignInScreen: View {
         do {
             try await work()
             problem = nil
-            if dismissing { dismiss() }
+            if dismissing, closesWhenDone { dismiss() }
         } catch let error as ASWebAuthenticationSessionError where error.code == .canceledLogin {
             return
         } catch {

@@ -246,7 +246,7 @@ struct SkinsList: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 Text("Skins").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink).accessibilityAddTraits(.isHeader)
-                Note(text: "Your choice follows you to every device using your passcode.")
+                Note(text: game.isSignedIn ? "Your choice follows you to every device you sign in on." : "Your choice stays on this device. Sign in to have it follow you to every device.")
                 if let problem = game.skinProblem {
                     Text("It changed here, but did not reach your other devices yet. \(problem)")
                         .font(.dex(.footnote, weight: .bold))

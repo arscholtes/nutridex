@@ -61,6 +61,9 @@ typealias DexTransport = EncounterTransport & AccountTransport
 #if DEBUG
 /// A test copy's record is made up, so it can never reach the real one, even if someone presses Upload or signs in in it.
 struct TestCopyTransport: DexTransport {
+    /// Who the copy pretends to be signed in as, for checking the signed-in screens. It still reaches nothing.
+    var signedInEmail: String?
+
     private var refusal: EncounterProblem { EncounterProblem("This is a test copy, so it does not talk to the home database.") }
 
     func upload(_ items: [UploadItem]) async throws -> UploadResponse { throw refusal }
@@ -68,7 +71,6 @@ struct TestCopyTransport: DexTransport {
     func fetchSkin() async throws -> String? { throw refusal }
     func saveSkin(_ id: String) async throws {}
 
-    var signedInEmail: String? { nil }
     func googleStart(challenge: String) throws -> URL { throw refusal }
     func requestCode(email: String) async throws { throw refusal }
     func signIn(_ proof: SignInProof) async throws { throw refusal }
@@ -148,10 +150,35 @@ final class DexGame {
 
     var isSignedIn: Bool { signedInEmail != nil }
 
-    /// Signs this device in with a proof from Apple, Google or an emailed code.
+    /// Signs this device in with a proof from Apple, Google or an emailed code, then sends what waited here and
+    /// picks up what the account already holds.
     func signIn(_ proof: SignInProof) async throws {
         try await transport.signIn(proof)
         signedInEmail = transport.signedInEmail
+        await upload()
+        await sync()
+    }
+
+    /// Signs this device out. The account's foods leave with it; anything not yet uploaded stays waiting here.
+    func signOut() async {
+        await transport.signOut()
+        leaveAccount()
+    }
+
+    /// Deletes the account and everything on it, then signs this device out.
+    func deleteAccount() async throws {
+        try await transport.deleteAccount()
+        leaveAccount()
+    }
+
+    private func leaveAccount() {
+        signedInEmail = transport.signedInEmail
+        store.forgetUploaded()
+        queue = []
+        queueTotal = 0
+        uploadError = nil
+        syncProblem = nil
+        skinProblem = nil
     }
 
     /// The food whose unlock animation is on screen.
@@ -173,11 +200,14 @@ final class DexGame {
             playAwaitingUnlocks()
         } catch {
             uploadError = (error as? EncounterProblem)?.message ?? error.localizedDescription
+            signedInEmail = transport.signedInEmail
         }
     }
 
     /// Picks up what has arrived from other devices and plays it. Not reaching the server leaves the game as it is.
     func sync() async {
+        // A signed-out device keeps to itself: nothing to fetch, and nothing to warn about.
+        guard isSignedIn else { return }
         // The skin comes first, so an unlock that follows is drawn in the look it will finish in.
         do {
             if skins.unsent {
@@ -196,11 +226,14 @@ final class DexGame {
         } catch {
             syncProblem = (error as? EncounterProblem)?.message ?? error.localizedDescription
         }
+        signedInEmail = transport.signedInEmail
     }
 
     /// Changes the look here at once, and on every other device once the home database has it.
     func choose(skin: DexSkin) async {
         skins.choose(skin)
+        // Signed out, the choice waits here and goes up when you sign in.
+        guard isSignedIn else { return }
         do {
             try await sendSkin()
         } catch {

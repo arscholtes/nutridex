@@ -197,6 +197,7 @@ struct DexPlate: View {
     var lens: Color = Color(hex: "#38B6F2")
     var onSkins: (() -> Void)?
     var onSources: (() -> Void)?
+    var onAccount: (() -> Void)?
 
     var body: some View {
         HStack(alignment: .top, spacing: 18) {
@@ -227,6 +228,9 @@ struct DexPlate: View {
                 }
                 if let onSources {
                     Button("Sources", action: onSources)
+                }
+                if let onAccount {
+                    Button("Account", action: onAccount)
                 }
             }
             .font(.dex(.subheadline, weight: .bold))
