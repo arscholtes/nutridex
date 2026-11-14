@@ -6,7 +6,7 @@ import { recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
 import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
-import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
+import { deleteRecipe, InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
 import { endSession, eraseOwner, removeSignIn, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, parseUnlocking, PENDING_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
@@ -131,4 +131,16 @@ export async function saveRecipeAction(draft: RecipeDraft): Promise<{ slug: stri
     if (error instanceof InvalidRecipe) return { problems: error.problems };
     throw error;
   }
+}
+
+/**
+ * Deletes one of the signed-in person's own recipes and returns them to their list.
+ * @param slug [string] the recipe's slug
+ */
+export async function deleteRecipeAction(slug: string) {
+  const account = await signedIn();
+  if (!account) redirect("/sign-in");
+  if (!(await deleteRecipe(slug, account.owner))) throw new Error(`there is no recipe "${slug}" of yours to delete`);
+  revalidatePath("/recipes");
+  redirect("/recipes");
 }

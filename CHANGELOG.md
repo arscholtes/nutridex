@@ -9,6 +9,10 @@ running version has no entry here.
 
 ## Unreleased
 
+### Added
+
+- You can delete a recipe you saved, and open a copy of it in the builder to change it and save it as a new one.
+
 ### Fixed
 
 - Without an account, a browser now holds about twice as many foods before it asks you to sign in: around 53

@@ -197,6 +197,16 @@ export async function listRecipes(visible: Set<string>, owner: string | null = n
 }
 
 /**
+ * Deletes a recipe its builder saved; its ingredients and steps go with it.
+ * @param slug [string] the recipe's slug
+ * @param owner [string] who is asking
+ * @return [Promise<boolean>] false when there is no such recipe of theirs, which includes every recipe that is everyone's
+ */
+export async function deleteRecipe(slug: string, owner: string, q: Sql = sql): Promise<boolean> {
+  return (await q`delete from recipe where slug = ${slug} and owner_id = ${owner} returning id`).length > 0;
+}
+
+/**
  * Everything one person built, in the shape they built it.
  * @param owner [string] whose recipes
  * @return [Promise<(RecipeDraft & { slug: string })[]>] by name
