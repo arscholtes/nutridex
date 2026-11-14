@@ -11,6 +11,8 @@ running version has no entry here.
 
 ### Fixed
 
+- A card you have not unlocked is black in the page itself, not only on screen, so viewing the page's source no
+  longer shows the colours of what is behind it.
 - The recipe builder no longer tells a food you have not found apart from one that does not exist, so a
   hand-written link cannot be used to check a hidden food's name.
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
