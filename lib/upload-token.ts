@@ -1,4 +1,4 @@
-// The passcode that links someone's devices until NutriDex has accounts.
+// The passcode the native apps share: every device holding it reads and writes one record. The web uses accounts.
 import { timingSafeEqual } from "node:crypto";
 
 const json = (status: number, body: unknown) => Response.json(body, { status });
