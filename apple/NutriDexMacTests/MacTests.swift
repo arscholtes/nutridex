@@ -345,6 +345,15 @@ struct VisibilityTests {
         #expect(!v.shows(.effect, "vision"))
     }
 
+    @Test func aScreenNobodyGaveAViewToShowsNothing() {
+        let unset = EnvironmentValues().dexVisibility
+        #expect(!unset.isEverything)
+        #expect(!unset.shows(.ingredient, "carrot"))
+        #expect(!unset.shows(.compound, "beta-carotene"))
+        #expect(unset.entries(of: .ingredient).isEmpty)
+        #expect(unset.sources.isEmpty)
+    }
+
     @Test func theMacSeesEverything() {
         #expect(DexVisibility.everything.shows(.ingredient, "carrot"))
         #expect(DexVisibility.everything.isEverything)
