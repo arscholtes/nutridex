@@ -20,6 +20,9 @@ npm run test:db              # each phase's "Done when", against that database; 
 npm run dev                  # the Dex at http://localhost:3000
 ```
 
+Every pull request runs `npm test` and `npm run typecheck` (`.github/workflows/pull-request-tests.yml`). The
+database and Swift suites run only where you run them.
+
 ## Going live
 
 The Dex runs on Vercel, with its data in Supabase Postgres. The app connects to Postgres directly
