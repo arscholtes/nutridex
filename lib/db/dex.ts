@@ -182,6 +182,8 @@ export type EntryCard = Named & {
   compoundClass: string | null;
   bestGrade: Grade | null;
   stats: string[];
+  /** For each stat, the slug of the food it names, or null: a screen hiding that food leaves the stat out. */
+  statFoods: (string | null)[];
 };
 
 export type SourceUse = SourceRef & { doi: string | null; pmid: string | null; population: string | null; supports: string[] };
@@ -549,25 +551,30 @@ export async function listEntries(search: { q?: string; kind?: EntryKind; type?:
 
   return rows.map(({ place, ...r }): EntryCard => {
     const stats: string[] = [];
+    const statFoods: (string | null)[] = [];
+    const say = (stat: string, food: string | null = null) => {
+      stats.push(stat);
+      statFoods.push(food);
+    };
     if (r.kind === "ingredient") {
       const s = ingredientStats.get(r.slug)!;
-      stats.push(`${s.measured} compounds measured`);
-      if (s.topIn.length > 0) stats.push(`Most ${s.topIn.slice(0, 2).join(" and ")} in the Dex`);
+      say(`${s.measured} compounds measured`);
+      if (s.topIn.length > 0) say(`Most ${s.topIn.slice(0, 2).join(" and ")} in the Dex`);
     } else if (r.kind === "compound") {
       const s = compoundStats.get(r.slug)!;
       if (s.foods > 0) {
-        stats.push(s.foods === 1 ? "In 1 food" : `In ${s.foods} foods`);
-        if (!within || within.foods.has(s.topSlug!)) stats.push(`Most in ${s.topName}`);
+        say(s.foods === 1 ? "In 1 food" : `In ${s.foods} foods`);
+        if (!within || within.foods.has(s.topSlug!)) say(`Most in ${s.topName}`, s.topSlug);
       } else if (s.carriers > 0) {
-        stats.push(`${s.carriers === 1 ? "In 1 food" : `In ${s.carriers} foods`}, no amount measured`);
+        say(`${s.carriers === 1 ? "In 1 food" : `In ${s.carriers} foods`}, no amount measured`);
       } else {
-        stats.push("In no food in the Dex");
+        say("In no food in the Dex");
       }
     } else {
       const s = effectStats.get(r.slug)!;
-      stats.push(s.compounds === 1 ? "1 compound" : `${s.compounds} compounds`);
+      say(s.compounds === 1 ? "1 compound" : `${s.compounds} compounds`);
     }
-    return { ...r, number: dexNumber(r.kind, place), href: hrefOf(r.kind, r.slug), bestGrade: grades.get(`${r.kind}:${r.slug}`) ?? null, stats };
+    return { ...r, number: dexNumber(r.kind, place), href: hrefOf(r.kind, r.slug), bestGrade: grades.get(`${r.kind}:${r.slug}`) ?? null, stats, statFoods };
   });
 }
 
