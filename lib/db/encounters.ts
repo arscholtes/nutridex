@@ -26,24 +26,25 @@ export async function encounteredFoods(owner: string | null = null, q: Sql = sql
 }
 
 /**
- * Stores newly encountered foods. An array naming an unknown food stores nothing.
+ * Stores newly encountered foods.
  * @param items [{ food, encounteredAt }[]] the foods and when they were had
  * @param owner [string | null] whose record, or null for the one the apps share
+ * @param onUnknown ["refuse" | "skip"] with a food the Dex does not have: store nothing, or store the rest
  * @return [Promise<{ added: string[]; unknown: string[] }>] which were new, and any unknown slugs
  */
-export async function recordEncounters(items: { food: string; encounteredAt: string }[], owner: string | null = null, q: Sql = sql): Promise<{ added: string[]; unknown: string[] }> {
-  const known = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${items.map((i) => i.food)})`;
-  const ids = new Map(known.map((k) => [k.slug, k.id]));
+export async function recordEncounters(items: { food: string; encounteredAt: string }[], owner: string | null = null, q: Sql = sql, onUnknown: "refuse" | "skip" = "refuse"): Promise<{ added: string[]; unknown: string[] }> {
+  const found = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${items.map((i) => i.food)})`;
+  const ids = new Map(found.map((k) => [k.slug, k.id]));
   const unknown = items.filter((i) => !ids.has(i.food)).map((i) => i.food);
-  if (unknown.length > 0) return { added: [], unknown };
+  if (unknown.length > 0 && onUnknown === "refuse") return { added: [], unknown };
   const added: string[] = [];
-  for (const item of items) {
+  for (const item of items.filter((i) => ids.has(i.food))) {
     const inserted = await q`
       insert into encounter (ingredient_id, encountered_at, owner_id) values (${ids.get(item.food)!}, ${item.encounteredAt}, ${owner})
       on conflict on constraint encounter_owner_ingredient do nothing returning id`;
     if (inserted.length > 0) added.push(item.food);
   }
-  return { added, unknown: [] };
+  return { added, unknown };
 }
 
 /**

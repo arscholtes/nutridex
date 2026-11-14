@@ -11,6 +11,8 @@ running version has no entry here.
 
 ### Fixed
 
+- Signing in keeps every food this browser was holding. Before, one food the Dex no longer had meant none of
+  them were saved.
 - A card you have not unlocked is black in the page itself, not only on screen, so viewing the page's source no
   longer shows the colours of what is behind it.
 - The recipe builder no longer tells a food you have not found apart from one that does not exist, so a
