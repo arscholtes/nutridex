@@ -71,8 +71,9 @@ export async function signIn(_previous: SignInState, form: FormData): Promise<Si
   const jar = await cookies();
   jar.set(SESSION_COOKIE, await startSession(proven.id, proven.email), { ...privateCookie, maxAge: SESSION_DAYS * 24 * 60 * 60 });
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
-  const { added, unknown } = await recordEncounters(pending, proven.id);
-  if (unknown.length > 0) console.error(`sign-in: this browser held foods the Dex does not have, so none were saved: ${unknown.join(", ")}`);
+  // A food the Dex has since dropped unlocks nothing, so it is left behind and the rest are kept.
+  const { added, unknown } = await recordEncounters(pending, proven.id, undefined, "skip");
+  if (unknown.length > 0) console.error(`sign-in: this browser held foods the Dex does not have, which were not saved: ${unknown.join(", ")}`);
   jar.delete(PENDING_COOKIE);
   if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify(added), privateCookie);
   const here = parseSkin(jar.get(SKIN_COOKIE)?.value);

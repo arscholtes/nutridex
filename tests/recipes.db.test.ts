@@ -199,6 +199,18 @@ describe("the builder's live preview", () => {
     });
   });
 
+  test("a locked food and a food that does not exist are refused in the same words, so the refusal tells nobody which is real", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      expect(await tx`select 1 from ingredient where slug = 'olive-oil'`).toHaveLength(1);
+      expect(await tx`select 1 from ingredient where slug = 'no-such-food'`).toHaveLength(0);
+      const refusal = async (food: string) => {
+        const preview = await draftPage({ ...DRAFT, ingredients: [{ food, grams: 10, prepMethod: "raw" }], steps: [] }, new Set(), tx);
+        return (preview as { problems: string[] }).problems.map((p) => p.replaceAll(food, "FOOD"));
+      };
+      expect(await refusal("olive-oil")).toEqual(await refusal("no-such-food"));
+    });
+  });
+
   test("a food this builder may not use gives problems, not a preview", async () => {
     await inRolledBackTransaction(async (tx) => {
       const preview = await draftPage(DRAFT, new Set(["carrot", "kale"]), tx);
