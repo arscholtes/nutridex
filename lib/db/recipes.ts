@@ -1,4 +1,4 @@
-// Recipes someone builds. Every platform saves through saveRecipe, which refuses what the engine could not
+// Recipes someone builds. Saving goes through saveRecipe, which refuses what the engine could not
 // read and any food not yet encountered, so a recipe never names something its builder has not unlocked.
 import { DEFAULT_SETTINGS, PREP_METHODS, recipeProfile, type RecipeInput, type RecipeProfile } from "epistasis";
 import { recipeGrid, type RecipeGrid } from "../recipe-grid.ts";
@@ -252,7 +252,7 @@ function slugOf(name: string): string {
   return name.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "recipe";
 }
 
-/** The slug itself when free, else the first numbered one that is: chosen before writing, so nothing collides. */
+/** The slug itself when free, else the first numbered one that is. Two saves at once can choose the same one; the slug's unique index then refuses the second. */
 async function freeSlug(base: string, q: Sql): Promise<string> {
   const taken = new Set((await q<{ slug: string }[]>`select slug from recipe where slug = ${base} or slug like ${`${base}-%`}`).map((r) => r.slug));
   if (!taken.has(base)) return base;
