@@ -242,6 +242,17 @@ final class TouchTests: XCTestCase {
         expectInReach(app.staticTexts["4 new encounters to upload"])
     }
 
+    func testASignedOutUploadOpensSignIn() throws {
+        let app = try launch()
+        let signIn = app.buttons["Sign in to upload"]
+        expectInReach(signIn)
+        signIn.tap()
+        expectInReach(app.buttons["Continue with Google"])
+        XCTAssertTrue(app.buttons["Email me a code"].exists)
+        XCTAssertTrue(app.buttons["Sign in with Apple"].waitForExistence(timeout: 5))
+        picture("sign-in")
+    }
+
     func testTheMainControlsAreBigEnoughForAThumb() throws {
         let app = try launch()
         for control in [app.buttons["Upload"], app.buttons["Sources"]] {
