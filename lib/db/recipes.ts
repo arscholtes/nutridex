@@ -228,8 +228,8 @@ function problemsIn(draft: RecipeDraft, known: Map<string, string>, encountered:
   if (draft.ingredients.length === 0) problems.push("a recipe needs at least one ingredient");
   for (const [index, i] of draft.ingredients.entries()) {
     const n = index + 1;
-    if (!known.has(i.food)) problems.push(`ingredient ${n}: there is no food "${i.food}"`);
-    else if (!encountered.has(i.food)) problems.push(`ingredient ${n}: ${i.food} has not been encountered yet`);
+    // One wording for a locked food and for no such food: telling them apart would confirm a hidden food's name.
+    if (!known.has(i.food) || !encountered.has(i.food)) problems.push(`ingredient ${n}: "${i.food}" is not a food you have found`);
     if (!(Number.isFinite(i.grams) && i.grams > 0)) problems.push(`ingredient ${n}: grams must be more than 0`);
     if (!PREPS.has(i.prepMethod)) problems.push(`ingredient ${n}: "${i.prepMethod}" is not a prep method the engine knows`);
   }

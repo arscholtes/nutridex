@@ -11,6 +11,8 @@ running version has no entry here.
 
 ### Fixed
 
+- The recipe builder no longer tells a food you have not found apart from one that does not exist, so a
+  hand-written link cannot be used to check a hidden food's name.
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
   and now reads only the foods on the list.
 
