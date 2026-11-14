@@ -87,13 +87,26 @@ export async function signInProviders(): Promise<Provider[]> {
  */
 export function providerStart(provider: Provider, origin: string): { url: string; verifier: string } {
   const verifier = randomBytes(32).toString("base64url");
-  const query = new URLSearchParams({
-    provider,
-    redirect_to: `${origin}/auth/callback`,
-    code_challenge: createHash("sha256").update(verifier).digest("base64url"),
-    code_challenge_method: "s256",
-  });
-  return { url: `${required().url}/auth/v1/authorize?${query}`, verifier };
+  const challenge = createHash("sha256").update(verifier).digest("base64url");
+  return { url: authorizeUrl(provider, `${origin}/auth/callback`, challenge), verifier };
+}
+
+/** Where an app's system sign-in sheet comes back to; the server sends it nowhere else. */
+export const APP_RETURN = "nutridex://auth/callback";
+
+/** @return [boolean] whether a value is an S256 challenge: the base64url SHA-256 of a secret (RFC 7636) */
+export const isChallenge = (value: unknown): value is string => typeof value === "string" && /^[A-Za-z0-9_-]{43}$/.test(value);
+
+/**
+ * Where to send someone to sign in through a provider, carrying the hash of a secret the caller keeps.
+ * @param provider [Provider] who will vouch for the person
+ * @param redirectTo [string] where the service sends them back with a code
+ * @param challenge [string] the S256 hash of the caller's secret
+ * @return [string] the sign-in service's authorize address
+ */
+export function authorizeUrl(provider: Provider, redirectTo: string, challenge: string): string {
+  const query = new URLSearchParams({ provider, redirect_to: redirectTo, code_challenge: challenge, code_challenge_method: "s256" });
+  return `${required().url}/auth/v1/authorize?${query}`;
 }
 
 /** What to tell someone whose provider sign-in did not land, by the name the callback puts in the address. */
