@@ -105,7 +105,23 @@ describe("whose a recipe is", () => {
       expect((await listRecipes(ALL, ANA, tx)).map((r) => r.slug)).toContain(slug);
       expect((await listRecipes(ALL, BEN, tx)).map((r) => r.slug)).not.toContain(slug);
       expect((await listRecipes(ALL, null, tx)).map((r) => r.slug)).not.toContain(slug);
-      expect((await recipePage(slug, tx))!.owner).toBe(ANA);
+      expect((await recipePage(slug, { owner: ANA, foods: ALL }, tx))!.owner).toBe(ANA);
+    });
+  });
+
+  test("its page loads for them, and for anyone else it is as if there were no such recipe", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).not.toBeNull();
+      expect(await recipePage(slug, { owner: BEN, foods: ALL }, tx)).toBeNull();
+      expect(await recipePage(slug, { owner: null, foods: ALL }, tx)).toBeNull();
+    });
+  });
+
+  test("a page holding a food its reader has not found does not load, even for whoever built it", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await recipePage(slug, { owner: ANA, foods: new Set(["carrot", "kale"]) }, tx)).toBeNull();
     });
   });
 
@@ -158,6 +174,18 @@ describe("the builder's live preview", () => {
       expect(page.grid.rows.map((r) => r.ingredientSlug).sort()).toEqual(["carrot", "kale", "olive-oil"]);
       expect(page.stepTitles).toEqual({ 1: "Steam the vegetables", 2: "Dress with oil" });
       expect(page.profile.perServing.some((t) => t.compoundSlug === "beta-carotene")).toBe(true);
+    });
+  });
+
+  test("a locked food and a food that does not exist are refused in the same words, so the refusal tells nobody which is real", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      expect(await tx`select 1 from ingredient where slug = 'olive-oil'`).toHaveLength(1);
+      expect(await tx`select 1 from ingredient where slug = 'no-such-food'`).toHaveLength(0);
+      const refusal = async (food: string) => {
+        const preview = await draftPage({ ...DRAFT, ingredients: [{ food, grams: 10, prepMethod: "raw" }], steps: [] }, new Set(), tx);
+        return (preview as { problems: string[] }).problems.map((p) => p.replaceAll(food, "FOOD"));
+      };
+      expect(await refusal("olive-oil")).toEqual(await refusal("no-such-food"));
     });
   });
 

@@ -28,7 +28,7 @@ const DRAFT: RecipeDraft = {
 /** Build the recipe the way every platform saves one, then load its page. */
 async function built(tx: typeof sql): Promise<RecipePage> {
   await recordEncounters(["carrot", "kale", "olive-oil"].map((food) => ({ food, encounteredAt: "2026-11-09T12:00:00.000Z" })), null, tx);
-  const page = await recipePage(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx), tx);
+  const page = await recipePage(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx), { owner: null, foods: await uploadedFoods(tx) }, tx);
   expect(page).not.toBeNull();
   return page!;
 }
@@ -51,7 +51,7 @@ describe("a built recipe's grid and profile render from the same data", () => {
     await inRolledBackTransaction(async (tx) => {
       const before = await built(tx);
       await tx`update recipe_ingredient set grams = 244 where id = ${before.grid.rows.find((r) => r.ingredientSlug === "carrot")!.recipeIngredientId}`;
-      const after = (await recipePage(before.slug, tx))!;
+      const after = (await recipePage(before.slug, { owner: null, foods: await uploadedFoods(tx) }, tx))!;
       expect(after.grid.rows.find((r) => r.ingredientSlug === "carrot")!.grams).toBe(244);
       // Kale carries beta-carotene too, so only the carrot's share of it doubles.
       expect(betaCaroteneFrom(before, "kale")).toBeGreaterThan(0);
