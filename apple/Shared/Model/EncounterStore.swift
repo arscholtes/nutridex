@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import os
 
 /// What this device knows about one food someone has had.
 struct EncounterRecord: Codable, Equatable {
@@ -16,6 +17,7 @@ struct EncounterRecord: Codable, Equatable {
 @Observable
 final class EncounterStore {
     private static let key = "encounterRecords"
+    private static let unreadableKey = "encounterRecords.unreadable"
 
     private let defaults: UserDefaults
     private(set) var records: [String: EncounterRecord]
@@ -23,7 +25,18 @@ final class EncounterStore {
     /// - Parameter defaults: where this device keeps its copy
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
-        records = defaults.data(forKey: Self.key).flatMap { try? JSONDecoder().decode([String: EncounterRecord].self, from: $0) } ?? [:]
+        guard let saved = defaults.data(forKey: Self.key) else {
+            records = [:]
+            return
+        }
+        do {
+            records = try JSONDecoder().decode([String: EncounterRecord].self, from: saved)
+        } catch {
+            // The next save replaces what is under the key, so the unreadable copy is moved where it survives.
+            defaults.set(saved, forKey: Self.unreadableKey)
+            Logger(subsystem: "NutriDex", category: "encounters").error("this device's record could not be read and was kept aside: \(error)")
+            records = [:]
+        }
     }
 
     private func save() {

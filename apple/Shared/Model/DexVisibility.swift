@@ -1,22 +1,41 @@
 import SwiftUI
 
 /// What a screen may show. The handhelds show only what has been encountered; the Mac shows everything
-/// and blacks out the rest.
+/// and blacks out the rest. A screen nobody gave a view to shows nothing.
 struct DexVisibility {
-    private let store: EncounterStore?
-
-    /// The Mac's view.
-    static let everything = DexVisibility(store: nil)
-
-    /// The handhelds' view of what this store has unlocked.
-    init(store: EncounterStore?) {
-        self.store = store
+    private enum Reach {
+        case everything
+        case nothing
+        case unlocked(EncounterStore)
     }
 
-    var isEverything: Bool { store == nil }
+    private let reach: Reach
+
+    /// The Mac's view.
+    static let everything = DexVisibility(reach: .everything)
+
+    /// What the environment holds until an app's root view says otherwise.
+    static let nothing = DexVisibility(reach: .nothing)
+
+    private init(reach: Reach) {
+        self.reach = reach
+    }
+
+    /// The handhelds' view of what this store has unlocked.
+    init(store: EncounterStore) {
+        reach = .unlocked(store)
+    }
+
+    var isEverything: Bool {
+        if case .everything = reach { true } else { false }
+    }
 
     func shows(_ kind: EntryKind, _ slug: String) -> Bool {
-        store?.isRevealed(kind, slug) ?? true
+        switch reach {
+        case .everything: true
+        case .nothing: false
+        case let .unlocked(store): store.isRevealed(kind, slug)
+        }
     }
 
     func shows(_ route: DexRoute) -> Bool {
@@ -48,5 +67,5 @@ struct DexVisibility {
 }
 
 extension EnvironmentValues {
-    @Entry var dexVisibility = DexVisibility.everything
+    @Entry var dexVisibility = DexVisibility.nothing
 }

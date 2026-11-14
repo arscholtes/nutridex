@@ -19,6 +19,19 @@ struct EncounterTests {
         #expect(!store.isRevealed(.effect, "vision"))
     }
 
+    @Test func aRecordThatCannotBeReadIsKeptAsideAndNotWrittenOver() {
+        let defaults = UserDefaults(suiteName: "nutridex-tests-\(UUID().uuidString)")!
+        let damaged = Data("not a record".utf8)
+        defaults.set(damaged, forKey: "encounterRecords")
+        #expect(defaults.data(forKey: "encounterRecords") == damaged)
+
+        let store = EncounterStore(defaults: defaults)
+        #expect(store.records.isEmpty)
+        store.encounter(food: "carrot")
+        #expect(defaults.data(forKey: "encounterRecords") != damaged)
+        #expect(defaults.data(forKey: "encounterRecords.unreadable") == damaged)
+    }
+
     @Test func havingAFoodRevealsItAndWhatItCarriesAndDoes() {
         let (store, _) = freshStore()
         store.encounter(food: "carrot")
@@ -330,6 +343,15 @@ struct VisibilityTests {
         #expect(!v.shows(.ingredient, "carrot"))
         #expect(!v.shows(.compound, "beta-carotene"))
         #expect(!v.shows(.effect, "vision"))
+    }
+
+    @Test func aScreenNobodyGaveAViewToShowsNothing() {
+        let unset = EnvironmentValues().dexVisibility
+        #expect(!unset.isEverything)
+        #expect(!unset.shows(.ingredient, "carrot"))
+        #expect(!unset.shows(.compound, "beta-carotene"))
+        #expect(unset.entries(of: .ingredient).isEmpty)
+        #expect(unset.sources.isEmpty)
     }
 
     @Test func theMacSeesEverything() {

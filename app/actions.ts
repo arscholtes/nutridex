@@ -6,7 +6,7 @@ import { recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
 import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
-import { InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
+import { deleteRecipe, InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
 import { endSession, eraseOwner, removeSignIn, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, parseUnlocking, PENDING_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
@@ -71,8 +71,9 @@ export async function signIn(_previous: SignInState, form: FormData): Promise<Si
   const jar = await cookies();
   jar.set(SESSION_COOKIE, await startSession(proven.id, proven.email), { ...privateCookie, maxAge: SESSION_DAYS * 24 * 60 * 60 });
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
-  const { added, unknown } = await recordEncounters(pending, proven.id);
-  if (unknown.length > 0) console.error(`sign-in: this browser held foods the Dex does not have, so none were saved: ${unknown.join(", ")}`);
+  // A food the Dex has since dropped unlocks nothing, so it is left behind and the rest are kept.
+  const { added, unknown } = await recordEncounters(pending, proven.id, undefined, "skip");
+  if (unknown.length > 0) console.error(`sign-in: this browser held foods the Dex does not have, which were not saved: ${unknown.join(", ")}`);
   jar.delete(PENDING_COOKIE);
   if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify(added), privateCookie);
   const here = parseSkin(jar.get(SKIN_COOKIE)?.value);
@@ -130,4 +131,16 @@ export async function saveRecipeAction(draft: RecipeDraft): Promise<{ slug: stri
     if (error instanceof InvalidRecipe) return { problems: error.problems };
     throw error;
   }
+}
+
+/**
+ * Deletes one of the signed-in person's own recipes and returns them to their list.
+ * @param slug [string] the recipe's slug
+ */
+export async function deleteRecipeAction(slug: string) {
+  const account = await signedIn();
+  if (!account) redirect("/sign-in");
+  if (!(await deleteRecipe(slug, account.owner))) throw new Error(`there is no recipe "${slug}" of yours to delete`);
+  revalidatePath("/recipes");
+  redirect("/recipes");
 }
