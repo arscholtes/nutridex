@@ -11,21 +11,38 @@ export type PendingEncounter = { food: string; encounteredAt: string };
 // the value with encodeURIComponent, so that is the size that counts.
 const PENDING_LIMIT_BYTES = 4_000;
 
+// A slug holds only these characters, which leaves "~" and "." free to join entries without escaping.
+const SLUG = /^[a-z0-9-]+$/;
+
 /**
  * @param pending [PendingEncounter[]] what this device has not uploaded
  * @param food [string] the food to add
  * @param encounteredAt [string] when it was had
  * @return [string | null] the cookie's new value, or null when the list would no longer fit in a cookie
+ * @throws when `food` could not be a food's slug
  */
 export function withPending(pending: PendingEncounter[], food: string, encounteredAt: string): string | null {
-  const value = JSON.stringify([...pending, { food, encounteredAt }]);
+  if (!SLUG.test(food)) throw new Error(`"${food}" could not be a food's slug`);
+  // Each entry is `slug~time`, the time in base 36: about half the size of JSON once the cookie is encoded.
+  const value = [...pending, { food, encounteredAt }].map((p) => `${p.food}~${Date.parse(p.encounteredAt).toString(36)}`).join(".");
   return `${PENDING_COOKIE}=${encodeURIComponent(value)}`.length <= PENDING_LIMIT_BYTES ? value : null;
 }
 
 /** @return [PendingEncounter[]] what this device has not uploaded; a cookie that will not parse counts as nothing, since a browser can hold anything */
 export function parsePending(value: string | undefined): PendingEncounter[] {
+  if (value === undefined || value === "") return [];
+  // A browser that saved its list as JSON still holds it that way until it marks another food.
+  if (value.startsWith("[") || value.startsWith("{")) return parsePendingJson(value);
+  return value.split(".").flatMap((entry) => {
+    const [food, time, ...rest] = entry.split("~");
+    const at = parseInt(time ?? "", 36);
+    return rest.length === 0 && SLUG.test(food) && /^[a-z0-9]+$/.test(time ?? "") && Number.isFinite(new Date(at).getTime()) ? [{ food, encounteredAt: new Date(at).toISOString() }] : [];
+  });
+}
+
+function parsePendingJson(value: string): PendingEncounter[] {
   try {
-    const parsed: unknown = JSON.parse(value ?? "[]");
+    const parsed: unknown = JSON.parse(value);
     return Array.isArray(parsed) ? parsed.filter((p): p is PendingEncounter => typeof p?.food === "string" && typeof p?.encounteredAt === "string") : [];
   } catch {
     return [];

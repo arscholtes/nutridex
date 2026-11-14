@@ -11,6 +11,8 @@ running version has no entry here.
 
 ### Fixed
 
+- Without an account, a browser now holds about twice as many foods before it asks you to sign in: around 53
+  where it was 27.
 - Signing in keeps every food this browser was holding. Before, one food the Dex no longer had meant none of
   them were saved.
 - A card you have not unlocked is black in the page itself, not only on screen, so viewing the page's source no
