@@ -20,7 +20,7 @@ struct RootView: View {
         return .standard
     }
 
-    private static var transport: EncounterTransport {
+    private static var transport: DexTransport {
         #if DEBUG
         if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport() }
         #endif

@@ -93,6 +93,7 @@ struct HadComposer: View {
 /// New encounters waiting on this device, with the button that sends them home.
 struct UploadBar: View {
     @Environment(DexGame.self) private var game
+    @State private var signingIn = false
 
     private var barShape: RoundedRectangle { RoundedRectangle(cornerRadius: Theme.skin.radius.control == nil ? 26 : Theme.skin.radius.panel) }
 
@@ -105,9 +106,14 @@ struct UploadBar: View {
                         .font(.dex(.subheadline, weight: .bold))
                         .foregroundStyle(Theme.ink)
                     Spacer(minLength: 8)
-                    Button(game.isUploading ? "Uploading" : "Upload") { Task { await game.upload() } }
-                        .buttonStyle(DexPrimaryButton())
-                        .disabled(game.isUploading)
+                    if game.isSignedIn {
+                        Button(game.isUploading ? "Uploading" : "Upload") { Task { await game.upload() } }
+                            .buttonStyle(DexPrimaryButton())
+                            .disabled(game.isUploading)
+                    } else {
+                        Button("Sign in to upload") { signingIn = true }
+                            .buttonStyle(DexPrimaryButton())
+                    }
                 }
                 if let problem = game.uploadError {
                     Text(problem).font(.dex(.footnote, weight: .bold)).foregroundStyle(Theme.danger).fixedSize(horizontal: false, vertical: true)
@@ -124,6 +130,7 @@ struct UploadBar: View {
             }
             .clipShape(barShape)
             .dexOutline(barShape)
+            .sheet(isPresented: $signingIn) { SignInScreen().environment(game) }
         }
     }
 }

@@ -55,15 +55,25 @@ protocol EncounterTransport {
     func saveSkin(_ id: String) async throws
 }
 
+/// What the game talks to: the record and the account behind it. `APITransport` is both.
+typealias DexTransport = EncounterTransport & AccountTransport
+
 #if DEBUG
-/// A test copy's record is made up, so it can never reach the real one, even if someone presses Upload in it.
-struct TestCopyTransport: EncounterTransport {
+/// A test copy's record is made up, so it can never reach the real one, even if someone presses Upload or signs in in it.
+struct TestCopyTransport: DexTransport {
     private var refusal: EncounterProblem { EncounterProblem("This is a test copy, so it does not talk to the home database.") }
 
     func upload(_ items: [UploadItem]) async throws -> UploadResponse { throw refusal }
     func fetch() async throws -> [ServerEncounter] { throw refusal }
     func fetchSkin() async throws -> String? { throw refusal }
     func saveSkin(_ id: String) async throws {}
+
+    var signedInEmail: String? { nil }
+    func googleStart(challenge: String) throws -> URL { throw refusal }
+    func requestCode(email: String) async throws { throw refusal }
+    func signIn(_ proof: SignInProof) async throws { throw refusal }
+    func signOut() async {}
+    func deleteAccount() async throws { throw refusal }
 }
 #endif
 
@@ -115,7 +125,7 @@ final class SkinStore {
 final class DexGame {
     let store: EncounterStore
     let skins: SkinStore
-    private let transport: EncounterTransport
+    let transport: DexTransport
 
     private(set) var isUploading = false
     private(set) var uploadError: String?
@@ -126,10 +136,22 @@ final class DexGame {
     private var queue: [EntryCard] = []
     private var queueTotal = 0
 
-    init(store: EncounterStore, transport: EncounterTransport, skins: SkinStore = SkinStore()) {
+    /// The email this device is signed in as, or nil when signed out.
+    private(set) var signedInEmail: String?
+
+    init(store: EncounterStore, transport: DexTransport, skins: SkinStore = SkinStore()) {
         self.store = store
         self.transport = transport
         self.skins = skins
+        signedInEmail = transport.signedInEmail
+    }
+
+    var isSignedIn: Bool { signedInEmail != nil }
+
+    /// Signs this device in with a proof from Apple, Google or an emailed code.
+    func signIn(_ proof: SignInProof) async throws {
+        try await transport.signIn(proof)
+        signedInEmail = transport.signedInEmail
     }
 
     /// The food whose unlock animation is on screen.

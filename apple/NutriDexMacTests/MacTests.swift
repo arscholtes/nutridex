@@ -156,7 +156,14 @@ struct CompareTests {
 }
 
 /// Stands in for the server, recording what it is sent.
-private final class StubTransport: EncounterTransport {
+private final class StubTransport: DexTransport {
+    var signedInEmail: String? = "fay@example.com"
+    func googleStart(challenge: String) throws -> URL { URL(string: "https://dex.test/start")! }
+    func requestCode(email: String) async throws {}
+    func signIn(_ proof: SignInProof) async throws { signedInEmail = "fay@example.com" }
+    func signOut() async { signedInEmail = nil }
+    func deleteAccount() async throws { signedInEmail = nil }
+
     var uploads: [[String]] = []
     var serverFoods: [String] = []
     var failure: EncounterProblem?
