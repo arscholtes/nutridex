@@ -41,16 +41,18 @@ export type RecipePage = {
 
 /**
  * A saved recipe as its page shows it: the grid and the profile, both from one loaded RecipeInput.
- * Shows every recipe; a screen that must hide locked foods checks them itself.
  * @param slug [string] the recipe's slug
- * @return [Promise<RecipePage | null>] null when no recipe has that slug
+ * @param reader [{ owner: string | null; foods: Set<string> }] who is asking, and the foods they may see
+ * @return [Promise<RecipePage | null>] null when no recipe has that slug, when it is someone else's, or when it holds a food the reader has not found
  */
-export async function recipePage(slug: string, q: Sql = sql): Promise<RecipePage | null> {
+export async function recipePage(slug: string, reader: { owner: string | null; foods: Set<string> }, q: Sql = sql): Promise<RecipePage | null> {
   const [row] = await q<{ id: string; name: string; servings: number; owner: string | null }[]>`select id, name, servings, owner_id as owner from recipe where slug = ${slug}`;
-  if (!row) return null;
+  if (!row || (row.owner !== null && row.owner !== reader.owner)) return null;
+  const recipe = await loadRecipe(slug, q);
+  if (recipe.ingredients.some((i) => !reader.foods.has(i.ingredientSlug))) return null;
   const titles = await q<{ position: number; title: string | null }[]>`select position, title from recipe_step where recipe_id = ${row.id}`;
   const stepTitles = Object.fromEntries(titles.map((t) => [t.position, t.title ?? `Step ${t.position}`]));
-  return pageOf({ slug, name: row.name, servings: row.servings, owner: row.owner }, await loadRecipe(slug, q), stepTitles, q);
+  return pageOf({ slug, name: row.name, servings: row.servings, owner: row.owner }, recipe, stepTitles, q);
 }
 
 /**
@@ -228,8 +230,8 @@ function problemsIn(draft: RecipeDraft, known: Map<string, string>, encountered:
   if (draft.ingredients.length === 0) problems.push("a recipe needs at least one ingredient");
   for (const [index, i] of draft.ingredients.entries()) {
     const n = index + 1;
-    if (!known.has(i.food)) problems.push(`ingredient ${n}: there is no food "${i.food}"`);
-    else if (!encountered.has(i.food)) problems.push(`ingredient ${n}: ${i.food} has not been encountered yet`);
+    // One wording for a locked food and for no such food: telling them apart would confirm a hidden food's name.
+    if (!known.has(i.food) || !encountered.has(i.food)) problems.push(`ingredient ${n}: "${i.food}" is not a food you have found`);
     if (!(Number.isFinite(i.grams) && i.grams > 0)) problems.push(`ingredient ${n}: grams must be more than 0`);
     if (!PREPS.has(i.prepMethod)) problems.push(`ingredient ${n}: "${i.prepMethod}" is not a prep method the engine knows`);
   }
