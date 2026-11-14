@@ -9,6 +9,10 @@ running version has no entry here.
 
 ## Unreleased
 
+### Added
+
+- You can delete a recipe you saved, and open a copy of it in the builder to change it and save it as a new one.
+
 ### Fixed
 
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,

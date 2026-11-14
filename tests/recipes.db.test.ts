@@ -4,7 +4,7 @@ import { sql } from "../lib/db/client.ts";
 import { loadRecipe } from "../lib/db/engine-input.ts";
 import { recordEncounters } from "../lib/db/encounters.ts";
 import { eraseOwner, ownerRecord } from "../lib/db/sessions.ts";
-import { draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
+import { deleteRecipe, draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
 import { inRolledBackTransaction } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
@@ -122,6 +122,28 @@ describe("whose a recipe is", () => {
     await inRolledBackTransaction(async (tx) => {
       const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
       expect(await recipePage(slug, { owner: ANA, foods: new Set(["carrot", "kale"]) }, tx)).toBeNull();
+    });
+  });
+
+  test("whoever built a recipe can delete it, and its ingredients and steps go with it", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      const rows = () => tx`select (select count(*)::int from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.slug = ${slug}) as ingredients, (select count(*)::int from recipe_step rs join recipe r on r.id = rs.recipe_id where r.slug = ${slug}) as steps`;
+      expect(await rows()).toEqual([{ ingredients: 3, steps: 2 }]);
+      expect(await deleteRecipe(slug, ANA, tx)).toBe(true);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).toBeNull();
+      expect(await rows()).toEqual([{ ingredients: 0, steps: 0 }]);
+    });
+  });
+
+  test("nobody else can delete it, and nobody can delete a recipe that is everyone's", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await deleteRecipe(slug, BEN, tx)).toBe(false);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).not.toBeNull();
+      expect(await tx`select owner_id from recipe where slug = 'juice'`).toEqual([{ owner_id: null }]);
+      expect(await deleteRecipe("juice", ANA, tx)).toBe(false);
+      expect(await tx`select 1 from recipe where slug = 'juice'`).toHaveLength(1);
     });
   });
 
