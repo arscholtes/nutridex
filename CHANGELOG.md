@@ -11,6 +11,8 @@ running version has no entry here.
 
 ### Fixed
 
+- Without an account, a browser now holds about twice as many foods before it asks you to sign in: around 53
+  where it was 27.
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
   and now reads only the foods on the list.
 
