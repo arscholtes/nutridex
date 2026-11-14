@@ -105,7 +105,23 @@ describe("whose a recipe is", () => {
       expect((await listRecipes(ALL, ANA, tx)).map((r) => r.slug)).toContain(slug);
       expect((await listRecipes(ALL, BEN, tx)).map((r) => r.slug)).not.toContain(slug);
       expect((await listRecipes(ALL, null, tx)).map((r) => r.slug)).not.toContain(slug);
-      expect((await recipePage(slug, tx))!.owner).toBe(ANA);
+      expect((await recipePage(slug, { owner: ANA, foods: ALL }, tx))!.owner).toBe(ANA);
+    });
+  });
+
+  test("its page loads for them, and for anyone else it is as if there were no such recipe", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).not.toBeNull();
+      expect(await recipePage(slug, { owner: BEN, foods: ALL }, tx)).toBeNull();
+      expect(await recipePage(slug, { owner: null, foods: ALL }, tx)).toBeNull();
+    });
+  });
+
+  test("a page holding a food its reader has not found does not load, even for whoever built it", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await recipePage(slug, { owner: ANA, foods: new Set(["carrot", "kale"]) }, tx)).toBeNull();
     });
   });
 
