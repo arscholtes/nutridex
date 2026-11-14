@@ -389,6 +389,14 @@ struct VisibilityTests {
         #expect(everything.contains("Sweet potato"))
     }
 
+    @Test func whichStatNamesAFoodComesFromTheDataNotTheSentence() throws {
+        let json = #"{"kind":"compound","slug":"made-up","name":"Made up","number":"C999","type":null,"bestGrade":null,"stats":["In 3 foods","Richest wherever it grows"],"statFoods":[null,"sweet-potato"],"description":"","art":null,"sources":[]}"#
+        let card = try JSONDecoder().decode(EntryCard.self, from: Data(json.utf8))
+        #expect(visibility(["carrot"]).stats(of: card) == ["In 3 foods"])
+        #expect(visibility(["sweet-potato"]).stats(of: card) == ["In 3 foods", "Richest wherever it grows"])
+        #expect(DexVisibility.everything.stats(of: card).count == 2)
+    }
+
     @Test func aRichestFoodIsNamedOnlyOnceYouHaveHadIt() throws {
         let carrot = try #require(Dex.bundled.ingredients["carrot"]?.compounds.first { $0.slug == "beta-carotene" })
         #expect(visibility(["carrot"]).richest(of: carrot) == nil)

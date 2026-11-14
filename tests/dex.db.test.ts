@@ -173,6 +173,9 @@ describe("home search", () => {
     expect(piperine.stats).toEqual(["In 1 food, no amount measured"]);
     const beta = (await listEntries({ q: "beta-carotene" }))[0];
     expect(beta.stats).toEqual(["In 12 foods", "Most in Sweet potato"]);
+    // Which stat names a food is data, so an app hiding that food never has to read the sentence.
+    expect(beta.statFoods).toEqual([null, "sweet-potato"]);
+    expect(piperine.statFoods).toEqual([null]);
   });
 
   test("a card's evidence badge is its entry's best grade, and none when nothing graded reaches it", async () => {

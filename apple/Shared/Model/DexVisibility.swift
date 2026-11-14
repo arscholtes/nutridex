@@ -48,14 +48,9 @@ struct DexVisibility {
         Dex.bundled.cards.filter { $0.kind == kind && shows(kind, $0.slug) }
     }
 
-    /// A card's stats, without one that would name a hidden food.
+    /// A card's stats, without one that names a hidden food. The snapshot says which stat names which food.
     func stats(of card: EntryCard) -> [String] {
-        card.stats.filter { stat in
-            guard stat.hasPrefix("Most in ") else { return true }
-            let name = String(stat.dropFirst("Most in ".count))
-            guard let food = Dex.bundled.cards.first(where: { $0.kind == .ingredient && $0.name == name }) else { return true }
-            return shows(.ingredient, food.slug)
-        }
+        zip(card.stats, card.statFoods).filter { _, food in food.map { shows(.ingredient, $0) } ?? true }.map(\.0)
     }
 
     /// The richest food for a compound, unless naming it would give away a food not yet encountered.
