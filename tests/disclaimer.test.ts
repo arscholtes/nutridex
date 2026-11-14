@@ -71,6 +71,17 @@ describe("what the disclaimer says is stored", () => {
     expect(stored(DISCLAIMER_SECTIONS)).toMatch(/download .* or delete/);
   });
 
+  test("the apps say signing in keeps your email address, this device keeps the sign-in, and where to download or delete it", () => {
+    const apps = stored(NATIVE_DISCLAIMER_SECTIONS);
+    expect(apps).toContain("email address");
+    expect(apps).toContain("Keychain");
+    expect(apps).toMatch(/download .* delete/);
+  });
+
+  test("the apps say what signing in through Google hands over", () => {
+    expect(stored(NATIVE_DISCLAIMER_SECTIONS)).toMatch(/Google.*name and picture/);
+  });
+
   test("the web mentions its cookies and the apps do not", () => {
     expect(stored(DISCLAIMER_SECTIONS)).toContain("cookie");
     expect(stored(NATIVE_DISCLAIMER_SECTIONS)).not.toContain("cookie");
