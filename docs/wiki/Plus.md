@@ -1,6 +1,6 @@
 # NutriDex Plus
 
-_Last updated 2026-11-13. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
+_Last updated 2026-11-14. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
 
 The paid tier: the professor's insights about your week and recipe ideas, written by Claude. The game, scanning and the health score stay free.
 

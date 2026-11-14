@@ -1,6 +1,6 @@
 # Health
 
-_Last updated 2026-11-13. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
+_Last updated 2026-11-14. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
 
 Take a picture of a label (or scan its barcode) every time you eat, and NutriDex logs it. A health score shows how much of your daily references your logged meals reached, and the lowest nutrients come first, with where yours came from.
 

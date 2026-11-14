@@ -10,5 +10,8 @@
 - [[Health|Health]]
 - [[NutriDex Plus|Plus]]
 - [[Account|Account]]
+- [[Evolutions|Evolutions]]
+- [[The World|World]]
+- [[The story|Story]]
 - [[Explorations|Explorations]]
 - [[Design changelog|Design-Changelog]]
