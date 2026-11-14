@@ -616,3 +616,75 @@ struct SkinTests {
         #expect(relaunched.skinProblem == nil)
     }
 }
+
+/// Your foods and skin follow your account; a signed-out device keeps to itself.
+@MainActor
+struct AccountTests {
+    private func signedOutGame() -> (DexGame, StubTransport) {
+        let defaults = UserDefaults(suiteName: "nutridex-tests-\(UUID().uuidString)")!
+        let transport = StubTransport()
+        transport.signedInEmail = nil
+        return (DexGame(store: EncounterStore(defaults: defaults), transport: transport, skins: SkinStore(defaults: defaults)), transport)
+    }
+
+    private let code = SignInProof.emailed(email: "fay@example.com", code: "123456")
+
+    @Test func signingInSendsWhatWaitedAndPicksUpYourAccount() async throws {
+        let (game, transport) = signedOutGame()
+        transport.serverFoods = ["kale"]
+        game.store.encounter(food: "carrot")
+
+        try await game.signIn(code)
+
+        #expect(game.isSignedIn)
+        #expect(transport.uploads == [["carrot"]])
+        #expect(game.store.pending.isEmpty)
+        #expect(game.store.isRevealed(.ingredient, "kale"))
+    }
+
+    @Test func aSignedOutDeviceNeitherTriesTheServerNorWarns() async {
+        let (game, transport) = signedOutGame()
+        transport.failure = EncounterProblem("the server was asked")
+        transport.skinFailure = EncounterProblem("the server was asked")
+
+        await game.sync()
+
+        #expect(game.syncProblem == nil)
+        #expect(game.skinProblem == nil)
+    }
+
+    @Test func aSkinChosenSignedOutGoesUpWhenYouSignIn() async throws {
+        let (game, transport) = signedOutGame()
+        await game.choose(skin: Dex.bundled.skin(id: "yellow-version")!)
+        #expect(game.skinProblem == nil)
+        #expect(transport.savedSkins.isEmpty)
+
+        try await game.signIn(code)
+
+        #expect(transport.savedSkins == ["yellow-version"])
+    }
+
+    @Test func signingOutForgetsTheAccountsFoodsAndKeepsWhatWaits() async throws {
+        let (game, transport) = signedOutGame()
+        transport.serverFoods = ["kale"]
+        try await game.signIn(code)
+        game.store.encounter(food: "carrot")
+
+        await game.signOut()
+
+        #expect(!game.isSignedIn)
+        #expect(!game.store.isRevealed(.ingredient, "kale"))
+        #expect(game.store.pending.map(\.food) == ["carrot"])
+    }
+
+    @Test func deletingTheAccountSignsOutAndForgetsItsFoods() async throws {
+        let (game, transport) = signedOutGame()
+        transport.serverFoods = ["kale"]
+        try await game.signIn(code)
+
+        try await game.deleteAccount()
+
+        #expect(!game.isSignedIn)
+        #expect(!game.store.isRevealed(.ingredient, "kale"))
+    }
+}

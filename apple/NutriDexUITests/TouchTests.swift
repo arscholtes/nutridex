@@ -44,9 +44,9 @@ final class TouchTests: XCTestCase {
         get throws { try XCTUnwrap(head["skins"] as? [[String: Any]]).compactMap { $0["id"] as? String } }
     }
 
-    private func launch(foods: String = "carrot,kale,egg", route: String? = nil, skin: String? = nil) throws -> XCUIApplication {
+    private func launch(foods: String = "carrot,kale,egg", route: String? = nil, skin: String? = nil, signedInAs email: String? = nil) throws -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = try ["-acceptedDisclaimerVersion", version, "-debugEncountered", foods] + (route.map { ["-debugRoute", $0] } ?? []) + (skin.map { ["-skin", $0] } ?? [])
+        app.launchArguments = try ["-acceptedDisclaimerVersion", version, "-debugEncountered", foods] + (route.map { ["-debugRoute", $0] } ?? []) + (skin.map { ["-skin", $0] } ?? []) + (email.map { ["-debugSignedIn", $0] } ?? [])
         app.launch()
         return app
     }
@@ -251,6 +251,27 @@ final class TouchTests: XCTestCase {
         XCTAssertTrue(app.buttons["Email me a code"].exists)
         XCTAssertTrue(app.buttons["Sign in with Apple"].waitForExistence(timeout: 5))
         picture("sign-in")
+    }
+
+    func testAccountOffersSignInWhenSignedOut() throws {
+        let app = try launch()
+        let account = app.buttons["Account"].firstMatch
+        expectInReach(account)
+        account.tap()
+        expectInReach(app.buttons["Email me a code"])
+        picture("account-signed-out")
+    }
+
+    func testASignedInAccountShowsItsEmailSignOutAndDelete() throws {
+        let app = try launch(signedInAs: "fay@example.com")
+        let account = app.buttons["Account"].firstMatch
+        expectInReach(account)
+        account.tap()
+        expectInReach(app.staticTexts["fay@example.com"])
+        XCTAssertTrue(app.buttons["Sign out"].exists)
+        XCTAssertTrue(app.buttons["Delete account"].exists)
+        XCTAssertFalse(app.buttons["Sign in to upload"].exists)
+        picture("account-signed-in")
     }
 
     func testTheMainControlsAreBigEnoughForAThumb() throws {
