@@ -36,6 +36,14 @@ describe("two accounts", () => {
     expect((await recordEncounters([{ food: "carrot", encounteredAt: at }], ANA)).added).toEqual([]);
   });
 
+  test("signing in keeps every food the Dex knows, even when the browser also held one it does not", async () => {
+    const held = [{ food: "carrot", encounteredAt: at }, { food: "a-food-the-dex-dropped", encounteredAt: at }, { food: "kale", encounteredAt: at }];
+    expect(await recordEncounters(held, ANA)).toEqual({ added: [], unknown: ["a-food-the-dex-dropped"] });
+    expect(await encounteredFoods(ANA)).toEqual([]);
+    expect(await recordEncounters(held, ANA, sql, "skip")).toEqual({ added: ["carrot", "kale"], unknown: ["a-food-the-dex-dropped"] });
+    expect((await encounteredFoods(ANA)).sort()).toEqual(["carrot", "kale"]);
+  });
+
   test("each keep their own skin, and the last choice wins", async () => {
     const shared = await savedSkin();
     await saveSkin("deep-sea", ANA);

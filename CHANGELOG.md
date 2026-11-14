@@ -11,6 +11,8 @@ running version has no entry here.
 
 ### Fixed
 
+- Signing in keeps every food this browser was holding. Before, one food the Dex no longer had meant none of
+  them were saved.
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
   and now reads only the foods on the list.
 
