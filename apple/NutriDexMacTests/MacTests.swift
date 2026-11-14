@@ -19,6 +19,19 @@ struct EncounterTests {
         #expect(!store.isRevealed(.effect, "vision"))
     }
 
+    @Test func aRecordThatCannotBeReadIsKeptAsideAndNotWrittenOver() {
+        let defaults = UserDefaults(suiteName: "nutridex-tests-\(UUID().uuidString)")!
+        let damaged = Data("not a record".utf8)
+        defaults.set(damaged, forKey: "encounterRecords")
+        #expect(defaults.data(forKey: "encounterRecords") == damaged)
+
+        let store = EncounterStore(defaults: defaults)
+        #expect(store.records.isEmpty)
+        store.encounter(food: "carrot")
+        #expect(defaults.data(forKey: "encounterRecords") != damaged)
+        #expect(defaults.data(forKey: "encounterRecords.unreadable") == damaged)
+    }
+
     @Test func havingAFoodRevealsItAndWhatItCarriesAndDoes() {
         let (store, _) = freshStore()
         store.encounter(food: "carrot")
