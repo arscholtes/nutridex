@@ -4,8 +4,6 @@
 <dict>
 	<key>NutriDexAPIURL</key>
 	<string>$(NUTRIDEX_API_URL)</string>
-	<key>NutriDexUploadToken</key>
-	<string>$(NUTRIDEX_UPLOAD_TOKEN)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsLocalNetworking</key>

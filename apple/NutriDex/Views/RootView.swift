@@ -24,7 +24,7 @@ struct RootView: View {
         #if DEBUG
         if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport() }
         #endif
-        return HTTPEncounterTransport.configured
+        return APITransport.configured
     }
 
     /// A throwaway record stays exactly what the launch argument asked for, with nothing merged in from home.

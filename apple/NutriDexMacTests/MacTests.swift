@@ -407,10 +407,10 @@ struct WireFormatTests {
         #expect(UploadItem.dateFormat.date(from: "2026-11-02T12:00:00.000Z") != nil)
     }
 
-    /// Runs against a real server when asked: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test
+    /// Runs against a real server when asked, with this Mac signed in: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test
     @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_TEST"] == "1"))
     func theRealServerTakesAnUpload() async throws {
-        let transport = HTTPEncounterTransport.configured
+        let transport = APITransport.configured
         let response = try await transport.upload([UploadItem(food: "olive-oil", encounteredAt: .now)])
         #expect(response.encounters.contains { $0.food == "olive-oil" })
         #expect(try await transport.fetch().contains { $0.food == "olive-oil" })
@@ -489,10 +489,10 @@ struct SkinTableTests {
 /// The skin that follows someone between their devices.
 @MainActor
 struct SkinTests {
-    /// Runs against a real server when asked: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test. Puts back what it finds.
+    /// Runs against a real server when asked, with this Mac signed in: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test. Puts back what it finds.
     @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_TEST"] == "1"))
     func theRealServerRemembersASkinForEveryDevice() async throws {
-        let transport = HTTPEncounterTransport.configured
+        let transport = APITransport.configured
         let before = try await transport.fetchSkin()
         try await transport.saveSkin("yellow-version")
         #expect(try await transport.fetchSkin() == "yellow-version")
