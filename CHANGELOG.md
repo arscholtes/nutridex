@@ -7,10 +7,20 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
-## Unreleased
+## 0.11.0 - 2026-11-14
+
+### Added
+
+- Sign in on the iPhone, iPad and Mac apps with Apple, Google or an emailed code, from the new Account screen. What
+  you unlock and the skin you wear follow your account to every device you sign in on.
+- Sign out, or delete your account and everything on it, from the app's Account screen.
 
 ### Changed
 
+- The apps no longer share one passcode: uploading now asks you to sign in, and anything you marked before then
+  goes up the moment you do. Signing out leaves your account's foods behind on the account, not on the device.
+- What the apps' notice says is stored about you now covers your account's email address and the sign-in this
+  device keeps.
 - NutriDex now keeps each time you have a food, not only the first. Nothing looks different yet; it is what
   research tiers will be worked out from. Downloading your data lists every one.
 
