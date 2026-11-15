@@ -66,9 +66,21 @@ xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex \
 xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac -destination 'platform=macOS'
 ```
 
-Uploading needs the server running and the same `NUTRIDEX_UPLOAD_TOKEN` in `.env.local` and in
-`apple/Config/Local.xcconfig`. Simulators and the Mac reach it at `localhost:3200`; a real device needs this Mac's
-address or a hosted server in `NUTRIDEX_API_URL`.
+Uploading needs the server running and the app signed in (Account). Locally the emailed code works against the
+local sign-in stack (see Accounts), whose mailbox is at `http://127.0.0.1:54324`. Simulators and the Mac reach the
+server at `localhost:3200`; a real device needs this Mac's address or the live site in `NUTRIDEX_API_URL`.
+
+With that server on `:3200` pointed at the stack, two opt-in tests sign in for real. The phone's UI test signs in
+with an emailed code and uploads a food; the Mac's then signs in as the same address, finds the food and deletes the
+account:
+
+```bash
+TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 TEST_RUNNER_NUTRIDEX_LIVE_EMAIL=someone@nutridex.test xcodebuild test -project apple/NutriDex.xcodeproj \
+  -scheme NutriDex -destination 'platform=iOS Simulator,name=iPhone 17' \
+  -only-testing:NutriDexUITests/TouchTests/testSigningInOnThePhoneTakesWhatYouHadToYourAccount
+TEST_RUNNER_NUTRIDEX_LIVE_EMAIL=someone@nutridex.test xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac \
+  -destination 'platform=macOS' -only-testing:NutriDexMacTests/LiveAccountTests
+```
 
 To install on a device, copy `apple/Config/Local.example.xcconfig` to `apple/Config/Local.xcconfig` and fill
 in your team and bundle id prefix. The Mac app signs to run locally, so it needs neither.
@@ -107,10 +119,13 @@ drawn from its data (`lib/art/creature.ts`): its class sets the colour and shape
 `/api/v1` is a thin doorway onto the same functions the web pages call, so the web and the apps cannot drift
 apart. `docs/api/v1.openapi.json` describes every call, and `tests/api-v1-spec.test.ts` fails when a route and
 that file disagree. An app signs in at `POST /api/v1/session`, with an emailed code or with the identity token
-Apple or Google gave it, and sends the session token it gets back as a bearer token. Every route starts with
+Apple or Google gave it, and sends the session token it gets back as a bearer token. Google in the apps goes
+through the system sign-in sheet: the app keeps a PKCE secret, opens `GET /api/v1/session/start` with its
+challenge, and trades the code that comes back to `nutridex://auth/callback` at `POST /api/v1/session` as
+`{ code, codeVerifier }`. The session lives in the device's Keychain (`apple/Shared/Model/SessionStore.swift`). Every route starts with
 `caller` (`lib/api/v1.ts`), which is the one place that turns a token into a person. The web does not use these
 routes: it keeps its cookie and its server actions. The two passcode routes (`/api/encounters`,
-`/api/preferences`) stay until the Apple apps sign in.
+`/api/preferences`) stay until the Apple apps sign in on the live site; the apps no longer call them.
 
 ## Catches, tiers and ranks
 
@@ -144,8 +159,8 @@ anyone other than its maker uses the app.
 
 Choose a look under Skins, on any device: New age, Iridescent, Yellow version, Nutrition label, Field guide, Seed
 packet, Sticker book, Deep sea, Receipt or Arcade. Each is a row in `lib/skins.ts`. The choice is kept on the device and, for
-signed-in people, on their account, so it follows them to any browser. The native apps still share one choice
-through the upload passcode and `GET` and `PUT /api/preferences`.
+signed-in people, on their account, so it follows them to any browser and to the apps they sign in on
+(`PUT /api/v1/me/skin`). A choice made signed out stays on that device and goes up when it signs in.
 
 ## Accounts
 
@@ -172,6 +187,9 @@ server has no sign-in and nothing else changes. On the hosted project:
 4. For Google or Apple, follow Supabase's guides for [Google](https://supabase.com/docs/guides/auth/social-login/auth-google)
    and [Apple](https://supabase.com/docs/guides/auth/social-login/auth-apple), then add `https://<the site>/auth/callback`
    under **Authentication → URL Configuration → Redirect URLs**. The web secret for Apple expires every six months.
+   For the apps, also add `nutridex://auth/callback` to the Redirect URLs (Google through the system sheet) and
+   register each app's bundle id under **Providers → Apple → Client IDs** (the native Apple button, which needs no
+   six-month secret).
 
 To try it locally, with Docker running:
 
