@@ -688,3 +688,38 @@ struct AccountTests {
         #expect(!game.store.isRevealed(.ingredient, "kale"))
     }
 }
+
+/// After the phone's live UI test, on the same local server and sign-in stack:
+/// TEST_RUNNER_NUTRIDEX_LIVE_EMAIL=<the phone's address> xcodebuild test -scheme NutriDexMac. Deletes the test account after.
+@MainActor
+struct LiveAccountTests {
+    private func mailedCode(to email: String) async throws -> String {
+        for _ in 0..<20 {
+            let (found, _) = try await URLSession.shared.data(from: URL(string: "http://127.0.0.1:54324/api/v1/search?query=to:\(email)")!)
+            if let id = ((try JSONSerialization.jsonObject(with: found) as? [String: Any])?["messages"] as? [[String: Any]])?.first?["ID"] as? String {
+                let (body, _) = try await URLSession.shared.data(from: URL(string: "http://127.0.0.1:54324/api/v1/message/\(id)")!)
+                if let text = (try JSONSerialization.jsonObject(with: body) as? [String: Any])?["Text"] as? String,
+                   let code = text.range(of: #"\b\d{6}\b"#, options: .regularExpression) {
+                    return String(text[code])
+                }
+            }
+            try await Task.sleep(for: .milliseconds(500))
+        }
+        throw EncounterProblem("no code reached the mailbox for \(email)")
+    }
+
+    @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_EMAIL"] != nil))
+    func theMacSeesWhatThePhoneUploadedOnceItSignsIn() async throws {
+        let email = try #require(ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_EMAIL"])
+        let transport = APITransport(baseURL: URL(string: "http://localhost:3200"), sessions: SessionStore(service: "NutriDexMacTests.live.\(UUID().uuidString)"))
+        try await transport.requestCode(email: email)
+        // A new code mail replaces the phone's as the newest in the mailbox.
+        try await Task.sleep(for: .seconds(1))
+        try await transport.signIn(.emailed(email: email, code: try await mailedCode(to: email)))
+
+        #expect(try await transport.fetch().map(\.food).contains("beet"))
+
+        try await transport.deleteAccount()
+        #expect(transport.signedInEmail == nil)
+    }
+}
