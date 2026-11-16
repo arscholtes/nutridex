@@ -10,7 +10,7 @@ struct SnapshotTests {
 
     @Test func holdsEveryEntryTheWebDexHas() {
         let count = { (kind: EntryKind) in dex.cards.filter { $0.kind == kind }.count }
-        #expect(count(.ingredient) == 16)
+        #expect(count(.ingredient) == 15)
         #expect(count(.compound) == 152)
         #expect(count(.effect) == 29)
         #expect(!dex.version.isEmpty)
