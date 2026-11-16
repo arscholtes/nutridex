@@ -1,6 +1,6 @@
 # NutriDex design wiki
 
-_Last updated 2026-11-13. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
+_Last updated 2026-11-14. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
 
 This wiki is the hand-off for NutriDex's redesign: every screen, how it should behave, and the reasons behind it, so that what gets built matches what was designed. The screens live on a [Design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00); each page here mirrors one of its pages, with a screenshot and the build note that sits beside each artboard.
 
@@ -16,6 +16,10 @@ NutriDex is phone-first and built as a game, Pokédex-style: you catch the foods
 - [[Web and Mac: the Lab|Web-and-Mac]]: research, planning and the full wall
 - [[Health|Health]]: label scanning, the health score and nutrient detail
 - [[NutriDex Plus|Plus]]: the paid tier, pricing and how Claude is used
+- [[Account|Account]]: sign-in, settings, profile, privacy and friends
+- [[Evolutions|Evolutions]]: how every food grows from a sprout to an heirloom, and its abilities
+- [[The World|World]]: the dream inside a body, its eight lands, walking and the atlas
+- [[The story|Story]]: the Lab, the Kitchen and the Scope, where the story happens
 - [[Explorations|Explorations]]: the journey map and the three directions that came before the game
 - [[Design changelog|Design-Changelog]]: what changed and why
 

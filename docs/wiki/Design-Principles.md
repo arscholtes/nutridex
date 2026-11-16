@@ -1,6 +1,6 @@
 # Design principles
 
-_Last updated 2026-11-13. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
+_Last updated 2026-11-14. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
 
 These hold on every platform and every skin. They come from the app's own rules (CLAUDE.md and the design system's content guide) and from decisions made while designing.
 

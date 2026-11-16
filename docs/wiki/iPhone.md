@@ -1,6 +1,6 @@
 # iPhone
 
-_Last updated 2026-11-13. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
+_Last updated 2026-11-14. Source: the [design canvas](https://claude.ai/code/artifact/ab065fd4-9113-4368-b970-3f623da00a00)._
 
 The main application. Every screen below is on the canvas's Game page.
 
@@ -48,11 +48,11 @@ A food you already caught skips the reveal and shows '+1 research'. Several food
 
 **BUILD NOTE · Entry**
 
-Sections draw by tier. ★: hero, types, top three moves, cautions. ★★: every move and the ability. ★★★: forms and compounds. ★★★★: the professor's notes.
+Sections draw by tier. ★: its first stage (sprout), types, its signature ability and the moves it powers, every caution. ★★: it ripens; every ability and move. ★★★: forms and compounds. ★★★★: Heirloom, pairings and the professor's notes.
 
-A locked section shows its name and the task that opens it, never a blurred preview of real data. Research tasks are worked out live and tick as you go.
+Evolution: three stages, the current one ringed, the next a silhouette with its condition. Abilities are its micronutrients (vitamins, minerals, choline it clears a bar for), largest share first; the first is its signature. The old single Ability is now a trait on the ability it belongs to: carrot's vitamin A "needs a fat", wording and source unchanged.
 
-Moves are the effect tiles the engine already makes: power is topShare × 100, colour is the body system. The ability is the absorption flags, wording unchanged. Forms come from prep rows. Cautions always draw, even when empty.
+A locked section shows its name and the task that opens it, never a blurred preview of real data. Moves are the effect tiles the engine already makes: power is topShare × 100, colour is the body system. Cautions are never locked.
 
 ### Regions
 
@@ -86,6 +86,6 @@ Cook opens the recipe grid. Finishing it logs every member as an encounter with 
 
 Rank, progress to the next rank, and stats: caught, seen, stars, and day run (days in a row with a catch). A missed day resets the run quietly, with no guilt message.
 
-Badges: earned ones in colour, the rest show their count. Skins live here.
+Badges: earned ones in colour, the rest show their count. The gear opens Settings, where skins live.
 
-The card follows your account between devices. Name and avatar are yours, and nothing is public unless a share feature is added later.
+The card follows your account between devices. Name and avatar are yours, and friends you add see your card, and nothing else is public.
