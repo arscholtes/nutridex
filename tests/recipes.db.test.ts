@@ -2,9 +2,9 @@
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { loadRecipe } from "../lib/db/engine-input.ts";
-import { recordEncounters } from "../lib/db/encounters.ts";
+import { encounteredFoods, recordEncounters } from "../lib/db/encounters.ts";
 import { eraseOwner, ownerRecord } from "../lib/db/sessions.ts";
-import { deleteRecipe, draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
+import { deleteRecipe, draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
 import { inRolledBackTransaction, withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
@@ -13,6 +13,7 @@ afterAll(() => sql.end());
 
 const AT = "2026-11-09T12:00:00.000Z";
 const encounter = (tx: typeof sql, foods: string[]) => recordEncounters(foods.map((food) => ({ food, encounteredAt: AT })), null, tx);
+const uploadedFoods = async (tx: typeof sql) => new Set(await encounteredFoods(null, tx));
 
 const DRAFT: RecipeDraft = {
   name: "Carrot and kale with oil",
