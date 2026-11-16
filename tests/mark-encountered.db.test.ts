@@ -24,7 +24,7 @@ describe("marking a food with no account", () => {
     expect(parsePending(jar.get(PENDING_COOKIE)).map((p) => p.food)).toEqual(["carrot"]);
   });
 
-  test.fails("a food the Dex does not have is refused, and this browser keeps nothing", async () => {
+  test("a food the Dex does not have is refused, and this browser keeps nothing", async () => {
     expect(await sql`select 1 from ingredient where slug = 'no-such-food'`).toHaveLength(0);
     expect(await markEncountered("no-such-food")).toEqual({ error: "That is not a food in the Dex." });
     expect(jar.has(PENDING_COOKIE)).toBe(false);
