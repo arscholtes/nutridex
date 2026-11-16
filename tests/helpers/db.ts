@@ -17,3 +17,20 @@ export async function inRolledBackTransaction(body: (tx: typeof sql) => Promise<
     }),
   ).rejects.toBe(ROLLBACK);
 }
+
+/**
+ * Run `body` with a stand-in for the sign-in service's users table, which the test database does not have.
+ * @param users [string[]] the ids of the people it holds
+ * @param body [() => Promise<void>] the test
+ * @return [Promise<void>]
+ */
+export async function withSignInService(users: string[], body: () => Promise<void>): Promise<void> {
+  await sql`create schema auth`;
+  try {
+    await sql`create table auth.users (id uuid primary key)`;
+    for (const id of users) await sql`insert into auth.users (id) values (${id})`;
+    await body();
+  } finally {
+    await sql`drop schema auth cascade`;
+  }
+}

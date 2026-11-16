@@ -26,6 +26,15 @@ export async function encounteredFoods(owner: string | null = null, q: Sql = sql
 }
 
 /**
+ * @param slugs [string[]] names that may or may not be foods
+ * @return [Promise<Map<string, string>>] each one the Dex has, with its id
+ */
+export async function knownFoods(slugs: string[], q: Sql = sql): Promise<Map<string, string>> {
+  const found = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${slugs})`;
+  return new Map(found.map((k) => [k.slug, k.id]));
+}
+
+/**
  * Stores newly encountered foods.
  * @param items [{ food, encounteredAt }[]] the foods and when they were had
  * @param owner [string | null] whose record, or null for the one the apps share
@@ -33,8 +42,7 @@ export async function encounteredFoods(owner: string | null = null, q: Sql = sql
  * @return [Promise<{ added: string[]; unknown: string[] }>] which were new, and any unknown slugs
  */
 export async function recordEncounters(items: { food: string; encounteredAt: string }[], owner: string | null = null, q: Sql = sql, onUnknown: "refuse" | "skip" = "refuse"): Promise<{ added: string[]; unknown: string[] }> {
-  const found = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${items.map((i) => i.food)})`;
-  const ids = new Map(found.map((k) => [k.slug, k.id]));
+  const ids = await knownFoods(items.map((i) => i.food), q);
   const unknown = items.filter((i) => !ids.has(i.food)).map((i) => i.food);
   if (unknown.length > 0 && onUnknown === "refuse") return { added: [], unknown };
   const added: string[] = [];
