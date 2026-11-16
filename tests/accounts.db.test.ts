@@ -4,6 +4,7 @@ import { sql } from "../lib/db/client.ts";
 import { encounteredFoods, recordEncounters } from "../lib/db/encounters.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
 import { endSession, eraseOwner, ownerRecord, sessionFor, startSession } from "../lib/db/sessions.ts";
+import { withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the accounts test writes to the database");
@@ -93,7 +94,7 @@ describe("someone's own data", () => {
     await recordEncounters([{ food: "kale", encounteredAt: at }], BO);
     await saveSkin("arcade", ANA);
     const token = await startSession(ANA, "ana@example.com");
-    await eraseOwner(ANA);
+    await withSignInService([ANA, BO], () => eraseOwner(ANA));
     expect(await encounteredFoods(ANA)).toEqual([]);
     expect(await savedSkin(ANA)).toBeNull();
     expect(await sessionFor(token)).toBeNull();
