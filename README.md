@@ -85,7 +85,7 @@ I would most like an illustrator's help with:
 
 ## Where it stands
 
-The data was counted on 2026-11-08, on version 0.7.0, and the checks on 2026-11-14, on version 0.9.0. The depth is the
+The data and the checks were counted on 2026-11-15, on version 0.9.0. The depth is the
 honest gap: the structure is ahead of the content.
 
 | | |
@@ -99,9 +99,9 @@ honest gap: the structure is ahead of the content.
 | Household measures | 14,449 across 7,533 foods, from USDA: "1 medium carrot" is 61 g |
 | Cooking retention factors | 7,018, the whole USDA retention table: 270 ways of cooking by 26 nutrients |
 | Adult intake references | 184: the RDA or AI and the upper limit for 23 vitamins and minerals, 8 adult groups, from Health Canada |
-| Creature drawings | 456, worn by 3,150 foods; the other 4,643 wear one of 21 category stand-ins |
+| Creature drawings | 456, worn by 3,142 foods; the other 4,651 wear one of 21 category stand-ins |
 | Skins | 10 |
-| Automated checks | 1,171 unit tests passing, run on every pull request |
+| Automated checks | 1,175 unit tests and the Mac and iPhone tests passing, run on every pull request |
 
 ## What's next
 
