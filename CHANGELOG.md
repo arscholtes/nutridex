@@ -7,7 +7,7 @@ release yet, so each date is the day that version was built.
 bump the version in `package.json`, rename that section to `## <version> - <date>`. `npm test` fails if the
 running version has no entry here.
 
-## Unreleased
+## 0.10.0 - 2026-11-16
 
 ### Added
 
