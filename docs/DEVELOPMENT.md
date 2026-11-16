@@ -158,8 +158,9 @@ npx supabase status -o env        # API_URL and PUBLISHABLE_KEY are the two vari
 # codes arrive in the stack's mailbox at http://127.0.0.1:54324
 ```
 
-Deleting an account removes the person from Supabase's `auth.users` over the app's own database connection, so
-the app and the sign-in service must share a database, as they do on Supabase.
+Deleting an account removes the person from Supabase's `auth.users` in the same transaction that removes their
+rows, so the app and the sign-in service must share a database, as they do on Supabase. Where they do not, nothing
+is deleted and the request fails.
 
 ## Data
 
