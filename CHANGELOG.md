@@ -23,6 +23,8 @@ running version has no entry here.
   longer shows the colours of what is behind it.
 - The recipe builder no longer tells a food you have not found apart from one that does not exist, so a
   hand-written link cannot be used to check a hidden food's name.
+- Without an account, marking something that is not a food in the Dex says so. Before, this browser kept it,
+  and it took one of the places a real food could have had.
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
   and now reads only the foods on the list.
 

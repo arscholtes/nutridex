@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
-import { recordEncounters } from "../lib/db/encounters.ts";
+import { knownFoods, recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
 import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
@@ -30,6 +30,8 @@ export async function acceptDisclaimer() {
 const YEAR_SECONDS = 365 * 24 * 60 * 60;
 const privateCookie = { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: YEAR_SECONDS } as const;
 
+const UNKNOWN_FOOD = "That is not a food in the Dex.";
+
 /**
  * Marks a food as had. Signed in, it goes straight onto your record; otherwise this browser keeps it.
  * @param food [string] the food's slug
@@ -40,12 +42,13 @@ export async function markEncountered(food: string): Promise<{ error: string | n
   const account = await signedIn();
   if (account) {
     const { added, unknown } = await recordEncounters([{ food, encounteredAt: new Date().toISOString() }], account.owner);
-    if (unknown.length > 0) return { error: "That is not a food in the Dex." };
+    if (unknown.length > 0) return { error: UNKNOWN_FOOD };
     if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify([...parseUnlocking(jar.get(UNLOCKING_COOKIE)?.value), ...added]), privateCookie);
     return { error: null };
   }
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
   if (pending.some((p) => p.food === food)) return { error: null };
+  if (!(await knownFoods([food])).has(food)) return { error: UNKNOWN_FOOD };
   const value = withPending(pending, food, new Date().toISOString());
   if (value === null) return { error: "This browser is full: sign in to save what it holds, then carry on." };
   jar.set(PENDING_COOKIE, value, privateCookie);
