@@ -3,13 +3,15 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterAll, describe, expect, test } from "vitest";
 import { RecipeView } from "../components/recipe-view.tsx";
 import { sql } from "../lib/db/client.ts";
-import { recordEncounters } from "../lib/db/encounters.ts";
-import { recipePage, saveRecipe, uploadedFoods, type RecipeDraft, type RecipePage } from "../lib/db/recipes.ts";
+import { encounteredFoods, recordEncounters } from "../lib/db/encounters.ts";
+import { recipePage, saveRecipe, type RecipeDraft, type RecipePage } from "../lib/db/recipes.ts";
 import { inRolledBackTransaction } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the phase 4 test writes a recipe to the database");
 afterAll(() => sql.end());
+
+const uploadedFoods = async (tx: typeof sql) => new Set(await encounteredFoods(null, tx));
 
 const DRAFT: RecipeDraft = {
   name: "Carrot and kale with oil",

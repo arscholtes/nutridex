@@ -5,7 +5,6 @@ import { recipeGrid, type RecipeGrid } from "../recipe-grid.ts";
 import { sql } from "./client.ts";
 import { PANEL } from "../usda/nutrients.ts";
 import { absorptionTips, type AbsorptionTip, type PanelRow } from "./dex.ts";
-import { encounteredFoods } from "./encounters.ts";
 import { loadFacts, loadRecipe } from "./engine-input.ts";
 
 type Sql = typeof sql;
@@ -226,11 +225,6 @@ export async function ownedRecipes(owner: string, q: Sql = sql): Promise<(Recipe
       steps: loaded.steps.map((s) => ({ title: titles.get(s.position)!, prepMethod: s.prepMethod, uses: s.recipeIngredientIds.map((id) => index.get(id)!).sort((a, b) => a - b) })),
     };
   }));
-}
-
-/** @return [Promise<Set<string>>] the uploaded record, which is what the apps may use */
-export async function uploadedFoods(q: Sql = sql): Promise<Set<string>> {
-  return new Set(await encounteredFoods(null, q));
 }
 
 function problemsIn(draft: RecipeDraft, known: Map<string, string>, encountered: Set<string>): string[] {
