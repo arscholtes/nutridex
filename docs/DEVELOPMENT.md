@@ -20,8 +20,8 @@ npm run test:db              # each phase's "Done when", against that database; 
 npm run dev                  # the Dex at http://localhost:3000
 ```
 
-Every pull request runs `npm test` and `npm run typecheck` (`.github/workflows/pull-request-tests.yml`). The
-database and Swift suites run only where you run them.
+Every pull request runs `npm test`, `npm run typecheck` and the Mac and iPhone unit tests
+(`.github/workflows/pull-request-tests.yml`). The database suite and the UI tests run only where you run them.
 
 ## Going live
 
