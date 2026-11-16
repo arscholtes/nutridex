@@ -86,6 +86,6 @@ Cook opens the recipe grid. Finishing it logs every member as an encounter with 
 
 Rank, progress to the next rank, and stats: caught, seen, stars, and day run (days in a row with a catch). A missed day resets the run quietly, with no guilt message.
 
-Badges: earned ones in colour, the rest show their count. Skins live here.
+Badges: earned ones in colour, the rest show their count. The gear opens Settings, where skins live.
 
-The card follows your account between devices. Name and avatar are yours, and nothing is public unless a share feature is added later.
+The card follows your account between devices. Name and avatar are yours, and friends you add see your card, and nothing else is public.

@@ -16,6 +16,7 @@ NutriDex is phone-first and built as a game, Pokédex-style: you catch the foods
 - [[Web and Mac: the Lab|Web-and-Mac]]: research, planning and the full wall
 - [[Health|Health]]: label scanning, the health score and nutrient detail
 - [[NutriDex Plus|Plus]]: the paid tier, pricing and how Claude is used
+- [[Account|Account]]: sign-in, settings, profile, privacy and friends
 - [[Explorations|Explorations]]: the journey map and the three directions that came before the game
 - [[Design changelog|Design-Changelog]]: what changed and why
 
