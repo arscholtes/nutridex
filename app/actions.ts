@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
 import { deleteRecipe, InvalidRecipe, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
-import { endSession, eraseOwner, removeSignIn, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
+import { endSession, eraseOwner, SESSION_DAYS, startSession } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, parseUnlocking, PENDING_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
@@ -90,12 +90,11 @@ export async function signOut() {
   redirect("/");
 }
 
-/** Deletes the signed-in person's account and every row they own. */
+/** Deletes the signed-in person's account, every row they own and their sign-in. */
 export async function deleteAccount() {
   const account = await signedIn();
   if (!account) redirect("/sign-in");
   await eraseOwner(account.owner);
-  await removeSignIn(account.owner);
   (await cookies()).delete(SESSION_COOKIE);
   redirect("/");
 }

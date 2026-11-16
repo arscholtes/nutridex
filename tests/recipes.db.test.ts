@@ -5,7 +5,7 @@ import { loadRecipe } from "../lib/db/engine-input.ts";
 import { recordEncounters } from "../lib/db/encounters.ts";
 import { eraseOwner, ownerRecord } from "../lib/db/sessions.ts";
 import { deleteRecipe, draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
-import { inRolledBackTransaction } from "./helpers/db.ts";
+import { inRolledBackTransaction, withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the recipes test writes to the database");
@@ -147,27 +147,25 @@ describe("whose a recipe is", () => {
     });
   });
 
-  test.fails("their download holds it as they built it, and deleting the account removes it and their sign-in", async () => {
+  test("their download holds it as they built it, and deleting the account removes it and their sign-in", async () => {
     // eraseOwner opens its own transaction, so this one cleans up after itself.
     try {
-      await sql`create schema auth`;
-      await sql`create table auth.users (id uuid primary key)`;
-      await sql`insert into auth.users (id) values (${ANA}), (${BEN})`;
-      const slug = await saveRecipe(DRAFT, ALL, ANA);
-      await saveRecipe(DRAFT, ALL, BEN);
-      expect((await ownerRecord(ANA)).recipes).toEqual([{ slug, ...DRAFT }]);
+      await withSignInService([ANA, BEN], async () => {
+        const slug = await saveRecipe(DRAFT, ALL, ANA);
+        await saveRecipe(DRAFT, ALL, BEN);
+        expect((await ownerRecord(ANA)).recipes).toEqual([{ slug, ...DRAFT }]);
 
-      await eraseOwner(ANA);
-      expect(await sql`select owner_id from recipe where name = ${DRAFT.name}`).toEqual([{ owner_id: BEN }]);
-      expect(await sql`select count(*)::int as n from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.name = ${DRAFT.name}`).toEqual([{ n: 3 }]);
-      expect(await sql`select id from auth.users`).toEqual([{ id: BEN }]);
+        await eraseOwner(ANA);
+        expect(await sql`select owner_id from recipe where name = ${DRAFT.name}`).toEqual([{ owner_id: BEN }]);
+        expect(await sql`select count(*)::int as n from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.name = ${DRAFT.name}`).toEqual([{ n: 3 }]);
+        expect(await sql`select id from auth.users`).toEqual([{ id: BEN }]);
+      });
     } finally {
       await sql`delete from recipe where owner_id in (${ANA}, ${BEN})`;
-      await sql`drop schema auth cascade`;
     }
   });
 
-  test.fails("an account whose sign-in cannot be removed keeps everything it owns", async () => {
+  test("an account whose sign-in cannot be removed keeps everything it owns", async () => {
     expect(await sql`select to_regclass('auth.users') as users`).toEqual([{ users: null }]);
     try {
       await saveRecipe(DRAFT, ALL, ANA);
