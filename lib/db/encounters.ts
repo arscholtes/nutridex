@@ -34,7 +34,6 @@ export async function encounteredFoods(owner: string | null = null, q: Sql = sql
 }
 
 /**
-/**
  * @param value [unknown] what an app sent as its encounters
  * @return [CatchItem[] | null] the same items, or null when it is not an array of foods with dates and known forms
  */
