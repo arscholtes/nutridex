@@ -2,10 +2,10 @@
 import { afterAll, describe, expect, test } from "vitest";
 import { sql } from "../lib/db/client.ts";
 import { loadRecipe } from "../lib/db/engine-input.ts";
-import { recordEncounters } from "../lib/db/encounters.ts";
+import { encounteredFoods, recordEncounters } from "../lib/db/encounters.ts";
 import { eraseOwner, ownerRecord } from "../lib/db/sessions.ts";
-import { draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, uploadedFoods, type RecipeDraft } from "../lib/db/recipes.ts";
-import { inRolledBackTransaction } from "./helpers/db.ts";
+import { deleteRecipe, draftPage, InvalidRecipe, listRecipes, recipePage, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
+import { inRolledBackTransaction, withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the recipes test writes to the database");
@@ -13,6 +13,7 @@ afterAll(() => sql.end());
 
 const AT = "2026-11-09T12:00:00.000Z";
 const encounter = (tx: typeof sql, foods: string[]) => recordEncounters(foods.map((food) => ({ food, encounteredAt: AT })), null, tx);
+const uploadedFoods = async (tx: typeof sql) => new Set(await encounteredFoods(null, tx));
 
 const DRAFT: RecipeDraft = {
   name: "Carrot and kale with oil",
@@ -105,22 +106,78 @@ describe("whose a recipe is", () => {
       expect((await listRecipes(ALL, ANA, tx)).map((r) => r.slug)).toContain(slug);
       expect((await listRecipes(ALL, BEN, tx)).map((r) => r.slug)).not.toContain(slug);
       expect((await listRecipes(ALL, null, tx)).map((r) => r.slug)).not.toContain(slug);
-      expect((await recipePage(slug, tx))!.owner).toBe(ANA);
+      expect((await recipePage(slug, { owner: ANA, foods: ALL }, tx))!.owner).toBe(ANA);
     });
   });
 
-  test("their download holds it as they built it, and deleting the account removes it", async () => {
+  test("its page loads for them, and for anyone else it is as if there were no such recipe", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).not.toBeNull();
+      expect(await recipePage(slug, { owner: BEN, foods: ALL }, tx)).toBeNull();
+      expect(await recipePage(slug, { owner: null, foods: ALL }, tx)).toBeNull();
+    });
+  });
+
+  test("a page holding a food its reader has not found does not load, even for whoever built it", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await recipePage(slug, { owner: ANA, foods: new Set(["carrot", "kale"]) }, tx)).toBeNull();
+    });
+  });
+
+  test("whoever built a recipe can delete it, and its ingredients and steps go with it", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      const rows = () => tx`select (select count(*)::int from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.slug = ${slug}) as ingredients, (select count(*)::int from recipe_step rs join recipe r on r.id = rs.recipe_id where r.slug = ${slug}) as steps`;
+      expect(await rows()).toEqual([{ ingredients: 3, steps: 2 }]);
+      expect(await deleteRecipe(slug, ANA, tx)).toBe(true);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).toBeNull();
+      expect(await rows()).toEqual([{ ingredients: 0, steps: 0 }]);
+    });
+  });
+
+  test("nobody else can delete it, and nobody can delete a recipe that is everyone's", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      const slug = await saveRecipe(DRAFT, ALL, ANA, tx);
+      expect(await deleteRecipe(slug, BEN, tx)).toBe(false);
+      expect(await recipePage(slug, { owner: ANA, foods: ALL }, tx)).not.toBeNull();
+      expect(await tx`select owner_id from recipe where slug = 'juice'`).toEqual([{ owner_id: null }]);
+      expect(await deleteRecipe("juice", ANA, tx)).toBe(false);
+      expect(await tx`select 1 from recipe where slug = 'juice'`).toHaveLength(1);
+    });
+  });
+
+  test("their download holds it as they built it, and deleting the account removes it and their sign-in", async () => {
     // eraseOwner opens its own transaction, so this one cleans up after itself.
     try {
-      const slug = await saveRecipe(DRAFT, ALL, ANA);
-      await saveRecipe(DRAFT, ALL, BEN);
-      expect((await ownerRecord(ANA)).recipes).toEqual([{ slug, ...DRAFT }]);
+      await withSignInService([ANA, BEN], async () => {
+        const slug = await saveRecipe(DRAFT, ALL, ANA);
+        await saveRecipe(DRAFT, ALL, BEN);
+        expect((await ownerRecord(ANA)).recipes).toEqual([{ slug, ...DRAFT }]);
 
-      await eraseOwner(ANA);
-      expect(await sql`select owner_id from recipe where name = ${DRAFT.name}`).toEqual([{ owner_id: BEN }]);
-      expect(await sql`select count(*)::int as n from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.name = ${DRAFT.name}`).toEqual([{ n: 3 }]);
+        await eraseOwner(ANA);
+        expect(await sql`select owner_id from recipe where name = ${DRAFT.name}`).toEqual([{ owner_id: BEN }]);
+        expect(await sql`select count(*)::int as n from recipe_ingredient ri join recipe r on r.id = ri.recipe_id where r.name = ${DRAFT.name}`).toEqual([{ n: 3 }]);
+        expect(await sql`select id from auth.users`).toEqual([{ id: BEN }]);
+      });
     } finally {
       await sql`delete from recipe where owner_id in (${ANA}, ${BEN})`;
+    }
+  });
+
+  test("an account whose sign-in cannot be removed keeps everything it owns", async () => {
+    expect(await sql`select to_regclass('auth.users') as users`).toEqual([{ users: null }]);
+    try {
+      await saveRecipe(DRAFT, ALL, ANA);
+      await recordEncounters([{ food: "carrot", encounteredAt: AT }], ANA);
+
+      await expect(eraseOwner(ANA)).rejects.toThrow(/auth\.users/);
+      expect(await sql`select count(*)::int as n from recipe where owner_id = ${ANA}`).toEqual([{ n: 1 }]);
+      expect(await sql`select count(*)::int as n from encounter where owner_id = ${ANA}`).toEqual([{ n: 1 }]);
+    } finally {
+      await sql`delete from recipe where owner_id = ${ANA}`;
+      await sql`delete from encounter where owner_id = ${ANA}`;
     }
   });
 });
@@ -158,6 +215,18 @@ describe("the builder's live preview", () => {
       expect(page.grid.rows.map((r) => r.ingredientSlug).sort()).toEqual(["carrot", "kale", "olive-oil"]);
       expect(page.stepTitles).toEqual({ 1: "Steam the vegetables", 2: "Dress with oil" });
       expect(page.profile.perServing.some((t) => t.compoundSlug === "beta-carotene")).toBe(true);
+    });
+  });
+
+  test("a locked food and a food that does not exist are refused in the same words, so the refusal tells nobody which is real", async () => {
+    await inRolledBackTransaction(async (tx) => {
+      expect(await tx`select 1 from ingredient where slug = 'olive-oil'`).toHaveLength(1);
+      expect(await tx`select 1 from ingredient where slug = 'no-such-food'`).toHaveLength(0);
+      const refusal = async (food: string) => {
+        const preview = await draftPage({ ...DRAFT, ingredients: [{ food, grams: 10, prepMethod: "raw" }], steps: [] }, new Set(), tx);
+        return (preview as { problems: string[] }).problems.map((p) => p.replaceAll(food, "FOOD"));
+      };
+      expect(await refusal("olive-oil")).toEqual(await refusal("no-such-food"));
     });
   });
 

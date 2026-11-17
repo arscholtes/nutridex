@@ -156,11 +156,14 @@ export function creatureSilhouette(svg: string): string {
 }
 
 /**
- * A creature's shape for a card that is still locked: the silhouette, with the title that names it removed,
- * so nothing in the page says what it is.
+ * A creature's shape for a card that is still locked: the silhouette painted black, with the title that
+ * names it removed, so nothing in the page says what it is or what colour it is.
  * @param svg [string] the creature's art
- * @return [string] the nameless silhouette, to be drawn blacked out
+ * @return [string] the nameless black silhouette
  */
 export function blackoutShape(svg: string): string {
-  return creatureSilhouette(svg).replace(/\s*<title[^>]*>[^<]*<\/title>/, "").replace(/ aria-labelledby="[^"]*"/, "");
+  return creatureSilhouette(svg)
+    .replace(/\s*<title[^>]*>[^<]*<\/title>/, "")
+    .replace(/ aria-labelledby="[^"]*"/, "")
+    .replace(/\b(fill|stroke)="(?!none")[^"]*"/g, '$1="#000"');
 }

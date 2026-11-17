@@ -3,13 +3,15 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterAll, describe, expect, test } from "vitest";
 import { RecipeView } from "../components/recipe-view.tsx";
 import { sql } from "../lib/db/client.ts";
-import { recordEncounters } from "../lib/db/encounters.ts";
-import { recipePage, saveRecipe, uploadedFoods, type RecipeDraft, type RecipePage } from "../lib/db/recipes.ts";
+import { encounteredFoods, recordEncounters } from "../lib/db/encounters.ts";
+import { recipePage, saveRecipe, type RecipeDraft, type RecipePage } from "../lib/db/recipes.ts";
 import { inRolledBackTransaction } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the phase 4 test writes a recipe to the database");
 afterAll(() => sql.end());
+
+const uploadedFoods = async (tx: typeof sql) => new Set(await encounteredFoods(null, tx));
 
 const DRAFT: RecipeDraft = {
   name: "Carrot and kale with oil",
@@ -28,7 +30,7 @@ const DRAFT: RecipeDraft = {
 /** Build the recipe the way every platform saves one, then load its page. */
 async function built(tx: typeof sql): Promise<RecipePage> {
   await recordEncounters(["carrot", "kale", "olive-oil"].map((food) => ({ food, encounteredAt: "2026-11-09T12:00:00.000Z" })), null, tx);
-  const page = await recipePage(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx), tx);
+  const page = await recipePage(await saveRecipe(DRAFT, await uploadedFoods(tx), null, tx), { owner: null, foods: await uploadedFoods(tx) }, tx);
   expect(page).not.toBeNull();
   return page!;
 }
@@ -51,7 +53,7 @@ describe("a built recipe's grid and profile render from the same data", () => {
     await inRolledBackTransaction(async (tx) => {
       const before = await built(tx);
       await tx`update recipe_ingredient set grams = 244 where id = ${before.grid.rows.find((r) => r.ingredientSlug === "carrot")!.recipeIngredientId}`;
-      const after = (await recipePage(before.slug, tx))!;
+      const after = (await recipePage(before.slug, { owner: null, foods: await uploadedFoods(tx) }, tx))!;
       expect(after.grid.rows.find((r) => r.ingredientSlug === "carrot")!.grams).toBe(244);
       // Kale carries beta-carotene too, so only the carrot's share of it doubles.
       expect(betaCaroteneFrom(before, "kale")).toBeGreaterThan(0);

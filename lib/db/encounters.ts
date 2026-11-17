@@ -53,18 +53,27 @@ export function parseCatchItems(value: unknown): CatchItem[] | null {
 }
 
 /**
+ * @param slugs [string[]] names that may or may not be foods
+ * @return [Promise<Map<string, string>>] each one the Dex has, with its id
+ */
+export async function knownFoods(slugs: string[], q: Sql = sql): Promise<Map<string, string>> {
+  const found = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${slugs})`;
+  return new Map(found.map((k) => [k.slug, k.id]));
+}
+
+/**
  * Stores each time a food was had. The first time someone has a food they own it, which is what unlocks things;
- * every time, that one included, is a catch. An array naming an unknown food, or a recipe that this record cannot
- * see or that does not hold the food, stores nothing.
+ * every time, that one included, is a catch. An array naming a recipe that this record cannot see or that does not
+ * hold the food stores nothing.
  * @param items [CatchItem[]] the foods, when they were had, and in what form and recipe if known
  * @param owner [string | null] whose record, or null for the one the apps share
+ * @param onUnknown ["refuse" | "skip"] with a food the Dex does not have: store nothing, or store the rest
  * @return [Promise<RecordResult>] which foods were new to this record, any unknown slugs, and any "food in recipe" that does not hold
  */
-export async function recordEncounters(items: CatchItem[], owner: string | null = null, q: Sql = sql): Promise<RecordResult> {
-  const known = await q<{ id: string; slug: string }[]>`select id, slug from ingredient where slug = any(${items.map((i) => i.food)})`;
-  const ids = new Map(known.map((k) => [k.slug, k.id]));
+export async function recordEncounters(items: CatchItem[], owner: string | null = null, q: Sql = sql, onUnknown: "refuse" | "skip" = "refuse"): Promise<RecordResult> {
+  const ids = await knownFoods(items.map((i) => i.food), q);
   const unknown = items.filter((i) => !ids.has(i.food)).map((i) => i.food);
-  if (unknown.length > 0) return { added: [], unknown, misplaced: [] };
+  if (unknown.length > 0 && onUnknown === "refuse") return { added: [], unknown, misplaced: [] };
   const named = [...new Set(items.flatMap((i) => (i.recipe ? [i.recipe] : [])))];
   // Seeded recipes are everyone's; one somebody built is theirs alone.
   const inRecipes = await q<{ recipe: string; id: string; food: string }[]>`
@@ -73,9 +82,9 @@ export async function recordEncounters(items: CatchItem[], owner: string | null 
      where r.slug = any(${named}) and (r.owner_id is null or r.owner_id = ${owner})`;
   const recipeIds = new Map(inRecipes.map((r) => [`${r.food} in ${r.recipe}`, r.id]));
   const misplaced = items.flatMap((i) => (i.recipe && !recipeIds.has(`${i.food} in ${i.recipe}`) ? [`${i.food} in ${i.recipe}`] : []));
-  if (misplaced.length > 0) return { added: [], unknown: [], misplaced };
+  if (misplaced.length > 0) return { added: [], unknown, misplaced };
   const added: string[] = [];
-  for (const item of items) {
+  for (const item of items.filter((i) => ids.has(i.food))) {
     // xmax is 0 only on a row this statement inserted, which is how a new food is told from one already owned.
     const [owned] = await q<{ id: string; fresh: boolean }[]>`
       insert into encounter (ingredient_id, encountered_at, owner_id) values (${ids.get(item.food)!}, ${item.encounteredAt}, ${owner})
@@ -88,7 +97,7 @@ export async function recordEncounters(items: CatchItem[], owner: string | null 
       values (${owned.id}, ${item.encounteredAt}, ${item.form ?? null}, ${item.recipe ? recipeIds.get(`${item.food} in ${item.recipe}`)! : null})
       on conflict on constraint catch_encounter_caught_at do nothing`;
   }
-  return { added, unknown: [], misplaced: [] };
+  return { added, unknown, misplaced: [] };
 }
 
 /**

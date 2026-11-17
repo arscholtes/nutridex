@@ -4,6 +4,7 @@ import { sql } from "../lib/db/client.ts";
 import { encounteredFoods, recordEncounters } from "../lib/db/encounters.ts";
 import { savedSkin, saveSkin } from "../lib/db/preferences.ts";
 import { endSession, eraseOwner, ownerRecord, sessionFor, startSession } from "../lib/db/sessions.ts";
+import { withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the accounts test writes to the database");
@@ -34,6 +35,14 @@ describe("two accounts", () => {
     expect((await recordEncounters([{ food: "carrot", encounteredAt: at }], ANA)).added).toEqual(["carrot"]);
     expect((await recordEncounters([{ food: "carrot", encounteredAt: at }], BO)).added).toEqual(["carrot"]);
     expect((await recordEncounters([{ food: "carrot", encounteredAt: at }], ANA)).added).toEqual([]);
+  });
+
+  test("signing in keeps every food the Dex knows, even when the browser also held one it does not", async () => {
+    const held = [{ food: "carrot", encounteredAt: at }, { food: "a-food-the-dex-dropped", encounteredAt: at }, { food: "kale", encounteredAt: at }];
+    expect(await recordEncounters(held, ANA)).toEqual({ added: [], unknown: ["a-food-the-dex-dropped"], misplaced: [] });
+    expect(await encounteredFoods(ANA)).toEqual([]);
+    expect(await recordEncounters(held, ANA, sql, "skip")).toEqual({ added: ["carrot", "kale"], unknown: ["a-food-the-dex-dropped"], misplaced: [] });
+    expect((await encounteredFoods(ANA)).sort()).toEqual(["carrot", "kale"]);
   });
 
   test("each keep their own skin, and the last choice wins", async () => {
@@ -85,7 +94,7 @@ describe("someone's own data", () => {
     await recordEncounters([{ food: "kale", encounteredAt: at }], BO);
     await saveSkin("arcade", ANA);
     const token = await startSession(ANA, "ana@example.com");
-    await eraseOwner(ANA);
+    await withSignInService([ANA, BO], () => eraseOwner(ANA));
     expect(await encounteredFoods(ANA)).toEqual([]);
     expect(await savedSkin(ANA)).toBeNull();
     expect(await sessionFor(token)).toBeNull();
