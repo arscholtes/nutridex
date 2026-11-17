@@ -70,7 +70,7 @@ Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a coo
 
 ### `catch`
 
-One row for each time someone had a food they own. `encounter` says a person owns a food, which is what unlocks things; this table holds every time they had it, the first included, so how often, in which forms and in which recipes can be counted. A food's research tier and a trainer's rank are worked out from these rows by `lib/tiers.ts` and never stored, so changing a threshold re-ranks everyone. `form` is null when nobody said. `recipe_id` is the recipe it was had in; nothing writes it yet. One row per owned food and moment, so an upload that is retried stores nothing twice. This is a fact about the person, NutriDex owns it, and no other app reads it. Deleting an `encounter` row deletes its catches, and a person's download holds them.
+One row for each time someone had a food they own. `encounter` says a person owns a food, which is what unlocks things; this table holds every time they had it, the first included, so how often, in which forms and in which recipes can be counted. A food's research tier and a trainer's rank are worked out from these rows by `lib/tiers.ts` and never stored, so changing a threshold re-ranks everyone. `form` is null when nobody said. `recipe_id` is the recipe it was had in, set when an upload names one; the food has to be in that recipe, and the recipe has to be a seeded one or the person's own. One row per owned food and moment, so an upload that is retried stores nothing twice. This is a fact about the person, NutriDex owns it, and no other app reads it. Deleting an `encounter` row deletes its catches, and a person's download holds them.
 
 | Column | Type | Null | Default |
 | --- | --- | --- | --- |
