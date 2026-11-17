@@ -9,6 +9,24 @@ running version has no entry here.
 
 ## Unreleased
 
+### Changed
+
+- NutriDex now keeps each time you have a food, not only the first. Nothing looks different yet; it is what
+  research tiers will be worked out from. Downloading your data lists every one.
+
+## 0.11.0 - 2026-11-16
+
+### Added
+
+- Sign in on the web with Google or Apple, beside the emailed code. The same email address is the same account
+  whichever way you come in. Each button appears once that way in has been switched on for the site.
+
+### Changed
+
+- The notice you accept on first use says what signing in with Google or Apple shares, so it appears once more.
+
+## 0.10.0 - 2026-11-16
+
 ### Added
 
 - You can delete a recipe you saved, and open a copy of it in the builder to change it and save it as a new one.

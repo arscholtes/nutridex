@@ -54,7 +54,7 @@ A choice that should be the same on every device, such as the skin (`key` is `sk
 
 ### `encounter`
 
-One row for each food someone has uploaded as had. NutriDex is a collection game: nothing shows on iPhone or iPad until it is encountered, the web shows it blacked out until then, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it.
+One row for each food someone owns: a food they have had at least once. `encountered_at` is the earliest time they had it; each time is a row in `catch`. NutriDex is a collection game: nothing shows on iPhone or iPad until it is encountered, the web shows it blacked out until then, and a food unlocks the compounds it is a real source of and the effects it clears a bar for. This is a fact about the person, NutriDex owns it, and no other app reads it.
 
 `owner_id` is the signed-in person: the id the sign-in service (Supabase Auth, the `auth` schema of the hosted database) gives them. NutriDex does not own that fact and keeps no copy of the account, so there is no foreign key. On the web a signed-in person writes their own rows. Rows with no owner are the one record the native apps share: they write it only through `POST /api/encounters`, which needs the upload token. One row per owner and food.
 
@@ -67,6 +67,21 @@ Devices also hold a working copy (`encounteredFoods` in `UserDefaults`, or a coo
 | `encountered_at` | timestamp with time zone | no |  |
 | `uploaded_at` | timestamp with time zone | no | `now()` |
 | `owner_id` | uuid | yes |  |
+
+### `catch`
+
+One row for each time someone had a food they own. `encounter` says a person owns a food, which is what unlocks things; this table holds every time they had it, the first included, so how often, in which forms and in which recipes can be counted. A food's research tier and a trainer's rank are worked out from these rows by `lib/tiers.ts` and never stored, so changing a threshold re-ranks everyone. `form` is null when nobody said. `recipe_id` is the recipe it was had in; nothing writes it yet. One row per owned food and moment, so an upload that is retried stores nothing twice. This is a fact about the person, NutriDex owns it, and no other app reads it. Deleting an `encounter` row deletes its catches, and a person's download holds them.
+
+| Column | Type | Null | Default |
+| --- | --- | --- | --- |
+| `id` | uuid | no | `gen_random_uuid()` |
+| `encounter_id` | uuid | no |  |
+| `caught_at` | timestamp with time zone | no |  |
+| `form` | text | yes |  |
+| `recipe_id` | uuid | yes |  |
+| `uploaded_at` | timestamp with time zone | no | `now()` |
+
+`form` is one of `raw`, `juiced`, `cooked`.
 
 ## Who is signed in
 
