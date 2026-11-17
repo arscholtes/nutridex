@@ -2,14 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 import { cookies, headers } from "next/headers";
-import { recordEncounters } from "../lib/db/encounters.ts";
+import { knownFoods, recordEncounters } from "../lib/db/encounters.ts";
 import { redirect } from "next/navigation";
 import { beginSession, PROOF_MINUTES } from "../lib/auth/begin-session.ts";
 import { cookedCatches } from "../lib/cook-along.ts";
 import { parseProvider, providerStart, requestCode, verifyCode } from "../lib/auth/sign-in.ts";
 import { saveSkin } from "../lib/db/preferences.ts";
-import { InvalidRecipe, recipePage, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
-import { endSession, eraseOwner, removeSignIn } from "../lib/db/sessions.ts";
+import { deleteRecipe, InvalidRecipe, recipePage, saveRecipe, type RecipeDraft } from "../lib/db/recipes.ts";
+import { endSession, eraseOwner } from "../lib/db/sessions.ts";
 import { ACCEPTANCE_COOKIE, appVersion } from "../lib/disclaimer/gate.ts";
 import { parsePending, parseUnlocking, PENDING_COOKIE, privateCookie, PROOF_COOKIE, SESSION_COOKIE, SKIN_COOKIE, UNLOCKING_COOKIE, withPending } from "../lib/encounter-cookies.ts";
 import { parseSkin } from "../lib/skins.ts";
@@ -29,6 +29,8 @@ export async function acceptDisclaimer() {
   });
 }
 
+const UNKNOWN_FOOD = "That is not a food in the Dex.";
+
 /**
  * Marks a food as had. Signed in, it goes straight onto your record; otherwise this browser keeps it.
  * @param food [string] the food's slug
@@ -39,12 +41,13 @@ export async function markEncountered(food: string): Promise<{ error: string | n
   const account = await signedIn();
   if (account) {
     const { added, unknown } = await recordEncounters([{ food, encounteredAt: new Date().toISOString() }], account.owner);
-    if (unknown.length > 0) return { error: "That is not a food in the Dex." };
+    if (unknown.length > 0) return { error: UNKNOWN_FOOD };
     if (added.length > 0) jar.set(UNLOCKING_COOKIE, JSON.stringify([...parseUnlocking(jar.get(UNLOCKING_COOKIE)?.value), ...added]), privateCookie);
     return { error: null };
   }
   const pending = parsePending(jar.get(PENDING_COOKIE)?.value);
   if (pending.some((p) => p.food === food)) return { error: null };
+  if (!(await knownFoods([food])).has(food)) return { error: UNKNOWN_FOOD };
   const value = withPending(pending, food, new Date().toISOString());
   if (value === null) return { error: "This browser is full: sign in to save what it holds, then carry on." };
   jar.set(PENDING_COOKIE, value, privateCookie);
@@ -90,12 +93,11 @@ export async function signOut() {
   redirect("/");
 }
 
-/** Deletes the signed-in person's account and every row they own. */
+/** Deletes the signed-in person's account, every row they own and their sign-in. */
 export async function deleteAccount() {
   const account = await signedIn();
   if (!account) redirect("/sign-in");
   await eraseOwner(account.owner);
-  await removeSignIn(account.owner);
   (await cookies()).delete(SESSION_COOKIE);
   redirect("/");
 }
@@ -108,9 +110,9 @@ export async function deleteAccount() {
  */
 export async function cookedRecipe(slug: string): Promise<{ error: string | null; kept: "account" | "browser" | null }> {
   const jar = await cookies();
-  const account = await signedIn();
-  const page = await recipePage(slug);
-  if (!page || (page.owner !== null && page.owner !== account?.owner)) return { error: "That recipe is not here any more.", kept: null };
+  const { revealed, account } = await viewer();
+  const page = await recipePage(slug, { owner: account?.owner ?? null, foods: revealed.foods });
+  if (!page) return { error: "That recipe is not here any more.", kept: null };
   const catches = cookedCatches(page, new Date().toISOString());
   if (account) {
     const { added, unknown, misplaced } = await recordEncounters(catches, account.owner);
@@ -160,4 +162,16 @@ export async function saveRecipeAction(draft: RecipeDraft): Promise<{ slug: stri
     if (error instanceof InvalidRecipe) return { problems: error.problems };
     throw error;
   }
+}
+
+/**
+ * Deletes one of the signed-in person's own recipes and returns them to their list.
+ * @param slug [string] the recipe's slug
+ */
+export async function deleteRecipeAction(slug: string) {
+  const account = await signedIn();
+  if (!account) redirect("/sign-in");
+  if (!(await deleteRecipe(slug, account.owner))) throw new Error(`there is no recipe "${slug}" of yours to delete`);
+  revalidatePath("/recipes");
+  redirect("/recipes");
 }

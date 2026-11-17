@@ -227,9 +227,11 @@ async function writeSnapshot(sink: SnapshotSink, q: typeof sql, progress?: (done
 /** @return [Promise<NativeRecipe[]>] every recipe that is everyone's, by name; one somebody built stays on the server */
 async function nativeRecipes(q: typeof sql): Promise<NativeRecipe[]> {
   const slugs = await q<{ slug: string }[]>`select slug from recipe where owner_id is null order by name`;
+  // The snapshot carries the whole Dex, so every food is readable here.
+  const everyFood = new Set((await q<{ slug: string }[]>`select slug from ingredient`).map((i) => i.slug));
   const recipes: NativeRecipe[] = [];
   for (const { slug } of slugs) {
-    const page = (await recipePage(slug, q))!;
+    const page = (await recipePage(slug, { owner: null, foods: everyFood }, q))!;
     recipes.push({
       slug,
       name: page.name,

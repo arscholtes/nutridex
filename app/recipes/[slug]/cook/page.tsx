@@ -10,9 +10,8 @@ import { viewer } from "../../../../lib/viewer.ts";
 export default async function CookAlongRoute({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const { revealed, account } = await viewer();
-  const page = await recipePage(slug);
-  // Someone else's recipe does not exist as far as this screen can tell.
-  if (!page || (page.owner !== null && page.owner !== account?.owner)) notFound();
+  const page = await recipePage(slug, { owner: account?.owner ?? null, foods: revealed.foods });
+  if (!page) notFound();
   const stages: StageView[] = cookStages(page).map((s) => ({
     step: s.step,
     title: s.title,

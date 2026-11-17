@@ -1,4 +1,4 @@
-// The one way any app reads or writes what someone has encountered.
+// The one way the native apps read or write the record they share. The web writes through app/actions.ts.
 import { encounterRows, parseCatchItems, recordEncounters } from "../../../lib/db/encounters.ts";
 import { refusal } from "../../../lib/upload-token.ts";
 

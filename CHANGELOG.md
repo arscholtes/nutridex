@@ -25,7 +25,7 @@ running version has no entry here.
 - NutriDex now keeps each time you have a food, not only the first. Nothing looks different yet; it is what
   research tiers will be worked out from. Downloading your data lists every one.
 
-## 0.10.0 - 2026-11-13
+## 0.11.0 - 2026-11-16
 
 ### Added
 
@@ -36,8 +36,24 @@ running version has no entry here.
 
 - The notice you accept on first use says what signing in with Google or Apple shares, so it appears once more.
 
+## 0.10.0 - 2026-11-16
+
+### Added
+
+- You can delete a recipe you saved, and open a copy of it in the builder to change it and save it as a new one.
+
 ### Fixed
 
+- Without an account, a browser now holds about twice as many foods before it asks you to sign in: around 53
+  where it was 27.
+- Signing in keeps every food this browser was holding. Before, one food the Dex no longer had meant none of
+  them were saved.
+- A card you have not unlocked is black in the page itself, not only on screen, so viewing the page's source no
+  longer shows the colours of what is behind it.
+- The recipe builder no longer tells a food you have not found apart from one that does not exist, so a
+  hand-written link cannot be used to check a hidden food's name.
+- Without an account, marking something that is not a food in the Dex says so. Before, this browser kept it,
+  and it took one of the places a real food could have had.
 - Lists of what you have unlocked load faster: working out each card's evidence grade read every food in the Dex,
   and now reads only the foods on the list.
 
