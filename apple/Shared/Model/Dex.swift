@@ -76,6 +76,8 @@ struct EntryCard: Decodable, Identifiable, Hashable {
     let type: String?
     let bestGrade: String?
     let stats: [String]
+    /// For each stat, the slug of the food it names, if it names one.
+    let statFoods: [String?]
     /// A line about the entry for someone who has not encountered it.
     let description: String
     /// The catalog name of its creature, shared by every food wearing the same drawing; an effect has none.
