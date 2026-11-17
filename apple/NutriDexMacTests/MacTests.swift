@@ -19,6 +19,19 @@ struct EncounterTests {
         #expect(!store.isRevealed(.effect, "vision"))
     }
 
+    @Test func aRecordThatCannotBeReadIsKeptAsideAndNotWrittenOver() {
+        let defaults = UserDefaults(suiteName: "nutridex-tests-\(UUID().uuidString)")!
+        let damaged = Data("not a record".utf8)
+        defaults.set(damaged, forKey: "encounterRecords")
+        #expect(defaults.data(forKey: "encounterRecords") == damaged)
+
+        let store = EncounterStore(defaults: defaults)
+        #expect(store.records.isEmpty)
+        store.encounter(food: "carrot")
+        #expect(defaults.data(forKey: "encounterRecords") != damaged)
+        #expect(defaults.data(forKey: "encounterRecords.unreadable") == damaged)
+    }
+
     @Test func havingAFoodRevealsItAndWhatItCarriesAndDoes() {
         let (store, _) = freshStore()
         store.encounter(food: "carrot")
@@ -339,6 +352,15 @@ struct VisibilityTests {
         #expect(!v.shows(.effect, "vision"))
     }
 
+    @Test func aScreenNobodyGaveAViewToShowsNothing() {
+        let unset = EnvironmentValues().dexVisibility
+        #expect(!unset.isEverything)
+        #expect(!unset.shows(.ingredient, "carrot"))
+        #expect(!unset.shows(.compound, "beta-carotene"))
+        #expect(unset.entries(of: .ingredient).isEmpty)
+        #expect(unset.sources.isEmpty)
+    }
+
     @Test func theMacSeesEverything() {
         #expect(DexVisibility.everything.shows(.ingredient, "carrot"))
         #expect(DexVisibility.everything.isEverything)
@@ -372,6 +394,14 @@ struct VisibilityTests {
         #expect(!v.stats(of: beta).isEmpty)
         let everything = DexVisibility.everything.stats(of: beta).joined()
         #expect(everything.contains("Sweet potato"))
+    }
+
+    @Test func whichStatNamesAFoodComesFromTheDataNotTheSentence() throws {
+        let json = #"{"kind":"compound","slug":"made-up","name":"Made up","number":"C999","type":null,"bestGrade":null,"stats":["In 3 foods","Richest wherever it grows"],"statFoods":[null,"sweet-potato"],"description":"","art":null,"sources":[]}"#
+        let card = try JSONDecoder().decode(EntryCard.self, from: Data(json.utf8))
+        #expect(visibility(["carrot"]).stats(of: card) == ["In 3 foods"])
+        #expect(visibility(["sweet-potato"]).stats(of: card) == ["In 3 foods", "Richest wherever it grows"])
+        #expect(DexVisibility.everything.stats(of: card).count == 2)
     }
 
     @Test func aRichestFoodIsNamedOnlyOnceYouHaveHadIt() throws {

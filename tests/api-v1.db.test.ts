@@ -1,5 +1,5 @@
 // The API every app shares: sign in, then read and change your own record with the session as a bearer token.
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test, vi } from "vitest";
+import { afterAll, afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { POST as requestCodeRoute } from "../app/api/v1/session/code/route.ts";
 import { DELETE as signOut, POST as signIn } from "../app/api/v1/session/route.ts";
 import { DELETE as deleteMe, GET as me } from "../app/api/v1/me/route.ts";
@@ -10,6 +10,7 @@ import { GET as exportMe } from "../app/api/v1/me/export/route.ts";
 import { POST as preview } from "../app/api/v1/recipes/preview/route.ts";
 import { sql } from "../lib/db/client.ts";
 import { sessionFor, startSession } from "../lib/db/sessions.ts";
+import { withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the API test writes to the database");
@@ -42,15 +43,8 @@ const clear = async () => {
   await sql`delete from preference where owner_id in (${FAY}, ${GUS})`;
   await sql`delete from recipe where owner_id in (${FAY}, ${GUS})`;
   await sql`delete from session where owner_id in (${FAY}, ${GUS})`;
-  await sql`delete from auth.users where id in (${FAY}, ${GUS})`;
 };
 
-// The sign-in service's users live in the hosted database's auth schema. The test database has no such service,
-// so it gets the one table account deletion touches.
-beforeAll(async () => {
-  await sql`create schema if not exists auth`;
-  await sql`create table if not exists auth.users (id uuid primary key)`;
-});
 beforeEach(() => {
   vi.stubEnv("SUPABASE_URL", "https://auth.test");
   vi.stubEnv("SUPABASE_PUBLISHABLE_KEY", "public-key");
@@ -233,9 +227,10 @@ describe("taking your data out, and deleting it", () => {
     expect(exported.catches).toEqual([{ food: "carrot", caughtAt: day(1), form: "raw", recipe: null }]);
     expect(exported.skin).toBe("arcade");
 
-    await sql`insert into auth.users (id) values (${FAY})`;
-    expect((await deleteMe(call("DELETE", token))).status).toBe(204);
-    expect((await sql`select count(*)::int as n from auth.users where id = ${FAY}`)[0].n).toBe(0);
+    await withSignInService([FAY], async () => {
+      expect((await deleteMe(call("DELETE", token))).status).toBe(204);
+      expect((await sql`select count(*)::int as n from auth.users where id = ${FAY}`)[0].n).toBe(0);
+    });
     expect(await sessionFor(token)).toBeNull();
     expect((await sql`select count(*)::int as n from encounter where owner_id = ${FAY}`)[0].n).toBe(0);
   });

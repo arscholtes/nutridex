@@ -64,6 +64,7 @@ struct MacRootView: View {
         .environment(browser)
         .environment(game)
         .environment(game.store)
+        .environment(\.dexVisibility, .everything)
         .preferredColorScheme(game.skins.skin.scheme)
         .tint(Theme.accent)
         #if DEBUG
