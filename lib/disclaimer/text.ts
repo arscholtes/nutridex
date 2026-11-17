@@ -56,7 +56,8 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
       "you are signed in, in NutriDex's database so it can follow you. Recipes you save, which needs an account: " +
       "kept in NutriDex's database under it and shown to nobody else. If you make an account, your email " +
       "address is kept by the sign-in service NutriDex uses and with each sign-in, and a cookie keeps you signed " +
-      "in on this device for 90 days. Settings lets you download everything stored for your account or delete " +
+      "in on this device for 90 days. If you sign in with Google or Apple, that sign-in service also keeps the " +
+      "name and picture the account shares with it; NutriDex itself reads only the email address. Settings lets you download everything stored for your account or delete " +
       "it. Another cookie holds what you just unlocked until it has been shown to you. A cookie remembers which version of this notice " +
       "you accepted, so it only appears again after an update. The company that hosts NutriDex may keep its own " +
       "records of each request, such as your IP address. Nothing else.",
