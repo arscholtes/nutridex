@@ -45,17 +45,16 @@ export async function ownerRecord(owner: string, q: Sql = sql): Promise<OwnerRec
   return { encounters: await encounterRows(owner, q), catches: await catchRows(owner, q), skin: await savedSkin(owner, q), recipes: await ownedRecipes(owner, q) };
 }
 
-/** Removes every row one person owns, and signs them out everywhere. */
+/**
+ * Removes every row one person owns, signs them out everywhere, and removes them from the sign-in service,
+ * whose users live in this database's auth schema. All of it happens or none of it does.
+ */
 export async function eraseOwner(owner: string, q: Sql = sql): Promise<void> {
   await q.begin(async (tx) => {
     await tx`delete from encounter where owner_id = ${owner}`;
     await tx`delete from preference where owner_id = ${owner}`;
     await tx`delete from recipe where owner_id = ${owner}`;
     await tx`delete from session where owner_id = ${owner}`;
+    await tx`delete from auth.users where id = ${owner}`;
   });
-}
-
-/** Removes someone from the sign-in service, whose users live in this database's auth schema. */
-export async function removeSignIn(owner: string, q: Sql = sql): Promise<void> {
-  await q`delete from auth.users where id = ${owner}`;
 }

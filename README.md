@@ -15,7 +15,8 @@ a source, and when nothing is known, the app says so instead of guessing.
 
 ### You collect what you actually eat
 
-Nothing shows until you have encountered it. You say what you had, upload it, and a silhouette turns into a creature.
+On iPhone and iPad nothing shows until you have encountered it; on the web every entry stands on a wall, blacked out
+until then. You say what you had, upload it, and a silhouette turns into a creature.
 Each food reveals the compounds it is a real source of and the effects they support, so what you learn follows what
 is on your plate.
 
@@ -84,7 +85,8 @@ I would most like an illustrator's help with:
 
 ## Where it stands
 
-Counted on 2026-11-08, on version 0.7.0. The depth is the honest gap: the structure is ahead of the content.
+The data and the checks were counted on 2026-11-15, on version 0.9.0. The depth is the
+honest gap: the structure is ahead of the content.
 
 | | |
 | --- | --- |
@@ -97,16 +99,17 @@ Counted on 2026-11-08, on version 0.7.0. The depth is the honest gap: the struct
 | Household measures | 14,449 across 7,533 foods, from USDA: "1 medium carrot" is 61 g |
 | Cooking retention factors | 7,018, the whole USDA retention table: 270 ways of cooking by 26 nutrients |
 | Adult intake references | 184: the RDA or AI and the upper limit for 23 vitamins and minerals, 8 adult groups, from Health Canada |
-| Creature drawings | 456, worn by 3,150 foods; the other 4,643 wear one of 21 category stand-ins |
+| Creature drawings | 456, worn by 3,142 foods; the other 4,651 wear one of 21 category stand-ins |
 | Skins | 10 |
-| Automated checks | 948 unit tests passing |
+| Automated checks | 1,175 unit tests and the Mac and iPhone tests passing, run on every pull request |
 
 ## What's next
 
 1. **Depth of evidence.** Add sourced cautions, more absorption rules and study-backed effects.
-2. **Recipes.** The engine already works out what a recipe gives you, and it needs its builder and recipe screens.
+2. **Recipes on the apps.** The web has a recipe builder and recipe pages. iPhone, iPad and Mac do not yet.
 3. **Paste a finding.** Paste a study, have AI draft the entries, and approve each one before it is saved.
-4. **A public home.** Hosting, real accounts in place of the upload passcode, and a route to the App Store.
+4. **Accounts on the apps.** The web is live with real accounts. The apps still share one upload passcode, and need a
+   route to the App Store.
 5. **Gut microbes and supplements.** The tables and engine checks exist, and they have no entries yet.
 
 ## Who I'm looking for
@@ -116,7 +119,7 @@ Counted on 2026-11-08, on version 0.7.0. The depth is the honest gap: the struct
 | **Illustrator or character designer** | The creature style, and how one look stretches across thousands of foods |
 | **Dietitian or nutrition scientist** | Evidence grades, how claims are worded, and the cautions that are missing today |
 | **iOS / SwiftUI developer** | The Apple apps, all 7,793 foods running well on a real phone, and the route to the App Store |
-| **Full-stack developer** | Hosting, accounts, the recipe builder and the paste-a-finding pipeline |
+| **Full-stack developer** | Accounts for the apps, recipes on every platform and the paste-a-finding pipeline |
 | **Game or product designer** | What makes collecting rewarding, and how it can reward curiosity without rewarding overeating |
 | **Lawyer with health-app or IP experience** | The disclaimer, which is a draft that needs review before anyone else uses the app, and clearing the name |
 

@@ -188,7 +188,7 @@ describe("what someone sees, once hidden things are removed", () => {
   test("a card reads the same whether or not the list was narrowed, but for naming a hidden food", async () => {
     const r = await revealedEntries(["carrot", "sweet-potato"]);
     const whole = await listEntries({});
-    const withoutTop = (c: EntryCard) => ({ ...c, stats: c.stats.filter((s) => !s.startsWith("Most in ")) });
+    const withoutTop = (c: EntryCard) => ({ ...c, stats: c.stats.filter((_, n) => c.statFoods[n] === null), statFoods: c.statFoods.filter((food) => food === null) });
     for (const card of await listEntries({ within: r })) {
       expect(withoutTop(card), card.slug).toEqual(withoutTop(whole.find((c) => c.kind === card.kind && c.slug === card.slug)!));
     }

@@ -20,6 +20,9 @@ npm run test:db              # each phase's "Done when", against that database; 
 npm run dev                  # the Dex at http://localhost:3000
 ```
 
+Every pull request runs `npm test`, `npm run typecheck` and the Mac and iPhone unit tests
+(`.github/workflows/pull-request-tests.yml`). The database suite and the UI tests run only where you run them.
+
 ## Going live
 
 The Dex runs on Vercel, with its data in Supabase Postgres. The app connects to Postgres directly
@@ -176,8 +179,9 @@ A Google or Apple button shows locally once that provider is enabled under `[aut
 `supabase/config.toml` with a real client id and secret, and `http://127.0.0.1:3000/auth/callback` is in
 `additional_redirect_urls`.
 
-Deleting an account removes the person from Supabase's `auth.users` over the app's own database connection, so
-the app and the sign-in service must share a database, as they do on Supabase.
+Deleting an account removes the person from Supabase's `auth.users` in the same transaction that removes their
+rows, so the app and the sign-in service must share a database, as they do on Supabase. Where they do not, nothing
+is deleted and the request fails.
 
 ## Data
 

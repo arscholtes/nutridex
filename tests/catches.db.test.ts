@@ -4,6 +4,7 @@ import { sql } from "../lib/db/client.ts";
 import { catchRows, encounterRows, foodHistories, recordEncounters } from "../lib/db/encounters.ts";
 import { eraseOwner, ownerRecord } from "../lib/db/sessions.ts";
 import { tierOf } from "../lib/tiers.ts";
+import { withSignInService } from "./helpers/db.ts";
 import { localDatabaseUrl } from "./local-database.ts";
 
 localDatabaseUrl("the catches test writes to the database");
@@ -80,7 +81,7 @@ describe("someone's own data", () => {
       { food: "carrot", caughtAt: day(1), form: "raw", recipe: null },
       { food: "carrot", caughtAt: day(2), form: null, recipe: null },
     ]);
-    await eraseOwner(DEE);
+    await withSignInService([DEE, ELI], () => eraseOwner(DEE));
     expect(await catchRows(DEE)).toEqual([]);
     expect((await sql`select count(*)::int as n from catch c join encounter e on e.id = c.encounter_id where e.owner_id = ${DEE}`)[0].n).toBe(0);
     expect(await catchRows(ELI)).toHaveLength(1);
