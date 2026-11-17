@@ -9,6 +9,14 @@ struct SourcesScreen: View {
     }
 }
 
+/// Your account, or signing in.
+struct AccountRouteScreen: View {
+    var body: some View {
+        DexScreen { AccountScreen() }
+            .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
 /// The skins.
 struct SkinsScreen: View {
     var body: some View {

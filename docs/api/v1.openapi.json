@@ -53,7 +53,7 @@
     },
     "/api/v1/session": {
       "post": {
-        "summary": "Sign in with an emailed code, or with an identity token from Apple or Google",
+        "summary": "Sign in with an emailed code, an identity token from Apple or Google, or the code the system sheet brought back",
         "requestBody": {
           "required": true,
           "content": {
@@ -475,6 +475,57 @@
           }
         }
       }
+    },
+    "/api/v1/session/start": {
+      "get": {
+        "summary": "Start a Google or Apple sign-in in the app's system sign-in sheet",
+        "description": "Open this in ASWebAuthenticationSession. It redirects to the sign-in service, which comes back to nutridex://auth/callback?code=…; send that code and the secret behind the challenge to POST /api/v1/session as { code, codeVerifier }.",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": [
+                "apple",
+                "google"
+              ]
+            }
+          },
+          {
+            "name": "challenge",
+            "in": "query",
+            "required": true,
+            "description": "The S256 PKCE challenge: base64url SHA-256 of a secret the app keeps (RFC 7636)",
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "To the sign-in service; it always comes back to nutridex://auth/callback",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -563,6 +614,23 @@
               "nonce": {
                 "type": "string",
                 "description": "The unhashed nonce bound into the token, if the app used one"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "code",
+              "codeVerifier"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "What the system sheet brought back to nutridex://auth/callback"
+              },
+              "codeVerifier": {
+                "type": "string",
+                "description": "The secret behind the challenge sent to GET /api/v1/session/start"
               }
             }
           }

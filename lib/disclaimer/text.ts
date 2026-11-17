@@ -67,6 +67,19 @@ export const DISCLAIMER_SECTIONS: { heading: string; body: string }[] = [
 /** The same notice for the native apps, which keep their one remembered thing in a setting. */
 export const NATIVE_DISCLAIMER_SECTIONS: { heading: string; body: string }[] = DISCLAIMER_SECTIONS.map((s) =>
   s.heading === "What is stored about you"
-    ? { ...s, body: "The foods you mark as had, when, and whether each unlock has played: kept on this device, and in NutriDex's database once you upload them. The skin you choose: kept on this device and in NutriDex's database, so it can follow you to your other devices. A setting on this device remembers which version of this notice you accepted, so it only appears again after an update. When you upload, the company that hosts NutriDex's server may keep its own records of each request, such as your IP address. Nothing else." }
+    ? {
+        ...s,
+        body:
+          "The foods you mark as had, when, and whether each unlock has played: kept on this device, and in NutriDex's " +
+          "database under your account once you sign in and upload them. The skin you choose: kept on this device and, " +
+          "once you are signed in, in NutriDex's database so it can follow you to your other devices. If you sign in, your " +
+          "email address is kept with your account, and this device keeps your sign-in in its Keychain for 90 days. If you " +
+          "sign in with Google, that sign-in service also keeps the name and picture your Google account shares with it; " +
+          "NutriDex itself reads only the email address. Settings on the NutriDex website lets you download everything " +
+          "stored for your account, and the app's Account screen lets you delete it. A setting on this device remembers " +
+          "which version of this notice you accepted, so it only appears again after an update. When you upload, the " +
+          "company that hosts NutriDex's server may keep its own records of each request, such as your IP address. " +
+          "Nothing else.",
+      }
     : s,
 );

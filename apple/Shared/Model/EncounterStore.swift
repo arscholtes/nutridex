@@ -79,6 +79,12 @@ final class EncounterStore {
         Dex.bundled.cards.filter { $0.kind == .ingredient && records[$0.slug]?.uploadedAt != nil && records[$0.slug]?.celebrated == false }
     }
 
+    /// Forgets every food the account holds, keeping only what still waits to upload. Signing out does this.
+    func forgetUploaded() {
+        records = records.filter { $0.value.uploadedAt == nil }
+        save()
+    }
+
     func celebrate(food: String) {
         records[food]?.celebrated = true
         save()

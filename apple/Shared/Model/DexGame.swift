@@ -8,6 +8,9 @@ struct EncounterProblem: Error, Equatable {
     init(_ message: String) {
         self.message = message
     }
+
+    /// Nothing reaches the server until someone signs in on this device.
+    static let signedOut = EncounterProblem("Sign in to upload.")
 }
 
 /// One food going up to the home database.
@@ -52,15 +55,27 @@ protocol EncounterTransport {
     func saveSkin(_ id: String) async throws
 }
 
+/// What the game talks to: the record and the account behind it. `APITransport` is both.
+typealias DexTransport = EncounterTransport & AccountTransport
+
 #if DEBUG
-/// A test copy's record is made up, so it can never reach the real one, even if someone presses Upload in it.
-struct TestCopyTransport: EncounterTransport {
+/// A test copy's record is made up, so it can never reach the real one, even if someone presses Upload or signs in in it.
+struct TestCopyTransport: DexTransport {
+    /// Who the copy pretends to be signed in as, for checking the signed-in screens. It still reaches nothing.
+    var signedInEmail: String?
+
     private var refusal: EncounterProblem { EncounterProblem("This is a test copy, so it does not talk to the home database.") }
 
     func upload(_ items: [UploadItem]) async throws -> UploadResponse { throw refusal }
     func fetch() async throws -> [ServerEncounter] { throw refusal }
     func fetchSkin() async throws -> String? { throw refusal }
     func saveSkin(_ id: String) async throws {}
+
+    func googleStart(challenge: String) throws -> URL { throw refusal }
+    func requestCode(email: String) async throws { throw refusal }
+    func signIn(_ proof: SignInProof) async throws { throw refusal }
+    func signOut() async {}
+    func deleteAccount() async throws { throw refusal }
 }
 #endif
 
@@ -107,74 +122,12 @@ final class SkinStore {
     }
 }
 
-/// The server's encounters API, at the address and with the token set in the build configuration.
-struct HTTPEncounterTransport: EncounterTransport {
-    let baseURL: URL?
-    let token: String
-
-    static var configured: HTTPEncounterTransport {
-        let info = Bundle.main.infoDictionary
-        return HTTPEncounterTransport(baseURL: (info?["NutriDexAPIURL"] as? String).flatMap(URL.init(string:)), token: info?["NutriDexUploadToken"] as? String ?? "")
-    }
-
-    func upload(_ items: [UploadItem]) async throws -> UploadResponse {
-        try JSONDecoder().decode(UploadResponse.self, from: await send("POST", path: "api/encounters", body: JSONEncoder().encode(UploadBody(encounters: items))))
-    }
-
-    func fetch() async throws -> [ServerEncounter] {
-        try JSONDecoder().decode(UploadResponse.Fetched.self, from: await send("GET", path: "api/encounters", body: nil)).encounters
-    }
-
-    func fetchSkin() async throws -> String? {
-        try JSONDecoder().decode(SkinBody.self, from: await send("GET", path: "api/preferences", body: nil)).skin
-    }
-
-    func saveSkin(_ id: String) async throws {
-        _ = try await send("PUT", path: "api/preferences", body: JSONEncoder().encode(SkinBody(skin: id)))
-    }
-
-    private struct SkinBody: Codable {
-        let skin: String?
-    }
-
-    private func send(_ method: String, path: String, body: Data?) async throws -> Data {
-        guard let baseURL, !token.isEmpty else { throw EncounterProblem("This app has no upload address or token set, so it cannot reach the home database.") }
-        var request = URLRequest(url: baseURL.appending(path: path))
-        request.httpMethod = method
-        request.httpBody = body
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let data: Data
-        let response: URLResponse
-        do {
-            (data, response) = try await URLSession.shared.data(for: request)
-        } catch {
-            throw EncounterProblem("The home database did not answer: \(error.localizedDescription)")
-        }
-        guard let status = (response as? HTTPURLResponse)?.statusCode, (200..<300).contains(status) else {
-            let said = (try? JSONDecoder().decode(ServerError.self, from: data))?.error
-            throw EncounterProblem(said ?? "The home database refused that.")
-        }
-        return data
-    }
-
-    private struct ServerError: Decodable {
-        let error: String
-    }
-}
-
-extension UploadResponse {
-    fileprivate struct Fetched: Decodable {
-        let encounters: [ServerEncounter]
-    }
-}
-
 /// The game's moves: uploading, picking up what other devices uploaded, and the unlock animation.
 @Observable
 final class DexGame {
     let store: EncounterStore
     let skins: SkinStore
-    private let transport: EncounterTransport
+    let transport: DexTransport
 
     private(set) var isUploading = false
     private(set) var uploadError: String?
@@ -185,10 +138,47 @@ final class DexGame {
     private var queue: [EntryCard] = []
     private var queueTotal = 0
 
-    init(store: EncounterStore, transport: EncounterTransport, skins: SkinStore = SkinStore()) {
+    /// The email this device is signed in as, or nil when signed out.
+    private(set) var signedInEmail: String?
+
+    init(store: EncounterStore, transport: DexTransport, skins: SkinStore = SkinStore()) {
         self.store = store
         self.transport = transport
         self.skins = skins
+        signedInEmail = transport.signedInEmail
+    }
+
+    var isSignedIn: Bool { signedInEmail != nil }
+
+    /// Signs this device in with a proof from Apple, Google or an emailed code, then sends what waited here and
+    /// picks up what the account already holds.
+    func signIn(_ proof: SignInProof) async throws {
+        try await transport.signIn(proof)
+        signedInEmail = transport.signedInEmail
+        await upload()
+        await sync()
+    }
+
+    /// Signs this device out. The account's foods leave with it; anything not yet uploaded stays waiting here.
+    func signOut() async {
+        await transport.signOut()
+        leaveAccount()
+    }
+
+    /// Deletes the account and everything on it, then signs this device out.
+    func deleteAccount() async throws {
+        try await transport.deleteAccount()
+        leaveAccount()
+    }
+
+    private func leaveAccount() {
+        signedInEmail = transport.signedInEmail
+        store.forgetUploaded()
+        queue = []
+        queueTotal = 0
+        uploadError = nil
+        syncProblem = nil
+        skinProblem = nil
     }
 
     /// The food whose unlock animation is on screen.
@@ -210,11 +200,14 @@ final class DexGame {
             playAwaitingUnlocks()
         } catch {
             uploadError = (error as? EncounterProblem)?.message ?? error.localizedDescription
+            signedInEmail = transport.signedInEmail
         }
     }
 
     /// Picks up what has arrived from other devices and plays it. Not reaching the server leaves the game as it is.
     func sync() async {
+        // A signed-out device keeps to itself: nothing to fetch, and nothing to warn about.
+        guard isSignedIn else { return }
         // The skin comes first, so an unlock that follows is drawn in the look it will finish in.
         do {
             if skins.unsent {
@@ -233,11 +226,14 @@ final class DexGame {
         } catch {
             syncProblem = (error as? EncounterProblem)?.message ?? error.localizedDescription
         }
+        signedInEmail = transport.signedInEmail
     }
 
     /// Changes the look here at once, and on every other device once the home database has it.
     func choose(skin: DexSkin) async {
         skins.choose(skin)
+        // Signed out, the choice waits here and goes up when you sign in.
+        guard isSignedIn else { return }
         do {
             try await sendSkin()
         } catch {

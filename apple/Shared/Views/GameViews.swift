@@ -93,6 +93,7 @@ struct HadComposer: View {
 /// New encounters waiting on this device, with the button that sends them home.
 struct UploadBar: View {
     @Environment(DexGame.self) private var game
+    @State private var signingIn = false
 
     private var barShape: RoundedRectangle { RoundedRectangle(cornerRadius: Theme.skin.radius.control == nil ? 26 : Theme.skin.radius.panel) }
 
@@ -105,9 +106,14 @@ struct UploadBar: View {
                         .font(.dex(.subheadline, weight: .bold))
                         .foregroundStyle(Theme.ink)
                     Spacer(minLength: 8)
-                    Button(game.isUploading ? "Uploading" : "Upload") { Task { await game.upload() } }
-                        .buttonStyle(DexPrimaryButton())
-                        .disabled(game.isUploading)
+                    if game.isSignedIn {
+                        Button(game.isUploading ? "Uploading" : "Upload") { Task { await game.upload() } }
+                            .buttonStyle(DexPrimaryButton())
+                            .disabled(game.isUploading)
+                    } else {
+                        Button("Sign in to upload") { signingIn = true }
+                            .buttonStyle(DexPrimaryButton())
+                    }
                 }
                 if let problem = game.uploadError {
                     Text(problem).font(.dex(.footnote, weight: .bold)).foregroundStyle(Theme.danger).fixedSize(horizontal: false, vertical: true)
@@ -124,6 +130,7 @@ struct UploadBar: View {
             }
             .clipShape(barShape)
             .dexOutline(barShape)
+            .sheet(isPresented: $signingIn) { SignInScreen().environment(game) }
         }
     }
 }
@@ -239,7 +246,7 @@ struct SkinsList: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 Text("Skins").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink).accessibilityAddTraits(.isHeader)
-                Note(text: "Your choice follows you to every device using your passcode.")
+                Note(text: game.isSignedIn ? "Your choice follows you to every device you sign in on." : "Your choice stays on this device. Sign in to have it follow you to every device.")
                 if let problem = game.skinProblem {
                     Text("It changed here, but did not reach your other devices yet. \(problem)")
                         .font(.dex(.footnote, weight: .bold))

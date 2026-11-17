@@ -25,7 +25,7 @@ test("the file lists every call the server answers, and none it does not", () =>
 
 test("every call that needs a session says so and documents its refusal; only signing in does not", () => {
   const open = Object.entries(spec.paths).flatMap(([path, calls]) => Object.entries(calls).filter(([, call]) => !call.security).map(([method]) => `${method.toUpperCase()} ${path}`));
-  expect(open.sort()).toEqual(["POST /api/v1/session", "POST /api/v1/session/code"]);
+  expect(open.sort()).toEqual(["GET /api/v1/session/start", "POST /api/v1/session", "POST /api/v1/session/code"]);
   for (const calls of Object.values(spec.paths)) for (const call of Object.values(calls)) if (call.security) expect(call.responses).toHaveProperty("401");
 });
 

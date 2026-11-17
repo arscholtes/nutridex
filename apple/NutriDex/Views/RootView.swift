@@ -20,11 +20,11 @@ struct RootView: View {
         return .standard
     }
 
-    private static var transport: EncounterTransport {
+    private static var transport: DexTransport {
         #if DEBUG
-        if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport() }
+        if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport(signedInEmail: UserDefaults.standard.string(forKey: "debugSignedIn")) }
         #endif
-        return HTTPEncounterTransport.configured
+        return APITransport.configured
     }
 
     /// A throwaway record stays exactly what the launch argument asked for, with nothing merged in from home.
@@ -135,6 +135,8 @@ struct RouteView: View {
             SourcesScreen()
         case .skins:
             SkinsScreen()
+        case .account:
+            AccountRouteScreen()
         case let .entry(kind, slug):
             EntryPager(kind: kind, slug: slug)
         }

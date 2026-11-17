@@ -30,6 +30,8 @@ struct MacRouteView: View {
             SourcesList().background(Theme.screen)
         case .skins:
             SkinsList().background(Theme.screen)
+        case .account:
+            AccountScreen().background(Theme.screen)
         case let .entry(kind, slug):
             if let card = Dex.bundled.cards.first(where: { $0.kind == kind && $0.slug == slug }) {
                 MacEntryView(card: card)

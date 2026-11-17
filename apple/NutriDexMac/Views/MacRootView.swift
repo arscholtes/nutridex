@@ -7,6 +7,7 @@ enum MacSection: Hashable {
     case compare
     case sources
     case skins
+    case account
 }
 
 /// Shows the notice until this Mac has accepted the running version, then the home database.
@@ -27,11 +28,11 @@ struct MacRootView: View {
         return .standard
     }
 
-    private static var transport: EncounterTransport {
+    private static var transport: DexTransport {
         #if DEBUG
-        if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport() }
+        if UserDefaults.standard.string(forKey: "debugEncountered") != nil { return TestCopyTransport(signedInEmail: UserDefaults.standard.string(forKey: "debugSignedIn")) }
         #endif
-        return HTTPEncounterTransport.configured
+        return APITransport.configured
     }
 
     /// A throwaway record stays exactly what the launch argument asked for, with nothing merged in from home.
@@ -118,6 +119,8 @@ struct MacBrowserView: View {
                 SourcesList().background(Theme.screen)
             case .skins:
                 SkinsList().background(DexBackdrop())
+            case .account:
+                AccountScreen().background(Theme.screen)
             case .dex, .type:
                 HSplitView {
                     VStack(spacing: 0) {
@@ -150,7 +153,7 @@ struct MacBrowserView: View {
             case let .type(kind, type):
                 browser.kind = kind
                 browser.type = type
-            case .compare, .sources, .skins:
+            case .compare, .sources, .skins, .account:
                 break
             }
         }
@@ -194,7 +197,7 @@ struct MacSidebar: View {
         switch section {
         case let .dex(kind): kind
         case let .type(kind, _): kind
-        case .compare, .sources, .skins: nil
+        case .compare, .sources, .skins, .account: nil
         }
     }
 
@@ -229,6 +232,9 @@ struct MacSidebar: View {
             }
             Section("Look") {
                 Label("Skins", systemImage: "paintbrush").tag(MacSection.skins)
+            }
+            Section("You") {
+                Label("Account", systemImage: "person.crop.circle").tag(MacSection.account)
             }
         }
         .listStyle(.sidebar)

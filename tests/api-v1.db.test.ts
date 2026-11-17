@@ -77,6 +77,23 @@ describe("signing in", () => {
     expect(asked).toEqual([{ url: "https://auth.test/auth/v1/token?grant_type=id_token", body: { provider: "apple", id_token: "signed.by.apple", nonce: "n-1" } }]);
   });
 
+  test("with the code an app's system sign-in sheet brought back, and the secret only the app kept", async () => {
+    const asked = serviceAnswers({ status: 200, body: { user: { id: FAY, email: "fay@example.com" } } });
+    const res = await signIn(call("POST", null, { code: "sheet-code", codeVerifier: "kept-by-the-app" }));
+    expect(res.status).toBe(200);
+    expect(await sessionFor((await res.json()).token)).toEqual({ owner: FAY, email: "fay@example.com" });
+    expect(asked).toEqual([
+      { url: "https://auth.test/auth/v1/token?grant_type=pkce", body: { auth_code: "sheet-code", code_verifier: "kept-by-the-app" } },
+    ]);
+  });
+
+  test("refuses a sheet's code whose secret does not match, in words", async () => {
+    serviceAnswers({ status: 400, body: { error_code: "bad_code_verifier" } });
+    const res = await signIn(call("POST", null, { code: "sheet-code", codeVerifier: "a-guess" }));
+    expect(res.status).toBe(401);
+    expect((await res.json()).error).toMatch(/sign-in/i);
+  });
+
   test("is refused with the reason when the code or the token is not accepted", async () => {
     serviceAnswers({ status: 403, body: { error_code: "otp_expired" } }, { status: 400, body: { error_code: "bad_jwt" } });
     const wrongCode = await signIn(call("POST", null, { email: "fay@example.com", code: "000000" }));

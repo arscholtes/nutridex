@@ -5,6 +5,7 @@ enum DexRoute: Hashable {
     case entry(EntryKind, String)
     case sources
     case skins
+    case account
 }
 
 /// Where the app is. A phone keeps entries on a stack; an iPad keeps a sidebar selection with a

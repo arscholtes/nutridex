@@ -138,6 +138,7 @@ struct CardGrid: View {
 struct DexHeader: View {
     let onSkins: () -> Void
     let onSources: () -> Void
+    let onAccount: () -> Void
 
     var body: some View {
         HStack(spacing: 8) {
@@ -146,9 +147,11 @@ struct DexHeader: View {
             if Theme.skin.nav == .text {
                 link("Skins", action: onSkins)
                 link("Sources", action: onSources)
+                link("Account", action: onAccount)
             } else {
                 round("paintbrush", label: "Skins", action: onSkins)
                 round("book.closed", label: "Sources", action: onSources)
+                round("person.crop.circle", label: "Account", action: onAccount)
             }
         }
     }
@@ -183,7 +186,7 @@ struct HomeScreen: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 if !Theme.isHandheld {
-                    DexHeader { nav.path.append(.skins) } onSources: { nav.path.append(.sources) }
+                    DexHeader { nav.path.append(.skins) } onSources: { nav.path.append(.sources) } onAccount: { nav.path.append(.account) }
                 }
                 if Theme.skin.hero == .titleFirst {
                     Text("Your Dex.").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink)
@@ -204,7 +207,7 @@ struct HomeScreen: View {
         Group {
             if Theme.isHandheld {
                 VStack(spacing: 0) {
-                    DexPlate(onSkins: { nav.path.append(.skins) }, onSources: { nav.path.append(.sources) })
+                    DexPlate(onSkins: { nav.path.append(.skins) }, onSources: { nav.path.append(.sources) }, onAccount: { nav.path.append(.account) })
                     ScreenBezel { content }
                 }
                 .background(Theme.shellBody.ignoresSafeArea())
@@ -236,11 +239,11 @@ struct SidebarScreen: View {
     var body: some View {
         VStack(spacing: 0) {
             if Theme.isHandheld {
-                DexPlate(lens: lens, onSkins: { nav.choose(.skins) }, onSources: { nav.choose(.sources) })
+                DexPlate(lens: lens, onSkins: { nav.choose(.skins) }, onSources: { nav.choose(.sources) }, onAccount: { nav.choose(.account) })
             }
             VStack(alignment: .leading, spacing: 12) {
                 if !Theme.isHandheld {
-                    DexHeader { nav.choose(.skins) } onSources: { nav.choose(.sources) }
+                    DexHeader { nav.choose(.skins) } onSources: { nav.choose(.sources) } onAccount: { nav.choose(.account) }
                 }
                 UploadBar()
                 UnlockProgressBar()

@@ -169,7 +169,14 @@ struct CompareTests {
 }
 
 /// Stands in for the server, recording what it is sent.
-private final class StubTransport: EncounterTransport {
+private final class StubTransport: DexTransport {
+    var signedInEmail: String? = "fay@example.com"
+    func googleStart(challenge: String) throws -> URL { URL(string: "https://dex.test/start")! }
+    func requestCode(email: String) async throws {}
+    func signIn(_ proof: SignInProof) async throws { signedInEmail = "fay@example.com" }
+    func signOut() async { signedInEmail = nil }
+    func deleteAccount() async throws { signedInEmail = nil }
+
     var uploads: [[String]] = []
     var serverFoods: [String] = []
     var failure: EncounterProblem?
@@ -437,10 +444,10 @@ struct WireFormatTests {
         #expect(UploadItem.dateFormat.date(from: "2026-11-02T12:00:00.000Z") != nil)
     }
 
-    /// Runs against a real server when asked: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test
+    /// Runs against a real server when asked, with this Mac signed in: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test
     @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_TEST"] == "1"))
     func theRealServerTakesAnUpload() async throws {
-        let transport = HTTPEncounterTransport.configured
+        let transport = APITransport.configured
         let response = try await transport.upload([UploadItem(food: "olive-oil", encounteredAt: .now)])
         #expect(response.encounters.contains { $0.food == "olive-oil" })
         #expect(try await transport.fetch().contains { $0.food == "olive-oil" })
@@ -519,10 +526,10 @@ struct SkinTableTests {
 /// The skin that follows someone between their devices.
 @MainActor
 struct SkinTests {
-    /// Runs against a real server when asked: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test. Puts back what it finds.
+    /// Runs against a real server when asked, with this Mac signed in: TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 xcodebuild test. Puts back what it finds.
     @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_TEST"] == "1"))
     func theRealServerRemembersASkinForEveryDevice() async throws {
-        let transport = HTTPEncounterTransport.configured
+        let transport = APITransport.configured
         let before = try await transport.fetchSkin()
         try await transport.saveSkin("yellow-version")
         #expect(try await transport.fetchSkin() == "yellow-version")
@@ -637,5 +644,112 @@ struct SkinTests {
         #expect(relaunched.skins.skin == .yellowVersion)
         #expect(transport.serverSkin == "yellow-version")
         #expect(relaunched.skinProblem == nil)
+    }
+}
+
+/// Your foods and skin follow your account; a signed-out device keeps to itself.
+@MainActor
+struct AccountTests {
+    private func signedOutGame() -> (DexGame, StubTransport) {
+        let defaults = UserDefaults(suiteName: "nutridex-tests-\(UUID().uuidString)")!
+        let transport = StubTransport()
+        transport.signedInEmail = nil
+        return (DexGame(store: EncounterStore(defaults: defaults), transport: transport, skins: SkinStore(defaults: defaults)), transport)
+    }
+
+    private let code = SignInProof.emailed(email: "fay@example.com", code: "123456")
+
+    @Test func signingInSendsWhatWaitedAndPicksUpYourAccount() async throws {
+        let (game, transport) = signedOutGame()
+        transport.serverFoods = ["kale"]
+        game.store.encounter(food: "carrot")
+
+        try await game.signIn(code)
+
+        #expect(game.isSignedIn)
+        #expect(transport.uploads == [["carrot"]])
+        #expect(game.store.pending.isEmpty)
+        #expect(game.store.isRevealed(.ingredient, "kale"))
+    }
+
+    @Test func aSignedOutDeviceNeitherTriesTheServerNorWarns() async {
+        let (game, transport) = signedOutGame()
+        transport.failure = EncounterProblem("the server was asked")
+        transport.skinFailure = EncounterProblem("the server was asked")
+
+        await game.sync()
+
+        #expect(game.syncProblem == nil)
+        #expect(game.skinProblem == nil)
+    }
+
+    @Test func aSkinChosenSignedOutGoesUpWhenYouSignIn() async throws {
+        let (game, transport) = signedOutGame()
+        await game.choose(skin: Dex.bundled.skin(id: "yellow-version")!)
+        #expect(game.skinProblem == nil)
+        #expect(transport.savedSkins.isEmpty)
+
+        try await game.signIn(code)
+
+        #expect(transport.savedSkins == ["yellow-version"])
+    }
+
+    @Test func signingOutForgetsTheAccountsFoodsAndKeepsWhatWaits() async throws {
+        let (game, transport) = signedOutGame()
+        transport.serverFoods = ["kale"]
+        try await game.signIn(code)
+        game.store.encounter(food: "carrot")
+
+        await game.signOut()
+
+        #expect(!game.isSignedIn)
+        #expect(!game.store.isRevealed(.ingredient, "kale"))
+        #expect(game.store.pending.map(\.food) == ["carrot"])
+    }
+
+    @Test func deletingTheAccountSignsOutAndForgetsItsFoods() async throws {
+        let (game, transport) = signedOutGame()
+        transport.serverFoods = ["kale"]
+        try await game.signIn(code)
+
+        try await game.deleteAccount()
+
+        #expect(!game.isSignedIn)
+        #expect(!game.store.isRevealed(.ingredient, "kale"))
+    }
+}
+
+/// After the phone's live UI test, on the same local server and sign-in stack:
+/// TEST_RUNNER_NUTRIDEX_LIVE_EMAIL=<the phone's address> xcodebuild test -scheme NutriDexMac. Deletes the test account after.
+@MainActor
+struct LiveAccountTests {
+    private func mailedCode(to email: String) async throws -> String {
+        for _ in 0..<20 {
+            let (found, _) = try await URLSession.shared.data(from: URL(string: "http://127.0.0.1:54324/api/v1/search?query=to:\(email)")!)
+            if let id = ((try JSONSerialization.jsonObject(with: found) as? [String: Any])?["messages"] as? [[String: Any]])?.first?["ID"] as? String {
+                let (body, _) = try await URLSession.shared.data(from: URL(string: "http://127.0.0.1:54324/api/v1/message/\(id)")!)
+                if let text = (try JSONSerialization.jsonObject(with: body) as? [String: Any])?["Text"] as? String,
+                   let code = text.range(of: #"\b\d{6}\b"#, options: .regularExpression) {
+                    return String(text[code])
+                }
+            }
+            try await Task.sleep(for: .milliseconds(500))
+        }
+        throw EncounterProblem("no code reached the mailbox for \(email)")
+    }
+
+    @Test(.enabled(if: ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_EMAIL"] != nil))
+    func theMacSeesWhatThePhoneUploadedOnceItSignsIn() async throws {
+        let email = try #require(ProcessInfo.processInfo.environment["NUTRIDEX_LIVE_EMAIL"])
+        let transport = APITransport(baseURL: URL(string: "http://localhost:3200"), sessions: SessionStore(service: "NutriDexMacTests.live.\(UUID().uuidString)"))
+        try await transport.requestCode(email: email)
+        // A new code mail replaces the phone's as the newest in the mailbox.
+        try await Task.sleep(for: .seconds(1))
+        try await transport.signIn(.emailed(email: email, code: try await mailedCode(to: email)))
+
+        #expect(try await transport.fetch().map(\.food).contains("beet"))
+
+        try await transport.deleteAccount()
+        #expect(transport.signedInEmail == nil)
     }
 }

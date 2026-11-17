@@ -44,9 +44,9 @@ final class TouchTests: XCTestCase {
         get throws { try XCTUnwrap(head["skins"] as? [[String: Any]]).compactMap { $0["id"] as? String } }
     }
 
-    private func launch(foods: String = "carrot,kale,egg", route: String? = nil, skin: String? = nil) throws -> XCUIApplication {
+    private func launch(foods: String = "carrot,kale,egg", route: String? = nil, skin: String? = nil, signedInAs email: String? = nil) throws -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = try ["-acceptedDisclaimerVersion", version, "-debugEncountered", foods] + (route.map { ["-debugRoute", $0] } ?? []) + (skin.map { ["-skin", $0] } ?? [])
+        app.launchArguments = try ["-acceptedDisclaimerVersion", version, "-debugEncountered", foods] + (route.map { ["-debugRoute", $0] } ?? []) + (skin.map { ["-skin", $0] } ?? []) + (email.map { ["-debugSignedIn", $0] } ?? [])
         app.launch()
         return app
     }
@@ -242,12 +242,104 @@ final class TouchTests: XCTestCase {
         expectInReach(app.staticTexts["4 new encounters to upload"])
     }
 
-    func testTheMainControlsAreBigEnoughForAThumb() throws {
+    func testASignedOutUploadOpensSignIn() throws {
         let app = try launch()
-        for control in [app.buttons["Upload"], app.buttons["Sources"]] {
+        let signIn = app.buttons["Sign in to upload"]
+        expectInReach(signIn)
+        signIn.tap()
+        expectInReach(app.buttons["Continue with Google"])
+        XCTAssertTrue(app.buttons["Email me a code"].exists)
+        XCTAssertTrue(app.buttons["Sign in with Apple"].waitForExistence(timeout: 5))
+        picture("sign-in")
+    }
+
+    func testAccountOffersSignInWhenSignedOut() throws {
+        let app = try launch()
+        let account = app.buttons["Account"].firstMatch
+        expectInReach(account)
+        account.tap()
+        expectInReach(app.buttons["Email me a code"])
+        picture("account-signed-out")
+    }
+
+    func testASignedInAccountShowsItsEmailSignOutAndDelete() throws {
+        let app = try launch(signedInAs: "fay@example.com")
+        let account = app.buttons["Account"].firstMatch
+        expectInReach(account)
+        account.tap()
+        expectInReach(app.staticTexts["fay@example.com"])
+        XCTAssertTrue(app.buttons["Sign out"].exists)
+        XCTAssertTrue(app.buttons["Delete account"].exists)
+        XCTAssertFalse(app.buttons["Sign in to upload"].exists)
+        picture("account-signed-in")
+    }
+
+    /// The code the local sign-in stack mailed to an address, read from its mailbox (Mailpit, on :54324).
+    private func mailedCode(to email: String) throws -> String {
+        for _ in 0..<20 {
+            let search = try JSONSerialization.jsonObject(with: Data(contentsOf: URL(string: "http://127.0.0.1:54324/api/v1/search?query=to:\(email)")!)) as? [String: Any]
+            if let id = (search?["messages"] as? [[String: Any]])?.first?["ID"] as? String,
+               let message = try JSONSerialization.jsonObject(with: Data(contentsOf: URL(string: "http://127.0.0.1:54324/api/v1/message/\(id)")!)) as? [String: Any],
+               let text = message["Text"] as? String,
+               let found = text.range(of: #"\b\d{6}\b"#, options: .regularExpression) {
+                return String(text[found])
+            }
+            Thread.sleep(forTimeInterval: 0.5)
+        }
+        throw XCTSkip("no code reached the mailbox for \(email)")
+    }
+
+    /// Against a local server on :3200 and the local sign-in stack, when asked:
+    /// TEST_RUNNER_NUTRIDEX_LIVE_TEST=1 TEST_RUNNER_NUTRIDEX_LIVE_EMAIL=<address> xcodebuild test. The Mac's live test then
+    /// signs in as the same address and checks the account holds what the phone uploaded.
+    func testSigningInOnThePhoneTakesWhatYouHadToYourAccount() throws {
+        let environment = ProcessInfo.processInfo.environment
+        try XCTSkipUnless(environment["NUTRIDEX_LIVE_TEST"] == "1", "needs the local server and sign-in stack")
+        let email = try XCTUnwrap(environment["NUTRIDEX_LIVE_EMAIL"])
+        let app = XCUIApplication()
+        app.launchArguments = try ["-acceptedDisclaimerVersion", version]
+        app.launch()
+
+        let account = app.buttons["Account"].firstMatch
+        expectInReach(account)
+        account.tap()
+        let address = app.textFields["Email"]
+        expectInReach(address)
+        address.tap()
+        address.typeText(email)
+        app.buttons["Email me a code"].tap()
+        let code = app.textFields["Six-digit code"]
+        expectInReach(code)
+        code.tap()
+        code.typeText(try mailedCode(to: email))
+        app.buttons["Sign in"].tap()
+        expectInReach(app.staticTexts[email])
+        picture("live-signed-in")
+
+        app.navigationBars.buttons.firstMatch.tap()
+        let had = app.textFields["What did you have?"]
+        expectInReach(had)
+        had.tap()
+        had.typeText("beet")
+        app.buttons["I've had Beet"].tap()
+        let upload = app.buttons["Upload"]
+        expectInReach(upload)
+        upload.tap()
+        let sent = expectation(for: NSPredicate(format: "exists == false"), evaluatedWith: app.staticTexts["1 new encounter to upload"])
+        wait(for: [sent], timeout: 15)
+        picture("live-uploaded")
+    }
+
+    func testTheMainControlsAreBigEnoughForAThumb() throws {
+        let signedOut = try launch()
+        for control in [signedOut.buttons["Sign in to upload"], signedOut.buttons["Sources"], signedOut.buttons["Account"].firstMatch] {
             expectInReach(control)
             XCTAssertGreaterThanOrEqual(control.frame.height, 44, control.label)
         }
+        let signedIn = try launch(signedInAs: "fay@example.com")
+        let upload = signedIn.buttons["Upload"]
+        expectInReach(upload)
+        XCTAssertGreaterThanOrEqual(upload.frame.height, 44, upload.label)
     }
 
     func testTappingAnywhereOnTheWhatDidYouHavePillStartsTyping() throws {
