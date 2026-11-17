@@ -376,6 +376,8 @@ struct BasisFrame<Content: View>: View {
 /// An engine absorption flag on a food: what happens to one compound, and what would help.
 struct AbsorptionTipCard: View {
     let tip: AbsorptionTip
+    /// False where the compound's entry is closed to this viewer.
+    var linked = true
 
     private var status: (label: String, background: Color, text: Color) {
         switch tip.flag.status {
@@ -396,7 +398,11 @@ struct AbsorptionTipCard: View {
                         .padding(.horizontal, 7)
                         .padding(.vertical, 2)
                         .background(status.background, in: RoundedRectangle(cornerRadius: 5))
-                    EntryLinkText(route: .entry(.compound, tip.compound.slug), title: tip.compound.name)
+                    if linked {
+                        EntryLinkText(route: .entry(.compound, tip.compound.slug), title: tip.compound.name)
+                    } else {
+                        Text(tip.compound.name).font(.dex(.subheadline, weight: .bold)).foregroundStyle(Theme.ink)
+                    }
                     GradeBadge(grade: tip.flag.grade)
                 }
                 Text("\(tip.flag.reason).").font(.dex(.subheadline)).foregroundStyle(Theme.ink).fixedSize(horizontal: false, vertical: true)

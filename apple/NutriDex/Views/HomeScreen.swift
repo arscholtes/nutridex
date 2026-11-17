@@ -136,6 +136,7 @@ struct CardGrid: View {
 
 /// The top of a list: the name with its links or small round buttons. The handheld has its plate instead.
 struct DexHeader: View {
+    let onRecipes: () -> Void
     let onSkins: () -> Void
     let onSources: () -> Void
 
@@ -144,9 +145,11 @@ struct DexHeader: View {
             DexWordmark()
             Spacer()
             if Theme.skin.nav == .text {
+                link("Recipes", action: onRecipes)
                 link("Skins", action: onSkins)
                 link("Sources", action: onSources)
             } else {
+                round("fork.knife", label: "Recipes", action: onRecipes)
                 round("paintbrush", label: "Skins", action: onSkins)
                 round("book.closed", label: "Sources", action: onSources)
             }
@@ -183,7 +186,7 @@ struct HomeScreen: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 if !Theme.isHandheld {
-                    DexHeader { nav.path.append(.skins) } onSources: { nav.path.append(.sources) }
+                    DexHeader { nav.path.append(.recipes) } onSkins: { nav.path.append(.skins) } onSources: { nav.path.append(.sources) }
                 }
                 if Theme.skin.hero == .titleFirst {
                     Text("Your Dex.").font(.dex(.largeTitle, weight: .heavy)).foregroundStyle(Theme.ink)
@@ -204,7 +207,7 @@ struct HomeScreen: View {
         Group {
             if Theme.isHandheld {
                 VStack(spacing: 0) {
-                    DexPlate(onSkins: { nav.path.append(.skins) }, onSources: { nav.path.append(.sources) })
+                    DexPlate(onRecipes: { nav.path.append(.recipes) }, onSkins: { nav.path.append(.skins) }, onSources: { nav.path.append(.sources) })
                     ScreenBezel { content }
                 }
                 .background(Theme.shellBody.ignoresSafeArea())
@@ -236,11 +239,11 @@ struct SidebarScreen: View {
     var body: some View {
         VStack(spacing: 0) {
             if Theme.isHandheld {
-                DexPlate(lens: lens, onSkins: { nav.choose(.skins) }, onSources: { nav.choose(.sources) })
+                DexPlate(lens: lens, onRecipes: { nav.choose(.recipes) }, onSkins: { nav.choose(.skins) }, onSources: { nav.choose(.sources) })
             }
             VStack(alignment: .leading, spacing: 12) {
                 if !Theme.isHandheld {
-                    DexHeader { nav.choose(.skins) } onSources: { nav.choose(.sources) }
+                    DexHeader { nav.choose(.recipes) } onSkins: { nav.choose(.skins) } onSources: { nav.choose(.sources) }
                 }
                 UploadBar()
                 UnlockProgressBar()

@@ -23,7 +23,7 @@ export default async function NewRecipePage({ searchParams }: { searchParams: Pr
             {preview.problems.map((p) => <li key={p}>{p}</li>)}
           </ul>
         )}
-        {preview && !("problems" in preview) && <RecipeView page={preview} />}
+        {preview && !("problems" in preview) && <RecipeView page={preview} revealed={revealed} />}
       </main>
     </GameShell>
   );

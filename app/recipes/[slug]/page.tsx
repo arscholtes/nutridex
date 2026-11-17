@@ -16,7 +16,7 @@ export default async function RecipePageRoute({ params }: { params: Promise<{ sl
   const mine = page.owner === null ? undefined : (await ownedRecipes(page.owner)).find((r) => r.slug === slug);
   return (
     <GameShell>
-      <RecipeView page={page} />
+      <RecipeView page={page} revealed={revealed} cookable />
       {mine && (
         <section className="space-y-3 p-3 sm:p-5" aria-label="Your recipe">
           <p className="text-sm">

@@ -31,14 +31,14 @@ export function CautionCard({ caution }: { caution: CautionFlag }) {
 }
 
 /** An engine absorption flag on a food: what happens to one compound, and what would help. */
-export function AbsorptionTipCard({ tip }: { tip: AbsorptionTip }) {
+export function AbsorptionTipCard({ tip, linked = true }: { tip: AbsorptionTip; /** False where the compound's entry is closed to this viewer. */ linked?: boolean }) {
   const { flag } = tip;
   const status = STATUS[flag.status];
   return (
     <BasisFrame basis={flag.basis} className={tip.className}>
       <div className="flex flex-wrap items-center gap-2">
         <span className={`rounded-md px-2 py-0.5 text-xs font-bold ${status.style}`}>{status.label}</span>
-        <EntryLink href={hrefOf("compound", tip.compound.slug)}>{tip.compound.name}</EntryLink>
+        {linked ? <EntryLink href={hrefOf("compound", tip.compound.slug)}>{tip.compound.name}</EntryLink> : <span className="font-bold text-ink">{tip.compound.name}</span>}
         <GradeBadge grade={flag.grade} limitations={tip.sources[0]?.limitations ?? null} />
       </div>
       <p className="mt-2 text-sm">{flag.reason}.</p>

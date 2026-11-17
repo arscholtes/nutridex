@@ -1,14 +1,39 @@
 import { hrefOf } from "../lib/db/dex.ts";
 import type { RecipePage } from "../lib/db/recipes.ts";
-import type { GridCell } from "../lib/recipe-grid.ts";
+import Link from "next/link";
+import type { Revealed } from "../lib/db/encounters.ts";
 import { AbsorptionTipCard, CautionCard } from "./claims.tsx";
 import { GradeBadge } from "./grade-badge.tsx";
 import { PANEL_GROUPS, PanelTable } from "./ingredient-entry.tsx";
 import { EntryLink, formatAmount, Section } from "./parts.tsx";
+import { RecipeGridTable, type GridFood } from "./recipe-grid-table.tsx";
 
-/** A saved recipe: its spanning grid, and below it the profile drawn from the same recipe. */
-export function RecipeView({ page }: { page: RecipePage }) {
+/**
+ * How a recipe's grid names each of its foods for one viewer.
+ * @param revealed [Revealed] what this viewer has opened
+ * @return [Record<string, GridFood>] by food slug; a food never had has no link, since its entry is still closed
+ */
+export function gridFoods(page: RecipePage, revealed: Revealed): Record<string, GridFood> {
+  return Object.fromEntries(
+    Object.entries(page.foodNames).map(([slug, name]) => {
+      const had = revealed.foods.has(slug);
+      return [slug, { name, had, href: had ? hrefOf("ingredient", slug) : null }];
+    }),
+  );
+}
+
+/**
+ * A recipe: its spanning grid, and below it the profile drawn from the same recipe. It shows whatever is in it;
+ * a food never had is marked, and a name links only where that entry is open to this viewer.
+ * @param cookable [boolean] whether to offer cooking along, which a recipe still being built cannot
+ */
+export function RecipeView({ page, revealed, cookable = false }: { page: RecipePage; revealed: Revealed; cookable?: boolean }) {
   const { grid, profile } = page;
+  const foods = gridFoods(page, revealed);
+  const panel = page.panel.map((r) => ({ ...r, locked: !revealed.compounds.has(r.slug) }));
+  const notHad = Object.values(foods).filter((f) => !f.had).length;
+  const compound = (slug: string) => (revealed.compounds.has(slug) ? <EntryLink href={hrefOf("compound", slug)}>{page.compoundNames[slug]}</EntryLink> : <span className="font-bold text-ink">{page.compoundNames[slug]}</span>);
+  const effect = (slug: string) => (revealed.effects.has(slug) ? <EntryLink href={hrefOf("effect", slug)}>{page.effectNames[slug]}</EntryLink> : <span className="font-bold text-ink">{page.effectNames[slug]}</span>);
   const inPanel = new Set(page.panel.map((r) => r.slug));
   const byName = (a: { compoundSlug: string }, b: { compoundSlug: string }) => page.compoundNames[a.compoundSlug].localeCompare(page.compoundNames[b.compoundSlug]);
   const rest = profile.perServing.filter((t) => !inPanel.has(t.compoundSlug)).sort(byName);
@@ -22,13 +47,23 @@ export function RecipeView({ page }: { page: RecipePage }) {
         <p className="text-sm text-ink-soft">
           {page.servings === 1 ? "1 serving" : `${page.servings} servings`} · {grid.rows.length === 1 ? "1 ingredient" : `${grid.rows.length} ingredients`} · {grid.steps.length === 1 ? "1 step" : `${grid.steps.length} steps`}
         </p>
+        {notHad > 0 && (
+          <p className="mt-2 text-sm text-ink-soft">
+            {notHad === 1 ? "One food here is one you have never had." : `${notHad} foods here are ones you have never had.`} Its entry opens once you have.
+          </p>
+        )}
+        {cookable && (
+          <Link href={`/recipes/${page.slug}/cook`} className="dex-button mt-3 inline-block">
+            Cook along
+          </Link>
+        )}
       </header>
 
-      <RecipeGridTable page={page} />
+      <RecipeGridTable grid={grid} stepTitles={page.stepTitles} foods={foods} />
 
       <Section title="Per serving" empty="No food in this recipe has a measured amount of any compound yet.">
         {PANEL_GROUPS.map(({ group, title }) => (
-          <PanelTable key={group} title={title} rows={page.panel.filter((r) => r.group === group)} />
+          <PanelTable key={group} title={title} rows={panel.filter((r) => r.group === group)} />
         ))}
         {others.length > 0 && (
           <details className="dex-panel p-3">
@@ -37,7 +72,7 @@ export function RecipeView({ page }: { page: RecipePage }) {
               {others.map((t) => (
                 <li key={t.compoundSlug}>
                   <div className="flex items-baseline justify-between gap-2">
-                    <EntryLink href={hrefOf("compound", t.compoundSlug)}>{page.compoundNames[t.compoundSlug]}</EntryLink>
+                    {compound(t.compoundSlug)}
                     <span className="font-medium tabular-nums">{formatAmount(t.amount!, t.unit!)}</span>
                   </div>
                   {t.missingFrom.length > 0 && (
@@ -55,7 +90,7 @@ export function RecipeView({ page }: { page: RecipePage }) {
 
       <Section title="Absorption" empty="Nothing in this recipe changes how its compounds absorb, as far as anything on file says.">
         {page.absorption.map((tip) => (
-          <AbsorptionTipCard key={`${tip.flag.compoundSlug}:${tip.flag.status}`} tip={tip} />
+          <AbsorptionTipCard key={`${tip.flag.compoundSlug}:${tip.flag.status}`} tip={tip} linked={revealed.compounds.has(tip.compound.slug)} />
         ))}
       </Section>
 
@@ -80,7 +115,7 @@ export function RecipeView({ page }: { page: RecipePage }) {
           const goal = profile.goalScores[e.effectSlug];
           return (
             <div key={e.effectSlug} className="dex-panel flex flex-wrap items-center gap-2 p-3 text-sm">
-              <EntryLink href={hrefOf("effect", e.effectSlug)}>{page.effectNames[e.effectSlug]}</EntryLink>
+              {effect(e.effectSlug)}
               <GradeBadge grade={e.bestGrade} limitations={null} />
               <span className="text-ink-soft capitalize">{e.direction}</span>
               {e.onset && <span className="text-ink-soft">onset {e.onset}</span>}
@@ -90,60 +125,5 @@ export function RecipeView({ page }: { page: RecipePage }) {
         })}
       </Section>
     </article>
-  );
-}
-
-/** Ingredients as rows, a column per step, each step's cell spanning the rows it uses. */
-function RecipeGridTable({ page }: { page: RecipePage }) {
-  const { grid } = page;
-  return (
-    <section className="dex-panel overflow-x-auto p-2" aria-label="Recipe grid">
-      <table className="w-full border-separate border-spacing-1 text-sm">
-        <thead>
-          <tr>
-            <th scope="col" className="text-left text-ink-soft">Ingredient</th>
-            {grid.steps.map((s) => (
-              <th key={s.position} scope="col" className="text-left text-ink-soft">
-                Step {s.position}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {grid.rows.map((row, r) => (
-            <tr key={row.recipeIngredientId}>
-              <th scope="row" className="text-left font-normal">
-                <EntryLink href={hrefOf("ingredient", row.ingredientSlug)}>{page.foodNames[row.ingredientSlug]}</EntryLink>
-                <span className="block text-xs text-ink-soft">{row.grams} g · {row.prepMethod}</span>
-              </th>
-              {grid.steps.map((s) => {
-                const cell = s.cells.find((c) => c.rowStart === r);
-                if (cell) {
-                  return (
-                    <td key={s.position} rowSpan={cell.rowSpan} className="rounded-lg border border-line p-2 text-center align-middle">
-                      <StepLabel title={page.stepTitles[s.position]} prep={s.prepMethod} cell={cell} />
-                    </td>
-                  );
-                }
-                // A row inside another row's span draws nothing; the spanning cell already covers it.
-                if (s.cells.some((c) => r > c.rowStart && r < c.rowStart + c.rowSpan)) return null;
-                return <td key={s.position} />;
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {grid.steps.length === 0 && <p className="p-2 text-xs text-ink-soft">No steps: each ingredient is prepared as its row says.</p>}
-    </section>
-  );
-}
-
-function StepLabel({ title, prep, cell }: { title: string; prep: string | null; cell: GridCell }) {
-  return (
-    <>
-      <span className="font-medium">{title}</span>
-      {prep && <span className="block text-xs text-ink-soft">{prep}</span>}
-      {cell.parts > 1 && <span className="block text-xs text-ink-soft">part {cell.part} of {cell.parts}</span>}
-    </>
   );
 }

@@ -135,6 +135,8 @@ struct RouteView: View {
             SourcesScreen()
         case .skins:
             SkinsScreen()
+        case .recipes, .recipe, .cook:
+            RecipeScreens(route: route)
         case let .entry(kind, slug):
             EntryPager(kind: kind, slug: slug)
         }

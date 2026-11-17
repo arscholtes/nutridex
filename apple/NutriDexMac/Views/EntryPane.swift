@@ -30,6 +30,8 @@ struct MacRouteView: View {
             SourcesList().background(Theme.screen)
         case .skins:
             SkinsList().background(Theme.screen)
+        case .recipes, .recipe, .cook:
+            MacRecipes()
         case let .entry(kind, slug):
             if let card = Dex.bundled.cards.first(where: { $0.kind == kind && $0.slug == slug }) {
                 MacEntryView(card: card)
@@ -183,6 +185,31 @@ struct EncounterControl: View {
                     EntryLinkText(route: food.route, title: food.name)
                 }
             }
+        }
+    }
+}
+
+/// The Mac's recipes: the list, one recipe, and cooking along with it, on a stack of their own.
+struct MacRecipes: View {
+    private enum Step: Hashable {
+        case recipe(Recipe)
+        case cook(Recipe)
+    }
+
+    @State private var path: [Step] = []
+
+    var body: some View {
+        NavigationStack(path: $path) {
+            RecipesList { path.append(.recipe($0)) }
+                .background(Theme.screen)
+                .navigationDestination(for: Step.self) { step in
+                    switch step {
+                    case let .recipe(recipe):
+                        RecipeDetail(recipe: recipe) { path.append(.cook(recipe)) }.background(Theme.screen)
+                    case let .cook(recipe):
+                        CookAlongView(recipe: recipe) { path.removeLast() }.background(Theme.screen)
+                    }
+                }
         }
     }
 }
