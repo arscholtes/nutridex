@@ -150,6 +150,24 @@ export const encounter = pgTable(
   (t) => [unique("encounter_owner_ingredient").on(t.ownerId, t.ingredientId).nullsNotDistinct()],
 );
 
+export const foodCatch = pgTable(
+  "catch",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    encounterId: uuid("encounter_id")
+      .notNull()
+      .references(() => encounter.id, { onDelete: "cascade" }),
+    caughtAt: timestamp("caught_at", { withTimezone: true }).notNull(),
+    form: text("form"),
+    recipeId: uuid("recipe_id").references(() => recipe.id, { onDelete: "set null" }),
+    uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique("catch_encounter_caught_at").on(t.encounterId, t.caughtAt),
+    check("catch_form_known", sql`form in ('raw', 'juiced', 'cooked')`),
+  ],
+);
+
 export const preference = pgTable(
   "preference",
   {

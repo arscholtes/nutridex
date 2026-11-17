@@ -1,0 +1,920 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "NutriDex API",
+    "version": "1",
+    "description": "The API the NutriDex apps share. Sign in for a session token, then send it as a bearer token. Every answer about a person is that person's own."
+  },
+  "servers": [
+    {
+      "url": "https://nutridex-8vtr.vercel.app"
+    }
+  ],
+  "paths": {
+    "/api/v1/session/code": {
+      "post": {
+        "summary": "Email a six-digit sign-in code",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CodeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Done; no body"
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/session": {
+      "post": {
+        "summary": "Sign in with an emailed code, or with an identity token from Apple or Google",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Signed in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Sign this device out",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Done; no body"
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me": {
+      "get": {
+        "summary": "Your foods with tiers, your rank and your skin",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your game",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Me"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete your account and everything stored for it",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Done; no body"
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/encounters": {
+      "post": {
+        "summary": "Store each time you had a food",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Upload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Stored",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Uploaded"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/skin": {
+      "put": {
+        "summary": "Save your skin for every device",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkinChoice"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkinChoice"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/recipes": {
+      "get": {
+        "summary": "The recipes you have saved",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your recipes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recipes"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Save a recipe built from foods you own",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Saved"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Every reason it was refused",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problems"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me/export": {
+      "get": {
+        "summary": "Everything stored for you",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Your data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Export"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recipes/preview": {
+      "post": {
+        "summary": "The engine's grid and profile for a recipe still being built",
+        "security": [
+          {
+            "session": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecipeBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The recipe as its page would show it",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Refused, with the reason",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Why there is no preview",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problems"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "session": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "The token from POST /api/v1/session. It lasts 90 days."
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "A sentence fit to show the person"
+          }
+        }
+      },
+      "Problems": {
+        "type": "object",
+        "required": [
+          "problems"
+        ],
+        "properties": {
+          "problems": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CodeRequest": {
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      },
+      "SignIn": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "email",
+              "code"
+            ],
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "code": {
+                "type": "string",
+                "pattern": "^[0-9]{6}$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "provider",
+              "idToken"
+            ],
+            "properties": {
+              "provider": {
+                "enum": [
+                  "apple",
+                  "google"
+                ]
+              },
+              "idToken": {
+                "type": "string",
+                "description": "The identity token the provider's own sign-in gave the app"
+              },
+              "nonce": {
+                "type": "string",
+                "description": "The unhashed nonce bound into the token, if the app used one"
+              }
+            }
+          }
+        ]
+      },
+      "Session": {
+        "type": "object",
+        "required": [
+          "token",
+          "email",
+          "expiresAt"
+        ],
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Form": {
+        "enum": [
+          "raw",
+          "juiced",
+          "cooked"
+        ]
+      },
+      "OwnedFood": {
+        "type": "object",
+        "required": [
+          "food",
+          "firstHadAt",
+          "catches",
+          "forms",
+          "tier"
+        ],
+        "properties": {
+          "food": {
+            "type": "string",
+            "description": "The food's slug"
+          },
+          "firstHadAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "catches": {
+            "type": "integer",
+            "description": "Times you have had it"
+          },
+          "forms": {
+            "type": "integer",
+            "description": "Different forms you have had it in"
+          },
+          "tier": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4,
+            "description": "Its research tier, in stars"
+          }
+        }
+      },
+      "Me": {
+        "type": "object",
+        "required": [
+          "email",
+          "skin",
+          "rank",
+          "foods"
+        ],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "skin": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rank": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Null before the first catch"
+          },
+          "foods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnedFood"
+            }
+          }
+        }
+      },
+      "Upload": {
+        "type": "object",
+        "required": [
+          "encounters"
+        ],
+        "properties": {
+          "encounters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "food",
+                "encounteredAt"
+              ],
+              "properties": {
+                "food": {
+                  "type": "string"
+                },
+                "encounteredAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Form"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "Uploaded": {
+        "type": "object",
+        "required": [
+          "new",
+          "foods"
+        ],
+        "properties": {
+          "new": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Foods you did not own before this upload"
+          },
+          "foods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnedFood"
+            }
+          }
+        }
+      },
+      "SkinChoice": {
+        "type": "object",
+        "required": [
+          "skin"
+        ],
+        "properties": {
+          "skin": {
+            "type": "string"
+          }
+        }
+      },
+      "Recipe": {
+        "type": "object",
+        "required": [
+          "name",
+          "servings",
+          "ingredients",
+          "steps"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "servings": {
+            "type": "number"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "food",
+                "grams",
+                "prepMethod"
+              ],
+              "properties": {
+                "food": {
+                  "type": "string"
+                },
+                "grams": {
+                  "type": "number"
+                },
+                "prepMethod": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "title",
+                "prepMethod",
+                "uses"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "prepMethod": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "uses": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "description": "Indexes into ingredients"
+                }
+              }
+            }
+          }
+        }
+      },
+      "RecipeBody": {
+        "type": "object",
+        "required": [
+          "recipe"
+        ],
+        "properties": {
+          "recipe": {
+            "$ref": "#/components/schemas/Recipe"
+          }
+        }
+      },
+      "Saved": {
+        "type": "object",
+        "required": [
+          "slug"
+        ],
+        "properties": {
+          "slug": {
+            "type": "string"
+          }
+        }
+      },
+      "Recipes": {
+        "type": "object",
+        "required": [
+          "recipes"
+        ],
+        "properties": {
+          "recipes": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Recipe"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "slug"
+                  ],
+                  "properties": {
+                    "slug": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "Export": {
+        "type": "object",
+        "required": [
+          "email",
+          "encounters",
+          "catches",
+          "skin",
+          "recipes"
+        ],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "encounters": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "catches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "food": {
+                  "type": "string"
+                },
+                "caughtAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "form": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Form"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "recipe": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "skin": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "recipes": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
