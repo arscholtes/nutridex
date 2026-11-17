@@ -1,0 +1,49 @@
+# Runs the unit tests, the typecheck and the Swift tests on every pull request, so a failure shows
+# before the merge. The database suite is not here: seeding the test database needs a USDA key and
+# the network.
+name: pull-request-tests
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pull-request-tests-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+
+  # macos-26 carries Xcode 26 and iPhone 17 simulators; the apps target iOS 26 and macOS 26.
+  # https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md
+  swift:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: xcodebuild -version
+
+      - name: Mac tests
+        run: >
+          xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDexMac
+          -destination 'platform=macOS'
+
+      - name: iPhone tests
+        run: >
+          xcodebuild test -project apple/NutriDex.xcodeproj -scheme NutriDex
+          -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest'
+          -only-testing:NutriDexTests
